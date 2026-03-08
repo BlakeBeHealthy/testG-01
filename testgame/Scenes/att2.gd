@@ -1,8 +1,8 @@
 extends State
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
-@onready var KnockbackTime: Timer = $"../../Timer"
 @onready var a2d: Area2D = $"../../Area2D"
 @onready var a2d2: Area2D = $"../../Area2D2"
+
 
 @export var fall_state: State
 @export var run_state: State

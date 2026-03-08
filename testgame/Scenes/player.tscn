@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://f8rqqr3hjrwn" path="res://Scripts/playerScripts/fall.gd" id="8_f1ek2"]
 [ext_resource type="Script" uid="uid://dac1dnh87byxh" path="res://Scripts/playerScripts/attack.gd" id="9_f1ek2"]
 [ext_resource type="Script" uid="uid://hcjiuh0ylm37" path="res://Scripts/playerScripts/hit.gd" id="9_tx1dd"]
+[ext_resource type="Script" uid="uid://b6t0edljvaxnc" path="res://Scenes/att2.gd" id="10_pu2lt"]
 [ext_resource type="Script" uid="uid://fx6rtupf7151" path="res://Scripts/playerScripts/death.gd" id="10_tx1dd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukyrk"]
@@ -544,7 +545,7 @@ move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Attack2" type="Node" parent="StateMachine" unique_id=1745266335 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "hit_state", "jump_state")]
-script = ExtResource("9_f1ek2")
+script = ExtResource("10_pu2lt")
 fall_state = NodePath("../Fall")
 run_state = NodePath("../Run")
 idle_state = NodePath("../Idle")
@@ -552,8 +553,8 @@ hit_state = NodePath("../Hit")
 jump_state = NodePath("../Jump")
 hit_timeStop = 0.2
 hit_duration = 0.1
-playerKnockback = 1000
-move_speed = 200.0
+decayRate = 4000
+playerKnockback = 500
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Hit" type="Node" parent="StateMachine" unique_id=743816584 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "jump_state", "attack_state", "death_state")]
