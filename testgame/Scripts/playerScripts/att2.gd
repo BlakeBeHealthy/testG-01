@@ -53,7 +53,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	KB = true
-	parent.velocity.x += -attackDir * playerKnockback
+	parent.velocity.x = -attackDir * playerKnockback
 	
 func exit() -> void:
 	checkHit = true

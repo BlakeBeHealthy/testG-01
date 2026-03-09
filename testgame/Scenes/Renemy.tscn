@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://o6i3e7243j7" path="res://Scripts/enemyScripts/RE1folder/REpatrol.gd" id="10_xg1bg"]
 [ext_resource type="Script" uid="uid://cg84rv5tvpbg" path="res://Scripts/enemyScripts/RE1folder/REdeath.gd" id="11_82ivn"]
 [ext_resource type="Script" uid="uid://dfb344nsiltnr" path="res://Scripts/enemyScripts/RE1folder/REchase.gd" id="11_xg8fv"]
+[ext_resource type="Script" uid="uid://dnkum1uhnk45o" path="res://Scripts/enemyScripts/RE1folder/REHitState.gd" id="13_82ivn"]
 [ext_resource type="Script" uid="uid://dkob56stqycl1" path="res://Scripts/enemyScripts/RE1folder/REattack.gd" id="14_sprm0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sprm0"]
@@ -370,6 +371,9 @@ knockback_strength = 200.0
 knockback_stunTime = 0.4
 hit_duration = 0.5
 move_speed = 75.0
+
+[node name="HitState" type="Node" parent="StateMach" unique_id=1681370267]
+script = ExtResource("13_82ivn")
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMach/REAttack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_shape_entered" from="AttackHitBox" to="AttackHitBox" method="_on_area_shape_entered"]

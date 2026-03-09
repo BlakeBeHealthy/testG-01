@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://f8rqqr3hjrwn" path="res://Scripts/playerScripts/fall.gd" id="8_f1ek2"]
 [ext_resource type="Script" uid="uid://dac1dnh87byxh" path="res://Scripts/playerScripts/attack.gd" id="9_f1ek2"]
 [ext_resource type="Script" uid="uid://hcjiuh0ylm37" path="res://Scripts/playerScripts/hit.gd" id="9_tx1dd"]
-[ext_resource type="Script" uid="uid://b6t0edljvaxnc" path="res://Scenes/att2.gd" id="10_pu2lt"]
+[ext_resource type="Script" uid="uid://b6t0edljvaxnc" path="res://Scripts/playerScripts/att2.gd" id="10_pu2lt"]
 [ext_resource type="Script" uid="uid://fx6rtupf7151" path="res://Scripts/playerScripts/death.gd" id="10_tx1dd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukyrk"]
@@ -472,11 +472,11 @@ wait_time = 2.0
 one_shot = true
 
 [node name="attackDelay" type="Timer" parent="." unique_id=1251612868]
-wait_time = 0.5
+wait_time = 0.55
 one_shot = true
 
 [node name="Timer" type="Timer" parent="." unique_id=388785215]
-wait_time = 0.4
+wait_time = 0.5
 one_shot = true
 
 [node name="tim2" type="Timer" parent="." unique_id=1119039513]
