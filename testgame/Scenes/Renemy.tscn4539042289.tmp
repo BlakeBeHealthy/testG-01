@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dwg18royncil5" path="res://assets/Monsters_Creatures_Fantasy/Flying eye/Attack.png" id="3_syvc7"]
 [ext_resource type="Texture2D" uid="uid://dk8sccuaedbqx" path="res://assets/Monsters_Creatures_Fantasy/Flying eye/Flight.png" id="3_wjsit"]
 [ext_resource type="Texture2D" uid="uid://bnivkh370bpv2" path="res://assets/Monsters_Creatures_Fantasy/Flying eye/Death.png" id="4_82ivn"]
-[ext_resource type="Texture2D" uid="uid://b6vh12o810cns" path="res://assets/Monsters_Creatures_Fantasy/Flying eye/Take Hit.png" id="5_sprm0"]
 [ext_resource type="Script" uid="uid://c6jdgjr5ueugl" path="res://Scripts/enemyScripts/RE1folder/REneAHH.gd" id="8_4odxm"]
 [ext_resource type="Script" uid="uid://ddt41cq5hyert" path="res://Scripts/enemyScripts/RE1folder/state_mach.gd" id="9_4odxm"]
 [ext_resource type="Script" uid="uid://cr60x5ds6phfb" path="res://Scripts/enemyScripts/RE1folder/REidle.gd" id="10_syvc7"]
@@ -66,22 +65,6 @@ region = Rect2(300, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6agb"]
 atlas = ExtResource("4_82ivn")
-region = Rect2(450, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6jreq"]
-atlas = ExtResource("5_sprm0")
-region = Rect2(0, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_km732"]
-atlas = ExtResource("5_sprm0")
-region = Rect2(150, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tv66o"]
-atlas = ExtResource("5_sprm0")
-region = Rect2(300, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cgxdj"]
-atlas = ExtResource("5_sprm0")
 region = Rect2(450, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_syvc7"]
@@ -198,23 +181,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6jreq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_km732")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tv66o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cgxdj")
-}],
-"loop": true,
-"name": &"hit",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_syvc7")
 }, {
 "duration": 1.0,
@@ -294,7 +260,7 @@ script = ExtResource("1_wjsit")
 material = SubResource("ShaderMaterial_sprm0")
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_y83ni")
-animation = &"hit"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1486897855]
 visibility_layer = 4
@@ -382,20 +348,18 @@ move_speed = 75.0
 [node name="REdeath" type="Node" parent="StateMach" unique_id=1820377078]
 script = ExtResource("11_82ivn")
 
-[node name="REPatrol" type="Node" parent="StateMach" unique_id=856606428 node_paths=PackedStringArray("chase_state", "death_state", "hit_state")]
+[node name="REPatrol" type="Node" parent="StateMach" unique_id=856606428 node_paths=PackedStringArray("chase_state", "death_state")]
 script = ExtResource("10_xg1bg")
 chase_state = NodePath("../REChase")
 death_state = NodePath("../REdeath")
-hit_state = NodePath("../HitState")
 move_speed = 75.0
 
-[node name="REChase" type="Node" parent="StateMach" unique_id=1303699 node_paths=PackedStringArray("patrol_state", "death_state", "idle_state", "attack_state", "hit_state")]
+[node name="REChase" type="Node" parent="StateMach" unique_id=1303699 node_paths=PackedStringArray("patrol_state", "death_state", "idle_state", "attack_state")]
 script = ExtResource("11_xg8fv")
 patrol_state = NodePath("../REPatrol")
 death_state = NodePath("../REdeath")
 idle_state = NodePath("../REIdle")
 attack_state = NodePath("../REAttack")
-hit_state = NodePath("../HitState")
 move_speed = 75.0
 
 [node name="REAttack" type="Node" parent="StateMach" unique_id=662146491 node_paths=PackedStringArray("death_state", "patrol_state", "chase_state")]
@@ -408,10 +372,8 @@ knockback_stunTime = 0.4
 hit_duration = 0.5
 move_speed = 75.0
 
-[node name="HitState" type="Node" parent="StateMach" unique_id=1681370267 node_paths=PackedStringArray("chase_state", "death_state")]
+[node name="HitState" type="Node" parent="StateMach" unique_id=1681370267]
 script = ExtResource("13_82ivn")
-chase_state = NodePath("../REChase")
-death_state = NodePath("../REdeath")
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMach/REAttack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_shape_entered" from="AttackHitBox" to="AttackHitBox" method="_on_area_shape_entered"]

@@ -63,5 +63,4 @@ func flash_white():
 	
 func take_hit(dir):
 	parent.velocity.x = dir * knockback_strength
-	print("ENEMY", parent.velocity.x)
 	

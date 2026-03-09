@@ -10,6 +10,7 @@ extends REnemyState
 @export var death_state: REnemyState
 @export var idle_state: REnemyState
 @export var attack_state: REnemyState
+@export var hit_state: REnemyState
 
 var abox_base_scale_x: float
 var player
@@ -33,6 +34,8 @@ func process_input(event: InputEvent) -> REnemyState:
 	return null
 
 func process_frame(delta: float) -> REnemyState:
+	if dead:
+		return hit_state
 	if healthCount <= 0:
 		return death_state
 	if patrol:
@@ -41,8 +44,6 @@ func process_frame(delta: float) -> REnemyState:
 	
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	dead = true
-	flash_white()
-	healthCount -= 1
 	
 func process_physics(delta: float) -> REnemyState:
 	if not player:
@@ -92,15 +93,3 @@ func update_ray() -> void:
 		r2d2.target_position.x = abs(r2d2.target_position.x) * direction
 		r2h.target_position.x = abs(r2h.target_position.x) * direction
 		
-func flash_white():
-	if flashing:
-		return
-	if healthCount <= 0:
-		return
-		
-	flashing = true
-	var mat := as2d.material as ShaderMaterial
-	mat.set_shader_parameter("flash_strength", 1.0)
-	await get_tree().create_timer(0.08).timeout
-	mat.set_shader_parameter("flash_strength", 0.0)
-	flashing = false

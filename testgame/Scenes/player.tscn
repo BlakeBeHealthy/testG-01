@@ -443,14 +443,12 @@ sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"run"
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
-visible = false
 visibility_layer = 2
 position = Vector2(3.5527137e-15, 5.999999)
 scale = Vector2(1.1239686, 1.2491986)
 shape = SubResource("RectangleShape2D_f1ek2")
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=764626776]
-visible = false
 collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=866466377]
@@ -474,6 +472,9 @@ one_shot = true
 [node name="attackDelay" type="Timer" parent="." unique_id=1251612868]
 wait_time = 0.55
 one_shot = true
+
+[node name="hitstuntimer" type="Timer" parent="." unique_id=668290657]
+wait_time = 0.001
 
 [node name="Timer" type="Timer" parent="." unique_id=388785215]
 wait_time = 0.5
@@ -576,9 +577,6 @@ death_state = NodePath("../death")
 [node name="death" type="Node" parent="StateMachine" unique_id=1690670225]
 script = ExtResource("10_tx1dd")
 
-[node name="hitstuntimer" type="Timer" parent="." unique_id=668290657]
-wait_time = 0.001
-
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack2" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Idle" method="_on_area_2d_2_area_entered"]
@@ -587,7 +585,7 @@ wait_time = 0.001
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Fall" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Attack" method="_on_area_2d_2_area_entered"]
 [connection signal="timeout" from="InvincibleTime" to="StateMachine/Hit" method="_on_invincible_time_timeout"]
+[connection signal="timeout" from="hitstuntimer" to="StateMachine/Hit" method="_on_hitstuntimer_timeout"]
 [connection signal="timeout" from="Timer" to="StateMachine/Attack" method="_on_timer_timeout"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]
-[connection signal="timeout" from="hitstuntimer" to="StateMachine/Hit" method="_on_hitstuntimer_timeout"]
