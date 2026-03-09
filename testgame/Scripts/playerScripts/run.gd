@@ -4,6 +4,7 @@ class_name Run
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var a2d: Area2D = $"../../Area2D"
 @onready var a2d2: Area2D = $"../../Area2D2"
+@onready var attack_delay: Timer = $"../../attackDelay"
 
 @export
 var fall_state: State
@@ -31,7 +32,7 @@ func enter() -> void:
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
 		return jump_state
-	if Input.is_action_just_pressed("leftC"):
+	if Input.is_action_just_pressed("leftC") and attack_delay.is_stopped():
 		return attack_state
 	return null
 

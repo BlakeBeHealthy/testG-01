@@ -1,8 +1,9 @@
 extends EnemyState
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var hitCheck: Timer = $"../../HitCheck"
 
 @export var knockback_strength := 0
-@export var friction := 0
+@export var decayRate := 0
 @export var chase_state: EnemyState
 @export var death_state: EnemyState
 
@@ -11,6 +12,7 @@ var direction
 var player
 
 func enter() -> void:
+	hitCheck.start()
 	player = Global.get_player()
 	healthCount -= 1
 	if player.position.x - parent.position.x >= 0:
@@ -30,15 +32,17 @@ func process_input(event: InputEvent) -> EnemyState:
 func process_frame(delta: float) -> EnemyState:
 	if healthCount <= 0:
 		return death_state
-	
-	if !as2d.is_playing():
+
+	if !hitCheck.is_stopped():
+		as2d.play("idle")
+	else:
 		return chase_state
 		
 	return null
 
 func process_physics(delta: float) -> EnemyState:
 	
-	parent.velocity.x = lerp(parent.velocity.x, 0.0, friction * delta)
+	parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
 	
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()

@@ -1,8 +1,9 @@
 extends State
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
-@onready var a2d: Area2D = $"../../Area2D"
 @onready var a2d2: Area2D = $"../../Area2D2"
-
+@onready var a2d: Area2D = $"../../Area2D"
+@onready var timer: Timer = $"../../Timer"
+@onready var attack_delay: Timer = $"../../attackDelay"
 
 @export var fall_state: State
 @export var run_state: State
@@ -25,16 +26,24 @@ var moveBuffTime := 0
 var attackDir := 0
 
 func enter() -> void:
+	if !attack_delay.is_stopped():
+		attack_delay.stop()
+		attack_delay.start()
+	print("attack 2")
 	attackDir = Input.get_axis("runL", "runR")
 	checkAttack = false
 	
 	if checkHit:
 		checkHit = false
-	as2d.play("attack")
+	as2d.play("a3")
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if as2d.animation != "attack":
+	if as2d.animation != "a3":
 		return
+		
+	if as2d.frame ==2:
+		pass
+		
 	if as2d.frame == 3:
 		a2d.monitorable = true
 		a2d.monitoring = true

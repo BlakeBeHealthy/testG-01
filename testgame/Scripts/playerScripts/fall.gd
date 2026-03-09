@@ -1,6 +1,7 @@
 extends State
 class_name Fall
 
+@onready var attack_delay: Timer = $"../../attackDelay"
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
 @export
@@ -30,7 +31,7 @@ func process_frame(delta: float) -> State:
 		return hit_state
 	return null
 	
-	if Input.is_action_just_pressed("leftC"):
+	if Input.is_action_just_pressed("leftC") and attack_delay.is_stopped():
 		return attack_state
 	return null
 func process_physics(delta: float) -> State:

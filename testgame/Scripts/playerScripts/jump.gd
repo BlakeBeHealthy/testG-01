@@ -3,6 +3,7 @@ class_name Jump
 
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var a2d2: Area2D = $"../../Area2D2"
+@onready var attack_delay: Timer = $"../../attackDelay"
 
 @export 
 var JUMP := -200
@@ -28,7 +29,7 @@ func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed("leftC"):
+	if Input.is_action_just_pressed("leftC") and attack_delay.is_stopped():
 		return attack_state
 	return null
 

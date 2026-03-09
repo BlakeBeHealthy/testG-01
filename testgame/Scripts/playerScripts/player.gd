@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+@onready var attack_delay: Timer = $attackDelay
 @onready var state_machine: Node = $StateMachine
 @export var jump_state: State
 @export var hit_state: State
@@ -34,5 +35,5 @@ func _on_landed():
 	control_locked = false
 	
 func _input(event):
-	if state_machine.current_state != hit_state and event.is_action_pressed("leftC"):
+	if state_machine.current_state != hit_state and event.is_action_pressed("leftC") and attack_delay.is_stopped():
 		state_machine.change_state(attack_state)

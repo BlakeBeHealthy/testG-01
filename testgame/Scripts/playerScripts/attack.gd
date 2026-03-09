@@ -1,12 +1,15 @@
 extends State
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
-@onready var KnockbackTime: Timer = $"../../Timer"
+@onready var ComboTime: Timer = $"../../Timer"
 @onready var a2d: Area2D = $"../../Area2D"
 @onready var a2d2: Area2D = $"../../Area2D2"
+@onready var attack_delay: Timer = $"../../attackDelay"
+
 
 @export var fall_state: State
 @export var run_state: State
 @export var idle_state: State
+@export var att2_state: State
 @export var hit_state: State
 @export var jump_state: State
 @export var hit_timeStop: float
@@ -25,16 +28,22 @@ var moveBuffTime := 0
 var attackDir := 0
 
 func enter() -> void:
+	attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
-	checkAttack = false
 	
 	if checkHit:
 		checkHit = false
-	as2d.play("attack")
+		
+	if checkAttack == false:
+		as2d.play("attack")
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "attack":
 		return
+		
+	if as2d.frame == 2:
+		ComboTime.start()
+	
 	if as2d.frame == 3:
 		a2d.monitorable = true
 		a2d.monitoring = true
@@ -53,6 +62,9 @@ func exit() -> void:
 	attackDir = 0
 	
 func process_input(event: InputEvent) -> State:
+	if !ComboTime.is_stopped() and Input.is_action_just_pressed("leftC"):
+		checkAttack = true
+		
 	if Input.is_action_pressed("jump"):
 		jumpBuff = 1
 		
@@ -61,6 +73,10 @@ func process_input(event: InputEvent) -> State:
 func process_frame(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
 	if not as2d.is_playing() and !KB:
+		if checkAttack:
+			checkAttack = false
+			return att2_state
+			
 		if jumpBuff != 0 and parent.is_on_floor():
 			jumpBuff = 0
 			return jump_state

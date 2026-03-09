@@ -344,8 +344,8 @@ collision_mask = 2
 wait_time = 1.2
 one_shot = true
 
-[node name="PatTimeCheck" type="Timer" parent="." unique_id=392684075]
-wait_time = 0.225
+[node name="HitCheck" type="Timer" parent="." unique_id=392684075]
+wait_time = 0.6
 
 [node name="PatTime" type="Timer" parent="." unique_id=816368268]
 wait_time = 0.3
@@ -404,8 +404,8 @@ shakeDuration = 0.2
 
 [node name="Hit" type="Node" parent="StateMac" unique_id=2128724766 node_paths=PackedStringArray("chase_state", "death_state")]
 script = ExtResource("11_haro7")
-knockback_strength = 1700
-friction = 21
+knockback_strength = 500
+decayRate = 3000
 chase_state = NodePath("../EnemyChase")
 death_state = NodePath("../Death")
 
