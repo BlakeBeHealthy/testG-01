@@ -7,6 +7,7 @@ extends REnemyState
 @onready var pti: Timer = $"../../PatTime"
 @onready var abox: Area2D = $"../../Attackbox"
 @onready var flash_mat := as2d.material as ShaderMaterial
+@onready var hitCheck: Timer = $"../../hitCheck"
 
 @export var pauseTime := 0.4
 @export var chase_state: REnemyState
@@ -44,6 +45,7 @@ func process_frame(delta: float) -> REnemyState:
 		return death_state
 		
 	if dead:
+		dead = false
 		return hit_state
 	
 	var collider = r2d2.get_collider()
@@ -54,7 +56,8 @@ func process_frame(delta: float) -> REnemyState:
 	return null
 		
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	dead = true
+	if hitCheck.is_stopped():
+		dead = true
 
 func process_physics(delta: float) -> REnemyState:
 	if parent.velocity.x != 0 and !r2d.is_colliding():

@@ -7,6 +7,7 @@ extends REnemyState
 @onready var killzone: Area2D = $"../../Killzone"
 @onready var abox: Area2D = $"../../Attackbox"
 @onready var bullet = preload("res://Scenes/fireball.tscn")
+@onready var hitCheck: Timer = $"../../hitCheck"
 
 @export var death_state: REnemyState
 @export var patrol_state: REnemyState
@@ -101,5 +102,7 @@ func knockback(player):
 		)
 		
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	flash_white()
-	healthCount -= 1
+	if hitCheck.is_stopped():
+		hitCheck.start()
+		flash_white()
+		healthCount -= 1

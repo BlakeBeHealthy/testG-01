@@ -3,6 +3,8 @@ class_name Fall
 
 @onready var attack_delay: Timer = $"../../attackDelay"
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var a2d2: Area2D = $"../../Area2D2"
+@onready var a2d: Area2D = $"../../Area2D"
 
 @export
 var fall_state: State
@@ -43,8 +45,12 @@ func process_physics(delta: float) -> State:
 	
 	if direction > 0:
 		as2d.flip_h = false
+		a2d2.position.x = 3
+		a2d.position.x = 21
 	elif direction < 0:
+		a2d.position.x = -21
 		as2d.flip_h = true
+		a2d2.position.x = -3
 	
 	if direction != 0 and parent.is_on_floor():
 		return run_state

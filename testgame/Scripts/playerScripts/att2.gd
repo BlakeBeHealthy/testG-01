@@ -29,12 +29,12 @@ func enter() -> void:
 	if !attack_delay.is_stopped():
 		attack_delay.stop()
 		attack_delay.start()
-	print("attack 2")
 	attackDir = Input.get_axis("runL", "runR")
 	checkAttack = false
 	
 	if checkHit:
 		checkHit = false
+		
 	as2d.play("a3")
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
@@ -69,6 +69,14 @@ func process_input(event: InputEvent) -> State:
 # Decide state when attack animation ends
 func process_frame(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
+	
+	if direction <= 0:
+		as2d.flip_h = true
+		a2d.position.x = -21
+	else:
+		as2d.flip_h = false
+		a2d.position.x = 21
+		
 	if not as2d.is_playing() and !KB:
 		if jumpBuff != 0 and parent.is_on_floor():
 			jumpBuff = 0

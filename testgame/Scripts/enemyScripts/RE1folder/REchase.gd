@@ -5,6 +5,7 @@ extends REnemyState
 @onready var r2d2: RayCast2D = $"../../RayCast2D2"
 @onready var r2d: RayCast2D = $"../../RayCast2D"
 @onready var r2h: RayCast2D = $"../../Hit-Ray"
+@onready var hitCheck: Timer = $"../../hitCheck"
 
 @export var patrol_state: REnemyState
 @export var death_state: REnemyState
@@ -35,6 +36,7 @@ func process_input(event: InputEvent) -> REnemyState:
 
 func process_frame(delta: float) -> REnemyState:
 	if dead:
+		dead = false
 		return hit_state
 	if healthCount <= 0:
 		return death_state
@@ -43,7 +45,8 @@ func process_frame(delta: float) -> REnemyState:
 	return null
 	
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	dead = true
+	if hitCheck.is_stopped():
+		dead = true
 	
 func process_physics(delta: float) -> REnemyState:
 	if not player:

@@ -4,7 +4,7 @@ class_name REnemyState
 @export var move_speed: float = -75
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var parent: REnemy
-var healthCount = 3
+var healthCount = 100
 
 func enter() -> void:
 	pass

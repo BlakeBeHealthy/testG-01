@@ -345,7 +345,8 @@ wait_time = 1.2
 one_shot = true
 
 [node name="HitCheck" type="Timer" parent="." unique_id=392684075]
-wait_time = 0.6
+wait_time = 0.4
+one_shot = true
 
 [node name="PatTime" type="Timer" parent="." unique_id=816368268]
 wait_time = 0.3
@@ -365,7 +366,7 @@ one_shot = true
 
 [node name="StateMac" type="Node" parent="." unique_id=2097516544 node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_287tu")
-starting_state = NodePath("Idle")
+starting_state = NodePath("Patrol")
 
 [node name="Idle" type="Node" parent="StateMac" unique_id=1052767052 node_paths=PackedStringArray("death_state", "patrol_state")]
 script = ExtResource("5_0830c")
@@ -389,7 +390,7 @@ patrol_state = NodePath("../Patrol")
 death_state = NodePath("../Death")
 idle_state = NodePath("../Idle")
 attack_state = NodePath("../EnemyAttack")
-move_speed = 75.0
+move_speed = 100.0
 
 [node name="EnemyAttack" type="Node" parent="StateMac" unique_id=1232387693 node_paths=PackedStringArray("death_state", "patrol_state", "chase_state")]
 script = ExtResource("8_auwsv")

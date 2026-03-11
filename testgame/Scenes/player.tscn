@@ -457,8 +457,8 @@ shape = SubResource("RectangleShape2D_gymyn")
 [node name="Area2D2" type="Area2D" parent="." unique_id=1898396502]
 position = Vector2(-0.99999994, 7)
 scale = Vector2(0.507894, 0.9085177)
-collision_layer = 8
-collision_mask = 32
+collision_layer = 0
+collision_mask = 0
 
 [node name="hurtbox" type="CollisionShape2D" parent="Area2D2" unique_id=1299933768]
 position = Vector2(-3.5762787e-07, 3.4897232)
@@ -470,14 +470,14 @@ wait_time = 2.0
 one_shot = true
 
 [node name="attackDelay" type="Timer" parent="." unique_id=1251612868]
-wait_time = 0.55
+wait_time = 0.6
 one_shot = true
 
 [node name="hitstuntimer" type="Timer" parent="." unique_id=668290657]
 wait_time = 0.001
 
 [node name="Timer" type="Timer" parent="." unique_id=388785215]
-wait_time = 0.5
+wait_time = 0.59
 one_shot = true
 
 [node name="tim2" type="Timer" parent="." unique_id=1119039513]
@@ -485,7 +485,7 @@ wait_time = 10.476
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=450046427]
-position = Vector2(21, 5)
+position = Vector2(21, 4)
 collision_layer = 128
 collision_mask = 16
 monitoring = false
@@ -561,7 +561,7 @@ jump_state = NodePath("../Jump")
 hit_timeStop = 0.2
 hit_duration = 0.1
 decayRate = 4000
-playerKnockback = 500
+playerKnockback = 150
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
