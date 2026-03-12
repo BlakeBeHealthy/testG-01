@@ -43,7 +43,7 @@ func process_frame(delta: float) -> EnemyState:
 	return null
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if as2d.animation != "attack":
+	if as2d.animation != "attack": 
 		return
 		
 	if as2d.frame == 6:
@@ -81,7 +81,7 @@ func _on_attackbox_area_entered(area: Area2D) -> void:
 		knockback(player)
 	
 func knockback(player):
-	player.state_machine.change_state(player.hit_state) # switch state first
+	player.state_machine.change_state(player.hit_state) # switch player state first
 	# Call knockback function with parameters
 	player.state_machine.current_state.apply_knockback(
 		sign(player.global_position.x - parent.global_position.x),

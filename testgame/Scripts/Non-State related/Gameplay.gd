@@ -1,5 +1,7 @@
 extends Node2D
 
+#Some meat and bones of entering doors and different scenes
+
 var pending_entry_door := ""
 var pending_entry_direction := Vector2.ZERO
 @onready var level_holder: Node2D = get_node("/root/Main/Gameplay/LevelHolder")
@@ -9,14 +11,18 @@ var is_respawn = false
 
 
 func enter_door(scene_path: String, door_name: String, dir_string: int) -> void:
-	pending_entry_door = door_name
+	#This is what I was talking about earlier with the west, east, south and north and door name and such.
+	pending_entry_door = door_name 
 	pending_entry_direction = _dir_from_enum(dir_string)
 	checkJump = dir_string
+	#Calls the fade out function
 	FadeS.fade_out()
 	await get_tree().create_timer(1).timeout
+	#Loads the next scene with SceneManager.gd
 	SceneM.load_level(scene_path)
 	
 func on_level_loaded(level: Node) -> void:
+	#Declares player with global, this happens a lot
 	var player = Global.player
 	
 	if is_respawn:

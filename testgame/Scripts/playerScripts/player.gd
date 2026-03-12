@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+#Base plsyer class defining the state machine and grabbing the values of delta and event
 @onready var attack_delay: Timer = $attackDelay
 @onready var state_machine: Node = $StateMachine
 @export var jump_state: State
@@ -31,9 +32,9 @@ func enter_from_transition(direction: Vector2) -> void:
 	velocity = direction * 120
 	state_machine.change_state(jump_state)
 
-func _on_landed():
+func _on_landed(): #This will be for cutscenes when the player cant move
 	control_locked = false
 	
-func _input(event):
+func _input(event): #allowing the player to attack
 	if state_machine.current_state != hit_state and event.is_action_pressed("leftC") and attack_delay.is_stopped():
 		state_machine.change_state(attack_state)

@@ -3,13 +3,18 @@ extends State
 @onready var t3: Timer = $"../../InvincibleTime"
 @onready var t1: Timer = $"../../Timer"
 @onready var t2: Timer = $"../../tim2"
+@onready var t4: Timer = $"../../hitstuntimer"
+@onready var t5: Timer = $"../../attackDelay"
 @onready var hurtbox: Area2D = $"../../Area2D2"
 
 
 func enter() -> void:
+	#Make sure every timer is stopped. and the hurtbox is disabled.
 	t1.stop()
 	t2.stop()
 	t3.stop()
+	t4.stop()
+	t5.stop()
 	hurtbox.monitorable = false
 	hurtbox.monitoring = false
 	as2d.play("death")

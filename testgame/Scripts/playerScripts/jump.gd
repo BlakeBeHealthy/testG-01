@@ -1,35 +1,34 @@
 extends State
 class_name Jump
 
+#Basic jump class
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var a2d2: Area2D = $"../../Area2D2"
 @onready var attack_delay: Timer = $"../../attackDelay"
 @onready var a2d: Area2D = $"../../Area2D"
 
-@export 
-var JUMP := -200
-@export
-var fall_state: State
-@export
-var run_state: State
-@export
-var idle_state: State
-@export
-var attack_state: State
-@export
-var hit_state: State
+@export var JUMP := 0
+@export var fall_state: State
+@export var run_state: State
+@export var idle_state: State
+@export var attack_state: State
+@export var hit_state: State
 
 var hit := false
 
 func enter() -> void:
 	as2d.play("jump")
-	parent.velocity.y = JUMP
+	parent.velocity.y = -JUMP
+	#You will probably see some stuff like this, its just basic hitbox adustments based on as2d
 	a2d2.position.y = -1
 		
 func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
+	#This is declared in player but IDK if i remove this if it will break
+	#You can test if feel up to it, this might be useless as well as other calls for this
+	#state change bc of player
 	if Input.is_action_just_pressed("leftC") and attack_delay.is_stopped():
 		return attack_state
 	return null
@@ -38,6 +37,7 @@ func process_frame(delta: float) -> State:
 	if hit:
 		return hit_state
 	return null
+	
 func process_physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
 	

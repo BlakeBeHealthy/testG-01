@@ -295,7 +295,7 @@ material = SubResource("ShaderMaterial_sprm0")
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_y83ni")
 animation = &"walk"
-frame_progress = 0.21004853
+frame_progress = 0.54001385
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1486897855]
 visibility_layer = 4

@@ -16,6 +16,7 @@ extends EnemyState
 var flashing = false
 
 func enter() -> void:
+	#Ensure the enemy is fully dead by disabiling everything damn-near
 	flash_white()
 	parent.velocity = Vector2.ZERO
 	parent.set_physics_process(false)

@@ -43,16 +43,17 @@ func process_physics(delta: float) -> EnemyState:
 	if not player:
 		return patrol_state
 	
-	var collider = r2h.get_collider()
+	var collider = r2h.get_collider() #This is the attack range detector, if the player is close it attacks
 	if collider and collider is Player:
 		var player_x = collider.global_position.x
 		if player_x >= parent.Lbound and player_x <= parent.Rbound:
 			return attack_state
-		
+	#Direction is now based on the player
 	direction = sign(player.global_position.x - parent.global_position.x)
 	if !player.invincible:
 		parent.velocity.x = direction * move_speed
-		
+	#Ensuring the enemy doesnt walk in the middle of the player during its invincibile
+	#time and spam walk left and right, tho that bug may have started once more...
 	if player.invincible and \
 	(player.global_position.x - parent.global_position.x) <= -0.01 and \
 	(player.global_position.x - parent.global_position.x) <= -0.01:

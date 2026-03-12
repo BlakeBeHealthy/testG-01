@@ -6,6 +6,8 @@ class_name Fall
 @onready var a2d2: Area2D = $"../../Area2D2"
 @onready var a2d: Area2D = $"../../Area2D"
 
+#Sometimes exported variables are written in this fashion, if its easier for you
+	#I dont mind if you adjust the code in the states, Im good either way
 @export
 var fall_state: State
 @export
@@ -26,7 +28,8 @@ func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
-	return null
+	return null #Every path must have a return statement, dont forget or the engine
+					#will yell at you
 
 func process_frame(delta: float) -> State:
 	if hit:

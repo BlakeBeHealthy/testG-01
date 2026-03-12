@@ -6,16 +6,11 @@ class_name Run
 @onready var a2d2: Area2D = $"../../Area2D2"
 @onready var attack_delay: Timer = $"../../attackDelay"
 
-@export
-var fall_state: State
-@export
-var jump_state: State
-@export
-var idle_state: State
-@export
-var attack_state: State
-@export
-var hit_state: State
+@export var fall_state: State
+@export var jump_state: State
+@export var idle_state: State
+@export var attack_state: State
+@export var hit_state: State
 
 var hitboxOffX: float
 var hitboxOffX2: float

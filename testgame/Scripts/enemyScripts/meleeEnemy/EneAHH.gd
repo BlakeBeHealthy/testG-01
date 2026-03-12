@@ -1,4 +1,5 @@
 extends Area2D
+#This script is for if the player runs into the enemy, they take damage, I call it "touch-damage"
 
 @export var knockback_strength := 200
 @export var stun_time := 0.2

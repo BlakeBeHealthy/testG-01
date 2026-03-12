@@ -240,7 +240,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_qpa8y")
 }],
 "loop": false,
-"name": &"a3",
+"name": &"a2",
 "speed": 24.0
 }, {
 "frames": [{
@@ -440,7 +440,7 @@ attack_state = NodePath("StateMachine/Attack")
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"run"
+animation = &"a2"
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
 visibility_layer = 2
@@ -457,8 +457,8 @@ shape = SubResource("RectangleShape2D_gymyn")
 [node name="Area2D2" type="Area2D" parent="." unique_id=1898396502]
 position = Vector2(-0.99999994, 7)
 scale = Vector2(0.507894, 0.9085177)
-collision_layer = 0
-collision_mask = 0
+collision_layer = 8
+collision_mask = 32
 
 [node name="hurtbox" type="CollisionShape2D" parent="Area2D2" unique_id=1299933768]
 position = Vector2(-3.5762787e-07, 3.4897232)
@@ -519,7 +519,7 @@ move_speed = 200.0
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "attack_state", "hit_state")]
 script = ExtResource("8_8erm5")
-JUMP = -400
+JUMP = 400
 fall_state = NodePath("../Fall")
 run_state = NodePath("../Run")
 idle_state = NodePath("../Idle")
@@ -547,7 +547,7 @@ jump_state = NodePath("../Jump")
 hit_timeStop = 0.2
 hit_duration = 0.1
 decayRate = 4000
-playerKnockback = 500
+playerKnockback = 700
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
@@ -561,7 +561,7 @@ jump_state = NodePath("../Jump")
 hit_timeStop = 0.2
 hit_duration = 0.1
 decayRate = 4000
-playerKnockback = 150
+playerKnockback = 400
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 class_name Enemy
-
+#Base enemy class defining the state machine and grabbing the values of delta and event
 @onready var state_mac: Node = $StateMac
 @export var hit_state: EnemyState
 @export var attack_state: EnemyState

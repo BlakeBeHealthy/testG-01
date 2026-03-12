@@ -26,7 +26,6 @@ var bulletCheck
 
 func enter() -> void:
 	dead = false
-	print("attack")
 	player = Global.get_player()
 	aiti.start()
 	as2d.play("attack")
@@ -59,6 +58,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		bulletCheck = true
 		
 func process_physics(delta: float) -> REnemyState:
+	#Eventually im gonna change direction to just where the Renemy is facing
 	if bulletCheck:
 		var bullet_temp = bullet.instantiate()
 		bullet_temp.direction = sign(player.global_position.x - parent.global_position.x)

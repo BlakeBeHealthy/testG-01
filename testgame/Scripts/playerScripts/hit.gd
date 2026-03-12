@@ -63,6 +63,7 @@ func process_physics(delta: float) -> State:
 	parent.move_and_slide()
 	return null
 	
+#Enemies call this function, this is so each attack can have different strengths
 func apply_knockback(direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration):
 	if !parent.invincible:
 		apply_timeSlow(timeScale, duration)
@@ -76,6 +77,7 @@ func apply_knockback(direction: int, strength: float, stun_time: float, timeScal
 		
 		if dead:
 			dead2 = true
+			
 func apply_timeSlow(timeScale: float, duration: float) -> void:
 	if timeSlow:
 		return
@@ -86,7 +88,7 @@ func apply_timeSlow(timeScale: float, duration: float) -> void:
 	Engine.time_scale = 1.0
 	timeSlow = false
 
-func flash_white():
+func flash_white(): #I am slightly iffy about my understanding of shaders, but it works
 	if flashing:
 		return
 		
@@ -106,7 +108,8 @@ func flash_white():
 			as2d.visible = true
 			await get_tree().create_timer(0.1).timeout
 			count += 1
-	
+			
+	#Player invincibility
 func _on_invincible_time_timeout() -> void:
 	parent.invincible = false
 	a2d2.monitoring = true
