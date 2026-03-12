@@ -22,8 +22,8 @@ var direction
 var hitboxOffX
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
-	dead = false
 	print("CHASE")
+	dead = false
 	player = Global.get_player()
 	abox_base_scale_x = abs(abox.scale.x)
 	if as2d.animation != "walk":
