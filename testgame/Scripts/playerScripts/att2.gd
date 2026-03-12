@@ -70,10 +70,10 @@ func process_input(event: InputEvent) -> State:
 func process_frame(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
 	
-	if direction <= 0:
+	if direction < 0:
 		as2d.flip_h = true
 		a2d.position.x = -21
-	else:
+	elif direction > 0:
 		as2d.flip_h = false
 		a2d.position.x = 21
 		

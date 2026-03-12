@@ -103,6 +103,7 @@ func knockback(player):
 		
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if hitCheck.is_stopped():
+		print("Attack Hit")
 		hitCheck.start()
 		flash_white()
 		healthCount -= 1

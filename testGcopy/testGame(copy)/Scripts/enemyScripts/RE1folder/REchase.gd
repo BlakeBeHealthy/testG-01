@@ -63,17 +63,17 @@ func process_physics(delta: float) -> REnemyState:
 		
 	direction = sign(player.global_position.x - parent.global_position.x)
 	if !player.invincible and hitCheck.is_stopped():
-		print(parent.velocity.x)
+		print(parent.velocity.x, "1")
 		parent.velocity.x = direction * move_speed
 		
 	if player.invincible and \
 	(player.global_position.x - parent.global_position.x) <= -0.01 and \
 	(player.global_position.x - parent.global_position.x) <= -0.01:
-		print(parent.velocity.x)
+		print(parent.velocity.x, "2")
 		parent.velocity.x = 0
 		as2d.play("idle")
 	elif !hitCheck.is_stopped():
-		print(parent.velocity.x)
+		print(parent.velocity.x, "3")
 		parent.velocity.x = direction * move_speed
 		if as2d.animation != "walk":
 			as2d.play("walk")
@@ -90,7 +90,8 @@ func process_physics(delta: float) -> REnemyState:
 		update_ray()
 		
 	
-	if !r2d.is_colliding():
+	if !r2d.is_colliding() and !hitCheck.is_stopped():
+			print(parent.velocity.x, "3")
 			parent.velocity.x = 0
 			
 	if !r2d.is_colliding():

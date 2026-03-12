@@ -14,6 +14,7 @@ var direction
 var player
 
 func enter() -> void:
+	print("Hit")
 	hitCheck.start()
 	player = Global.get_player()
 	healthCount -= 1
