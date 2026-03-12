@@ -1,0 +1,64 @@
+extends State
+class_name Jump
+
+@onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var a2d2: Area2D = $"../../Area2D2"
+@onready var attack_delay: Timer = $"../../attackDelay"
+@onready var a2d: Area2D = $"../../Area2D"
+
+@export 
+var JUMP := -200
+@export
+var fall_state: State
+@export
+var run_state: State
+@export
+var idle_state: State
+@export
+var attack_state: State
+@export
+var hit_state: State
+
+var hit := false
+
+func enter() -> void:
+	as2d.play("jump")
+	parent.velocity.y = JUMP
+	a2d2.position.y = -1
+		
+func exit() -> void:
+	pass
+
+func process_input(event: InputEvent) -> State:
+	if Input.is_action_just_pressed("leftC") and attack_delay.is_stopped():
+		return attack_state
+	return null
+
+func process_frame(delta: float) -> State:
+	if hit:
+		return hit_state
+	return null
+func process_physics(delta: float) -> State:
+	parent.velocity.y += gravity * delta
+	
+	var direction = Input.get_axis("runL", "runR")
+	parent.velocity.x = direction * move_speed
+	parent.move_and_slide()
+	
+	if direction > 0:
+		as2d.flip_h = false
+		a2d2.position.x = 3
+		a2d.position.x = 21
+	elif direction < 0:
+		a2d.position.x = -21
+		as2d.flip_h = true
+		a2d2.position.x = -3
+	
+	if direction != 0 and parent.is_on_floor():
+		return run_state
+	elif direction == 0 and parent.is_on_floor():
+		return idle_state
+	if !parent.is_on_floor() and parent.velocity.y > 0:
+		return fall_state
+	
+	return null
