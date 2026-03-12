@@ -12,6 +12,7 @@ extends REnemyState
 @export var death_state: REnemyState
 @export var patrol_state: REnemyState
 @export var chase_state: REnemyState
+@export var hit_state: REnemyState
 @export var knockback_strength: float
 @export var knockback_stunTime: float
 @export var hit_timeStop: float
@@ -24,6 +25,8 @@ var dead = false
 var bulletCheck
 
 func enter() -> void:
+	dead = false
+	print("attack")
 	player = Global.get_player()
 	aiti.start()
 	as2d.play("attack")
@@ -31,12 +34,15 @@ func enter() -> void:
 	ati.start()
 
 func exit() -> void:
+	dead = false
 	ati.stop()
 
 func process_input(event: InputEvent) -> REnemyState:
 	return null
 
 func process_frame(delta: float) -> REnemyState:
+	if dead:
+		return hit_state
 	if !waitT:
 		return chase_state
 		
@@ -102,8 +108,4 @@ func knockback(player):
 		)
 		
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if hitCheck.is_stopped():
-		print("Attack Hit")
-		hitCheck.start()
-		flash_white()
-		healthCount -= 1
+	dead = true

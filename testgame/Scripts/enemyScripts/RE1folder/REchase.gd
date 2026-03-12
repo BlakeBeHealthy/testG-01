@@ -22,6 +22,8 @@ var direction
 var hitboxOffX
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
+	dead = false
+	print("CHASE")
 	player = Global.get_player()
 	abox_base_scale_x = abs(abox.scale.x)
 	if as2d.animation != "walk":
@@ -29,6 +31,7 @@ func enter() -> void:
 	hitboxOffX = abs(abox.position.x)
 	
 func exit() -> void:
+	dead = false
 	patrol = false
 
 func process_input(event: InputEvent) -> REnemyState:
@@ -36,7 +39,6 @@ func process_input(event: InputEvent) -> REnemyState:
 
 func process_frame(delta: float) -> REnemyState:
 	if dead:
-		dead = false
 		return hit_state
 	if healthCount <= 0:
 		return death_state
@@ -45,8 +47,7 @@ func process_frame(delta: float) -> REnemyState:
 	return null
 	
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if hitCheck.is_stopped():
-		dead = true
+	dead = true
 	
 func process_physics(delta: float) -> REnemyState:
 	if not player:

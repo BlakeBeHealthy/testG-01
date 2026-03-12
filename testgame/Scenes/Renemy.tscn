@@ -294,7 +294,8 @@ script = ExtResource("1_wjsit")
 material = SubResource("ShaderMaterial_sprm0")
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_y83ni")
-animation = &"hit"
+animation = &"walk"
+frame_progress = 0.83686256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1486897855]
 visibility_layer = 4
@@ -348,7 +349,7 @@ target_position = Vector2(157, 0)
 collision_mask = 2
 
 [node name="attackTim" type="Timer" parent="." unique_id=1899906668]
-wait_time = 8.168
+wait_time = 1.7999999999999998
 one_shot = true
 
 [node name="PatTime" type="Timer" parent="." unique_id=511397324]
@@ -356,7 +357,7 @@ wait_time = 5.057
 one_shot = true
 
 [node name="hitCheck" type="Timer" parent="." unique_id=1345542316]
-wait_time = 0.02
+wait_time = 1.7999999999999998
 one_shot = true
 
 [node name="AITIME" type="Timer" parent="." unique_id=1109065581]
@@ -400,11 +401,12 @@ attack_state = NodePath("../REAttack")
 hit_state = NodePath("../HitState")
 move_speed = 75.0
 
-[node name="REAttack" type="Node" parent="StateMach" unique_id=662146491 node_paths=PackedStringArray("death_state", "patrol_state", "chase_state")]
+[node name="REAttack" type="Node" parent="StateMach" unique_id=662146491 node_paths=PackedStringArray("death_state", "patrol_state", "chase_state", "hit_state")]
 script = ExtResource("14_sprm0")
 death_state = NodePath("../REdeath")
 patrol_state = NodePath("../REPatrol")
 chase_state = NodePath("../REChase")
+hit_state = NodePath("../HitState")
 knockback_strength = 200.0
 knockback_stunTime = 0.4
 hit_duration = 0.5

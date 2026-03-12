@@ -12,10 +12,11 @@ extends REnemyState
 var flashing := false
 var direction
 var player
+var count = 0
 
 func enter() -> void:
-	print("Hit")
-	hitCheck.start()
+	count += 1
+	print("Hit ", count)
 	player = Global.get_player()
 	healthCount -= 1
 	if player.position.x - parent.position.x >= 0:
@@ -37,7 +38,7 @@ func process_frame(delta: float) -> REnemyState:
 		return death_state
 
 	if !hitCheck.is_stopped():
-		as2d.play("idle")
+		as2d.play("walk")
 	else:
 		return chase_state
 		
