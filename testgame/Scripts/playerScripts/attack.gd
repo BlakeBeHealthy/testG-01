@@ -30,6 +30,7 @@ var attackDir := 0
 func enter() -> void:
 	attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
+	print("Hyah!")
 	
 	if checkHit:
 		checkHit = false
