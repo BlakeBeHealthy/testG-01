@@ -19,7 +19,6 @@ var hit := false
 
 func enter() -> void:
 	parent.jumpCheck = true
-	print(parent.jumpCheck, " jump")
 	as2d.play("jump")
 	parent.velocity.y = -JUMP
 	if !Input.is_action_pressed("jump"):

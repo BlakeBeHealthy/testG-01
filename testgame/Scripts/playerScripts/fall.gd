@@ -25,7 +25,6 @@ var hit_state: State
 var hit:= false
 
 func enter() -> void:
-	print(parent.jumpCheck, " fall")
 	if !parent.jumpCheck:
 		cTime.start()
 	as2d.play("fall")
