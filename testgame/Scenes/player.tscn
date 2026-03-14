@@ -520,7 +520,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="attackDelay" type="Timer" parent="." unique_id=1251612868]
-wait_time = 0.6
+wait_time = 0.5
 one_shot = true
 
 [node name="hitstuntimer" type="Timer" parent="." unique_id=668290657]
@@ -570,6 +570,7 @@ move_speed = 200.0
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "attack_state", "hit_state")]
 script = ExtResource("8_8erm5")
 JUMP = 400
+jumpCut = 0.5
 fall_state = NodePath("../Fall")
 run_state = NodePath("../Run")
 idle_state = NodePath("../Idle")

@@ -8,6 +8,7 @@ class_name Jump
 @onready var a2d: Area2D = $"../../Area2D"
 
 @export var JUMP := 0
+@export var jumpCut := 0.0
 @export var fall_state: State
 @export var run_state: State
 @export var idle_state: State
@@ -29,8 +30,7 @@ func process_input(event: InputEvent) -> State:
 	#This is declared in player but IDK if i remove this if it will break
 	#You can test if feel up to it, this might be useless as well as other calls for this
 	#state change bc of player
-	if Input.is_action_just_pressed("leftC") and attack_delay.is_stopped():
-		return attack_state
+
 	return null
 
 func process_frame(delta: float) -> State:
@@ -39,6 +39,9 @@ func process_frame(delta: float) -> State:
 	return null
 	
 func process_physics(delta: float) -> State:
+	if Input.is_action_just_released("jump"):
+		parent.velocity.y *= jumpCut
+	
 	parent.velocity.y += gravity * delta
 	
 	var direction = Input.get_axis("runL", "runR")
