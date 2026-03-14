@@ -349,7 +349,7 @@ target_position = Vector2(157, 0)
 collision_mask = 2
 
 [node name="attackTim" type="Timer" parent="." unique_id=1899906668]
-wait_time = 1.7999999999999998
+wait_time = 2.3
 one_shot = true
 
 [node name="PatTime" type="Timer" parent="." unique_id=511397324]
@@ -357,7 +357,7 @@ wait_time = 5.057
 one_shot = true
 
 [node name="hitCheck" type="Timer" parent="." unique_id=1345542316]
-wait_time = 1.7999999999999998
+wait_time = 0.2
 one_shot = true
 
 [node name="AITIME" type="Timer" parent="." unique_id=1109065581]
@@ -414,6 +414,8 @@ move_speed = 75.0
 
 [node name="HitState" type="Node" parent="StateMach" unique_id=1681370267 node_paths=PackedStringArray("chase_state", "death_state")]
 script = ExtResource("13_82ivn")
+knockback_strength = 400
+decayRate = 2000
 chase_state = NodePath("../REChase")
 death_state = NodePath("../REdeath")
 

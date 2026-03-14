@@ -31,7 +31,7 @@ var attackDir := 0
 func enter() -> void:
 	attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
-	
+	startKB = false
 	if checkHit:
 		checkHit = false
 		
@@ -54,13 +54,13 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	startKB = true
-	 #NOT APPLYING FOR SOME REASON
 		
 func exit() -> void:
 	checkHit = true
 	a2d.monitorable = false
 	a2d.monitoring = false
 	attackDir = 0
+	KB = false
 	
 func process_input(event: InputEvent) -> State:
 	if !ComboTime.is_stopped() and Input.is_action_just_pressed("leftC"):

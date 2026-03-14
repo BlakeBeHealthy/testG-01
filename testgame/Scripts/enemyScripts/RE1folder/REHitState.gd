@@ -13,22 +13,24 @@ var flashing := false
 var direction
 var player
 var count = 0
+var hit := false
 
 func enter() -> void:
+	hitCheck.start()
 	count += 1
 	print("Hit ", count)
 	player = Global.get_player()
 	healthCount -= 1
 	if player.position.x - parent.position.x >= 0:
-		direction = -1
-	else:
 		direction = 1
+	else:
+		direction = -1
 	flash_white()
 	as2d.play("hit")
-	take_hit(direction)
+	hit = true
 
 func exit() -> void:
-	pass
+	hitCheck.start()
 
 func process_input(event: InputEvent) -> REnemyState:
 	return null
@@ -45,9 +47,11 @@ func process_frame(delta: float) -> REnemyState:
 	return null
 
 func process_physics(delta: float) -> REnemyState:
-	
-	parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
-	
+	if hit:
+		parent.velocity.x = -direction * knockback_strength
+		hit = false
+	else:
+		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 	return null
@@ -65,5 +69,3 @@ func flash_white():
 	mat.set_shader_parameter("flash_strength", 0.0)
 	flashing = false
 	
-func take_hit(dir):
-	parent.velocity.x = dir * knockback_strength

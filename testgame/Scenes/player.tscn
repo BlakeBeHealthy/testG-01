@@ -595,7 +595,21 @@ hit_state = NodePath("../Hit")
 jump_state = NodePath("../Jump")
 hit_timeStop = 0.2
 hit_duration = 0.1
-decayRate = 4000
+decayRate = 5000
+playerKnockback = 250
+move_speed = 200.0
+metadata/_custom_type_script = "uid://dtjskf7x53djr"
+
+[node name="Attack2" type="Node" parent="StateMachine" unique_id=1745266335 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "hit_state", "jump_state")]
+script = ExtResource("10_pu2lt")
+fall_state = NodePath("../Fall")
+run_state = NodePath("../Run")
+idle_state = NodePath("../Idle")
+hit_state = NodePath("../Hit")
+jump_state = NodePath("../Jump")
+hit_timeStop = 0.2
+hit_duration = 0.1
+decayRate = 5000
 playerKnockback = 250
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
@@ -612,20 +626,6 @@ hit_timeStop = 0.2
 hit_duration = 0.1
 decayRate = 4000
 playerKnockback = 250
-move_speed = 200.0
-metadata/_custom_type_script = "uid://dtjskf7x53djr"
-
-[node name="Attack2" type="Node" parent="StateMachine" unique_id=1745266335 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "hit_state", "jump_state")]
-script = ExtResource("10_pu2lt")
-fall_state = NodePath("../Fall")
-run_state = NodePath("../Run")
-idle_state = NodePath("../Idle")
-hit_state = NodePath("../Hit")
-jump_state = NodePath("../Jump")
-hit_timeStop = 0.2
-hit_duration = 0.1
-decayRate = 4000
-playerKnockback = 400
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
