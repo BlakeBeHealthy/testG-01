@@ -42,6 +42,30 @@ region = Rect2(100, 259, 50, 37)
 atlas = ExtResource("2_gymyn")
 region = Rect2(150, 259, 50, 37)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbwqj"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(200, 259, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwi16"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(250, 259, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1x1j"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(300, 259, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8b32"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(0, 296, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj1g2"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(50, 296, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usbl8"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(100, 296, 50, 37)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(0, 222, 50, 37)
@@ -245,6 +269,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sbwqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwi16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1x1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8b32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj1g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usbl8")
+}],
+"loop": false,
+"name": &"a3",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pu2lt")
 }, {
 "duration": 1.0,
@@ -440,7 +487,9 @@ attack_state = NodePath("StateMachine/Attack")
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"a2"
+animation = &"a3"
+frame = 5
+frame_progress = 1.0
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
 visibility_layer = 2
@@ -547,7 +596,22 @@ jump_state = NodePath("../Jump")
 hit_timeStop = 0.2
 hit_duration = 0.1
 decayRate = 4000
-playerKnockback = 700
+playerKnockback = 250
+move_speed = 200.0
+metadata/_custom_type_script = "uid://dtjskf7x53djr"
+
+[node name="Attack3" type="Node" parent="StateMachine" unique_id=1766148343 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "att2_state", "hit_state", "jump_state")]
+script = ExtResource("9_f1ek2")
+fall_state = NodePath("../Fall")
+run_state = NodePath("../Run")
+idle_state = NodePath("../Idle")
+att2_state = NodePath("../Attack2")
+hit_state = NodePath("../Hit")
+jump_state = NodePath("../Jump")
+hit_timeStop = 0.2
+hit_duration = 0.1
+decayRate = 4000
+playerKnockback = 250
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 

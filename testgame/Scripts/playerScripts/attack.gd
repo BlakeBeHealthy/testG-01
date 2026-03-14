@@ -18,6 +18,7 @@ extends State
 @export var playerKnockback := 0
 
 var checkHit := true
+var startKB := false
 var hit := false
 var timeSlow := false
 var checkAttack := false
@@ -52,8 +53,8 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		a2d.monitoring = false
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	KB = true
-	parent.velocity.x = -attackDir * playerKnockback #NOT APPLYING FOR SOME REASON
+	startKB = true
+	 #NOT APPLYING FOR SOME REASON
 		
 func exit() -> void:
 	checkHit = true
@@ -94,8 +95,15 @@ func process_frame(delta: float) -> State:
 	return null
 	
 func process_physics(delta: float) -> State:
+	if startKB:
+		parent.velocity.x = -attackDir * playerKnockback
+		KB = true
+		startKB = false
+		
 	if KB:
+		print(parent.velocity.x)
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
+		print(parent.velocity.x)
 		if parent.velocity.x == 0:
 			KB = false 
 	
