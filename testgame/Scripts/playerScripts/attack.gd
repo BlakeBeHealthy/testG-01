@@ -73,7 +73,6 @@ func process_input(event: InputEvent) -> State:
 # Decide state when attack animation ends
 func process_frame(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
-	
 	if parent.takeHit:
 		return hit_state
 	

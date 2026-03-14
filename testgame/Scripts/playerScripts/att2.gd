@@ -25,6 +25,7 @@ var hit := false
 var timeSlow := false
 var checkAttack := false
 var KB = false
+var direction
 var jumpBuff := 0
 var moveBuffDir := 0
 var moveBuffTime := 0
@@ -37,6 +38,15 @@ func enter() -> void:
 		#Delay this is kinda useless, but you can test it if you feel like it.
 	if !attack_delay.is_stopped():
 		attack_delay.stop()
+		
+	direction = Input.get_axis("runL", "runR")
+	if direction < 0:
+		as2d.flip_h = true
+		a2d.position.x = -21
+	elif direction > 0:
+		as2d.flip_h = false
+		a2d.position.x = 21
+		
 	attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
 	checkAttack = false
@@ -77,16 +87,8 @@ func process_input(event: InputEvent) -> State:
 	return null
 # Decide state when attack animation ends
 func process_frame(delta: float) -> State:
-	var direction = Input.get_axis("runL", "runR")
-	
-	if direction < 0:
-		as2d.flip_h = true
-		a2d.position.x = -21
-	elif direction > 0:
-		as2d.flip_h = false
-		a2d.position.x = 21
-		if parent.takeHit:
-			return hit_state
+	if parent.takeHit:
+		return hit_state
 			
 	if not as2d.is_playing() and !KB:
 		if jumpBuff != 0 and parent.is_on_floor():
