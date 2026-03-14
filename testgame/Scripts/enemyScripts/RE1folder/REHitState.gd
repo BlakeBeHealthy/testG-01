@@ -18,7 +18,6 @@ var hit := false
 func enter() -> void:
 	hitCheck.start()
 	count += 1
-	print("Hit ", count)
 	player = Global.get_player()
 	healthCount -= 1
 	if player.position.x - parent.position.x >= 0:

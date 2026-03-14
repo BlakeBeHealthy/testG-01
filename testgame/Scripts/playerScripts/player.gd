@@ -13,6 +13,7 @@ var invincible := false
 var control_locked = false
 var knockback_velocity := 0.0
 var knockback_decay := 50.0
+var jumpCheck := false
 var takeHit: bool
 var dir: int
 var str: float
@@ -57,3 +58,5 @@ func hit(direction: int, strength: float, stun_time: float, timeScale: float, du
 func _input(event): #allowing the player to attack
 	if state_machine.current_state != hit_state and event.is_action_pressed("leftC") and attack_delay.is_stopped():
 		state_machine.change_state(attack_state)
+	if is_on_floor():
+		jumpCheck = false

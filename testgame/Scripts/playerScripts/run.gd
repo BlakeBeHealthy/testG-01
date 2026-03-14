@@ -5,6 +5,7 @@ class_name Run
 @onready var a2d: Area2D = $"../../Area2D"
 @onready var a2d2: Area2D = $"../../Area2D2"
 @onready var attack_delay: Timer = $"../../attackDelay"
+@onready var cTime: Timer = $"../../CoyoteTime"
 
 @export var fall_state: State
 @export var jump_state: State

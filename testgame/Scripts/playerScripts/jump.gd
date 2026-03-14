@@ -18,8 +18,12 @@ class_name Jump
 var hit := false
 
 func enter() -> void:
+	parent.jumpCheck = true
+	print(parent.jumpCheck, " jump")
 	as2d.play("jump")
 	parent.velocity.y = -JUMP
+	if !Input.is_action_pressed("jump"):
+		parent.velocity.y *= jumpCut
 	#You will probably see some stuff like this, its just basic hitbox adustments based on as2d
 	a2d2.position.y = -1
 		
@@ -56,11 +60,11 @@ func process_physics(delta: float) -> State:
 		a2d.position.x = -21
 		as2d.flip_h = true
 		a2d2.position.x = -3
-	
-	if direction != 0 and parent.is_on_floor():
-		return run_state
-	elif direction == 0 and parent.is_on_floor():
-		return idle_state
+	if parent.is_on_floor():
+		if direction != 0:
+			return run_state
+		elif direction == 0:
+			return idle_state
 	if !parent.is_on_floor() and parent.velocity.y > 0:
 		return fall_state
 	

@@ -100,9 +100,7 @@ func process_physics(delta: float) -> State:
 		startKB = false
 		
 	if KB:
-		print(parent.velocity.x)
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
-		print(parent.velocity.x)
 		if parent.velocity.x == 0:
 			KB = false 
 	
