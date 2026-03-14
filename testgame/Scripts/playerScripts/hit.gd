@@ -18,7 +18,7 @@ extends State
 var hit_over
 var dead := false
 var dead2 := false
-var deadCount = 100
+var deadCount = 3
 var timeSlow := false
 var flashing := false
 
