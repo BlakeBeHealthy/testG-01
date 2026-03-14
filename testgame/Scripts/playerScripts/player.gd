@@ -13,6 +13,14 @@ var invincible := false
 var control_locked = false
 var knockback_velocity := 0.0
 var knockback_decay := 50.0
+var takeHit: bool
+var dir: int
+var str: float
+var stunT: float
+var TScale: float
+var dur: float
+var CAMshake: float
+var shakeDur: float
 
 func _ready() -> void:
 	Global.set_player(self)
@@ -34,6 +42,17 @@ func enter_from_transition(direction: Vector2) -> void:
 
 func _on_landed(): #This will be for cutscenes when the player cant move
 	control_locked = false
+
+func hit(direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration: float):
+	if !invincible:
+		dir = direction
+		str = strength
+		stunT = stun_time
+		TScale = timeScale
+		dur = duration
+		CAMshake = camShakeStrength
+		shakeDur = shakeDuration
+		takeHit = true
 	
 func _input(event): #allowing the player to attack
 	if state_machine.current_state != hit_state and event.is_action_pressed("leftC") and attack_delay.is_stopped():

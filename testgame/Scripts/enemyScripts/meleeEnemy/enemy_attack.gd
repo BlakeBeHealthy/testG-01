@@ -81,9 +81,7 @@ func _on_attackbox_area_entered(area: Area2D) -> void:
 		knockback(player)
 	
 func knockback(player):
-	player.state_machine.change_state(player.hit_state) # switch player state first
-	# Call knockback function with parameters
-	player.state_machine.current_state.apply_knockback(
+	player.hit(
 		sign(player.global_position.x - parent.global_position.x),
 		knockback_strength,   # strength
 		knockback_stunTime,

@@ -73,6 +73,10 @@ func process_input(event: InputEvent) -> State:
 # Decide state when attack animation ends
 func process_frame(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
+	
+	if parent.takeHit:
+		return hit_state
+	
 	if not as2d.is_playing() and !KB:
 		if checkAttack:
 			checkAttack = false
@@ -87,10 +91,6 @@ func process_frame(delta: float) -> State:
 			
 		if direction == 0:
 			return idle_state
-
-			
-	if hit:
-		return hit_state
 		
 	return null
 	

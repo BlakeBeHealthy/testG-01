@@ -11,6 +11,7 @@ extends Area2D
 @export var camShakeStrength := 2
 @export var shakeDuration := 0.2
 
+
 var speed
 var direction
 
@@ -43,9 +44,8 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 			as2d.play("blast")
 			a2d.monitorable = false
 			a2d.monitoring = false
-			player.state_machine.change_state(player.hit_state)
-			# Apply knockback in the player hit state
-			player.state_machine.current_state.apply_knockback(
+			c2d.disabled = true
+			player.hit(
 				sign(player.global_position.x - global_position.x),
 				knockback_strength,
 				stun_time,

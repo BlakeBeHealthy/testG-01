@@ -28,11 +28,11 @@ func enter() -> void:
 	if deadCount <= 0:
 		dead = true
 	flash_white()
+	apply_knockback()
 	a2d2.monitoring = false
 	a2d2.monitorable = false
 	it3.start()
 	hit_over = false
-	
 func exit() -> void:
 	pass
 
@@ -41,6 +41,7 @@ func process_input(event: InputEvent) -> State:
 
 func process_frame(delta: float) -> State:
 	if hit_over and !dead:
+		parent.takeHit = false
 		if Input.is_action_just_pressed('jump') and parent.is_on_floor():
 			return jump_state
 		if Input.is_action_just_pressed('runL') or Input.is_action_just_pressed('runR'):
@@ -63,16 +64,16 @@ func process_physics(delta: float) -> State:
 	parent.move_and_slide()
 	return null
 	
-#Enemies call this function, this is so each attack can have different strengths
-func apply_knockback(direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration):
+
+func apply_knockback():
 	if !parent.invincible:
-		apply_timeSlow(timeScale, duration)
-		Global.get_camera().start_shake(camShakeStrength, shakeDuration)
+		apply_timeSlow(parent.TScale, parent.dur)
+		Global.get_camera().start_shake(parent.CAMshake, parent.shakeDur)
 		if !dead:
-			parent.velocity.x = direction * strength
-			parent.velocity.y = -strength * 0.5
+			parent.velocity.x = parent.dir * parent.str
+			parent.velocity.y = -parent.str * 0.5
 			parent.invincible = true
-			hitstuntimer.start(stun_time)
+			hitstuntimer.start(parent.stunT)
 		as2d.play("hit")
 		
 		if dead:

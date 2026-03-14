@@ -4,8 +4,6 @@ class_name REnemy
 @onready var state_mach: Node = $StateMach
 
 var spawn_position: Vector2
-#Lbound and Rbound are just barriers in which the player can be spotted currently, in patrol state,
-	#same with the first enemy
 @export var Lbound := -300
 @export var Rbound := 10
 

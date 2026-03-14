@@ -32,7 +32,7 @@ func process_input(event: InputEvent) -> State:
 					#will yell at you
 
 func process_frame(delta: float) -> State:
-	if hit:
+	if parent.takeHit:
 		return hit_state
 	return null
 	

@@ -37,7 +37,7 @@ func enter() -> void:
 		#Delay this is kinda useless, but you can test it if you feel like it.
 	if !attack_delay.is_stopped():
 		attack_delay.stop()
-		attack_delay.start()
+	attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
 	checkAttack = false
 	
@@ -85,7 +85,9 @@ func process_frame(delta: float) -> State:
 	elif direction > 0:
 		as2d.flip_h = false
 		a2d.position.x = 21
-		
+		if parent.takeHit:
+			return hit_state
+			
 	if not as2d.is_playing() and !KB:
 		if jumpBuff != 0 and parent.is_on_floor():
 			jumpBuff = 0
@@ -96,10 +98,6 @@ func process_frame(delta: float) -> State:
 			
 		if direction == 0:
 			return idle_state
-
-			
-	if hit:
-		return hit_state
 		
 	return null
 	

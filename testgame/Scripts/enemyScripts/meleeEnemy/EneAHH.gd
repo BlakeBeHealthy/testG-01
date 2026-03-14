@@ -14,9 +14,7 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 		var player = area.get_parent()
 		
 		if !player.invincible:
-			player.state_machine.change_state(player.hit_state)
-			# Apply knockback in the player hit state
-			player.state_machine.current_state.apply_knockback(
+			player.hit(
 				sign(player.global_position.x - global_position.x),
 				knockback_strength,
 				stun_time,
