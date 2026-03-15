@@ -38,15 +38,15 @@ func process_frame(delta: float) -> State:
 	return null
 	
 func process_physics(delta: float) -> State:
-	var direction = 0
+	var direction = Input.get_axis("runL", "runR")
 	
-	if Input.is_action_pressed("runR"):
+	if direction > 0:
 		facingR = true
 		as2d.flip_h = false
 		a2d.position.x = hitboxOffX
 		a2d2.position.x = hitboxOffX2
 		direction = 1
-	elif Input.is_action_pressed("runL"):
+	elif direction < 0:
 		facingR = false
 		as2d.flip_h = true
 		a2d.position.x = -hitboxOffX
@@ -63,7 +63,3 @@ func process_physics(delta: float) -> State:
 		return idle_state
 	
 	return null
-
-
-func _on_area_2d_2_area_entered(area: Area2D) -> void:
-	pass

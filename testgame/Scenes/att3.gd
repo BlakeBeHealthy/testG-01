@@ -83,7 +83,7 @@ func process_frame(delta: float) -> State:
 			jumpBuff = 0
 			return jump_state
 		
-		if direction != 0:
+		if direction != 0 or (Input.is_action_just_pressed("runL") or Input.is_action_just_pressed("runR")):
 			return run_state
 			
 		if direction == 0:
