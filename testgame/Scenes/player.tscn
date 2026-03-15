@@ -273,6 +273,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_sbwqj")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sbwqj")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xwi16")
 }, {
 "duration": 1.0,
@@ -474,7 +477,7 @@ size = Vector2(68, 55)
 size = Vector2(25.171629, 26.979446)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ukyrk"]
-radius = 24.726803
+radius = 26.092636
 height = 57.69588
 
 [node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state")]
@@ -488,23 +491,25 @@ attack_state = NodePath("StateMachine/Attack")
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"a3"
-frame = 5
-frame_progress = 1.0
+animation = &"attack"
+speed_scale = 0.7
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
+visible = false
 visibility_layer = 2
 position = Vector2(3.5527137e-15, 5.999999)
 scale = Vector2(1.1239686, 1.2491986)
 shape = SubResource("RectangleShape2D_f1ek2")
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=764626776]
+visible = false
 collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=866466377]
 shape = SubResource("RectangleShape2D_gymyn")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1898396502]
+visible = false
 position = Vector2(-0.99999994, 7)
 scale = Vector2(0.507894, 0.9085177)
 collision_layer = 8
@@ -575,7 +580,7 @@ move_speed = 200.0
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "attack_state", "hit_state")]
 script = ExtResource("8_8erm5")
 JUMP = 400
-jumpCut = 0.5
+jumpCut = 0.3
 fall_state = NodePath("../Fall")
 run_state = NodePath("../Run")
 idle_state = NodePath("../Idle")
@@ -593,19 +598,8 @@ attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
 move_speed = 200.0
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=2144520584 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "att2_state", "hit_state", "jump_state")]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=2144520584]
 script = ExtResource("9_f1ek2")
-fall_state = NodePath("../Fall")
-run_state = NodePath("../Run")
-idle_state = NodePath("../Idle")
-att2_state = NodePath("../Attack2")
-hit_state = NodePath("../Hit")
-jump_state = NodePath("../Jump")
-hit_timeStop = 0.2
-hit_duration = 0.1
-decayRate = 5000
-playerKnockback = 250
-move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Attack2" type="Node" parent="StateMachine" unique_id=1745266335 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "hit_state", "jump_state", "att3_state")]
@@ -619,7 +613,7 @@ att3_state = NodePath("../Attack3")
 hit_timeStop = 0.2
 hit_duration = 0.1
 decayRate = 5000
-playerKnockback = 250
+playerKnockback = 300
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
@@ -632,8 +626,8 @@ hit_state = NodePath("../Hit")
 jump_state = NodePath("../Jump")
 hit_timeStop = 0.2
 hit_duration = 0.1
-decayRate = 3000
-playerKnockback = 250
+decayRate = 5000
+playerKnockback = 300
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
