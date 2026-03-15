@@ -46,7 +46,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "attack": 
 		return
 		
-	if as2d.frame == 6:
+	if as2d.frame == 8:
 		abox.monitorable = true
 		abox.monitoring = true
 	elif as2d.frame == 9:

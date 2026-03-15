@@ -12,6 +12,8 @@ extends EnemyState
 @onready var t1: Timer = $"../../PatTime"
 @onready var abox: Area2D = $"../../AttackHitBox"
 @onready var r2h: RayCast2D = $"../../Hit-Ray"
+@onready var aboxCol2d: CollisionShape2D = $"../../Attackbox/CollisionShape2D"
+
 
 var flashing = false
 
@@ -28,6 +30,7 @@ func enter() -> void:
 	abox.monitoring = false
 	killzone.monitorable = false
 	killzone.monitoring = false
+	aboxCol2d.disabled = true
 	t1.stop()
 	t2.stop()
 	t3.stop()
