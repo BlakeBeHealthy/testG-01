@@ -126,7 +126,7 @@ func process_physics(delta: float) -> State:
 			KB = false 
 	else:
 		if direction != 0:
-			parent.velocity.x = attackDir * move_speed
+			parent.velocity.x = direction * move_speed
 		elif direction == 0:
 			parent.velocity.x *= 0
 		parent.velocity.y += gravity * delta

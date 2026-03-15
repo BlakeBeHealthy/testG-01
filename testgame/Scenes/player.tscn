@@ -295,10 +295,10 @@ animations = [{
 "speed": 24.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_pu2lt")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_ukyrk")
 }, {
 "duration": 1.0,
@@ -307,10 +307,10 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h4iuc")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_fd4e3")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_qqcod")
 }],
 "loop": false,
@@ -465,6 +465,11 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 24.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"turnaround",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ek2"]

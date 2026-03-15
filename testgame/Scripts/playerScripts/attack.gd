@@ -28,7 +28,7 @@ var attackDir := 0
 
 func enter() -> void:
 	as2d.play("attack")
-	attack_delay.start()
+	attack_delay.start(0.3)
 	attackDir = Input.get_axis("runL", "runR")
 	
 	if attackDir > 0:
@@ -103,7 +103,7 @@ func process_physics(delta: float) -> State:
 			KB = false 
 	else:
 		if direction != 0:
-			parent.velocity.x = attackDir * move_speed
+			parent.velocity.x = direction * move_speed
 		elif direction == 0:
 			parent.velocity.x *= 0
 		parent.velocity.y += gravity * delta
