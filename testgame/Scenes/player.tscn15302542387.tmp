@@ -492,6 +492,7 @@ material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"attack"
+speed_scale = 0.7
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
 visible = false

@@ -124,12 +124,13 @@ func process_physics(delta: float) -> State:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
 		if parent.velocity.x == 0:
 			KB = false 
-	
-	if attackDir != 0 and !KB:
-		parent.velocity.x = attackDir * move_speed
-	parent.velocity.y += gravity * delta
+	else:
+		if direction != 0:
+			parent.velocity.x = attackDir * move_speed
+		elif direction == 0:
+			parent.velocity.x *= 0
+		parent.velocity.y += gravity * delta
 	parent.move_and_slide()
-
 	return null
 
 #Should have mentioned this, this is for hitstop
