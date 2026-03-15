@@ -36,19 +36,6 @@ func enter() -> void:
 		attack_delay.stop()
 	if !ComboTime.is_stopped():
 		ComboTime.stop()
-	
-	direction = Input.get_axis("runL", "runR")
-	if direction < 0:
-		as2d.flip_h = true
-		a2d.position.x = -21
-	elif direction > 0:
-		as2d.flip_h = false
-		a2d.position.x = 21
-	else:
-		if as2d.flip_h:
-			a2d.position.x = -21
-		elif !as2d.flip_h:
-			a2d.position.x = 21
 		
 	attack_delay.start(0.6)
 	
@@ -105,6 +92,20 @@ func process_frame(delta: float) -> State:
 	return null
 	
 func process_physics(delta: float) -> State:
+	direction = Input.get_axis("runL", "runR")
+		
+	if direction < 0:
+		as2d.flip_h = true
+		a2d.position.x = -21
+	elif direction > 0:
+		as2d.flip_h = false
+		a2d.position.x = 21
+	else:
+		if as2d.flip_h:
+			a2d.position.x = -21
+		elif !as2d.flip_h:
+			a2d.position.x = 21
+			
 	if KB: #This works here but not in the first attack, no idea why.
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
 		if parent.velocity.x == 0:
@@ -116,8 +117,8 @@ func process_physics(delta: float) -> State:
 			parent.velocity.x *= 0
 		parent.velocity.y += gravity * delta
 	parent.move_and_slide()
-
 	return null
+
 
 #Should have mentioned this, this is for hitstop
 func apply_timeSlow(timeScale: float, duration: float) -> void:
