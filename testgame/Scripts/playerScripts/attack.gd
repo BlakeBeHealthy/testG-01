@@ -40,10 +40,9 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "attack":
 		return
 		
+	
 	if as2d.frame == 2:
 		ComboTime.start()
-	
-	if as2d.frame == 3:
 		a2d.monitorable = true
 		a2d.monitoring = true
 	if as2d.frame == 5:
