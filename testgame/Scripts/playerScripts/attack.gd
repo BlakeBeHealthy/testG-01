@@ -24,14 +24,17 @@ var timeSlow := false
 var checkAttack := false
 var KB = false
 var jumpBuff := 0
-var moveBuffDir := 0
-var moveBuffTime := 0
 var attackDir := 0
 
 func enter() -> void:
 	as2d.play("attack")
 	attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
+	
+	if attackDir > 0:
+		as2d.flip_h = false
+	elif attackDir < 0:
+		as2d.flip_h = true
 	startKB = false
 	if checkHit:
 		checkHit = false
@@ -50,8 +53,9 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		a2d.monitoring = false
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	startKB = true
-		
+	KB = true
+	parent.velocity.x = -attackDir * playerKnockback
+
 func exit() -> void:
 	checkHit = true
 	a2d.monitorable = false
@@ -82,7 +86,7 @@ func process_frame(delta: float) -> State:
 			jumpBuff = 0
 			return jump_state
 		
-		if attackDir != 0:
+		if direction != 0:
 			return run_state
 			
 		if direction == 0:
@@ -92,11 +96,6 @@ func process_frame(delta: float) -> State:
 	
 func process_physics(delta: float) -> State:
 	var direction = Input.get_axis("runL","runR" )
-	
-	if startKB:
-		parent.velocity.x = -attackDir * playerKnockback
-		KB = true
-		startKB = false
 		
 	if KB:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)

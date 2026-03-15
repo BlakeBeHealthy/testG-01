@@ -22,15 +22,12 @@ extends State
 
 #I'm 90% one of these is useless lmao
 var checkHit := true
-var hit := false
 var timeSlow := false
 var checkAttack := false
 var KB = false
 var ComboCheck = false
 var direction
 var jumpBuff := 0
-var moveBuffDir := 0
-var moveBuffTime := 0
 var attackDir := 0
 
 func enter() -> void:
@@ -51,6 +48,12 @@ func enter() -> void:
 	elif direction > 0:
 		as2d.flip_h = false
 		a2d.position.x = 21
+	else:
+		if as2d.flip_h:
+			a2d.position.x = -21
+		elif !as2d.flip_h:
+			a2d.position.x = 21
+			
 		
 	attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
@@ -80,6 +83,7 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 	parent.velocity.x = -attackDir * playerKnockback
 	
 func exit() -> void:
+	KB = false
 	checkHit = true
 	a2d.monitorable = false
 	a2d.monitoring = false
@@ -107,7 +111,7 @@ func process_frame(delta: float) -> State:
 			jumpBuff = 0
 			return jump_state
 		
-		if attackDir != 0:
+		if direction != 0:
 			return run_state
 			
 		if direction == 0:

@@ -20,6 +20,7 @@ func change_state(new_state: State) -> void:
 		current_state.exit()
 
 	current_state = new_state
+	print(current_state)
 	current_state.enter()
 
 # Pass through functions for the Player to call,

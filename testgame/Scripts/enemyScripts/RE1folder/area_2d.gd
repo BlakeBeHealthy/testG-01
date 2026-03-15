@@ -36,6 +36,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		
 	if as2d.frame == 4:
 		as2d.visible = false
+		queue_free()
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.get_parent() is Player:

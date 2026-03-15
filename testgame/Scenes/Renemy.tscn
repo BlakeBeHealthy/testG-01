@@ -294,8 +294,7 @@ script = ExtResource("1_wjsit")
 material = SubResource("ShaderMaterial_sprm0")
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_y83ni")
-animation = &"walk"
-frame_progress = 0.54001385
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1486897855]
 visibility_layer = 4
@@ -349,7 +348,7 @@ target_position = Vector2(157, 0)
 collision_mask = 2
 
 [node name="attackTim" type="Timer" parent="." unique_id=1899906668]
-wait_time = 2.3
+wait_time = 1.9
 one_shot = true
 
 [node name="PatTime" type="Timer" parent="." unique_id=511397324]
@@ -414,7 +413,7 @@ move_speed = 75.0
 
 [node name="HitState" type="Node" parent="StateMach" unique_id=1681370267 node_paths=PackedStringArray("chase_state", "death_state")]
 script = ExtResource("13_82ivn")
-knockback_strength = 400
+knockback_strength = 500
 decayRate = 2000
 chase_state = NodePath("../REChase")
 death_state = NodePath("../REdeath")

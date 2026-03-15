@@ -23,13 +23,9 @@ extends State
 var checkHit := true
 var hit := false
 var timeSlow := false
-var checkAttack := false
 var KB = false
-var direction
+var direction := 0
 var jumpBuff := 0
-var moveBuffDir := 0
-var moveBuffTime := 0
-var attackDir := 0.0
 
 func enter() -> void:
 	#Ensuring the player can't just spam attacks over and over again, however
@@ -48,10 +44,13 @@ func enter() -> void:
 	elif direction > 0:
 		as2d.flip_h = false
 		a2d.position.x = 21
+	else:
+		if as2d.flip_h:
+			a2d.position.x = -21
+		elif !as2d.flip_h:
+			a2d.position.x = 21
 		
 	attack_delay.start(0.6)
-	attackDir = Input.get_axis("runL", "runR")
-	checkAttack = false
 	
 	if checkHit:
 		checkHit = false
@@ -73,13 +72,14 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	KB = true
-	parent.velocity.x = -attackDir * playerKnockback
+	parent.velocity.x = -direction * playerKnockback
 	
 func exit() -> void:
+	KB = false
 	checkHit = true
 	a2d.monitorable = false
 	a2d.monitoring = false
-	attackDir = 0
+	direction = 0
 	
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_pressed("jump"):
@@ -96,7 +96,7 @@ func process_frame(delta: float) -> State:
 			jumpBuff = 0
 			return jump_state
 		
-		if attackDir != 0.0:
+		if direction != 0:
 			return run_state
 			
 		if direction == 0:
@@ -110,8 +110,8 @@ func process_physics(delta: float) -> State:
 		if parent.velocity.x == 0:
 			KB = false 
 	
-	if attackDir != 0.0 and !KB:
-		parent.velocity.x = attackDir * move_speed
+	if direction != 0 and !KB:
+		parent.velocity.x = direction * move_speed
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 

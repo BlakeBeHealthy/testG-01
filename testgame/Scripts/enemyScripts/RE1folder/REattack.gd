@@ -33,6 +33,7 @@ func enter() -> void:
 	ati.start()
 
 func exit() -> void:
+	bulletCheck = false
 	dead = false
 	ati.stop()
 
