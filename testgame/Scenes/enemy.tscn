@@ -161,6 +161,38 @@ region = Rect2(900, 0, 150, 150)
 atlas = ExtResource("7_tk7xo")
 region = Rect2(1050, 0, 150, 150)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk7xo"]
+atlas = ExtResource("7_tk7xo")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vco5"]
+atlas = ExtResource("7_tk7xo")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xmqa"]
+atlas = ExtResource("7_tk7xo")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w0mm"]
+atlas = ExtResource("7_tk7xo")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebugx"]
+atlas = ExtResource("7_tk7xo")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpt27"]
+atlas = ExtResource("7_tk7xo")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dyvk"]
+atlas = ExtResource("7_tk7xo")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anrbk"]
+atlas = ExtResource("7_tk7xo")
+region = Rect2(1050, 0, 150, 150)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vh8xy"]
 animations = [{
 "frames": [{
@@ -292,6 +324,35 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk7xo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vco5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xmqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w0mm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebugx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpt27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dyvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anrbk")
+}],
+"loop": true,
+"name": &"walkpt2",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56vhr"]
@@ -319,8 +380,7 @@ attack_state = NodePath("StateMac/EnemyAttack")
 material = SubResource("ShaderMaterial_m4x7e")
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_vh8xy")
-animation = &"idle"
-frame_progress = 0.46000206
+animation = &"walkpt2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1016065896]
 visible = false
