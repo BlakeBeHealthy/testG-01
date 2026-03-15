@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var jump_state: State
 @export var hit_state: State
 @export var attack_state: State
+@export var att2_state: State
+@export var att3_state: State
 
 var health := 5
 var invincible := false
@@ -60,3 +62,6 @@ func _input(event): #allowing the player to attack
 		state_machine.change_state(attack_state)
 	if is_on_floor():
 		jumpCheck = false
+	if state_machine.current_state != attack_state or state_machine.current_state != att2_state \
+	or state_machine.current_state != att3_state: 
+		pass

@@ -19,12 +19,12 @@ func enter() -> void:
 	hitCheck.start()
 	count += 1
 	player = Global.get_player()
+	flash_white()
 	healthCount -= 1
 	if player.position.x - parent.position.x >= 0:
 		direction = 1
 	else:
 		direction = -1
-	flash_white()
 	as2d.play("hit")
 	hit = true
 

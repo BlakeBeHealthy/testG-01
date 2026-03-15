@@ -5,7 +5,7 @@ extends State
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var a2d2: Area2D = $"../../Area2D2"
 @onready var a2d: Area2D = $"../../Area2D"
-@onready var timer: Timer = $"../../Timer"
+@onready var ComboTime: Timer = $"../../Timer"
 @onready var attack_delay: Timer = $"../../attackDelay"
 
 @export var fall_state: State
@@ -13,6 +13,7 @@ extends State
 @export var idle_state: State
 @export var hit_state: State
 @export var jump_state: State
+@export var att3_state: State
 @export var hit_timeStop: float
 @export var hit_duration: float
 @export var decayRate := 0
@@ -25,6 +26,7 @@ var hit := false
 var timeSlow := false
 var checkAttack := false
 var KB = false
+var ComboCheck = false
 var direction
 var jumpBuff := 0
 var moveBuffDir := 0
@@ -34,12 +36,15 @@ var attackDir := 0
 func enter() -> void:
 	#Ensuring the player can't just spam attacks over and over again, however
 		#I'm debating having the timer just start in the last combo move,
-		#Because if they do click in quick succession it will do the combo move so have attack
-		#Delay this is kinda useless, but you can test it if you feel like it.
+		#because if they do click in quick succession it will do the combo move so have attack
+		#delay this is kinda useless, but you can test it if you feel like it.
 	if !attack_delay.is_stopped():
 		attack_delay.stop()
 		
 	direction = Input.get_axis("runL", "runR")
+	if !ComboTime.is_stopped():
+		ComboTime.stop()
+		
 	if direction < 0:
 		as2d.flip_h = true
 		a2d.position.x = -21
@@ -60,8 +65,8 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "a2":
 		return
 		
-	if as2d.frame ==2:
-		pass
+	if as2d.frame == 2:
+		ComboTime.start()
 		
 	if as2d.frame == 3:
 		a2d.monitorable = true
@@ -81,6 +86,9 @@ func exit() -> void:
 	attackDir = 0
 	
 func process_input(event: InputEvent) -> State:
+	if !ComboTime.is_stopped() and Input.is_action_pressed("leftC"):
+		checkAttack = true
+		
 	if Input.is_action_pressed("jump"):
 		jumpBuff = 1
 		
@@ -89,8 +97,12 @@ func process_input(event: InputEvent) -> State:
 func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return hit_state
-			
+	
 	if not as2d.is_playing() and !KB:
+		if checkAttack:
+			checkAttack = false
+			return att3_state
+			
 		if jumpBuff != 0 and parent.is_on_floor():
 			jumpBuff = 0
 			return jump_state

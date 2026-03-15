@@ -527,7 +527,7 @@ one_shot = true
 wait_time = 0.001
 
 [node name="Timer" type="Timer" parent="." unique_id=388785215]
-wait_time = 0.499
+wait_time = 0.59
 one_shot = true
 
 [node name="tim2" type="Timer" parent="." unique_id=1119039513]
@@ -539,8 +539,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=450046427]
-position = Vector2(24, 4)
-scale = Vector2(1.2108917, 1)
+position = Vector2(21, 4)
 collision_layer = 128
 collision_mask = 16
 monitoring = false
@@ -623,18 +622,8 @@ playerKnockback = 250
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
-[node name="Attack3" type="Node" parent="StateMachine" unique_id=1766148343 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "hit_state", "jump_state")]
+[node name="Attack3" type="Node" parent="StateMachine" unique_id=1766148343]
 script = ExtResource("11_ukyrk")
-fall_state = NodePath("../Fall")
-run_state = NodePath("../Run")
-idle_state = NodePath("../Idle")
-hit_state = NodePath("../Hit")
-jump_state = NodePath("../Jump")
-hit_timeStop = 0.2
-hit_duration = 0.1
-decayRate = 3000
-playerKnockback = 250
-move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Hit" type="Node" parent="StateMachine" unique_id=743816584 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "jump_state", "attack_state", "death_state")]
@@ -651,7 +640,6 @@ script = ExtResource("10_tx1dd")
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack2" method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack3" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Idle" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Run" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Jump" method="_on_area_2d_2_area_entered"]
@@ -662,4 +650,3 @@ script = ExtResource("10_tx1dd")
 [connection signal="timeout" from="Timer" to="StateMachine/Attack" method="_on_timer_timeout"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]
-[connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack3" method="_on_area_2d_area_shape_entered"]
