@@ -7,8 +7,6 @@ class_name Jump
 @onready var attack_delay: Timer = $"../../attackDelay"
 @onready var a2d: Area2D = $"../../Area2D"
 
-@export var JUMP := 0
-@export var jumpCut := 0.0
 @export var fall_state: State
 @export var run_state: State
 @export var idle_state: State
@@ -20,9 +18,9 @@ var hit := false
 func enter() -> void:
 	parent.jumpCheck = true
 	as2d.play("jump")
-	parent.velocity.y = -JUMP
-	if !Input.is_action_pressed("jump"):
-		parent.velocity.y *= jumpCut
+	if !parent.jumpCheck:
+		parent.velocity.y = -parent.JUMP
+		parent.jumpCheck = true
 	#You will probably see some stuff like this, its just basic hitbox adustments based on as2d
 	a2d2.position.y = -1
 		
@@ -43,7 +41,7 @@ func process_frame(delta: float) -> State:
 	
 func process_physics(delta: float) -> State:
 	if Input.is_action_just_released("jump"):
-		parent.velocity.y *= jumpCut
+		parent.velocity.y *= parent.jumpCut
 	
 	parent.velocity.y += gravity * delta
 	

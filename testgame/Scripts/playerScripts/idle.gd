@@ -19,15 +19,19 @@ extends State
 @export var attack_state: State
 @export var hit_state: State
 
+var jump := false
+var run := false
+var c = 0 
 var hitboxCheck = true
 var hit := false 
 
 #Enter and exit functions are just as they sound, when entering vs exiting states
 func enter() -> void:
-	print("idle")
+	c += 1
+	print("idle ", c)
+	as2d.play("idle")
 	a2d2.position.x = 0
 	a2d2.position.y = 9
-	as2d.play("idle")
 
 func exit() -> void:
 	hit = false
@@ -41,16 +45,26 @@ func exit() -> void:
 	#Any other code that is useless if you can, IK they are somewhere just havent had time to check
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
-		return jump_state
+		jump = true
+		
 	if Input.is_action_pressed('runL') and Input.is_action_pressed('runR'):
 		return null
-	if Input.is_action_pressed('runL') or Input.is_action_pressed('runR'):
-		return run_state
+		
+	if Input.is_action_just_pressed('runL') or Input.is_action_just_pressed('runR'):
+		run = true
 	return null
 	
 func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return hit_state
+		
+	if jump:
+		jump = false
+		return jump_state
+		
+	if run:
+		run = false
+		return run_state
 	return null
 	
 func process_physics(delta: float) -> State:

@@ -485,12 +485,16 @@ size = Vector2(25.171629, 26.979446)
 radius = 26.092636
 height = 57.69588
 
-[node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state")]
+[node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state", "att2_state", "att3_state")]
 collision_layer = 2
 script = ExtResource("1_vgqql")
 jump_state = NodePath("StateMachine/Jump")
 hit_state = NodePath("StateMachine/Hit")
 attack_state = NodePath("StateMachine/Attack")
+att2_state = NodePath("StateMachine/Attack2")
+att3_state = NodePath("StateMachine/Attack3")
+JUMP = 400
+jumpCut = 0.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=720930456]
 material = SubResource("ShaderMaterial_ukyrk")
@@ -583,8 +587,6 @@ move_speed = 200.0
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "attack_state", "hit_state")]
 script = ExtResource("8_8erm5")
-JUMP = 400
-jumpCut = 0.3
 fall_state = NodePath("../Fall")
 run_state = NodePath("../Run")
 idle_state = NodePath("../Idle")

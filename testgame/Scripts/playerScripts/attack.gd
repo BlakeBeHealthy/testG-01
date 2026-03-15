@@ -23,7 +23,7 @@ var hit := false
 var timeSlow := false
 var checkAttack := false
 var KB = false
-var jumpBuff := 0
+var jumpBuff := false
 var attackDir := 0
 
 func enter() -> void:
@@ -66,9 +66,7 @@ func exit() -> void:
 func process_input(event: InputEvent) -> State:
 	if !ComboTime.is_stopped() and Input.is_action_pressed("leftC"):
 		checkAttack = true
-		
-	if Input.is_action_pressed("jump"):
-		jumpBuff = 1
+	
 		
 	return null
 # Decide state when attack animation ends
@@ -82,7 +80,7 @@ func process_frame(delta: float) -> State:
 			checkAttack = false
 			return att2_state
 			
-		if jumpBuff != 0 and parent.is_on_floor():
+		if Input.is_action_pressed("jump") and parent.is_on_floor():
 			jumpBuff = 0
 			return jump_state
 		
@@ -100,12 +98,19 @@ func process_physics(delta: float) -> State:
 	if KB:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
 		if parent.velocity.x == 0:
-			KB = false 
+			KB = false
 	else:
 		if direction != 0:
 			parent.velocity.x = direction * move_speed
 		elif direction == 0:
 			parent.velocity.x *= 0
+			
+	if Input.is_action_pressed("jump") and !parent.jumpCheck:
+		parent.jumpCheck = true
+		parent.velocity.y = -parent.JUMP
+	elif Input.is_action_just_released("jump") and !parent.is_on_floor():
+		parent.velocity.y += parent.jumpCut
+	else:
 		parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 

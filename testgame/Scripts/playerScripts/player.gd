@@ -9,6 +9,8 @@ extends CharacterBody2D
 @export var attack_state: State
 @export var att2_state: State
 @export var att3_state: State
+@export var JUMP := 0
+@export var jumpCut := 0.0
 
 var health := 5
 var invincible := false
@@ -34,6 +36,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
+	if is_on_floor() and jumpCheck:
+		jumpCheck = false
 	
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
@@ -60,8 +64,3 @@ func hit(direction: int, strength: float, stun_time: float, timeScale: float, du
 func _input(event): #allowing the player to attack
 	if state_machine.current_state != hit_state and event.is_action_pressed("leftC") and attack_delay.is_stopped():
 		state_machine.change_state(attack_state)
-	if is_on_floor():
-		jumpCheck = false
-	if state_machine.current_state != attack_state or state_machine.current_state != att2_state \
-	or state_machine.current_state != att3_state: 
-		pass

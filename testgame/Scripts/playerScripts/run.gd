@@ -17,8 +17,10 @@ var hitboxOffX: float
 var hitboxOffX2: float
 var facingR := true
 var hit := false
+var c = 0 
 
 func enter() -> void:
+	print("run ", c)
 	a2d2.position.x = 5
 	a2d2.position.y = 9
 	as2d.play("run")
