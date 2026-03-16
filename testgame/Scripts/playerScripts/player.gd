@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var fall_state: State
 @export var run_state: State
 @export var idle_state: State
+@export var death_state: State
 @export var JUMP := 0
 @export var jumpCut := 0.0
 

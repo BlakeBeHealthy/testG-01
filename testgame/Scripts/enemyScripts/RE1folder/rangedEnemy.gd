@@ -2,7 +2,12 @@ extends CharacterBody2D
 class_name REnemy
 
 @onready var state_mach: Node = $StateMach
-
+@export var idle_state: REnemyState
+@export var hit_state: REnemyState
+@export var attack_state: REnemyState
+@export var death_state: REnemyState
+@export var patrol_state: REnemyState
+@export var chase_state: REnemyState
 var spawn_position: Vector2
 @export var Lbound := -300
 @export var Rbound := 10

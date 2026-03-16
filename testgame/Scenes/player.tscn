@@ -499,7 +499,7 @@ size = Vector2(25.171629, 26.979446)
 radius = 26.092636
 height = 57.69588
 
-[node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state", "att2_state", "att3_state")]
+[node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state", "att2_state", "att3_state", "fall_state", "run_state", "idle_state", "death_state")]
 collision_layer = 2
 script = ExtResource("1_vgqql")
 jump_state = NodePath("StateMachine/Jump")
@@ -507,6 +507,10 @@ hit_state = NodePath("StateMachine/Hit")
 attack_state = NodePath("StateMachine/Attack")
 att2_state = NodePath("StateMachine/Attack2")
 att3_state = NodePath("StateMachine/Execution")
+fall_state = NodePath("StateMachine/Fall")
+run_state = NodePath("StateMachine/Run")
+idle_state = NodePath("StateMachine/Idle")
+death_state = NodePath("StateMachine/death")
 JUMP = 400
 jumpCut = 0.3
 
