@@ -41,11 +41,13 @@ func process_frame(delta: float) -> State:
 		return hit_state
 	return null
 	
-	if Input.is_action_just_pressed("leftC") and attack_delay.is_stopped():
-		return attack_state
-	return null
 func process_physics(delta: float) -> State:
-	parent.velocity.y += gravity * delta
+	if Input.is_action_pressed("jump"):
+		parent.velocity.y += gravity * delta * 0.9
+	elif parent.velocity.y < 405:
+		parent.velocity.y += gravity * 1.9 * delta
+	else:
+		parent.velocity.y = parent.velocity.y
 	
 	var direction = Input.get_axis("runL", "runR")
 	parent.velocity.x = direction * move_speed

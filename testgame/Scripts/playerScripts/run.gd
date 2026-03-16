@@ -20,7 +20,6 @@ var hit := false
 var c = 0 
 
 func enter() -> void:
-	print("run ", c)
 	a2d2.position.x = 5
 	a2d2.position.y = 9
 	as2d.play("run")
@@ -30,8 +29,6 @@ func enter() -> void:
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
 		return jump_state
-	if Input.is_action_just_pressed("leftC") and attack_delay.is_stopped():
-		return attack_state
 	return null
 
 func process_frame(delta: float) -> State:

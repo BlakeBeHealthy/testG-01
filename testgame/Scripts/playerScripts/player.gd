@@ -4,6 +4,7 @@ extends CharacterBody2D
 #Base plsyer class defining the state machine and grabbing the values of delta and event
 @onready var attack_delay: Timer = $attackDelay
 @onready var state_machine: Node = $StateMachine
+@onready var ComboTime: Timer = $Timer
 @export var jump_state: State
 @export var hit_state: State
 @export var attack_state: State
@@ -18,6 +19,7 @@ var control_locked = false
 var knockback_velocity := 0.0
 var knockback_decay := 50.0
 var jumpCheck := false
+var comboCount := 0
 var takeHit: bool
 var dir: int
 var str: float
@@ -41,6 +43,17 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
+	
+	if state_machine.current_state == attack_state:
+		ComboTime.start()
+		comboCount = 1
+	elif state_machine.current_state == att2_state:
+		ComboTime.stop()
+		ComboTime.start()
+		comboCount = 2
+	elif state_machine.current_state == att3_state:
+		ComboTime.stop()
+		comboCount = 0
 
 func enter_from_transition(direction: Vector2) -> void:
 	control_locked = true
@@ -62,5 +75,13 @@ func hit(direction: int, strength: float, stun_time: float, timeScale: float, du
 		takeHit = true
 	
 func _input(event): #allowing the player to attack
-	if state_machine.current_state != hit_state and event.is_action_pressed("leftC") and attack_delay.is_stopped():
-		state_machine.change_state(attack_state)
+	if state_machine.current_state != hit_state and event.is_action_pressed("leftC"):
+		if attack_delay.is_stopped() or !ComboTime.is_stopped():
+			if comboCount == 0: 
+				state_machine.change_state(attack_state)
+			if comboCount == 1 and !ComboTime.is_stopped(): 
+				state_machine.change_state(att2_state)
+			if comboCount == 2 and !ComboTime.is_stopped(): 
+				state_machine.change_state(att3_state)
+				attack_delay.start()
+	

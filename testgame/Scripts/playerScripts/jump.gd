@@ -16,7 +16,6 @@ class_name Jump
 var hit := false
 
 func enter() -> void:
-	parent.jumpCheck = true
 	as2d.play("jump")
 	if !parent.jumpCheck:
 		parent.velocity.y = -parent.JUMP
@@ -28,12 +27,8 @@ func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
-	#This is declared in player but IDK if i remove this if it will break
-	#You can test if feel up to it, this might be useless as well as other calls for this
-	#state change bc of player
-
 	return null
-
+	
 func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return hit_state

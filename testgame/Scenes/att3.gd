@@ -28,7 +28,7 @@ var direction := 0
 var jumpBuff := 0
 
 func enter() -> void:
-	#Ensuring the player can't just spam attacks over and over again, however
+		#Ensuring the player can't just spam attacks over and over again, however
 		#I'm debating having the timer just start in the last combo move,
 		#Because if they do click in quick succession it will do the combo move so have attack
 		#Delay this is kinda useless, but you can test it if you feel like it.
@@ -37,13 +37,11 @@ func enter() -> void:
 	if !ComboTime.is_stopped():
 		ComboTime.stop()
 		
-	attack_delay.start(0.6)
-	
+	attack_delay.start(0.5)
 	if checkHit:
 		checkHit = false
 		
 	as2d.play("a3")
-	ComboTime.start()
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "a3":
@@ -55,7 +53,6 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.frame == 5:
 		a2d.monitorable = false
 		a2d.monitoring = false
-		ComboTime.stop()
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	KB = true
@@ -79,16 +76,18 @@ func process_frame(delta: float) -> State:
 		return hit_state
 			
 	if not as2d.is_playing() and !KB:
-		if jumpBuff != 0 and parent.is_on_floor():
-			jumpBuff = 0
-			return jump_state
-		
-		if direction != 0 or (Input.is_action_just_pressed("runL") or Input.is_action_just_pressed("runR")):
-			return run_state
+		if parent.is_on_floor():
+			if Input.is_action_pressed("jump"):
+				jumpBuff = 0
+				return jump_state
 			
-		if direction == 0:
-			return idle_state
-		
+			if direction != 0:
+				return run_state
+				
+			if direction == 0:
+				return idle_state
+		else:
+			return fall_state
 	return null
 	
 func process_physics(delta: float) -> State:
@@ -115,6 +114,12 @@ func process_physics(delta: float) -> State:
 			parent.velocity.x = direction * move_speed
 		elif direction == 0:
 			parent.velocity.x *= 0
+	if Input.is_action_pressed("jump") and !parent.jumpCheck:
+		parent.jumpCheck = true
+		parent.velocity.y = -parent.JUMP
+	elif Input.is_action_just_released("jump") and !parent.is_on_floor():
+		parent.velocity.y *= parent.jumpCut
+	else:
 		parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 	return null

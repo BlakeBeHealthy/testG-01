@@ -18,6 +18,8 @@ extends State
 @export var run_state: State
 @export var attack_state: State
 @export var hit_state: State
+@export var att2_state: State
+@export var att3_state: State
 
 var jump := false
 var run := false
@@ -28,7 +30,6 @@ var hit := false
 #Enter and exit functions are just as they sound, when entering vs exiting states
 func enter() -> void:
 	c += 1
-	print("idle ", c)
 	as2d.play("idle")
 	a2d2.position.x = 0
 	a2d2.position.y = 9

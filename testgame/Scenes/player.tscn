@@ -533,14 +533,14 @@ wait_time = 2.0
 one_shot = true
 
 [node name="attackDelay" type="Timer" parent="." unique_id=1251612868]
-wait_time = 0.5
+wait_time = 0.352
 one_shot = true
 
 [node name="hitstuntimer" type="Timer" parent="." unique_id=668290657]
 wait_time = 0.001
 
 [node name="Timer" type="Timer" parent="." unique_id=388785215]
-wait_time = 0.499
+wait_time = 1.0019999999999998
 one_shot = true
 
 [node name="tim2" type="Timer" parent="." unique_id=1119039513]
@@ -568,13 +568,15 @@ script = ExtResource("4_x3wgy")
 attack_state = NodePath("Attack")
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=389573731 node_paths=PackedStringArray("fall_state", "jump_state", "run_state", "attack_state", "hit_state")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=389573731 node_paths=PackedStringArray("fall_state", "jump_state", "run_state", "attack_state", "hit_state", "att2_state", "att3_state")]
 script = ExtResource("3_i3pqv")
 fall_state = NodePath("../Fall")
 jump_state = NodePath("../Jump")
 run_state = NodePath("../Run")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
+att2_state = NodePath("../Attack2")
+att3_state = NodePath("../Attack3")
 
 [node name="Run" type="Node" parent="StateMachine" unique_id=1143582341 node_paths=PackedStringArray("fall_state", "jump_state", "idle_state", "attack_state", "hit_state")]
 script = ExtResource("6_3smsa")

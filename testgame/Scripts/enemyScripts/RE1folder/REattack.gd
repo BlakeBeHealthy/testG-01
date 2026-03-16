@@ -62,7 +62,10 @@ func process_physics(delta: float) -> REnemyState:
 	#Eventually im gonna change direction to just where the Renemy is facing
 	if bulletCheck:
 		var bullet_temp = bullet.instantiate()
-		bullet_temp.direction = sign(player.global_position.x - parent.global_position.x)
+		if as2d.flip_h:
+			bullet_temp.direction = -1
+		elif !as2d.flip_h:
+			bullet_temp.direction = 1
 		bullet_temp.global_position = parent.global_position + Vector2(3 * bullet_temp.direction, 0)
 		bullet_temp.speed = 100
 		add_child(bullet_temp)

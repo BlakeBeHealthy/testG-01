@@ -27,8 +27,9 @@ var jumpBuff := false
 var attackDir := 0
 
 func enter() -> void:
-	as2d.play("attack")
-	attack_delay.start(0.3)
+	if ComboTime.is_stopped():
+		as2d.play("attack")
+		attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
 	
 	if attackDir > 0:
@@ -43,9 +44,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "attack":
 		return
 		
-	
 	if as2d.frame == 2:
-		ComboTime.start()
 		a2d.monitorable = true
 		a2d.monitoring = true
 	if as2d.frame == 5:
@@ -79,16 +78,18 @@ func process_frame(delta: float) -> State:
 		if checkAttack:
 			checkAttack = false
 			return att2_state
+		if parent.is_on_floor():
+			if Input.is_action_pressed("jump"):
+				jumpBuff = 0
+				return jump_state
 			
-		if Input.is_action_pressed("jump") and parent.is_on_floor():
-			jumpBuff = 0
-			return jump_state
-		
-		if direction != 0:
-			return run_state
-			
-		if direction == 0:
-			return idle_state
+			if direction != 0:
+				return run_state
+				
+			if direction == 0:
+				return idle_state
+		else:
+			return fall_state
 		
 	return null
 	
@@ -109,7 +110,7 @@ func process_physics(delta: float) -> State:
 		parent.jumpCheck = true
 		parent.velocity.y = -parent.JUMP
 	elif Input.is_action_just_released("jump") and !parent.is_on_floor():
-		parent.velocity.y += parent.jumpCut
+		parent.velocity.y *= parent.jumpCut
 	else:
 		parent.velocity.y += gravity * delta
 	parent.move_and_slide()

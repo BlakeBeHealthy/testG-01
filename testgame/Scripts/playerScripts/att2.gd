@@ -38,9 +38,6 @@ func enter() -> void:
 	if !attack_delay.is_stopped():
 		attack_delay.stop()
 		
-	if !ComboTime.is_stopped():
-		ComboTime.stop()
-		
 	attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
 	checkAttack = false
@@ -54,8 +51,8 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "a2":
 		return
 		
-	if as2d.frame == 2:
-		ComboTime.start()
+	if as2d.frame == 1:
+		pass
 		
 	if as2d.frame == 3:
 		a2d.monitorable = true
@@ -76,12 +73,6 @@ func exit() -> void:
 	attackDir = 0
 	
 func process_input(event: InputEvent) -> State:
-	if !ComboTime.is_stopped() and Input.is_action_pressed("leftC"):
-		checkAttack = true
-		
-	if Input.is_action_pressed("jump"):
-		jumpBuff = 1
-		
 	return null
 # Decide state when attack animation ends
 func process_frame(delta: float) -> State:
@@ -89,20 +80,17 @@ func process_frame(delta: float) -> State:
 		return hit_state
 	
 	if not as2d.is_playing() and !KB:
-		if checkAttack:
-			checkAttack = false
-			return att3_state
+		if parent.is_on_floor():
+			if Input.is_action_pressed("jump"):
+				return jump_state
 			
-		if jumpBuff != 0 and parent.is_on_floor():
-			jumpBuff = 0
-			return jump_state
-		
-		if direction != 0:
-			return run_state
-			
-		if direction == 0:
-			return idle_state
-		
+			if direction != 0:
+				return run_state
+				
+			if direction == 0:
+				return idle_state
+		else:
+			return fall_state
 	return null
 	
 func process_physics(delta: float) -> State:
@@ -129,6 +117,13 @@ func process_physics(delta: float) -> State:
 			parent.velocity.x = direction * move_speed
 		elif direction == 0:
 			parent.velocity.x *= 0
+			
+	if Input.is_action_pressed("jump") and !parent.jumpCheck:
+		parent.jumpCheck = true
+		parent.velocity.y = -parent.JUMP
+	elif Input.is_action_just_released("jump") and !parent.is_on_floor():
+		parent.velocity.y *= parent.jumpCut
+	else:
 		parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 	return null
