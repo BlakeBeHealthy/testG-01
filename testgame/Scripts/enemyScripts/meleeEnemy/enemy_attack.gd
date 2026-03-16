@@ -29,6 +29,10 @@ func enter() -> void:
 
 func exit() -> void:
 	t3.stop()
+	if abox.monitorable != false:
+		abox.monitorable = false
+	if abox.monitoring != false:
+		abox.monitoring = false
 
 func process_input(event: InputEvent) -> EnemyState:
 	return null
@@ -52,6 +56,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	elif as2d.frame == 9:
 		abox.monitorable = false
 		abox.monitoring = false
+		
 		
 func process_physics(delta: float) -> EnemyState:
 	return null

@@ -14,13 +14,13 @@ var player
 func enter() -> void:
 	hitCheck.start()
 	player = Global.get_player()
+	as2d.play("hit")
 	healthCount -= 1
 	if player.position.x - parent.position.x >= 0:
 		direction = -1
 	else:
 		direction = 1
 	flash_white()
-	as2d.play("hit")
 	take_hit(direction)
 
 func exit() -> void:
@@ -34,7 +34,8 @@ func process_frame(delta: float) -> EnemyState:
 		return death_state
 
 	if !hitCheck.is_stopped():
-		as2d.play("idle")
+		if !as2d.is_playing():
+			as2d.play("idle")
 	else:
 		return chase_state
 		
@@ -57,7 +58,7 @@ func flash_white():
 	flashing = true
 	var mat := as2d.material as ShaderMaterial
 	mat.set_shader_parameter("flash_strength", 1.0)
-	await get_tree().create_timer(0.08).timeout
+	await get_tree().create_timer(0.04).timeout
 	mat.set_shader_parameter("flash_strength", 0.0)
 	flashing = false
 	

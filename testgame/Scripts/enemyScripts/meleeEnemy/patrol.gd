@@ -5,7 +5,6 @@ extends EnemyState
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var pti: Timer = $"../../PatTime"
 @onready var r2h: RayCast2D = $"../../Hit-Ray"
-@onready var flash_mat := as2d.material as ShaderMaterial
 @onready var abox: Area2D = $"../../Attackbox"
 
 @export var pauseTime := 0.4
@@ -87,15 +86,3 @@ func update_ray() -> void:
 	r2d.target_position.x = abs(r2d.target_position.x) * direction
 	r2d2.target_position.x = abs(r2d2.target_position.x) * direction
 	r2h.target_position.x = abs(r2h.target_position.x) * direction
-
-func flash_white():
-	if flashing:
-		return
-	if healthCount <= 0:
-		return
-	flashing = true
-	var mat := as2d.material as ShaderMaterial
-	mat.set_shader_parameter("flash_strength", 1.0)
-	await get_tree().create_timer(0.08).timeout
-	mat.set_shader_parameter("flash_strength", 0.0)
-	flashing = false

@@ -529,7 +529,7 @@ Lbound = 9
 Rbound = 167
 
 [node name="Enemy" parent="." unique_id=95663871 instance=ExtResource("5_wjjke")]
-position = Vector2(-594, -18)
+position = Vector2(-643, -10)
 Lbound = -737
 Rbound = -487
 

@@ -4,6 +4,8 @@ class_name Enemy
 @onready var state_mac: Node = $StateMac
 @export var hit_state: EnemyState
 @export var attack_state: EnemyState
+@onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var killzone: Area2D = $Killzone
 
 var spawn_position: Vector2
 @export var Lbound := -690
@@ -23,7 +25,14 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_mac.process_frame(delta)
+	if as2d.animation == "idle":
+		killzone.position.x = -2
+	else:
+		killzone.position.x = -1
 
 
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	state_mac.change_state(hit_state)
+	if state_mac.current_state == attack_state:
+		return
+	else:
+		state_mac.change_state(hit_state)

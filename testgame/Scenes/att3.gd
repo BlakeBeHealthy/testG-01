@@ -34,22 +34,19 @@ func enter() -> void:
 		#Delay this is kinda useless, but you can test it if you feel like it.
 	if !attack_delay.is_stopped():
 		attack_delay.stop()
-	if !ComboTime.is_stopped():
-		ComboTime.stop()
-		
-	attack_delay.start(0.5)
+	attack_delay.start()
 	if checkHit:
 		checkHit = false
 		
 	as2d.play("a3")
-	
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "a3":
 		return
 	
-	if as2d.frame == 2:
+	if as2d.frame == 3:
 		a2d.monitorable = true
 		a2d.monitoring = true
+		parent.comboCount = 0
 	if as2d.frame == 5:
 		a2d.monitorable = false
 		a2d.monitoring = false
@@ -57,6 +54,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	KB = true
 	parent.velocity.x = -direction * playerKnockback
+	apply_timeSlow(hit_timeStop, hit_duration)
 	
 func exit() -> void:
 	KB = false

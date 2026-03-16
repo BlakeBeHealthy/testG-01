@@ -23,13 +23,11 @@ func _on_timer_timeout() -> void:
 	patrol = true
 	
 func process_frame(delta: float) -> EnemyState:
-	
-	if parent.check:
-		if healthCount == 0:
-			return death_state
+	if healthCount == 0:
+		return death_state
 			
-		if patrol:
-			return patrol_state
+	if patrol:
+		return patrol_state
 	return null
 
 func process_physics(delta: float) -> EnemyState:

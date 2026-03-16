@@ -500,7 +500,8 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"attack"
+animation = &"a3"
+speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
 visible = false
@@ -533,14 +534,14 @@ wait_time = 2.0
 one_shot = true
 
 [node name="attackDelay" type="Timer" parent="." unique_id=1251612868]
-wait_time = 0.352
+wait_time = 0.4
 one_shot = true
 
 [node name="hitstuntimer" type="Timer" parent="." unique_id=668290657]
 wait_time = 0.001
 
 [node name="Timer" type="Timer" parent="." unique_id=388785215]
-wait_time = 1.0019999999999998
+wait_time = 0.53
 one_shot = true
 
 [node name="tim2" type="Timer" parent="." unique_id=1119039513]
@@ -614,6 +615,10 @@ idle_state = NodePath("../Idle")
 att2_state = NodePath("../Attack2")
 hit_state = NodePath("../Hit")
 jump_state = NodePath("../Jump")
+hit_timeStop = 0.2
+hit_duration = 0.08
+decayRate = 5000
+playerKnockback = 200
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
@@ -626,9 +631,9 @@ hit_state = NodePath("../Hit")
 jump_state = NodePath("../Jump")
 att3_state = NodePath("../Attack3")
 hit_timeStop = 0.2
-hit_duration = 0.1
+hit_duration = 0.08
 decayRate = 5000
-playerKnockback = 300
+playerKnockback = 200
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
@@ -640,7 +645,7 @@ idle_state = NodePath("../Idle")
 hit_state = NodePath("../Hit")
 jump_state = NodePath("../Jump")
 hit_timeStop = 0.2
-hit_duration = 0.1
+hit_duration = 0.08
 decayRate = 5000
 playerKnockback = 300
 move_speed = 200.0
@@ -668,7 +673,7 @@ script = ExtResource("10_tx1dd")
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Attack" method="_on_area_2d_2_area_entered"]
 [connection signal="timeout" from="InvincibleTime" to="StateMachine/Hit" method="_on_invincible_time_timeout"]
 [connection signal="timeout" from="hitstuntimer" to="StateMachine/Hit" method="_on_hitstuntimer_timeout"]
-[connection signal="timeout" from="Timer" to="StateMachine/Attack" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack3" method="_on_area_2d_area_shape_entered"]

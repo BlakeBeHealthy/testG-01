@@ -31,6 +31,7 @@ var jumpBuff := 0
 var attackDir := 0
 
 func enter() -> void:
+	as2d.play("a2")
 	#Ensuring the player can't just spam attacks over and over again, however
 		#I'm debating having the timer just start in the last combo move,
 		#because if they do click in quick succession it will do the combo move so have attack
@@ -46,7 +47,6 @@ func enter() -> void:
 		checkHit = false
 		
 	as2d.play("a2")
-	
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "a2":
 		return
@@ -57,13 +57,14 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.frame == 3:
 		a2d.monitorable = true
 		a2d.monitoring = true
+		parent.comboCount = 2
 	if as2d.frame == 5:
 		a2d.monitorable = false
 		a2d.monitoring = false
-		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	KB = true
 	parent.velocity.x = -attackDir * playerKnockback
+	apply_timeSlow(hit_timeStop, hit_duration)
 	
 func exit() -> void:
 	KB = false

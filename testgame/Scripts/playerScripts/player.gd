@@ -19,6 +19,7 @@ var control_locked = false
 var knockback_velocity := 0.0
 var knockback_decay := 50.0
 var jumpCheck := false
+var attackCheck := false
 var comboCount := 0
 var takeHit: bool
 var dir: int
@@ -43,17 +44,6 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-	
-	if state_machine.current_state == attack_state:
-		ComboTime.start()
-		comboCount = 1
-	elif state_machine.current_state == att2_state:
-		ComboTime.stop()
-		ComboTime.start()
-		comboCount = 2
-	elif state_machine.current_state == att3_state:
-		ComboTime.stop()
-		comboCount = 0
 
 func enter_from_transition(direction: Vector2) -> void:
 	control_locked = true
@@ -79,9 +69,19 @@ func _input(event): #allowing the player to attack
 		if attack_delay.is_stopped() or !ComboTime.is_stopped():
 			if comboCount == 0: 
 				state_machine.change_state(attack_state)
-			if comboCount == 1 and !ComboTime.is_stopped(): 
+				ComboTime.start()
+				attackCheck = true
+			elif comboCount == 1 and !ComboTime.is_stopped(): 
+				ComboTime.stop()
 				state_machine.change_state(att2_state)
-			if comboCount == 2 and !ComboTime.is_stopped(): 
+				ComboTime.start()
+				attackCheck = true
+			elif comboCount == 2 and !ComboTime.is_stopped(): 
 				state_machine.change_state(att3_state)
 				attack_delay.start()
-	
+				ComboTime.stop()
+				attackCheck = true
+				
+				
+func _on_timer_timeout() -> void:
+	comboCount = 0

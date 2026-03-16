@@ -45,7 +45,7 @@ func process_physics(delta: float) -> State:
 	if Input.is_action_pressed("jump"):
 		parent.velocity.y += gravity * delta * 0.9
 	elif parent.velocity.y < 405:
-		parent.velocity.y += gravity * 1.9 * delta
+		parent.velocity.y += gravity * 1.7 * delta
 	else:
 		parent.velocity.y = parent.velocity.y
 	

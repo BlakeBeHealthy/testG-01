@@ -295,6 +295,7 @@ material = SubResource("ShaderMaterial_sprm0")
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_y83ni")
 animation = &"idle"
+speed_scale = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1486897855]
 visibility_layer = 4

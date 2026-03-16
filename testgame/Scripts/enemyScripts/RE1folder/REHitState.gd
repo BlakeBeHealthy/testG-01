@@ -64,7 +64,7 @@ func flash_white():
 	flashing = true
 	var mat := as2d.material as ShaderMaterial
 	mat.set_shader_parameter("flash_strength", 1.0)
-	await get_tree().create_timer(0.08).timeout
+	await get_tree().create_timer(0.04).timeout
 	mat.set_shader_parameter("flash_strength", 0.0)
 	flashing = false
 	
