@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://s76an448bo4n"]
+
+[ext_resource type="Texture2D" uid="uid://cyga6wu3gqfjm" path="res://assets/free-swamp-2d-tileset-pixel-art/4 Animated objects/Rune.png" id="1_wdwtn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b2b5"]
+atlas = ExtResource("1_wdwtn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6l6n"]
+atlas = ExtResource("1_wdwtn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qui0h"]
+atlas = ExtResource("1_wdwtn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrfts"]
+atlas = ExtResource("1_wdwtn")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mc3e"]
+atlas = ExtResource("1_wdwtn")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dfpm8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b2b5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6l6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qui0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrfts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mc3e")
+}],
+"loop": true,
+"name": &"lastheart",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control" unique_id=313025956]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerHearts" type="HBoxContainer" parent="." unique_id=93162682]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHearts" unique_id=1511271183]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="H1" type="AnimatedSprite2D" parent="PlayerHearts/TextureRect" unique_id=376723766]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_dfpm8")
+animation = &"lastheart"
+centered = false
+
+[node name="TextureRect2" type="TextureRect" parent="PlayerHearts" unique_id=761762899]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="H2" type="AnimatedSprite2D" parent="PlayerHearts/TextureRect2" unique_id=214223349]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_dfpm8")
+animation = &"lastheart"
+centered = false
+
+[node name="TextureRect3" type="TextureRect" parent="PlayerHearts" unique_id=1713056124]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="H3" type="AnimatedSprite2D" parent="PlayerHearts/TextureRect3" unique_id=648290745]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_dfpm8")
+animation = &"lastheart"
+centered = false
+
+[node name="TextureRect4" type="TextureRect" parent="PlayerHearts" unique_id=1768033240]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="H4" type="AnimatedSprite2D" parent="PlayerHearts/TextureRect4" unique_id=1451610891]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_dfpm8")
+animation = &"lastheart"
+centered = false
+
+[node name="TextureRect5" type="TextureRect" parent="PlayerHearts" unique_id=1221983343]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="H5" type="AnimatedSprite2D" parent="PlayerHearts/TextureRect5" unique_id=827241907]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_dfpm8")
+animation = &"lastheart"
+centered = false

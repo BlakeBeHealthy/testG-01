@@ -21,10 +21,6 @@ resource_local_to_scene = true
 shader = ExtResource("2_ta2yt")
 shader_parameter/flash_strength = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_scl1n"]
-atlas = ExtResource("3_vt4ob")
-region = Rect2(0, 0, 150, 150)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhkrs"]
 atlas = ExtResource("3_vt4ob")
 region = Rect2(150, 0, 150, 150)
@@ -44,6 +40,10 @@ region = Rect2(600, 0, 150, 150)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjcj6"]
 atlas = ExtResource("3_vt4ob")
 region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scl1n"]
+atlas = ExtResource("3_vt4ob")
+region = Rect2(0, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ycey"]
 atlas = ExtResource("3_vt4ob")
@@ -165,9 +165,6 @@ region = Rect2(1050, 0, 150, 150)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_scl1n")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_dhkrs")
 }, {
 "duration": 1.0,
@@ -181,6 +178,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qjcj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scl1n")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4ycey")
@@ -353,6 +353,7 @@ material = SubResource("ShaderMaterial_m4x7e")
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_vh8xy")
 animation = &"attack"
+frame = 6
 speed_scale = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1016065896]
@@ -388,6 +389,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attackbox" unique_id=977723249]
+position = Vector2(-10, 1)
 shape = SubResource("CapsuleShape2D_ta2yt")
 
 [node name="RayCast2D2" type="RayCast2D" parent="." unique_id=1424578639]

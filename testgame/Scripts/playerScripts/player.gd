@@ -62,25 +62,24 @@ func hit(direction: int, strength: float, stun_time: float, timeScale: float, du
 		dur = duration
 		CAMshake = camShakeStrength
 		shakeDur = shakeDuration
+		ComboTime.stop()
+		comboCount = 0
 		takeHit = true
+		attack_delay.stop()
 	
 func _input(event): #allowing the player to attack
 	if state_machine.current_state != hit_state and event.is_action_pressed("leftC"):
 		if attack_delay.is_stopped() or !ComboTime.is_stopped():
-			if comboCount == 0: 
+			if ComboTime.is_stopped(): 
 				state_machine.change_state(attack_state)
 				ComboTime.start()
 				attackCheck = true
-			elif comboCount == 1 and !ComboTime.is_stopped(): 
+			elif !ComboTime.is_stopped(): 
 				ComboTime.stop()
 				state_machine.change_state(att2_state)
-				ComboTime.start()
+				comboCount == 0
 				attackCheck = true
-			elif comboCount == 2 and !ComboTime.is_stopped(): 
-				state_machine.change_state(att3_state)
 				attack_delay.start()
-				ComboTime.stop()
-				attackCheck = true
 				
 				
 func _on_timer_timeout() -> void:

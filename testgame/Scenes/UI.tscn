@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://v4r78g4kbnyy"]
+
+[ext_resource type="PackedScene" uid="uid://s76an448bo4n" path="res://Scenes/HeartsUI.tscn" id="1_w371h"]
+
+[node name="UI" type="CanvasLayer" unique_id=1184425221]
+
+[node name="Control" parent="." unique_id=313025956 instance=ExtResource("1_w371h")]

@@ -36,10 +36,6 @@ func enter() -> void:
 		#I'm debating having the timer just start in the last combo move,
 		#because if they do click in quick succession it will do the combo move so have attack
 		#delay this is kinda useless, but you can test it if you feel like it.
-	if !attack_delay.is_stopped():
-		attack_delay.stop()
-		
-	attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
 	checkAttack = false
 	

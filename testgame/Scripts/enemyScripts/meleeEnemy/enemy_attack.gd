@@ -20,6 +20,7 @@ extends EnemyState
 var waitT 
 var flashing := false
 var dead = false
+var attDone = false
 
 func enter() -> void:
 	at3.start()
@@ -33,6 +34,7 @@ func exit() -> void:
 		abox.monitorable = false
 	if abox.monitoring != false:
 		abox.monitoring = false
+	attDone = true
 
 func process_input(event: InputEvent) -> EnemyState:
 	return null
@@ -50,12 +52,14 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "attack": 
 		return
 		
-	if as2d.frame == 8:
+	if as2d.frame == 6:
 		abox.monitorable = true
 		abox.monitoring = true
-	elif as2d.frame == 9:
+	elif as2d.frame == 7:
 		abox.monitorable = false
 		abox.monitoring = false
+	elif as2d.frame == 14:
+		attDone = true
 		
 		
 func process_physics(delta: float) -> EnemyState:
@@ -76,9 +80,6 @@ func flash_white():
 
 func _on_attack_tim_timeout() -> void:
 	waitT = false
-
-func _on_aitime_timeout() -> void:
-	as2d.play("idle")
 
 func _on_attackbox_area_entered(area: Area2D) -> void:
 	var player = area.get_parent()

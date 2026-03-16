@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ce3f5rrrexvdt" path="res://Scenes/Renemy.tscn" id="4_dutcy"]
 [ext_resource type="PackedScene" uid="uid://dpe8m6p55sdxx" path="res://Scenes/enemy.tscn" id="5_wjjke"]
 [ext_resource type="Script" uid="uid://c38r10a1855tj" path="res://Scripts/Non-State related/Door.gd" id="6_t0sul"]
+[ext_resource type="PackedScene" uid="uid://v4r78g4kbnyy" path="res://Scenes/UI.tscn" id="9_dutcy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_t0sul")
@@ -552,6 +553,8 @@ entry_door_name = "WestD"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EastD" unique_id=1888492670]
 shape = SubResource("RectangleShape2D_30kwv")
+
+[node name="UI" parent="." unique_id=1184425221 instance=ExtResource("9_dutcy")]
 
 [connection signal="area_shape_entered" from="EastD" to="EastD" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="EastD" to="EastD" method="_on_body_entered"]

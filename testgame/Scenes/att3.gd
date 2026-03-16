@@ -112,14 +112,6 @@ func process_physics(delta: float) -> State:
 			parent.velocity.x = direction * move_speed
 		elif direction == 0:
 			parent.velocity.x *= 0
-	if Input.is_action_pressed("jump") and !parent.jumpCheck:
-		parent.jumpCheck = true
-		parent.velocity.y = -parent.JUMP
-	elif Input.is_action_just_released("jump") and !parent.is_on_floor():
-		parent.velocity.y *= parent.jumpCut
-	else:
-		parent.velocity.y += gravity * delta
-	parent.move_and_slide()
 	return null
 
 

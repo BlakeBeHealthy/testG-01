@@ -219,6 +219,14 @@ region = Rect2(100, 74, 50, 37)
 atlas = ExtResource("2_gymyn")
 region = Rect2(150, 74, 50, 37)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtg1u"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(0, 370, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuaet"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(300, 333, 50, 37)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_olqyp"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(50, 37, 50, 37)
@@ -445,6 +453,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_dtg1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuaet")
+}],
+"loop": false,
+"name": &"parry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_olqyp")
 }, {
 "duration": 1.0,
@@ -465,11 +484,6 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 24.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"turnaround",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ek2"]
@@ -492,7 +506,7 @@ jump_state = NodePath("StateMachine/Jump")
 hit_state = NodePath("StateMachine/Hit")
 attack_state = NodePath("StateMachine/Attack")
 att2_state = NodePath("StateMachine/Attack2")
-att3_state = NodePath("StateMachine/Attack3")
+att3_state = NodePath("StateMachine/Execution")
 JUMP = 400
 jumpCut = 0.3
 
@@ -500,7 +514,7 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"a3"
+animation = &"parry"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
@@ -577,7 +591,7 @@ run_state = NodePath("../Run")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
 att2_state = NodePath("../Attack2")
-att3_state = NodePath("../Attack3")
+att3_state = NodePath("../Execution")
 
 [node name="Run" type="Node" parent="StateMachine" unique_id=1143582341 node_paths=PackedStringArray("fall_state", "jump_state", "idle_state", "attack_state", "hit_state")]
 script = ExtResource("6_3smsa")
@@ -615,7 +629,7 @@ idle_state = NodePath("../Idle")
 att2_state = NodePath("../Attack2")
 hit_state = NodePath("../Hit")
 jump_state = NodePath("../Jump")
-hit_timeStop = 0.2
+hit_timeStop = 0.4
 hit_duration = 0.08
 decayRate = 5000
 playerKnockback = 200
@@ -629,15 +643,15 @@ run_state = NodePath("../Run")
 idle_state = NodePath("../Idle")
 hit_state = NodePath("../Hit")
 jump_state = NodePath("../Jump")
-att3_state = NodePath("../Attack3")
-hit_timeStop = 0.2
+att3_state = NodePath("../Execution")
+hit_timeStop = 0.4
 hit_duration = 0.08
 decayRate = 5000
 playerKnockback = 200
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
-[node name="Attack3" type="Node" parent="StateMachine" unique_id=1766148343 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "hit_state", "jump_state")]
+[node name="Execution" type="Node" parent="StateMachine" unique_id=1766148343 node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "hit_state", "jump_state")]
 script = ExtResource("11_ukyrk")
 fall_state = NodePath("../Fall")
 run_state = NodePath("../Run")
@@ -665,7 +679,7 @@ script = ExtResource("10_tx1dd")
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack2" method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack3" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Execution" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Idle" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Run" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Jump" method="_on_area_2d_2_area_entered"]
@@ -676,4 +690,4 @@ script = ExtResource("10_tx1dd")
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]
-[connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack3" method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_entered" from="Area2D" to="StateMachine/Execution" method="_on_area_2d_area_shape_entered"]
