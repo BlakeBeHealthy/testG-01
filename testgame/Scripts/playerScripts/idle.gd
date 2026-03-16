@@ -58,6 +58,15 @@ func process_input(event: InputEvent) -> State:
 func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return hit_state
+		
+	if parent.attackCheck:
+		parent.attackCheck = false
+		if !parent.ComboTime.is_stopped():
+			parent.ComboTime.stop()
+			return att2_state
+		else:
+			parent.ComboTime.start()
+			return attack_state
 	return null
 	
 func process_physics(delta: float) -> State:

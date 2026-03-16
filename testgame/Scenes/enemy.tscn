@@ -342,11 +342,14 @@ height = 72.49227
 radius = 12.0
 height = 26.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=322745412 node_paths=PackedStringArray("hit_state", "attack_state")]
+[node name="Enemy" type="CharacterBody2D" unique_id=322745412 node_paths=PackedStringArray("hit_state", "attack_state", "death_state", "patrol_state", "chase_state")]
 collision_layer = 4
 script = ExtResource("1_287tu")
 hit_state = NodePath("StateMac/Hit")
 attack_state = NodePath("StateMac/EnemyAttack")
+death_state = NodePath("StateMac/Death")
+patrol_state = NodePath("StateMac/Patrol")
+chase_state = NodePath("StateMac/EnemyChase")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=826498928]
 material = SubResource("ShaderMaterial_m4x7e")

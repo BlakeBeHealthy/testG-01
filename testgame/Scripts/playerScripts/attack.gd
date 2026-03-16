@@ -46,11 +46,9 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.frame == 2:
 		a2d.monitorable = true
 		a2d.monitoring = true
-		parent.comboCount = 1
 	if as2d.frame == 5:
 		a2d.monitorable = false
 		a2d.monitoring = false
-		parent.comboCount = 1
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	KB = true

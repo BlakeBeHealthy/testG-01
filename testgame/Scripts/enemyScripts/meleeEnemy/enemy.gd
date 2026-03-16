@@ -4,6 +4,9 @@ class_name Enemy
 @onready var state_mac: Node = $StateMac
 @export var hit_state: EnemyState
 @export var attack_state: EnemyState
+@export var death_state: EnemyState
+@export var patrol_state: EnemyState
+@export var chase_state: EnemyState
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var killzone: Area2D = $Killzone
 

@@ -10,6 +10,9 @@ extends CharacterBody2D
 @export var attack_state: State
 @export var att2_state: State
 @export var att3_state: State
+@export var fall_state: State
+@export var run_state: State
+@export var idle_state: State
 @export var JUMP := 0
 @export var jumpCut := 0.0
 
@@ -70,14 +73,9 @@ func hit(direction: int, strength: float, stun_time: float, timeScale: float, du
 func _input(event): #allowing the player to attack
 	if state_machine.current_state != hit_state and event.is_action_pressed("leftC"):
 		if attack_delay.is_stopped() or !ComboTime.is_stopped():
-			if ComboTime.is_stopped(): 
-				state_machine.change_state(attack_state)
-				ComboTime.start()
-				attackCheck = true
+			if ComboTime.is_stopped():
+				attackCheck = true 
 			elif !ComboTime.is_stopped(): 
-				ComboTime.stop()
-				state_machine.change_state(att2_state)
-				comboCount == 0
 				attackCheck = true
 				attack_delay.start()
 				
