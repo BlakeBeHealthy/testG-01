@@ -13,14 +13,6 @@ extends State
 	#tedious, makes the actual logic much more simple in terms of interaction, and much easier to read
 	#instead of using one long class.
 	
-@export var fall_state: State
-@export var jump_state: State
-@export var run_state: State
-@export var attack_state: State
-@export var hit_state: State
-@export var att2_state: State
-@export var att3_state: State
-
 var jump := false
 var run := false
 var c = 0 
@@ -46,34 +38,34 @@ func exit() -> void:
 	#Any other code that is useless if you can, IK they are somewhere just havent had time to check
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
-		return jump_state
+		return parent.jump_state
 		
 	if Input.is_action_pressed('runL') and Input.is_action_pressed('runR'):
 		return null
 		
 	if Input.is_action_pressed('runL') or Input.is_action_pressed('runR'):
-		return run_state
+		return parent.run_state
 	return null
 	
 func process_frame(delta: float) -> State:
 	if parent.takeHit:
-		return hit_state
+		return parent.hit_state
 		
 	if parent.attackCheck:
 		parent.attackCheck = false
 		if !parent.ComboTime.is_stopped():
 			parent.ComboTime.stop()
-			return att2_state
+			return parent.att2_state
 		else:
 			parent.ComboTime.start()
-			return attack_state
+			return parent.attack_state
 	return null
 	
 func process_physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
 	
 	if !parent.is_on_floor() and parent.velocity.y > 0:
-		return fall_state
+		return parent.fall_state
 	return null
 	
 func _on_area_2d_2_area_entered(area: Area2D) -> void:

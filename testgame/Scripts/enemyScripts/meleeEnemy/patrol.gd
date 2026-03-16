@@ -42,13 +42,13 @@ func process_input(event: InputEvent) -> EnemyState:
 
 func process_frame(delta: float) -> EnemyState:
 	if healthCount <= 0:
-		return death_state
+		return parent.death_state
 	
 	var collider = r2d2.get_collider() #Test if player is in range and if so, it begins chase
 	if collider and collider is Player:
 		var player_x = collider.global_position.x
 		if player_x >= parent.Lbound and player_x <= parent.Rbound:
-			return chase_state
+			return parent.chase_state
 	return null
 
 func process_physics(delta: float) -> EnemyState:

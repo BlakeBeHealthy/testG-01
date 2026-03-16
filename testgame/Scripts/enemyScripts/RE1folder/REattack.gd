@@ -9,10 +9,6 @@ extends REnemyState
 @onready var bullet = preload("res://Scenes/fireball.tscn")
 @onready var hitCheck: Timer = $"../../hitCheck"
 
-@export var death_state: REnemyState
-@export var patrol_state: REnemyState
-@export var chase_state: REnemyState
-@export var hit_state: REnemyState
 @export var knockback_strength: float
 @export var knockback_stunTime: float
 @export var hit_timeStop: float
@@ -42,12 +38,12 @@ func process_input(event: InputEvent) -> REnemyState:
 
 func process_frame(delta: float) -> REnemyState:
 	if dead:
-		return hit_state
+		return parent.hit_state
 	if !waitT:
-		return chase_state
+		return parent.chase_state
 		
 	if healthCount <= 0:
-		return death_state
+		return parent.death_state
 		
 	return null
 	

@@ -8,12 +8,6 @@ extends State
 @onready var it3: Timer = $"../../InvincibleTime"
 @onready var a2d2: Area2D = $"../../Area2D2"
 
-@export var fall_state: State
-@export var run_state: State
-@export var idle_state: State 
-@export var jump_state: State
-@export var attack_state: State
-@export var death_state: State
 
 var hit_over
 var dead := false
@@ -43,16 +37,16 @@ func process_frame(delta: float) -> State:
 	if hit_over and !dead:
 		parent.takeHit = false
 		if Input.is_action_just_pressed('jump') and parent.is_on_floor():
-			return jump_state
+			return parent.jump_state
 		if Input.is_action_just_pressed('runL') or Input.is_action_just_pressed('runR'):
-			return run_state
+			return parent.run_state
 		if Input.is_action_just_pressed('leftC'):
-			return attack_state
+			return parent.attack_state
 		else:
-			return idle_state
+			return parent.idle_state
 			
 	if dead2:
-		return death_state
+		return parent.death_state
 			
 	return null
 	

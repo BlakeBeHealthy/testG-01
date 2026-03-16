@@ -9,18 +9,6 @@ class_name Fall
 
 #Sometimes exported variables are written in this fashion, if its easier for you
 	#I dont mind if you adjust the code in the states, Im good either way
-@export
-var fall_state: State
-@export
-var run_state: State
-@export 
-var jump_state: State
-@export
-var idle_state: State
-@export
-var attack_state: State
-@export 
-var hit_state: State
 
 var hit:= false
 
@@ -38,7 +26,7 @@ func process_input(event: InputEvent) -> State:
 
 func process_frame(delta: float) -> State:
 	if parent.takeHit:
-		return hit_state
+		return parent.hit_state
 	if parent.attackCheck:
 		parent.attackCheck = false
 		if !parent.ComboTime.is_stopped():
@@ -46,7 +34,7 @@ func process_frame(delta: float) -> State:
 			return parent.att2_state
 		else:
 			parent.ComboTime.start()
-			return attack_state
+			return parent.attack_state
 		
 	return null
 	
@@ -73,11 +61,11 @@ func process_physics(delta: float) -> State:
 	
 	if !cTime.is_stopped() and Input.is_action_pressed("jump"):
 		cTime.stop()
-		return jump_state
+		return parent.jump_state
 	if direction != 0 and parent.is_on_floor():
-		return run_state
+		return parent.run_state
 	elif direction == 0 and parent.is_on_floor():
-		return idle_state
+		return parent.idle_state
 	
 	return null
 	

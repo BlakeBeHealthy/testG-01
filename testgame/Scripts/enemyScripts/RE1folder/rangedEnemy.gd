@@ -24,3 +24,6 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_mach.process_frame(delta)
+	
+func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	state_mach.change_state(hit_state)

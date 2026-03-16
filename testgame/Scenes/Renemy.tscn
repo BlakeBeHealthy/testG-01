@@ -286,9 +286,15 @@ height = 72.49227
 radius = 12.0
 height = 26.0
 
-[node name="REnemy" type="CharacterBody2D" unique_id=810458463]
+[node name="REnemy" type="CharacterBody2D" unique_id=810458463 node_paths=PackedStringArray("idle_state", "hit_state", "attack_state", "death_state", "patrol_state", "chase_state")]
 collision_layer = 4
 script = ExtResource("1_wjsit")
+idle_state = NodePath("StateMach/REIdle")
+hit_state = NodePath("StateMach/HitState")
+attack_state = NodePath("StateMach/REAttack")
+death_state = NodePath("StateMach/REdeath")
+patrol_state = NodePath("StateMach/REPatrol")
+chase_state = NodePath("StateMach/REChase")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1841176524]
 material = SubResource("ShaderMaterial_sprm0")
@@ -376,51 +382,36 @@ one_shot = true
 script = ExtResource("9_4odxm")
 starting_state = NodePath("REPatrol")
 
-[node name="REIdle" type="Node" parent="StateMach" unique_id=1663935804 node_paths=PackedStringArray("death_state", "patrol_state")]
+[node name="REIdle" type="Node" parent="StateMach" unique_id=1663935804]
 script = ExtResource("10_syvc7")
-death_state = NodePath("../REdeath")
-patrol_state = NodePath("../REPatrol")
 move_speed = 75.0
 
 [node name="REdeath" type="Node" parent="StateMach" unique_id=1820377078]
 script = ExtResource("11_82ivn")
 
-[node name="REPatrol" type="Node" parent="StateMach" unique_id=856606428 node_paths=PackedStringArray("chase_state", "death_state", "hit_state")]
+[node name="REPatrol" type="Node" parent="StateMach" unique_id=856606428]
 script = ExtResource("10_xg1bg")
-chase_state = NodePath("../REChase")
-death_state = NodePath("../REdeath")
-hit_state = NodePath("../HitState")
 move_speed = 75.0
 
-[node name="REChase" type="Node" parent="StateMach" unique_id=1303699 node_paths=PackedStringArray("patrol_state", "death_state", "idle_state", "attack_state", "hit_state")]
+[node name="REChase" type="Node" parent="StateMach" unique_id=1303699]
 script = ExtResource("11_xg8fv")
-patrol_state = NodePath("../REPatrol")
-death_state = NodePath("../REdeath")
-idle_state = NodePath("../REIdle")
-attack_state = NodePath("../REAttack")
-hit_state = NodePath("../HitState")
 move_speed = 75.0
 
-[node name="REAttack" type="Node" parent="StateMach" unique_id=662146491 node_paths=PackedStringArray("death_state", "patrol_state", "chase_state", "hit_state")]
+[node name="REAttack" type="Node" parent="StateMach" unique_id=662146491]
 script = ExtResource("14_sprm0")
-death_state = NodePath("../REdeath")
-patrol_state = NodePath("../REPatrol")
-chase_state = NodePath("../REChase")
-hit_state = NodePath("../HitState")
 knockback_strength = 200.0
 knockback_stunTime = 0.4
 hit_duration = 0.5
 move_speed = 75.0
 
-[node name="HitState" type="Node" parent="StateMach" unique_id=1681370267 node_paths=PackedStringArray("chase_state", "death_state")]
+[node name="HitState" type="Node" parent="StateMach" unique_id=1681370267]
 script = ExtResource("13_82ivn")
 knockback_strength = 500
 decayRate = 2000
-chase_state = NodePath("../REChase")
-death_state = NodePath("../REdeath")
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMach/REAttack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_shape_entered" from="AttackHitBox" to="AttackHitBox" method="_on_area_shape_entered"]
+[connection signal="area_shape_entered" from="Killzone" to="." method="_on_killzone_area_shape_entered"]
 [connection signal="area_shape_entered" from="Killzone" to="StateMach/REPatrol" method="_on_killzone_area_shape_entered"]
 [connection signal="area_shape_entered" from="Killzone" to="StateMach/REChase" method="_on_killzone_area_shape_entered"]
 [connection signal="area_shape_entered" from="Killzone" to="StateMach/REAttack" method="_on_killzone_area_shape_entered"]

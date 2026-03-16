@@ -4,8 +4,6 @@ extends EnemyState
 
 @export var knockback_strength := 0
 @export var decayRate := 0
-@export var chase_state: EnemyState
-@export var death_state: EnemyState
 
 var flashing := false
 var direction
@@ -31,13 +29,13 @@ func process_input(event: InputEvent) -> EnemyState:
 
 func process_frame(delta: float) -> EnemyState:
 	if healthCount <= 0:
-		return death_state
+		return parent.death_state
 
 	if !hitCheck.is_stopped():
 		if !as2d.is_playing():
 			as2d.play("idle")
 	else:
-		return chase_state
+		return parent.chase_state
 		
 	return null
 

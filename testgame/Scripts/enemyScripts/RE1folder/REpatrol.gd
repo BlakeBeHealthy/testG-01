@@ -10,9 +10,6 @@ extends REnemyState
 @onready var hitCheck: Timer = $"../../hitCheck"
 
 @export var pauseTime := 0.4
-@export var chase_state: REnemyState
-@export var death_state: REnemyState
-@export var hit_state: REnemyState
 
 var direction: int = -1
 var pausing := false  
@@ -42,17 +39,17 @@ func process_input(event: InputEvent) -> REnemyState:
 
 func process_frame(delta: float) -> REnemyState:
 	if healthCount <= 0:
-		return death_state
+		return parent.death_state
 		
 	if dead:
 		dead = false
-		return hit_state
+		
 	
 	var collider = r2d2.get_collider()
 	if collider and collider is Player:
 		var player_x = collider.global_position.x
 		if player_x >= parent.Lbound and player_x <= parent.Rbound:
-			return chase_state
+			return parent.chase_state
 	return null
 		
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:

@@ -7,11 +7,6 @@ class_name Run
 @onready var attack_delay: Timer = $"../../attackDelay"
 @onready var cTime: Timer = $"../../CoyoteTime"
 
-@export var fall_state: State
-@export var jump_state: State
-@export var idle_state: State
-@export var attack_state: State
-@export var hit_state: State
 
 var hitboxOffX: float
 var hitboxOffX2: float
@@ -28,12 +23,20 @@ func enter() -> void:
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
-		return jump_state
+		return parent.jump_state
 	return null
 
 func process_frame(delta: float) -> State:
 	if parent.takeHit:
-		return hit_state
+		return parent.hit_state
+	if parent.attackCheck:
+		parent.attackCheck = false
+		if !parent.ComboTime.is_stopped():
+			parent.ComboTime.stop()
+			return parent.att2_state
+		else:
+			parent.ComboTime.start()
+			return parent.attack_state
 	return null
 	
 func process_physics(delta: float) -> State:
@@ -57,8 +60,8 @@ func process_physics(delta: float) -> State:
 	parent.move_and_slide()
 	
 	if !parent.is_on_floor() and parent.velocity.y > 0:
-		return fall_state
+		return parent.fall_state
 	if direction == 0:
-		return idle_state
+		return parent.idle_state
 	
 	return null

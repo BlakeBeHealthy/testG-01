@@ -342,9 +342,10 @@ height = 72.49227
 radius = 12.0
 height = 26.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=322745412 node_paths=PackedStringArray("hit_state", "attack_state", "death_state", "patrol_state", "chase_state")]
+[node name="Enemy" type="CharacterBody2D" unique_id=322745412 node_paths=PackedStringArray("idle_state", "hit_state", "attack_state", "death_state", "patrol_state", "chase_state")]
 collision_layer = 4
 script = ExtResource("1_287tu")
+idle_state = NodePath("StateMac/Idle")
 hit_state = NodePath("StateMac/Hit")
 attack_state = NodePath("StateMac/EnemyAttack")
 death_state = NodePath("StateMac/Death")
@@ -434,10 +435,8 @@ one_shot = true
 script = ExtResource("3_287tu")
 starting_state = NodePath("Patrol")
 
-[node name="Idle" type="Node" parent="StateMac" unique_id=1052767052 node_paths=PackedStringArray("death_state", "patrol_state")]
+[node name="Idle" type="Node" parent="StateMac" unique_id=1052767052]
 script = ExtResource("5_0830c")
-death_state = NodePath("../Death")
-patrol_state = NodePath("../Patrol")
 move_speed = -1.0
 
 [node name="Death" type="Node" parent="StateMac" unique_id=1492503656]
@@ -450,31 +449,22 @@ chase_state = NodePath("../EnemyChase")
 death_state = NodePath("../Death")
 move_speed = 50.0
 
-[node name="EnemyChase" type="Node" parent="StateMac" unique_id=80878815 node_paths=PackedStringArray("patrol_state", "death_state", "idle_state", "attack_state")]
+[node name="EnemyChase" type="Node" parent="StateMac" unique_id=80878815]
 script = ExtResource("7_1dp5w")
-patrol_state = NodePath("../Patrol")
-death_state = NodePath("../Death")
-idle_state = NodePath("../Idle")
-attack_state = NodePath("../EnemyAttack")
 move_speed = 100.0
 
-[node name="EnemyAttack" type="Node" parent="StateMac" unique_id=1232387693 node_paths=PackedStringArray("death_state", "patrol_state", "chase_state")]
+[node name="EnemyAttack" type="Node" parent="StateMac" unique_id=1232387693]
 script = ExtResource("8_auwsv")
-death_state = NodePath("../Death")
-patrol_state = NodePath("../Patrol")
-chase_state = NodePath("../EnemyChase")
 knockback_strength = 300.0
 knockback_stunTime = 0.2
 hit_duration = 0.2
 camShakeStrength = 2.0
 shakeDuration = 0.2
 
-[node name="Hit" type="Node" parent="StateMac" unique_id=2128724766 node_paths=PackedStringArray("chase_state", "death_state")]
+[node name="Hit" type="Node" parent="StateMac" unique_id=2128724766]
 script = ExtResource("11_haro7")
-knockback_strength = 400
+knockback_strength = 500
 decayRate = 3000
-chase_state = NodePath("../EnemyChase")
-death_state = NodePath("../Death")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="StateMac/EnemyAttack" method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMac/EnemyAttack" method="_on_animated_sprite_2d_frame_changed"]

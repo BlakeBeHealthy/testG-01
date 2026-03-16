@@ -2,9 +2,6 @@ extends EnemyState
 
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
-@export var death_state: EnemyState
-@export var patrol_state: EnemyState
-
 var dead := false
 var patrol := false 
 
@@ -24,10 +21,10 @@ func _on_timer_timeout() -> void:
 	
 func process_frame(delta: float) -> EnemyState:
 	if healthCount == 0:
-		return death_state
+		return parent.death_state
 			
 	if patrol:
-		return patrol_state
+		return parent.patrol_state
 	return null
 
 func process_physics(delta: float) -> EnemyState:

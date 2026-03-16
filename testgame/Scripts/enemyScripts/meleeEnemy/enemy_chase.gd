@@ -6,11 +6,6 @@ extends EnemyState
 @onready var r2h: RayCast2D = $"../../Hit-Ray"
 @onready var abox: Area2D = $"../../Attackbox"
 
-@export var patrol_state: EnemyState
-@export var death_state: EnemyState
-@export var idle_state: EnemyState
-@export var attack_state: EnemyState
-
 var abox_base_scale_x: float
 var player
 var dead = false
@@ -34,20 +29,20 @@ func process_input(event: InputEvent) -> EnemyState:
 
 func process_frame(delta: float) -> EnemyState:
 	if healthCount <= 0:
-		return death_state
+		return parent.death_state
 	if patrol:
-		return patrol_state
+		return parent.patrol_state
 	return null
 	
 func process_physics(delta: float) -> EnemyState:
 	if not player:
-		return patrol_state
+		return parent.patrol_state
 	
 	var collider = r2h.get_collider() #This is the attack range detector, if the player is close it attacks
 	if collider and collider is Player:
 		var player_x = collider.global_position.x
 		if player_x >= parent.Lbound and player_x <= parent.Rbound:
-			return attack_state
+			return parent.attack_state
 	#Direction is now based on the player
 	direction = sign(player.global_position.x - parent.global_position.x)
 	if !player.invincible:
@@ -80,7 +75,7 @@ func process_physics(delta: float) -> EnemyState:
 			parent.velocity.x = 0
 			
 	if !r2d.is_colliding():
-		return idle_state
+		return parent.idle_state
 	return null
 	
 func update_ray() -> void:

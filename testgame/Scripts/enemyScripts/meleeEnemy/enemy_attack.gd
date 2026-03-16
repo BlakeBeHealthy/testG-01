@@ -7,9 +7,6 @@ extends EnemyState
 @onready var killzone: Area2D = $"../../Killzone"
 @onready var abox: Area2D = $"../../Attackbox"
 
-@export var death_state: EnemyState
-@export var patrol_state: EnemyState
-@export var chase_state: EnemyState
 @export var knockback_strength: float
 @export var knockback_stunTime: float
 @export var hit_timeStop: float
@@ -41,10 +38,10 @@ func process_input(event: InputEvent) -> EnemyState:
 
 func process_frame(delta: float) -> EnemyState:
 	if !waitT:
-		return chase_state
+		return parent.chase_state
 		
 	if healthCount <= 0:
-		return death_state
+		return parent.death_state
 		
 	return null
 	

@@ -7,12 +7,6 @@ extends State
 @onready var ComboTime: Timer = $"../../Timer"
 @onready var attack_delay: Timer = $"../../attackDelay"
 
-
-@export var fall_state: State
-@export var run_state: State
-@export var idle_state: State
-@export var hit_state: State
-@export var jump_state: State
 @export var hit_timeStop: float
 @export var hit_duration: float
 @export var decayRate := 0
@@ -71,21 +65,21 @@ func process_input(event: InputEvent) -> State:
 # Decide state when attack animation ends
 func process_frame(delta: float) -> State:
 	if parent.takeHit:
-		return hit_state
+		return parent.hit_state
 			
 	if not as2d.is_playing() and !KB:
 		if parent.is_on_floor():
 			if Input.is_action_pressed("jump"):
 				jumpBuff = 0
-				return jump_state
+				return parent.jump_state
 			
 			if direction != 0:
-				return run_state
+				return parent.run_state
 				
 			if direction == 0:
-				return idle_state
+				return parent.idle_state
 		else:
-			return fall_state
+			return parent.fall_state
 	return null
 	
 func process_physics(delta: float) -> State:

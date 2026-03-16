@@ -7,12 +7,6 @@ extends REnemyState
 @onready var r2h: RayCast2D = $"../../Hit-Ray"
 @onready var hitCheck: Timer = $"../../hitCheck"
 
-@export var patrol_state: REnemyState
-@export var death_state: REnemyState
-@export var idle_state: REnemyState
-@export var attack_state: REnemyState
-@export var hit_state: REnemyState
-
 var abox_base_scale_x: float
 var player
 var dead = false
@@ -38,11 +32,11 @@ func process_input(event: InputEvent) -> REnemyState:
 
 func process_frame(delta: float) -> REnemyState:
 	if dead:
-		return hit_state
+		return parent.hit_state
 	if healthCount <= 0:
-		return death_state
+		return parent.death_state
 	if patrol:
-		return patrol_state
+		return parent.patrol_state
 	return null
 	
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
@@ -50,13 +44,13 @@ func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 	
 func process_physics(delta: float) -> REnemyState:
 	if not player:
-		return patrol_state
+		return parent.patrol_state
 	
 	var collider = r2h.get_collider()
 	if collider and collider is Player:
 		var player_x = collider.global_position.x
 		if player_x >= parent.Lbound and player_x <= parent.Rbound:
-			return attack_state
+			return parent.attack_state
 		
 	direction = sign(player.global_position.x - parent.global_position.x)
 	if !player.invincible:
@@ -88,7 +82,7 @@ func process_physics(delta: float) -> REnemyState:
 			parent.velocity.x = 0
 			
 	if !r2d.is_colliding():
-		return idle_state
+		return parent.idle_state
 	return null
 	
 func update_ray() -> void:
