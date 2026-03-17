@@ -28,7 +28,7 @@ func enter() -> void:
 	a2d2.monitorable = false
 	it3.start()
 	hit_over = false
-	newHealth = 
+	newHealth = 0
 func exit() -> void:
 	pass
 

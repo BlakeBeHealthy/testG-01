@@ -89,24 +89,6 @@ func _on_attack_tim_timeout() -> void:
 
 func _on_aitime_timeout() -> void:
 	as2d.play("idle")
-
-
-func _on_attackbox_area_entered(area: Area2D) -> void:
-	var player = area.get_parent()
-	if !player.invincible:
-		knockback(player)
-	
-func knockback(player):
-	player.hit(
-		dmg,
-		sign(player.global_position.x - parent.global_position.x),
-		knockback_strength,   # strength
-		knockback_stunTime,
-		hit_timeStop,
-		hit_duration,
-		camShakeStrength,
-		shakeDuration
-		)
 		
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	dead = true
