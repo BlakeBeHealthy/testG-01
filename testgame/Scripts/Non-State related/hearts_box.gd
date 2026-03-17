@@ -4,19 +4,25 @@ extends HBoxContainer
 var new_health
 var hearts = []
 func _ready() -> void:
-	#Global.player_ready.connect(_on_player_ready)
-	for i in range(Global.saveData.maxHealth - 1):
+	Global.playerDone.connect(_on_player_ready)
+	for i in range(Global.saveData.maxHealth):
 		var heart = heartsUI.instantiate()
 		add_child(heart)
 		hearts.append(heart)
-	#print(hearts.size())
 
 func _on_player_ready():
-	pass
-	#Global.playerHit.connect(on_health_changed)
+	Global.player.playerHit.connect(on_health_changed)
 	
 func on_health_changed(new_health):
-	pass
+	print("getting health")
+	if new_health == 0:
+		print(0)
+		hearts[0].die()
+	else:
+		for i in range(hearts.size()):
+			if (new_health - 1) < i and !hearts[i].dead:
+				print(new_health)
+				hearts[i].die()
 	
 func _process(delta: float) -> void:
 	pass

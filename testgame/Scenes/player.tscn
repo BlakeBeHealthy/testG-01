@@ -631,7 +631,6 @@ metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Hit" type="Node" parent="StateMachine" unique_id=743816584]
 script = ExtResource("9_tx1dd")
-move_speed = null
 
 [node name="death" type="Node" parent="StateMachine" unique_id=1690670225]
 script = ExtResource("10_tx1dd")

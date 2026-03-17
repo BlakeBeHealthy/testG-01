@@ -8,7 +8,7 @@ extends State
 @onready var it3: Timer = $"../../InvincibleTime"
 @onready var a2d2: Area2D = $"../../Area2D2"
 
-signal playerHit
+
 var newHealth := 0
 var hit_over
 var dead := false
@@ -19,7 +19,7 @@ var flashing := false
 
 func enter() -> void:
 	if !parent.invincible:
-		deadCount -= 1
+		deadCount -= parent.damage
 	if deadCount <= 0:
 		dead = true
 	flash_white()
@@ -28,7 +28,7 @@ func enter() -> void:
 	a2d2.monitorable = false
 	it3.start()
 	hit_over = false
-	newHealth = 0
+	parent.playerHit.emit(deadCount)
 func exit() -> void:
 	pass
 

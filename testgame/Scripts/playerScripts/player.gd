@@ -18,6 +18,7 @@ extends CharacterBody2D
 @export var jumpCut := 0.0
 
 var health := 5
+signal playerHit
 var invincible := false
 var control_locked = false
 var knockback_velocity := 0.0
