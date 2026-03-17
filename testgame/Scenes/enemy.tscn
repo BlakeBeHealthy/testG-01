@@ -372,6 +372,7 @@ scale = Vector2(1.069234, 0.5241938)
 collision_layer = 32
 collision_mask = 8
 script = ExtResource("8_m4x7e")
+dmg = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox" unique_id=505058218]
 shape = SubResource("CapsuleShape2D_m4x7e")
@@ -457,9 +458,11 @@ move_speed = 100.0
 script = ExtResource("8_auwsv")
 knockback_strength = 300.0
 knockback_stunTime = 0.2
+hit_timeStop = 0.1
 hit_duration = 0.2
 camShakeStrength = 2.0
 shakeDuration = 0.2
+dmg = 1
 
 [node name="Hit" type="Node" parent="StateMac" unique_id=2128724766]
 script = ExtResource("11_haro7")

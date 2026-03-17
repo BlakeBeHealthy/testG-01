@@ -13,6 +13,9 @@ extends REnemyState
 @export var knockback_stunTime: float
 @export var hit_timeStop: float
 @export var hit_duration: float
+@export var dmg: int
+@export var camShakeStrength := 2
+@export var shakeDuration := 0.2
 
 var player
 var waitT 
@@ -55,7 +58,6 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		bulletCheck = true
 		
 func process_physics(delta: float) -> REnemyState:
-	#Eventually im gonna change direction to just where the Renemy is facing
 	if bulletCheck:
 		var bullet_temp = bullet.instantiate()
 		if as2d.flip_h:
@@ -96,13 +98,14 @@ func _on_attackbox_area_entered(area: Area2D) -> void:
 	
 func knockback(player):
 	player.hit(
+		dmg,
 		sign(player.global_position.x - parent.global_position.x),
 		knockback_strength,   # strength
 		knockback_stunTime,
 		hit_timeStop,
 		hit_duration,
-		0,
-		0
+		camShakeStrength,
+		shakeDuration
 		)
 		
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:

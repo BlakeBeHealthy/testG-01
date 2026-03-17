@@ -33,6 +33,7 @@ var TScale: float
 var dur: float
 var CAMshake: float
 var shakeDur: float
+var damage: int
 
 func _ready() -> void:
 	Global.set_player(self)
@@ -57,8 +58,9 @@ func enter_from_transition(direction: Vector2) -> void:
 func _on_landed(): #This will be for cutscenes when the player cant move
 	control_locked = false
 
-func hit(direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration: float):
+func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration: float):
 	if !invincible:
+		damage = dmg
 		dir = direction
 		str = strength
 		stunT = stun_time

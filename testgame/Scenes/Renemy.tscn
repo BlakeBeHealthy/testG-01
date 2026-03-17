@@ -315,6 +315,7 @@ scale = Vector2(1.3959224, 1.0161101)
 collision_layer = 32
 collision_mask = 8
 script = ExtResource("8_4odxm")
+dmg = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox" unique_id=593906526]
 visibility_layer = 65536
@@ -402,6 +403,7 @@ script = ExtResource("14_sprm0")
 knockback_strength = 200.0
 knockback_stunTime = 0.4
 hit_duration = 0.5
+dmg = 1
 move_speed = 75.0
 
 [node name="HitState" type="Node" parent="StateMach" unique_id=1681370267]

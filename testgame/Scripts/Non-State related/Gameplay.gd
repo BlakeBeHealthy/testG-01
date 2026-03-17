@@ -26,7 +26,7 @@ func on_level_loaded(level: Node) -> void:
 	var player = Global.player
 	
 	if is_respawn:
-		player.global_position = Global.checkpoint_pos
+		player.global_position = Global.saveData.checkpoint_pos
 		is_respawn = false
 		
 	else:

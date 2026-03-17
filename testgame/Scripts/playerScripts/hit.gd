@@ -8,7 +8,8 @@ extends State
 @onready var it3: Timer = $"../../InvincibleTime"
 @onready var a2d2: Area2D = $"../../Area2D2"
 
-
+signal playerHit
+var newHealth := 0
 var hit_over
 var dead := false
 var dead2 := false
@@ -27,6 +28,7 @@ func enter() -> void:
 	a2d2.monitorable = false
 	it3.start()
 	hit_over = false
+	newHealth = 
 func exit() -> void:
 	pass
 

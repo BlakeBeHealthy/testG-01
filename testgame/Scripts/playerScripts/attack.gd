@@ -1,4 +1,6 @@
 extends State
+
+
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var ComboTime: Timer = $"../../Timer"
 @onready var a2d: Area2D = $"../../Area2D"
@@ -44,9 +46,8 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		a2d.monitoring = false
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	KB = true
-	parent.velocity.x = -attackDir * playerKnockback
-	apply_timeSlow(hit_timeStop, hit_duration)
+	startKB = true
+	print(parent.velocity.x)
 
 func exit() -> void:
 	checkHit = true
@@ -82,7 +83,12 @@ func process_frame(delta: float) -> State:
 func process_physics(delta: float) -> State:
 	var direction = Input.get_axis("runL","runR" )
 		
-	if KB:
+	if startKB:
+		print(playerKnockback)
+		parent.velocity.x += -attackDir * playerKnockback
+		startKB = false
+		KB = true
+	elif KB:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
 		if parent.velocity.x == 0:
 			KB = false

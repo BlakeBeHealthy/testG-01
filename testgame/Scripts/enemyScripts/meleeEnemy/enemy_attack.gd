@@ -13,7 +13,7 @@ extends EnemyState
 @export var hit_duration: float
 @export var camShakeStrength: float
 @export var shakeDuration: float
-
+@export var dmg: int
 var waitT 
 var flashing := false
 var dead = false
@@ -85,6 +85,7 @@ func _on_attackbox_area_entered(area: Area2D) -> void:
 	
 func knockback(player):
 	player.hit(
+		dmg,
 		sign(player.global_position.x - parent.global_position.x),
 		knockback_strength,   # strength
 		knockback_stunTime,

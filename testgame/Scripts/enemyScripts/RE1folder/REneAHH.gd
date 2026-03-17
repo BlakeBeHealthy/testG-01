@@ -6,6 +6,7 @@ extends Area2D
 @export var duration := 0.2
 @export var camShakeStrength := 2
 @export var shakeDuration := 0.2
+@export var dmg: int
 
 #RANGED ENEMY
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
@@ -14,6 +15,7 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 
 		if !player.invincible:
 			player.hit(
+				dmg,
 				sign(player.global_position.x - global_position.x),
 				knockback_strength,
 				stun_time,

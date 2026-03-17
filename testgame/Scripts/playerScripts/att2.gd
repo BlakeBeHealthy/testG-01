@@ -1,7 +1,5 @@
 extends State
 
-#I plan to add an attack three at some point
-
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var a2d2: Area2D = $"../../Area2D2"
 @onready var a2d: Area2D = $"../../Area2D"
@@ -19,6 +17,7 @@ var checkHit := true
 var timeSlow := false
 var checkAttack := false
 var KB = false
+var startKB := false
 var ComboCheck = false
 var direction
 var jumpBuff := 0
@@ -30,7 +29,6 @@ func enter() -> void:
 		#I'm debating having the timer just start in the last combo move,
 		#because if they do click in quick succession it will do the combo move so have attack
 		#delay this is kinda useless, but you can test it if you feel like it.
-	attackDir = Input.get_axis("runL", "runR")
 	checkAttack = false
 	
 	if checkHit:
@@ -51,10 +49,13 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.frame == 5:
 		a2d.monitorable = false
 		a2d.monitoring = false
+		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	KB = true
-	parent.velocity.x = -attackDir * playerKnockback
-	apply_timeSlow(hit_timeStop, hit_duration)
+	startKB = true
+	if as2d.flip_h:
+		attackDir = -1
+	else:
+		attackDir = 1
 	
 func exit() -> void:
 	KB = false
@@ -99,10 +100,14 @@ func process_physics(delta: float) -> State:
 		elif !as2d.flip_h:
 			a2d.position.x = 21
 			
-	if KB: #This works here but not in the first attack, no idea why.
+	if startKB:
+		parent.velocity.x += -attackDir * playerKnockback
+		startKB = false
+		KB = true
+	elif KB:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
 		if parent.velocity.x == 0:
-			KB = false 
+			KB = false
 	else:
 		if direction != 0:
 			parent.velocity.x = direction * move_speed

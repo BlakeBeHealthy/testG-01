@@ -458,6 +458,8 @@ sources/0 = SubResource("TileSetAtlasSource_0hol4")
 
 [node name="Level01" type="Node2D" unique_id=1637612152]
 
+[node name="UI" parent="." unique_id=1184425221 instance=ExtResource("9_dutcy")]
+
 [node name="BackgroundLayer1" type="Sprite2D" parent="." unique_id=841193706]
 position = Vector2(-708.625, -99.17441)
 scale = Vector2(1.3273435, 1.7536178)
@@ -553,8 +555,6 @@ entry_door_name = "WestD"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EastD" unique_id=1888492670]
 shape = SubResource("RectangleShape2D_30kwv")
-
-[node name="UI" parent="." unique_id=1184425221 instance=ExtResource("9_dutcy")]
 
 [connection signal="area_shape_entered" from="EastD" to="EastD" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="EastD" to="EastD" method="_on_body_entered"]

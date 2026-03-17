@@ -578,6 +578,7 @@ monitoring = false
 monitorable = false
 
 [node name="AttackZone" type="CollisionShape2D" parent="Area2D" unique_id=1948751203]
+position = Vector2(-2.68296, 0)
 scale = Vector2(0.727955, 0.977069)
 shape = SubResource("CapsuleShape2D_ukyrk")
 
@@ -605,8 +606,8 @@ move_speed = 200.0
 script = ExtResource("9_f1ek2")
 hit_timeStop = 0.4
 hit_duration = 0.08
-decayRate = 5000
-playerKnockback = 200
+decayRate = 9000
+playerKnockback = 300
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
@@ -614,8 +615,8 @@ metadata/_custom_type_script = "uid://dtjskf7x53djr"
 script = ExtResource("10_pu2lt")
 hit_timeStop = 0.4
 hit_duration = 0.08
-decayRate = 5000
-playerKnockback = 200
+decayRate = 9000
+playerKnockback = 300
 move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
@@ -630,6 +631,7 @@ metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Hit" type="Node" parent="StateMachine" unique_id=743816584]
 script = ExtResource("9_tx1dd")
+move_speed = null
 
 [node name="death" type="Node" parent="StateMachine" unique_id=1690670225]
 script = ExtResource("10_tx1dd")

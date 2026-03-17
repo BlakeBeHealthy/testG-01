@@ -2,12 +2,24 @@ extends Node
 
 var player
 var camera
+signal playerDone
+var saveData = {
+	"checkpoint_pos": Vector2(-1134, -1),
+	"checkpoint_scene": "res://Scenes/Level01.tscn",
+	"gold": 0,
+	"maxHealth": 3,
+	"maxMana": 3,
+	"bosses": [],
+	"abilities": [],
+	"collectibles": [],
+	"trinkets_collected": [],
+	"trinkets_equipped": []
+}
 #Accessing the camera and the player, some scripts are global however, check project settings
-var checkpoint_pos: Vector2 = Vector2(-1134, -1)
-var checkpoint_scene = "res://Scenes/Level01.tscn"
 # Called when the node enters the scene tree for the first time.
 func set_player(node):
 	player = node
+	playerDone.emit()
 
 func get_player():
 	return player
