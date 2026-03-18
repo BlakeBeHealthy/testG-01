@@ -12,8 +12,8 @@
 [ext_resource type="Script" uid="uid://hcjiuh0ylm37" path="res://Scripts/playerScripts/hit.gd" id="9_tx1dd"]
 [ext_resource type="Script" uid="uid://b6t0edljvaxnc" path="res://Scripts/playerScripts/att2.gd" id="10_pu2lt"]
 [ext_resource type="Script" uid="uid://fx6rtupf7151" path="res://Scripts/playerScripts/death.gd" id="10_tx1dd"]
-[ext_resource type="Script" uid="uid://bjtdl47fb400h" path="res://Scenes/att3.gd" id="11_ukyrk"]
-[ext_resource type="Script" uid="uid://dxfddd07onvhy" path="res://Scenes/cutscene_state.gd" id="14_7dp3o"]
+[ext_resource type="Script" uid="uid://bjtdl47fb400h" path="res://Scripts/playerScripts/att3.gd" id="11_ukyrk"]
+[ext_resource type="Script" uid="uid://dxfddd07onvhy" path="res://Scripts/playerScripts/cutscene_state.gd" id="14_7dp3o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukyrk"]
 resource_local_to_scene = true
@@ -631,7 +631,7 @@ shape = SubResource("RectangleShape2D_ukyrk")
 [node name="InteractArea" type="Area2D" parent="." unique_id=764626776]
 position = Vector2(0, 4)
 collision_layer = 64
-collision_mask = 256
+collision_mask = 768
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=866466377]
 shape = SubResource("RectangleShape2D_gymyn")

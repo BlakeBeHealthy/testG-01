@@ -4,12 +4,15 @@ extends State
 
 var done := false
 var checkpoint := false
+var speaking := false
 var started := false
 
 func enter() -> void:
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
-
+	if parent.current_interactable is BetaNPC:
+		speaking = true
+		
 func exit() -> void:
 	pass
 
@@ -21,6 +24,10 @@ func process_frame(delta: float) -> State:
 		started = true
 		parent.saving.emit(0)
 		as2d.play("save1")
+		
+	if speaking:
+		as2d.play("idle")
+		parent.speaking.emit()
 		
 	if done:
 		done = false

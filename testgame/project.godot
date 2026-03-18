@@ -78,6 +78,7 @@ interact={
 2d_physics/layer_7="PlayerInteract"
 2d_physics/layer_8="PlayerAttack"
 2d_physics/layer_9="Checkpoint"
+2d_physics/layer_10="NPC"
 
 [rendering]
 

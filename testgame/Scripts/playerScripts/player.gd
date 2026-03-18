@@ -23,6 +23,9 @@ var health := 5
 signal playerHit
 @warning_ignore("unused_signal")
 signal saving
+@warning_ignore("unused_signal")
+signal speaking
+
 var invincible := false
 var control_locked = false
 var knockback_velocity := 0.0

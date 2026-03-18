@@ -74,10 +74,10 @@ script = ExtResource("1_2cwi7")
 current_scene_path = "\"res://Scenes/Level02.tscn\""
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1576975903]
-position = Vector2(0.9999995, -0.9999995)
+position = Vector2(1, -1)
 scale = Vector2(0.685, 0.685)
 sprite_frames = SubResource("SpriteFrames_e75gc")
-animation = &"active"
+animation = &"activate"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=947257457]

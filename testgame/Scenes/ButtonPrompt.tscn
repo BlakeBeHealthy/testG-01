@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5drk3fx5glg2"]
 
 [ext_resource type="FontFile" uid="uid://2eqs4xecrrh1" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidMono.otf" id="1_nc0ym"]
-[ext_resource type="Script" uid="uid://bq1n6evd32k27" path="res://InteractPrompt.gd" id="2_8ukgc"]
+[ext_resource type="Script" uid="uid://bq1n6evd32k27" path="res://Scripts/InteractableScripts/InteractPrompt.gd" id="2_8ukgc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ytir"]
 bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.99607843)
@@ -16,14 +16,16 @@ outline_size = 3
 outline_color = Color(0.55829424, 0.4453848, 0.35116196, 1)
 
 [node name="ButtonPrompt" type="Node2D" unique_id=687141090]
+visible = false
 script = ExtResource("2_8ukgc")
+interact = "interact"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1404496743]
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 35.0
-offset_bottom = 35.0
-scale = Vector2(0.25, 0.25)
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 34.0
+offset_bottom = 34.0
+scale = Vector2(0.3, 0.3)
 theme_override_styles/panel = SubResource("StyleBoxFlat_1ytir")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=412213254]
