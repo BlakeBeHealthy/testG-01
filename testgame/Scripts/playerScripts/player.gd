@@ -14,11 +14,15 @@ extends CharacterBody2D
 @export var run_state: State
 @export var idle_state: State
 @export var death_state: State
+@export var cut_state: State
 @export var JUMP := 0
 @export var jumpCut := 0.0
 
 var health := 5
+@warning_ignore("unused_signal")
 signal playerHit
+@warning_ignore("unused_signal")
+signal saving
 var invincible := false
 var control_locked = false
 var knockback_velocity := 0.0
@@ -26,9 +30,10 @@ var knockback_decay := 50.0
 var jumpCheck := false
 var attackCheck := false
 var comboCount := 0
+var current_interactable: Node = null
 var takeHit: bool
 var dir: int
-var str: float
+var stre: float
 var stunT: float
 var TScale: float
 var dur: float
@@ -50,6 +55,8 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
+	if Input.is_action_just_pressed("interact"):
+		state_machine.change_state(cut_state)
 
 func enter_from_transition(direction: Vector2) -> void:
 	control_locked = true
@@ -63,7 +70,7 @@ func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale:
 	if !invincible:
 		damage = dmg
 		dir = direction
-		str = strength
+		stre = strength
 		stunT = stun_time
 		TScale = timeScale
 		dur = duration

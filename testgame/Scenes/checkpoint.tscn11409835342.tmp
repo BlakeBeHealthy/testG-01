@@ -65,14 +65,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1pff"]
-size = Vector2(43, 71.25)
+size = Vector2(29, 20.5)
 
 [node name="Checkpoint" type="Area2D" unique_id=464011995]
 collision_layer = 256
 collision_mask = 64
 script = ExtResource("1_2cwi7")
-current_scene_path = "\"res://Scenes/Level02.tscn\""
-button_prompt = "\"jump\""
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1576975903]
 position = Vector2(0.9999995, -0.9999995)
@@ -82,14 +80,12 @@ animation = &"active"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=947257457]
-position = Vector2(0.5, -25.375)
 shape = SubResource("RectangleShape2D_i1pff")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1202580900]
 position = Vector2(0, 1)
 
 [node name="ButtonPrompt" parent="." unique_id=687141090 instance=ExtResource("3_e75gc")]
-position = Vector2(0, -16)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

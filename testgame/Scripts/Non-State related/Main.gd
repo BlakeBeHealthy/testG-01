@@ -2,4 +2,4 @@ extends Node2D
 #Eventually I plan to make this have an array of all the levelpaths and once saving is introduced,
 	#the player will load the save and spawn whereever is saved last. 
 func _ready():
-	SceneM.load_level("res://Scenes/Level01.tscn")
+	SceneM.load_level("res://Scenes/Level02.tscn")
