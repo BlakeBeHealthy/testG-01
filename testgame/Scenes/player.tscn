@@ -256,7 +256,15 @@ region = Rect2(300, 37, 50, 37)
 atlas = ExtResource("2_gymyn")
 region = Rect2(300, 333, 50, 37)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_feq18"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(300, 333, 50, 37)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_f5f5t"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(0, 370, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcnj3"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(0, 370, 50, 37)
 
@@ -527,7 +535,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_bqbau")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_feq18")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_f5f5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcnj3")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qvbpb")
@@ -605,7 +619,7 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"save2"
+animation = &"save1"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]

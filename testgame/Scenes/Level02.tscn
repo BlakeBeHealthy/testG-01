@@ -440,7 +440,7 @@ tile_set = SubResource("TileSet_q6r6c")
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("7_4twtk")]
 position = Vector2(-607, 6)
 current_scene_path = "res://Scenes/Level02.tscn"
-button_prompt = "\"interact\""
+button_prompt = "interact"
 
 [node name="REnemy" parent="." unique_id=1053270783 instance=ExtResource("4_3kwtx")]
 position = Vector2(45, -8)

@@ -15,20 +15,14 @@ func _ready() -> void:
 	
 func _on_area_entered(area: Area2D) -> void:
 	#Once the player enters
-	print("area")
-	print(areaCheck)
 	if !areaCheck:
 		areaCheck = true
-		print("ENTER")
-		print(button_prompt)
 		Global.player.current_interactable = self
-		print(InputMap.action_get_events("jump"))
 		prompt.showPrompt(button_prompt)
 		if !Global.player.saving.is_connected(saving):
 			Global.player.saving.connect(saving)
 	
 func _on_area_exited(area: Area2D) -> void:
-	print("hidden")
 	Global.player.current_interactable = null
 	areaCheck = false
 	prompt.hidePrompt()
