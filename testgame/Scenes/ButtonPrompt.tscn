@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://5drk3fx5glg2"]
+
+[ext_resource type="FontFile" uid="uid://2eqs4xecrrh1" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidMono.otf" id="1_nc0ym"]
+[ext_resource type="Script" uid="uid://bq1n6evd32k27" path="res://Scripts/InteractableScripts/InteractPrompt.gd" id="2_8ukgc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ytir"]
+bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.99607843)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_f7cmw"]
+font = ExtResource("1_nc0ym")
+outline_size = 3
+outline_color = Color(0.55829424, 0.4453848, 0.35116196, 1)
+
+[node name="ButtonPrompt" type="Node2D" unique_id=687141090]
+visible = false
+script = ExtResource("2_8ukgc")
+interact = "interact"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1404496743]
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 34.0
+offset_bottom = 34.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ytir")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=412213254]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 5
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer" unique_id=843761816]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_f7cmw")
+horizontal_alignment = 1
+vertical_alignment = 1

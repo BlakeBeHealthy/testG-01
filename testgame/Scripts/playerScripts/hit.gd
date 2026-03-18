@@ -66,8 +66,8 @@ func apply_knockback():
 		apply_timeSlow(parent.TScale, parent.dur)
 		Global.get_camera().start_shake(parent.CAMshake, parent.shakeDur)
 		if !dead:
-			parent.velocity.x = parent.dir * parent.str
-			parent.velocity.y = -parent.str * 0.5
+			parent.velocity.x = parent.dir * parent.stre
+			parent.velocity.y = -parent.stre * 0.5
 			parent.invincible = true
 			hitstuntimer.start(parent.stunT)
 		as2d.play("hit")

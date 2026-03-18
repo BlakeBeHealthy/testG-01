@@ -50,6 +50,11 @@ animations = [{
 "loop": false,
 "name": &"die",
 "speed": 24.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [node name="HeartsUI" type="Control" unique_id=4476221]
@@ -86,7 +91,7 @@ render_target_update_mode = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/SubViewportContainer/SubViewport" unique_id=50131103]
 sprite_frames = SubResource("SpriteFrames_03jbe")
-animation = &"die"
+animation = &"new_animation"
 autoplay = "alive"
 offset = Vector2(8, 8)
 

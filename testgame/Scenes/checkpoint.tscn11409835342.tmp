@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dcrb427bbd01p"]
+
+[ext_resource type="Script" uid="uid://chh1psj2unvy1" path="res://Scripts/Non-State related/checkpoint.gd" id="1_2cwi7"]
+[ext_resource type="Texture2D" uid="uid://cog5h8ssx4we7" path="res://assets/free-swamp-2d-tileset-pixel-art/4 Animated objects/Chest.png" id="1_lbcco"]
+[ext_resource type="PackedScene" uid="uid://5drk3fx5glg2" path="res://Scenes/ButtonPrompt.tscn" id="3_e75gc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e75gc"]
+atlas = ExtResource("1_lbcco")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1pff"]
+atlas = ExtResource("1_lbcco")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opoc8"]
+atlas = ExtResource("1_lbcco")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0c30"]
+atlas = ExtResource("1_lbcco")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8ggu"]
+atlas = ExtResource("1_lbcco")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cwi7"]
+atlas = ExtResource("1_lbcco")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e75gc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e75gc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1pff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opoc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0c30")
+}],
+"loop": false,
+"name": &"activate",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8ggu")
+}],
+"loop": false,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cwi7")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1pff"]
+size = Vector2(29, 20.5)
+
+[node name="Checkpoint" type="Area2D" unique_id=464011995]
+collision_layer = 256
+collision_mask = 64
+script = ExtResource("1_2cwi7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1576975903]
+position = Vector2(0.9999995, -0.9999995)
+scale = Vector2(0.685, 0.685)
+sprite_frames = SubResource("SpriteFrames_e75gc")
+animation = &"active"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=947257457]
+shape = SubResource("RectangleShape2D_i1pff")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1202580900]
+position = Vector2(0, 1)
+
+[node name="ButtonPrompt" parent="." unique_id=687141090 instance=ExtResource("3_e75gc")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
