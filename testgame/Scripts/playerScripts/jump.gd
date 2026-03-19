@@ -24,6 +24,11 @@ func process_input(event: InputEvent) -> State:
 	return null
 	
 func process_frame(delta: float) -> State:
+	if parent.control_locked:
+		await parent.is_on_floor()
+		parent.control_locked = false
+		return parent.cut_state
+		
 	if parent.takeHit:
 		return parent.hit_state
 	if parent.attackCheck:
