@@ -15,10 +15,10 @@ class_name DialogueManagerExampleBalloon extends CanvasLayer
 @export var will_block_other_input: bool = true
 
 ## The action to use for advancing the dialogue
-@export var next_action: StringName = &"ui_accept"
+@export var next_action: StringName = "dialogue"
 
 ## The action to use to skip typing the dialogue
-@export var skip_action: StringName = &"ui_cancel"
+@export var skip_action: StringName = "dialogue"
 
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
@@ -29,6 +29,7 @@ var temporary_game_states: Array = []
 ## See if we are waiting for the player
 var is_waiting_for_input: bool = false
 
+signal dialogueOver
 ## See if we are running a long mutation and should hide the balloon
 var will_hide_balloon: bool = false
 
@@ -46,6 +47,7 @@ var dialogue_line: DialogueLine:
 		else:
 			# The dialogue has finished so close the balloon
 			if owner == null:
+				dialogueOver.emit()
 				queue_free()
 			else:
 				hide()
@@ -203,10 +205,8 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 
 	# When there are no response options the balloon itself is the clickable thing
 	get_viewport().set_input_as_handled()
-
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		next(dialogue_line.next_id)
-	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
+	
+	if event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
 
 

@@ -2,13 +2,17 @@ class_name BetaNPC extends Node2D
 
 @onready var prompt: Node2D = $ButtonPrompt
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var c2d: CollisionShape2D = $CollisionShape2D
 
 @export var button_prompt: String
 @export var animationName: String
+@export var dialogueScene: String
+@export var startingPoint: String
 
 var areaCheck := false
 var speak := false
 signal betaNPCSpeaking
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	as2d.play(animationName)
@@ -18,22 +22,35 @@ func _on_area_entered(area: Area2D) -> void:
 		areaCheck = true
 		Global.player.current_interactable = self
 		prompt.showPrompt(button_prompt)
-		if !Global.player.speaking.is_connected(speaking):
-			Global.player.speaking.connect(speaking)
+	if !Global.player.speaking.is_connected(speaking):
+		Global.player.speaking.connect(speaking)
 			
 func _on_area_exited(area: Area2D) -> void:
 	Global.player.current_interactable = null
 	areaCheck = false
 	prompt.hidePrompt()
 	
-func speaking():
-	prompt.hidePrompt()
-	if !speak:
-		speak = true
+func speaking(endCheck: int):
+	if endCheck != 0:
+		prompt.hidePrompt()
+		if !speak:
+			speak = true
+		else:
+			return
+			
+		if Global.player.current_interactable != self:
+			return
+			
+		if startingPoint == "":
+			startingPoint = "start"
+		
+		print("SPEAK")
+		
+		if dialogueScene == "":
+			push_error("Dialogue Scene tree is empty!")
+			
+		DialogueManager.show_example_dialogue_balloon(load(dialogueScene), startingPoint)
 	else:
-		return
-		
-	if !Global.player.current_interactable != self:
-		return
-		
-	print("kys")
+		speak = false
+		prompt.showPrompt(button_prompt)
+	

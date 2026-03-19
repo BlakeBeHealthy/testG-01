@@ -6,8 +6,13 @@ var done := false
 var checkpoint := false
 var speaking := false
 var started := false
+var resource := ""
+var title := ""
+var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
+	if !dialogue_manager.dialogue_ended.is_connected(_on_dialogue_ended):
+		dialogue_manager.dialogue_ended.connect(_on_dialogue_ended)
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
 	if parent.current_interactable is BetaNPC:
@@ -18,7 +23,12 @@ func exit() -> void:
 
 func process_input(event: InputEvent) -> State:
 	return null
-
+	
+func _on_dialogue_ended(_resource: DialogueResource):
+	speaking = false
+	done = true
+	parent.speaking.emit(0)
+	
 func process_frame(delta: float) -> State:
 	if checkpoint and !started:
 		started = true
@@ -26,8 +36,9 @@ func process_frame(delta: float) -> State:
 		as2d.play("save1")
 		
 	if speaking:
+		speaking = false
 		as2d.play("idle")
-		parent.speaking.emit()
+		parent.speaking.emit(1)
 		
 	if done:
 		done = false
@@ -45,3 +56,4 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		
 func process_physics(delta: float) -> State:
 	return null
+	

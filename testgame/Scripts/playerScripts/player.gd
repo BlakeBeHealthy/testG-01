@@ -32,6 +32,7 @@ var knockback_velocity := 0.0
 var knockback_decay := 50.0
 var jumpCheck := false
 var attackCheck := false
+var interactCheck := false
 var comboCount := 0
 var current_interactable: Node = null
 var takeHit: bool
@@ -58,8 +59,6 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-	if Input.is_action_just_pressed("interact"):
-		state_machine.change_state(cut_state)
 
 func enter_from_transition(direction: Vector2) -> void:
 	control_locked = true
@@ -93,6 +92,16 @@ func _input(event): #allowing the player to attack
 				attackCheck = true
 				attack_delay.start()
 				
+	if Input.is_action_just_pressed("interact") and interactCheck:
+		control_locked = true
 				
 func _on_timer_timeout() -> void:
 	comboCount = 0
+
+
+func _on_interact_area_area_entered(area: Area2D) -> void:
+	interactCheck = true
+
+
+func _on_interact_area_area_exited(area: Area2D) -> void:
+	interactCheck = false
