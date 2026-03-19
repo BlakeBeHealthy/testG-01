@@ -13,6 +13,7 @@ var dialogue_manager = Engine.get_singleton("DialogueManager")
 func enter() -> void:
 	if !dialogue_manager.dialogue_ended.is_connected(_on_dialogue_ended):
 		dialogue_manager.dialogue_ended.connect(_on_dialogue_ended)
+		
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
 	if parent.current_interactable is BetaNPC:

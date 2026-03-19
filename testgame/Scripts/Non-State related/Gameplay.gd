@@ -33,10 +33,10 @@ func on_level_loaded(level: Node) -> void:
 		var spawn: Node2D = level.get_node_or_null(pending_entry_door)
 		
 		if spawn:
-			player.global_position = spawn.global_position - pending_entry_direction * 20
+			player.global_position = spawn.global_position - pending_entry_direction * 200
 			if checkJump== 1:
 				player.enter_from_transition(pending_entry_direction)
-
+	
 	FadeS.fade_in()
 	
 func _dir_from_enum(dir: int) -> Vector2:
