@@ -32,6 +32,7 @@ func _on_area_exited(area: Area2D) -> void:
 	
 func speaking(endCheck: int):
 	if endCheck != 0:
+		c2d.disabled = true
 		prompt.hidePrompt()
 		if !speak:
 			speak = true
@@ -53,4 +54,5 @@ func speaking(endCheck: int):
 	else:
 		speak = false
 		prompt.showPrompt(button_prompt)
+		c2d.disabled = false
 	

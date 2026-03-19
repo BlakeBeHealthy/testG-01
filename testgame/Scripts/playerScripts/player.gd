@@ -25,9 +25,12 @@ signal playerHit
 signal saving
 @warning_ignore("unused_signal")
 signal speaking
+@warning_ignore("unused_signal")
+signal landed
 
 var invincible := false
 var control_locked = false
+var upwardDoor = false
 var knockback_velocity := 0.0
 var knockback_decay := 50.0
 var jumpCheck := false
@@ -61,12 +64,12 @@ func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
 func enter_from_transition(direction: Vector2) -> void:
-	control_locked = true
+	upwardDoor = true
 	velocity = direction * 120
 	state_machine.change_state(jump_state)
 
 func _on_landed(): #This will be for cutscenes when the player cant move
-	control_locked = false
+	upwardDoor = false
 
 func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration: float):
 	if !invincible:
@@ -92,16 +95,8 @@ func _input(event): #allowing the player to attack
 				attackCheck = true
 				attack_delay.start()
 				
-	if Input.is_action_just_pressed("interact") and interactCheck:
+	if Input.is_action_just_pressed("interact") and current_interactable != null and is_on_floor():
 		control_locked = true
 				
 func _on_timer_timeout() -> void:
 	comboCount = 0
-
-
-func _on_interact_area_area_entered(area: Area2D) -> void:
-	interactCheck = true
-
-
-func _on_interact_area_area_exited(area: Area2D) -> void:
-	interactCheck = false
