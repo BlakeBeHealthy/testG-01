@@ -20,12 +20,13 @@ func _ready() -> void:
 	prompt.hidePrompt()
 	as2d.play(animationName)
 	as2d.scale = scaleNumber
-	prompt.scale = scaleNumber/npc.scale
 
 func _on_area_entered(area: Area2D) -> void:
 	if !areaCheck:
 		areaCheck = true
 		Global.player.current_interactable = self
+		prompt.scale = Vector2(1.0 / self.scale.x, 1.0 / self.scale.y)
+		print(prompt.scale)
 		prompt.showPrompt(button_prompt)
 	if !Global.player.speaking.is_connected(speaking):
 		Global.player.speaking.connect(speaking)

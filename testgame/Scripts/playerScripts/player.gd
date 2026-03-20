@@ -76,6 +76,7 @@ func _process(delta: float) -> void:
 		interactC2D.disabled = true
 	else:
 		interactC2D.disabled = false
+		landed.emit()
 		
 func flip_direction(dire: int):
 	direction = dire

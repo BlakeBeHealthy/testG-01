@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="FontFile" uid="uid://2eqs4xecrrh1" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidMono.otf" id="2_kmygl"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="FontFile" uid="uid://csg7gawytepkx" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidSans-Bold.otf" id="3_r5ei8"]
+[ext_resource type="FontFile" uid="uid://d0r7oon537wd0" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidSans.otf" id="4_v42gu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -143,6 +146,11 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("2_kmygl")
+theme_override_fonts/bold_font = ExtResource("3_r5ei8")
+theme_override_fonts/bold_italics_font = ExtResource("4_v42gu")
+theme_override_fonts/italics_font = ExtResource("4_v42gu")
+theme_override_fonts/mono_font = ExtResource("2_kmygl")
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -152,8 +160,13 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_kmygl")
+theme_override_fonts/bold_font = ExtResource("3_r5ei8")
+theme_override_fonts/bold_italics_font = ExtResource("4_v42gu")
+theme_override_fonts/italics_font = ExtResource("4_v42gu")
+theme_override_fonts/mono_font = ExtResource("2_kmygl")
 text = "Dialogue..."
-seconds_per_step = 0.07
+seconds_per_step = 0.03
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=961557796]
 custom_minimum_size = Vector2(20, 10)
@@ -168,32 +181,32 @@ polygon = PackedVector2Array(0, 0, 10, 10, 20, 0)
 libraries/ = SubResource("AnimationLibrary_1337t")
 autoplay = &"progress"
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" unique_id=1750804700 node_paths=PackedStringArray("response_template")]
+[node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer" unique_id=1391843704]
+layout_mode = 2
+theme_override_constants/margin_left = 1063
+theme_override_constants/margin_top = -37
+theme_override_constants/margin_right = -17
+theme_override_constants/margin_bottom = 123
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/MarginContainer/MarginContainer" unique_id=1750804700 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.717
-anchor_top = 0.71500003
-anchor_right = 0.717
-anchor_bottom = 0.71500003
-offset_left = -290.76
-offset_top = -34.80005
-offset_right = 290.24
-offset_bottom = 35.20044
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 6
 alignment = 1
 script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
+metadata/_edit_use_anchors_ = true
 
-[node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu" unique_id=719889965]
+[node name="ResponseExample" type="Button" parent="Balloon/MarginContainer/MarginContainer/ResponsesMenu" unique_id=719889965]
 layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_r5ei8")
 text = "Response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=489354570]
 unique_name_in_owner = true
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
-[connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
+[connection signal="response_selected" from="Balloon/MarginContainer/MarginContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

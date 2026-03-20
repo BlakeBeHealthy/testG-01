@@ -37,6 +37,7 @@ func on_level_loaded(level: Node) -> void:
 				player.enter_from_transition(pending_entry_direction)
 				
 	Global.player.flip_direction(direction)
+	await Global.player.landed
 	FadeS.fade_in()
 	
 func _dir_from_enum(dir: int) -> Vector2:

@@ -467,10 +467,10 @@ position = Vector2(-180, 6)
 current_scene_path = "res://Scenes/Level02.tscn"
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("2_4twtk")]
-position = Vector2(-709, -14)
+position = Vector2(-75, -3)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=266358876]
-zoom = Vector2(3.22, 3.22)
+zoom = Vector2(4.74, 4.74)
 limit_left = -735
 limit_top = -9999999
 limit_right = 569
