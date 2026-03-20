@@ -8,7 +8,6 @@ var pending_entry_direction := Vector2.ZERO
 var checkJump
 var started = false
 var is_respawn = false
-signal doorSide
 var direction = 1
 
 func enter_door(scene_path: String, door_name: String, dir_string: int) -> void:
@@ -33,7 +32,7 @@ func on_level_loaded(level: Node) -> void:
 	else:
 		var spawn: Node2D = level.get_node_or_null(pending_entry_door)
 		if spawn:
-			player.global_position = spawn.global_position - pending_entry_direction * 200
+			player.global_position = spawn.global_position - pending_entry_direction * 100
 			if checkJump== 1:
 				player.enter_from_transition(pending_entry_direction)
 				
