@@ -1,12 +1,36 @@
 ~ start
 
-Gus: Hey traveler!
-Balls: Show me the wares please
-Gus: I need some some papers.
-Balls: ...
-Gus: ...
-Gus: So we gonna smooch or nah
-Balls: ...
-Balls: I'm calling the police.
-Balls: *whips it out*
-=> END
+Gus: Hey traveler! That chest over there sure is weird.
+- It should help in the future
+    Gus: Wait you know what it does?! What does it do?!.
+	=> option1
+- Yeah but I've experienced weirder things than that
+   	Gus: Oh really? Like what?.
+	=> option2
+	
+~ option1
+- If I am on my lest leg, it sends me back too where it is located
+    Gus: Wowww that sounds useful, maybe if I get my hands on one I can get a subscription service.
+- it gives me a 50% discount on all your wares!
+   	Gus: Nice try, but I'm not falling for that one again.
+=> store1
+
+~ option2
+- A wizard of birds who had his eyes trapped in his beard
+    Gus: Sounds crazy, I've heard of such things like that, like a king who controls ice
+- a pyramid who could warp reality
+   	Gus: Did he know the guy that wrote all those books?
+	
+~ store1
+P: I would like to see your wares now...
+~ store
+Gus: Heres what I have:
+- Map
+	Gus: Not enough money!
+	=> store
+- Health Potion
+	Gus: Not enough money! But I'll give ya one for free.
+	=> store
+- exit
+	Gus: Later!
+	=> END

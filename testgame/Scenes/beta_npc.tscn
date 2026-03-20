@@ -66,8 +66,8 @@ sprite_frames = SubResource("SpriteFrames_puqd2")
 animation = &"goblinShop"
 
 [node name="ButtonPrompt" parent="." unique_id=687141090 instance=ExtResource("2_uvfxd")]
-visible = true
-position = Vector2(0, 3)
+position = Vector2(0, 10)
+scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1350918013]
 position = Vector2(2.1316282e-14, 30.14951)

@@ -42,6 +42,7 @@ func process_frame(delta: float) -> State:
 		parent.speaking.emit(1)
 		
 	if done:
+		started = false
 		done = false
 		return parent.idle_state
 		
@@ -51,6 +52,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if as2d.animation == "save2":
 		checkpoint = false
 		done = true
+		parent.saving.emit(2)
 	elif as2d.animation == "save1":
 		parent.saving.emit(1)
 		as2d.play("save2")

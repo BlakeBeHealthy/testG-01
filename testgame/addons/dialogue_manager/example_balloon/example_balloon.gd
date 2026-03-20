@@ -206,7 +206,7 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	# When there are no response options the balloon itself is the clickable thing
 	get_viewport().set_input_as_handled()
 	
-	if event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
+	if (event.is_action_pressed("leftC") or event.is_action_pressed(next_action)) and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
 
 

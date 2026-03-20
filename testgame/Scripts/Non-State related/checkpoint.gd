@@ -32,7 +32,8 @@ func saving(check: int):
 		a2d.play("activate")
 		update_checkpoint()
 		update_sprite()
-	
+	elif check == 2:
+		prompt.showPrompt(button_prompt)
 func update_sprite() -> void:
 	#Ensuring the activate animation doesn't play multiple times
 	if m2d.global_position == Global.saveData.checkpoint_pos:
