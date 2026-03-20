@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://b3l3bcn2iw6dk"]
+
+[ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="1_4wcav"]
+[ext_resource type="Texture2D" path="res://assets/NPCS/mainChargodot.png" id="1_os1p0"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="2_os1p0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5iodc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_os1p0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Balloon" type="Control" unique_id=932871309]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=636337179]
+custom_minimum_size = Vector2(1400, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -300.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=28323001]
+custom_minimum_size = Vector2(550, 800)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Control" unique_id=1216238625]
+position = Vector2(309, 514)
+scale = Vector2(1.915, 1.915)
+sprite_frames = SubResource("SpriteFrames_5iodc")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=284104083]
+custom_minimum_size = Vector2(0, 520)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 78
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 142
+
+[node name="Panel" type="Panel" parent="HBoxContainer/MarginContainer" unique_id=864374159]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/Panel" unique_id=1409009469]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DialogueLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer/Panel" unique_id=123682884]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4wcav")
+skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
+metadata/_custom_type_script = "uid://g32um0mltv5d"
+
+[node name="DialogueResponsesMenu" type="Container" parent="." unique_id=57823449]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_os1p0")
+metadata/_custom_type_script = "uid://bb52rsfwhkxbn"

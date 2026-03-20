@@ -5,13 +5,15 @@ var tween = null
 var PlayerInAir = false
 var showP := true
 var events
+var Pscale: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.scale = Vector2(0, 0)
 	Global.playerDone.connect(_on_player_ready)
 	
 func _on_player_ready():
-	pass
+	if !Global.player.inAir.is_connected(hidePromptJump):
+		Global.player.inAir.connect(hidePromptJump)
 	
 func update_func(keybind: String):
 	if keybind.is_empty():
@@ -20,7 +22,7 @@ func update_func(keybind: String):
 	events = InputMap.action_get_events(keybind)
 	
 	if events.is_empty():
-		updateText("UNBOUND")
+		updateText("?")
 		return
 		
 	var text = OS.get_keycode_string(events[0].physical_keycode)
@@ -29,13 +31,14 @@ func update_func(keybind: String):
 func updateText(text):
 	prompt.text = text
 
-func showPrompt(keybind: String = "interact"):
+func showPrompt(keybind: String = "interact", scaleP: Vector2 = Vector2(1, 1)):
+	Pscale = scaleP
 	if tween:
 		tween.kill()
 	tween = create_tween()
 	update_func(keybind)
 	self.visible = true
-	tween.tween_property(self, "scale", Vector2(1, 1), 0.05)
+	tween.tween_property(self, "scale", Pscale, 0.05)
 	
 func hidePrompt():
 	if tween:
@@ -44,3 +47,7 @@ func hidePrompt():
 	tween.tween_property(self, "scale", Vector2(0, 0), 0.05)
 	await tween.finished
 	self.visible = false
+	
+func hidePromptJump():
+	PlayerInAir = true
+	hidePrompt()

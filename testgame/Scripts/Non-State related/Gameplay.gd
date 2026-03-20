@@ -35,9 +35,9 @@ func on_level_loaded(level: Node) -> void:
 			player.global_position = spawn.global_position - pending_entry_direction * 100
 			if checkJump== 1:
 				player.enter_from_transition(pending_entry_direction)
+				await Global.player.landed
 				
 	Global.player.flip_direction(direction)
-	await Global.player.landed
 	FadeS.fade_in()
 	
 func _dir_from_enum(dir: int) -> Vector2:
