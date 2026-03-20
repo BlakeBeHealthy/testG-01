@@ -88,17 +88,6 @@ func process_frame(delta: float) -> State:
 func process_physics(delta: float) -> State:
 	direction = Input.get_axis("runL", "runR")
 		
-	if direction < 0:
-		as2d.flip_h = true
-		a2d.position.x = -21
-	elif direction > 0:
-		as2d.flip_h = false
-		a2d.position.x = 21
-	else:
-		if as2d.flip_h:
-			a2d.position.x = -21
-		elif !as2d.flip_h:
-			a2d.position.x = 21
 			
 	if startKB:
 		parent.velocity.x += -attackDir * playerKnockback

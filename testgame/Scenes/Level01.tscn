@@ -521,7 +521,7 @@ position = Vector2(-1175, 4)
 zoom = Vector2(3.22, 3.22)
 limit_left = -1203
 limit_top = -250
-limit_right = 656
+limit_right = 692
 limit_bottom = 155
 position_smoothing_speed = 24.0
 script = ExtResource("3_8nwny")
@@ -545,7 +545,7 @@ Rbound = -278
 position = Vector2(-165, -10)
 
 [node name="EastD" type="Area2D" parent="." unique_id=1829730650]
-position = Vector2(711.00006, -2)
+position = Vector2(747.00006, -6)
 scale = Vector2(0.465, 3.775)
 collision_mask = 2
 script = ExtResource("6_t0sul")

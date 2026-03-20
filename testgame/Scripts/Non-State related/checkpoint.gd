@@ -15,12 +15,10 @@ func _ready() -> void:
 	
 func _on_area_entered(area: Area2D) -> void:
 	#Once the player enters
-	if !areaCheck:
-		areaCheck = true
-		Global.player.current_interactable = self
-		prompt.showPrompt(button_prompt)
-		if !Global.player.saving.is_connected(saving):
-			Global.player.saving.connect(saving)
+	Global.player.current_interactable = self
+	prompt.showPrompt(button_prompt)
+	if !Global.player.saving.is_connected(saving):
+		Global.player.saving.connect(saving)
 	
 func _on_area_exited(area: Area2D) -> void:
 	Global.player.current_interactable = null

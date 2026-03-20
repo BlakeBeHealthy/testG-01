@@ -3,11 +3,13 @@ class_name BetaNPC extends Node2D
 @onready var prompt: Node2D = $ButtonPrompt
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var c2d: CollisionShape2D = $CollisionShape2D
+@onready var npc: BetaNPC = $"."
 
 @export var button_prompt: String
 @export var animationName: String
 @export var dialogueScene: String
 @export var startingPoint: String
+var scaleNumber: Vector2 = Vector2(1, 1)
 
 var areaCheck := false
 var speak := false
@@ -16,6 +18,8 @@ signal betaNPCSpeaking
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	as2d.play(animationName)
+	as2d.scale = scaleNumber
+	prompt.scale = scaleNumber/npc.scale
 
 func _on_area_entered(area: Area2D) -> void:
 	if !areaCheck:
