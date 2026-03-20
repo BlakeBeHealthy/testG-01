@@ -1,7 +1,37 @@
 ~ start
 
-Gus: Hey traveler!
-Wetard: We know you are on the files.
-Gus: [shake rate=200 level=100][/shake]YOU'LL NEVER TAKE ME ALIVE[shake rate=200 level=100][/shake]
+Gus: Hey traveler! That chest over there sure is weird.
+- It should help in the future
+    Gus: Wait you know what it does?! What does it do?!.
+	=> option1
+- Yeah but I've experienced weirder things than that
+   	Gus: Oh really? Like what?.
+	=> option2
+	
+~ option1
+- If I am on my lest leg, it sends me back too where it is located
+    Gus: Wowww that sounds useful, maybe if I get my hands on one I can get a subscription service.
+- it gives me a 50% discount on all your wares!
+   	Gus: Nice try, but I'm not falling for that one again.
+=> store1
 
-=> END
+~ option2
+- A wizard who had his eyes trapped in his beard
+    Gus: I have a bomb.
+- a 4ft 11 Filipino woman
+   	Gus: Wow, she sounds sweet and beautiful.
+	P: :) 
+	
+~ store1
+P: I would like to see your wares now...
+~ store
+Gus: Heres what I have:
+- Map
+	Gus: Not enough money!
+	=> store
+- Health Potion
+	Gus: Not enough money! But I'll give ya one for free.
+	=> store
+- exit
+	Gus: Later!
+	=> END

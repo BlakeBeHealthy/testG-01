@@ -109,7 +109,7 @@ func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale:
 		attack_delay.stop()
 	
 func _input(event): #allowing the player to attack
-	if state_machine.current_state != hit_state and event.is_action_pressed("leftC"):
+	if (state_machine.current_state != hit_state and state_machine.current_state != cut_state) and event.is_action_pressed("leftC"):
 		if attack_delay.is_stopped() or !ComboTime.is_stopped():
 			if ComboTime.is_stopped():
 				attackCheck = true 

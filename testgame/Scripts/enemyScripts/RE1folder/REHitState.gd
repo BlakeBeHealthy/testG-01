@@ -10,12 +10,10 @@ extends REnemyState
 var flashing := false
 var direction
 var player
-var count = 0
 var hit := false
 
 func enter() -> void:
 	hitCheck.start()
-	count += 1
 	player = Global.get_player()
 	flash_white()
 	healthCount -= 1
