@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dr1ysyevd5usi"]
 
-[ext_resource type="Script" uid="uid://durd0dutt5gv0" path="res://Scenes/Hearts.gd" id="1_8v6mx"]
+[ext_resource type="Script" uid="uid://durd0dutt5gv0" path="res://Scripts/Non-State related/Hearts.gd" id="1_8v6mx"]
 [ext_resource type="Texture2D" uid="uid://cyga6wu3gqfjm" path="res://assets/free-swamp-2d-tileset-pixel-art/4 Animated objects/Rune.png" id="1_w3r1f"]
 [ext_resource type="Texture2D" uid="uid://clabotkcverha" path="res://assets/raven-fantasy-icons/Free - Raven Fantasy Icons/Full Spritesheet/16x16.png" id="1_xrv7k"]
 

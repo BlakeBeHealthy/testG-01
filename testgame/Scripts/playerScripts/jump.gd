@@ -15,7 +15,12 @@ func enter() -> void:
 		parent.velocity.y = -parent.JUMP
 		parent.jumpCheck = true
 	#You will probably see some stuff like this, its just basic hitbox adustments based on as2d
-	a2d2.position.y = -1
+	if parent.direction == -1:
+		a2d2.position.y = 0
+		a2d2.position.x = -4
+	elif parent.direction == 1:
+		a2d2.position.x = 4
+		a2d2.position.y = 0
 		
 func exit() -> void:
 	pass
@@ -52,13 +57,13 @@ func process_physics(delta: float) -> State:
 	parent.move_and_slide()
 	
 	if direction > 0:
-		as2d.flip_h = false
+		parent.flip_direction(1)
 		a2d2.position.x = 3
 		a2d.position.x = 21
 	elif direction < 0:
-		a2d.position.x = -21
-		as2d.flip_h = true
-		a2d2.position.x = -3
+		parent.flip_direction(-1)
+		parent.a2d.position.x = -21
+		parent.a2d2.position.x = -3
 	if parent.is_on_floor():
 		if direction != 0:
 			return parent.run_state

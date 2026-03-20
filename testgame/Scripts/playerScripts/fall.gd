@@ -56,12 +56,12 @@ func process_physics(delta: float) -> State:
 	parent.move_and_slide()
 	
 	if direction > 0:
-		as2d.flip_h = false
+		parent.flip_direction(1)
 		a2d2.position.x = 3
 		a2d.position.x = 21
 	elif direction < 0:
+		parent.flip_direction(-1)
 		a2d.position.x = -21
-		as2d.flip_h = true
 		a2d2.position.x = -3
 	
 	if !cTime.is_stopped() and Input.is_action_pressed("jump"):

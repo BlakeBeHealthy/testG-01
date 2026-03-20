@@ -5,6 +5,11 @@ extends CharacterBody2D
 @onready var attack_delay: Timer = $attackDelay
 @onready var state_machine: Node = $StateMachine
 @onready var ComboTime: Timer = $Timer
+@onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var a2d: Area2D = $Area2D
+@onready var a2d2: Area2D = $Area2D2
+
+
 @export var jump_state: State
 @export var hit_state: State
 @export var attack_state: State
@@ -72,9 +77,12 @@ func _process(delta: float) -> void:
 	else:
 		interactC2D.disabled = false
 		
-func change_directon(dire: int):
+func flip_direction(dire: int):
 	direction = dire
 	if direction == 1:
+		as2d.flip_h = false
+	elif direction == -1:
+		as2d.flip_h = true
 		pass
 	
 func enter_from_transition(direct: Vector2) -> void:
