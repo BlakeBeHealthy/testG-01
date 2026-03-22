@@ -54,7 +54,7 @@ func speaking(endCheck: int):
 		if dialogueScene == "":
 			push_error("Dialogue Scene tree is empty!")
 			
-		Global.UI.get_node("Balloon").start(load(dialogueScene), startingPoint)
+		Global.UI.get_node("Balloon").start(load(dialogueScene), startingPoint) #null
 	else:
 		speak = false
 		prompt.showPrompt(button_prompt, promptScale)
