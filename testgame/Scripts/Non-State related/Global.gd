@@ -2,6 +2,7 @@ extends Node
 
 var player
 var camera
+var UI
 signal playerDone
 var saveData = {
 	"checkpoint_pos": Vector2(-1134, -1),
@@ -29,3 +30,9 @@ func set_camera(c: Camera2D):
 
 func get_camera() -> Camera2D:
 	return camera
+
+func set_UI(node):
+	UI = node
+
+func get_UI():
+	return UI

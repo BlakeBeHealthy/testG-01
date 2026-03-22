@@ -1,31 +1,68 @@
 [gd_scene format=3 uid="uid://b3l3bcn2iw6dk"]
 
 [ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="1_4wcav"]
-[ext_resource type="Script" uid="uid://pr0ry60niown" path="res://Scenes/DialogueBalloon.gd" id="1_5iodc"]
-[ext_resource type="Texture2D" uid="uid://5vktn6m3n8l8" path="res://assets/mainChargodot.png" id="2_5iodc"]
+[ext_resource type="Script" uid="uid://pr0ry60niown" path="res://Scripts/Non-State related/DialogueBalloon.gd" id="1_5iodc"]
+[ext_resource type="Shader" uid="uid://b7bs566f75bvj" path="res://Scenes/WipeTransition.gdshader" id="2_nrerx"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="2_os1p0"]
+[ext_resource type="Texture2D" uid="uid://bs3x3o1hcw3fa" path="res://assets/NPCS/Portraits/GusGodot.png" id="3_kbj1d"]
+[ext_resource type="Texture2D" uid="uid://lrbg1u7pvlg8" path="res://assets/NPCS/Portraits/mainChar.png" id="4_syg23"]
+[ext_resource type="FontFile" uid="uid://csg7gawytepkx" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidSans-Bold.otf" id="5_xyim1"]
+[ext_resource type="FontFile" uid="uid://d0r7oon537wd0" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidSans.otf" id="6_rl6ge"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nrerx"]
-atlas = ExtResource("2_5iodc")
-region = Rect2(0, 0, 500, 500)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbj1d"]
+shader = ExtResource("2_nrerx")
+shader_parameter/progress = 1.20000004768372
+shader_parameter/edge_width = 0.8
+shader_parameter/horizontal_weight = 0.5
+shader_parameter/vertical_weight = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyim1"]
+atlas = ExtResource("3_kbj1d")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl6ge"]
+atlas = ExtResource("4_syg23")
+region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5iodc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nrerx")
+"texture": SubResource("AtlasTexture_xyim1")
 }],
 "loop": false,
-"name": &"default",
+"name": &"Gus_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl6ge")
+}],
+"loop": false,
+"name": &"P_idle",
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_syg23"]
+shader = ExtResource("2_nrerx")
+shader_parameter/progress = 1.20000004768372
+shader_parameter/edge_width = 0.85
+shader_parameter/horizontal_weight = 1.0
+shader_parameter/vertical_weight = 0.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrerx"]
 bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xyim1"]
+shader = ExtResource("2_nrerx")
+shader_parameter/progress = 0.0
+shader_parameter/edge_width = 0.0
+shader_parameter/horizontal_weight = 0.0
+shader_parameter/vertical_weight = 0.0
 
 [node name="Balloon" type="Control" unique_id=932871309]
 layout_mode = 3
@@ -64,48 +101,78 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Control" unique_id=1216238625]
-position = Vector2(309, 514)
-scale = Vector2(1.915, 1.915)
+material = SubResource("ShaderMaterial_kbj1d")
+position = Vector2(377.00003, 361.00006)
+scale = Vector2(1.78, 1.78)
 sprite_frames = SubResource("SpriteFrames_5iodc")
+animation = &"P_idle"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=284104083]
 custom_minimum_size = Vector2(0, 520)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
-theme_override_constants/margin_left = 12
+theme_override_constants/margin_left = 62
 theme_override_constants/margin_top = 78
-theme_override_constants/margin_right = 200
+theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 142
 
 [node name="Panel" type="Panel" parent="HBoxContainer/MarginContainer" unique_id=864374159]
+material = SubResource("ShaderMaterial_syg23")
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_nrerx")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/Panel" unique_id=1100446872]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer/Panel" unique_id=200583849]
 layout_mode = 0
-offset_right = 1154.0
-offset_bottom = 300.0
+offset_right = 40.0
+offset_bottom = 40.0
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 65
+theme_override_constants/margin_top = 10
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/Panel/MarginContainer2" unique_id=1409009469]
+custom_minimum_size = Vector2(600, 74.03)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_xyim1")
+theme_override_font_sizes/font_size = 60
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/Panel" unique_id=1100446872]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -601.5
+offset_top = -150.0
+offset_right = 601.5
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 92
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/Panel/MarginContainer" unique_id=1409009469]
-layout_mode = 2
-
 [node name="DialogueLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer/Panel/MarginContainer" unique_id=123682884]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("6_rl6ge")
+theme_override_font_sizes/normal_font_size = 48
 script = ExtResource("1_4wcav")
 skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
 metadata/_custom_type_script = "uid://g32um0mltv5d"
 
 [node name="DialogueResponsesMenu" type="Container" parent="." unique_id=57823449]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+material = SubResource("ShaderMaterial_xyim1")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_os1p0")
 metadata/_custom_type_script = "uid://bb52rsfwhkxbn"

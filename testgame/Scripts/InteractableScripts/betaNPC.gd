@@ -3,7 +3,6 @@ class_name BetaNPC extends Node2D
 @onready var prompt: Node2D = $ButtonPrompt
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var c2d: CollisionShape2D = $CollisionShape2D
-@onready var npc: BetaNPC = $"."
 
 @export var button_prompt: String
 @export var animationName: String
@@ -13,7 +12,6 @@ var scaleNumber: Vector2 = Vector2(1, 1)
 
 var areaCheck := false
 var speak := false
-signal betaNPCSpeaking
 var promptScale
 
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +19,7 @@ func _ready() -> void:
 	prompt.hidePrompt()
 	as2d.play(animationName)
 	as2d.scale = scaleNumber
+	print("Global.UI: ", Global.UI)
 
 func _on_area_entered(area: Area2D) -> void:
 	if !areaCheck:
@@ -55,8 +54,8 @@ func speaking(endCheck: int):
 		if dialogueScene == "":
 			push_error("Dialogue Scene tree is empty!")
 			
-		DialogueManager.show_example_dialogue_balloon(load(dialogueScene), startingPoint)
+		Global.UI.get_node("Balloon").start(load(dialogueScene), startingPoint)
 	else:
 		speak = false
-		prompt.showPrompt(button_prompt)
+		prompt.showPrompt(button_prompt, promptScale)
 	
