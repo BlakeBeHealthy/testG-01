@@ -13,6 +13,7 @@ var game_states
 var tween = null
 var dialogueResource
 var check := false
+var isMoving := false
 var dialogue_line: DialogueLine:
 	set(value):
 		if value:
@@ -20,7 +21,9 @@ var dialogue_line: DialogueLine:
 			apply_dialogue_line()
 		else:
 			await wipeOut()
-			queue_free()
+			self.visible = false
+			check = false
+			currentSpeaker = ""
 			
 var speed = 0.05:
 	set(value):
@@ -61,9 +64,9 @@ func next(next_id: String) -> void:
 	dialogue_line = await dialogueResource.get_next_dialogue_line(next_id, game_states)
 	
 func _input(event: InputEvent) -> void:
-	if dialogue_line == null:
+	if dialogue_line == null or isMoving:
 		return
-		
+	
 	if Input.is_action_just_pressed("dialogueSkip") or Input.is_action_just_pressed("leftC"):
 		if dialogue_label.is_typing:
 			dialogue_label.skip_typing()
@@ -71,6 +74,7 @@ func _input(event: InputEvent) -> void:
 			next(dialogue_line.next_id)
 
 func wipeIn():
+	isMoving = true
 	if tween:
 		tween.kill()
 	tween = create_tween()
@@ -82,9 +86,11 @@ func wipeIn():
 	tween.tween_interval(0.2)
 	tween.tween_property(dialogue_label, "modulate:a", 1.0, 0.1)
 	await tween.finished
+	isMoving = false
 	return
 
 func wipeOut():
+	isMoving = true
 	if tween:
 		tween.kill()
 	tween = create_tween()
@@ -94,4 +100,5 @@ func wipeOut():
 	tween.tween_interval(0.2)
 	tween.tween_method(func(val): portraitM.set_shader_parameter("progress", val), 1.2, -0.2, 0.15)
 	await tween.finished
+	isMoving = false
 	return
