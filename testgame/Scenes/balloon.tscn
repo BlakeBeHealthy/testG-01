@@ -102,7 +102,7 @@ size_flags_vertical = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Control" unique_id=1216238625]
 material = SubResource("ShaderMaterial_kbj1d")
-position = Vector2(377.00003, 361.00006)
+position = Vector2(370, 428)
 scale = Vector2(1.78, 1.78)
 sprite_frames = SubResource("SpriteFrames_5iodc")
 animation = &"P_idle"
@@ -129,7 +129,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_nrerx")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 10
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer/Panel/MarginContainer2" unique_id=1409009469]

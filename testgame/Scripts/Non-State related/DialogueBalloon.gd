@@ -12,13 +12,14 @@ extends Control
 var game_states
 var tween = null
 var dialogueResource
+var check := false
 var dialogue_line: DialogueLine:
 	set(value):
 		if value:
 			dialogue_line = value
 			apply_dialogue_line()
 		else:
-			# dialogue finished
+			await wipeOut()
 			queue_free()
 			
 var speed = 0.05:
@@ -29,6 +30,8 @@ var speed = 0.05:
 var currentSpeaker = ""
 # Called when the node enters the scene tree for the first time.
 func start(resource: DialogueResource, title: String) -> void:
+	dialogue_label.modulate.a = 0
+	charName.modulate.a = 0
 	dialogueResource = resource
 	portraitM.set_shader_parameter("progress", -0.2)
 	panelM.set_shader_parameter("progress", -0.2)
@@ -38,6 +41,11 @@ func start(resource: DialogueResource, title: String) -> void:
 
 func apply_dialogue_line():
 	if dialogue_line.character != currentSpeaker:
+		if check:
+			await wipeOut()
+		else:
+			check = true
+			
 		var mood = "idle"
 		currentSpeaker = dialogue_line.character
 		as2d.play(currentSpeaker + "_" + mood)
@@ -66,18 +74,19 @@ func wipeIn():
 	tween = create_tween()
 	tween.tween_method(func(val): portraitM.set_shader_parameter("progress", val), -0.2, 1.2, 0.4)
 	tween.tween_interval(0.2)
-	tween.tween_method(func(val): panelM.set_shader_parameter("progress", val), -0.2, 1.2, 0.4)
-	tween.tween_property(dialogue_label, "modulate:a", 1.0, 0.1)
-	tween.tween_property(charName, "modulate:a", 1.0, 0.1)
+	tween.tween_method(func(val): panelM.set_shader_parameter("progress", val), -0.2, 1.2, 0.2)
+	tween.tween_property(charName, "modulate:a", 1.0, 0.2)
+	tween.tween_interval(0.2)
+	tween.tween_property(dialogue_label, "modulate:a", 1.0, 0.2)
 
 func wipeOut():
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	tween.tween_method(func(val): panelM.set_shader_parameter("progress", val), 1.2, -0.2, 0.4)
-	tween.tween_property(dialogue_label, "modulate:a", 0.0, 0.1)
-	tween.tween_property(charName, "modulate:a", 0.0, 0.1)
+	tween.tween_property(dialogue_label, "modulate:a", 0.0, 0.2)
+	tween.tween_property(charName, "modulate:a", 0.0, 0.2)
+	tween.tween_method(func(val): panelM.set_shader_parameter("progress", val), 1.2, -0.2, 0.2)
 	tween.tween_interval(0.2)
-	tween.tween_method(func(val): portraitM.set_shader_parameter("progress", val), 1.2, -0.2, 0.4)
+	tween.tween_method(func(val): portraitM.set_shader_parameter("progress", val), 1.2, -0.2, 0.2)
 	await tween.finished
 	return
