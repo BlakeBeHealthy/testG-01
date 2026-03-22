@@ -2,7 +2,7 @@ extends Control
 
 @onready var as2d: AnimatedSprite2D = $HBoxContainer/Control/AnimatedSprite2D
 @onready var dialogue_label: DialogueLabel = $HBoxContainer/MarginContainer/Panel/MarginContainer/DialogueLabel
-@onready var dialogue_responses_menu: DialogueResponsesMenu = $DialogueResponsesMenu
+@onready var dialogue_responses_menu: DialogueResponsesMenu = $MarginContainer/VBoxContainer/DialogueResponsesMenu
 @onready var color_rect: ColorRect = $ColorRect
 @onready var charName: Label = $HBoxContainer/MarginContainer/Panel/MarginContainer2/Label
 
@@ -59,6 +59,13 @@ func apply_dialogue_line():
 		
 	dialogue_label.dialogue_line = dialogue_line
 	dialogue_label.type_out()
+	
+	await dialogue_label.finished_typing
+	if dialogue_line.responses.size() > 0:
+		dialogue_responses_menu.responses = dialogue_line.responses
+		dialogue_responses_menu.show()
+	else:
+		dialogue_responses_menu.hide()
 	
 func next(next_id: String) -> void:
 	dialogue_line = await dialogueResource.get_next_dialogue_line(next_id, game_states)

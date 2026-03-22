@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://3ga7ywpdjoi8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttq86"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Button" type="Button" unique_id=2082806078]
+custom_minimum_size = Vector2(948, 100)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ttq86")
+metadata/_edit_use_anchors_ = true
