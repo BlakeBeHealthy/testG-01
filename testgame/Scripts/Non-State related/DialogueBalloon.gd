@@ -49,8 +49,10 @@ func apply_dialogue_line():
 		var mood = "idle"
 		currentSpeaker = dialogue_line.character
 		as2d.play(currentSpeaker + "_" + mood)
-		await wipeIn()
+		dialogue_label.modulate.a = 0
+		dialogue_label.visible_ratio = 0
 		charName.text = dialogue_line.character
+		await wipeIn()
 		
 	dialogue_label.dialogue_line = dialogue_line
 	dialogue_label.type_out()
@@ -72,21 +74,24 @@ func wipeIn():
 	if tween:
 		tween.kill()
 	tween = create_tween()
+	tween.tween_interval(0.2)
 	tween.tween_method(func(val): portraitM.set_shader_parameter("progress", val), -0.2, 1.2, 0.4)
 	tween.tween_interval(0.2)
-	tween.tween_method(func(val): panelM.set_shader_parameter("progress", val), -0.2, 1.2, 0.2)
-	tween.tween_property(charName, "modulate:a", 1.0, 0.2)
+	tween.tween_method(func(val): panelM.set_shader_parameter("progress", val), -0.2, 1.2, 0.15)
+	tween.tween_property(charName, "modulate:a", 1.0, 0.1)
 	tween.tween_interval(0.2)
-	tween.tween_property(dialogue_label, "modulate:a", 1.0, 0.2)
+	tween.tween_property(dialogue_label, "modulate:a", 1.0, 0.1)
+	await tween.finished
+	return
 
 func wipeOut():
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	tween.tween_property(dialogue_label, "modulate:a", 0.0, 0.2)
-	tween.tween_property(charName, "modulate:a", 0.0, 0.2)
-	tween.tween_method(func(val): panelM.set_shader_parameter("progress", val), 1.2, -0.2, 0.2)
+	tween.tween_property(dialogue_label, "modulate:a", 0.0, 0.1)
+	tween.tween_property(charName, "modulate:a", 0.0, 0.1)
+	tween.tween_method(func(val): panelM.set_shader_parameter("progress", val), 1.2, -0.2, 0.15)
 	tween.tween_interval(0.2)
-	tween.tween_method(func(val): portraitM.set_shader_parameter("progress", val), 1.2, -0.2, 0.2)
+	tween.tween_method(func(val): portraitM.set_shader_parameter("progress", val), 1.2, -0.2, 0.15)
 	await tween.finished
 	return
