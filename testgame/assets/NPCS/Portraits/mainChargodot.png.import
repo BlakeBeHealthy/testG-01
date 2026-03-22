@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8u11xwnvw88f"
-path="res://.godot/imported/Untitled_Artwork.png-790a690cc084a503fc7d6a8502037737.ctex"
+uid="uid://5vktn6m3n8l8"
+path="res://.godot/imported/mainChargodot.png-f58cd4e05178df16384c58ec70d4dfa4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/New folder/Untitled_Artwork.png"
-dest_files=["res://.godot/imported/Untitled_Artwork.png-790a690cc084a503fc7d6a8502037737.ctex"]
+source_file="res://assets/NPCS/Portraits/mainChargodot.png"
+dest_files=["res://.godot/imported/mainChargodot.png-f58cd4e05178df16384c58ec70d4dfa4.ctex"]
 
 [params]
 
