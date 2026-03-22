@@ -2,9 +2,9 @@ extends Control
 
 @onready var as2d: AnimatedSprite2D = $HBoxContainer/Control/AnimatedSprite2D
 @onready var dialogue_label: DialogueLabel = $HBoxContainer/MarginContainer/Panel/MarginContainer/DialogueLabel
-@onready var dialogue_responses_menu: DialogueResponsesMenu = $MarginContainer/VBoxContainer/DialogueResponsesMenu
 @onready var color_rect: ColorRect = $ColorRect
 @onready var charName: Label = $HBoxContainer/MarginContainer/Panel/MarginContainer2/Label
+@onready var dialogue_responses_menu: DialogueResponsesMenu = $MarginContainer/DialogueResponsesMenu
 
 @onready var portraitM: ShaderMaterial = $HBoxContainer/Control/AnimatedSprite2D.material
 @onready var panelM: ShaderMaterial = $HBoxContainer/MarginContainer/Panel.material
@@ -32,6 +32,9 @@ var speed = 0.05:
 			
 var currentSpeaker = ""
 # Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	dialogue_responses_menu.add_theme_constant_override("separation", 100)
+	
 func start(resource: DialogueResource, title: String) -> void:
 	dialogue_label.modulate.a = 0
 	charName.modulate.a = 0
@@ -63,6 +66,7 @@ func apply_dialogue_line():
 	await dialogue_label.finished_typing
 	if dialogue_line.responses.size() > 0:
 		dialogue_responses_menu.responses = dialogue_line.responses
+		dialogue_responses_menu.add_theme_constant_override("separation", 100)
 		dialogue_responses_menu.show()
 	else:
 		dialogue_responses_menu.hide()
