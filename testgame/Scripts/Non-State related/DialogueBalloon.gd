@@ -137,7 +137,6 @@ func wipeOut():
 		tween.kill()
 	tween = create_tween()
 	tween.set_parallel(true)
-	print("responses_visible in wipeOut: ", responses_visible)
 	if responses_visible:
 		if response_tween:
 			response_tween.kill()
