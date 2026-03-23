@@ -134,7 +134,7 @@ theme_override_constants/margin_top = 10
 custom_minimum_size = Vector2(900, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_xyim1")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 56
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/Panel" unique_id=1100446872]
 layout_mode = 1
@@ -152,7 +152,7 @@ theme_override_constants/margin_bottom = 20
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("6_rl6ge")
-theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/normal_font_size = 30
 scroll_active = false
 script = ExtResource("1_4wcav")
 skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
@@ -195,4 +195,4 @@ metadata/_custom_type_script = "uid://bb52rsfwhkxbn"
 
 [node name="Button" parent="Panel/MarginContainer/DialogueResponsesMenu" unique_id=2082806078 instance=ExtResource("9_rl6ge")]
 layout_mode = 2
-alignment = 0
+theme_override_font_sizes/font_size = 15

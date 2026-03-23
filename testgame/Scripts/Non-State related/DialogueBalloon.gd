@@ -18,12 +18,15 @@ var responses_visible := false
 var response_tween = null
 var overlay_tween = null
 var isMoving := false
+var dialogue_ended := false
+var waiting_for_line := false
 var dialogue_line: DialogueLine:
 	set(value):
 		if value:
 			dialogue_line = value
 			apply_dialogue_line()
 		else:
+			dialogue_ended = true
 			await wipeOut()
 			if overlay_tween:
 				overlay_tween.kill()
@@ -43,6 +46,8 @@ var currentSpeaker = ""
 # Called when the node enters the scene tree for the first time.
 	
 func start(resource: DialogueResource, title: String) -> void:
+	dialogue_ended = false
+	dialogue_responses_menu.next_action = "interact"
 	dialogue_label.modulate.a = 0
 	charName.modulate.a = 0
 	dialogueResource = resource
@@ -64,7 +69,7 @@ func apply_dialogue_line():
 			await wipeOut()
 		else:
 			check = true
-			
+		
 		var mood = "idle"
 		currentSpeaker = dialogue_line.character
 		as2d.play(currentSpeaker + "_" + mood)
@@ -86,17 +91,25 @@ func apply_dialogue_line():
 	
 	await dialogue_label.finished_typing
 	show_responses()
+	isMoving = false
 	
 func next(next_id: String) -> void:
+	waiting_for_line = true
+	if dialogue_label.is_typing:
+		dialogue_label.skip_typing()
 	dialogue_line = await dialogueResource.get_next_dialogue_line(next_id, game_states)
+	waiting_for_line = false
 	
 func _on_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 	
 func _input(event: InputEvent) -> void:
-	if dialogue_line == null or isMoving:
+	if dialogue_line == null or isMoving or dialogue_ended or waiting_for_line:
 		return
-	
+	if responses_visible and !dialogue_label.is_typing:
+		if event.is_action_pressed("dialogueSkip"):
+			get_viewport().set_input_as_handled()
+		return
 	if Input.is_action_just_pressed("dialogueSkip"):
 		if dialogue_label.is_typing:
 			dialogue_label.skip_typing()
@@ -116,7 +129,6 @@ func wipeIn():
 	tween.tween_interval(0.2)
 	tween.tween_property(dialogue_label, "modulate:a", 1.0, 0.1)
 	await tween.finished
-	isMoving = false
 	return
 
 func wipeOut():
@@ -139,7 +151,6 @@ func wipeOut():
 	tween.tween_interval(0.2)
 	tween.tween_method(func(val): portraitM.set_shader_parameter("progress", val), 1.2, -0.2, 0.15)
 	await tween.finished
-	isMoving = false
 	return
 
 func show_responses():
@@ -153,6 +164,7 @@ func show_responses():
 		if response_tween:
 			response_tween.kill()
 		response_tween = create_tween()
+		response_tween.tween_interval(0.4)
 		response_tween.tween_property(responsePanel, "modulate:a", 1.0, 0.3)
 	else:
 		responsePanel.hide()

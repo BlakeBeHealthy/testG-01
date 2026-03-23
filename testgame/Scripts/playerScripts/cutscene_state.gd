@@ -26,6 +26,9 @@ func process_input(event: InputEvent) -> State:
 	return null
 	
 func _on_dialogue_ended(_resource: DialogueResource):
+	if !speaking:
+		return
+		
 	speaking = false
 	done = true
 	parent.speaking.emit(0)
