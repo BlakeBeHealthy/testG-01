@@ -75,20 +75,20 @@ func configure_focus() -> void:
 		item.focus_neighbor_right = item.get_path()
 
 		if i == 0:
-			item.focus_neighbor_top = item.get_path()
+			item.focus_neighbor_bottom = item.get_path()
 			item.focus_neighbor_left = item.get_path()
 			item.focus_previous = item.get_path()
 		else:
-			item.focus_neighbor_top = items[i - 1].get_path()
+			item.focus_neighbor_bottom = items[i - 1].get_path()
 			item.focus_neighbor_left = items[i - 1].get_path()
 			item.focus_previous = items[i - 1].get_path()
 
 		if i == items.size() - 1:
-			item.focus_neighbor_bottom = item.get_path()
+			item.focus_neighbor_top = item.get_path()
 			item.focus_neighbor_right = item.get_path()
 			item.focus_next = item.get_path()
 		else:
-			item.focus_neighbor_bottom = items[i + 1].get_path()
+			item.focus_neighbor_top = items[i + 1].get_path()
 			item.focus_neighbor_right = items[i + 1].get_path()
 			item.focus_next = items[i + 1].get_path()
 
@@ -142,7 +142,20 @@ func _apply_responses() -> void:
 
 		if auto_configure_focus:
 			configure_focus()
-
+			
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_SORT_CHILDREN:
+		var items = []
+		for child in get_children():
+			if child == response_template: continue
+			if not child.visible: continue
+			items.append(child)
+			
+		var y_offset = size.y
+		for item in items:
+			var item_height = item.get_combined_minimum_size().y
+			y_offset -= item_height + 30
+			fit_child_in_rect(item, Rect2(0, y_offset, size.x, item_height))
 
 #endregion
 

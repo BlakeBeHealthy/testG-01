@@ -1,10 +1,16 @@
 ~ start
 
-Gus: Hey traveler! That chest over there sure is weird.
-P: It is slighlty weird, and supernatural 
-P: But, It should help in the future
-Gus: Wait you know what it does?! What does it do?!.
-P: ...it gives me a 50% discount on all your wares!
-Gus: Nice try, but I'm not falling for that one again.
+Gus: Hey traveler! That chest over there sure is weird. (SPACE TO MOVE ON IN DIALOGUE. F TO MAKE CHOICES)
+
+ - It is slighlty weird, and supernatural, I've seen crazier things tho
+	P: It is slighlty weird, and supernatural, I've seen crazier things tho
+	Gus: I feel you, some guy came here and tried to rob the store with a bannana, weirdo
+	P: That guy sounds insane, but I gotta get going
+ - It should help in the future
+	Gus: Wait you know what it does?! What does it do?!
+	P: ...it gives me a 50% discount on all your wares!
+	Gus: Nice try, but I'm not falling for that one again.
+	P: worth a try, but I gotta get going
 Gus: Later!
+P: Bye now!
 => END

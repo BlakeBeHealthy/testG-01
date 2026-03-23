@@ -102,10 +102,10 @@ func type_out() -> void:
 	_last_wait_index = -1
 	_last_mutation_index = -1
 	_already_mutated_indices.clear()
-
+	
 	is_typing = true
 	started_typing.emit()
-
+	_run_quickly_while_hidden_and_construct_line_breaks() 
 	# Allow typing listeners a chance to connect
 	await get_tree().process_frame
 
@@ -220,3 +220,43 @@ func _should_auto_pause() -> bool:
 		return false
 
 	return parsed_text[visible_characters - 1] in pause_at_characters.split()
+
+func _construct_line_breaks() -> void:
+	var words_in_label: Array = text.split(" ")
+	text = ""
+	var label_lines: int = 1
+	var word_count: int = 1
+	var new_text: String = ""
+	var previous_label_lines: int = 1
+	for word: String in words_in_label:
+		if word_count==1:
+			text = word
+		else:
+			text += " " + word
+		label_lines = get_line_count()
+		if word_count==1:
+			new_text = word
+		elif label_lines > previous_label_lines:
+			new_text += "\n" + word
+		else:
+			new_text += " " + word
+		previous_label_lines = label_lines
+		word_count += 1
+	text = new_text
+
+
+func _run_quickly_while_hidden_and_construct_line_breaks() -> void:
+	visible = false
+	await get_tree().process_frame
+	visible_characters = get_total_character_count()
+	visible_ratio = 1
+	_mutate_remaining_mutations()
+	await get_tree().process_frame
+	_construct_line_breaks()
+	visible_characters = 0
+	visible_ratio = 0
+	_waiting_seconds = 0
+	_last_wait_index = -1
+	_last_mutation_index = -1
+	self.is_typing = true
+	visible = true

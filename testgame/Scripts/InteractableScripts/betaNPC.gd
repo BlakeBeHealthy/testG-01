@@ -19,7 +19,6 @@ func _ready() -> void:
 	prompt.hidePrompt()
 	as2d.play(animationName)
 	as2d.scale = scaleNumber
-	print("Global.UI: ", Global.UI)
 
 func _on_area_entered(area: Area2D) -> void:
 	if !areaCheck:
@@ -49,7 +48,6 @@ func speaking(endCheck: int):
 		if startingPoint == "":
 			startingPoint = "start"
 		
-		print("SPEAK")
 		
 		if dialogueScene == "":
 			push_error("Dialogue Scene tree is empty!")
