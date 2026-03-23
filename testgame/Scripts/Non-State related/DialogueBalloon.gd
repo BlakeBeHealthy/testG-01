@@ -16,6 +16,7 @@ var dialogueResource
 var check := false
 var responses_visible := false
 var response_tween = null
+var overlay_tween = null
 var isMoving := false
 var dialogue_line: DialogueLine:
 	set(value):
@@ -24,6 +25,11 @@ var dialogue_line: DialogueLine:
 			apply_dialogue_line()
 		else:
 			await wipeOut()
+			if overlay_tween:
+				overlay_tween.kill()
+			overlay_tween = create_tween()
+			overlay_tween.tween_property(color_rect, "modulate:a", 0.0, 0.3)
+			await overlay_tween.finished
 			self.visible = false
 			check = false
 			currentSpeaker = ""
@@ -43,6 +49,11 @@ func start(resource: DialogueResource, title: String) -> void:
 	portraitM.set_shader_parameter("progress", -0.2)
 	panelM.set_shader_parameter("progress", -0.2)
 	game_states = [self]
+	color_rect.modulate.a = 0
+	if overlay_tween:
+		overlay_tween.kill()
+	overlay_tween = create_tween()
+	overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.3)
 	self.visible = true
 	dialogue_line = await resource.get_next_dialogue_line(title, game_states)
 	dialogue_responses_menu.response_selected.connect(_on_response_selected)
