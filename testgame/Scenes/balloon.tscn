@@ -58,6 +58,9 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rl6ge"]
+bg_color = Color(0.5568628, 0.4509804, 0.30588236, 0)
+
 [node name="Balloon" type="Control" unique_id=932871309]
 layout_mode = 3
 anchors_preset = 15
@@ -155,26 +158,40 @@ skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", 
 seconds_per_pause_step = 0.5
 metadata/_custom_type_script = "uid://g32um0mltv5d"
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=438847022]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -977.0
-offset_bottom = 704.0
-grow_horizontal = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 77
-theme_override_constants/margin_bottom = 6
+[node name="Panel" type="Panel" parent="." unique_id=1058600559]
+layout_mode = 0
+offset_left = 917.0
+offset_top = 187.0
+offset_right = 1847.0
+offset_bottom = 701.825
+theme_override_styles/panel = SubResource("StyleBoxFlat_rl6ge")
 
-[node name="DialogueResponsesMenu" type="Container" parent="MarginContainer" unique_id=1204525299 node_paths=PackedStringArray("response_template")]
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=438847022]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -496.0
+offset_top = -400.0
+offset_right = 496.0
+offset_bottom = -1.375
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="DialogueResponsesMenu" type="Container" parent="Panel/MarginContainer" unique_id=1204525299 node_paths=PackedStringArray("response_template")]
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 8
 script = ExtResource("2_os1p0")
 response_template = NodePath("Button")
 metadata/_custom_type_script = "uid://bb52rsfwhkxbn"
 
-[node name="Button" parent="MarginContainer/DialogueResponsesMenu" unique_id=2082806078 instance=ExtResource("9_rl6ge")]
+[node name="Button" parent="Panel/MarginContainer/DialogueResponsesMenu" unique_id=2082806078 instance=ExtResource("9_rl6ge")]
 layout_mode = 2
 alignment = 0
