@@ -10,6 +10,7 @@ var direction
 var player
 
 func enter() -> void:
+	parent.hit = false
 	hitCheck.start()
 	player = Global.get_player()
 	as2d.play("hit")

@@ -95,3 +95,8 @@ func knockback(player):
 		shakeDuration
 		)
 	
+
+
+func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	flash_white()
+	healthCount -= 1
