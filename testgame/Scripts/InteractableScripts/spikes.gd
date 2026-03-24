@@ -13,6 +13,7 @@ extends Area2D
 
 var direction: int 
 var player
+var hit: bool
 
 func _ready() -> void:
 	pass
@@ -26,16 +27,16 @@ func _process(delta: float) -> void:
 		direction = -1
 	
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if area.get_parent() is Player:
-		print("Checkpoint recieved")
-	print("hitting")
 	hitPlayer()
 	
 	
 func hitPlayer():
+	if hit:
+		return
+	hit = true
 	player = Global.player
 	
-	print("Hitting Sent")
+	
 	player.hit(
 			dmg,
 			direction,
@@ -46,11 +47,15 @@ func hitPlayer():
 			CAMShake,
 			shakeDur,
 	)
-	
-	if spawn:
+	print(player.health)
+	if player.health <= 1:
+		spawn = false
+		
+	elif spawn:
 		FadeS.fade_out()
 		await get_tree().create_timer(0.4).timeout
 		print("Spawning")
 		player.respawn()
 		await get_tree().create_timer(0.2).timeout
 		FadeS.fade_in()
+	hit = false

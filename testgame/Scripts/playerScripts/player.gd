@@ -25,7 +25,6 @@ extends CharacterBody2D
 @onready var interactC2D: CollisionShape2D = $InteractArea/CollisionShape2D
 
 
-var health := 5
 @warning_ignore("unused_signal")
 signal playerHit
 @warning_ignore("unused_signal")
@@ -47,6 +46,7 @@ var jumpCheck := false
 var attackCheck := false
 var interactCheck := false
 var comboCount := 0
+var health := 3
 var current_interactable: Node = null
 var takeHit: bool
 var dir: int

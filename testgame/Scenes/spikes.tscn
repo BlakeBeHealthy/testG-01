@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dkmo1mr1p86ba"]
+[gd_scene format=3 uid="uid://cgekcdkve474f"]
 
 [ext_resource type="Script" uid="uid://co3ochmk1wpg1" path="res://Scripts/InteractableScripts/spikes.gd" id="1_gwqs2"]
 [ext_resource type="Texture2D" uid="uid://fjaqhx8v4mnu" path="res://assets/DebtsInTheDepthsAssets/Environment/sprPropsInferno.png" id="2_0qgod"]
