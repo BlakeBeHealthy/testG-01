@@ -5,12 +5,14 @@ extends State
 var done := false
 var checkpoint := false
 var speaking := false
+var dialogueActive := false
 var started := false
 var resource := ""
 var title := ""
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
+	print("CUTSCENE ENTER")
 	if !dialogue_manager.dialogue_ended.is_connected(_on_dialogue_ended):
 		dialogue_manager.dialogue_ended.connect(_on_dialogue_ended)
 		
@@ -20,16 +22,21 @@ func enter() -> void:
 		speaking = true
 		
 func exit() -> void:
-	pass
-
+	dialogueActive = false
+	speaking = false
+	done = false
+	checkpoint = false
+	started = false
+	
 func process_input(event: InputEvent) -> State:
 	return null
 	
 func _on_dialogue_ended(_resource: DialogueResource):
-	if !speaking:
+	if !dialogueActive:
 		return
 		
 	speaking = false
+	await get_tree().create_timer(0.4).timeout
 	done = true
 	parent.speaking.emit(0)
 	
@@ -42,6 +49,8 @@ func process_frame(delta: float) -> State:
 	if speaking:
 		speaking = false
 		as2d.play("idle")
+		print("emitting speaking 1, dialogueActive before: ", dialogueActive)
+		dialogueActive = true
 		parent.speaking.emit(1)
 		
 	if done:

@@ -118,7 +118,7 @@ func _input(event): #allowing the player to attack
 				attackCheck = true
 				attack_delay.start()
 				
-	if Input.is_action_just_pressed("interact") and current_interactable != null and is_on_floor():
+	if Input.is_action_just_pressed("interact") and current_interactable != null and is_on_floor() and !Global.UI.get_node("Balloon").visible:
 		control_locked = true
 				
 func _on_timer_timeout() -> void:
