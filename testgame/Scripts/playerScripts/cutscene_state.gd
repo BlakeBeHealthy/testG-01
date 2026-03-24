@@ -12,7 +12,6 @@ var title := ""
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
-	print("CUTSCENE ENTER")
 	if !dialogue_manager.dialogue_ended.is_connected(_on_dialogue_ended):
 		dialogue_manager.dialogue_ended.connect(_on_dialogue_ended)
 		
@@ -49,7 +48,6 @@ func process_frame(delta: float) -> State:
 	if speaking:
 		speaking = false
 		as2d.play("idle")
-		print("emitting speaking 1, dialogueActive before: ", dialogueActive)
 		dialogueActive = true
 		parent.speaking.emit(1)
 		

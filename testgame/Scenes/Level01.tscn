@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dpe8m6p55sdxx" path="res://Scenes/enemy.tscn" id="5_wjjke"]
 [ext_resource type="Script" uid="uid://c38r10a1855tj" path="res://Scripts/Non-State related/Door.gd" id="6_t0sul"]
 [ext_resource type="PackedScene" uid="uid://v4r78g4kbnyy" path="res://Scenes/UI.tscn" id="9_dutcy"]
+[ext_resource type="PackedScene" uid="uid://dkmo1mr1p86ba" path="res://Scenes/spikes.tscn" id="10_etp4v"]
+[ext_resource type="PackedScene" uid="uid://ljjmtwqq5kil" path="res://Scenes/spike_checkpoint.tscn" id="11_2yitk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_t0sul")
@@ -555,6 +557,122 @@ entry_door_name = "WestD"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EastD" unique_id=1888492670]
 shape = SubResource("RectangleShape2D_30kwv")
+
+[node name="Spikes" parent="." unique_id=898931136 instance=ExtResource("10_etp4v")]
+position = Vector2(-977, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes2" parent="." unique_id=1992682577 instance=ExtResource("10_etp4v")]
+position = Vector2(-983, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes3" parent="." unique_id=1078302606 instance=ExtResource("10_etp4v")]
+position = Vector2(-964, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes4" parent="." unique_id=1961322096 instance=ExtResource("10_etp4v")]
+position = Vector2(-971, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes5" parent="." unique_id=972377938 instance=ExtResource("10_etp4v")]
+position = Vector2(-930, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes6" parent="." unique_id=1859165128 instance=ExtResource("10_etp4v")]
+position = Vector2(-936, 59)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes7" parent="." unique_id=806172426 instance=ExtResource("10_etp4v")]
+position = Vector2(-942, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes8" parent="." unique_id=26426408 instance=ExtResource("10_etp4v")]
+position = Vector2(-950, 59)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes9" parent="." unique_id=1998954106 instance=ExtResource("10_etp4v")]
+position = Vector2(-956, 59)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes10" parent="." unique_id=417284979 instance=ExtResource("10_etp4v")]
+position = Vector2(-923, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="SpikeCheckpoint" parent="." unique_id=16437152 instance=ExtResource("11_2yitk")]
+position = Vector2(-1068, -9)
+
+[node name="SpikeCheckpoint2" parent="." unique_id=817918990 instance=ExtResource("11_2yitk")]
+position = Vector2(-827, -58)
 
 [connection signal="area_shape_entered" from="EastD" to="EastD" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="EastD" to="EastD" method="_on_body_entered"]

@@ -3,4 +3,4 @@ extends Node2D
 	#the player will load the save and spawn whereever is saved last. 
 func _ready():
 	InputMap.load_from_project_settings()
-	SceneM.load_level("res://Scenes/Level02.tscn")
+	SceneM.load_level("res://Scenes/Level01.tscn")

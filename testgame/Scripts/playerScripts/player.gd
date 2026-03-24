@@ -57,6 +57,7 @@ var dur: float
 var CAMshake: float
 var shakeDur: float
 var damage: int
+var respawnCoord: Vector2 = Vector2(0, 0)
 
 func _ready() -> void:
 	Global.set_player(self)
@@ -80,9 +81,9 @@ func _process(delta: float) -> void:
 		
 func flip_direction(dire: int):
 	direction = dire
-	if direction == 1:
+	if direction >= 1:
 		as2d.flip_h = false
-	elif direction == -1:
+	elif direction <= -1:
 		as2d.flip_h = true
 		pass
 	
@@ -120,6 +121,9 @@ func _input(event): #allowing the player to attack
 				
 	if Input.is_action_just_pressed("interact") and current_interactable != null and is_on_floor() and !Global.UI.get_node("Balloon").visible:
 		control_locked = true
-				
+		
 func _on_timer_timeout() -> void:
 	comboCount = 0
+
+func respawn():
+	self.global_position = respawnCoord
