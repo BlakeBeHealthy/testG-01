@@ -20,6 +20,7 @@ extends CharacterBody2D
 @export var idle_state: State
 @export var death_state: State
 @export var cut_state: State
+@export var pogo_state: State
 @export var JUMP := 0
 @export var jumpCut := 0.0
 @onready var interactC2D: CollisionShape2D = $InteractArea/CollisionShape2D
