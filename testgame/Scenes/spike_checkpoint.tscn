@@ -11,6 +11,7 @@ collision_mask = 8
 script = ExtResource("1_4sb81")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=232497468]
+scale = Vector2(12.195, 1)
 shape = SubResource("RectangleShape2D_4sb81")
 debug_color = Color(0.7104847, 0.48132533, 0.19293287, 0.41960785)
 
