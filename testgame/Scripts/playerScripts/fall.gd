@@ -27,6 +27,8 @@ func process_input(event: InputEvent) -> State:
 func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return parent.hit_state
+
+		
 	if parent.attackCheck:
 		parent.attackCheck = false
 		if !parent.ComboTime.is_stopped():
@@ -35,14 +37,15 @@ func process_frame(delta: float) -> State:
 		else:
 			parent.ComboTime.start()
 			return parent.attack_state
+			
+	if parent.pogoCheck:
+		return parent.pogo_state
 		
 	return null
 	
 func process_physics(delta: float) -> State:
-	if Input.is_action_pressed("jump"):
-		parent.velocity.y += gravity * delta * 0.9
-	elif parent.velocity.y < 405:
-		parent.velocity.y += gravity * 1.7 * delta
+	if parent.velocity.y < 380:
+		parent.velocity.y += gravity * 1.5 * delta
 	else:
 		parent.velocity.y = parent.velocity.y
 	

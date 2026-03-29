@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dpe8m6p55sdxx" path="res://Scenes/enemy.tscn" id="5_wjjke"]
 [ext_resource type="Script" uid="uid://c38r10a1855tj" path="res://Scripts/Non-State related/Door.gd" id="6_t0sul"]
 [ext_resource type="PackedScene" uid="uid://v4r78g4kbnyy" path="res://Scenes/UI.tscn" id="9_dutcy"]
-[ext_resource type="PackedScene" uid="uid://dkmo1mr1p86ba" path="res://Scenes/spikes.tscn" id="10_etp4v"]
+[ext_resource type="PackedScene" uid="uid://cgekcdkve474f" path="res://Scenes/spikes.tscn" id="10_etp4v"]
 [ext_resource type="PackedScene" uid="uid://ljjmtwqq5kil" path="res://Scenes/spike_checkpoint.tscn" id="11_2yitk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
@@ -520,7 +520,7 @@ tile_set = SubResource("TileSet_q6r6c")
 position = Vector2(-1175, 4)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2057607259]
-zoom = Vector2(3.5, 3.5)
+zoom = Vector2(5.83, 5.83)
 limit_left = -1203
 limit_top = -250
 limit_right = 692

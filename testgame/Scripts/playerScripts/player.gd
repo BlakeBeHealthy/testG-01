@@ -45,6 +45,7 @@ var knockback_velocity := 0.0
 var knockback_decay := 50.0
 var jumpCheck := false
 var attackCheck := false
+var pogoCheck := false
 var interactCheck := false
 var comboCount := 0
 var health := 3
@@ -69,7 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
-	if is_on_floor() and jumpCheck:
+	if is_on_floor() and jumpCheck and state_machine.current_state != pogo_state:
 		jumpCheck = false
 	
 func _process(delta: float) -> void:
@@ -113,12 +114,15 @@ func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale:
 	
 func _input(event): #allowing the player to attack
 	if (state_machine.current_state != hit_state and state_machine.current_state != cut_state) and event.is_action_pressed("leftC"):
-		if attack_delay.is_stopped() or !ComboTime.is_stopped():
-			if ComboTime.is_stopped():
-				attackCheck = true 
-			elif !ComboTime.is_stopped(): 
-				attackCheck = true
-				attack_delay.start()
+			if !is_on_floor() and Input.is_action_pressed("down") and attack_delay.is_stopped():
+				pogoCheck = true
+				print(pogoCheck)
+			elif !ComboTime.is_stopped() or attack_delay.is_stopped():
+				if ComboTime.is_stopped():
+					attackCheck = true 
+				elif !ComboTime.is_stopped(): 
+					attackCheck = true
+					attack_delay.start()
 				
 	if Input.is_action_just_pressed("interact") and current_interactable != null and is_on_floor() and !Global.UI.get_node("Balloon").visible:
 		control_locked = true

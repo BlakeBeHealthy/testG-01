@@ -71,7 +71,7 @@ func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return parent.hit_state
 	
-	if not as2d.is_playing() and !KB:
+	if !as2d.is_playing() and !KB:
 		if parent.is_on_floor():
 			if Input.is_action_pressed("jump"):
 				return parent.jump_state

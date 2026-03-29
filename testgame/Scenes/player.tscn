@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://fx6rtupf7151" path="res://Scripts/playerScripts/death.gd" id="10_tx1dd"]
 [ext_resource type="Script" uid="uid://bjtdl47fb400h" path="res://Scripts/playerScripts/att3.gd" id="11_ukyrk"]
 [ext_resource type="Script" uid="uid://dxfddd07onvhy" path="res://Scripts/playerScripts/cutscene_state.gd" id="14_7dp3o"]
-[ext_resource type="Script" path="res://Scenes/pogo_attack.gd" id="15_h4iuc"]
+[ext_resource type="Script" uid="uid://bi5xfsee0ba8i" path="res://Scenes/pogo_attack.gd" id="15_h4iuc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukyrk"]
 resource_local_to_scene = true
@@ -229,17 +229,9 @@ region = Rect2(0, 370, 50, 37)
 atlas = ExtResource("2_gymyn")
 region = Rect2(300, 333, 50, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jsob3"]
-atlas = ExtResource("2_gymyn")
-region = Rect2(200, 518, 50, 37)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_pg0gw"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(250, 518, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qavoy"]
-atlas = ExtResource("2_gymyn")
-region = Rect2(300, 518, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w4w4b"]
 atlas = ExtResource("2_gymyn")
@@ -534,13 +526,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jsob3")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_pg0gw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qavoy")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w4w4b")
@@ -669,16 +655,17 @@ material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"pogo"
-frame = 5
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
+visible = false
 visibility_layer = 2
 position = Vector2(-0.49999973, 8)
 scale = Vector2(0.995, 1.249)
 shape = SubResource("RectangleShape2D_ukyrk")
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=764626776]
+visible = false
 position = Vector2(0, 4)
 collision_layer = 64
 collision_mask = 768
@@ -782,6 +769,7 @@ metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Hit" type="Node" parent="StateMachine" unique_id=743816584]
 script = ExtResource("9_tx1dd")
+move_speed = 200.0
 
 [node name="death" type="Node" parent="StateMachine" unique_id=1690670225]
 script = ExtResource("10_tx1dd")
@@ -791,11 +779,13 @@ script = ExtResource("14_7dp3o")
 
 [node name="PogoAttack" type="Node" parent="StateMachine" unique_id=1129244710]
 script = ExtResource("15_h4iuc")
+move_speed = 200.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/CutsceneState" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack2" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Execution" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/PogoAttack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Idle" method="_on_area_2d_2_area_entered"]
@@ -809,3 +799,4 @@ script = ExtResource("15_h4iuc")
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Execution" method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_entered" from="Area2D" to="StateMachine/PogoAttack" method="_on_area_2d_area_shape_entered"]
