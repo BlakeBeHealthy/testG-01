@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ljjmtwqq5kil"]
+
+[ext_resource type="Script" uid="uid://dcux8jkx40khe" path="res://Scripts/Non-State related/spike_checkpoint.gd" id="1_4sb81"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sb81"]
+size = Vector2(9.5, 152)
+
+[node name="SpikeCheckpoint" type="Area2D" unique_id=16437152]
+visible = false
+collision_layer = 32
+collision_mask = 8
+script = ExtResource("1_4sb81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=232497468]
+scale = Vector2(12.195, 1)
+shape = SubResource("RectangleShape2D_4sb81")
+debug_color = Color(0.7104847, 0.48132533, 0.19293287, 0.41960785)
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

@@ -25,7 +25,6 @@ func enter() -> void:
 	as2d.play("attack")
 	attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
-	
 	if attackDir > 0:
 		as2d.flip_h = false
 	elif attackDir < 0:

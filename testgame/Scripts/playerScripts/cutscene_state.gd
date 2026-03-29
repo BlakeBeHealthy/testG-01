@@ -5,6 +5,7 @@ extends State
 var done := false
 var checkpoint := false
 var speaking := false
+var dialogueActive := false
 var started := false
 var resource := ""
 var title := ""
@@ -20,16 +21,21 @@ func enter() -> void:
 		speaking = true
 		
 func exit() -> void:
-	pass
-
+	dialogueActive = false
+	speaking = false
+	done = false
+	checkpoint = false
+	started = false
+	
 func process_input(event: InputEvent) -> State:
 	return null
 	
 func _on_dialogue_ended(_resource: DialogueResource):
-	if !speaking:
+	if !dialogueActive:
 		return
 		
 	speaking = false
+	await get_tree().create_timer(0.4).timeout
 	done = true
 	parent.speaking.emit(0)
 	
@@ -42,6 +48,7 @@ func process_frame(delta: float) -> State:
 	if speaking:
 		speaking = false
 		as2d.play("idle")
+		dialogueActive = true
 		parent.speaking.emit(1)
 		
 	if done:

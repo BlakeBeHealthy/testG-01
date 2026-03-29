@@ -20,12 +20,12 @@ extends CharacterBody2D
 @export var idle_state: State
 @export var death_state: State
 @export var cut_state: State
+@export var pogo_state: State
 @export var JUMP := 0
 @export var jumpCut := 0.0
 @onready var interactC2D: CollisionShape2D = $InteractArea/CollisionShape2D
 
 
-var health := 5
 @warning_ignore("unused_signal")
 signal playerHit
 @warning_ignore("unused_signal")
@@ -45,8 +45,10 @@ var knockback_velocity := 0.0
 var knockback_decay := 50.0
 var jumpCheck := false
 var attackCheck := false
+var pogoCheck := false
 var interactCheck := false
 var comboCount := 0
+var health := 3
 var current_interactable: Node = null
 var takeHit: bool
 var dir: int
@@ -57,6 +59,7 @@ var dur: float
 var CAMshake: float
 var shakeDur: float
 var damage: int
+var respawnCoord: Vector2 = Vector2(0, 0)
 
 func _ready() -> void:
 	Global.set_player(self)
@@ -67,7 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
-	if is_on_floor() and jumpCheck:
+	if is_on_floor() and jumpCheck and state_machine.current_state != pogo_state:
 		jumpCheck = false
 	
 func _process(delta: float) -> void:
@@ -80,9 +83,9 @@ func _process(delta: float) -> void:
 		
 func flip_direction(dire: int):
 	direction = dire
-	if direction == 1:
+	if direction >= 1:
 		as2d.flip_h = false
-	elif direction == -1:
+	elif direction <= -1:
 		as2d.flip_h = true
 		pass
 	
@@ -111,15 +114,21 @@ func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale:
 	
 func _input(event): #allowing the player to attack
 	if (state_machine.current_state != hit_state and state_machine.current_state != cut_state) and event.is_action_pressed("leftC"):
-		if attack_delay.is_stopped() or !ComboTime.is_stopped():
-			if ComboTime.is_stopped():
-				attackCheck = true 
-			elif !ComboTime.is_stopped(): 
-				attackCheck = true
-				attack_delay.start()
+			if !is_on_floor() and Input.is_action_pressed("down") and attack_delay.is_stopped():
+				pogoCheck = true
+				print(pogoCheck)
+			elif !ComboTime.is_stopped() or attack_delay.is_stopped():
+				if ComboTime.is_stopped():
+					attackCheck = true 
+				elif !ComboTime.is_stopped(): 
+					attackCheck = true
+					attack_delay.start()
 				
-	if Input.is_action_just_pressed("interact") and current_interactable != null and is_on_floor():
+	if Input.is_action_just_pressed("interact") and current_interactable != null and is_on_floor() and !Global.UI.get_node("Balloon").visible:
 		control_locked = true
-				
+		
 func _on_timer_timeout() -> void:
 	comboCount = 0
+
+func respawn():
+	self.global_position = respawnCoord

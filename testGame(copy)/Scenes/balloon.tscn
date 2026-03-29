@@ -1,0 +1,198 @@
+[gd_scene format=3 uid="uid://b3l3bcn2iw6dk"]
+
+[ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="1_4wcav"]
+[ext_resource type="Script" uid="uid://pr0ry60niown" path="res://Scripts/Non-State related/DialogueBalloon.gd" id="1_5iodc"]
+[ext_resource type="Shader" uid="uid://b7bs566f75bvj" path="res://Scenes/WipeTransition.gdshader" id="2_nrerx"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="2_os1p0"]
+[ext_resource type="Texture2D" uid="uid://bs3x3o1hcw3fa" path="res://assets/NPCS/Portraits/GusGodot.png" id="3_kbj1d"]
+[ext_resource type="Texture2D" uid="uid://lrbg1u7pvlg8" path="res://assets/NPCS/Portraits/mainChar.png" id="4_syg23"]
+[ext_resource type="FontFile" uid="uid://csg7gawytepkx" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidSans-Bold.otf" id="5_xyim1"]
+[ext_resource type="FontFile" uid="uid://d0r7oon537wd0" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidSans.otf" id="6_rl6ge"]
+[ext_resource type="PackedScene" uid="uid://3ga7ywpdjoi8" path="res://Scenes/responseButton.tscn" id="9_rl6ge"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbj1d"]
+shader = ExtResource("2_nrerx")
+shader_parameter/progress = 1.20000004768372
+shader_parameter/edge_width = 0.8
+shader_parameter/horizontal_weight = 0.5
+shader_parameter/vertical_weight = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyim1"]
+atlas = ExtResource("3_kbj1d")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl6ge"]
+atlas = ExtResource("4_syg23")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5iodc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyim1")
+}],
+"loop": false,
+"name": &"Gus_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl6ge")
+}],
+"loop": false,
+"name": &"P_idle",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_syg23"]
+shader = ExtResource("2_nrerx")
+shader_parameter/progress = 1.20000004768372
+shader_parameter/edge_width = 0.85
+shader_parameter/horizontal_weight = 1.0
+shader_parameter/vertical_weight = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrerx"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rl6ge"]
+bg_color = Color(0.5568628, 0.4509804, 0.30588236, 0)
+
+[node name="Balloon" type="Control" unique_id=932871309]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5iodc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1381367423]
+modulate = Color(0, 0, 0, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=636337179]
+custom_minimum_size = Vector2(1400, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -800.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=28323001]
+custom_minimum_size = Vector2(550, 800)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Control" unique_id=1216238625]
+material = SubResource("ShaderMaterial_kbj1d")
+position = Vector2(370, 428)
+scale = Vector2(1.78, 1.78)
+sprite_frames = SubResource("SpriteFrames_5iodc")
+animation = &"P_idle"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=284104083]
+custom_minimum_size = Vector2(0, 520)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/margin_left = 62
+theme_override_constants/margin_top = 163
+theme_override_constants/margin_right = 65
+theme_override_constants/margin_bottom = 55
+
+[node name="Panel" type="Panel" parent="HBoxContainer/MarginContainer" unique_id=864374159]
+material = SubResource("ShaderMaterial_syg23")
+custom_minimum_size = Vector2(1200, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_nrerx")
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer/Panel" unique_id=200583849]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 10
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/Panel/MarginContainer2" unique_id=1733791022]
+custom_minimum_size = Vector2(900, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_xyim1")
+theme_override_font_sizes/font_size = 56
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/Panel" unique_id=1100446872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 92
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="DialogueLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer/Panel/MarginContainer" unique_id=123682884]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("6_rl6ge")
+theme_override_font_sizes/normal_font_size = 30
+scroll_active = false
+script = ExtResource("1_4wcav")
+skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
+seconds_per_pause_step = 0.5
+metadata/_custom_type_script = "uid://g32um0mltv5d"
+
+[node name="Panel" type="Panel" parent="." unique_id=1058600559]
+layout_mode = 0
+offset_left = 917.0
+offset_top = 187.0
+offset_right = 1847.0
+offset_bottom = 701.825
+theme_override_styles/panel = SubResource("StyleBoxFlat_rl6ge")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=438847022]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -496.0
+offset_top = -400.0
+offset_right = 496.0
+offset_bottom = -1.375
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="DialogueResponsesMenu" type="Container" parent="Panel/MarginContainer" unique_id=1204525299 node_paths=PackedStringArray("response_template")]
+custom_minimum_size = Vector2(900, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+script = ExtResource("2_os1p0")
+response_template = NodePath("Button")
+metadata/_custom_type_script = "uid://bb52rsfwhkxbn"
+
+[node name="Button" parent="Panel/MarginContainer/DialogueResponsesMenu" unique_id=2082806078 instance=ExtResource("9_rl6ge")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15

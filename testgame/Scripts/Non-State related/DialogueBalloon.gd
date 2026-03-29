@@ -20,11 +20,10 @@ var overlay_tween = null
 var isMoving := false
 var dialogue_ended := false
 var waiting_for_line := false
-var dialogue_line: DialogueLine:
+var current_line: DialogueLine:
 	set(value):
 		if value:
-			dialogue_line = value
-			apply_dialogue_line()
+			current_line = value
 		else:
 			dialogue_ended = true
 			await wipeOut()
@@ -60,22 +59,24 @@ func start(resource: DialogueResource, title: String) -> void:
 	overlay_tween = create_tween()
 	overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.3)
 	self.visible = true
-	dialogue_line = await resource.get_next_dialogue_line(title, game_states)
+	current_line = await dialogueResource.get_next_dialogue_line(title, game_states)
+	if current_line:
+		apply_dialogue_line()
 	dialogue_responses_menu.response_selected.connect(_on_response_selected)
 
 func apply_dialogue_line():
-	if dialogue_line.character != currentSpeaker:
+	if current_line.character != currentSpeaker:
 		if check:
 			await wipeOut()
 		else:
 			check = true
 		
 		var mood = "idle"
-		currentSpeaker = dialogue_line.character
+		currentSpeaker = current_line.character
 		as2d.play(currentSpeaker + "_" + mood)
 		dialogue_label.modulate.a = 0
 		dialogue_label.visible_ratio = 0
-		charName.text = dialogue_line.character
+		charName.text = current_line.character
 		await wipeIn()
 		if responses_visible:
 			if response_tween:
@@ -86,7 +87,7 @@ func apply_dialogue_line():
 			responsePanel.hide()
 			
 		
-	dialogue_label.dialogue_line = dialogue_line
+	dialogue_label.dialogue_line = current_line
 	dialogue_label.type_out()
 	
 	await dialogue_label.finished_typing
@@ -97,24 +98,28 @@ func next(next_id: String) -> void:
 	waiting_for_line = true
 	if dialogue_label.is_typing:
 		dialogue_label.skip_typing()
-	dialogue_line = await dialogueResource.get_next_dialogue_line(next_id, game_states)
+	current_line = await dialogueResource.get_next_dialogue_line(next_id, game_states)
+	if current_line:
+		apply_dialogue_line()
 	waiting_for_line = false
 	
 func _on_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 	
 func _input(event: InputEvent) -> void:
-	if dialogue_line == null or isMoving or dialogue_ended or waiting_for_line:
+	if current_line == null or isMoving or dialogue_ended or waiting_for_line:
 		return
+		
 	if responses_visible and !dialogue_label.is_typing:
 		if event.is_action_pressed("dialogueSkip"):
 			get_viewport().set_input_as_handled()
 		return
-	if Input.is_action_just_pressed("dialogueSkip"):
+		
+	if Input.is_action_just_pressed("dialogueSkip"):   
 		if dialogue_label.is_typing:
 			dialogue_label.skip_typing()
 		else:
-			next(dialogue_line.next_id)
+			next(current_line.next_id)
 
 func wipeIn():
 	isMoving = true
@@ -153,9 +158,9 @@ func wipeOut():
 	return
 
 func show_responses():
-	if dialogue_line.responses.size() > 0:
+	if current_line.responses.size() > 0:
 		responses_visible = true
-		dialogue_responses_menu.responses = dialogue_line.responses
+		dialogue_responses_menu.responses = current_line.responses
 		dialogue_responses_menu.add_theme_constant_override("separation", 100)
 		responsePanel.modulate.a = 0
 		responsePanel.show()
@@ -167,3 +172,4 @@ func show_responses():
 		response_tween.tween_property(responsePanel, "modulate:a", 1.0, 0.3)
 	else:
 		responsePanel.hide()
+		responses_visible = false

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://3ga7ywpdjoi8"]
 
 [ext_resource type="FontFile" uid="uid://2eqs4xecrrh1" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidMono.otf" id="1_wn5k8"]
-[ext_resource type="Script" uid="uid://cvhftcnl6280c" path="res://Scenes/response_button.gd" id="2_7j0mb"]
+[ext_resource type="Script" uid="uid://cvhftcnl6280c" path="res://Scripts/Non-State related/response_button.gd" id="2_7j0mb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu3lb"]
 bg_color = Color(0, 0, 0, 1)

@@ -18,6 +18,7 @@ var spawn_position: Vector2
 var check := false
 var healthCount := 6
 var afterAtt := 6
+var hit := false
 
 func _ready() -> void:
 	spawn_position = global_position
@@ -42,4 +43,4 @@ func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 		afterAtt = true
 		return
 	else:
-		state_mac.change_state(hit_state) #gonna change to a bool flag
+		hit = true #gonna change to a bool flag

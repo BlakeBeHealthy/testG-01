@@ -19,8 +19,8 @@ var flashing := false
 
 func enter() -> void:
 	if !parent.invincible:
-		deadCount -= parent.damage
-	if deadCount <= 0:
+		parent.health -= parent.damage
+	if parent.health <= 0:
 		dead = true
 	flash_white()
 	apply_knockback()
@@ -40,9 +40,9 @@ func process_frame(delta: float) -> State:
 		parent.takeHit = false
 		if Input.is_action_just_pressed('jump') and parent.is_on_floor():
 			return parent.jump_state
-		if Input.is_action_just_pressed('runL') or Input.is_action_just_pressed('runR'):
+		elif Input.is_action_just_pressed('runL') or Input.is_action_just_pressed('runR'):
 			return parent.run_state
-		if Input.is_action_just_pressed('leftC'):
+		elif parent.attackCheck:
 			return parent.attack_state
 		else:
 			return parent.idle_state

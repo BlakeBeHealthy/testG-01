@@ -470,7 +470,7 @@ current_scene_path = "res://Scenes/Level02.tscn"
 position = Vector2(-75, -3)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=266358876]
-zoom = Vector2(4.74, 4.74)
+zoom = Vector2(4.5, 4.5)
 limit_left = -735
 limit_top = -9999999
 limit_right = 569

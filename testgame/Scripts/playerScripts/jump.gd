@@ -32,6 +32,8 @@ func process_frame(delta: float) -> State:
 		
 	if parent.takeHit:
 		return parent.hit_state
+		
+		
 	if parent.attackCheck:
 		parent.attackCheck = false
 		if !parent.ComboTime.is_stopped():
@@ -40,6 +42,10 @@ func process_frame(delta: float) -> State:
 		else:
 			parent.ComboTime.start()
 			return parent.attack_state
+			
+	if parent.pogoCheck:
+		return parent.pogo_state
+		
 	return null
 	
 func process_physics(delta: float) -> State:

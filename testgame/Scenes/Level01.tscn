@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dpe8m6p55sdxx" path="res://Scenes/enemy.tscn" id="5_wjjke"]
 [ext_resource type="Script" uid="uid://c38r10a1855tj" path="res://Scripts/Non-State related/Door.gd" id="6_t0sul"]
 [ext_resource type="PackedScene" uid="uid://v4r78g4kbnyy" path="res://Scenes/UI.tscn" id="9_dutcy"]
+[ext_resource type="PackedScene" uid="uid://cgekcdkve474f" path="res://Scenes/spikes.tscn" id="10_etp4v"]
+[ext_resource type="PackedScene" uid="uid://ljjmtwqq5kil" path="res://Scenes/spike_checkpoint.tscn" id="11_2yitk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_t0sul")
@@ -176,12 +178,12 @@ texture = ExtResource("1_t0sul")
 4:9/0 = 0
 5:9/0 = 0
 13:9/0 = 0
-13:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.17985916, -8, 8, -8, 8, 8, 0.17985916, 8)
 14:9/0 = 0
 15:9/0 = 0
 15:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 16:9/0 = 0
-16:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.17985916, -8, 0, 8, -8, 8)
 18:9/0 = 0
 19:9/0 = 0
 20:9/0 = 0
@@ -202,11 +204,11 @@ texture = ExtResource("1_t0sul")
 10:10/0 = 0
 11:10/0 = 0
 13:10/0 = 0
-13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.17985916, -8, 8, -8, 8, 8, 0.17985916, 8)
 14:10/0 = 0
 15:10/0 = 0
 16:10/0 = 0
-16:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.17985916, -8, 0, 8, -8, 8)
 18:10/0 = 0
 19:10/0 = 0
 20:10/0 = 0
@@ -227,11 +229,11 @@ texture = ExtResource("1_t0sul")
 10:11/0 = 0
 11:11/0 = 0
 13:11/0 = 0
-13:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.17985916, -8, 8, -8, 8, 8, 0.17985916, 8)
 14:11/0 = 0
 15:11/0 = 0
 16:11/0 = 0
-16:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.17985916, -8, 0, 8, -8, 8)
 27:11/0 = 0
 28:11/0 = 0
 29:11/0 = 0
@@ -242,11 +244,11 @@ texture = ExtResource("1_t0sul")
 4:12/0 = 0
 5:12/0 = 0
 13:12/0 = 0
-13:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.17985916, -8, 8, -8, 8, 8, 0.17985916, 8)
 14:12/0 = 0
 15:12/0 = 0
 16:12/0 = 0
-16:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.17985916, -8, 0, 8, -8, 8)
 18:12/0 = 0
 19:12/0 = 0
 20:12/0 = 0
@@ -267,11 +269,11 @@ texture = ExtResource("1_t0sul")
 10:13/0 = 0
 11:13/0 = 0
 13:13/0 = 0
-13:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.17985916, -8, 8, -8, 8, 8, 0.17985916, 8)
 14:13/0 = 0
 15:13/0 = 0
 16:13/0 = 0
-16:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.17985916, -8, 0, 8, -8, 8)
 18:13/0 = 0
 19:13/0 = 0
 20:13/0 = 0
@@ -288,11 +290,11 @@ texture = ExtResource("1_t0sul")
 10:14/0 = 0
 11:14/0 = 0
 13:14/0 = 0
-13:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.17985916, -8, 8, -8, 8, 8, 0.17985916, 8)
 14:14/0 = 0
 15:14/0 = 0
 16:14/0 = 0
-16:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.17985916, -8, 0, 8, -8, 8)
 27:14/0 = 0
 28:14/0 = 0
 29:14/0 = 0
@@ -303,11 +305,11 @@ texture = ExtResource("1_t0sul")
 4:15/0 = 0
 5:15/0 = 0
 13:15/0 = 0
-13:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.17985916, -8, 8, -8, 8, 8, 0.17985916, 8)
 14:15/0 = 0
 15:15/0 = 0
 16:15/0 = 0
-16:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.17985916, -8, 0, 8, -8, 8)
 18:15/0 = 0
 18:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 19:15/0 = 0
@@ -331,11 +333,11 @@ texture = ExtResource("1_t0sul")
 10:16/0 = 0
 11:16/0 = 0
 13:16/0 = 0
-13:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.17985916, -8, 8, -8, 8, 0.17985916, 0.17985916, 0)
 14:16/0 = 0
 15:16/0 = 0
 16:16/0 = 0
-16:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.17985916, -8, -0.5395756, 0.17985916, -8, 0.17985916)
 18:16/0 = 0
 19:16/0 = 0
 20:16/0 = 0
@@ -518,7 +520,7 @@ tile_set = SubResource("TileSet_q6r6c")
 position = Vector2(-1175, 4)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2057607259]
-zoom = Vector2(3.22, 3.22)
+zoom = Vector2(5.83, 5.83)
 limit_left = -1203
 limit_top = -250
 limit_right = 692
@@ -555,6 +557,122 @@ entry_door_name = "WestD"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EastD" unique_id=1888492670]
 shape = SubResource("RectangleShape2D_30kwv")
+
+[node name="Spikes" parent="." unique_id=898931136 instance=ExtResource("10_etp4v")]
+position = Vector2(-977, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes2" parent="." unique_id=1992682577 instance=ExtResource("10_etp4v")]
+position = Vector2(-983, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes3" parent="." unique_id=1078302606 instance=ExtResource("10_etp4v")]
+position = Vector2(-964, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes4" parent="." unique_id=1961322096 instance=ExtResource("10_etp4v")]
+position = Vector2(-971, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes5" parent="." unique_id=972377938 instance=ExtResource("10_etp4v")]
+position = Vector2(-930, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes6" parent="." unique_id=1859165128 instance=ExtResource("10_etp4v")]
+position = Vector2(-936, 59)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes7" parent="." unique_id=806172426 instance=ExtResource("10_etp4v")]
+position = Vector2(-942, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes8" parent="." unique_id=26426408 instance=ExtResource("10_etp4v")]
+position = Vector2(-950, 59)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes9" parent="." unique_id=1998954106 instance=ExtResource("10_etp4v")]
+position = Vector2(-956, 59)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="Spikes10" parent="." unique_id=417284979 instance=ExtResource("10_etp4v")]
+position = Vector2(-923, 58)
+spawn = true
+dmg = 1
+StunTime = 0.6
+TimeScale = 0.2
+dur = 0.2
+CAMShake = 4.0
+shakeDur = 0.2
+SpikeNumber = "1"
+
+[node name="SpikeCheckpoint" parent="." unique_id=16437152 instance=ExtResource("11_2yitk")]
+position = Vector2(-1047, 0)
+
+[node name="SpikeCheckpoint2" parent="." unique_id=817918990 instance=ExtResource("11_2yitk")]
+position = Vector2(-843, -15)
 
 [connection signal="area_shape_entered" from="EastD" to="EastD" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="EastD" to="EastD" method="_on_body_entered"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://v4r78g4kbnyy"]
 
-[ext_resource type="Script" uid="uid://bvya24lhj31ru" path="res://Scenes/UI.gd" id="1_nxvpl"]
+[ext_resource type="Script" uid="uid://bvya24lhj31ru" path="res://Scripts/Non-State related/UI.gd" id="1_nxvpl"]
 [ext_resource type="Script" uid="uid://ch0vtpw4w4gw3" path="res://Scripts/Non-State related/hearts_box.gd" id="1_w371h"]
 [ext_resource type="PackedScene" uid="uid://b3l3bcn2iw6dk" path="res://Scenes/balloon.tscn" id="3_dewlx"]
 

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://3ga7ywpdjoi8"]
+
+[ext_resource type="FontFile" uid="uid://2eqs4xecrrh1" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidMono.otf" id="1_wn5k8"]
+[ext_resource type="Script" uid="uid://cvhftcnl6280c" path="res://Scenes/response_button.gd" id="2_7j0mb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu3lb"]
+bg_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="Button" type="Button" unique_id=2033042331]
+custom_minimum_size = Vector2(900, 100)
+offset_right = 900.0
+offset_bottom = 100.0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_wn5k8")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_bu3lb")
+text = "njjn"
+alignment = 0
+autowrap_mode = 3
+script = ExtResource("2_7j0mb")

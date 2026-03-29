@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://v4r78g4kbnyy"]
+
+[ext_resource type="Script" uid="uid://bvya24lhj31ru" path="res://Scenes/UI.gd" id="1_nxvpl"]
+[ext_resource type="Script" uid="uid://ch0vtpw4w4gw3" path="res://Scripts/Non-State related/hearts_box.gd" id="1_w371h"]
+[ext_resource type="PackedScene" uid="uid://b3l3bcn2iw6dk" path="res://Scenes/balloon.tscn" id="3_dewlx"]
+
+[node name="UI" type="CanvasLayer" unique_id=1184425221]
+script = ExtResource("1_nxvpl")
+
+[node name="HeartsUI" type="Control" parent="." unique_id=71773550]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HeartsBox" type="HBoxContainer" parent="HeartsUI" unique_id=1951172518]
+layout_mode = 0
+offset_right = 14.0
+offset_bottom = 16.0
+script = ExtResource("1_w371h")
+
+[node name="Balloon" parent="." unique_id=932871309 instance=ExtResource("3_dewlx")]
+visible = false
