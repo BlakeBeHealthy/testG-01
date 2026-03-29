@@ -6,7 +6,7 @@ var shake_strength := 0.0
 var shaking := false
 var currentOffset := 0.0
 var target: Vector2 = Vector2()
-var horizontalOffset: float = 70
+var horizontalOffset: float = 60
 var verticalOffset: float = 40
 
 @onready var shake_timer: Timer = Timer.new()
