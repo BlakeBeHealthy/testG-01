@@ -654,14 +654,13 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"pogo"
+animation = &"idle"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
-visible = false
 visibility_layer = 2
 position = Vector2(-0.49999973, 8)
-scale = Vector2(0.995, 1.249)
+scale = Vector2(1.59, 1.274)
 shape = SubResource("RectangleShape2D_ukyrk")
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=764626776]

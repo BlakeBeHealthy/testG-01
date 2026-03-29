@@ -18,7 +18,6 @@ var timeSlow := false
 var flashing := false
 
 func enter() -> void:
-	print("hit")
 	if !parent.invincible:
 		parent.health -= parent.damage
 	if parent.health <= 0:

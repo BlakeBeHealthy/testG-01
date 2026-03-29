@@ -68,7 +68,7 @@ shape = SubResource("SegmentShape2D_gwqs2")
 [node name="Area2D" type="Area2D" parent="." unique_id=1958051783]
 position = Vector2(-2, -5.0000005)
 scale = Vector2(2.24, 1.475)
-collision_layer = 16
+collision_layer = 1024
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1998765180]

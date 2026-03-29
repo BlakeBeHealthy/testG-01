@@ -18,6 +18,7 @@ func enter() -> void:
 	a2d.position.y = 15.0
 	a2d.scale.x = 1.3
 	a2d.scale.y = -0.5
+	a2d. set_collision_mask_value(11, true)
 	pass
 
 func exit() -> void:
@@ -26,6 +27,7 @@ func exit() -> void:
 	a2d.scale.x = 1.4
 	a2d.scale.y = 1.0
 	transitionCheck = false
+	a2d. set_collision_mask_value(11, false)
 	pass
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
