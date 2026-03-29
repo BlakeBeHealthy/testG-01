@@ -1,7 +1,13 @@
 extends Camera2D
 
+@export var FOLLOW_SPEED := 0.0
+
 var shake_strength := 0.0
 var shaking := false
+var currentOffset := 0.0
+var target: Vector2 = Vector2()
+var horizontalOffset: float = 70
+var verticalOffset: float = 40
 
 @onready var shake_timer: Timer = Timer.new()
 
@@ -15,7 +21,16 @@ func _ready():
 	shake_timer.timeout.connect(_on_shake_timeout)
 
 func _process(delta):
-	#Starting the shake
+	var weight = 1 - exp(-FOLLOW_SPEED * delta)
+	currentOffset = lerp(currentOffset, float(Global.player.direction), weight)
+	print(Global.player.direction)
+	target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
+	Global.player.global_position.y - verticalOffset)
+	
+	self.global_position = round(self.global_position.lerp(target, weight))
+	
+	
+	
 	if shaking:
 		offset = Vector2(
 			randf_range(-shake_strength, shake_strength),
