@@ -62,7 +62,6 @@ func process_physics(delta: float) -> State:
 		parent.velocity.y = -300
 	else:
 		parent.velocity.y += gravity * delta
-		print(parent.velocity.y)
 		
 	var direction = Input.get_axis("runL", "runR")
 	if direction > 0:

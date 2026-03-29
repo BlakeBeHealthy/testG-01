@@ -6,7 +6,7 @@ var shake_strength := 0.0
 var shaking := false
 var currentOffset := 0.0
 var target: Vector2 = Vector2()
-var horizontalOffset: float = 60
+var horizontalOffset: float = 30
 var verticalOffset: float = 40
 
 @onready var shake_timer: Timer = Timer.new()
@@ -23,7 +23,6 @@ func _ready():
 func _process(delta):
 	var weight = 1 - exp(-FOLLOW_SPEED * delta)
 	currentOffset = lerp(currentOffset, float(Global.player.direction), weight)
-	print(Global.player.direction)
 	target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
 	Global.player.global_position.y - verticalOffset)
 	

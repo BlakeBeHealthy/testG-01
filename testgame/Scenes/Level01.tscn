@@ -525,7 +525,7 @@ limit_right = 692
 limit_bottom = 155
 position_smoothing_speed = 24.0
 script = ExtResource("3_8nwny")
-FOLLOW_SPEED = 20.0
+FOLLOW_SPEED = 10.0
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("2_30kwv")]
 position = Vector2(-1175, 4)

@@ -72,6 +72,7 @@ func process_physics(delta: float) -> EnemyState:
 		abox.position.x = direction * hitboxOffX
 		update_ray()
 		
+		
 	
 	if !r2d.is_colliding():
 			parent.velocity.x = 0
