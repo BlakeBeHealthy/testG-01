@@ -4,6 +4,7 @@ extends State
 
 var parried := false
 var parryOver := false
+var timeSlow := false
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
 	parry_time.start()
@@ -30,3 +31,13 @@ func _on_parry_time_timeout() -> void:
 	
 func process_physics(delta: float) -> State:
 	return null
+	
+func apply_timeSlow(timeScale: float, duration: float) -> void:
+	if timeSlow:
+		return
+		
+	timeSlow = true
+	Engine.time_scale = timeScale
+	await get_tree().create_timer(duration, false, false, true).timeout
+	Engine.time_scale = 1.0
+	timeSlow = false
