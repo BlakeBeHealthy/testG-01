@@ -6,7 +6,7 @@ var pogo := false
 var transitionCheck := false
 
 func enter() -> void:
-	parent.attack_delay.start(0.3)
+	parent.attack_delay.start()
 	parent.jumpCheck = true
 	if transitionCheck:
 		transitionCheck = false

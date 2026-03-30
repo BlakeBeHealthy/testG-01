@@ -409,12 +409,14 @@ target_position = Vector2(19, 25)
 target_position = Vector2(20, 0)
 collision_mask = 2
 
+[node name="ParryCooldown" type="Timer" parent="." unique_id=742697355]
+
 [node name="attackTim" type="Timer" parent="." unique_id=1252982053]
 wait_time = 0.73
 one_shot = true
 
 [node name="HitCheck" type="Timer" parent="." unique_id=392684075]
-wait_time = 0.4
+wait_time = 0.2
 one_shot = true
 
 [node name="PatTime" type="Timer" parent="." unique_id=816368268]
@@ -467,7 +469,7 @@ dmg = 1
 
 [node name="Hit" type="Node" parent="StateMac" unique_id=2128724766]
 script = ExtResource("11_haro7")
-knockback_strength = 500
+knockback_strength = 550
 decayRate = 3000
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="StateMac/EnemyAttack" method="_on_animated_sprite_2d_animation_changed"]

@@ -364,7 +364,7 @@ wait_time = 5.057
 one_shot = true
 
 [node name="hitCheck" type="Timer" parent="." unique_id=1345542316]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 
 [node name="AITIME" type="Timer" parent="." unique_id=1109065581]

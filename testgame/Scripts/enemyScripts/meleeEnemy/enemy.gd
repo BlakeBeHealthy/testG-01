@@ -43,4 +43,4 @@ func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 		afterAtt = true
 		return
 	else:
-		hit = true #gonna change to a bool flag
+		hit = true

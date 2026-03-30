@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bjtdl47fb400h" path="res://Scripts/playerScripts/att3.gd" id="11_ukyrk"]
 [ext_resource type="Script" uid="uid://dxfddd07onvhy" path="res://Scripts/playerScripts/cutscene_state.gd" id="14_7dp3o"]
 [ext_resource type="Script" uid="uid://bi5xfsee0ba8i" path="res://Scenes/pogo_attack.gd" id="15_h4iuc"]
+[ext_resource type="Script" uid="uid://cy6vk8hnddefn" path="res://Scenes/parry.gd" id="16_fd4e3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukyrk"]
 resource_local_to_scene = true
@@ -223,11 +224,15 @@ region = Rect2(150, 74, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtg1u"]
 atlas = ExtResource("2_gymyn")
-region = Rect2(0, 370, 50, 37)
+region = Rect2(200, 370, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nuaet"]
 atlas = ExtResource("2_gymyn")
-region = Rect2(300, 333, 50, 37)
+region = Rect2(250, 370, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsob3"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(300, 370, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pg0gw"]
 atlas = ExtResource("2_gymyn")
@@ -519,10 +524,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nuaet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsob3")
 }],
 "loop": false,
 "name": &"parry",
-"speed": 5.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -629,6 +637,8 @@ size = Vector2(25.25, 45)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx1dd"]
 size = Vector2(25.171629, 26.979446)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pg0gw"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ukyrk"]
 radius = 26.092636
 height = 57.69588
@@ -654,7 +664,9 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"idle"
+animation = &"parry"
+frame = 2
+frame_progress = 1.0
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
@@ -664,7 +676,6 @@ scale = Vector2(1.59, 1.274)
 shape = SubResource("RectangleShape2D_ukyrk")
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=764626776]
-visible = false
 position = Vector2(0, 4)
 collision_layer = 64
 collision_mask = 768
@@ -684,12 +695,32 @@ position = Vector2(-3.5762787e-07, 3.4897232)
 scale = Vector2(0.99999976, 1)
 shape = SubResource("RectangleShape2D_tx1dd")
 
+[node name="ParryZone" type="Area2D" parent="." unique_id=976924657]
+position = Vector2(16, 4)
+scale = Vector2(1.5484037, 1.4124941)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParryZone" unique_id=1663327836]
+shape = SubResource("CapsuleShape2D_pg0gw")
+debug_color = Color(0.9978096, 0, 0.1678963, 0.41960785)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=450046427]
+position = Vector2(18, 4)
+scale = Vector2(1.4, 1)
+collision_layer = 128
+collision_mask = 16
+monitoring = false
+monitorable = false
+
+[node name="AttackZone" type="CollisionShape2D" parent="Area2D" unique_id=1948751203]
+scale = Vector2(0.727955, 0.977069)
+shape = SubResource("CapsuleShape2D_ukyrk")
+
 [node name="InvincibleTime" type="Timer" parent="." unique_id=1177413683]
 wait_time = 2.0
 one_shot = true
 
 [node name="attackDelay" type="Timer" parent="." unique_id=1251612868]
-wait_time = 0.4
+wait_time = 0.46
 one_shot = true
 
 [node name="hitstuntimer" type="Timer" parent="." unique_id=668290657]
@@ -703,21 +734,13 @@ one_shot = true
 wait_time = 10.476
 one_shot = true
 
-[node name="CoyoteTime" type="Timer" parent="." unique_id=300296774]
+[node name="parryTime" type="Timer" parent="." unique_id=1187766342]
 wait_time = 0.1
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="." unique_id=450046427]
-position = Vector2(18, 4)
-scale = Vector2(1.4, 1)
-collision_layer = 128
-collision_mask = 16
-monitoring = false
-monitorable = false
-
-[node name="AttackZone" type="CollisionShape2D" parent="Area2D" unique_id=1948751203]
-scale = Vector2(0.727955, 0.977069)
-shape = SubResource("CapsuleShape2D_ukyrk")
+[node name="CoyoteTime" type="Timer" parent="." unique_id=300296774]
+wait_time = 0.1
+one_shot = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=1235796374 node_paths=PackedStringArray("attack_state", "starting_state")]
 script = ExtResource("4_x3wgy")
@@ -741,8 +764,8 @@ move_speed = 200.0
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=2144520584]
 script = ExtResource("9_f1ek2")
-hit_timeStop = 0.4
-hit_duration = 0.08
+hit_timeStop = 0.2
+hit_duration = 0.04
 decayRate = 9000
 playerKnockback = 300
 move_speed = 200.0
@@ -750,8 +773,8 @@ metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Attack2" type="Node" parent="StateMachine" unique_id=1745266335]
 script = ExtResource("10_pu2lt")
-hit_timeStop = 0.4
-hit_duration = 0.08
+hit_timeStop = 0.2
+hit_duration = 0.04
 decayRate = 9000
 playerKnockback = 300
 move_speed = 200.0
@@ -775,11 +798,13 @@ script = ExtResource("10_tx1dd")
 
 [node name="CutsceneState" type="Node" parent="StateMachine" unique_id=1359471986]
 script = ExtResource("14_7dp3o")
-move_speed = null
 
 [node name="PogoAttack" type="Node" parent="StateMachine" unique_id=1129244710]
 script = ExtResource("15_h4iuc")
 move_speed = 200.0
+
+[node name="Parry" type="Node" parent="StateMachine" unique_id=1807584822]
+script = ExtResource("16_fd4e3")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/CutsceneState" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]
@@ -793,10 +818,12 @@ move_speed = 200.0
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Jump" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Fall" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Attack" method="_on_area_2d_2_area_entered"]
-[connection signal="timeout" from="InvincibleTime" to="StateMachine/Hit" method="_on_invincible_time_timeout"]
-[connection signal="timeout" from="hitstuntimer" to="StateMachine/Hit" method="_on_hitstuntimer_timeout"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="ParryZone" to="StateMachine/Parry" method="_on_parry_zone_area_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Execution" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/PogoAttack" method="_on_area_2d_area_shape_entered"]
+[connection signal="timeout" from="InvincibleTime" to="StateMachine/Hit" method="_on_invincible_time_timeout"]
+[connection signal="timeout" from="hitstuntimer" to="StateMachine/Hit" method="_on_hitstuntimer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="parryTime" to="StateMachine/Parry" method="_on_parry_time_timeout"]

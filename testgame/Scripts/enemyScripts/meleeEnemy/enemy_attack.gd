@@ -31,6 +31,8 @@ func exit() -> void:
 		abox.monitorable = false
 	if abox.monitoring != false:
 		abox.monitoring = false
+	if parent.hit:
+		parent.hit = false
 	attDone = true
 
 func process_input(event: InputEvent) -> EnemyState:

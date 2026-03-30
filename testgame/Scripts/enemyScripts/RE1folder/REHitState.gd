@@ -25,7 +25,7 @@ func enter() -> void:
 	hit = true
 
 func exit() -> void:
-	hitCheck.start()
+	pass
 
 func process_input(event: InputEvent) -> REnemyState:
 	return null

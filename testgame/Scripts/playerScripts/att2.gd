@@ -36,7 +36,7 @@ func enter() -> void:
 		
 	as2d.play("a2")
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if as2d.animation != "a2":
+	if as2d.animation != "a2" or parent.takeHit:
 		return
 		
 	if as2d.frame == 1:
@@ -56,7 +56,9 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 		attackDir = -1
 	else:
 		attackDir = 1
+	apply_timeSlow(hit_timeStop, hit_duration)
 	
+
 func exit() -> void:
 	KB = false
 	checkHit = true
