@@ -517,12 +517,12 @@ tile_map_data = PackedByteArray("AAD2/wEAAAASAA8AAAD1/wEAAAASAA8AAADz/wEAAAASAA8
 tile_set = SubResource("TileSet_q6r6c")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2057607259]
-position = Vector2(-1175, 4)
+position = Vector2(1, -3)
 zoom = Vector2(3.5, 3.5)
 limit_left = -1203
-limit_top = -250
+limit_top = -500
 limit_right = 692
-limit_bottom = 155
+limit_bottom = 464
 position_smoothing_speed = 24.0
 script = ExtResource("3_8nwny")
 FOLLOW_SPEED = 10.0

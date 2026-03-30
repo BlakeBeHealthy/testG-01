@@ -47,6 +47,7 @@ var jumpCheck := false
 var attackCheck := false
 var pogoCheck := false
 var interactCheck := false
+var camLook := false
 var comboCount := 0
 var health := 3
 var current_interactable: Node = null
@@ -123,7 +124,7 @@ func _input(event): #allowing the player to attack
 					attackCheck = true
 					attack_delay.start()
 				
-	if Input.is_action_just_pressed("interact") and current_interactable != null and is_on_floor() and !Global.UI.get_node("Balloon").visible:
+	if ((Input.is_action_just_pressed("interact") and current_interactable != null) or Input.is_action_pressed("PlayerLock")) and is_on_floor() and !Global.UI.get_node("Balloon").visible:
 		control_locked = true
 		
 func _on_timer_timeout() -> void:

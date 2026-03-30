@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cp2sknxmo0rgv" path="res://Scenes/fade.tscn" id="2_wbxth"]
 
 [node name="Main" type="Node2D" unique_id=895178181]
+position = Vector2(0, -3)
 script = ExtResource("1_m34ki")
 
 [node name="Gameplay" type="Node2D" parent="." unique_id=999413951]

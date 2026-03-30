@@ -17,8 +17,10 @@ func enter() -> void:
 		
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
-	if parent.current_interactable is BetaNPC:
+	elif parent.current_interactable is BetaNPC:
 		speaking = true
+	else:
+		parent.camLook = true
 		
 func exit() -> void:
 	dialogueActive = false
@@ -50,6 +52,11 @@ func process_frame(delta: float) -> State:
 		as2d.play("idle")
 		dialogueActive = true
 		parent.speaking.emit(1)
+		
+	if parent.camLook:
+		if !Input.is_action_pressed("PlayerLock"):
+			parent.camLook = false
+			done = true
 		
 	if done:
 		started = false

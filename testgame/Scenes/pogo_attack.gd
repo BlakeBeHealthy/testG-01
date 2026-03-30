@@ -28,6 +28,8 @@ func exit() -> void:
 	a2d.scale.y = 1.0
 	transitionCheck = false
 	a2d. set_collision_mask_value(11, false)
+	a2d.monitorable = false
+	a2d.monitoring = false
 	pass
 	
 func _on_animated_sprite_2d_frame_changed() -> void:

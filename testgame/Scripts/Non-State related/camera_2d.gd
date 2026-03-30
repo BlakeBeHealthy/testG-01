@@ -1,13 +1,15 @@
 extends Camera2D
 
 @export var FOLLOW_SPEED := 0.0
+var horizontalOffset: float = 100
+var verticalOffset: float = 30
+var voffset: float = 80
 
 var shake_strength := 0.0
 var shaking := false
 var currentOffset := 0.0
 var target: Vector2 = Vector2()
-var horizontalOffset: float = 30
-var verticalOffset: float = 40
+
 
 @onready var shake_timer: Timer = Timer.new()
 
@@ -23,11 +25,21 @@ func _ready():
 func _process(delta):
 	var weight = 1 - exp(-FOLLOW_SPEED * delta)
 	currentOffset = lerp(currentOffset, float(Global.player.direction), weight)
-	target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
-	Global.player.global_position.y - verticalOffset)
+	if Global.player.camLook == true:
+		if Input.is_action_pressed("down") and !Input.is_action_pressed("up"):
+			target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
+			Global.player.global_position.y - verticalOffset + (voffset + 20))
+		elif Input.is_action_pressed("up") and !Input.is_action_pressed("down"):
+			target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
+			Global.player.global_position.y - verticalOffset - voffset)
+		else:
+			target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
+			Global.player.global_position.y - verticalOffset)
+	else:
+		target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
+		Global.player.global_position.y - verticalOffset)
 	
 	self.global_position = round(self.global_position.lerp(target, weight))
-	
 	
 	
 	if shaking:

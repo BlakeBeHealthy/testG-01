@@ -38,6 +38,8 @@ func on_level_loaded(level: Node) -> void:
 				await Global.player.landed
 				
 	Global.player.flip_direction(direction)
+	Global.camera.global_position = Global.player.global_position
+	await get_tree().create_timer(0.09).timeout
 	FadeS.fade_in()
 	
 func _dir_from_enum(dir: int) -> Vector2:
