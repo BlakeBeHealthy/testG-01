@@ -27,6 +27,8 @@ var attackDir := 0
 func enter() -> void:
 	as2d.play("parryAtt")
 	attack_delay.start()
+	if parent.parried:
+		parent.parried = false
 	attackDir = Input.get_axis("runL", "runR")
 	if attackDir > 0:
 		as2d.flip_h = false

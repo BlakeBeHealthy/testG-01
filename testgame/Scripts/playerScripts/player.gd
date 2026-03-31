@@ -142,4 +142,5 @@ func respawn():
 	self.global_position = respawnCoord
 
 func _on_parry_cooldown_timeout() -> void:
+	print("cooldown")
 	parried = false
