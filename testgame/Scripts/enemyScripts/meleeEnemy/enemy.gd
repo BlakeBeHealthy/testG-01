@@ -25,6 +25,7 @@ var parried := false
 func _ready() -> void:
 	spawn_position = global_position
 	state_mac.init(self)
+	Global.player.goodParry.connect(stun)
 
 func _unhandled_input(event: InputEvent) -> void:
 	state_mac.process_input(event)
@@ -46,3 +47,7 @@ func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 		return
 	else:
 		hit = true
+		
+func stun():
+	if state_mac.current_state == attack_state or state_mac.current_state == chase_state:
+		parried = true

@@ -536,14 +536,14 @@ Lbound = 9
 Rbound = 167
 
 [node name="Enemy" parent="." unique_id=95663871 instance=ExtResource("5_wjjke")]
-position = Vector2(-643, -10)
+position = Vector2(-723, -7)
 Lbound = -737
 Rbound = -487
 
 [node name="Enemy2" parent="." unique_id=322745412 instance=ExtResource("5_wjjke")]
-position = Vector2(-301, -8)
-Lbound = -530
-Rbound = -278
+position = Vector2(-665, -9)
+Lbound = -737
+Rbound = -485
 
 [node name="REnemy2" parent="." unique_id=975470928 instance=ExtResource("4_dutcy")]
 position = Vector2(-165, -10)

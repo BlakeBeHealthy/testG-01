@@ -3,6 +3,7 @@ extends State
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var parry_zone: Area2D = $"../../ParryZone"
 @onready var parry_cooldown: Timer = $"../../parryCooldown"
+@onready var a2d2: Area2D = $"../../Area2D2"
 
 var parried := false
 var parryOver := false
@@ -16,6 +17,7 @@ func enter() -> void:
 	parry_zone.monitorable = true
 	parry_zone.monitoring = true
 	parry_cooldown.start()
+
 	
 func exit() -> void:
 	parent.parryCheck = false
