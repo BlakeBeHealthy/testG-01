@@ -31,10 +31,13 @@ func process_input(event: InputEvent) -> EnemyState:
 func process_frame(delta: float) -> EnemyState:
 	if healthCount <= 0:
 		return parent.death_state
-
+		
 	if !hitCheck.is_stopped():
 		if !as2d.is_playing():
-			as2d.play("idle")
+			if parent.parried:
+				return parent.stun_state
+			else:
+				as2d.play("idle")
 	else:
 		return parent.chase_state
 		

@@ -31,6 +31,8 @@ func process_input(event: InputEvent) -> EnemyState:
 func process_frame(delta: float) -> EnemyState:
 	if healthCount <= 0:
 		return parent.death_state
+	if parent.parried:
+		return parent.stun_state
 	if parent.hit:
 		return parent.hit_state
 	if patrol:

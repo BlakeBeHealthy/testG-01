@@ -31,7 +31,10 @@ func process_frame(delta: float) -> State:
 		return parent.parry_state
 	if parent.attackCheck:
 		parent.attackCheck = false
-		if !parent.ComboTime.is_stopped():
+		if parent.parried:
+			parent.parried = false
+			return parent.parryAttack_state
+		elif !parent.ComboTime.is_stopped():
 			parent.ComboTime.stop()
 			return parent.att2_state
 		else:

@@ -21,7 +21,7 @@ var attDone = false
 
 func enter() -> void:
 	var player = Global.player
-	player.goodParry.connect(stun)
+	
 	at3.start()
 	as2d.play("attack")
 	waitT = true
@@ -57,6 +57,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		return
 		
 	if as2d.frame == 6:
+		print("HITTING PLAYER")
 		abox.monitorable = true
 		abox.monitoring = true
 	elif as2d.frame == 7:
@@ -88,7 +89,7 @@ func _on_attack_tim_timeout() -> void:
 func _on_attackbox_area_entered(area: Area2D) -> void:
 	var player = area.get_parent()
 	if player.parryCheck:
-		parent.parried = true
+		pass
 	elif !player.invincible:
 		knockback(player)
 	

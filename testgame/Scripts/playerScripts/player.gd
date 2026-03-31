@@ -51,6 +51,7 @@ var jumpCheck := false
 var attackCheck := false
 var pogoCheck := false
 var parryCheck := false
+var parried := false
 var interactCheck := false
 var camLook := false
 var comboCount := 0
@@ -139,3 +140,6 @@ func _on_timer_timeout() -> void:
 
 func respawn():
 	self.global_position = respawnCoord
+
+func _on_parry_cooldown_timeout() -> void:
+	parried = false
