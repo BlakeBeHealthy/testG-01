@@ -14,7 +14,7 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 	if area.get_parent() is Player:
 		var player = area.get_parent()
 		
-		if !player.invincible:
+		if !player.invincible and !player.parryCheck:
 			player.hit(
 				dmg,
 				sign(player.global_position.x - global_position.x),
