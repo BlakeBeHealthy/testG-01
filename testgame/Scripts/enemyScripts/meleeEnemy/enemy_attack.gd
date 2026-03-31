@@ -20,6 +20,8 @@ var dead = false
 var attDone = false
 
 func enter() -> void:
+	var player = Global.player
+	player.goodParry.connect(stun)
 	at3.start()
 	as2d.play("attack")
 	waitT = true
@@ -31,12 +33,17 @@ func exit() -> void:
 		abox.monitorable = false
 	if abox.monitoring != false:
 		abox.monitoring = false
+	if parent.hit:
+		parent.hit = false
 	attDone = true
 
 func process_input(event: InputEvent) -> EnemyState:
 	return null
 
 func process_frame(delta: float) -> EnemyState:
+	if parent.parried:
+		return parent.stun_state
+		
 	if !waitT:
 		return parent.chase_state
 		
@@ -46,7 +53,7 @@ func process_frame(delta: float) -> EnemyState:
 	return null
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if as2d.animation != "attack": 
+	if as2d.animation != "attack" or parent.parried: 
 		return
 		
 	if as2d.frame == 6:
@@ -80,7 +87,9 @@ func _on_attack_tim_timeout() -> void:
 
 func _on_attackbox_area_entered(area: Area2D) -> void:
 	var player = area.get_parent()
-	if !player.invincible:
+	if player.parryCheck:
+		parent.parried = true
+	elif !player.invincible:
 		knockback(player)
 	
 func knockback(player):
@@ -95,8 +104,10 @@ func knockback(player):
 		shakeDuration
 		)
 	
-
-
+func stun():
+	print("EMMITED")
+	parent.parried = true
+	
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	flash_white()
 	healthCount -= 1

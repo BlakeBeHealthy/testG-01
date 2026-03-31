@@ -466,17 +466,19 @@ dialogueScene = "res://dialogues/goblinShop.dialogue"
 position = Vector2(-180, 6)
 current_scene_path = "res://Scenes/Level02.tscn"
 
-[node name="Player" parent="." unique_id=1436052975 instance=ExtResource("2_4twtk")]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=266358876]
 position = Vector2(-75, -3)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=266358876]
-zoom = Vector2(4.5, 4.5)
+zoom = Vector2(4, 4)
 limit_left = -735
 limit_top = -9999999
 limit_right = 569
 limit_bottom = 175
 position_smoothing_speed = 24.0
 script = ExtResource("3_qrl5v")
+FOLLOW_SPEED = 10.0
+
+[node name="Player" parent="." unique_id=1436052975 instance=ExtResource("2_4twtk")]
+position = Vector2(-75, -3)
 
 [node name="WestD" type="Area2D" parent="." unique_id=141517665]
 position = Vector2(-774.99994, -19)

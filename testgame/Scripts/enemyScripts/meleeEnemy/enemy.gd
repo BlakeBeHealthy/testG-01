@@ -7,6 +7,7 @@ class_name Enemy
 @export var attack_state: EnemyState
 @export var death_state: EnemyState
 @export var patrol_state: EnemyState
+@export var stun_state: EnemyState
 @export var chase_state: EnemyState
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var killzone: Area2D = $Killzone
@@ -19,6 +20,7 @@ var check := false
 var healthCount := 6
 var afterAtt := 6
 var hit := false
+var parried := false
 
 func _ready() -> void:
 	spawn_position = global_position
@@ -43,4 +45,4 @@ func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 		afterAtt = true
 		return
 	else:
-		hit = true #gonna change to a bool flag
+		hit = true

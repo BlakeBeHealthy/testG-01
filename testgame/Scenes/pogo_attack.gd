@@ -6,7 +6,7 @@ var pogo := false
 var transitionCheck := false
 
 func enter() -> void:
-	parent.attack_delay.start(0.3)
+	parent.attack_delay.start()
 	parent.jumpCheck = true
 	if transitionCheck:
 		transitionCheck = false
@@ -28,6 +28,8 @@ func exit() -> void:
 	a2d.scale.y = 1.0
 	transitionCheck = false
 	a2d. set_collision_mask_value(11, false)
+	a2d.monitorable = false
+	a2d.monitoring = false
 	pass
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
@@ -49,6 +51,8 @@ func process_frame(delta: float) -> State:
 		return parent.hit_state
 	
 	if !as2d.is_playing():
+		if parent.parryCheck:
+			return parent.parry_state
 		if parent.velocity.y > 0:
 			return parent.fall_state
 		elif parent.is_on_floor():
@@ -62,7 +66,6 @@ func process_physics(delta: float) -> State:
 		parent.velocity.y = -300
 	else:
 		parent.velocity.y += gravity * delta
-		print(parent.velocity.y)
 		
 	var direction = Input.get_axis("runL", "runR")
 	if direction > 0:

@@ -1,13 +1,12 @@
-extends Node
-class_name EnemyState
+extends EnemyState
 
-@export var move_speed: float = -75
-var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
-var parent: Enemy
-var healthCount = 4
+@onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+
+
 
 func enter() -> void:
-	pass
+	as2d.play("stun")
+	
 
 func exit() -> void:
 	pass

@@ -13,11 +13,12 @@ var newHealth := 0
 var hit_over
 var dead := false
 var dead2 := false
-var deadCount = 3
 var timeSlow := false
 var flashing := false
 
 func enter() -> void:
+	if parent.attackCheck:
+		parent.attackCheck = false
 	if !parent.invincible:
 		parent.health -= parent.damage
 	if parent.health <= 0:
@@ -28,7 +29,7 @@ func enter() -> void:
 	a2d2.monitorable = false
 	it3.start()
 	hit_over = false
-	parent.playerHit.emit(deadCount)
+	parent.playerHit.emit(parent.health)
 func exit() -> void:
 	pass
 

@@ -48,14 +48,12 @@ func hitPlayer():
 			CAMShake,
 			shakeDur,
 	)
-	print(player.health)
 	if player.health <= 1:
 		spawn = false
 		
 	elif spawn:
 		FadeS.fade_out()
 		await get_tree().create_timer(0.4).timeout
-		print("Spawning")
 		player.respawn()
 		await get_tree().create_timer(0.2).timeout
 		FadeS.fade_in()

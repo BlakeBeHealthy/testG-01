@@ -33,6 +33,8 @@ func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return parent.hit_state
 		
+	if parent.parryCheck:
+		return parent.parry_state
 		
 	if parent.attackCheck:
 		parent.attackCheck = false
