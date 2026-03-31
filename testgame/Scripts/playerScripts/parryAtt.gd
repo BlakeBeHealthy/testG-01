@@ -40,10 +40,10 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "parryAtt" or parent.takeHit:
 		return
 		
-	if as2d.frame == 1:
+	if as2d.frame == 3:
 		a2d.monitorable = true
 		a2d.monitoring = true
-	if as2d.frame == 3:
+	if as2d.frame == 6:
 		a2d.monitorable = false
 		a2d.monitoring = false
 		

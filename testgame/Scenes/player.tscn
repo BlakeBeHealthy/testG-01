@@ -214,6 +214,14 @@ region = Rect2(200, 370, 50, 37)
 atlas = ExtResource("2_gymyn")
 region = Rect2(250, 259, 50, 37)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbwqj"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(250, 259, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qavoy"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(200, 259, 50, 37)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n1x1j"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(300, 259, 50, 37)
@@ -507,6 +515,12 @@ animations = [{
 "texture": SubResource("AtlasTexture_xwi16")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sbwqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qavoy")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_n1x1j")
 }, {
 "duration": 1.0,
@@ -656,6 +670,8 @@ material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"parryAtt"
+frame = 6
+frame_progress = 1.0
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
@@ -728,7 +744,6 @@ wait_time = 10.476
 one_shot = true
 
 [node name="parryCooldown" type="Timer" parent="." unique_id=2138544369]
-wait_time = 2.0
 one_shot = true
 
 [node name="parryTime" type="Timer" parent="." unique_id=1187766342]
@@ -813,4 +828,5 @@ metadata/_custom_type_script = "uid://dtjskf7x53djr"
 [connection signal="timeout" from="InvincibleTime" to="StateMachine/Hit" method="_on_invincible_time_timeout"]
 [connection signal="timeout" from="hitstuntimer" to="StateMachine/Hit" method="_on_hitstuntimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="parryCooldown" to="." method="_on_parry_cooldown_timeout"]
 [connection signal="timeout" from="parryTime" to="StateMachine/Parry" method="_on_parry_time_timeout"]

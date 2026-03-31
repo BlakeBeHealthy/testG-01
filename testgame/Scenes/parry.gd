@@ -23,7 +23,7 @@ func exit() -> void:
 	parent.parryCheck = false
 	if !parry_time.is_stopped():
 		parry_time.stop()
-	parried = false
+	parent.parried = false
 	parry_zone.monitorable = false
 	parry_zone.monitoring = false
 	
