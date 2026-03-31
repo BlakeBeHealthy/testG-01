@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bxddr8l3ut1du" path="res://Scripts/enemyScripts/meleeEnemy/enemy_attack.gd" id="8_auwsv"]
 [ext_resource type="Script" uid="uid://gvskfp3kbeps" path="res://Scripts/enemyScripts/meleeEnemy/EneAHH.gd" id="8_m4x7e"]
 [ext_resource type="Script" uid="uid://dqio81ehbrcbl" path="res://Scripts/enemyScripts/meleeEnemy/enemyhit.gd" id="11_haro7"]
+[ext_resource type="Script" uid="uid://cd0eae5dcdc43" path="res://Scenes/stun.gd" id="16_hgeoe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m4x7e"]
 resource_local_to_scene = true
@@ -45,15 +46,15 @@ region = Rect2(750, 0, 150, 150)
 atlas = ExtResource("3_vt4ob")
 region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ycey"]
-atlas = ExtResource("3_vt4ob")
-region = Rect2(900, 0, 150, 150)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cim4"]
 atlas = ExtResource("3_vt4ob")
 region = Rect2(1050, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7x82w"]
+atlas = ExtResource("3_vt4ob")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ycey"]
 atlas = ExtResource("3_vt4ob")
 region = Rect2(900, 0, 150, 150)
 
@@ -129,6 +130,18 @@ region = Rect2(300, 0, 150, 150)
 atlas = ExtResource("3_po0sg")
 region = Rect2(450, 0, 150, 150)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vco5"]
+atlas = ExtResource("3_56vhr")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xmqa"]
+atlas = ExtResource("3_56vhr")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w0mm"]
+atlas = ExtResource("3_56vhr")
+region = Rect2(150, 0, 150, 150)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tk7xo"]
 atlas = ExtResource("7_tk7xo")
 region = Rect2(0, 0, 150, 150)
@@ -183,13 +196,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_scl1n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ycey")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_8cim4")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7x82w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ycey")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iatxd")
@@ -299,6 +312,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7vco5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xmqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w0mm")
+}],
+"loop": false,
+"name": &"stun",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_tk7xo")
 }, {
 "duration": 1.0,
@@ -342,7 +369,7 @@ height = 72.49227
 radius = 12.0
 height = 26.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=322745412 node_paths=PackedStringArray("idle_state", "hit_state", "attack_state", "death_state", "patrol_state", "chase_state")]
+[node name="Enemy" type="CharacterBody2D" unique_id=322745412 node_paths=PackedStringArray("idle_state", "hit_state", "attack_state", "death_state", "patrol_state", "stun_state", "chase_state")]
 collision_layer = 4
 script = ExtResource("1_287tu")
 idle_state = NodePath("StateMac/Idle")
@@ -350,18 +377,17 @@ hit_state = NodePath("StateMac/Hit")
 attack_state = NodePath("StateMac/EnemyAttack")
 death_state = NodePath("StateMac/Death")
 patrol_state = NodePath("StateMac/Patrol")
+stun_state = NodePath("StateMac/Stun")
 chase_state = NodePath("StateMac/EnemyChase")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=826498928]
 material = SubResource("ShaderMaterial_m4x7e")
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_vh8xy")
-animation = &"attack"
-frame = 6
+animation = &"stun"
 speed_scale = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1016065896]
-visible = false
 visibility_layer = 4
 position = Vector2(-2, 7)
 shape = SubResource("RectangleShape2D_56vhr")
@@ -395,7 +421,6 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attackbox" unique_id=977723249]
-position = Vector2(-10, 1)
 shape = SubResource("CapsuleShape2D_ta2yt")
 
 [node name="RayCast2D2" type="RayCast2D" parent="." unique_id=1424578639]
@@ -410,9 +435,10 @@ target_position = Vector2(20, 0)
 collision_mask = 2
 
 [node name="ParryCooldown" type="Timer" parent="." unique_id=742697355]
+wait_time = 0.001
 
 [node name="attackTim" type="Timer" parent="." unique_id=1252982053]
-wait_time = 0.73
+wait_time = 0.9
 one_shot = true
 
 [node name="HitCheck" type="Timer" parent="." unique_id=392684075]
@@ -420,7 +446,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="PatTime" type="Timer" parent="." unique_id=816368268]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
 
 [node name="AITIME" type="Timer" parent="." unique_id=1062080620]
@@ -461,16 +487,19 @@ move_speed = 100.0
 script = ExtResource("8_auwsv")
 knockback_strength = 300.0
 knockback_stunTime = 0.2
-hit_timeStop = 0.1
+hit_timeStop = 0.02
 hit_duration = 0.2
-camShakeStrength = 2.0
-shakeDuration = 0.2
+camShakeStrength = 4.0
+shakeDuration = 0.4
 dmg = 1
 
 [node name="Hit" type="Node" parent="StateMac" unique_id=2128724766]
 script = ExtResource("11_haro7")
 knockback_strength = 550
 decayRate = 3000
+
+[node name="Stun" type="Node" parent="StateMac" unique_id=892311204]
+script = ExtResource("16_hgeoe")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="StateMac/EnemyAttack" method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMac/EnemyAttack" method="_on_animated_sprite_2d_frame_changed"]

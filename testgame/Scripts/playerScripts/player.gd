@@ -8,13 +8,15 @@ extends CharacterBody2D
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var a2d: Area2D = $Area2D
 @onready var a2d2: Area2D = $Area2D2
+@onready var parry_cooldown: Timer = $parryCooldown
 
 
 @export var jump_state: State
 @export var hit_state: State
 @export var attack_state: State
 @export var att2_state: State
-@export var att3_state: State
+@export var parry_state: State
+@export var parryAttack_state: State
 @export var fall_state: State
 @export var run_state: State
 @export var idle_state: State
@@ -36,6 +38,8 @@ signal speaking
 signal landed
 @warning_ignore("unused_signal")
 signal inAir
+@warning_ignore("unused_signal")
+signal goodParry
 
 var invincible := false
 var control_locked = false
@@ -46,6 +50,7 @@ var knockback_decay := 50.0
 var jumpCheck := false
 var attackCheck := false
 var pogoCheck := false
+var parryCheck := false
 var interactCheck := false
 var camLook := false
 var comboCount := 0
@@ -55,7 +60,7 @@ var takeHit: bool
 var dir: int
 var stre: float
 var stunT: float
-var TScale: float
+var TScale: float 
 var dur: float
 var CAMshake: float
 var shakeDur: float
@@ -114,7 +119,9 @@ func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale:
 		attack_delay.stop()
 	
 func _input(event): #allowing the player to attack
-	if (state_machine.current_state != hit_state and state_machine.current_state != cut_state) and event.is_action_pressed("leftC"):
+	if (state_machine.current_state != hit_state and state_machine.current_state != cut_state) and event.is_action_pressed("Parry") and parry_cooldown.is_stopped():
+			parryCheck = true
+	elif (state_machine.current_state != hit_state and state_machine.current_state != cut_state) and event.is_action_pressed("leftC"):
 			if !is_on_floor() and Input.is_action_pressed("down") and attack_delay.is_stopped():
 				pogoCheck = true
 			elif !ComboTime.is_stopped() or attack_delay.is_stopped():

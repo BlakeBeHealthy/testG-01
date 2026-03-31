@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://hcjiuh0ylm37" path="res://Scripts/playerScripts/hit.gd" id="9_tx1dd"]
 [ext_resource type="Script" uid="uid://b6t0edljvaxnc" path="res://Scripts/playerScripts/att2.gd" id="10_pu2lt"]
 [ext_resource type="Script" uid="uid://fx6rtupf7151" path="res://Scripts/playerScripts/death.gd" id="10_tx1dd"]
-[ext_resource type="Script" uid="uid://bjtdl47fb400h" path="res://Scripts/playerScripts/att3.gd" id="11_ukyrk"]
+[ext_resource type="Script" uid="uid://bjtdl47fb400h" path="res://Scripts/playerScripts/parryAtt.gd" id="11_ukyrk"]
 [ext_resource type="Script" uid="uid://dxfddd07onvhy" path="res://Scripts/playerScripts/cutscene_state.gd" id="14_7dp3o"]
 [ext_resource type="Script" uid="uid://bi5xfsee0ba8i" path="res://Scenes/pogo_attack.gd" id="15_h4iuc"]
 [ext_resource type="Script" uid="uid://cy6vk8hnddefn" path="res://Scenes/parry.gd" id="16_fd4e3"]
@@ -45,30 +45,6 @@ region = Rect2(100, 259, 50, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qpa8y"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(150, 259, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sbwqj"]
-atlas = ExtResource("2_gymyn")
-region = Rect2(200, 259, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xwi16"]
-atlas = ExtResource("2_gymyn")
-region = Rect2(250, 259, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n1x1j"]
-atlas = ExtResource("2_gymyn")
-region = Rect2(300, 259, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8b32"]
-atlas = ExtResource("2_gymyn")
-region = Rect2(0, 296, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nj1g2"]
-atlas = ExtResource("2_gymyn")
-region = Rect2(50, 296, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_usbl8"]
-atlas = ExtResource("2_gymyn")
-region = Rect2(100, 296, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
 atlas = ExtResource("2_gymyn")
@@ -222,17 +198,37 @@ region = Rect2(100, 74, 50, 37)
 atlas = ExtResource("2_gymyn")
 region = Rect2(150, 74, 50, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dtg1u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsob3"]
 atlas = ExtResource("2_gymyn")
-region = Rect2(200, 370, 50, 37)
+region = Rect2(300, 370, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nuaet"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(250, 370, 50, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jsob3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtg1u"]
 atlas = ExtResource("2_gymyn")
-region = Rect2(300, 370, 50, 37)
+region = Rect2(200, 370, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwi16"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(250, 259, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1x1j"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(300, 259, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8b32"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(0, 296, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj1g2"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(50, 296, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usbl8"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(100, 296, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pg0gw"]
 atlas = ExtResource("2_gymyn")
@@ -341,32 +337,6 @@ animations = [{
 }],
 "loop": false,
 "name": &"a2",
-"speed": 24.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sbwqj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sbwqj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xwi16")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n1x1j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c8b32")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nj1g2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_usbl8")
-}],
-"loop": false,
-"name": &"a3",
 "speed": 24.0
 }, {
 "frames": [{
@@ -520,16 +490,36 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dtg1u")
+"texture": SubResource("AtlasTexture_jsob3")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nuaet")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jsob3")
+"texture": SubResource("AtlasTexture_dtg1u")
 }],
 "loop": false,
 "name": &"parry",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwi16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1x1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8b32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj1g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usbl8")
+}],
+"loop": false,
+"name": &"parryAtt",
 "speed": 24.0
 }, {
 "frames": [{
@@ -643,14 +633,15 @@ size = Vector2(25.171629, 26.979446)
 radius = 26.092636
 height = 57.69588
 
-[node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state", "att2_state", "att3_state", "fall_state", "run_state", "idle_state", "death_state", "cut_state", "pogo_state")]
+[node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state", "att2_state", "parry_state", "parryAttack_state", "fall_state", "run_state", "idle_state", "death_state", "cut_state", "pogo_state")]
 collision_layer = 2
 script = ExtResource("1_vgqql")
 jump_state = NodePath("StateMachine/Jump")
 hit_state = NodePath("StateMachine/Hit")
 attack_state = NodePath("StateMachine/Attack")
 att2_state = NodePath("StateMachine/Attack2")
-att3_state = NodePath("StateMachine/Execution")
+parry_state = NodePath("StateMachine/Parry")
+parryAttack_state = NodePath("StateMachine/ParryAttack")
 fall_state = NodePath("StateMachine/Fall")
 run_state = NodePath("StateMachine/Run")
 idle_state = NodePath("StateMachine/Idle")
@@ -664,9 +655,7 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"parry"
-frame = 2
-frame_progress = 1.0
+animation = &"parryAtt"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
@@ -698,6 +687,10 @@ shape = SubResource("RectangleShape2D_tx1dd")
 [node name="ParryZone" type="Area2D" parent="." unique_id=976924657]
 position = Vector2(16, 4)
 scale = Vector2(1.5484037, 1.4124941)
+collision_layer = 8
+collision_mask = 32
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParryZone" unique_id=1663327836]
 shape = SubResource("CapsuleShape2D_pg0gw")
@@ -734,6 +727,10 @@ one_shot = true
 wait_time = 10.476
 one_shot = true
 
+[node name="parryCooldown" type="Timer" parent="." unique_id=2138544369]
+wait_time = 2.0
+one_shot = true
+
 [node name="parryTime" type="Timer" parent="." unique_id=1187766342]
 wait_time = 0.1
 one_shot = true
@@ -752,46 +749,29 @@ script = ExtResource("3_i3pqv")
 
 [node name="Run" type="Node" parent="StateMachine" unique_id=1143582341]
 script = ExtResource("6_3smsa")
-move_speed = 200.0
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175]
 script = ExtResource("8_8erm5")
-move_speed = 200.0
 
 [node name="Fall" type="Node" parent="StateMachine" unique_id=337594985]
 script = ExtResource("8_f1ek2")
-move_speed = 200.0
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=2144520584]
 script = ExtResource("9_f1ek2")
-hit_timeStop = 0.2
-hit_duration = 0.04
+hit_duration = 0.12
 decayRate = 9000
 playerKnockback = 300
-move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Attack2" type="Node" parent="StateMachine" unique_id=1745266335]
 script = ExtResource("10_pu2lt")
-hit_timeStop = 0.2
-hit_duration = 0.04
+hit_duration = 0.12
 decayRate = 9000
 playerKnockback = 300
-move_speed = 200.0
-metadata/_custom_type_script = "uid://dtjskf7x53djr"
-
-[node name="Execution" type="Node" parent="StateMachine" unique_id=1766148343]
-script = ExtResource("11_ukyrk")
-hit_timeStop = 0.2
-hit_duration = 0.08
-decayRate = 5000
-playerKnockback = 300
-move_speed = 200.0
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Hit" type="Node" parent="StateMachine" unique_id=743816584]
 script = ExtResource("9_tx1dd")
-move_speed = 200.0
 
 [node name="death" type="Node" parent="StateMachine" unique_id=1690670225]
 script = ExtResource("10_tx1dd")
@@ -801,16 +781,23 @@ script = ExtResource("14_7dp3o")
 
 [node name="PogoAttack" type="Node" parent="StateMachine" unique_id=1129244710]
 script = ExtResource("15_h4iuc")
-move_speed = 200.0
 
 [node name="Parry" type="Node" parent="StateMachine" unique_id=1807584822]
 script = ExtResource("16_fd4e3")
+hit_duration = 0.2
+
+[node name="ParryAttack" type="Node" parent="StateMachine" unique_id=1766148343]
+script = ExtResource("11_ukyrk")
+hit_duration = 0.13
+decayRate = 9000
+playerKnockback = 300
+metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/CutsceneState" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack2" method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Execution" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/PogoAttack" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/ParryAttack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Idle" method="_on_area_2d_2_area_entered"]
@@ -821,8 +808,8 @@ script = ExtResource("16_fd4e3")
 [connection signal="area_entered" from="ParryZone" to="StateMachine/Parry" method="_on_parry_zone_area_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]
-[connection signal="area_shape_entered" from="Area2D" to="StateMachine/Execution" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/PogoAttack" method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_entered" from="Area2D" to="StateMachine/ParryAttack" method="_on_area_2d_area_shape_entered"]
 [connection signal="timeout" from="InvincibleTime" to="StateMachine/Hit" method="_on_invincible_time_timeout"]
 [connection signal="timeout" from="hitstuntimer" to="StateMachine/Hit" method="_on_hitstuntimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

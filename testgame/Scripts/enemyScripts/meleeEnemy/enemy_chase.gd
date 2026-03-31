@@ -16,6 +16,7 @@ var hitboxOffX
 
 func enter() -> void:
 	player = Global.get_player()
+	player.goodParry.connect(stun)
 	abox_base_scale_x = abs(abox.scale.x)
 	if as2d.animation != "walk":
 		as2d.play("walk")
@@ -51,7 +52,7 @@ func process_physics(delta: float) -> EnemyState:
 		parent.velocity.x = direction * move_speed
 	#Ensuring the enemy doesnt walk in the middle of the player during its invincibile
 	#time and spam walk left and right, tho that bug may have started once more...
-	if player.invincible and \
+	if (player.invincible or !player.is_on_floor()) and \
 	(player.global_position.x - parent.global_position.x) <= -0.01 and \
 	(player.global_position.x - parent.global_position.x) <= -0.01:
 		parent.velocity.x = 0
@@ -98,3 +99,6 @@ func flash_white():
 	await get_tree().create_timer(0.08).timeout
 	mat.set_shader_parameter("flash_strength", 0.0)
 	flashing = false
+
+func stun():
+	parent.parried = true

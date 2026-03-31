@@ -39,11 +39,9 @@ func exit() -> void:
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
 		return parent.jump_state
-		
-	if Input.is_action_pressed('runL') and Input.is_action_pressed('runR'):
+	elif Input.is_action_pressed('runL') and Input.is_action_pressed('runR'):
 		return null
-		
-	if Input.is_action_pressed('runL') or Input.is_action_pressed('runR'):
+	elif Input.is_action_pressed('runL') or Input.is_action_pressed('runR'):
 		return parent.run_state
 	return null
 	
@@ -54,6 +52,9 @@ func process_frame(delta: float) -> State:
 	
 	if parent.takeHit:
 		return parent.hit_state
+		
+	if parent.parryCheck:
+		return parent.parry_state
 		
 	if parent.attackCheck:
 		parent.attackCheck = false

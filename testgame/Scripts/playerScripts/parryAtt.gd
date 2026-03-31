@@ -14,60 +14,64 @@ extends State
 
 
 #I'm 90% one of these is useless lmao
+
 var checkHit := true
+var startKB := false
 var hit := false
 var timeSlow := false
+var checkAttack := false
 var KB = false
-var direction := 0
-var jumpBuff := 0
+var jumpBuff := false
+var attackDir := 0
 
 func enter() -> void:
-		#Ensuring the player can't just spam attacks over and over again, however
-		#I'm debating having the timer just start in the last combo move,
-		#Because if they do click in quick succession it will do the combo move so have attack
-		#Delay this is kinda useless, but you can test it if you feel like it.
-	if !attack_delay.is_stopped():
-		attack_delay.stop()
+	as2d.play("parryAtt")
 	attack_delay.start()
+	attackDir = Input.get_axis("runL", "runR")
+	if attackDir > 0:
+		as2d.flip_h = false
+	elif attackDir < 0:
+		as2d.flip_h = true
+	startKB = false
 	if checkHit:
 		checkHit = false
-		
-	as2d.play("a3")
+				
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if as2d.animation != "a3":
+	if as2d.animation != "parryAtt" or parent.takeHit:
 		return
-	
-	if as2d.frame == 3:
+		
+	if as2d.frame == 1:
 		a2d.monitorable = true
 		a2d.monitoring = true
-		parent.comboCount = 0
-	if as2d.frame == 5:
+	if as2d.frame == 3:
 		a2d.monitorable = false
 		a2d.monitoring = false
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	KB = true
-	parent.velocity.x = -direction * playerKnockback
+	if parent.state_machine.current_state != parent.attack_state:
+		pass
+		
+	startKB = true
 	apply_timeSlow(hit_timeStop, hit_duration)
-	
+
 func exit() -> void:
-	KB = false
 	checkHit = true
 	a2d.monitorable = false
 	a2d.monitoring = false
-	direction = 0
+	attackDir = 0
+	KB = false
 	
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_pressed("jump"):
-		jumpBuff = 1
-		
 	return null
 # Decide state when attack animation ends
 func process_frame(delta: float) -> State:
+	var direction = Input.get_axis("runL", "runR")
 	if parent.takeHit:
 		return parent.hit_state
-			
-	if not as2d.is_playing() and !KB:
+	
+	if !as2d.is_playing() and !KB and !timeSlow:
+		if parent.parryCheck:
+			return parent.parry_state
 		if parent.is_on_floor():
 			if Input.is_action_pressed("jump"):
 				jumpBuff = 0
@@ -80,42 +84,43 @@ func process_frame(delta: float) -> State:
 				return parent.idle_state
 		else:
 			return parent.fall_state
+		
 	return null
 	
 func process_physics(delta: float) -> State:
-	direction = Input.get_axis("runL", "runR")
+	var direction = Input.get_axis("runL","runR" )
 		
-	if direction < 0:
-		as2d.flip_h = true
-		a2d.position.x = -21
-	elif direction > 0:
-		as2d.flip_h = false
-		a2d.position.x = 21
-	else:
-		if as2d.flip_h:
-			a2d.position.x = -21
-		elif !as2d.flip_h:
-			a2d.position.x = 21
-			
-	if KB: #This works here but not in the first attack, no idea why.
+	if startKB:
+		parent.velocity.x += -attackDir * playerKnockback
+		startKB = false
+		KB = true
+	elif KB:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
 		if parent.velocity.x == 0:
-			KB = false 
+			KB = false
 	else:
 		if direction != 0:
 			parent.velocity.x = direction * move_speed
 		elif direction == 0:
 			parent.velocity.x *= 0
+			
+	if Input.is_action_pressed("jump") and !parent.jumpCheck:
+		parent.jumpCheck = true
+		parent.velocity.y = -parent.JUMP
+	elif Input.is_action_just_released("jump") and !parent.is_on_floor():
+		parent.velocity.y *= parent.jumpCut
+	else:
+		parent.velocity.y += gravity * delta
+	parent.move_and_slide()
+
 	return null
 
-
-#Should have mentioned this, this is for hitstop
 func apply_timeSlow(timeScale: float, duration: float) -> void:
 	if timeSlow:
 		return
 		
 	timeSlow = true
-	Engine.time_scale = timeScale 
-	await get_tree().create_timer(duration, false, false, true).timeout 
+	Engine.time_scale = timeScale
+	await get_tree().create_timer(duration, false, false, true).timeout
 	Engine.time_scale = 1.0
 	timeSlow = false

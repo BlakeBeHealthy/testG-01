@@ -8,7 +8,7 @@ extends State
 @onready var attack_delay: Timer = $"../../attackDelay"
 
 @export var hit_timeStop: float
-@export var hit_duration: float
+@export var hit_duration: float 
 @export var decayRate := 0
 @export var playerKnockback := 0
 
@@ -45,6 +45,9 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		a2d.monitoring = false
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if parent.state_machine.current_state != parent.attack_state:
+		pass
+		
 	startKB = true
 	apply_timeSlow(hit_timeStop, hit_duration)
 
@@ -63,7 +66,9 @@ func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return parent.hit_state
 	
-	if !as2d.is_playing() and !KB:
+	if !as2d.is_playing() and !KB and !timeSlow:
+		if parent.parryCheck:
+				return parent.parry_state
 		if parent.is_on_floor():
 			if Input.is_action_pressed("jump"):
 				jumpBuff = 0

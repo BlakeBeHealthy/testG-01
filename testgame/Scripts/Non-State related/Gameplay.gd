@@ -52,3 +52,4 @@ func _dir_from_enum(dir: int) -> Vector2:
 
 func game_respawn() -> void:
 	is_respawn = true
+	

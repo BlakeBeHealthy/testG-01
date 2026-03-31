@@ -51,12 +51,15 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		a2d.monitoring = false
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if parent.state_machine.current_state != parent.att2_state:
+		pass
+	
+	apply_timeSlow(hit_timeStop, hit_duration)
 	startKB = true
 	if as2d.flip_h:
 		attackDir = -1
 	else:
 		attackDir = 1
-	apply_timeSlow(hit_timeStop, hit_duration)
 	
 
 func exit() -> void:
@@ -74,6 +77,9 @@ func process_frame(delta: float) -> State:
 		return parent.hit_state
 	
 	if !as2d.is_playing() and !KB:
+		if parent.parryCheck:
+				return parent.parry_state
+				
 		if parent.is_on_floor():
 			if Input.is_action_pressed("jump"):
 				return parent.jump_state
@@ -84,7 +90,7 @@ func process_frame(delta: float) -> State:
 			if direction == 0:
 				return parent.idle_state
 		else:
-			return parent.fall_state
+				return parent.fall_state
 	return null
 	
 func process_physics(delta: float) -> State:
@@ -121,7 +127,7 @@ func apply_timeSlow(timeScale: float, duration: float) -> void:
 		return
 		
 	timeSlow = true
-	Engine.time_scale = timeScale 
+	Engine.time_scale = max(timeScale, 0.05)
 	await get_tree().create_timer(duration, false, false, true).timeout 
 	Engine.time_scale = 1.0
 	timeSlow = false
