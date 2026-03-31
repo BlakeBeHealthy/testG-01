@@ -234,10 +234,6 @@ region = Rect2(0, 296, 50, 37)
 atlas = ExtResource("2_gymyn")
 region = Rect2(50, 296, 50, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_usbl8"]
-atlas = ExtResource("2_gymyn")
-region = Rect2(100, 296, 50, 37)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_pg0gw"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(250, 518, 50, 37)
@@ -528,9 +524,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nj1g2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_usbl8")
 }],
 "loop": false,
 "name": &"parryAtt",
@@ -670,7 +663,7 @@ material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"parryAtt"
-frame = 6
+frame = 5
 frame_progress = 1.0
 speed_scale = 0.8
 
