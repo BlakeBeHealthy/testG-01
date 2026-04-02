@@ -29,6 +29,7 @@ func enter() -> void:
 	attack_delay.start()
 	if parent.parried:
 		parent.parried = false
+		
 	attackDir = Input.get_axis("runL", "runR")
 	if attackDir > 0:
 		as2d.flip_h = false
