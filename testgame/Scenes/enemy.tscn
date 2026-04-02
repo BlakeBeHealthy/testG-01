@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://bxddr8l3ut1du" path="res://Scripts/enemyScripts/meleeEnemy/enemy_attack.gd" id="8_auwsv"]
 [ext_resource type="Script" uid="uid://gvskfp3kbeps" path="res://Scripts/enemyScripts/meleeEnemy/EneAHH.gd" id="8_m4x7e"]
 [ext_resource type="Script" uid="uid://dqio81ehbrcbl" path="res://Scripts/enemyScripts/meleeEnemy/enemyhit.gd" id="11_haro7"]
-[ext_resource type="Script" uid="uid://cd0eae5dcdc43" path="res://Scenes/stun.gd" id="16_hgeoe"]
+[ext_resource type="Script" uid="uid://cd0eae5dcdc43" path="res://Scripts/enemyScripts/meleeEnemy/stun.gd" id="16_hgeoe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m4x7e"]
 resource_local_to_scene = true

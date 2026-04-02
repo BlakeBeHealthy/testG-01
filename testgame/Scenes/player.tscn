@@ -14,8 +14,8 @@
 [ext_resource type="Script" uid="uid://fx6rtupf7151" path="res://Scripts/playerScripts/death.gd" id="10_tx1dd"]
 [ext_resource type="Script" uid="uid://bjtdl47fb400h" path="res://Scripts/playerScripts/parryAtt.gd" id="11_ukyrk"]
 [ext_resource type="Script" uid="uid://dxfddd07onvhy" path="res://Scripts/playerScripts/cutscene_state.gd" id="14_7dp3o"]
-[ext_resource type="Script" uid="uid://bi5xfsee0ba8i" path="res://Scenes/pogo_attack.gd" id="15_h4iuc"]
-[ext_resource type="Script" uid="uid://cy6vk8hnddefn" path="res://Scenes/parry.gd" id="16_fd4e3"]
+[ext_resource type="Script" uid="uid://bi5xfsee0ba8i" path="res://Scripts/playerScripts/pogo_attack.gd" id="15_h4iuc"]
+[ext_resource type="Script" uid="uid://cy6vk8hnddefn" path="res://Scripts/playerScripts/parry.gd" id="16_fd4e3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukyrk"]
 resource_local_to_scene = true
