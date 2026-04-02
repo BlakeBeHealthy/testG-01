@@ -6,7 +6,6 @@ extends State
 @onready var hurtbox: CollisionShape2D = $"../../Area2D2/hurtbox"
 
 
-var parried := false
 var parryOver := false
 var timeSlow := false
 @export var hit_timeStop: float
@@ -23,7 +22,6 @@ func exit() -> void:
 	parent.parryCheck = false
 	if !parry_time.is_stopped():
 		parry_time.stop()
-	parried = false
 	parry_zone.monitorable = false
 	parry_zone.monitoring = false
 	
@@ -33,7 +31,7 @@ func process_frame(delta: float) -> State:
 		
 	if parry_time.is_stopped():
 		if parent.attackCheck:
-			if parried:
+			if parent.parried:
 				return parent.parryAttack_state
 			else:
 				return parent.attack_state
@@ -51,7 +49,7 @@ func process_frame(delta: float) -> State:
 
 
 func _on_parry_zone_area_entered(area: Area2D) -> void:
-	parried = true
+	parent.parried = true
 	parent.goodParry.emit()
 	apply_timeSlow(hit_timeStop, hit_duration)
 
