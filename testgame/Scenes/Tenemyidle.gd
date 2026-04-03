@@ -16,6 +16,7 @@ func process_frame(delta: float) -> TEnemyState:
 	if parent.patrol:
 		return parent.patrol_state
 	if parent.attack:
+		parent.attack = false
 		return parent.attack_state
 	return null
 
