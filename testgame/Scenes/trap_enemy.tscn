@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2hu5rlyw4pit" path="res://assets/Traps_&_Props_Free/Traps/Wooden_Crate_Box.png" id="4_jt34j"]
 [ext_resource type="Script" uid="uid://mc23fnpd5cut" path="res://Scenes/TEnemyattack_hit_box.gd" id="5_j2cqi"]
 [ext_resource type="Script" uid="uid://5wgcwnv6j05k" path="res://Scenes/Tenemyidle.gd" id="6_j2cqi"]
+[ext_resource type="Script" uid="uid://cqnb1bq6p838h" path="res://Scripts/enemyScripts/Tenemy/state_macTenemy.gd" id="6_moye6"]
 [ext_resource type="Script" uid="uid://dt3f6biv17vaq" path="res://Scenes/TEnemypatrol.gd" id="7_moye6"]
 [ext_resource type="Script" uid="uid://ds4otqk4sya2d" path="res://Scenes/TEnemyattack.gd" id="9_moye6"]
 [ext_resource type="Script" uid="uid://ndp1m52nve7f" path="res://Scenes/TEnemyhit.gd" id="9_uyvm1"]
@@ -155,8 +156,11 @@ shape = SubResource("RectangleShape2D_klnwj")
 target_position = Vector2(18, 40)
 
 [node name="pti" type="Timer" parent="." unique_id=1837845348]
+wait_time = 0.1
+one_shot = true
 
 [node name="StateMac" type="Node" parent="." unique_id=1711980549]
+script = ExtResource("6_moye6")
 
 [node name="Idle" type="Node" parent="StateMac" unique_id=1913269491]
 script = ExtResource("6_j2cqi")
