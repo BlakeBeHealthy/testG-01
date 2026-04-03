@@ -1,13 +1,179 @@
 [gd_scene format=3 uid="uid://d0gjako5s76ki"]
 
 [ext_resource type="Script" uid="uid://bqw7shakn04i4" path="res://Scripts/enemyScripts/Tenemy/trap_enemy.gd" id="1_le8qa"]
+[ext_resource type="Shader" uid="uid://bso3jsws5lrsh" path="res://Scenes/hit_flash.gdshader" id="2_6nf60"]
+[ext_resource type="Texture2D" uid="uid://dte5im7blyu5" path="res://assets/Traps_&_Props_Free/Traps/Wooden_Crate_Box_Fire_Trap.png" id="3_ly2m7"]
+[ext_resource type="Texture2D" uid="uid://d2hu5rlyw4pit" path="res://assets/Traps_&_Props_Free/Traps/Wooden_Crate_Box.png" id="4_jt34j"]
+[ext_resource type="Script" uid="uid://mc23fnpd5cut" path="res://Scenes/TEnemyattack_hit_box.gd" id="5_j2cqi"]
+[ext_resource type="Script" uid="uid://5wgcwnv6j05k" path="res://Scenes/Tenemyidle.gd" id="6_j2cqi"]
+[ext_resource type="Script" uid="uid://dt3f6biv17vaq" path="res://Scenes/TEnemypatrol.gd" id="7_moye6"]
+[ext_resource type="Script" uid="uid://ds4otqk4sya2d" path="res://Scenes/TEnemyattack.gd" id="9_moye6"]
+[ext_resource type="Script" uid="uid://ndp1m52nve7f" path="res://Scenes/TEnemyhit.gd" id="9_uyvm1"]
+[ext_resource type="Script" uid="uid://c6lxxwg8hrm3q" path="res://Scenes/TEnemyDeath.gd" id="10_3spi3"]
+[ext_resource type="Script" uid="uid://bglgntyxuly4x" path="res://Scenes/TEnemystun.gd" id="11_mhl37"]
 
-[node name="TrapEnemy" type="Node2D" unique_id=449635270 node_paths=PackedStringArray("idle_state", "hit_state", "attack_state", "death_state", "stun_state")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_neqj0"]
+shader = ExtResource("2_6nf60")
+shader_parameter/flash_strength = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsch5"]
+atlas = ExtResource("3_ly2m7")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsyq1"]
+atlas = ExtResource("3_ly2m7")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le8qa"]
+atlas = ExtResource("3_ly2m7")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxnp8"]
+atlas = ExtResource("3_ly2m7")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2cqi"]
+atlas = ExtResource("3_ly2m7")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moye6"]
+atlas = ExtResource("3_ly2m7")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyvm1"]
+atlas = ExtResource("3_ly2m7")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3spi3"]
+atlas = ExtResource("3_ly2m7")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhl37"]
+atlas = ExtResource("3_ly2m7")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sah5f"]
+atlas = ExtResource("3_ly2m7")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nf60"]
+atlas = ExtResource("4_jt34j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4mqn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsch5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsyq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le8qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxnp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2cqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moye6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyvm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3spi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhl37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sah5f")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nf60")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ly2m7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fe0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klnwj"]
+
+[node name="TrapEnemy" type="CharacterBody2D" unique_id=1707067136]
 script = ExtResource("1_le8qa")
-idle_state = NodePath("")
-hit_state = NodePath("")
-attack_state = NodePath("")
-death_state = NodePath("")
-stun_state = NodePath("")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1467740061]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=357040416]
+material = SubResource("ShaderMaterial_neqj0")
+sprite_frames = SubResource("SpriteFrames_h4mqn")
+animation = &"attack"
+frame = 2
+frame_progress = 0.19287325
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=563519608]
+scale = Vector2(1.495, 3.99)
+shape = SubResource("RectangleShape2D_ly2m7")
+debug_color = Color(0.91132796, 0.00010203719, 0.7287506, 0.41960785)
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=1865355329]
+script = ExtResource("5_j2cqi")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AttackHitbox" unique_id=1093516057]
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1288444335]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox" unique_id=2010163081]
+
+[node name="DetectionBox" type="Area2D" parent="." unique_id=113998864]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" unique_id=1493753768]
+
+[node name="AttackBox" type="Area2D" parent="." unique_id=1107314474]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AttackBox" unique_id=275730461]
+scale = Vector2(4.725, 0.865)
+shape = SubResource("RectangleShape2D_1fe0k")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="AttackBox" unique_id=1105012165]
+position = Vector2(0.81, 0)
+scale = Vector2(0.775, 4.635)
+shape = SubResource("RectangleShape2D_klnwj")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1479218265]
+target_position = Vector2(18, 40)
+
+[node name="pti" type="Timer" parent="." unique_id=1837845348]
+
+[node name="StateMac" type="Node" parent="." unique_id=1711980549]
+
+[node name="Idle" type="Node" parent="StateMac" unique_id=1913269491]
+script = ExtResource("6_j2cqi")
+
+[node name="Death" type="Node" parent="StateMac" unique_id=1358534305]
+script = ExtResource("10_3spi3")
+
+[node name="Patrol" type="Node" parent="StateMac" unique_id=1610519496]
+script = ExtResource("7_moye6")
+
+[node name="TEnemyAttack" type="Node" parent="StateMac" unique_id=503260999]
+script = ExtResource("9_moye6")
+
+[node name="Hit" type="Node" parent="StateMac" unique_id=1639309651]
+script = ExtResource("9_uyvm1")
+
+[node name="Stun" type="Node" parent="StateMac" unique_id=932702778]
+script = ExtResource("11_mhl37")
+
+[connection signal="area_entered" from="AttackHitbox" to="AttackHitbox" method="_on_area_entered"]

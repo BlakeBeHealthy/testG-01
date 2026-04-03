@@ -9,7 +9,7 @@ extends Area2D
 @export var dmg: int
 
 #MELEE ENEMY
-func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player:
 		var player = area.get_parent()
 		

@@ -1,11 +1,8 @@
 extends TEnemyState
 
-@onready var r2d2: RayCast2D = $"../../RayCast2D2"
 @onready var r2d: RayCast2D = $"../../RayCast2D"
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
-@onready var pti: Timer = $"../../PatTime"
-@onready var r2h: RayCast2D = $"../../Hit-Ray"
-@onready var abox: Area2D = $"../../Attackbox"
+@onready var pti: Timer = $"../../pti"
 
 @export var pauseTime := 0.4
 @export var strength := 5.0
@@ -28,7 +25,6 @@ func enter() -> void:
 	pausing = false
 	parent.velocity.x = direction * move_speed
 	as2d.flip_h = direction < 0
-	hitboxOffX = abs(abox.position.x)
 	combat = false
 
 func exit() -> void:
@@ -42,12 +38,8 @@ func process_frame(delta: float) -> TEnemyState:
 		return parent.death_state
 	if parent.hit:
 		return parent.hit_state
-	
-	var collider = r2d2.get_collider() #Test if player is in range and if so, it begins chase
-	if collider and collider is Player:
-		var player_x = collider.global_position.x
-		if player_x >= parent.Lbound and player_x <= parent.Rbound:
-			return parent.chase_state
+	if parent.attack:
+		return parent.attack_state
 	return null
 
 func process_physics(delta: float) -> TEnemyState:
@@ -73,9 +65,7 @@ func _on_pat_time_timeout() -> void:
 	pauseTime = 3.5
 	pausing = false
 	turn_around()
-	as2d.play("walk")
 	
 func turn_around() -> void:
 	direction *= -1
-	as2d.flip_h = direction < 0
-	abox.position.x = direction * hitboxOffX
+	r2d.target_position.x = abs(r2d.target_position.x) * direction
