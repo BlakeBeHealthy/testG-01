@@ -1,5 +1,6 @@
 extends EnemyState
 
+
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var t3: Timer = $"../../attackTim"
 @onready var r2h: RayCast2D = $"../../Hit-Ray"

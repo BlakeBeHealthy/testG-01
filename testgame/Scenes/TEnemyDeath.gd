@@ -7,7 +7,18 @@ extends TEnemyState
 @onready var pti: Timer = $"../../pti"
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
-func enter() -> void:
+func enter() -> void: 
+	attack_hitbox.monitorable = false
+	attack_hitbox.monitoring = false
+	hurt_box.monitorable = false
+	hurt_box.monitoring = false
+	detection_box.monitorable = false
+	detection_box.monitoring = false
+	attack_box.monitorable = false
+	attack_box.monitoring = false
+	ray_cast_2d.enabled = false
+	if !pti.is_stopped():
+		pti.stop()
 	pass
 
 func exit() -> void:

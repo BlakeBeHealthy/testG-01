@@ -58,14 +58,14 @@ func process_physics(delta: float) -> TEnemyState:
 		parent.velocity.x = direction * move_speed
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
-		
 	return null
-	
-func _on_pat_time_timeout() -> void:
-	pauseTime = 3.5
-	pausing = false
-	turn_around()
 	
 func turn_around() -> void:
 	direction *= -1
 	r2d.target_position.x = abs(r2d.target_position.x) * direction
+
+
+func _on_pti_timeout() -> void:
+	pauseTime = 3.5
+	pausing = false
+	turn_around()

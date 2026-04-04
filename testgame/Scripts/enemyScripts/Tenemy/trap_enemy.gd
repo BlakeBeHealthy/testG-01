@@ -1,6 +1,5 @@
 class_name TEnemy extends Node2D
 
-@export var idle_state: TEnemyState
 @export var hit_state: TEnemyState
 @export var attack_state: TEnemyState
 @export var death_state: TEnemyState
@@ -12,6 +11,8 @@ class_name TEnemy extends Node2D
 var spawn_position: Vector2
 var attack := false
 var hit := false
+var parried := false
+var afterAtt := false
 
 func _ready() -> void:
 	spawn_position = global_position
@@ -28,3 +29,14 @@ func _process(delta: float) -> void:
 
 func _on_detection_box_area_entered(area: Area2D) -> void:
 	attack = true
+	
+func stun():
+	parried = true
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if state_mac.current_state == attack_state:
+		afterAtt = true
+		return
+	else:
+		hit = true
