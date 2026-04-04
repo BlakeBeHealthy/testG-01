@@ -30,6 +30,7 @@ func enter() -> void:
 
 func exit() -> void:
 	t3.stop()
+	parent.attack = false
 	if abox.monitorable != false:
 		abox.monitorable = false
 	if abox.monitoring != false:
@@ -42,11 +43,16 @@ func process_input(event: InputEvent) -> TEnemyState:
 	return null
 
 func process_frame(delta: float) -> TEnemyState:
+	if parent.afterAtt:
+		healthCount -= 1
+		flash_white()
+		parent.afterAtt = false
+	
 	if parent.parried:
 		return parent.stun_state
 		
 	if !waitT:
-		return parent.chase_state
+		return parent.patrol_state
 		
 	if healthCount <= 0:
 		return parent.death_state
@@ -61,10 +67,10 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		print("HITTING PLAYER")
 		abox.monitorable = true
 		abox.monitoring = true
-	elif as2d.frame == 7:
+	elif as2d.frame == 3:
 		abox.monitorable = false
 		abox.monitoring = false
-	elif as2d.frame == 14:
+	elif as2d.frame == 5:
 		attDone = true
 		
 		
@@ -107,11 +113,8 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 
 
 func _on_attack_box_area_entered(area: Area2D) -> void:
-	var player = area.get_parent()
-	if player.parryCheck:
-		pass
-	elif !player.invincible:
-		knockback(player)
+	var player = Global.player
+	knockback(player)
 
 
 func _on_attack_timer_timeout() -> void:

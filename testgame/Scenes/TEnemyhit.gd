@@ -1,7 +1,7 @@
 extends TEnemyState
 
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
-@onready var hitCheck: Timer = $"../../HitCheck"
+@onready var hitCheck: Timer = $"../../hitCheck"
 
 @export var knockback_strength := 0
 @export var decayRate := 0
@@ -40,7 +40,7 @@ func process_frame(delta: float) -> TEnemyState:
 			else:
 				as2d.play("idle")
 	else:
-		return parent.chase_state
+		return parent.patrol_state
 		
 	return null
 

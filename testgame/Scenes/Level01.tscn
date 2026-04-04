@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://v4r78g4kbnyy" path="res://Scenes/UI.tscn" id="9_dutcy"]
 [ext_resource type="PackedScene" uid="uid://cgekcdkve474f" path="res://Scenes/spikes.tscn" id="10_etp4v"]
 [ext_resource type="PackedScene" uid="uid://ljjmtwqq5kil" path="res://Scenes/spike_checkpoint.tscn" id="11_2yitk"]
+[ext_resource type="PackedScene" uid="uid://d0gjako5s76ki" path="res://Scenes/trap_enemy.tscn" id="12_2yitk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_t0sul")
@@ -675,6 +676,10 @@ position = Vector2(-1047, 0)
 
 [node name="SpikeCheckpoint2" parent="." unique_id=817918990 instance=ExtResource("11_2yitk")]
 position = Vector2(-843, -15)
+
+[node name="TrapEnemy" parent="." unique_id=1707067136 instance=ExtResource("12_2yitk")]
+position = Vector2(-821, -35)
+patrol = true
 
 [connection signal="area_shape_entered" from="EastD" to="EastD" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="EastD" to="EastD" method="_on_body_entered"]

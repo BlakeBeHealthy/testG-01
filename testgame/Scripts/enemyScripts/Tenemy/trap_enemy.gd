@@ -13,8 +13,10 @@ var attack := false
 var hit := false
 var parried := false
 var afterAtt := false
+var dir := 0
 
 func _ready() -> void:
+	dir = 1
 	spawn_position = global_position
 	state_mac.init(self)
 

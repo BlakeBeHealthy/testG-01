@@ -8,7 +8,6 @@ extends TEnemyState
 @export var strength := 5.0
 @export var decay := 2
 
-var direction
 var pausing := false  
 var dead := false
 var justOpen:= true
@@ -17,14 +16,10 @@ var hitboxOffX: float
 var combat
 
 func enter() -> void:
-	if as2d.flip_h:
-		direction = -1
-	else:
-		direction = 1
 	as2d.play("idle")
 	pausing = false
-	parent.velocity.x = direction * move_speed
-	as2d.flip_h = direction < 0
+	parent.velocity.x = parent.dir * move_speed
+	as2d.flip_h = parent.dir < 0
 	combat = false
 
 func exit() -> void:
@@ -55,14 +50,14 @@ func process_physics(delta: float) -> TEnemyState:
 			as2d.play("idle")
 		pti.start(pauseTime)
 	elif not pausing:
-		parent.velocity.x = direction * move_speed
+		parent.velocity.x = parent.dir * move_speed
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 	return null
 	
 func turn_around() -> void:
-	direction *= -1
-	r2d.target_position.x = abs(r2d.target_position.x) * direction
+	parent.dir *= -1
+	r2d.target_position.x = abs(r2d.target_position.x) * -parent.dir
 
 
 func _on_pti_timeout() -> void:

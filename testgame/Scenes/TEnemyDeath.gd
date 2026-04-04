@@ -19,6 +19,7 @@ func enter() -> void:
 	ray_cast_2d.enabled = false
 	if !pti.is_stopped():
 		pti.stop()
+	as2d.play("death")
 	pass
 
 func exit() -> void:
