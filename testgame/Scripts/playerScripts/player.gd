@@ -27,6 +27,7 @@ extends CharacterBody2D
 @export var jumpCut := 0.0
 @onready var interactC2D: CollisionShape2D = $InteractArea/CollisionShape2D
 @onready var parry_zone: Area2D = $ParryZone
+@onready var dash_delay: Timer = $DashDelay
 
 
 @warning_ignore("unused_signal")
@@ -55,6 +56,7 @@ var parryCheck := false
 var parried := false
 var interactCheck := false
 var camLook := false
+var dash := false
 var comboCount := 0
 var health := 3
 var current_interactable: Node = null
@@ -93,10 +95,8 @@ func flip_direction(dire: int):
 	direction = dire
 	parry_zone.position.x *= direction
 	if direction >= 1:
-		parry_zone.position.x = 23
 		as2d.flip_h = false
 	elif direction <= -1:
-		parry_zone.position.x = -23
 		as2d.flip_h = true
 		pass
 	
@@ -136,8 +136,10 @@ func _input(event): #allowing the player to attack
 					attackCheck = true
 					attack_delay.start()
 				
-	if ((Input.is_action_just_pressed("interact") and current_interactable != null) or Input.is_action_pressed("PlayerLock")) and is_on_floor() and !Global.UI.get_node("Balloon").visible:
+	elif ((Input.is_action_just_pressed("interact") and current_interactable != null) or Input.is_action_pressed("PlayerLock")) and is_on_floor() and !Global.UI.get_node("Balloon").visible:
 		control_locked = true
+	elif Input.is_action_just_pressed("Dash") and state_machine.current_state != hit_state and state_machine.current_state != cut_state and dash_delay.is_stopped():
+		dash = true
 		
 func _on_timer_timeout() -> void:
 	comboCount = 0

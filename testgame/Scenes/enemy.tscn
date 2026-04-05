@@ -500,6 +500,8 @@ decayRate = 3000
 
 [node name="Stun" type="Node" parent="StateMac" unique_id=892311204]
 script = ExtResource("16_hgeoe")
+knockback_strength = 550
+decayRate = 3000
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="StateMac/EnemyAttack" method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMac/EnemyAttack" method="_on_animated_sprite_2d_frame_changed"]

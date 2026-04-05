@@ -32,8 +32,6 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_mac.process_frame(delta)
-	if attack_box.monitorable == true:
-		print("HELLO")
 
 func _on_detection_box_area_entered(area: Area2D) -> void:
 	if ait.is_stopped():

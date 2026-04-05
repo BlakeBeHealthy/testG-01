@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://bso3jsws5lrsh" path="res://Scenes/hit_flash.gdshader" id="2_pu2lt"]
 [ext_resource type="Script" uid="uid://drca7qt0tbpv8" path="res://Scripts/playerScripts/idle.gd" id="3_i3pqv"]
 [ext_resource type="Script" uid="uid://6pmv6x4tnxyy" path="res://Scripts/playerScripts/StateM.gd" id="4_x3wgy"]
+[ext_resource type="Script" uid="uid://ft25rqcrc27w" path="res://Scenes/dash.gd" id="5_qqcod"]
 [ext_resource type="Script" uid="uid://wqmo4cxjnj3s" path="res://Scripts/playerScripts/run.gd" id="6_3smsa"]
 [ext_resource type="Script" uid="uid://b3etfixssn4ym" path="res://Scripts/playerScripts/jump.gd" id="8_8erm5"]
 [ext_resource type="Script" uid="uid://f8rqqr3hjrwn" path="res://Scripts/playerScripts/fall.gd" id="8_f1ek2"]
@@ -695,8 +696,8 @@ scale = Vector2(0.99999976, 1)
 shape = SubResource("RectangleShape2D_tx1dd")
 
 [node name="ParryZone" type="Area2D" parent="." unique_id=976924657]
-position = Vector2(23, 7)
-scale = Vector2(1.5484037, 1.4124941)
+position = Vector2(-1, 9)
+scale = Vector2(1.8876373, 1.8989843)
 collision_layer = 8
 collision_mask = 32
 monitoring = false
@@ -718,6 +719,10 @@ monitorable = false
 [node name="AttackZone" type="CollisionShape2D" parent="Area2D" unique_id=1948751203]
 scale = Vector2(0.727955, 0.977069)
 shape = SubResource("CapsuleShape2D_ukyrk")
+
+[node name="DashDelay" type="Timer" parent="." unique_id=1995038186]
+wait_time = 1.5
+one_shot = true
 
 [node name="InvincibleTime" type="Timer" parent="." unique_id=1177413683]
 wait_time = 2.0
@@ -753,6 +758,9 @@ one_shot = true
 script = ExtResource("4_x3wgy")
 attack_state = NodePath("Attack")
 starting_state = NodePath("Idle")
+
+[node name="Dash" type="Node" parent="StateMachine" unique_id=61420425]
+script = ExtResource("5_qqcod")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=389573731]
 script = ExtResource("3_i3pqv")

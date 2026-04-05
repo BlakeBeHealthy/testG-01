@@ -92,7 +92,7 @@ func _on_attack_tim_timeout() -> void:
 
 func _on_attackbox_area_entered(area: Area2D) -> void:
 	var player = area.get_parent()
-	if player.parryCheck and sign(parent.position.x - player.position.x) == sign(direction):
+	if player.parryCheck:
 		pass
 	elif !player.invincible:
 		knockback(player)
