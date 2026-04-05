@@ -26,6 +26,7 @@ extends CharacterBody2D
 @export var JUMP := 0
 @export var jumpCut := 0.0
 @onready var interactC2D: CollisionShape2D = $InteractArea/CollisionShape2D
+@onready var parry_zone: Area2D = $ParryZone
 
 
 @warning_ignore("unused_signal")
@@ -90,9 +91,12 @@ func _process(delta: float) -> void:
 		
 func flip_direction(dire: int):
 	direction = dire
+	parry_zone.position.x *= direction
 	if direction >= 1:
+		parry_zone.position.x = 23
 		as2d.flip_h = false
 	elif direction <= -1:
+		parry_zone.position.x = -23
 		as2d.flip_h = true
 		pass
 	

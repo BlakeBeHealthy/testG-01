@@ -19,10 +19,14 @@ var waitT
 var flashing := false
 var dead = false
 var attDone = false
+var direction := 0
 
 func enter() -> void:
 	var player = Global.player
-	
+	if as2d.flip_h:
+		direction = -1
+	else:
+		direction = 1
 	at3.start()
 	as2d.play("attack")
 	waitT = true
@@ -88,7 +92,7 @@ func _on_attack_tim_timeout() -> void:
 
 func _on_attackbox_area_entered(area: Area2D) -> void:
 	var player = area.get_parent()
-	if player.parryCheck:
+	if player.parryCheck and sign(parent.position.x - player.position.x) == sign(direction):
 		pass
 	elif !player.invincible:
 		knockback(player)

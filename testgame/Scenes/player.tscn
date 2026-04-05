@@ -662,9 +662,7 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"parryAtt"
-frame = 5
-frame_progress = 1.0
+animation = &"parry"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
@@ -697,8 +695,7 @@ scale = Vector2(0.99999976, 1)
 shape = SubResource("RectangleShape2D_tx1dd")
 
 [node name="ParryZone" type="Area2D" parent="." unique_id=976924657]
-visible = false
-position = Vector2(16, 4)
+position = Vector2(23, 7)
 scale = Vector2(1.5484037, 1.4124941)
 collision_layer = 8
 collision_mask = 32
