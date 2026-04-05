@@ -19,14 +19,10 @@ var waitT
 var flashing := false
 var dead = false
 var attDone = false
-var direction := 0
 
 func enter() -> void:
 	var player = Global.player
-	if as2d.flip_h:
-		direction = -1
-	else:
-		direction = 1
+	
 	at3.start()
 	as2d.play("attack")
 	waitT = true
