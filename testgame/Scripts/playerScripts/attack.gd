@@ -85,7 +85,7 @@ func process_frame(delta: float) -> State:
 	return null
 	
 func process_physics(delta: float) -> State:
-	var direction = Input.get_axis("runL","runR" )
+	var direction = Input.get_axis("runL","runR")
 		
 	if startKB:
 		parent.velocity.x += -attackDir * playerKnockback

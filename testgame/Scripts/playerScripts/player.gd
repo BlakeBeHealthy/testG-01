@@ -130,7 +130,7 @@ func _input(event): #allowing the player to attack
 			if !is_on_floor() and Input.is_action_pressed("down") and attack_delay.is_stopped():
 				pogoCheck = true
 			elif !ComboTime.is_stopped() or attack_delay.is_stopped():
-				if ComboTime.is_stopped() or !state_machine.current_state == parryAttack_state:
+				if ComboTime.is_stopped() or state_machine.current_state != parryAttack_state or state_machine.current_state != parry_state:
 					attackCheck = true 
 				elif !ComboTime.is_stopped(): 
 					attackCheck = true

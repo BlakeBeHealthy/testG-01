@@ -415,7 +415,7 @@ debug_color = Color(0.83527607, 0.3889118, 5.7756904e-07, 0.41960785)
 
 [node name="Attackbox" type="Area2D" parent="." unique_id=150872717]
 position = Vector2(21, 4)
-collision_layer = 32
+collision_layer = 4128
 collision_mask = 8
 monitoring = false
 monitorable = false

@@ -49,6 +49,7 @@ func process_frame(delta: float) -> State:
 
 
 func _on_parry_zone_area_entered(area: Area2D) -> void:
+	print("hit")
 	parent.parried = true
 	parent.goodParry.emit()
 	apply_timeSlow(hit_timeStop, hit_duration)

@@ -71,6 +71,22 @@ region = Rect2(200, 222, 50, 37)
 atlas = ExtResource("2_gymyn")
 region = Rect2(250, 222, 50, 37)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_usbl8"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(200, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1uaf"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(250, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hq81"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(300, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cld6"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(0, 111, 50, 37)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6uwr"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(0, 333, 50, 37)
@@ -369,6 +385,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_usbl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1uaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hq81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cld6")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_y6uwr")
 }, {
 "duration": 1.0,
@@ -663,7 +696,7 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"parry"
+animation = &"dash"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
@@ -699,7 +732,7 @@ shape = SubResource("RectangleShape2D_tx1dd")
 position = Vector2(-1, 9)
 scale = Vector2(1.8876373, 1.8989843)
 collision_layer = 8
-collision_mask = 32
+collision_mask = 4096
 monitoring = false
 monitorable = false
 
@@ -759,9 +792,6 @@ script = ExtResource("4_x3wgy")
 attack_state = NodePath("Attack")
 starting_state = NodePath("Idle")
 
-[node name="Dash" type="Node" parent="StateMachine" unique_id=61420425]
-script = ExtResource("5_qqcod")
-
 [node name="Idle" type="Node" parent="StateMachine" unique_id=389573731]
 script = ExtResource("3_i3pqv")
 
@@ -810,6 +840,11 @@ hit_duration = 0.13
 decayRate = 9000
 playerKnockback = 300
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
+
+[node name="Dash" type="Node" parent="StateMachine" unique_id=61420425]
+script = ExtResource("5_qqcod")
+dashSpeed = 600.0
+decayRate = 3000.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/CutsceneState" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]
