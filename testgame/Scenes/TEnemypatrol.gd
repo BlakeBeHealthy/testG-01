@@ -29,7 +29,7 @@ func process_input(event: InputEvent) -> TEnemyState:
 	return null
 
 func process_frame(delta: float) -> TEnemyState:
-	if healthCount <= 0:
+	if parent.healthCount <= 0:
 		return parent.death_state
 	if parent.hit:
 		return parent.hit_state

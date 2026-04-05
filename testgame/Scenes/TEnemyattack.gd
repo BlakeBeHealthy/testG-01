@@ -22,7 +22,6 @@ var attDone = false
 
 func enter() -> void:
 	var player = Global.player
-	
 	at3.start()
 	as2d.play("attack")
 	waitT = true
@@ -44,30 +43,27 @@ func process_input(event: InputEvent) -> TEnemyState:
 
 func process_frame(delta: float) -> TEnemyState:
 	if parent.afterAtt:
-		healthCount -= 1
 		flash_white()
+		parent.healthCount -= 1
 		parent.afterAtt = false
-	
 	if parent.parried:
 		return parent.stun_state
 		
 	if !waitT:
 		return parent.patrol_state
 		
-	if healthCount <= 0:
+	if parent.healthCount <= 0:
 		return parent.death_state
-		
 	return null
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "attack" or parent.parried: 
 		return
 		
-	if as2d.frame == 6:
-		print("HITTING PLAYER")
+	if as2d.frame == 3:
 		abox.monitorable = true
 		abox.monitoring = true
-	elif as2d.frame == 3:
+	elif as2d.frame == 7:
 		abox.monitorable = false
 		abox.monitoring = false
 	elif as2d.frame == 5:
@@ -80,7 +76,7 @@ func process_physics(delta: float) -> TEnemyState:
 func flash_white():
 	if flashing:
 		return
-	if healthCount <= 0:
+	if parent.healthCount <= 0:
 		return
 		
 	flashing = true
@@ -103,14 +99,7 @@ func knockback(player):
 		)
 	
 func stun():
-	print("EMMITED")
 	parent.parried = true
-	
-func _on_hurt_box_area_entered(area: Area2D) -> void:
-	flash_white()
-	healthCount -= 1
-
-
 
 func _on_attack_box_area_entered(area: Area2D) -> void:
 	var player = Global.player

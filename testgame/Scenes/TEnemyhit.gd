@@ -15,7 +15,7 @@ func enter() -> void:
 	hitCheck.start()
 	player = Global.get_player()
 	as2d.play("hit")
-	healthCount -= 1
+	parent.healthCount -= 1
 	if player.position.x - parent.position.x >= 0:
 		direction = -1
 	else:
@@ -30,7 +30,7 @@ func process_input(event: InputEvent) -> TEnemyState:
 	return null
 
 func process_frame(delta: float) -> TEnemyState:
-	if healthCount <= 0:
+	if parent.healthCount <= 0:
 		return parent.death_state
 		
 	if !hitCheck.is_stopped():
@@ -54,7 +54,7 @@ func process_physics(delta: float) -> TEnemyState:
 func flash_white():
 	if flashing:
 		return
-	if healthCount <= 0:
+	if parent.healthCount <= 0:
 		return
 		
 	flashing = true

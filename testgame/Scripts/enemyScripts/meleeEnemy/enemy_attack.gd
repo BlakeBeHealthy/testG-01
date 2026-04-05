@@ -58,7 +58,6 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		return
 		
 	if as2d.frame == 6:
-		print("HITTING PLAYER")
 		abox.monitorable = true
 		abox.monitoring = true
 	elif as2d.frame == 7:
@@ -107,7 +106,6 @@ func knockback(player):
 		)
 	
 func stun():
-	print("EMMITED")
 	parent.parried = true
 	
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:

@@ -7,6 +7,9 @@ class_name TEnemy extends Node2D
 @export var stun_state: TEnemyState
 @export var patrol : bool
 @onready var state_mac: Node = $StateMac
+@onready var ait: Timer = $AItimer
+@onready var attack_box: Area2D = $AttackBox
+
 
 var spawn_position: Vector2
 var attack := false
@@ -14,6 +17,7 @@ var hit := false
 var parried := false
 var afterAtt := false
 var dir := 0
+var healthCount := 2
 
 func _ready() -> void:
 	dir = 1
@@ -28,9 +32,12 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_mac.process_frame(delta)
+	if attack_box.monitorable == true:
+		print("HELLO")
 
 func _on_detection_box_area_entered(area: Area2D) -> void:
-	attack = true
+	if ait.is_stopped():
+		attack = true
 	
 func stun():
 	parried = true
