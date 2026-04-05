@@ -13,6 +13,7 @@ extends TEnemyState
 @export var camShakeStrength: float
 @export var shakeDuration: float
 @export var dmg: int
+@onready var attack_delay: Timer = $"../../AttackDelay"
 
 var waitT 
 var flashing := false
@@ -22,6 +23,9 @@ var attDone = false
 
 func enter() -> void:
 	var player = Global.player
+	attack_delay.start()
+	as2d.play("attacktelegraph")
+	await attack_delay.timeout
 	at3.start()
 	as2d.play("attack")
 	waitT = true

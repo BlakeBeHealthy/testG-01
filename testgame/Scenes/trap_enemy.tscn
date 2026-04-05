@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2hu5rlyw4pit" path="res://assets/Traps_&_Props_Free/Traps/Wooden_Crate_Box.png" id="4_jt34j"]
 [ext_resource type="Script" uid="uid://mc23fnpd5cut" path="res://Scenes/TEnemyattack_hit_box.gd" id="5_j2cqi"]
 [ext_resource type="Texture2D" uid="uid://cmeoy1pty50fn" path="res://assets/Traps_&_Props_Free/Traps/Wood_Trap_01.png" id="5_moye6"]
+[ext_resource type="Texture2D" uid="uid://djgverygmqks0" path="res://assets/Traps_&_Props_Free/Traps/Fan.png" id="5_uyvm1"]
 [ext_resource type="Script" uid="uid://cqnb1bq6p838h" path="res://Scripts/enemyScripts/Tenemy/state_macTenemy.gd" id="6_moye6"]
 [ext_resource type="Script" uid="uid://dt3f6biv17vaq" path="res://Scenes/TEnemypatrol.gd" id="7_moye6"]
 [ext_resource type="Script" uid="uid://ds4otqk4sya2d" path="res://Scenes/TEnemyattack.gd" id="9_moye6"]
@@ -60,6 +61,38 @@ region = Rect2(672, 0, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4mqn"]
 atlas = ExtResource("4_jt34j")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4att"]
+atlas = ExtResource("5_uyvm1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be04k"]
+atlas = ExtResource("5_uyvm1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjsha"]
+atlas = ExtResource("5_uyvm1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdlbs"]
+atlas = ExtResource("5_uyvm1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46xal"]
+atlas = ExtResource("5_uyvm1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w3ro"]
+atlas = ExtResource("5_uyvm1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3rnk"]
+atlas = ExtResource("5_uyvm1")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebybx"]
+atlas = ExtResource("5_uyvm1")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nf60"]
 atlas = ExtResource("4_jt34j")
@@ -119,6 +152,35 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4att")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_be04k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjsha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdlbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46xal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w3ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3rnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebybx")
+}],
+"loop": true,
+"name": &"attacktelegraph",
 "speed": 24.0
 }, {
 "frames": [{
@@ -186,7 +248,7 @@ stun_state = NodePath("StateMac/Stun")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=357040416]
 material = SubResource("ShaderMaterial_neqj0")
 sprite_frames = SubResource("SpriteFrames_h4mqn")
-animation = &"attack"
+animation = &"hit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=563519608]
 visibility_layer = 4
@@ -245,6 +307,10 @@ shape = SubResource("RectangleShape2D_klnwj")
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1479218265]
 target_position = Vector2(18, 40)
 
+[node name="AttackDelay" type="Timer" parent="." unique_id=1522978847]
+wait_time = 0.3
+one_shot = true
+
 [node name="attackTimer" type="Timer" parent="." unique_id=579958915]
 one_shot = true
 
@@ -257,6 +323,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="hitCheck" type="Timer" parent="." unique_id=1968965581]
+wait_time = 0.2
 one_shot = true
 
 [node name="StateMac" type="Node" parent="." unique_id=1711980549 node_paths=PackedStringArray("starting_state")]
