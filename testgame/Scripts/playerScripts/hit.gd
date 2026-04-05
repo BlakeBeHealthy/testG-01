@@ -20,8 +20,8 @@ func enter() -> void:
 	if parent.attackCheck:
 		parent.attackCheck = false
 	if !parent.invincible:
-		parent.health -= parent.damage
-	if parent.health <= 0:
+		Global.saveData.maxHealth -= parent.damage
+	if Global.saveData.maxHealth <= 0:
 		dead = true
 	flash_white()
 	apply_knockback()
@@ -29,7 +29,7 @@ func enter() -> void:
 	a2d2.monitorable = false
 	it3.start()
 	hit_over = false
-	parent.playerHit.emit(parent.health)
+	parent.playerHit.emit(Global.saveData.maxHealth)
 func exit() -> void:
 	pass
 
