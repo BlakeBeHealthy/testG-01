@@ -76,6 +76,8 @@ func process_frame(delta: float) -> State:
 			return parent.parry_state
 		elif parent.attackCheck:
 			return parent.att2_state
+		if parent.dash:
+			return parent.dash_state
 		if parent.is_on_floor():
 			if Input.is_action_pressed("jump"):
 				jumpBuff = 0

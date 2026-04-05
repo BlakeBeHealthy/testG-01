@@ -57,7 +57,8 @@ func process_physics(delta: float) -> State:
 	parent.velocity.x = parent.direction * move_speed
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
-	
+	if parent.dash:
+		return parent.dash_state
 	if !parent.is_on_floor() and parent.velocity.y > 0:
 		return parent.fall_state
 	if direction == 0:

@@ -37,6 +37,8 @@ func process_frame(delta: float) -> State:
 				return parent.attack_state
 		elif parent.pogoCheck:
 			return parent.pogo_state
+		elif parent.dash:
+			return parent.dash_state
 		elif !parent.is_on_floor() and parent.velocity.y > 0:
 			return parent.fall_state
 		elif Input.is_action_just_pressed('jump') and parent.is_on_floor():
@@ -49,7 +51,6 @@ func process_frame(delta: float) -> State:
 
 
 func _on_parry_zone_area_entered(area: Area2D) -> void:
-	print("hit")
 	parent.parried = true
 	parent.goodParry.emit()
 	apply_timeSlow(hit_timeStop, hit_duration)

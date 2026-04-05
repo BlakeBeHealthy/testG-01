@@ -33,6 +33,9 @@ func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return parent.hit_state
 		
+	if parent.dash:
+		return parent.dash_state
+		
 	if parent.parryCheck:
 		return parent.parry_state
 		

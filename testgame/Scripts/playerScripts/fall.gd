@@ -31,6 +31,9 @@ func process_frame(delta: float) -> State:
 	if parent.parryCheck:
 		return parent.parry_state
 		
+	if parent.dash:
+		return parent.dash_state
+		
 	if parent.attackCheck:
 		parent.attackCheck = false
 		if parent.parried:
@@ -76,7 +79,3 @@ func process_physics(delta: float) -> State:
 		return parent.idle_state
 	
 	return null
-	
-	
-func _on_area_2d_2_area_entered(area: Area2D) -> void:
-	pass

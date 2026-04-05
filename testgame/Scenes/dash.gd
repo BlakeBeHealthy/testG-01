@@ -3,30 +3,42 @@ extends State
 @export var decayRate: float
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var dash_delay: Timer = $"../../DashDelay"
+@onready var dash_time: Timer = $"../../DashTime"
+@onready var hurtbox: Area2D = $"../../Area2D2"
 
+var dashDone
 var dashCheck := false
 var dashDir := 0.0
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
+	hurtbox.monitorable = false
+	hurtbox.monitoring = false
+	dash_time.start()
+	dashCheck = true
+	if parent.dash:
+		parent.dash = false
 	dash_delay.start()
 	as2d.play("dash")
-	dashDir = Input.get_axis("runL", "runR")
-	if dashDir > 0:
-		as2d.flip_h = false
-	elif dashDir < 0:
+	dashDir = Input.get_axis("runL","runR" )
+	if Input.is_action_just_pressed("runL"):
 		as2d.flip_h = true
-	pass
-
+	elif Input.is_action_just_pressed("runR"):
+		as2d.flip_h = false
+	
+		
+		
 func exit() -> void:
-	pass
+	hurtbox.monitorable = true
+	hurtbox.monitoring = true
+	
 
 func process_input(event: InputEvent) -> State:
 	return null
 
 func process_frame(delta: float) -> State:
-	var dir = Input.get_axis("runL", "runR")
-
-	if !as2d.is_playing():
+	
+	if dashDone:
+		dashDone = false
 		if parent.parryCheck:
 			return parent.parry_state 
 		elif parent.attackCheck:
@@ -45,8 +57,18 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	if dashCheck:
-		dashCheck = false
-		parent.velocity.x += dashDir * dashSpeed
+		if as2d.flip_h == false:
+			dashDir = 1
+		elif as2d.flip_h == true:
+			dashDir = -1
+		parent.velocity.x = dashDir * dashSpeed
 	else:
 		parent.velocity.x = move_toward(parent.velocity.x, move_speed, decayRate * delta)
+	parent.velocity.y = 0
+	parent.move_and_slide()
 	return null
+
+
+func _on_dash_time_timeout() -> void:
+	dashCheck = false
+	dashDone = true

@@ -53,6 +53,8 @@ func process_frame(delta: float) -> State:
 	if !as2d.is_playing():
 		if parent.parryCheck:
 			return parent.parry_state
+		if parent.dash:
+			return parent.dash_state
 		if parent.velocity.y > 0:
 			return parent.fall_state
 		elif parent.is_on_floor():
