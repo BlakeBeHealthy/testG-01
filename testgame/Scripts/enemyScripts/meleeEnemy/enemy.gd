@@ -13,8 +13,8 @@ class_name Enemy
 @onready var killzone: Area2D = $Killzone
 
 var spawn_position: Vector2
-@export var Lbound := -690
-@export var Rbound := -515
+@export var Lbound := -99999999999999999999
+@export var Rbound := 99999999999999999999
 
 var check := false
 var healthCount := 6

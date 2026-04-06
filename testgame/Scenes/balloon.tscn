@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="2_os1p0"]
 [ext_resource type="Texture2D" uid="uid://bs3x3o1hcw3fa" path="res://assets/NPCS/Portraits/GusGodot.png" id="3_kbj1d"]
 [ext_resource type="Texture2D" uid="uid://lrbg1u7pvlg8" path="res://assets/NPCS/Portraits/mainChar.png" id="4_syg23"]
+[ext_resource type="Texture2D" uid="uid://ca0niamjlvsu5" path="res://assets/NPCS/Portraits/Terry.png" id="5_43nfd"]
 [ext_resource type="FontFile" uid="uid://csg7gawytepkx" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidSans-Bold.otf" id="5_xyim1"]
 [ext_resource type="FontFile" uid="uid://d0r7oon537wd0" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidSans.otf" id="6_rl6ge"]
 [ext_resource type="PackedScene" uid="uid://3ga7ywpdjoi8" path="res://Scenes/responseButton.tscn" id="9_rl6ge"]
@@ -25,6 +26,10 @@ region = Rect2(0, 0, 512, 512)
 atlas = ExtResource("4_syg23")
 region = Rect2(0, 0, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g3f3"]
+atlas = ExtResource("5_43nfd")
+region = Rect2(0, 0, 500, 500)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5iodc"]
 animations = [{
 "frames": [{
@@ -41,6 +46,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"P_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g3f3")
+}],
+"loop": true,
+"name": &"Terry_idle",
 "speed": 5.0
 }]
 
@@ -103,7 +116,7 @@ material = SubResource("ShaderMaterial_kbj1d")
 position = Vector2(370, 428)
 scale = Vector2(1.78, 1.78)
 sprite_frames = SubResource("SpriteFrames_5iodc")
-animation = &"P_idle"
+animation = &"Terry_idle"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=284104083]
 custom_minimum_size = Vector2(0, 520)
@@ -196,3 +209,4 @@ metadata/_custom_type_script = "uid://bb52rsfwhkxbn"
 [node name="Button" parent="Panel/MarginContainer/DialogueResponsesMenu" unique_id=2082806078 instance=ExtResource("9_rl6ge")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
+text = ""

@@ -1,13 +1,13 @@
 extends Area2D
 
 @export var spawn: bool 
-@export var dmg: int
-@export var stre: float
-@export var StunTime: float
-@export var TimeScale: float
-@export var dur: float
-@export var CAMShake: float
-@export var shakeDur: float
+@export var dmg: int = 1
+@export var stre: float = 200
+@export var StunTime: float = 0.6
+@export var TimeScale: float = 0.001
+@export var dur: float = 0.01
+@export var CAMShake: float = 0.02
+@export var shakeDur: float = 0.02
 @export var SpikeNumber: String
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
 
