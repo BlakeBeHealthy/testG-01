@@ -2255,9 +2255,9 @@ tile_set = SubResource("TileSet_q6r6c")
 position = Vector2(-651, -9)
 scale = Vector2(1.555, 1.555)
 collision_layer = 256
-animationName = "SW"
+animationName = "CW"
 dialogueScene = "res://dialogues/CW.dialogue"
-startingPoint = "s1"
+startingPoint = "s2"
 promptYOffset = -20.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=266358876]

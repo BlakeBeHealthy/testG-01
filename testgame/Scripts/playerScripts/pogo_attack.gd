@@ -4,7 +4,8 @@ extends State
 
 var pogo := false
 var transitionCheck := false
-
+var nextAttack := false
+var Attack := false
 func enter() -> void:
 	parent.attack_delay.start()
 	parent.jumpCheck = true
@@ -37,6 +38,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		return
 	
 	if as2d.frame == 1:
+		nextAttack = true
 		a2d.monitorable = true
 		a2d.monitoring = true
 	if as2d.frame == 2:
@@ -49,10 +51,15 @@ func process_input(event: InputEvent) -> State:
 func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return parent.hit_state
-	
+	if nextAttack:
+		if Input.is_action_just_pressed("leftC"):
+			Attack = true
+			
 	if !as2d.is_playing():
 		if parent.parryCheck:
 			return parent.parry_state
+		if parent.attackCheck:
+			return parent.att2_state
 		if parent.dash:
 			return parent.dash_state
 		if parent.velocity.y > 0:

@@ -247,10 +247,6 @@ region = Rect2(300, 259, 50, 37)
 atlas = ExtResource("2_gymyn")
 region = Rect2(0, 296, 50, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nj1g2"]
-atlas = ExtResource("2_gymyn")
-region = Rect2(50, 296, 50, 37)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_pg0gw"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(250, 518, 50, 37)
@@ -555,9 +551,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c8b32")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nj1g2")
 }],
 "loop": false,
 "name": &"parryAtt",
@@ -697,7 +690,7 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"dash"
+animation = &"parryAtt"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
