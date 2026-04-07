@@ -2265,7 +2265,7 @@ promptYOffset = -20.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=266358876]
 position = Vector2(-75, -3)
-zoom = Vector2(4, 4)
+zoom = Vector2(3.5, 3.5)
 limit_left = -745
 limit_top = -176
 limit_right = 981

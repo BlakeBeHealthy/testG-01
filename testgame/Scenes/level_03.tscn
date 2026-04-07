@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cm01fv4mwgnuv" path="res://Scenes/beta_npc.tscn" id="9_wj7o5"]
 [ext_resource type="PackedScene" uid="uid://ce3f5rrrexvdt" path="res://Scenes/Renemy.tscn" id="10_mn87n"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gyxvk"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mn87n"]
 texture = ExtResource("2_6e2f3")
 0:0/0 = 0
 1:0/0 = 0
@@ -421,7 +421,7 @@ texture = ExtResource("2_6e2f3")
 29:21/0 = 0
 30:21/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wj7o5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ve4b"]
 texture = ExtResource("3_hslk2")
 91:2/0 = 0
 2:3/0 = 0
@@ -2215,8 +2215,8 @@ texture = ExtResource("3_hslk2")
 
 [sub_resource type="TileSet" id="TileSet_mn87n"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_gyxvk")
-sources/1 = SubResource("TileSetAtlasSource_wj7o5")
+sources/0 = SubResource("TileSetAtlasSource_mn87n")
+sources/1 = SubResource("TileSetAtlasSource_4ve4b")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ve4b"]
 size = Vector2(62, 30.75)
@@ -2236,15 +2236,15 @@ limit_right = 454
 limit_bottom = 112
 script = ExtResource("2_t12bt")
 
-[node name="SouthD2" type="Area2D" parent="." unique_id=1974425002]
+[node name="EastD2" type="Area2D" parent="." unique_id=1974425002]
 position = Vector2(502, 16)
 collision_mask = 2
 script = ExtResource("5_ckw4o")
 entry_direction = 3
-path_to_new_scene = "res://Scenes/Level02.tscn"
-entry_door_name = "EastD"
+path_to_new_scene = "res://Scenes/level_4.tscn"
+entry_door_name = "WestD2"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SouthD2" unique_id=1435066585]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EastD2" unique_id=1435066585]
 position = Vector2(0, 8.625)
 shape = SubResource("RectangleShape2D_4ve4b")
 
@@ -2397,5 +2397,5 @@ promptYOffset = -26.0
 [node name="REnemy" parent="." unique_id=810458463 instance=ExtResource("10_mn87n")]
 position = Vector2(305, 57)
 
-[connection signal="body_entered" from="SouthD2" to="SouthD2" method="_on_body_entered"]
+[connection signal="body_entered" from="EastD2" to="EastD2" method="_on_body_entered"]
 [connection signal="body_entered" from="SouthD" to="SouthD" method="_on_body_entered"]
