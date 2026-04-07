@@ -5,7 +5,7 @@ var camera
 var UI
 signal playerDone
 var saveData = {
-	"checkpoint_pos": Vector2(-1134, -1),
+	"checkpoint_pos": Vector2(-1505, -597),
 	"checkpoint_scene": "res://Scenes/Level01.tscn",
 	"gold": 0,
 	"maxHealth": 3,

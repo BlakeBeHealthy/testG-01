@@ -1,11 +1,11 @@
 ~ s1
-Terry: Welcome playtester, I am Terry (SPACE TO MOVE FORWARD)
+Terry: Welcome playtester, I am Terry (SPACE TO MOVE FORWARD IN DIALOGUE)
 P: Hello friend
 Terry: How are you this fine evening: (E TO SELECT CHOICES)
 - I'm starving
 	Terry: Sorry being a playtester doesnt come with snacks. Get your own ya greedy bastard
 - I'm ready to test
-	Terry: Great, just need you to sign this waiver stating if you loose your life CosmicStudio isnt responsible blahblah legal
+	Terry: Great, just need you to sign this waiver stating if you lose your life CosmicStudio isnt responsible blahblah legal
 - It's not in the evening for me.
 	Terry: ...
 	Terry: I cast WARM PILLOW for a weeks time. Prick.
@@ -20,7 +20,13 @@ Terry: You made it! Good to see you
 	Terry: Rude.
 - Hey Terry, how are you
 	Terry: I'm on my fifth cup of coffee.
-Terry: This clearing is too wide to just jump. You'll need to press shift otr mouse button 4 to dash over it. 
-Terry: also, there is a big enemy over there, if you time it right and press Q to parry, you can stun him for a moment
-Terry: So for recap, Q to parry, shift or MB4 to dash
+Terry: This clearing is too wide to just jump. You'll need to press shift or mouse button 4 to dash over it. 
+Terry: also, there is a big enemy over there, if you time it right and press Q or mouse button 5 to parry, you can stun him for a moment
+Terry: So for recap, MB5 or Q to parry, shift or MB4 to dash
+
+~ s3
+Terry: hey you came up here first, nothing crazy just wanna test pogo, hold S and press click. Works on enemies too if you go back to section 2
+Terry: Blake was never good at pogo so this helps a ton if you test this
+Terry: ...
+Terry: He can't fire me I'm on contract. 
 => END

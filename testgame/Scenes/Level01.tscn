@@ -2270,7 +2270,7 @@ script = ExtResource("3_8nwny")
 FOLLOW_SPEED = 10.0
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("2_30kwv")]
-position = Vector2(-1498, -593)
+position = Vector2(-1505, -597)
 
 [node name="EastD" type="Area2D" parent="." unique_id=1829730650]
 position = Vector2(-415, -128)

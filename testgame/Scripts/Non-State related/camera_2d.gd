@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var FOLLOW_SPEED := 0.0
+@export var FOLLOW_SPEED := 10.0
 var horizontalOffset: float = 20
 var verticalOffset: float = 30
 var voffset: float = 80
