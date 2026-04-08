@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cupmld12c5c2b"]
+[gd_scene format=4 uid="uid://bb6syj87cm7w"]
 
 [ext_resource type="Texture2D" uid="uid://cg04leuj27jv0" path="res://assets/oak-woods/oak_woods_v1.0/oak_woods_tileset.png" id="1_f1u6f"]
 [ext_resource type="PackedScene" uid="uid://v4r78g4kbnyy" path="res://Scenes/UI.tscn" id="1_pqbh3"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cm01fv4mwgnuv" path="res://Scenes/beta_npc.tscn" id="4_6q15i"]
 [ext_resource type="PackedScene" uid="uid://dcrb427bbd01p" path="res://Scenes/checkpoint.tscn" id="5_jmfiy"]
 [ext_resource type="PackedScene" uid="uid://baje80lg3quet" path="res://Scenes/player.tscn" id="6_3082n"]
-[ext_resource type="PackedScene" uid="uid://djei3agw1frcl" path="res://Scenes/camera_2d.tscn" id="7_34t7l"]
+[ext_resource type="PackedScene" path="res://Scenes/camera_2d.tscn" id="7_34t7l"]
 [ext_resource type="PackedScene" uid="uid://cgekcdkve474f" path="res://Scenes/spikes.tscn" id="8_o36lg"]
 [ext_resource type="PackedScene" uid="uid://c4sg8e1no24ay" path="res://Scenes/door.tscn" id="9_fvkua"]
 [ext_resource type="PackedScene" uid="uid://ljjmtwqq5kil" path="res://Scenes/spike_checkpoint.tscn" id="10_ihaum"]
