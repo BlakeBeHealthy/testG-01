@@ -42,6 +42,9 @@ func update_sprite() -> void:
 		a2d.play("idle")
 		
 func update_checkpoint() -> void:
+	if Global.saveData.maxHealth != 3:
+		Global.saveData.maxHealth = 3
+		Global.healthUp.emit()
 	#Using a scene path and X, Y coordinate for the saved position, ensuring its not there already
 	if Global.saveData.checkpoint_pos == m2d.global_position and Global.saveData.checkpoint_scene == current_scene_path:
 		return

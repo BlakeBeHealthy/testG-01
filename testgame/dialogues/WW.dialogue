@@ -16,6 +16,7 @@ Jimmy: Welcome friend
 - Hello...
 	P: Hello...Who are you?
 	Jimmy: I go by many names, but you may call me Jimmy.
+	=> DEBUG
 - What are you doing out here?
 	P: What are you doing out here? Meditating?
 	Jimmy: Waiting for you my friend.
@@ -27,6 +28,9 @@ P: I didn't see any shrooms on the way here...was that your doing?
 Jimmy: Very funny, no my friend. You will be able to pivot while in the air. 
 P: Yeahhh so look I'm just trying to explo-
 Jimmy: *mutters a spell to himself*
+Jimmy: There you go, give it a shot. Press space while in the air.
+
+~ DEBUG
 Jimmy: There you go, give it a shot. Press space while in the air.
 set Gameplay.DJ = true
 => END

@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bb6syj87cm7w"]
+[gd_scene format=4 uid="uid://cupmld12c5c2b"]
 
 [ext_resource type="Texture2D" uid="uid://cg04leuj27jv0" path="res://assets/oak-woods/oak_woods_v1.0/oak_woods_tileset.png" id="1_f1u6f"]
 [ext_resource type="PackedScene" uid="uid://v4r78g4kbnyy" path="res://Scenes/UI.tscn" id="1_pqbh3"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cm01fv4mwgnuv" path="res://Scenes/beta_npc.tscn" id="4_6q15i"]
 [ext_resource type="PackedScene" uid="uid://dcrb427bbd01p" path="res://Scenes/checkpoint.tscn" id="5_jmfiy"]
 [ext_resource type="PackedScene" uid="uid://baje80lg3quet" path="res://Scenes/player.tscn" id="6_3082n"]
-[ext_resource type="PackedScene" path="res://Scenes/camera_2d.tscn" id="7_34t7l"]
+[ext_resource type="PackedScene" uid="uid://djei3agw1frcl" path="res://Scenes/camera_2d.tscn" id="7_34t7l"]
 [ext_resource type="PackedScene" uid="uid://cgekcdkve474f" path="res://Scenes/spikes.tscn" id="8_o36lg"]
 [ext_resource type="PackedScene" uid="uid://c4sg8e1no24ay" path="res://Scenes/door.tscn" id="9_fvkua"]
 [ext_resource type="PackedScene" uid="uid://ljjmtwqq5kil" path="res://Scenes/spike_checkpoint.tscn" id="10_ihaum"]
@@ -2242,13 +2242,14 @@ tile_map_data = PackedByteArray("AAD8/wQAAAASAA8AAAD9/wQAAAASAA8AAAD+/wQAAAASAA8
 tile_set = SubResource("TileSet_3082n")
 
 [node name="BetaNPC" parent="." unique_id=1828915867 instance=ExtResource("4_6q15i")]
-position = Vector2(-60, 145)
+position = Vector2(-96, 145)
 
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("5_jmfiy")]
 position = Vector2(3, 150)
+current_scene_path = "\"res://Scenes/Level05.tscn\""
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("6_3082n")]
-position = Vector2(135, 727)
+position = Vector2(96, 85)
 
 [node name="Camera2D" parent="." unique_id=1391246105 instance=ExtResource("7_34t7l")]
 zoom = Vector2(3.5, 3.5)

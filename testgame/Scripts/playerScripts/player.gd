@@ -97,6 +97,7 @@ func _process(delta: float) -> void:
 		dashAllow = true
 		if Gameplay.DJ:
 			moveCheck = true
+	print(current_interactable)
 		
 func flip_direction(dire: int):
 	direction = dire
@@ -143,7 +144,8 @@ func _input(event): #allowing the player to attack
 					attackCheck = true
 					attack_delay.start()
 				
-	elif ((Input.is_action_just_pressed("interact") and current_interactable != null) or Input.is_action_pressed("PlayerLock")) and is_on_floor() and !Global.UI.get_node("Balloon").visible:
+	if ((Input.is_action_just_pressed("interact") and current_interactable != null) or (Input.is_action_pressed("PlayerLock")) and is_on_floor() and !Global.UI.get_node("Balloon").visible):
+		print(control_locked)
 		control_locked = true
 	elif Input.is_action_just_pressed("Dash") and state_machine.current_state != hit_state and state_machine.current_state != cut_state and dash_delay.is_stopped() and dashAllow:
 		dash = true
