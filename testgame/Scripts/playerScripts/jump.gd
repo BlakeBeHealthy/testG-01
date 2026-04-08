@@ -11,12 +11,10 @@ class_name Jump
 var hit := false
 
 func enter() -> void:
-	print("jump")
 	c.position = Vector2(3, 2)
 	as2d.play("jump")
 	if !parent.jumpCheck:
 		parent.velocity.y = -parent.JUMP
-		print(parent.velocity.y)
 		parent.jumpCheck = true
 	#You will probably see some stuff like this, its just basic hitbox adustments based on as2d
 	if parent.direction == -1:

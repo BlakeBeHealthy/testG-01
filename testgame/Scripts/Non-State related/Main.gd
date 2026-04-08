@@ -6,5 +6,5 @@ extends Node2D
 
 func _ready():
 	InputMap.load_from_project_settings()
-	SceneM.load_level("res://Scenes/level_06.tscn")
+	SceneM.load_level("res://Scenes/level_03.tscn")
 	

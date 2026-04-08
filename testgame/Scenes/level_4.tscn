@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d2mnh6jc78crk" path="res://assets/pixel-platformer-castle/main_lev_build.png" id="2_wi344"]
 [ext_resource type="Script" uid="uid://c38r10a1855tj" path="res://Scripts/Non-State related/Door.gd" id="3_f6i20"]
 [ext_resource type="Script" uid="uid://h2myetufdx5u" path="res://Scripts/Non-State related/camera_2d.gd" id="4_wi344"]
-[ext_resource type="PackedScene" path="res://Scenes/door.tscn" id="5_f6i20"]
+[ext_resource type="PackedScene" uid="uid://c4sg8e1no24ay" path="res://Scenes/door.tscn" id="5_f6i20"]
 [ext_resource type="PackedScene" uid="uid://cm01fv4mwgnuv" path="res://Scenes/beta_npc.tscn" id="6_dvrgg"]
 [ext_resource type="PackedScene" uid="uid://baje80lg3quet" path="res://Scenes/player.tscn" id="7_wk15n"]
 
@@ -2217,7 +2217,7 @@ sources/0 = SubResource("TileSetAtlasSource_wk15n")
 sources/1 = SubResource("TileSetAtlasSource_5a8oa")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ntyy"]
-size = Vector2(20, 37)
+size = Vector2(20, 60.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvrgg"]
 size = Vector2(99, 20)
@@ -2232,19 +2232,15 @@ tile_set = SubResource("TileSet_5a8oa")
 
 [node name="WestD2" type="Area2D" parent="." unique_id=1397582055]
 position = Vector2(-908, -104)
+collision_mask = 2
 script = ExtResource("3_f6i20")
 entry_direction = 2
 path_to_new_scene = "res://Scenes/level_03.tscn"
-entry_door_name = "EastD2"
+entry_door_name = "EastD22"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WestD2" unique_id=1578917266]
+visibility_layer = 2
 shape = SubResource("RectangleShape2D_3ntyy")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1291942717]
-zoom = Vector2(3.5, 3.5)
-limit_left = -885
-limit_bottom = 99
-script = ExtResource("4_wi344")
 
 [node name="SouthD2" parent="." unique_id=1940327310 instance=ExtResource("5_f6i20")]
 position = Vector2(-250, 122)
@@ -2263,5 +2259,13 @@ dialogueScene = "res://dialogues/CW.dialogue"
 startingPoint = "s4"
 promptYOffset = -26.0
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1291942717]
+zoom = Vector2(3.5, 3.5)
+limit_left = -982
+limit_bottom = 99
+script = ExtResource("4_wi344")
+
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("7_wk15n")]
 position = Vector2(-805, -116)
+
+[connection signal="body_entered" from="WestD2" to="WestD2" method="_on_body_entered"]

@@ -9,6 +9,7 @@ signal player_entered_door(door: Door)
 
 #Body enter event
 func _on_body_entered(body: Node2D) -> void:
+	print("BODY")
 	if body != Global.player:
 		return
 	print("entered")
