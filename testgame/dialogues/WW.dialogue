@@ -1,0 +1,34 @@
+~ start
+Rain: That chest over there is weird...
+- Does it give good loot?
+	P: Does it give good loot? I'm starving for some collectables
+	Rain: It doesn't give any loot it just... 
+- It's not a mimic right?
+	P: It's not a mimic right? There are way too many of those
+	Rain: No it's weird its like...
+Rain: People interact with it and then if they die they just appear right here...
+Rain: ...
+Rain: Its a checkpoint.
+=> END
+
+~ s2
+Jimmy: Welcome friend
+- Hello...
+	P: Hello...Who are you?
+	Jimmy: I go by many names, but you may call me Jimmy.
+- What are you doing out here?
+	P: What are you doing out here? Meditating?
+	Jimmy: Waiting for you my friend.
+Jimmy: I'm delighted you are finally here.
+P: Why?
+Jimmy: It's time I teach you to fly.
+P: ...
+P: I didn't see any shrooms on the way here...was that your doing?
+Jimmy: Very funny, no my friend. You will be able to pivot while in the air. 
+P: Yeahhh so look I'm just trying to explo-
+Jimmy: *mutters a spell to himself*
+Jimmy: There you go, give it a shot. Press space while in the air.
+set Gameplay.DJ = true
+=> END
+
+=> END

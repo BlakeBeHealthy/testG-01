@@ -7,8 +7,8 @@ class_name BetaNPC extends Node2D
 @export var button_prompt: String
 @export var animationName: String
 @export var dialogueScene: String
-@export var startingPoint: String
-@export var promptYOffset: float
+@export var startingPoint: String = "start"
+@export var promptYOffset: float = -20
 var scaleNumber: Vector2 = Vector2(1, 1)
 
 var areaCheck := false

@@ -14,7 +14,7 @@ var saveData = {
 	"abilities": [],
 	"collectibles": [],
 	"trinkets_collected": [],
-	"trinkets_equipped": []
+	"trinkets_equipped": [],
 }
 #Accessing the camera and the player, some scripts are global however, check project settings
 # Called when the node enters the scene tree for the first time.

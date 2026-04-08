@@ -1,9 +1,44 @@
 [gd_scene format=3 uid="uid://cm01fv4mwgnuv"]
 
 [ext_resource type="Script" uid="uid://crar37sdcjmhh" path="res://Scripts/InteractableScripts/betaNPC.gd" id="1_7p06t"]
+[ext_resource type="Texture2D" uid="uid://dbmqdxyon0x1w" path="res://assets/NPCS/lively-npcs/Lively_NPCs_v3.0/sprite sheets/medieval/captain.png" id="2_4nqgp"]
 [ext_resource type="Texture2D" uid="uid://brd8i4djxlv0r" path="res://assets/oak-woods/oak_woods_v1.0/decorations/shop.png" id="2_ebesc"]
 [ext_resource type="Texture2D" uid="uid://647bfkdmyyec" path="res://assets/NPCS/lively-npcs/Lively_NPCs_v3.0/sprite sheets/medieval/adventurer_05.png" id="2_nu8db"]
 [ext_resource type="PackedScene" uid="uid://5drk3fx5glg2" path="res://Scenes/ButtonPrompt.tscn" id="2_uvfxd"]
+[ext_resource type="Texture2D" uid="uid://b8huf87ls85hh" path="res://assets/NPCS/lively-npcs/Lively_NPCs_v3.0/sprite sheets/elementals/ground_monk.png" id="3_ablmh"]
+[ext_resource type="Texture2D" uid="uid://budfq4it4x7yd" path="res://assets/NPCS/lively-npcs/Lively_NPCs_v3.0/sprite sheets/elementals/water_priestess.png" id="3_puqd2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eav8x"]
+atlas = ExtResource("2_4nqgp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pygll"]
+atlas = ExtResource("2_4nqgp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saw0r"]
+atlas = ExtResource("2_4nqgp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdmuo"]
+atlas = ExtResource("2_4nqgp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp6r6"]
+atlas = ExtResource("3_ablmh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbpo4"]
+atlas = ExtResource("3_ablmh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdl8f"]
+atlas = ExtResource("3_ablmh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78nnb"]
+atlas = ExtResource("3_ablmh")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_puqd2"]
 atlas = ExtResource("2_nu8db")
@@ -21,12 +56,62 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("2_nu8db")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml7sj"]
+atlas = ExtResource("3_puqd2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0brc"]
+atlas = ExtResource("3_puqd2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w78gk"]
+atlas = ExtResource("3_puqd2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyu0u"]
+atlas = ExtResource("3_puqd2")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nu8db"]
 atlas = ExtResource("2_ebesc")
 region = Rect2(0, 0, 118, 98)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_puqd2"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eav8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pygll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_saw0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdmuo")
+}],
+"loop": true,
+"name": &"C5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp6r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbpo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdl8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78nnb")
+}],
+"loop": true,
+"name": &"C6",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_puqd2")
@@ -43,6 +128,23 @@ animations = [{
 "loop": true,
 "name": &"CW",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml7sj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0brc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w78gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyu0u")
+}],
+"loop": true,
+"name": &"WW",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -63,7 +165,7 @@ script = ExtResource("1_7p06t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1983414338]
 sprite_frames = SubResource("SpriteFrames_puqd2")
-animation = &"CW"
+animation = &"C6"
 
 [node name="ButtonPrompt" parent="." unique_id=687141090 instance=ExtResource("2_uvfxd")]
 position = Vector2(0, -20)

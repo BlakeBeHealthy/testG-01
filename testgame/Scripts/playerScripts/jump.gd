@@ -6,13 +6,17 @@ class_name Jump
 @onready var a2d2: Area2D = $"../../Area2D2"
 @onready var attack_delay: Timer = $"../../attackDelay"
 @onready var a2d: Area2D = $"../../Area2D"
+@onready var c: CollisionShape2D = $"../../c"
 
 var hit := false
 
 func enter() -> void:
+	print("jump")
+	c.position = Vector2(3, 2)
 	as2d.play("jump")
 	if !parent.jumpCheck:
 		parent.velocity.y = -parent.JUMP
+		print(parent.velocity.y)
 		parent.jumpCheck = true
 	#You will probably see some stuff like this, its just basic hitbox adustments based on as2d
 	if parent.direction == -1:
@@ -23,7 +27,7 @@ func enter() -> void:
 		a2d2.position.y = 0
 		
 func exit() -> void:
-	pass
+	c.position = Vector2(-0.5, 8)
 
 func process_input(event: InputEvent) -> State:
 	return null

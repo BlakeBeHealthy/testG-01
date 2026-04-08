@@ -56,6 +56,8 @@ var pogoCheck := false
 var parryCheck := false
 var parried := false
 var interactCheck := false
+var moveCheck := false
+var dashAllow := true
 var camLook := false
 var dash := false
 var comboCount := 0
@@ -91,6 +93,10 @@ func _process(delta: float) -> void:
 	else:
 		interactC2D.disabled = false
 		landed.emit()
+	if is_on_floor():
+		dashAllow = true
+		if Gameplay.DJ:
+			moveCheck = true
 		
 func flip_direction(dire: int):
 	direction = dire
@@ -139,7 +145,7 @@ func _input(event): #allowing the player to attack
 				
 	elif ((Input.is_action_just_pressed("interact") and current_interactable != null) or Input.is_action_pressed("PlayerLock")) and is_on_floor() and !Global.UI.get_node("Balloon").visible:
 		control_locked = true
-	elif Input.is_action_just_pressed("Dash") and state_machine.current_state != hit_state and state_machine.current_state != cut_state and dash_delay.is_stopped():
+	elif Input.is_action_just_pressed("Dash") and state_machine.current_state != hit_state and state_machine.current_state != cut_state and dash_delay.is_stopped() and dashAllow:
 		dash = true
 		
 func _on_timer_timeout() -> void:

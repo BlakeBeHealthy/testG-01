@@ -1,6 +1,7 @@
 extends State
 class_name Fall
 
+@onready var c: CollisionShape2D = $"../../c"
 @onready var attack_delay: Timer = $"../../attackDelay"
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var a2d2: Area2D = $"../../Area2D2"
@@ -13,12 +14,13 @@ class_name Fall
 var hit:= false
 
 func enter() -> void:
+	c.position = Vector2(3, 8)
 	if !parent.jumpCheck:
 		cTime.start()
 	as2d.play("fall")
 	
 func exit() -> void:
-	pass
+	c.position = Vector2(-0.5, 8)
 
 func process_input(event: InputEvent) -> State:
 	return null #Every path must have a return statement, dont forget or the engine
@@ -70,9 +72,16 @@ func process_physics(delta: float) -> State:
 		a2d.position.x = -21
 		a2d2.position.x = -3
 	
-	if !cTime.is_stopped() and Input.is_action_pressed("jump"):
-		cTime.stop()
-		return parent.jump_state
+	if Input.is_action_just_pressed("jump"):
+		if !cTime.is_stopped():
+			cTime.stop()
+			return parent.jump_state
+		elif parent.moveCheck:
+			print("returning jump")
+			parent.jumpCheck = false
+			parent.moveCheck = false
+			return parent.jump_state
+	
 	if direction != 0 and parent.is_on_floor():
 		return parent.run_state
 	elif direction == 0 and parent.is_on_floor():

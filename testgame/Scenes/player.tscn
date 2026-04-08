@@ -690,13 +690,12 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"parryAtt"
+animation = &"jump"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
-visible = false
 visibility_layer = 2
-position = Vector2(-0.49999973, 8)
+position = Vector2(3.0000005, 1.999999)
 scale = Vector2(1.59, 1.274)
 shape = SubResource("RectangleShape2D_ukyrk")
 
@@ -711,6 +710,7 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_gymyn")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1898396502]
+visible = false
 position = Vector2(-0.99999994, 7)
 scale = Vector2(0.507894, 0.9085177)
 collision_layer = 8
@@ -722,6 +722,7 @@ scale = Vector2(0.99999976, 1)
 shape = SubResource("RectangleShape2D_tx1dd")
 
 [node name="ParryZone" type="Area2D" parent="." unique_id=976924657]
+visible = false
 position = Vector2(-1, 9)
 scale = Vector2(1.8876373, 1.8989843)
 collision_layer = 8
@@ -734,6 +735,7 @@ shape = SubResource("CapsuleShape2D_pg0gw")
 debug_color = Color(0.9978096, 0, 0.1678963, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=450046427]
+visible = false
 position = Vector2(18, 4)
 scale = Vector2(1.4, 1)
 collision_layer = 128

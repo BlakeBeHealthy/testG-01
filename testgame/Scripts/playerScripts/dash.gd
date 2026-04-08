@@ -28,6 +28,8 @@ func enter() -> void:
 		
 		
 func exit() -> void:
+	if parent.dashAllow:
+		parent.dashAllow = false
 	hurtbox.monitorable = true
 	hurtbox.monitoring = true
 	
