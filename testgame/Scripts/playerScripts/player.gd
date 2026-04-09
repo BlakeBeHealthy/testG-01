@@ -51,6 +51,7 @@ var upwardDoor = false
 var knockback_velocity := 0.0
 var knockback_decay := 50.0
 var jumpCheck := false
+var jumpBuff := false
 var attackCheck := false
 var pogoCheck := false
 var parryCheck := false
@@ -97,7 +98,6 @@ func _process(delta: float) -> void:
 		dashAllow = true
 		if Gameplay.DJ:
 			moveCheck = true
-		
 func flip_direction(dire: int):
 	direction = dire
 	parry_zone.position.x *= direction

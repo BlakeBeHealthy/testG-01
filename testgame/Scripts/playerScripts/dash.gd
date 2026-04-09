@@ -10,13 +10,11 @@ extends State
 var dashDone
 var dashCheck := false
 var dashDir := 0.0
-var jumpBuff := false
 var jump := false
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
 	jump_buff.start()
-	hurtbox.monitorable = false
-	hurtbox.monitoring = false
+	hurtbox.set_collision_layer_value(4, false)
 	dash_time.start()
 	dashCheck = true
 	if parent.dash:
@@ -34,21 +32,21 @@ func enter() -> void:
 func exit() -> void:
 	if parent.dashAllow:
 		parent.dashAllow = false
-	hurtbox.monitorable = true
-	hurtbox.monitoring = true
-	if jumpBuff:
-		jumpBuff = false
+	hurtbox.set_collision_layer_value(4, true)
+	if parent.jumpBuff:
+		parent.jumpBuff = false
 	if !jump_buff.is_stopped():
 		jump_buff.stop()
 
 func process_input(event: InputEvent) -> State:
-	if jumpBuff:
+	if parent.jumpBuff:
 		if Input.is_action_just_pressed("jump"):
 			jump = true
 	return null
 
 func process_frame(delta: float) -> State:
-	
+	if parent.takeHit:
+		return parent.hit_state
 	if dashDone:
 		dashDone = false
 		if parent.parryCheck:
@@ -89,4 +87,4 @@ func _on_dash_time_timeout() -> void:
 
 
 func _on_jump_buff_timeout() -> void:
-	jumpBuff = true 
+	parent.jumpBuff = true 

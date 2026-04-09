@@ -77,7 +77,6 @@ func process_physics(delta: float) -> State:
 			cTime.stop()
 			return parent.jump_state
 		elif parent.moveCheck:
-			print("returning jump")
 			parent.jumpCheck = false
 			parent.moveCheck = false
 			return parent.jump_state
