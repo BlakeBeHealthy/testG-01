@@ -43,10 +43,10 @@ animations = [{
 }]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gwqs2"]
-b = Vector2(1.9047618, 8.888888)
+b = Vector2(2.2321427, 8.813559)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwqs2"]
-size = Vector2(3.3928573, 9.491526)
+size = Vector2(3.3928573, 9.669942)
 
 [node name="Spikes" type="Area2D" unique_id=898931136]
 collision_layer = 32
@@ -72,9 +72,9 @@ collision_layer = 1024
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1998765180]
-position = Vector2(0.89285713, 3.3898306)
-rotation = -0.3281219
-scale = Vector2(0.9999995, 0.9999999)
+position = Vector2(0.8641083, 3.3053813)
+rotation = -0.32812193
+scale = Vector2(0.99999934, 0.99999976)
 shape = SubResource("RectangleShape2D_gwqs2")
 
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

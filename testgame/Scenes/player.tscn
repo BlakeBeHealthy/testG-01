@@ -665,7 +665,7 @@ size = Vector2(25.171629, 26.979446)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ukyrk"]
 radius = 26.092636
-height = 57.69588
+height = 70.58407
 
 [node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state", "att2_state", "parry_state", "parryAttack_state", "fall_state", "run_state", "idle_state", "dash_state", "death_state", "cut_state", "pogo_state")]
 collision_layer = 2
@@ -690,16 +690,19 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"jump"
+animation = &"run"
+frame = 2
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
+visible = false
 visibility_layer = 2
 position = Vector2(3.0000005, 1.999999)
 scale = Vector2(1.59, 1.274)
 shape = SubResource("RectangleShape2D_ukyrk")
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=764626776]
+visible = false
 position = Vector2(0, 4)
 collision_layer = 64
 collision_mask = 768
@@ -709,16 +712,16 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_gymyn")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1898396502]
-visible = false
 position = Vector2(-0.99999994, 7)
 scale = Vector2(0.507894, 0.9085177)
-collision_layer = 8
+collision_layer = 2056
 collision_mask = 32
 
 [node name="hurtbox" type="CollisionShape2D" parent="Area2D2" unique_id=1299933768]
-position = Vector2(-3.5762787e-07, 3.4897232)
+position = Vector2(-1.2291494e-07, 1.1006944)
 scale = Vector2(0.99999976, 1)
 shape = SubResource("RectangleShape2D_tx1dd")
+debug_color = Color(0.90078, 0.3079449, 0.121679135, 0.41960785)
 
 [node name="ParryZone" type="Area2D" parent="." unique_id=976924657]
 visible = false
@@ -736,13 +739,14 @@ debug_color = Color(0.9978096, 0, 0.1678963, 0.41960785)
 [node name="Area2D" type="Area2D" parent="." unique_id=450046427]
 visible = false
 position = Vector2(18, 4)
-scale = Vector2(1.4, 1)
+scale = Vector2(1.335, 0.609)
 collision_layer = 128
-collision_mask = 16
+collision_mask = 1040
 monitoring = false
 monitorable = false
 
 [node name="AttackZone" type="CollisionShape2D" parent="Area2D" unique_id=1948751203]
+position = Vector2(0, -6.568144)
 scale = Vector2(0.727955, 0.977069)
 shape = SubResource("CapsuleShape2D_ukyrk")
 
@@ -768,8 +772,8 @@ wait_time = 0.001
 wait_time = 0.53
 one_shot = true
 
-[node name="tim2" type="Timer" parent="." unique_id=1119039513]
-wait_time = 10.476
+[node name="jumpBuff" type="Timer" parent="." unique_id=1119039513]
+wait_time = 0.001
 one_shot = true
 
 [node name="parryCooldown" type="Timer" parent="." unique_id=2138544369]
@@ -778,6 +782,8 @@ one_shot = true
 [node name="parryTime" type="Timer" parent="." unique_id=1187766342]
 wait_time = 0.1
 one_shot = true
+
+[node name="ParryInv" type="Timer" parent="." unique_id=1575459416]
 
 [node name="CoyoteTime" type="Timer" parent="." unique_id=300296774]
 wait_time = 0.1
@@ -863,5 +869,8 @@ decayRate = 3000.0
 [connection signal="timeout" from="InvincibleTime" to="StateMachine/Hit" method="_on_invincible_time_timeout"]
 [connection signal="timeout" from="hitstuntimer" to="StateMachine/Hit" method="_on_hitstuntimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="jumpBuff" to="StateMachine/PogoAttack" method="_on_jump_buff_timeout"]
+[connection signal="timeout" from="jumpBuff" to="StateMachine/Dash" method="_on_jump_buff_timeout"]
 [connection signal="timeout" from="parryCooldown" to="." method="_on_parry_cooldown_timeout"]
 [connection signal="timeout" from="parryTime" to="StateMachine/Parry" method="_on_parry_time_timeout"]
+[connection signal="timeout" from="ParryInv" to="." method="_on_parry_inv_timeout"]

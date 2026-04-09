@@ -15,6 +15,7 @@ var hit := false
 
 func enter() -> void:
 	as2d.play("run")
+	a2d2.position.y = 9
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
@@ -47,10 +48,12 @@ func process_physics(delta: float) -> State:
 	
 	if direction > 0:
 		parent.flip_direction(1)
+		a2d2.position.x = 5 * direction
 		a2d.position.x = 18
 		facingR = true
 	elif direction < 0:
 		parent.flip_direction(-1)
+		a2d2.position.x = 5 * direction
 		a2d.position.x = -18
 		facingR = false
 		

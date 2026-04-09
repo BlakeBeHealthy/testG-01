@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	hitPlayer()
-	
+	print("hittin")
 	
 func hitPlayer():
 	if hit:

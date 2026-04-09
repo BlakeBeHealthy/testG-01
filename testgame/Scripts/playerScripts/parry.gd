@@ -4,6 +4,7 @@ extends State
 @onready var parry_zone: Area2D = $"../../ParryZone"
 @onready var parry_cooldown: Timer = $"../../parryCooldown"
 @onready var hurtbox: CollisionShape2D = $"../../Area2D2/hurtbox"
+@onready var parry_inv: Timer = $"../../ParryInv"
 
 
 var parryOver := false
@@ -54,6 +55,8 @@ func _on_parry_zone_area_entered(area: Area2D) -> void:
 	parent.parried = true
 	parent.goodParry.emit()
 	apply_timeSlow(hit_timeStop, hit_duration)
+	parry_inv.start()
+	hurtbox.set_collision_layer_value(4, false)
 
 
 func _on_parry_time_timeout() -> void:

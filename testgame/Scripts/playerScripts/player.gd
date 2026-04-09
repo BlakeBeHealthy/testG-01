@@ -97,7 +97,6 @@ func _process(delta: float) -> void:
 		dashAllow = true
 		if Gameplay.DJ:
 			moveCheck = true
-	print(current_interactable)
 		
 func flip_direction(dire: int):
 	direction = dire
@@ -158,3 +157,7 @@ func respawn():
 
 func _on_parry_cooldown_timeout() -> void:
 	parried = false
+
+
+func _on_parry_inv_timeout() -> void:
+	a2d2.set_collision_layer_value(4, true)
