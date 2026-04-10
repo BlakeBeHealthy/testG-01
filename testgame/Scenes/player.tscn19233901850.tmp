@@ -709,7 +709,7 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"run"
+animation = &"fall"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
@@ -863,9 +863,11 @@ hit_duration = 0.2
 
 [node name="ParryAttack" type="Node" parent="StateMachine" unique_id=1766148343]
 script = ExtResource("11_ukyrk")
+hit_timeStop = null
 hit_duration = 0.13
 decayRate = 9000
 playerKnockback = 300
+move_speed = null
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Dash" type="Node" parent="StateMachine" unique_id=61420425]

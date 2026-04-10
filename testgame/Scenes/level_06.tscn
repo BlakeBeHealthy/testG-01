@@ -2241,7 +2241,7 @@ limit_right = 1134
 position = Vector2(269, -367)
 animationName = "C6"
 dialogueScene = "res://dialogues/WW.dialogue"
-startingPoint = "s2"
+startingPoint = "s3"
 
 [node name="PT3" parent="." unique_id=1940327310 instance=ExtResource("5_n2msi")]
 position = Vector2(1160, 42)

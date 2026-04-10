@@ -48,11 +48,19 @@ func process_physics(delta: float) -> State:
 	
 	if direction > 0:
 		parent.flip_direction(1)
+		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
+		parent.wallslide_chest.position.x = 3.2
+		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
+		parent.wallslide_legs.position.x = 3.2
 		a2d2.position.x = 5 * direction
 		a2d.position.x = 18
 		facingR = true
 	elif direction < 0:
 		parent.flip_direction(-1)
+		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
+		parent.wallslide_chest.position.x = -3.2
+		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
+		parent.wallslide_legs.position.x = -3.2
 		a2d2.position.x = 5 * direction
 		a2d.position.x = -18
 		facingR = false

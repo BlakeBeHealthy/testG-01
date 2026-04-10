@@ -29,6 +29,8 @@ extends CharacterBody2D
 @onready var interactC2D: CollisionShape2D = $InteractArea/CollisionShape2D
 @onready var parry_zone: Area2D = $ParryZone
 @onready var dash_delay: Timer = $DashDelay
+@onready var wallslide_legs: RayCast2D = $wallslideLegs
+@onready var wallslide_chest: RayCast2D = $wallslideChest
 
 
 @warning_ignore("unused_signal")
@@ -61,6 +63,7 @@ var moveCheck := false
 var dashAllow := true
 var camLook := false
 var dash := false
+var wallSlide := false
 var comboCount := 0
 var health := 3
 var current_interactable: Node = null
@@ -98,6 +101,7 @@ func _process(delta: float) -> void:
 		dashAllow = true
 		if Gameplay.DJ:
 			moveCheck = true
+
 func flip_direction(dire: int):
 	direction = dire
 	parry_zone.position.x *= direction

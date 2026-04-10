@@ -3443,6 +3443,7 @@ dialogueScene = "res://dialogues/WW.dialogue"
 position = Vector2(-24, 657)
 animationName = "C5"
 dialogueScene = "res://dialogues/WW.dialogue"
+startingPoint = "s2"
 
 [node name="NorthD2" parent="." unique_id=1940327310 instance=ExtResource("9_fvkua")]
 position = Vector2(0, -326)

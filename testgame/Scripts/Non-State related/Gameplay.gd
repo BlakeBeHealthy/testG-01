@@ -8,10 +8,13 @@ var pending_entry_direction := Vector2.ZERO
 var checkJump
 var started := false
 var is_respawn := false
-var DJ := true
 var Knightgrandma := false
 var Knight := false
 var Rain := false
+
+var wallJump := true
+var DJ := true
+
 var direction := 1
 
 func enter_door(scene_path: String, door_name: String, dir_string: int) -> void:
