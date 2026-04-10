@@ -2227,11 +2227,11 @@ size = Vector2(54.5, 42)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihaum"]
 size = Vector2(52, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krxo4"]
+size = Vector2(79, 90.75)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1vi5"]
 size = Vector2(155.5, 251.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_krxo4"]
-size = Vector2(119.625, 90.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ulcfg"]
 size = Vector2(20, 44)
@@ -2249,6 +2249,8 @@ tile_set = SubResource("TileSet_3082n")
 
 [node name="BetaNPC" parent="." unique_id=1828915867 instance=ExtResource("4_6q15i")]
 position = Vector2(-96, 145)
+animationName = "WW"
+dialogueScene = "res://dialogues/WW.dialogue"
 
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("5_jmfiy")]
 position = Vector2(3, 150)
@@ -2367,1072 +2369,1080 @@ spawn = true
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes2" parent="." unique_id=1856222914 instance=ExtResource("8_o36lg")]
-position = Vector2(26, 745)
+[node name="Spikes2" parent="Spikes" unique_id=1856222914 instance=ExtResource("8_o36lg")]
+position = Vector2(-131, -50)
+rotation = 3.1415925
 spawn = true
 
-[node name="Spikes2" parent="Spikes2" unique_id=1883255795 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2" unique_id=1883255795 instance=ExtResource("8_o36lg")]
 position = Vector2(-4, 0)
 spawn = true
 
-[node name="Spikes2" parent="Spikes2/Spikes2" unique_id=1268943562 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes2" unique_id=1268943562 instance=ExtResource("8_o36lg")]
 position = Vector2(-3, 0)
 spawn = true
 
-[node name="Spikes2" parent="Spikes2/Spikes2/Spikes2" unique_id=733990460 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes2/Spikes2" unique_id=733990460 instance=ExtResource("8_o36lg")]
 position = Vector2(-111, 0)
 spawn = true
 
-[node name="Spikes3" parent="Spikes2/Spikes2/Spikes2" unique_id=850273769 instance=ExtResource("8_o36lg")]
+[node name="Spikes3" parent="Spikes/Spikes2/Spikes2/Spikes2" unique_id=850273769 instance=ExtResource("8_o36lg")]
 position = Vector2(-104, 0)
 spawn = true
 
-[node name="Spikes2" parent="Spikes2/Spikes2/Spikes2/Spikes3" unique_id=159870082 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes2/Spikes2/Spikes3" unique_id=159870082 instance=ExtResource("8_o36lg")]
 position = Vector2(190, 0)
 spawn = true
 
-[node name="Spikes2" parent="Spikes2/Spikes2/Spikes2/Spikes3/Spikes2" unique_id=194695126 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes2/Spikes2/Spikes3/Spikes2" unique_id=194695126 instance=ExtResource("8_o36lg")]
 position = Vector2(-6, 0)
 spawn = true
 
-[node name="Spikes4" parent="." unique_id=1946489947 instance=ExtResource("8_o36lg")]
-position = Vector2(235, 361)
+[node name="Spikes4" parent="Spikes/Spikes2" unique_id=1946489947 instance=ExtResource("8_o36lg")]
+position = Vector2(209, -384)
 spawn = true
 
-[node name="Spikes" parent="Spikes4" unique_id=1931944840 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4" unique_id=1931944840 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes" unique_id=1627854886 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes" unique_id=1627854886 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes" unique_id=1855414284 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes" unique_id=1855414284 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes" unique_id=615326196 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes" unique_id=615326196 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes" unique_id=1586453331 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes" unique_id=1586453331 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1065548836 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1065548836 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=433819121 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=433819121 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1183586990 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1183586990 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1408284165 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1408284165 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1711533719 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1711533719 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1241897550 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1241897550 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=779319369 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=779319369 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=855865650 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=855865650 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1243051700 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1243051700 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=138185868 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=138185868 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=2016738603 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=2016738603 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=437945154 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=437945154 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=109972136 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=109972136 instance=ExtResource("8_o36lg")]
 position = Vector2(233, -4.3385506e-05)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=718060321 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=718060321 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2" unique_id=463182369 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2" unique_id=463182369 instance=ExtResource("8_o36lg")]
 position = Vector2(233, -4.3385506e-05)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2" unique_id=1273920961 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2" unique_id=1273920961 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2" unique_id=943691140 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2" unique_id=943691140 instance=ExtResource("8_o36lg")]
 position = Vector2(233, -4.3385506e-05)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2" unique_id=2022254486 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2" unique_id=2022254486 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2" unique_id=1034602279 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2" unique_id=1034602279 instance=ExtResource("8_o36lg")]
 position = Vector2(233, -4.3385506e-05)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2" unique_id=950378503 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2" unique_id=950378503 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=2061545276 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=2061545276 instance=ExtResource("8_o36lg")]
 position = Vector2(233, -4.3385506e-05)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=1234148529 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=1234148529 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=987909035 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=987909035 instance=ExtResource("8_o36lg")]
 position = Vector2(233, -4.3385506e-05)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=161465836 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=161465836 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=80798231 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=80798231 instance=ExtResource("8_o36lg")]
 position = Vector2(233, -4.3385506e-05)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=696457302 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=696457302 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=1493073119 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=1493073119 instance=ExtResource("8_o36lg")]
 position = Vector2(233, -4.3385506e-05)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=1356703213 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=1356703213 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=1263989208 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=1263989208 instance=ExtResource("8_o36lg")]
 position = Vector2(233, -4.3385506e-05)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=746532122 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=746532122 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=1644302528 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=1644302528 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=937624585 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=937624585 instance=ExtResource("8_o36lg")]
 position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=500228101 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=500228101 instance=ExtResource("8_o36lg")]
 position = Vector2(144.00003, 111.99998)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=203918530 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=203918530 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes" unique_id=159612006 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes" unique_id=159612006 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes" unique_id=729963579 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes" unique_id=729963579 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes" unique_id=1706015701 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes" unique_id=1706015701 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes" unique_id=1340152286 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes" unique_id=1340152286 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=95969550 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=95969550 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1787668665 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1787668665 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1839496213 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1839496213 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=390171602 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=390171602 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1373138609 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1373138609 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=423474214 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=423474214 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1348735835 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1348735835 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=119371005 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=119371005 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1458759871 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1458759871 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=127610342 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=127610342 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1737956392 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1737956392 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=956137626 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=956137626 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=86822202 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=86822202 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1443090316 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1443090316 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1434826276 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1434826276 instance=ExtResource("8_o36lg")]
 position = Vector2(-8.000587, 127.99999)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=249713376 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=249713376 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=448170601 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=448170601 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=2074401905 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=2074401905 instance=ExtResource("8_o36lg")]
 position = Vector2(13.999942, 15.999995)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1534449587 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1534449587 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1281117013 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1281117013 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=556122588 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=556122588 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1193466715 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1193466715 instance=ExtResource("8_o36lg")]
 position = Vector2(-34.000095, -15.999996)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=637053646 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=637053646 instance=ExtResource("8_o36lg")]
 position = Vector2(41, -9.767377e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=261765854 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=261765854 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=351584257 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=351584257 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=209899503 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=209899503 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1802578168 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1802578168 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=727999584 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=727999584 instance=ExtResource("8_o36lg")]
 position = Vector2(9.999875, -16.000004)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=389829617 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=389829617 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1934402309 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1934402309 instance=ExtResource("8_o36lg")]
 position = Vector2(-14.000029, 16)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=960440926 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=960440926 instance=ExtResource("8_o36lg")]
 position = Vector2(-194.0004, 16.000027)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2" unique_id=1327618780 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2" unique_id=1327618780 instance=ExtResource("8_o36lg")]
 position = Vector2(-45, -3.8146973e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes" unique_id=29710240 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes" unique_id=29710240 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes" unique_id=503191019 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes" unique_id=503191019 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes" unique_id=543771413 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes" unique_id=543771413 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes" unique_id=1403467087 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes" unique_id=1403467087 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=517647370 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=517647370 instance=ExtResource("8_o36lg")]
 position = Vector2(-45.000122, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1581136679 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1581136679 instance=ExtResource("8_o36lg")]
 position = Vector2(-145, -16.000008)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1132861597 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1132861597 instance=ExtResource("8_o36lg")]
 position = Vector2(9, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=505782151 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=505782151 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 15.999996)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1615123344 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1615123344 instance=ExtResource("8_o36lg")]
 position = Vector2(13.999942, 15.999995)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1025082959 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1025082959 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1397143856 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1397143856 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1991770718 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1991770718 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1786457990 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1786457990 instance=ExtResource("8_o36lg")]
 position = Vector2(-34.000095, -15.999996)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1524617905 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1524617905 instance=ExtResource("8_o36lg")]
 position = Vector2(43.00006, 15.99999)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1557313645 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1557313645 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=2107661959 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=2107661959 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=387785210 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=387785210 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=285662077 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=285662077 instance=ExtResource("8_o36lg")]
 position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1442201816 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1442201816 instance=ExtResource("8_o36lg")]
 position = Vector2(8.999879, -3.8146973e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=291876663 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=291876663 instance=ExtResource("8_o36lg")]
 position = Vector2(8.000004, -4.172325e-06)
 spawn = true
 
-[node name="Spikes" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=787875319 instance=ExtResource("8_o36lg")]
+[node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=787875319 instance=ExtResource("8_o36lg")]
 position = Vector2(8.999994, 0)
 spawn = true
 
-[node name="Spikes2" parent="Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1586863736 instance=ExtResource("8_o36lg")]
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1586863736 instance=ExtResource("8_o36lg")]
 position = Vector2(17.999996, 0)
 spawn = true
 
-[node name="Spikes7" parent="." unique_id=2007320916 instance=ExtResource("8_o36lg")]
-position = Vector2(-273, 745)
+[node name="Spikes7" parent="Spikes/Spikes2/Spikes4" unique_id=2007320916 instance=ExtResource("8_o36lg")]
+position = Vector2(-508, 384)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7" unique_id=987609993 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7" unique_id=987609993 instance=ExtResource("8_o36lg")]
 position = Vector2(9, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5" unique_id=823090870 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5" unique_id=823090870 instance=ExtResource("8_o36lg")]
 position = Vector2(9, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5" unique_id=171154651 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5" unique_id=171154651 instance=ExtResource("8_o36lg")]
 position = Vector2(9, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5" unique_id=2109077877 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5" unique_id=2109077877 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 16)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=782564399 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=782564399 instance=ExtResource("8_o36lg")]
 position = Vector2(9, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1433381408 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1433381408 instance=ExtResource("8_o36lg")]
 position = Vector2(8, -16)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=511959365 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=511959365 instance=ExtResource("8_o36lg")]
 position = Vector2(9, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1061979561 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1061979561 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=718602797 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=718602797 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1747515667 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1747515667 instance=ExtResource("8_o36lg")]
 position = Vector2(-166, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=316948147 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=316948147 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1181081425 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1181081425 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1887515933 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1887515933 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=574346494 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=574346494 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=32941729 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=32941729 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=388747918 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=388747918 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1540962282 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1540962282 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=425371559 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=425371559 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1082542154 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1082542154 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1524231312 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1524231312 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=156320074 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=156320074 instance=ExtResource("8_o36lg")]
 position = Vector2(-97, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=258337679 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=258337679 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=316013944 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=316013944 instance=ExtResource("8_o36lg")]
 position = Vector2(-25, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=225587308 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=225587308 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes6" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1473743447 instance=ExtResource("8_o36lg")]
+[node name="Spikes6" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1473743447 instance=ExtResource("8_o36lg")]
 position = Vector2(-42, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6" unique_id=1218375346 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6" unique_id=1218375346 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes7" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=917037012 instance=ExtResource("8_o36lg")]
+[node name="Spikes7" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=917037012 instance=ExtResource("8_o36lg")]
 position = Vector2(-58, -16)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes7" unique_id=1355958609 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes7" unique_id=1355958609 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes8" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1756085362 instance=ExtResource("8_o36lg")]
+[node name="Spikes8" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1756085362 instance=ExtResource("8_o36lg")]
 position = Vector2(-74, -32)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=706451091 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=706451091 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes6" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=850484467 instance=ExtResource("8_o36lg")]
+[node name="Spikes6" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=850484467 instance=ExtResource("8_o36lg")]
 position = Vector2(23, -240)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6" unique_id=525971666 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6" unique_id=525971666 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5" unique_id=2012313181 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5" unique_id=2012313181 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5" unique_id=2052785008 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5" unique_id=2052785008 instance=ExtResource("8_o36lg")]
 position = Vector2(-106, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5" unique_id=1212071126 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5" unique_id=1212071126 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=60261015 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=60261015 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=360265364 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=360265364 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=124985358 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=124985358 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1344005683 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1344005683 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1270678440 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1270678440 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=300532226 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=300532226 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1903104571 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1903104571 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1274465567 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1274465567 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1707158800 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1707158800 instance=ExtResource("8_o36lg")]
 position = Vector2(9, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1423121813 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1423121813 instance=ExtResource("8_o36lg")]
 position = Vector2(-97, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=253864412 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=253864412 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=2125292306 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=2125292306 instance=ExtResource("8_o36lg")]
 position = Vector2(-25, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=163921676 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=163921676 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes6" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1861040701 instance=ExtResource("8_o36lg")]
+[node name="Spikes6" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=1861040701 instance=ExtResource("8_o36lg")]
 position = Vector2(-42, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6" unique_id=1914449439 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6" unique_id=1914449439 instance=ExtResource("8_o36lg")]
 position = Vector2(8, 0)
 spawn = true
 
-[node name="Spikes7" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=748500306 instance=ExtResource("8_o36lg")]
+[node name="Spikes7" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=748500306 instance=ExtResource("8_o36lg")]
 position = Vector2(-70, 16)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes7" unique_id=1469817049 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes7" unique_id=1469817049 instance=ExtResource("8_o36lg")]
 position = Vector2(9, 0)
 spawn = true
 
-[node name="Spikes8" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=548635313 instance=ExtResource("8_o36lg")]
+[node name="Spikes8" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5" unique_id=548635313 instance=ExtResource("8_o36lg")]
 position = Vector2(-51, 0)
 spawn = true
 
-[node name="Spikes5" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=640769748 instance=ExtResource("8_o36lg")]
+[node name="Spikes5" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=640769748 instance=ExtResource("8_o36lg")]
 position = Vector2(-25, 32)
 spawn = true
 
-[node name="Spikes6" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1176778557 instance=ExtResource("8_o36lg")]
+[node name="Spikes6" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1176778557 instance=ExtResource("8_o36lg")]
 position = Vector2(-34, 32)
 spawn = true
 
-[node name="Spikes7" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1657748800 instance=ExtResource("8_o36lg")]
+[node name="Spikes7" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1657748800 instance=ExtResource("8_o36lg")]
 position = Vector2(-43, 32)
 spawn = true
 
-[node name="Spikes8" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1682384912 instance=ExtResource("8_o36lg")]
+[node name="Spikes8" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1682384912 instance=ExtResource("8_o36lg")]
 position = Vector2(-53, 32)
 spawn = true
 
-[node name="Spikes12" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=208029876 instance=ExtResource("8_o36lg")]
+[node name="Spikes12" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=208029876 instance=ExtResource("8_o36lg")]
 position = Vector2(-274, 48)
 spawn = true
 
-[node name="Spikes13" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1780019719 instance=ExtResource("8_o36lg")]
+[node name="Spikes13" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1780019719 instance=ExtResource("8_o36lg")]
 position = Vector2(-265, 48)
 spawn = true
 
-[node name="Spikes14" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=183962612 instance=ExtResource("8_o36lg")]
+[node name="Spikes14" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=183962612 instance=ExtResource("8_o36lg")]
 position = Vector2(-256, 48)
 spawn = true
 
-[node name="Spikes15" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1770066732 instance=ExtResource("8_o36lg")]
+[node name="Spikes15" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1770066732 instance=ExtResource("8_o36lg")]
 position = Vector2(-247, 48)
 spawn = true
 
-[node name="Spikes16" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1915750498 instance=ExtResource("8_o36lg")]
+[node name="Spikes16" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1915750498 instance=ExtResource("8_o36lg")]
 position = Vector2(-238, 48)
 spawn = true
 
-[node name="Spikes17" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1660302925 instance=ExtResource("8_o36lg")]
+[node name="Spikes17" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1660302925 instance=ExtResource("8_o36lg")]
 position = Vector2(-230, 48)
 spawn = true
 
-[node name="Spikes18" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1956020227 instance=ExtResource("8_o36lg")]
+[node name="Spikes18" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1956020227 instance=ExtResource("8_o36lg")]
 position = Vector2(-220, 48)
 spawn = true
 
-[node name="Spikes19" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2024654386 instance=ExtResource("8_o36lg")]
+[node name="Spikes19" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2024654386 instance=ExtResource("8_o36lg")]
 position = Vector2(-427, -96)
 spawn = true
 
-[node name="Spikes20" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=925292527 instance=ExtResource("8_o36lg")]
+[node name="Spikes20" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=925292527 instance=ExtResource("8_o36lg")]
 position = Vector2(-418, -96)
 spawn = true
 
-[node name="Spikes57" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=676000766 instance=ExtResource("8_o36lg")]
+[node name="Spikes57" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=676000766 instance=ExtResource("8_o36lg")]
 position = Vector2(-451, -80)
 spawn = true
 
-[node name="Spikes58" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1348076799 instance=ExtResource("8_o36lg")]
+[node name="Spikes58" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1348076799 instance=ExtResource("8_o36lg")]
 position = Vector2(-442, -80)
 spawn = true
 
-[node name="Spikes59" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1740817660 instance=ExtResource("8_o36lg")]
+[node name="Spikes59" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1740817660 instance=ExtResource("8_o36lg")]
 position = Vector2(-436, -96)
 spawn = true
 
-[node name="Spikes21" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1481591805 instance=ExtResource("8_o36lg")]
+[node name="Spikes21" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1481591805 instance=ExtResource("8_o36lg")]
 position = Vector2(-409, -96)
 spawn = true
 
-[node name="Spikes22" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1881135126 instance=ExtResource("8_o36lg")]
+[node name="Spikes22" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1881135126 instance=ExtResource("8_o36lg")]
 position = Vector2(-400, -96)
 spawn = true
 
-[node name="Spikes23" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=724981861 instance=ExtResource("8_o36lg")]
+[node name="Spikes23" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=724981861 instance=ExtResource("8_o36lg")]
 position = Vector2(-391, -96)
 spawn = true
 
-[node name="Spikes24" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1357901864 instance=ExtResource("8_o36lg")]
+[node name="Spikes24" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1357901864 instance=ExtResource("8_o36lg")]
 position = Vector2(-382, -96)
 spawn = true
 
-[node name="Spikes25" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=410953340 instance=ExtResource("8_o36lg")]
+[node name="Spikes25" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=410953340 instance=ExtResource("8_o36lg")]
 position = Vector2(-373, -96)
 spawn = true
 
-[node name="Spikes26" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1344393015 instance=ExtResource("8_o36lg")]
+[node name="Spikes26" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1344393015 instance=ExtResource("8_o36lg")]
 position = Vector2(-611, -224)
 spawn = true
 
-[node name="Spikes27" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=618854415 instance=ExtResource("8_o36lg")]
+[node name="Spikes27" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=618854415 instance=ExtResource("8_o36lg")]
 position = Vector2(-602, -224)
 spawn = true
 
-[node name="Spikes28" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=346375101 instance=ExtResource("8_o36lg")]
+[node name="Spikes28" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=346375101 instance=ExtResource("8_o36lg")]
 position = Vector2(-593, -224)
 spawn = true
 
-[node name="Spikes29" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=991825388 instance=ExtResource("8_o36lg")]
+[node name="Spikes29" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=991825388 instance=ExtResource("8_o36lg")]
 position = Vector2(-584, -224)
 spawn = true
 
-[node name="Spikes30" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=233439526 instance=ExtResource("8_o36lg")]
+[node name="Spikes30" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=233439526 instance=ExtResource("8_o36lg")]
 position = Vector2(-575, -224)
 spawn = true
 
-[node name="Spikes31" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1735145158 instance=ExtResource("8_o36lg")]
+[node name="Spikes31" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1735145158 instance=ExtResource("8_o36lg")]
 position = Vector2(-567, -224)
 spawn = true
 
-[node name="Spikes32" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=186327689 instance=ExtResource("8_o36lg")]
+[node name="Spikes32" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=186327689 instance=ExtResource("8_o36lg")]
 position = Vector2(-557, -224)
 spawn = true
 
-[node name="Spikes33" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2057253483 instance=ExtResource("8_o36lg")]
+[node name="Spikes33" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2057253483 instance=ExtResource("8_o36lg")]
 position = Vector2(-548, -224)
 spawn = true
 
-[node name="Spikes34" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=146615907 instance=ExtResource("8_o36lg")]
+[node name="Spikes34" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=146615907 instance=ExtResource("8_o36lg")]
 position = Vector2(-539, -224)
 spawn = true
 
-[node name="Spikes35" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=264731905 instance=ExtResource("8_o36lg")]
+[node name="Spikes35" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=264731905 instance=ExtResource("8_o36lg")]
 position = Vector2(-530, -224)
 spawn = true
 
-[node name="Spikes36" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1214764684 instance=ExtResource("8_o36lg")]
+[node name="Spikes36" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1214764684 instance=ExtResource("8_o36lg")]
 position = Vector2(-521, -224)
 spawn = true
 
-[node name="Spikes37" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1253209775 instance=ExtResource("8_o36lg")]
+[node name="Spikes37" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1253209775 instance=ExtResource("8_o36lg")]
 position = Vector2(-512, -224)
 spawn = true
 
-[node name="Spikes38" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=112594546 instance=ExtResource("8_o36lg")]
+[node name="Spikes38" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=112594546 instance=ExtResource("8_o36lg")]
 position = Vector2(-504, -224)
 spawn = true
 
-[node name="Spikes39" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1761697630 instance=ExtResource("8_o36lg")]
+[node name="Spikes39" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1761697630 instance=ExtResource("8_o36lg")]
 position = Vector2(-494, -224)
 spawn = true
 
-[node name="Spikes40" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=29159530 instance=ExtResource("8_o36lg")]
+[node name="Spikes40" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=29159530 instance=ExtResource("8_o36lg")]
 position = Vector2(-486, -224)
 spawn = true
 
-[node name="Spikes41" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=867693723 instance=ExtResource("8_o36lg")]
+[node name="Spikes41" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=867693723 instance=ExtResource("8_o36lg")]
 position = Vector2(-477, -224)
 spawn = true
 
-[node name="Spikes42" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=294978802 instance=ExtResource("8_o36lg")]
+[node name="Spikes42" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=294978802 instance=ExtResource("8_o36lg")]
 position = Vector2(-468, -224)
 spawn = true
 
-[node name="Spikes43" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1630116768 instance=ExtResource("8_o36lg")]
+[node name="Spikes43" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1630116768 instance=ExtResource("8_o36lg")]
 position = Vector2(-459, -224)
 spawn = true
 
-[node name="Spikes44" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=335405406 instance=ExtResource("8_o36lg")]
+[node name="Spikes44" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=335405406 instance=ExtResource("8_o36lg")]
 position = Vector2(147, -320)
 spawn = true
 
-[node name="Spikes45" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=571192260 instance=ExtResource("8_o36lg")]
+[node name="Spikes45" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=571192260 instance=ExtResource("8_o36lg")]
 position = Vector2(156, -320)
 spawn = true
 
-[node name="Spikes46" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1577743599 instance=ExtResource("8_o36lg")]
+[node name="Spikes46" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1577743599 instance=ExtResource("8_o36lg")]
 position = Vector2(165, -320)
 spawn = true
 
-[node name="Spikes61" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2045004385 instance=ExtResource("8_o36lg")]
+[node name="Spikes61" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2045004385 instance=ExtResource("8_o36lg")]
 position = Vector2(121, -320)
 spawn = true
 
-[node name="Spikes62" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1451003523 instance=ExtResource("8_o36lg")]
+[node name="Spikes62" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1451003523 instance=ExtResource("8_o36lg")]
 position = Vector2(129, -320)
 spawn = true
 
-[node name="Spikes63" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1635925176 instance=ExtResource("8_o36lg")]
+[node name="Spikes63" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1635925176 instance=ExtResource("8_o36lg")]
 position = Vector2(138, -320)
 spawn = true
 
-[node name="Spikes64" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=990121976 instance=ExtResource("8_o36lg")]
+[node name="Spikes64" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=990121976 instance=ExtResource("8_o36lg")]
 position = Vector2(94, -320)
 spawn = true
 
-[node name="Spikes65" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=61614394 instance=ExtResource("8_o36lg")]
+[node name="Spikes65" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=61614394 instance=ExtResource("8_o36lg")]
 position = Vector2(103, -320)
 spawn = true
 
-[node name="Spikes66" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=135509531 instance=ExtResource("8_o36lg")]
+[node name="Spikes66" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=135509531 instance=ExtResource("8_o36lg")]
 position = Vector2(112, -320)
 spawn = true
 
-[node name="Spikes67" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1150366755 instance=ExtResource("8_o36lg")]
+[node name="Spikes67" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1150366755 instance=ExtResource("8_o36lg")]
 position = Vector2(68, -320)
 spawn = true
 
-[node name="Spikes68" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1851640100 instance=ExtResource("8_o36lg")]
+[node name="Spikes68" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1851640100 instance=ExtResource("8_o36lg")]
 position = Vector2(76, -320)
 spawn = true
 
-[node name="Spikes69" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=711695459 instance=ExtResource("8_o36lg")]
+[node name="Spikes69" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=711695459 instance=ExtResource("8_o36lg")]
 position = Vector2(85, -320)
 spawn = true
 
-[node name="Spikes70" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=520186596 instance=ExtResource("8_o36lg")]
+[node name="Spikes70" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=520186596 instance=ExtResource("8_o36lg")]
 position = Vector2(12, -352)
 spawn = true
 
-[node name="Spikes71" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=364577890 instance=ExtResource("8_o36lg")]
+[node name="Spikes71" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=364577890 instance=ExtResource("8_o36lg")]
 position = Vector2(21, -352)
 spawn = true
 
-[node name="Spikes72" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=826971412 instance=ExtResource("8_o36lg")]
+[node name="Spikes72" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=826971412 instance=ExtResource("8_o36lg")]
 position = Vector2(62, -320)
 spawn = true
 
-[node name="Spikes76" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=930612107 instance=ExtResource("8_o36lg")]
+[node name="Spikes76" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=930612107 instance=ExtResource("8_o36lg")]
 position = Vector2(-15, -352)
 spawn = true
 
-[node name="Spikes77" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=412962624 instance=ExtResource("8_o36lg")]
+[node name="Spikes77" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=412962624 instance=ExtResource("8_o36lg")]
 position = Vector2(-6, -352)
 spawn = true
 
-[node name="Spikes78" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1130359930 instance=ExtResource("8_o36lg")]
+[node name="Spikes78" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1130359930 instance=ExtResource("8_o36lg")]
 position = Vector2(3, -352)
 spawn = true
 
-[node name="Spikes79" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1396265020 instance=ExtResource("8_o36lg")]
+[node name="Spikes79" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1396265020 instance=ExtResource("8_o36lg")]
 position = Vector2(-41, -352)
 spawn = true
 
-[node name="Spikes80" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1659173692 instance=ExtResource("8_o36lg")]
+[node name="Spikes80" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1659173692 instance=ExtResource("8_o36lg")]
 position = Vector2(-33, -352)
 spawn = true
 
-[node name="Spikes81" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=21805783 instance=ExtResource("8_o36lg")]
+[node name="Spikes81" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=21805783 instance=ExtResource("8_o36lg")]
 position = Vector2(-24, -352)
 spawn = true
 
-[node name="Spikes82" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1841444198 instance=ExtResource("8_o36lg")]
+[node name="Spikes82" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1841444198 instance=ExtResource("8_o36lg")]
 position = Vector2(-68, -352)
 spawn = true
 
-[node name="Spikes83" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=652707466 instance=ExtResource("8_o36lg")]
+[node name="Spikes83" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=652707466 instance=ExtResource("8_o36lg")]
 position = Vector2(-59, -352)
 spawn = true
 
-[node name="Spikes84" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1807438069 instance=ExtResource("8_o36lg")]
+[node name="Spikes84" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1807438069 instance=ExtResource("8_o36lg")]
 position = Vector2(-50, -352)
 spawn = true
 
-[node name="Spikes85" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=561508308 instance=ExtResource("8_o36lg")]
+[node name="Spikes85" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=561508308 instance=ExtResource("8_o36lg")]
 position = Vector2(-94, -352)
 spawn = true
 
-[node name="Spikes86" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=954692681 instance=ExtResource("8_o36lg")]
+[node name="Spikes86" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=954692681 instance=ExtResource("8_o36lg")]
 position = Vector2(-86, -352)
 spawn = true
 
-[node name="Spikes87" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=922706700 instance=ExtResource("8_o36lg")]
+[node name="Spikes87" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=922706700 instance=ExtResource("8_o36lg")]
 position = Vector2(-77, -352)
 spawn = true
 
-[node name="Spikes88" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1741996803 instance=ExtResource("8_o36lg")]
+[node name="Spikes88" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1741996803 instance=ExtResource("8_o36lg")]
 position = Vector2(-109, -352)
 spawn = true
 
-[node name="Spikes90" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1246977111 instance=ExtResource("8_o36lg")]
+[node name="Spikes90" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1246977111 instance=ExtResource("8_o36lg")]
 position = Vector2(-118, -352)
 spawn = true
 
-[node name="Spikes91" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=457923145 instance=ExtResource("8_o36lg")]
+[node name="Spikes91" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=457923145 instance=ExtResource("8_o36lg")]
 position = Vector2(-127, -352)
 spawn = true
 
-[node name="Spikes89" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=360973630 instance=ExtResource("8_o36lg")]
+[node name="Spikes89" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=360973630 instance=ExtResource("8_o36lg")]
 position = Vector2(-100, -352)
 spawn = true
 
-[node name="Spikes92" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1283842343 instance=ExtResource("8_o36lg")]
+[node name="Spikes92" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1283842343 instance=ExtResource("8_o36lg")]
 position = Vector2(652, -336)
 spawn = true
 
-[node name="Spikes93" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1862953511 instance=ExtResource("8_o36lg")]
+[node name="Spikes93" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1862953511 instance=ExtResource("8_o36lg")]
 position = Vector2(661, -336)
 spawn = true
 
-[node name="Spikes94" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=409355913 instance=ExtResource("8_o36lg")]
+[node name="Spikes94" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=409355913 instance=ExtResource("8_o36lg")]
 position = Vector2(625, -336)
 spawn = true
 
-[node name="Spikes95" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1175838967 instance=ExtResource("8_o36lg")]
+[node name="Spikes95" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1175838967 instance=ExtResource("8_o36lg")]
 position = Vector2(634, -336)
 spawn = true
 
-[node name="Spikes96" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=702401652 instance=ExtResource("8_o36lg")]
+[node name="Spikes96" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=702401652 instance=ExtResource("8_o36lg")]
 position = Vector2(643, -336)
 spawn = true
 
-[node name="Spikes97" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1811606171 instance=ExtResource("8_o36lg")]
+[node name="Spikes97" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1811606171 instance=ExtResource("8_o36lg")]
 position = Vector2(599, -336)
 spawn = true
 
-[node name="Spikes98" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=663349101 instance=ExtResource("8_o36lg")]
+[node name="Spikes98" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=663349101 instance=ExtResource("8_o36lg")]
 position = Vector2(607, -336)
 spawn = true
 
-[node name="Spikes99" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1440987009 instance=ExtResource("8_o36lg")]
+[node name="Spikes99" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1440987009 instance=ExtResource("8_o36lg")]
 position = Vector2(616, -336)
 spawn = true
 
-[node name="Spikes100" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2089257291 instance=ExtResource("8_o36lg")]
+[node name="Spikes100" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2089257291 instance=ExtResource("8_o36lg")]
 position = Vector2(572, -336)
 spawn = true
 
-[node name="Spikes101" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1927971796 instance=ExtResource("8_o36lg")]
+[node name="Spikes101" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1927971796 instance=ExtResource("8_o36lg")]
 position = Vector2(581, -336)
 spawn = true
 
-[node name="Spikes102" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1310265051 instance=ExtResource("8_o36lg")]
+[node name="Spikes102" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1310265051 instance=ExtResource("8_o36lg")]
 position = Vector2(590, -336)
 spawn = true
 
-[node name="Spikes103" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1940569998 instance=ExtResource("8_o36lg")]
+[node name="Spikes103" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1940569998 instance=ExtResource("8_o36lg")]
 position = Vector2(546, -336)
 spawn = true
 
-[node name="Spikes104" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=828369691 instance=ExtResource("8_o36lg")]
+[node name="Spikes104" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=828369691 instance=ExtResource("8_o36lg")]
 position = Vector2(554, -336)
 spawn = true
 
-[node name="Spikes105" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1103709823 instance=ExtResource("8_o36lg")]
+[node name="Spikes105" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1103709823 instance=ExtResource("8_o36lg")]
 position = Vector2(563, -336)
 spawn = true
 
-[node name="Spikes106" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1948820365 instance=ExtResource("8_o36lg")]
+[node name="Spikes106" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1948820365 instance=ExtResource("8_o36lg")]
 position = Vector2(531, -336)
 spawn = true
 
-[node name="Spikes107" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1391300492 instance=ExtResource("8_o36lg")]
+[node name="Spikes107" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1391300492 instance=ExtResource("8_o36lg")]
 position = Vector2(522, -336)
 spawn = true
 
-[node name="Spikes108" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1188415660 instance=ExtResource("8_o36lg")]
+[node name="Spikes108" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1188415660 instance=ExtResource("8_o36lg")]
 position = Vector2(513, -336)
 spawn = true
 
-[node name="Spikes110" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1802387443 instance=ExtResource("8_o36lg")]
+[node name="Spikes110" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1802387443 instance=ExtResource("8_o36lg")]
 position = Vector2(504, -336)
 spawn = true
 
-[node name="Spikes111" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=560463178 instance=ExtResource("8_o36lg")]
+[node name="Spikes111" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=560463178 instance=ExtResource("8_o36lg")]
 position = Vector2(495, -336)
 spawn = true
 
-[node name="Spikes109" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=457337246 instance=ExtResource("8_o36lg")]
+[node name="Spikes109" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=457337246 instance=ExtResource("8_o36lg")]
 position = Vector2(540, -336)
 spawn = true
 
-[node name="Spikes73" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1215894823 instance=ExtResource("8_o36lg")]
+[node name="Spikes73" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1215894823 instance=ExtResource("8_o36lg")]
 position = Vector2(30, -336)
 spawn = true
 
-[node name="Spikes74" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1264541258 instance=ExtResource("8_o36lg")]
+[node name="Spikes74" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1264541258 instance=ExtResource("8_o36lg")]
 position = Vector2(38, -336)
 spawn = true
 
-[node name="Spikes75" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2030702492 instance=ExtResource("8_o36lg")]
+[node name="Spikes75" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2030702492 instance=ExtResource("8_o36lg")]
 position = Vector2(47, -336)
 spawn = true
 
-[node name="Spikes112" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1110206679 instance=ExtResource("8_o36lg")]
+[node name="Spikes112" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1110206679 instance=ExtResource("8_o36lg")]
 position = Vector2(56, -336)
 spawn = true
 
-[node name="Spikes47" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2075221860 instance=ExtResource("8_o36lg")]
+[node name="Spikes47" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=2075221860 instance=ExtResource("8_o36lg")]
 position = Vector2(-333, -80)
 spawn = true
 
-[node name="Spikes54" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1039809190 instance=ExtResource("8_o36lg")]
+[node name="Spikes54" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1039809190 instance=ExtResource("8_o36lg")]
 position = Vector2(-343, -80)
 spawn = true
 
-[node name="Spikes55" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=140901412 instance=ExtResource("8_o36lg")]
+[node name="Spikes55" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=140901412 instance=ExtResource("8_o36lg")]
 position = Vector2(-352, -80)
 spawn = true
 
-[node name="Spikes56" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=942454125 instance=ExtResource("8_o36lg")]
+[node name="Spikes56" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=942454125 instance=ExtResource("8_o36lg")]
 position = Vector2(-364, -96)
 spawn = true
 
-[node name="Spikes48" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=678557991 instance=ExtResource("8_o36lg")]
+[node name="Spikes48" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=678557991 instance=ExtResource("8_o36lg")]
 position = Vector2(-324, -80)
 spawn = true
 
-[node name="Spikes49" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1978066837 instance=ExtResource("8_o36lg")]
+[node name="Spikes49" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1978066837 instance=ExtResource("8_o36lg")]
 position = Vector2(-314, -80)
 spawn = true
 
-[node name="Spikes50" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=457608859 instance=ExtResource("8_o36lg")]
+[node name="Spikes50" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=457608859 instance=ExtResource("8_o36lg")]
 position = Vector2(-306, -96)
 spawn = true
 
-[node name="Spikes51" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1182906232 instance=ExtResource("8_o36lg")]
+[node name="Spikes51" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1182906232 instance=ExtResource("8_o36lg")]
 position = Vector2(-297, -96)
 spawn = true
 
-[node name="Spikes52" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=190293352 instance=ExtResource("8_o36lg")]
+[node name="Spikes52" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=190293352 instance=ExtResource("8_o36lg")]
 position = Vector2(-290, -112)
 spawn = true
 
-[node name="Spikes53" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1352433039 instance=ExtResource("8_o36lg")]
+[node name="Spikes53" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1352433039 instance=ExtResource("8_o36lg")]
 position = Vector2(-281, -112)
 spawn = true
 
-[node name="Spikes9" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1170600216 instance=ExtResource("8_o36lg")]
+[node name="Spikes9" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=1170600216 instance=ExtResource("8_o36lg")]
 position = Vector2(-62, 32)
 spawn = true
 
-[node name="Spikes10" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=302606358 instance=ExtResource("8_o36lg")]
+[node name="Spikes10" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=302606358 instance=ExtResource("8_o36lg")]
 position = Vector2(-71, 32)
 spawn = true
 
-[node name="Spikes11" parent="Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=241017620 instance=ExtResource("8_o36lg")]
+[node name="Spikes11" parent="Spikes/Spikes2/Spikes4/Spikes7/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes6/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes5/Spikes8" unique_id=241017620 instance=ExtResource("8_o36lg")]
 position = Vector2(-81, 32)
 spawn = true
 
 [node name="BetaNPC2" parent="." unique_id=1514227980 instance=ExtResource("4_6q15i")]
 position = Vector2(-24, 657)
+animationName = "C5"
+dialogueScene = "res://dialogues/WW.dialogue"
+
+[node name="BetaNPC3" parent="." unique_id=1445738807 instance=ExtResource("4_6q15i")]
+position = Vector2(-24, 657)
+animationName = "C5"
+dialogueScene = "res://dialogues/WW.dialogue"
 
 [node name="NorthD2" parent="." unique_id=1940327310 instance=ExtResource("9_fvkua")]
 position = Vector2(0, -326)
@@ -3462,33 +3472,6 @@ entry_door_name = "PT4"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PT2" unique_id=798173881]
 shape = SubResource("RectangleShape2D_ihaum")
 
-[node name="SpikeCheckpoint" parent="." unique_id=16437152 instance=ExtResource("10_ihaum")]
-position = Vector2(87, 583)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=913836071]
-position = Vector2(112, 47)
-shape = SubResource("RectangleShape2D_p1vi5")
-
-[node name="SpikeCheckpoint2" parent="." unique_id=427822454 instance=ExtResource("10_ihaum")]
-position = Vector2(86, 419)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2" unique_id=1420410247]
-shape = SubResource("RectangleShape2D_krxo4")
-
-[node name="SpikeCheckpoint3" parent="." unique_id=386545049 instance=ExtResource("10_ihaum")]
-position = Vector2(-149, 707)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint3" unique_id=1980254046]
-position = Vector2(-10.5, -5.25)
-shape = SubResource("RectangleShape2D_krxo4")
-
-[node name="SpikeCheckpoint4" parent="." unique_id=1280573865 instance=ExtResource("10_ihaum")]
-position = Vector2(-507, 670)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint4" unique_id=2024617390]
-position = Vector2(40, -2)
-shape = SubResource("RectangleShape2D_krxo4")
-
 [node name="SpikeCheckpoint5" parent="." unique_id=2008969791 instance=ExtResource("10_ihaum")]
 position = Vector2(-764, 483)
 
@@ -3496,17 +3479,45 @@ position = Vector2(-764, 483)
 position = Vector2(79.1875, 0.375)
 shape = SubResource("RectangleShape2D_krxo4")
 
-[node name="SpikeCheckpoint6" parent="." unique_id=1053793752 instance=ExtResource("10_ihaum")]
-position = Vector2(-148, 246)
+[node name="SpikeCheckpoint" parent="SpikeCheckpoint5" unique_id=16437152 instance=ExtResource("10_ihaum")]
+position = Vector2(851, 100)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint6" unique_id=952158533]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint5/SpikeCheckpoint" unique_id=913836071]
+position = Vector2(112, 47)
+shape = SubResource("RectangleShape2D_p1vi5")
+
+[node name="SpikeCheckpoint2" parent="SpikeCheckpoint5" unique_id=427822454 instance=ExtResource("10_ihaum")]
+position = Vector2(850, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint5/SpikeCheckpoint2" unique_id=1420410247]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_krxo4")
+
+[node name="SpikeCheckpoint3" parent="SpikeCheckpoint5" unique_id=386545049 instance=ExtResource("10_ihaum")]
+position = Vector2(615, 224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint5/SpikeCheckpoint3" unique_id=1980254046]
+position = Vector2(-10.5, -5.25)
+shape = SubResource("RectangleShape2D_krxo4")
+
+[node name="SpikeCheckpoint4" parent="SpikeCheckpoint5" unique_id=1280573865 instance=ExtResource("10_ihaum")]
+position = Vector2(257, 187)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint5/SpikeCheckpoint4" unique_id=2024617390]
+position = Vector2(40, -2)
+shape = SubResource("RectangleShape2D_krxo4")
+
+[node name="SpikeCheckpoint6" parent="SpikeCheckpoint5" unique_id=1053793752 instance=ExtResource("10_ihaum")]
+position = Vector2(616, -237)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint5/SpikeCheckpoint6" unique_id=952158533]
 position = Vector2(8, 9)
 shape = SubResource("RectangleShape2D_krxo4")
 
-[node name="SpikeCheckpoint7" parent="." unique_id=1295446721 instance=ExtResource("10_ihaum")]
-position = Vector2(-633, 37)
+[node name="SpikeCheckpoint7" parent="SpikeCheckpoint5" unique_id=1295446721 instance=ExtResource("10_ihaum")]
+position = Vector2(131, -446)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint7" unique_id=1534019797]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint5/SpikeCheckpoint7" unique_id=1534019797]
 position = Vector2(-37.375, 29)
 shape = SubResource("RectangleShape2D_krxo4")
 

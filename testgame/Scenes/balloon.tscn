@@ -116,7 +116,7 @@ material = SubResource("ShaderMaterial_kbj1d")
 position = Vector2(370, 428)
 scale = Vector2(1.78, 1.78)
 sprite_frames = SubResource("SpriteFrames_5iodc")
-animation = &"Terry_idle"
+animation = &"Gus_idle"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=284104083]
 custom_minimum_size = Vector2(0, 520)

@@ -221,7 +221,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ly2m7"]
-size = Vector2(19.364548, 10.388472)
+size = Vector2(19.364548, 8.77193)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2cqi"]
 size = Vector2(30, 29)
@@ -230,7 +230,7 @@ size = Vector2(30, 29)
 size = Vector2(32, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyvm1"]
-size = Vector2(91, 59)
+size = Vector2(81, 64.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fe0k"]
 
@@ -252,7 +252,7 @@ animation = &"hit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=563519608]
 visibility_layer = 4
-position = Vector2(0.47499847, 6.725)
+position = Vector2(0.47499847, 3.4999993)
 scale = Vector2(1.495, 3.99)
 shape = SubResource("RectangleShape2D_ly2m7")
 debug_color = Color(0.91132796, 0.00010203719, 0.7287506, 0.41960785)
@@ -283,8 +283,8 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" unique_id=1493753768]
 visibility_layer = 0
-position = Vector2(-0.5, -14.5)
 shape = SubResource("RectangleShape2D_uyvm1")
+debug_color = Color(0.43172267, 0.46366572, 0.9848555, 0.41960785)
 
 [node name="AttackBox" type="Area2D" parent="." unique_id=1107314474]
 collision_layer = 32
@@ -306,6 +306,9 @@ shape = SubResource("RectangleShape2D_klnwj")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1479218265]
 target_position = Vector2(18, 40)
+
+[node name="wallDetection" type="RayCast2D" parent="." unique_id=2021106094]
+target_position = Vector2(24, 0)
 
 [node name="AttackDelay" type="Timer" parent="." unique_id=1522978847]
 wait_time = 0.3

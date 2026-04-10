@@ -165,7 +165,7 @@ script = ExtResource("1_7p06t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1983414338]
 sprite_frames = SubResource("SpriteFrames_puqd2")
-animation = &"C6"
+animation = &"WW"
 
 [node name="ButtonPrompt" parent="." unique_id=687141090 instance=ExtResource("2_uvfxd")]
 position = Vector2(0, -20)

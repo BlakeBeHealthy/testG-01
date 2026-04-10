@@ -3,6 +3,7 @@ extends TEnemyState
 @onready var r2d: RayCast2D = $"../../RayCast2D"
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var pti: Timer = $"../../pti"
+@onready var wall_detection: RayCast2D = $"../../wallDetection"
 
 @export var pauseTime := 0.4
 @export var strength := 5.0
@@ -43,7 +44,7 @@ func process_physics(delta: float) -> TEnemyState:
 	#detects an edge, then they stop and turn around
 	
 	#Honestly making the patrol pause was a bit of a bitch, but lmk if you need help understanding it all
-	if parent.velocity.x != 0 and !r2d.is_colliding() and !pausing:
+	if parent.velocity.x != 0 and (!r2d.is_colliding() or wall_detection.is_colliding()) and !pausing:
 		pausing = true
 		parent.velocity.x = 0
 		if as2d.animation != "idle":
@@ -58,6 +59,7 @@ func process_physics(delta: float) -> TEnemyState:
 func turn_around() -> void:
 	parent.dir *= -1
 	r2d.target_position.x = abs(r2d.target_position.x) * -parent.dir
+	wall_detection.target_position.x = abs(wall_detection.target_position.x) * -parent.dir
 
 
 func _on_pti_timeout() -> void:

@@ -23,6 +23,7 @@ var attDone = false
 
 func enter() -> void:
 	var player = Global.player
+	parent.velocity.x = 0
 	attack_delay.start()
 	as2d.play("attacktelegraph")
 	await attack_delay.timeout

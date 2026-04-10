@@ -2,9 +2,10 @@ extends Area2D
 class_name Checkpoint
 #This is for the chest in Level 2, forgot to mention if the player dies it is a checkpoint
 @onready var m2d: Marker2D = $Marker2D
-@onready var a2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var current_scene_path: String
 @export var button_prompt: String
+@export var flipH: bool
 @onready var prompt: Node2D = $ButtonPrompt
 
 signal saveActivated
@@ -12,7 +13,9 @@ var areaCheck := false
 
 func _ready() -> void:
 	update_sprite()
-	
+	if flipH:
+		as2d.flip_h = true
+		
 func _on_area_entered(area: Area2D) -> void:
 	#Once the player enters
 	Global.player.current_interactable = self
@@ -29,7 +32,7 @@ func saving(check: int):
 	if check == 0:
 		prompt.hidePrompt()
 	elif check == 1:
-		a2d.play("activate")
+		as2d.play("activate")
 		update_checkpoint()
 		update_sprite()
 	elif check == 2:
@@ -37,9 +40,9 @@ func saving(check: int):
 func update_sprite() -> void:
 	#Ensuring the activate animation doesn't play multiple times
 	if m2d.global_position == Global.saveData.checkpoint_pos:
-		a2d.play("active")
+		as2d.play("active")
 	else:
-		a2d.play("idle")
+		as2d.play("idle")
 		
 func update_checkpoint() -> void:
 	if Global.saveData.maxHealth != 3:

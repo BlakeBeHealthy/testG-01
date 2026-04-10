@@ -653,7 +653,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukyrk"]
-size = Vector2(15.124976, 28.818476)
+size = Vector2(13.836479, 28.818476)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gymyn"]
 size = Vector2(25.25, 45)
@@ -690,14 +690,12 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"run"
-frame = 2
+animation = &"idle"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
-visible = false
 visibility_layer = 2
-position = Vector2(3.0000005, 1.999999)
+position = Vector2(-1.0000002, 9.000001)
 scale = Vector2(1.59, 1.274)
 shape = SubResource("RectangleShape2D_ukyrk")
 
