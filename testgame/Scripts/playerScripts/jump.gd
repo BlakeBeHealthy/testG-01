@@ -23,9 +23,11 @@ func enter() -> void:
 	if parent.wallJump:
 			wallJumpOver = false
 			parent.wallJump = false
-			if parent.direction >= 0:
+			if !as2d.flip_h:
+				dir = 1
 				parent.velocity.x = -1 * wall_jump_force
-			elif parent.direction <= 0:
+			elif as2d.flip_h:
+				dir = -1
 				parent.velocity.x = 1 * wall_jump_force
 		
 func exit() -> void:
@@ -77,7 +79,7 @@ func process_physics(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
 	
 	if !wallJumpOver:
-		parent.velocity.x = move_toward(parent.velocity.x, 90 * parent.direction, decayRate * delta)
+		parent.velocity.x = move_toward(parent.velocity.x, 90 * dir, decayRate * delta)
 		if parent.velocity.x <= 90 and parent.velocity.x >= -90:
 			wallJumpOver = true
 	else:
