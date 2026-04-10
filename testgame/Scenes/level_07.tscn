@@ -2234,7 +2234,7 @@ tile_map_data = PackedByteArray("AAD1/wIAAAASAA8AAAD2/wIAAAASAA8AAAD5/wIAAAASAA8
 tile_set = SubResource("TileSet_n0yg3")
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("4_cyq6k")]
-position = Vector2(203, -625)
+position = Vector2(601, -303)
 
 [node name="Camera2D" parent="." unique_id=1391246105 instance=ExtResource("5_ekoii")]
 zoom = Vector2(3.5, 3.5)
@@ -4283,7 +4283,7 @@ position = Vector2(670, -296)
 position = Vector2(516, -295)
 
 [node name="REnemy3" parent="." unique_id=1883271072 instance=ExtResource("11_776at")]
-position = Vector2(775, -295)
+position = Vector2(-678, 2)
 
 [node name="REnemy4" parent="." unique_id=847658221 instance=ExtResource("11_776at")]
 position = Vector2(422, -184)
@@ -4296,3 +4296,6 @@ position = Vector2(86, -823)
 
 [node name="REnemy5" parent="." unique_id=69786306 instance=ExtResource("11_776at")]
 position = Vector2(-22, -664)
+
+[node name="Enemy7" parent="." unique_id=1469308604 instance=ExtResource("10_hdu6x")]
+position = Vector2(-289, 41)
