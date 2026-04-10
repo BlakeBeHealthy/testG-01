@@ -92,16 +92,16 @@ func process_physics(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
 	if direction > 0:
 		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-		parent.wallslide_chest.position.x = 3.2
+		parent.wallslide_chest.position.x = 3.5
 		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-		parent.wallslide_legs.position.x = 3.2
+		parent.wallslide_legs.position.x = 3.5
 		parent.flip_direction(1)
 	elif direction < 0:
 		parent.flip_direction(-1)
 		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-		parent.wallslide_chest.position.x = -3.2
+		parent.wallslide_chest.position.x = -3.5
 		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-		parent.wallslide_legs.position.x = -3.2
+		parent.wallslide_legs.position.x = -3.5
 	parent.velocity.x = direction * move_speed
 	parent.move_and_slide()
 	return null

@@ -845,7 +845,7 @@ script = ExtResource("6_3smsa")
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175]
 script = ExtResource("8_8erm5")
 wall_jump_force = 150.0
-decayRate = 230.0
+decayRate = 10.0
 
 [node name="Fall" type="Node" parent="StateMachine" unique_id=337594985]
 script = ExtResource("8_f1ek2")

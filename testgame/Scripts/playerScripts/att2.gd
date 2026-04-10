@@ -124,9 +124,10 @@ func process_physics(delta: float) -> State:
 		if direction != 0:
 			parent.velocity.x = direction * move_speed
 			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-			parent.wallslide_chest.position.x = 3.2 * direction
+			parent.wallslide_chest.position.x = 3.5 * direction
 			a2d.position = Vector2(2 * direction, 0)
 			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
+			parent.wallslide_legs.position.x = 3.5 * direction
 			a2d.position = Vector2(18 * direction, 4)
 		elif direction == 0:
 			if as2d.flip_h:

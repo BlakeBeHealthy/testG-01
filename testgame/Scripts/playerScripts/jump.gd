@@ -11,8 +11,10 @@ class_name Jump
 @export var decayRate: float
 
 var wallJumpOver := true
+var dir := 0
 
 func enter() -> void:
+	dir = Input.get_axis("runL", "runR")
 	as2d.play("jump")
 	if !parent.jumpCheck or parent.wallJump:
 		parent.velocity.y = -parent.JUMP
@@ -21,10 +23,13 @@ func enter() -> void:
 	if parent.wallJump:
 			wallJumpOver = false
 			parent.wallJump = false
-			parent.velocity.x = parent.direction * wall_jump_force
+			if parent.direction >= 0:
+				parent.velocity.x = -1 * wall_jump_force
+			elif parent.direction <= 0:
+				parent.velocity.x = 1 * wall_jump_force
 		
 func exit() -> void:
-	var wallJumpOver := true
+	wallJumpOver = true
 	c.position = Vector2(-0.5, 8)
 
 func process_input(event: InputEvent) -> State:
@@ -72,7 +77,7 @@ func process_physics(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
 	
 	if !wallJumpOver:
-		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
+		parent.velocity.x = move_toward(parent.velocity.x, 90 * parent.direction, decayRate * delta)
 		if parent.velocity.x <= 90 and parent.velocity.x >= -90:
 			wallJumpOver = true
 	else:
@@ -81,17 +86,17 @@ func process_physics(delta: float) -> State:
 	
 	if direction > 0:
 		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-		parent.wallslide_chest.position.x = 3.2
+		parent.wallslide_chest.position.x = 3.5
 		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-		parent.wallslide_legs.position.x = 3.2
+		parent.wallslide_legs.position.x = 3.5
 		parent.flip_direction(1)
 		a2d2.position.x = 3
 		a2d.position.x = 21
 	elif direction < 0:
 		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-		parent.wallslide_chest.position.x = -3.2
+		parent.wallslide_chest.position.x = -3.5
 		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-		parent.wallslide_legs.position.x = -3.2
+		parent.wallslide_legs.position.x = -3.5
 		parent.flip_direction(-1)
 		parent.a2d.position.x = -21
 		parent.a2d2.position.x = -3
@@ -99,17 +104,17 @@ func process_physics(delta: float) -> State:
 		if as2d.flip_h:
 			c.position = Vector2(-3, 0)
 			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * -1
-			parent.wallslide_chest.position.x = -3.2
+			parent.wallslide_chest.position.x = -3.5
 			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * -1
-			parent.wallslide_legs.position.x = -3.2
+			parent.wallslide_legs.position.x = -3.5
 			a2d2.position.y = 0
 			a2d2.position.x = -4
 		else:
 			c.position = Vector2(3, 0)
 			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * 1
-			parent.wallslide_chest.position.x = 3.2
+			parent.wallslide_chest.position.x = 3.5
 			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * 1
-			parent.wallslide_legs.position.x = 3.2
+			parent.wallslide_legs.position.x = 3.5
 			a2d2.position.x = 4
 			a2d2.position.y = 0
 
