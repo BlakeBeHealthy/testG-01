@@ -21,17 +21,17 @@ func enter() -> void:
 	
 	as2d.play("pogo")
 	a2d.position.x = 0
-	a2d.position.y = 15.0
+	a2d.position.y = 14
 	a2d.scale.x = 1.3
-	a2d.scale.y = -0.5
+	a2d.scale.y = 1.0
 	pass
 
 func exit() -> void:
 	hurtbox.position.y = 1
 	a2d.position.x = parent.direction * 18
 	a2d.position.y = 4.0
-	a2d.scale.x = 1.4
-	a2d.scale.y = 1.0
+	a2d.scale.x = 1.785
+	a2d.scale.y = 1.525
 	transitionCheck = false
 	a2d.monitorable = false
 	a2d.monitoring = false

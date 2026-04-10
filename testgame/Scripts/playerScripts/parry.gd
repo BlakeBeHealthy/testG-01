@@ -3,7 +3,7 @@ extends State
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var parry_zone: Area2D = $"../../ParryZone"
 @onready var parry_cooldown: Timer = $"../../parryCooldown"
-@onready var hurtbox: CollisionShape2D = $"../../Area2D2/hurtbox"
+@onready var hurtbox: Area2D = $"../../Area2D2"
 @onready var parry_inv: Timer = $"../../ParryInv"
 
 

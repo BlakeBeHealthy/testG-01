@@ -683,8 +683,8 @@ size = Vector2(25.171629, 26.979446)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pg0gw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ukyrk"]
-radius = 26.092636
-height = 70.58407
+radius = 12.885155
+height = 30.163935
 
 [node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state", "att2_state", "parry_state", "parryAttack_state", "fall_state", "run_state", "idle_state", "dash_state", "death_state", "cut_state", "pogo_state")]
 collision_layer = 2
@@ -709,10 +709,12 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"run"
+animation = &"a2"
+frame = 3
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
+visible = false
 visibility_layer = 2
 position = Vector2(-1, 8)
 scale = Vector2(1.59, 1.274)
@@ -729,6 +731,7 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_gymyn")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1898396502]
+visible = false
 position = Vector2(-0.99999994, 7)
 scale = Vector2(0.507894, 0.9085177)
 collision_layer = 2056
@@ -754,17 +757,15 @@ shape = SubResource("CapsuleShape2D_pg0gw")
 debug_color = Color(0.9978096, 0, 0.1678963, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=450046427]
-visible = false
-position = Vector2(18, 4)
-scale = Vector2(1.335, 0.609)
+position = Vector2(18, 3.8)
+scale = Vector2(1.785, 1.525)
 collision_layer = 128
-collision_mask = 1040
+collision_mask = 1041
 monitoring = false
 monitorable = false
 
 [node name="AttackZone" type="CollisionShape2D" parent="Area2D" unique_id=1948751203]
-position = Vector2(0, -6.568144)
-scale = Vector2(0.727955, 0.977069)
+position = Vector2(-1.6806722, -5.1147547)
 shape = SubResource("CapsuleShape2D_ukyrk")
 
 [node name="wallslideChest" type="RayCast2D" parent="." unique_id=271180678]
@@ -774,6 +775,10 @@ target_position = Vector2(11, 0)
 [node name="wallslideLegs" type="RayCast2D" parent="." unique_id=335263960]
 position = Vector2(3, 17)
 target_position = Vector2(11, 0)
+
+[node name="attack2buff" type="Timer" parent="." unique_id=1913790395]
+wait_time = 0.009999999999999998
+one_shot = true
 
 [node name="DashTime" type="Timer" parent="." unique_id=483424297]
 wait_time = 0.215
@@ -792,6 +797,7 @@ one_shot = true
 
 [node name="hitstuntimer" type="Timer" parent="." unique_id=668290657]
 wait_time = 0.001
+one_shot = true
 
 [node name="Timer" type="Timer" parent="." unique_id=388785215]
 wait_time = 0.53
@@ -809,6 +815,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="ParryInv" type="Timer" parent="." unique_id=1575459416]
+one_shot = true
 
 [node name="CoyoteTime" type="Timer" parent="." unique_id=300296774]
 wait_time = 0.1
@@ -833,16 +840,18 @@ script = ExtResource("8_f1ek2")
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=2144520584]
 script = ExtResource("9_f1ek2")
+hit_timeStop = 0.2
 hit_duration = 0.12
 decayRate = 9000
-playerKnockback = 300
+playerKnockback = 700
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Attack2" type="Node" parent="StateMachine" unique_id=1745266335]
 script = ExtResource("10_pu2lt")
+hit_timeStop = 0.2
 hit_duration = 0.12
 decayRate = 9000
-playerKnockback = 300
+playerKnockback = 1100
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Hit" type="Node" parent="StateMachine" unique_id=743816584]
@@ -863,9 +872,10 @@ hit_duration = 0.2
 
 [node name="ParryAttack" type="Node" parent="StateMachine" unique_id=1766148343]
 script = ExtResource("11_ukyrk")
+hit_timeStop = 0.2
 hit_duration = 0.13
 decayRate = 9000
-playerKnockback = 300
+playerKnockback = 500
 metadata/_custom_type_script = "uid://dtjskf7x53djr"
 
 [node name="Dash" type="Node" parent="StateMachine" unique_id=61420425]
@@ -890,6 +900,7 @@ decayRate = 3000.0
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/PogoAttack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/ParryAttack" method="_on_area_2d_area_shape_entered"]
+[connection signal="timeout" from="attack2buff" to="StateMachine/ParryAttack" method="_on_attack_2_buff_timeout"]
 [connection signal="timeout" from="DashTime" to="StateMachine/Dash" method="_on_dash_time_timeout"]
 [connection signal="timeout" from="InvincibleTime" to="StateMachine/Hit" method="_on_invincible_time_timeout"]
 [connection signal="timeout" from="hitstuntimer" to="StateMachine/Hit" method="_on_hitstuntimer_timeout"]

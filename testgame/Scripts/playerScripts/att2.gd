@@ -19,11 +19,13 @@ var checkAttack := false
 var KB = false
 var startKB := false
 var ComboCheck = false
-var direction
+var worldHit := false
+var direction := 0
 var jumpBuff := 0
 var attackDir := 0
 
 func enter() -> void:
+	print("time")
 	attack_delay.start()
 	as2d.play("a2")
 	if !ComboTime.is_stopped():
@@ -40,8 +42,6 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "a2" or parent.takeHit:
 		return
 		
-	if as2d.frame == 1:
-		pass
 		
 	if as2d.frame == 3:
 		a2d.monitorable = true
@@ -52,11 +52,17 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		a2d.monitoring = false
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if parent.state_machine.current_state != parent.att2_state:
-		pass
-	
-	apply_timeSlow(hit_timeStop, hit_duration)
+	if parent.state_machine.current_state != parent.att2_state or KB:
+		return
+		
 	startKB = true
+	if !area.is_in_group("World") or !area.is_in_group("Spikes"):
+		print("time")
+		apply_timeSlow(hit_timeStop, hit_duration)
+	else:
+		print("world")
+		worldHit = true
+		
 	if as2d.flip_h:
 		attackDir = -1
 	else:
@@ -103,9 +109,14 @@ func process_physics(delta: float) -> State:
 		
 			
 	if startKB:
-		parent.velocity.x += -attackDir * playerKnockback
-		startKB = false
+		if worldHit:
+			worldHit = false
+			parent.velocity.x += -attackDir * 250
+		else:
+			print("kncock")
+			parent.velocity.x += -attackDir * playerKnockback
 		KB = true
+		startKB = false
 	elif KB:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
 		if parent.velocity.x == 0:
@@ -115,9 +126,14 @@ func process_physics(delta: float) -> State:
 			parent.velocity.x = direction * move_speed
 			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
 			parent.wallslide_chest.position.x = 3.2 * direction
+			a2d.position = Vector2(2 * direction, 0)
 			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-			parent.wallslide_legs.position.x = 3.2 * direction
+			a2d.position = Vector2(18 * direction, 4)
 		elif direction == 0:
+			if as2d.flip_h:
+				a2d.position = Vector2(18 * -1, 4)
+			else:
+				a2d.position = Vector2(18 * 1, 4)
 			parent.velocity.x *= 0
 			
 	if Input.is_action_pressed("jump") and !parent.jumpCheck:
