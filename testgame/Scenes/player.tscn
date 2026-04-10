@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dxfddd07onvhy" path="res://Scripts/playerScripts/cutscene_state.gd" id="14_7dp3o"]
 [ext_resource type="Script" uid="uid://bi5xfsee0ba8i" path="res://Scripts/playerScripts/pogo_attack.gd" id="15_h4iuc"]
 [ext_resource type="Script" uid="uid://cy6vk8hnddefn" path="res://Scripts/playerScripts/parry.gd" id="16_fd4e3"]
+[ext_resource type="Script" uid="uid://dyq6632h8v5il" path="res://Scripts/playerScripts/wall_slide.gd" id="18_igrcy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukyrk"]
 resource_local_to_scene = true
@@ -686,7 +687,7 @@ size = Vector2(25.171629, 26.979446)
 radius = 12.885155
 height = 30.163935
 
-[node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state", "att2_state", "parry_state", "parryAttack_state", "fall_state", "run_state", "idle_state", "dash_state", "death_state", "cut_state", "pogo_state")]
+[node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state", "att2_state", "parry_state", "parryAttack_state", "fall_state", "run_state", "idle_state", "dash_state", "death_state", "cut_state", "pogo_state", "wallSlide_state")]
 collision_layer = 2
 script = ExtResource("1_vgqql")
 jump_state = NodePath("StateMachine/Jump")
@@ -702,6 +703,7 @@ dash_state = NodePath("StateMachine/Dash")
 death_state = NodePath("StateMachine/death")
 cut_state = NodePath("StateMachine/CutsceneState")
 pogo_state = NodePath("StateMachine/PogoAttack")
+wallSlide_state = NodePath("StateMachine/WallSlide")
 JUMP = 400
 jumpCut = 0.3
 
@@ -709,14 +711,13 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"a2"
-frame = 3
+animation = &"wallSlide"
 speed_scale = 0.8
+flip_h = true
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
-visible = false
 visibility_layer = 2
-position = Vector2(-1, 8)
+position = Vector2(1.0000002, 0.99999994)
 scale = Vector2(1.59, 1.274)
 shape = SubResource("RectangleShape2D_ukyrk")
 
@@ -757,6 +758,7 @@ shape = SubResource("CapsuleShape2D_pg0gw")
 debug_color = Color(0.9978096, 0, 0.1678963, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=450046427]
+visible = false
 position = Vector2(18, 3.8)
 scale = Vector2(1.785, 1.525)
 collision_layer = 128
@@ -775,6 +777,10 @@ target_position = Vector2(11, 0)
 [node name="wallslideLegs" type="RayCast2D" parent="." unique_id=335263960]
 position = Vector2(3, 17)
 target_position = Vector2(11, 0)
+
+[node name="wallJump" type="Timer" parent="." unique_id=1638574407]
+wait_time = 0.001
+one_shot = true
 
 [node name="attack2buff" type="Timer" parent="." unique_id=1913790395]
 wait_time = 0.009999999999999998
@@ -814,11 +820,15 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
+[node name="wallSlideFall" type="Timer" parent="." unique_id=22861401]
+wait_time = 0.5
+one_shot = true
+
 [node name="ParryInv" type="Timer" parent="." unique_id=1575459416]
 one_shot = true
 
 [node name="CoyoteTime" type="Timer" parent="." unique_id=300296774]
-wait_time = 0.1
+wait_time = 10.0
 one_shot = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=1235796374 node_paths=PackedStringArray("attack_state", "starting_state")]
@@ -834,6 +844,8 @@ script = ExtResource("6_3smsa")
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175]
 script = ExtResource("8_8erm5")
+wall_jump_force = 150.0
+decayRate = 10.0
 
 [node name="Fall" type="Node" parent="StateMachine" unique_id=337594985]
 script = ExtResource("8_f1ek2")
@@ -883,6 +895,11 @@ script = ExtResource("5_qqcod")
 dashSpeed = 500.0
 decayRate = 3000.0
 
+[node name="WallSlide" type="Node" parent="StateMachine" unique_id=1955315188]
+script = ExtResource("18_igrcy")
+wall_slide_terminal = 0.2
+decay = 10.0
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/CutsceneState" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack2" method="_on_animated_sprite_2d_frame_changed"]
@@ -900,6 +917,7 @@ decayRate = 3000.0
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/PogoAttack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/ParryAttack" method="_on_area_2d_area_shape_entered"]
+[connection signal="timeout" from="wallJump" to="StateMachine/WallSlide" method="_on_wall_jump_timeout"]
 [connection signal="timeout" from="attack2buff" to="StateMachine/ParryAttack" method="_on_attack_2_buff_timeout"]
 [connection signal="timeout" from="DashTime" to="StateMachine/Dash" method="_on_dash_time_timeout"]
 [connection signal="timeout" from="InvincibleTime" to="StateMachine/Hit" method="_on_invincible_time_timeout"]
@@ -909,4 +927,5 @@ decayRate = 3000.0
 [connection signal="timeout" from="jumpBuff" to="StateMachine/Dash" method="_on_jump_buff_timeout"]
 [connection signal="timeout" from="parryCooldown" to="." method="_on_parry_cooldown_timeout"]
 [connection signal="timeout" from="parryTime" to="StateMachine/Parry" method="_on_parry_time_timeout"]
+[connection signal="timeout" from="wallSlideFall" to="StateMachine/WallSlide" method="_on_wall_slide_fall_timeout"]
 [connection signal="timeout" from="ParryInv" to="." method="_on_parry_inv_timeout"]

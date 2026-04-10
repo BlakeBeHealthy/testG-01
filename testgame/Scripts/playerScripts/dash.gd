@@ -37,6 +37,8 @@ func exit() -> void:
 		parent.jumpBuff = false
 	if !jump_buff.is_stopped():
 		jump_buff.stop()
+	if !dash_time.is_stopped():
+		dash_time.stop()
 
 func process_input(event: InputEvent) -> State:
 	if parent.jumpBuff:
@@ -47,6 +49,10 @@ func process_input(event: InputEvent) -> State:
 func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return parent.hit_state
+		
+	if parent.wallSlide:
+			return parent.wallSlide_state
+			
 	if dashDone:
 		dashDone = false
 		if parent.parryCheck:

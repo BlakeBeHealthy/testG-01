@@ -70,6 +70,8 @@ func process_frame(delta: float) -> State:
 		return parent.hit_state
 	
 	if !as2d.is_playing() and !KB and !timeSlow:
+		if parent.wallSlide:
+			return parent.wallSlide_state
 		if parent.parryCheck:
 			return parent.parry_state
 		if parent.dash:
@@ -97,7 +99,6 @@ func process_physics(delta: float) -> State:
 			worldHit = false
 			parent.velocity.x += -attackDir * 250
 		else:
-			print("1kncock")
 			parent.velocity.x += -attackDir * playerKnockback
 		startKB = false
 		KB = true

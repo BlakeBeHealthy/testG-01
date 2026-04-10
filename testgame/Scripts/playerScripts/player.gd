@@ -24,6 +24,7 @@ extends CharacterBody2D
 @export var death_state: State
 @export var cut_state: State
 @export var pogo_state: State
+@export var wallSlide_state: State
 @export var JUMP := 0
 @export var jumpCut := 0.0
 @onready var interactC2D: CollisionShape2D = $InteractArea/CollisionShape2D
@@ -64,6 +65,7 @@ var dashAllow := true
 var camLook := false
 var dash := false
 var wallSlide := false
+var wallJump := false
 var comboCount := 0
 var health := 3
 var current_interactable: Node = null
@@ -148,11 +150,19 @@ func _input(event): #allowing the player to attack
 					attack_delay.start()
 				
 	if ((Input.is_action_just_pressed("interact") and current_interactable != null) or (Input.is_action_pressed("PlayerLock")) and is_on_floor() and !Global.UI.get_node("Balloon").visible):
-		print(control_locked)
 		control_locked = true
 	elif Input.is_action_just_pressed("Dash") and state_machine.current_state != hit_state and state_machine.current_state != cut_state and dash_delay.is_stopped() and dashAllow:
 		dash = true
-		
+	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and !is_on_floor() and !wallJump:
+		if as2d.flip_h == true:
+			if Input.is_action_pressed("runL"):
+				direction = -1
+				wallSlide = true
+		elif as2d.flip_h == false:
+			if Input.is_action_pressed("runR"):
+				direction = 1
+				wallSlide = true
+				
 func _on_timer_timeout() -> void:
 	comboCount = 0
 

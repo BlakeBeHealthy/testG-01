@@ -25,7 +25,6 @@ var jumpBuff := 0
 var attackDir := 0
 
 func enter() -> void:
-	print("time")
 	attack_delay.start()
 	as2d.play("a2")
 	if !ComboTime.is_stopped():
@@ -38,6 +37,7 @@ func enter() -> void:
 	
 	if checkHit:
 		checkHit = false
+		
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "a2" or parent.takeHit:
 		return
@@ -57,10 +57,8 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 		
 	startKB = true
 	if !area.is_in_group("World") or !area.is_in_group("Spikes"):
-		print("time")
 		apply_timeSlow(hit_timeStop, hit_duration)
 	else:
-		print("world")
 		worldHit = true
 		
 	if as2d.flip_h:
@@ -86,6 +84,8 @@ func process_frame(delta: float) -> State:
 		return parent.hit_state
 	
 	if !as2d.is_playing() and !KB:
+		if parent.wallSlide:
+			return parent.wallSlide_state
 		if parent.parryCheck:
 				return parent.parry_state
 		if parent.dash:
@@ -113,7 +113,6 @@ func process_physics(delta: float) -> State:
 			worldHit = false
 			parent.velocity.x += -attackDir * 250
 		else:
-			print("kncock")
 			parent.velocity.x += -attackDir * playerKnockback
 		KB = true
 		startKB = false

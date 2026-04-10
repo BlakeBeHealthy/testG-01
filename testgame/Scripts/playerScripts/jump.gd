@@ -7,18 +7,24 @@ class_name Jump
 @onready var attack_delay: Timer = $"../../attackDelay"
 @onready var a2d: Area2D = $"../../Area2D"
 @onready var c: CollisionShape2D = $"../../c"
+@export var wall_jump_force: float
+@export var decayRate: float
 
-var hit := false
+var wallJumpOver := true
 
 func enter() -> void:
 	as2d.play("jump")
-	if !parent.jumpCheck:
+	if !parent.jumpCheck or parent.wallJump:
 		parent.velocity.y = -parent.JUMP
 		parent.jumpCheck = true
 	#You will probably see some stuff like this, its just basic hitbox adustments based on as2d
-
+	if parent.wallJump:
+			wallJumpOver = false
+			parent.wallJump = false
+			parent.velocity.x = parent.direction * wall_jump_force
 		
 func exit() -> void:
+	var wallJumpOver := true
 	c.position = Vector2(-0.5, 8)
 
 func process_input(event: InputEvent) -> State:
@@ -28,6 +34,9 @@ func process_frame(delta: float) -> State:
 		
 	if parent.takeHit:
 		return parent.hit_state
+		
+	if parent.wallSlide and wallJumpOver:
+		return parent.wallSlide_state
 		
 	if parent.dash:
 		return parent.dash_state
@@ -53,13 +62,21 @@ func process_frame(delta: float) -> State:
 	return null
 	
 func process_physics(delta: float) -> State:
-	if Input.is_action_just_released("jump"):
-		parent.velocity.y *= parent.jumpCut
+	if wallJumpOver:
+		if Input.is_action_just_released("jump"):
+			parent.velocity.y *= parent.jumpCut
+		
 	
 	parent.velocity.y += gravity * delta
 	
 	var direction = Input.get_axis("runL", "runR")
-	parent.velocity.x = direction * move_speed
+	
+	if !wallJumpOver:
+		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
+		if parent.velocity.x <= 90 and parent.velocity.x >= -90:
+			wallJumpOver = true
+	else:
+		parent.velocity.x = direction * move_speed
 	parent.move_and_slide()
 	
 	if direction > 0:

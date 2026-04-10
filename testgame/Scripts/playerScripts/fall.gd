@@ -14,7 +14,7 @@ class_name Fall
 var hit:= false
 
 func enter() -> void:
-	if !parent.jumpCheck:
+	if !parent.jumpCheck or parent.wallJump:
 		cTime.start()
 	as2d.play("fall")
 	
@@ -31,9 +31,12 @@ func process_frame(delta: float) -> State:
 		
 	if parent.parryCheck:
 		return parent.parry_state
-		
+	
 	if parent.dash:
 		return parent.dash_state
+		
+	if parent.wallSlide:
+		return parent.wallSlide_state
 		
 	if parent.attackCheck:
 		parent.attackCheck = false
