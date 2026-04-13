@@ -118,12 +118,6 @@ func _process(delta: float) -> void:
 		dashAllow = true
 		if Gameplay.DJ:
 			moveCheck = true
-	if Input.is_action_just_pressed("jump"):
-		print("SPACE")
-	if Input.is_action_just_pressed("runR"):
-		print("RIGHT")
-	if Input.is_action_just_pressed("runL"):
-		print("LEFT")
 
 func flip_direction(dire: int):
 	direction = dire
