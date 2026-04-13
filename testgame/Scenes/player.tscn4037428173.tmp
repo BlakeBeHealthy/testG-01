@@ -830,7 +830,7 @@ one_shot = true
 one_shot = true
 
 [node name="CoyoteTime" type="Timer" parent="." unique_id=300296774]
-wait_time = 0.1
+wait_time = 10.0
 one_shot = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=1235796374 node_paths=PackedStringArray("attack_state", "starting_state")]

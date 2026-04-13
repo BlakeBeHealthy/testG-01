@@ -17,8 +17,8 @@ var dir := 0
 func enter() -> void:
 	wall_jump_buffer.start()
 	dir = Input.get_axis("runL", "runR")
-	as2d.play("jump")
 	if !parent.jumpCheck or parent.wallJump:
+		as2d.play("jump")
 		parent.velocity.y = -parent.JUMP
 		parent.jumpCheck = true
 	#You will probably see some stuff like this, its just basic hitbox adustments based on as2d
@@ -78,6 +78,7 @@ func process_physics(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
 	
 	if !wallJumpOver:
+		print(parent.Jdirection)
 		parent.velocity.x = move_toward(parent.velocity.x, 120 * parent.Jdirection, decayRate * delta)
 		if parent.velocity.x <= 90 and parent.velocity.x >= -90:
 			wallJumpOver = true

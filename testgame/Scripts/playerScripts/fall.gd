@@ -15,7 +15,6 @@ var hit:= false
 
 func enter() -> void:
 	if !parent.jumpCheck or parent.wallJump:
-		print("start")
 		cTime.start()
 	as2d.play("fall")
 	
@@ -103,6 +102,8 @@ func process_physics(delta: float) -> State:
 	if Input.is_action_just_pressed("jump"):
 		if !cTime.is_stopped():
 			cTime.stop()
+			if parent.wallJump:
+				parent.Jdirection *= -1
 			return parent.jump_state
 		elif parent.moveCheck:
 			parent.jumpCheck = false

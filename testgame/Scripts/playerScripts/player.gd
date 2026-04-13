@@ -49,6 +49,7 @@ signal goodParry
 
 var invincible := false
 var control_locked = false
+var stickState := false
 var direction := 0
 var Jdirection := 0
 var upwardDoor = false
@@ -102,7 +103,7 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_pressed("runR"):
 				Jdirection = 1
 				wallSlide = true
-	else:
+	elif is_on_floor():
 		wallSlide = false
 		wallJump = false
 		wallJumpBuff = false
@@ -118,6 +119,11 @@ func _process(delta: float) -> void:
 		dashAllow = true
 		if Gameplay.DJ:
 			moveCheck = true
+	if state_machine.current_state == hit_state and state_machine.current_state == cut_state or state_machine.current_state == wallSlide_state:
+		stickState = true
+	else:
+		stickState = false
+		
 
 func flip_direction(dire: int):
 	direction = dire
@@ -152,9 +158,9 @@ func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale:
 		attack_delay.stop()
 	
 func _input(event): #allowing the player to attack
-	if (state_machine.current_state != hit_state and state_machine.current_state != cut_state) and event.is_action_pressed("Parry") and parry_cooldown.is_stopped():
+	if (!stickState) and event.is_action_pressed("Parry") and parry_cooldown.is_stopped():
 			parryCheck = true
-	elif (state_machine.current_state != hit_state and state_machine.current_state != cut_state) and event.is_action_pressed("leftC"):
+	elif (!stickState) and event.is_action_pressed("leftC"):
 			if !is_on_floor() and Input.is_action_pressed("down") and attack_delay.is_stopped():
 				pogoCheck = true
 			elif !ComboTime.is_stopped() or attack_delay.is_stopped():
@@ -166,7 +172,7 @@ func _input(event): #allowing the player to attack
 				
 	if ((Input.is_action_just_pressed("interact") and current_interactable != null) or (Input.is_action_pressed("PlayerLock")) and is_on_floor() and !Global.UI.get_node("Balloon").visible):
 		control_locked = true
-	elif Input.is_action_just_pressed("Dash") and state_machine.current_state != hit_state and state_machine.current_state != cut_state and dash_delay.is_stopped() and dashAllow:
+	elif Input.is_action_just_pressed("Dash") and !stickState and dash_delay.is_stopped() and dashAllow:
 		dash = true
 				
 func _on_timer_timeout() -> void:
