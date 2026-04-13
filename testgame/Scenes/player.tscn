@@ -704,7 +704,7 @@ death_state = NodePath("StateMachine/death")
 cut_state = NodePath("StateMachine/CutsceneState")
 pogo_state = NodePath("StateMachine/PogoAttack")
 wallSlide_state = NodePath("StateMachine/WallSlide")
-JUMP = 400
+JUMP = 450
 jumpCut = 0.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=720930456]
@@ -778,6 +778,8 @@ target_position = Vector2(11, 0)
 position = Vector2(3, 17)
 target_position = Vector2(11, 0)
 
+[node name="WallJumpBuffer" type="Timer" parent="." unique_id=1415600477]
+
 [node name="wallJump" type="Timer" parent="." unique_id=1638574407]
 wait_time = 0.001
 one_shot = true
@@ -844,8 +846,8 @@ script = ExtResource("6_3smsa")
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175]
 script = ExtResource("8_8erm5")
-wall_jump_force = 150.0
-decayRate = 230.0
+wall_jump_force = 600.0
+decayRate = 3500.0
 
 [node name="Fall" type="Node" parent="StateMachine" unique_id=337594985]
 script = ExtResource("8_f1ek2")
@@ -929,3 +931,4 @@ decay = 10.0
 [connection signal="timeout" from="parryTime" to="StateMachine/Parry" method="_on_parry_time_timeout"]
 [connection signal="timeout" from="wallSlideFall" to="StateMachine/WallSlide" method="_on_wall_slide_fall_timeout"]
 [connection signal="timeout" from="ParryInv" to="." method="_on_parry_inv_timeout"]
+[connection signal="timeout" from="CoyoteTime" to="StateMachine/Fall" method="_on_coyote_time_timeout"]

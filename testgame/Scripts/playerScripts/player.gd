@@ -56,6 +56,7 @@ var knockback_velocity := 0.0
 var knockback_decay := 50.0
 var jumpCheck := false
 var jumpBuff := false
+var wallJumpBuff := false
 var attackCheck := false
 var pogoCheck := false
 var parryCheck := false
@@ -92,7 +93,20 @@ func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 	if is_on_floor() and jumpCheck and state_machine.current_state != pogo_state:
 		jumpCheck = false
-	
+	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and !is_on_floor():
+		if as2d.flip_h == true:
+			if Input.is_action_pressed("runL"):
+				Jdirection = -1
+				wallSlide = true
+		elif as2d.flip_h == false:
+			if Input.is_action_pressed("runR"):
+				Jdirection = 1
+				wallSlide = true
+	else:
+		wallSlide = false
+		wallJump = false
+		wallJumpBuff = false
+		
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	if state_machine.current_state == jump_state or state_machine.current_state == fall_state:
@@ -104,6 +118,12 @@ func _process(delta: float) -> void:
 		dashAllow = true
 		if Gameplay.DJ:
 			moveCheck = true
+	if Input.is_action_just_pressed("jump"):
+		print("SPACE")
+	if Input.is_action_just_pressed("runR"):
+		print("RIGHT")
+	if Input.is_action_just_pressed("runL"):
+		print("LEFT")
 
 func flip_direction(dire: int):
 	direction = dire
@@ -154,18 +174,6 @@ func _input(event): #allowing the player to attack
 		control_locked = true
 	elif Input.is_action_just_pressed("Dash") and state_machine.current_state != hit_state and state_machine.current_state != cut_state and dash_delay.is_stopped() and dashAllow:
 		dash = true
-	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding():
-		print(wallSlide)
-		if as2d.flip_h == true:
-			if Input.is_action_pressed("runL"):
-				Jdirection = -1
-				wallSlide = true
-		elif as2d.flip_h == false:
-			if Input.is_action_pressed("runR"):
-				Jdirection = 1
-				wallSlide = true
-	else:
-		wallSlide = false
 				
 func _on_timer_timeout() -> void:
 	comboCount = 0

@@ -52,9 +52,9 @@ func process_frame(delta: float) -> State:
 		if !parent.is_on_floor():
 			parent.wallJump = true
 			return parent.fall_state
-	if jumpC:
-		if Input.is_action_just_pressed("jump"):
+	if (jumpC and Input.is_action_just_pressed("jump")) or parent.wallJumpBuff:
 			parent.wallJump = true
+			parent.wallJumpBuff = false
 			return parent.jump_state
 	
 	if parent.is_on_floor():
