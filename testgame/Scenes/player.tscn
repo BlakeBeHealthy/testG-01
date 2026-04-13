@@ -531,6 +531,11 @@ animations = [{
 "name": &"jump",
 "speed": 16.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 24.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jsob3")
@@ -711,7 +716,8 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"wallSlide"
+animation = &"fall"
+frame_progress = 0.9805633
 speed_scale = 0.8
 flip_h = true
 

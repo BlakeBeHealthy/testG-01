@@ -159,7 +159,7 @@ animations = [{
 size = Vector2(7.594471, 10.372329)
 
 [node name="BetaNPC" type="Area2D" unique_id=1828915867]
-collision_layer = 257
+collision_layer = 768
 collision_mask = 64
 script = ExtResource("1_7p06t")
 
