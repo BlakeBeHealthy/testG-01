@@ -783,7 +783,7 @@ wait_time = 0.001
 one_shot = true
 
 [node name="attack2buff" type="Timer" parent="." unique_id=1913790395]
-wait_time = 0.009999999999999998
+wait_time = 0.00999999999999999
 one_shot = true
 
 [node name="DashTime" type="Timer" parent="." unique_id=483424297]

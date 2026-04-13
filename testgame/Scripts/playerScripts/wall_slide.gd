@@ -12,7 +12,6 @@ var jumpC := false
 var fall := false
 
 func enter() -> void:
-	print("enter")
 	as2d.play("wallSlide")
 	parent.wallSlide = false
 	if !as2d.flip_h:

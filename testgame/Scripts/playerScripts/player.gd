@@ -50,6 +50,7 @@ signal goodParry
 var invincible := false
 var control_locked = false
 var direction := 0
+var Jdirection := 0
 var upwardDoor = false
 var knockback_velocity := 0.0
 var knockback_decay := 50.0
@@ -153,15 +154,18 @@ func _input(event): #allowing the player to attack
 		control_locked = true
 	elif Input.is_action_just_pressed("Dash") and state_machine.current_state != hit_state and state_machine.current_state != cut_state and dash_delay.is_stopped() and dashAllow:
 		dash = true
-	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and !is_on_floor() and !wallJump:
+	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding():
+		print(wallSlide)
 		if as2d.flip_h == true:
 			if Input.is_action_pressed("runL"):
-				direction = -1
+				Jdirection = -1
 				wallSlide = true
 		elif as2d.flip_h == false:
 			if Input.is_action_pressed("runR"):
-				direction = 1
+				Jdirection = 1
 				wallSlide = true
+	else:
+		wallSlide = false
 				
 func _on_timer_timeout() -> void:
 	comboCount = 0
