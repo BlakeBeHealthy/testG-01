@@ -1,12 +1,12 @@
-[gd_scene format=4 uid="uid://ck8bm1h5a00c3"]
+[gd_scene format=4 uid="uid://hn55vo1gos8h"]
 
 [ext_resource type="Texture2D" uid="uid://cg04leuj27jv0" path="res://assets/oak-woods/oak_woods_v1.0/oak_woods_tileset.png" id="1_d5ou2"]
-[ext_resource type="Script" uid="uid://s78vk4yt1nx1" path="res://Scenes/boss_level.gd" id="1_y55xa"]
+[ext_resource type="Script" path="res://Scenes/boss_level.gd" id="1_y55xa"]
 [ext_resource type="Texture2D" uid="uid://d2mnh6jc78crk" path="res://assets/pixel-platformer-castle/main_lev_build.png" id="2_12ifi"]
 [ext_resource type="PackedScene" uid="uid://baje80lg3quet" path="res://Scenes/player.tscn" id="3_1fajk"]
 [ext_resource type="PackedScene" uid="uid://djei3agw1frcl" path="res://Scenes/camera_2d.tscn" id="4_12ifi"]
-[ext_resource type="PackedScene" uid="uid://ihsmths7ddxe" path="res://Scenes/cutscene_area.tscn" id="5_1fajk"]
-[ext_resource type="PackedScene" uid="uid://gtrp252v63m4" path="res://Scenes/hannibal.tscn" id="6_xwxio"]
+[ext_resource type="PackedScene" path="res://Scenes/cutscene_area.tscn" id="5_1fajk"]
+[ext_resource type="PackedScene" path="res://Scenes/hannibal.tscn" id="6_xwxio"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y55xa"]
 texture = ExtResource("1_d5ou2")

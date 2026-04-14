@@ -712,8 +712,6 @@ wallSlide_state = NodePath("StateMachine/WallSlide")
 JUMP = 450
 jumpCut = 0.3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1618763905]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=720930456]
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
