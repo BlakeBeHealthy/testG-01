@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dpe8m6p55sdxx" path="res://Scenes/enemy.tscn" id="10_hdu6x"]
 [ext_resource type="PackedScene" uid="uid://ce3f5rrrexvdt" path="res://Scenes/Renemy.tscn" id="11_776at"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b16lc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdu6x"]
 texture = ExtResource("1_xpxho")
 0:0/0 = 0
 1:0/0 = 0
@@ -422,7 +422,7 @@ texture = ExtResource("1_xpxho")
 29:21/0 = 0
 30:21/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2552b"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_776at"]
 texture = ExtResource("2_ilfpa")
 91:2/0 = 0
 2:3/0 = 0
@@ -2216,8 +2216,8 @@ texture = ExtResource("2_ilfpa")
 
 [sub_resource type="TileSet" id="TileSet_n0yg3"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_b16lc")
-sources/1 = SubResource("TileSetAtlasSource_2552b")
+sources/0 = SubResource("TileSetAtlasSource_hdu6x")
+sources/1 = SubResource("TileSetAtlasSource_776at")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ex3v2"]
 size = Vector2(20, 34)

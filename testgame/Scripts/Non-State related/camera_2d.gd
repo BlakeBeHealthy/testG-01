@@ -1,6 +1,8 @@
 extends Camera2D
 
 @export var FOLLOW_SPEED := 10.0
+@export var boss_room := false
+var boss_room_placement: Vector2
 var horizontalOffset: float = 20
 var verticalOffset: float = 30
 var voffset: float = 80
@@ -15,6 +17,7 @@ var target: Vector2 = Vector2()
 
 func _ready():
 	Global.set_camera(self)
+	boss_room_placement = self.global_position
 	#Could've made a new scene but just used code, so the screenshake wont 
 		#be slower if we slow down time in the engine and it doesnt repeat
 	shake_timer.one_shot = true
@@ -25,20 +28,22 @@ func _ready():
 func _process(delta):
 	var weight = 1 - exp(-FOLLOW_SPEED * delta)
 	currentOffset = lerp(currentOffset, float(Global.player.direction), weight)
-	if Global.player.camLook == true:
-		if Input.is_action_pressed("down") and !Input.is_action_pressed("up"):
-			target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
-			Global.player.global_position.y - verticalOffset + (voffset + 20))
-		elif Input.is_action_pressed("up") and !Input.is_action_pressed("down"):
-			target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
-			Global.player.global_position.y - verticalOffset - voffset)
+	if !boss_room:
+		if Global.player.camLook == true:
+			if Input.is_action_pressed("down") and !Input.is_action_pressed("up"):
+				target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
+				Global.player.global_position.y - verticalOffset + (voffset + 20))
+			elif Input.is_action_pressed("up") and !Input.is_action_pressed("down"):
+				target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
+				Global.player.global_position.y - verticalOffset - voffset)
+			else:
+				target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
+				Global.player.global_position.y - verticalOffset)
 		else:
 			target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
 			Global.player.global_position.y - verticalOffset)
 	else:
-		target = Vector2(Global.player.global_position.x + (horizontalOffset * currentOffset), \
-		Global.player.global_position.y - verticalOffset)
-	
+		target = boss_room_placement
 	self.global_position = round(self.global_position.lerp(target, weight))
 	
 	

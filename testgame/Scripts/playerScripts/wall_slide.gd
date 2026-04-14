@@ -12,6 +12,7 @@ var jumpC := false
 var fall := false
 
 func enter() -> void:
+	print("WALLSLIDE")
 	as2d.play("wallSlide")
 	parent.wallSlide = false
 	if !as2d.flip_h:
@@ -32,12 +33,7 @@ func process_frame(delta: float) -> State:
 	if Input.is_action_just_released("jump"):
 		jumpC = true
 	
-	if as2d.flip_h:
-		if !Input.is_action_pressed("runL"):
-			wall_slide_fall.start()
-	else:
-		if !Input.is_action_pressed("runR"):
-			wall_slide_fall.start()
+
 			
 	if as2d.flip_h:
 		if Input.is_action_pressed("runR") or (!Input.is_action_pressed("runL") and fall):
@@ -48,15 +44,17 @@ func process_frame(delta: float) -> State:
 			parent.wallJump = true
 			return parent.fall_state
 			
-	if !parent.wallslide_chest.is_colliding() or !parent.wallslide_legs.is_colliding():
-		if !parent.is_on_floor():
-			parent.wallJump = true
-			return parent.fall_state
-	if (jumpC and Input.is_action_just_pressed("jump")) or parent.wallJumpBuff:
+	if Input.is_action_just_pressed("jump") or parent.wallJumpBuff:
 			parent.wallJump = true
 			parent.wallJumpBuff = false
 			return parent.jump_state
-	
+			
+	elif !parent.wallslide_chest.is_colliding() or !parent.wallslide_legs.is_colliding(): 
+		if !parent.is_on_floor():
+			print("FALL")
+			parent.wallJump = true
+			return parent.fall_state
+		
 	if parent.is_on_floor():
 		if direction != 0:
 			return parent.run_state
@@ -70,6 +68,3 @@ func process_physics(delta: float) -> State:
 	parent.velocity.y = lerp(parent.velocity.y, wall_slide_terminal * gravity, decay * delta)
 	parent.move_and_slide()
 	return null
-
-func _on_wall_slide_fall_timeout() -> void:
-	pass # Replace with function body.

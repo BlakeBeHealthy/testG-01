@@ -32,6 +32,7 @@ extends CharacterBody2D
 @onready var dash_delay: Timer = $DashDelay
 @onready var wallslide_legs: RayCast2D = $wallslideLegs
 @onready var wallslide_chest: RayCast2D = $wallslideChest
+@onready var wall_slide_fall: Timer = $wallSlideFall
 
 
 @warning_ignore("unused_signal")
@@ -94,7 +95,7 @@ func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 	if is_on_floor() and jumpCheck and state_machine.current_state != pogo_state:
 		jumpCheck = false
-	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and !is_on_floor():
+	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and !is_on_floor() and !wallJump and state_machine.current_state != wallSlide_state:
 		if as2d.flip_h == true:
 			if Input.is_action_pressed("runL"):
 				Jdirection = -1
@@ -114,8 +115,8 @@ func _process(delta: float) -> void:
 		interactC2D.disabled = true
 	else:
 		interactC2D.disabled = false
-		landed.emit()
 	if is_on_floor():
+		landed.emit()
 		dashAllow = true
 		if Gameplay.DJ:
 			moveCheck = true
@@ -187,3 +188,7 @@ func _on_parry_cooldown_timeout() -> void:
 
 func _on_parry_inv_timeout() -> void:
 	a2d2.set_collision_layer_value(4, true)
+	
+func playAnim(anim: String):
+	print(anim)
+	as2d.play(anim)

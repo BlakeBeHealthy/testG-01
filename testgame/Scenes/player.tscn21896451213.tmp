@@ -712,15 +712,13 @@ wallSlide_state = NodePath("StateMachine/WallSlide")
 JUMP = 450
 jumpCut = 0.3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1618763905]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=720930456]
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"run"
+animation = &"fall"
 frame = 1
-frame_progress = 0.3974616
+frame_progress = 0.7855199
 speed_scale = 0.8
 flip_h = true
 
@@ -828,7 +826,7 @@ one_shot = true
 one_shot = true
 
 [node name="parryTime" type="Timer" parent="." unique_id=1187766342]
-wait_time = 0.001
+wait_time = 0.1
 one_shot = true
 
 [node name="wallSlideFall" type="Timer" parent="." unique_id=22861401]

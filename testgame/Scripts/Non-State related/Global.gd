@@ -1,8 +1,9 @@
 extends Node
 
-var player
-var camera
-var UI
+var player: CharacterBody2D
+var camera: Camera2D
+var UI: CanvasLayer
+var ap: AnimationPlayer
 signal playerDone
 signal healthUp
 var saveData = {

@@ -11,10 +11,13 @@ class_name Jump
 @export var decayRate: float
 @onready var wall_jump_buffer: Timer = $"../../WallJumpBuffer"
 
+
 var wallJumpOver := true
 var dir := 0
+var counter := 0
 
 func enter() -> void:
+	print("JUMP")
 	wall_jump_buffer.start()
 	dir = Input.get_axis("runL", "runR")
 	if !parent.jumpCheck or parent.wallJump:
@@ -23,8 +26,8 @@ func enter() -> void:
 		parent.jumpCheck = true
 	#You will probably see some stuff like this, its just basic hitbox adustments based on as2d
 	if parent.wallJump:
+			parent.wall_slide_fall.start()
 			wallJumpOver = false
-			parent.wallJump = false
 			parent.velocity.x = -parent.Jdirection * wall_jump_force
 		
 func exit() -> void:
@@ -35,7 +38,8 @@ func process_input(event: InputEvent) -> State:
 	if !wallJumpOver and Input.is_action_just_pressed("jump"):
 		parent.wallJumpBuff = true
 	return null
-	
+
+		
 func process_frame(delta: float) -> State:
 		
 	if parent.takeHit:
@@ -78,7 +82,6 @@ func process_physics(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
 	
 	if !wallJumpOver:
-		print(parent.Jdirection)
 		parent.velocity.x = move_toward(parent.velocity.x, 120 * parent.Jdirection, decayRate * delta)
 		if parent.velocity.x <= 90 and parent.velocity.x >= -90:
 			wallJumpOver = true
@@ -137,3 +140,8 @@ func process_physics(delta: float) -> State:
 		a2d2.position.x = 4
 		a2d2.position.y = 0
 	return null
+
+
+func _on_wall_slide_fall_timeout() -> void:
+	if parent.wallJump:
+		parent.wallJump = false
