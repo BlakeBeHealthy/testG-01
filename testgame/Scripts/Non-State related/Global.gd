@@ -1,5 +1,9 @@
 extends Node
 
+var debug_dialogue: String = ""
+var debug_start: String = ""
+var debug_cutscene: String = ""
+var debug_mode: bool = true
 var player: CharacterBody2D
 var camera: Camera2D
 var UI: CanvasLayer
@@ -38,3 +42,26 @@ func set_UI(node):
 
 func get_UI():
 	return UI
+
+func _input(event: InputEvent) -> void:
+	if !debug_mode:
+		return
+		
+	if event.is_action_just_pressed("debug_superspeed"):
+		Engine.time_scale = 1.5
+	if event.is_action_just_pressed("debug_slow"):
+		Engine.time_scale = 0.5
+	if event.is_action_just_pressed("debug_superslow"):
+		Engine.time_scale = 0.1
+	if event.is_action_just_pressed("debug_normal"):
+		Engine.time_scale = 1.0
+	if event.is_action_just_pressed("debug_cutscene"):
+		ap.play(debug_cutscene)
+	if event.is_action_just_pressed("debug_restart"):
+		ap.stop()
+		ap.play(debug_cutscene)
+	if event.is_action_just_pressed("debug_pause"):
+		get_tree().paused = !get_tree().paused
+	if event.is_action_just_pressed("debug_skip"):
+		ap.stop()
+		UI.dialogueBalloon.start(load(debug_dialogue), debug_start)

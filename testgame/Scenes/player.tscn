@@ -716,9 +716,7 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"run"
-frame = 1
-frame_progress = 0.3974616
+animation = &"idle"
 speed_scale = 0.8
 flip_h = true
 
