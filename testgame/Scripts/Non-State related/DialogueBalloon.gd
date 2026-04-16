@@ -12,7 +12,11 @@ extends Control
 
 var game_states
 var tween = null
-var dialogueResource
+var dialogueResource: DialogueResource:
+	set(value):
+		print("dialogueResource set to: ", value, " from: ", get_stack())
+		dialogueResource = value
+var dRec
 var check := false
 var responses_visible := false
 var response_tween = null
@@ -25,6 +29,7 @@ var current_line: DialogueLine:
 		if value:
 			current_line = value
 		else:
+			print(dialogueResource, "balls")
 			dialogue_ended = true
 			await wipeOut()
 			if overlay_tween:
@@ -35,6 +40,7 @@ var current_line: DialogueLine:
 			self.visible = false
 			check = false
 			currentSpeaker = ""
+			print(dialogueResource, "balls")
 			
 var speed = 0.05:
 	set(value):
@@ -45,11 +51,18 @@ var currentSpeaker = ""
 # Called when the node enters the scene tree for the first time.
 	
 func start(resource: DialogueResource, title: String) -> void:
+	if resource != null:
+		print(resource)
+		dRec = resource
+		print(dRec, "dRec recourse")
+	dialogueResource = resource
+	if dialogueResource == null:
+		dialogueResource = dRec
+		print(dRec, "dRec")
 	dialogue_ended = false
 	dialogue_responses_menu.next_action = "interact"
 	dialogue_label.modulate.a = 0
 	charName.modulate.a = 0
-	dialogueResource = resource
 	portraitM.set_shader_parameter("progress", -0.2)
 	panelM.set_shader_parameter("progress", -0.2)
 	game_states = [self]
@@ -59,9 +72,13 @@ func start(resource: DialogueResource, title: String) -> void:
 	overlay_tween = create_tween()
 	overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.3)
 	self.visible = true
+	if dialogueResource == null:
+		dialogueResource = dRec
 	current_line = await dialogueResource.get_next_dialogue_line(title, game_states)
 	if current_line:
 		apply_dialogue_line()
+	if dialogue_responses_menu.response_selected.is_connected(_on_response_selected):
+		dialogue_responses_menu.response_selected.disconnect(_on_response_selected)
 	dialogue_responses_menu.response_selected.connect(_on_response_selected)
 
 func apply_dialogue_line():
@@ -178,7 +195,7 @@ func playResume(animation: String, newTitle: String) -> void:
 	await wipeOut()
 	Global.ap.play(animation)
 	await Global.ap.animation_finished
-	start(dialogueResource, newTitle)
+	start(null, newTitle)
 
 func playEnd(animation: String) -> void:
 	await wipeOut()

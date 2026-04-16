@@ -17,7 +17,6 @@ var dir := 0
 var counter := 0
 
 func enter() -> void:
-	print("JUMP")
 	wall_jump_buffer.start()
 	dir = Input.get_axis("runL", "runR")
 	if !parent.jumpCheck or parent.wallJump:

@@ -12,6 +12,9 @@ Hannibal: End this fight, why do you keep coming back?
 	P: If I died I wouldn't be standing here
 	Hannibal: You still walk, but it wall always end the same just as before
 	Hannibal: You will die, again and again. Today will be no different.
-do! Balloon.playEnd("e2")
+do! Balloon.playResume("e2", "s2")
+=> END
+~ s2
+Hannibal: You will die
 => END
 

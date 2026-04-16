@@ -17,5 +17,6 @@ func _on_area_entered(area: Area2D) -> void:
 		if startingCutscene != "null":
 			Global.ap.play(startingCutscene)
 			await Global.ap.animation_finished
+		print("hello")
 		Global.UI.balloon.start(load(dialogueFile), startingPoint)
 		 
