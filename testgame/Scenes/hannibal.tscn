@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://17uby20yhwgo" path="res://assets/2d-soulslike-character/Pray.png" id="6_76tc5"]
 [ext_resource type="Texture2D" uid="uid://dsy3n6m6hmrab" path="res://assets/2d-soulslike-character/Slide.png" id="7_a2gdt"]
 [ext_resource type="Script" uid="uid://cps3stdwpd8at" path="res://Scenes/state_machine.gd" id="10_76tc5"]
+[ext_resource type="Script" uid="uid://c8xd4ymaw1xce" path="res://Scripts/enemyScripts/Hannibal/idle_state.gd" id="11_a2gdt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw6ls"]
 atlas = ExtResource("1_ajehy")
@@ -588,7 +589,9 @@ autoplay = "idle"
 position = Vector2(0.7692308, 8.461539)
 shape = SubResource("RectangleShape2D_gw6ls")
 
-[node name="stateMachine" type="Node" parent="." unique_id=89789483]
+[node name="stateMachine" type="Node" parent="." unique_id=89789483 node_paths=PackedStringArray("starting_state")]
 script = ExtResource("10_76tc5")
+starting_state = NodePath("Node")
 
 [node name="Node" type="Node" parent="stateMachine" unique_id=1444737718]
+script = ExtResource("11_a2gdt")
