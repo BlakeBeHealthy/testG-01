@@ -19,6 +19,9 @@ func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
+	if !is_instance_valid(Global.player):
+		return
+	
 	direction = (Global.player.global_position.x - self.global_position.x)
 	
 	if direction >= 1:

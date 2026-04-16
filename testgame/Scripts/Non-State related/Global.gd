@@ -3,7 +3,9 @@ extends Node
 var debug_dialogue: String = ""
 var debug_start: String = ""
 var debug_cutscene: String = ""
-var debug_mode: bool = true
+var debug_mode: bool = false
+var knight_dead: bool = false
+var cutsceneStarted: bool = false
 var player: CharacterBody2D
 var camera: Camera2D
 var UI: CanvasLayer

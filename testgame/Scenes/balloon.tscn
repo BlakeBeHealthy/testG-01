@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://b7bs566f75bvj" path="res://Scenes/WipeTransition.gdshader" id="2_nrerx"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="2_os1p0"]
 [ext_resource type="Texture2D" uid="uid://bs3x3o1hcw3fa" path="res://assets/NPCS/Portraits/GusGodot.png" id="3_kbj1d"]
+[ext_resource type="Texture2D" uid="uid://c1t7a8up44bv3" path="res://assets/NPCS/Portraits/Hannibal.png" id="4_5g3f3"]
 [ext_resource type="Texture2D" uid="uid://lrbg1u7pvlg8" path="res://assets/NPCS/Portraits/mainChar.png" id="4_syg23"]
 [ext_resource type="Texture2D" uid="uid://ca0niamjlvsu5" path="res://assets/NPCS/Portraits/Terry.png" id="5_43nfd"]
 [ext_resource type="FontFile" uid="uid://csg7gawytepkx" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidSans-Bold.otf" id="5_xyim1"]
@@ -22,6 +23,10 @@ shader_parameter/vertical_weight = 0.5
 atlas = ExtResource("3_kbj1d")
 region = Rect2(0, 0, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8nsx"]
+atlas = ExtResource("4_5g3f3")
+region = Rect2(0, 0, 613, 613)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rl6ge"]
 atlas = ExtResource("4_syg23")
 region = Rect2(0, 0, 512, 512)
@@ -38,6 +43,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"Gus_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8nsx")
+}],
+"loop": true,
+"name": &"Hannibal_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -116,7 +129,7 @@ material = SubResource("ShaderMaterial_kbj1d")
 position = Vector2(370, 428)
 scale = Vector2(1.78, 1.78)
 sprite_frames = SubResource("SpriteFrames_5iodc")
-animation = &"Gus_idle"
+animation = &"Hannibal_idle"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=284104083]
 custom_minimum_size = Vector2(0, 520)

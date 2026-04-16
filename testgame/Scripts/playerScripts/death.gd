@@ -25,6 +25,7 @@ func enter() -> void:
 	Gameplay.game_respawn()
 	Global.saveData.maxHealth = 3
 	SceneM.load_level(Global.saveData.checkpoint_scene) #Set up first level load and put a checkpoint in level 2
+	Global.cutsceneStarted = true
 	
 func exit() -> void:
 	pass

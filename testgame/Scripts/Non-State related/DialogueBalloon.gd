@@ -173,3 +173,16 @@ func show_responses():
 	else:
 		responsePanel.hide()
 		responses_visible = false
+		
+func playResume(animation: String, newTitle: String) -> void:
+	await wipeOut()
+	Global.ap.play(animation)
+	await Global.ap.animation_finished
+	start(dialogueResource, newTitle)
+
+func playEnd(animation: String) -> void:
+	await wipeOut()
+	Global.ap.play(animation)
+	await Global.ap.animation_finished
+	
+	

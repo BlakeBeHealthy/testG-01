@@ -2234,7 +2234,7 @@ tile_map_data = PackedByteArray("AAD1/wIAAAASAA8AAAD2/wIAAAASAA8AAAD5/wIAAAASAA8
 tile_set = SubResource("TileSet_n0yg3")
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("4_cyq6k")]
-position = Vector2(22, 424)
+position = Vector2(-701, -1012)
 
 [node name="Camera2D" parent="." unique_id=1391246105 instance=ExtResource("5_ekoii")]
 zoom = Vector2(3.5, 3.5)
@@ -2249,12 +2249,13 @@ entry_door_name = "DJPT1"
 shape = SubResource("RectangleShape2D_ex3v2")
 
 [node name="DJPT4" parent="." unique_id=115414817 instance=ExtResource("6_s4iwq")]
-position = Vector2(-931, -877)
+position = Vector2(-822, -886)
 entry_direction = 3
-path_to_new_scene = "res://Scenes/level__05.tscn"
-entry_door_name = "DJPT2"
+path_to_new_scene = "res://Scenes/level_08.tscn"
+entry_door_name = "BH1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DJPT4" unique_id=1293398652]
+position = Vector2(-100, 6)
 shape = SubResource("RectangleShape2D_cyq6k")
 
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("7_hdu6x")]

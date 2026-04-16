@@ -721,6 +721,7 @@ speed_scale = 0.8
 flip_h = true
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
+visible = false
 visibility_layer = 2
 position = Vector2(1.0000002, 0.99999994)
 scale = Vector2(1.59, 1.274)
@@ -730,7 +731,7 @@ shape = SubResource("RectangleShape2D_ukyrk")
 visible = false
 position = Vector2(0, 4)
 collision_layer = 64
-collision_mask = 768
+collision_mask = 8960
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=866466377]
 position = Vector2(0, -1)
@@ -776,10 +777,12 @@ position = Vector2(-1.6806722, -5.1147547)
 shape = SubResource("CapsuleShape2D_ukyrk")
 
 [node name="wallslideChest" type="RayCast2D" parent="." unique_id=271180678]
+visible = false
 position = Vector2(3, 0)
 target_position = Vector2(11, 0)
 
 [node name="wallslideLegs" type="RayCast2D" parent="." unique_id=335263960]
+visible = false
 position = Vector2(3, 17)
 target_position = Vector2(11, 0)
 

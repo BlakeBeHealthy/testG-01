@@ -1,12 +1,17 @@
 ~ start
-
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+Hannibal: I've been looking for you.
+P: Have we met?
+Hannibal: I've killed you countless times before. But this moment in time keeps repeating.
+Hannibal: End this fight, why do you keep coming back?
+- I've never been here before
+	P: I've never been here before, I would remember something like this
+	Hannibal: So you lose your memory each time?
+	Hannibal: I suppose some creater put me here for a purpose...
+	Hannibal: to kill you.
+- How would I be dead if I'm standing right here
+	P: If I died I wouldn't be standing here
+	Hannibal: You still walk, but it wall always end the same just as before
+	Hannibal: You will die, again and again. Today will be no different.
+do! Balloon.playEnd("e2")
 => END
+
