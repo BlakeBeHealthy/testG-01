@@ -14,7 +14,8 @@ var game_states
 var tween = null
 var dialogueResource: DialogueResource:
 	set(value):
-		print("dialogueResource set to: ", value, " from: ", get_stack())
+		if value == null:
+			print("SET TO NULL: ", get_stack())
 		dialogueResource = value
 var dRec
 var check := false
@@ -29,7 +30,12 @@ var current_line: DialogueLine:
 		if value:
 			current_line = value
 		else:
-			print(dialogueResource, "balls")
+			dialogue_label.text = ""
+			if is_instance_valid(dialogue_label):
+				if dialogue_label.is_typing:
+					dialogue_label.skip_typing()
+				dialogue_label.modulate.a = 0
+				dialogue_label.text = ""
 			dialogue_ended = true
 			await wipeOut()
 			if overlay_tween:
@@ -52,13 +58,10 @@ var currentSpeaker = ""
 	
 func start(resource: DialogueResource, title: String) -> void:
 	if resource != null:
-		print(resource)
 		dRec = resource
-		print(dRec, "dRec recourse")
 	dialogueResource = resource
 	if dialogueResource == null:
 		dialogueResource = dRec
-		print(dRec, "dRec")
 	dialogue_ended = false
 	dialogue_responses_menu.next_action = "interact"
 	dialogue_label.modulate.a = 0
@@ -155,6 +158,7 @@ func wipeIn():
 
 func wipeOut():
 	isMoving = true
+	
 	if tween:
 		tween.kill()
 	tween = create_tween()
@@ -191,11 +195,28 @@ func show_responses():
 		responsePanel.hide()
 		responses_visible = false
 		
-func playResume(animation: String, newTitle: String) -> void:
+func playResume(animation: String) -> void:
+	dialogue_label.text = ""
+	if is_instance_valid(dialogue_label):
+		if dialogue_label.is_typing:
+			dialogue_label.skip_typing()
+		dialogue_label.modulate.a = 0
+		dialogue_label.text = ""
 	await wipeOut()
+	if overlay_tween:
+		overlay_tween.kill()
+	overlay_tween = create_tween()
+	await overlay_tween.tween_property(color_rect, "modulate:a", 0.0, 0.3)
 	Global.ap.play(animation)
 	await Global.ap.animation_finished
-	start(null, newTitle)
+	if overlay_tween:
+		overlay_tween.kill()
+	overlay_tween = create_tween()
+	await overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.2)
+	check = false
+	currentSpeaker = ""
+	apply_dialogue_line()
+
 
 func playEnd(animation: String) -> void:
 	await wipeOut()

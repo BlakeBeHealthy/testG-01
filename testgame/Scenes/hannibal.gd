@@ -1,0 +1,1 @@
+class_name Hannibal extends CharacterBody2D

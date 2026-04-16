@@ -17,7 +17,7 @@ func enter() -> void:
 		
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
-	elif parent.current_interactable is BetaNPC:
+	elif parent.current_interactable is BetaNPC or Global.cutsceneStarted:
 		speaking = true
 	else:
 		parent.camLook = true
