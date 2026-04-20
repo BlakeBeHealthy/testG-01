@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://gtrp252v63m4"]
 
-[ext_resource type="Script" uid="uid://dyxs7hcn5ghen" path="res://Scenes/hannibal.gd" id="1_31vjx"]
+[ext_resource type="Script" path="res://Scenes/hannibal.gd" id="1_31vjx"]
 [ext_resource type="Texture2D" uid="uid://7b1f2xhl4wma" path="res://assets/2d-soulslike-character/attack_from_air.png" id="1_ajehy"]
 [ext_resource type="Texture2D" uid="uid://d2p0csi721ine" path="res://assets/2d-soulslike-character/Idle.png" id="2_2mff0"]
 [ext_resource type="Texture2D" uid="uid://bay80npkcp836" path="res://assets/2d-soulslike-character/Health.png" id="2_gw6ls"]
@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://rkxbpyj1igf7" path="res://assets/2d-soulslike-character/Attacks.png" id="5_31vjx"]
 [ext_resource type="Texture2D" uid="uid://17uby20yhwgo" path="res://assets/2d-soulslike-character/Pray.png" id="6_76tc5"]
 [ext_resource type="Texture2D" uid="uid://dsy3n6m6hmrab" path="res://assets/2d-soulslike-character/Slide.png" id="7_a2gdt"]
-[ext_resource type="Script" uid="uid://cps3stdwpd8at" path="res://Scenes/state_machine.gd" id="10_76tc5"]
+[ext_resource type="Script" path="res://Scenes/state_machine.gd" id="10_76tc5"]
 [ext_resource type="Script" uid="uid://c8xd4ymaw1xce" path="res://Scripts/enemyScripts/Hannibal/idle_state.gd" id="11_a2gdt"]
-[ext_resource type="Script" uid="uid://cfu33r1gsu0fn" path="res://Scenes/jump.gd" id="12_7ay4u"]
+[ext_resource type="Script" path="res://Scenes/jump.gd" id="12_7ay4u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw6ls"]
 atlas = ExtResource("1_ajehy")
@@ -604,3 +604,5 @@ script = ExtResource("11_a2gdt")
 
 [node name="Jump" type="Node" parent="stateMachine" unique_id=1374765716]
 script = ExtResource("12_7ay4u")
+
+[connection signal="timeout" from="idleTime" to="stateMachine/idle" method="_on_idle_time_timeout"]

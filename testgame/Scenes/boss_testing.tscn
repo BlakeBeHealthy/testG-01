@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://e68g2aisqp5w"]
+[gd_scene format=4 uid="uid://dr3pr4uvs3ok5"]
 
 [ext_resource type="Texture2D" uid="uid://cg04leuj27jv0" path="res://assets/oak-woods/oak_woods_v1.0/oak_woods_tileset.png" id="1_ogg1u"]
 [ext_resource type="Texture2D" uid="uid://d2mnh6jc78crk" path="res://assets/pixel-platformer-castle/main_lev_build.png" id="2_4uik3"]
@@ -2230,8 +2230,7 @@ boss_room = true
 
 [node name="Hannibal" parent="." unique_id=1880516638 instance=ExtResource("4_fvkbi")]
 position = Vector2(500, 151)
-jumpStrength = 600.0
+jumpStrength = 550.0
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("5_4uik3")]
 position = Vector2(573, 65)
-JUMP = 525

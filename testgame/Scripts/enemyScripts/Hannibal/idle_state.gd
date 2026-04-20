@@ -14,18 +14,18 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
-func process_input(event: InputEvent) -> State:
+func process_input(event: InputEvent) -> States:
 	return null
 
-func process_frame(delta: float) -> State:
+func process_frame(delta: float) -> States:
 	if idleOver:
-		pass
+		idleOver = false
+		return parent.jump_state
 	
 	return null
 
-func process_physics(delta: float) -> State:
+func process_physics(delta: float) -> States:
 	return null
 
-
-func _on_idle_timer_timeout() -> void:
+func _on_idle_time_timeout() -> void:
 	idleOver = true

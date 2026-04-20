@@ -3,6 +3,7 @@ class_name Hannibal extends CharacterBody2D
 @onready var state_machine: Node = $stateMachine
 
 @export var idle_state: HannibalState
+@export var jump_state: HannibalState
 @export var jumpStrength: float = 400
 
 var wallJump
