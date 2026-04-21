@@ -16,7 +16,7 @@ var dialogueResource: DialogueResource:
 	set(value):
 		if value == null:
 			dialogueResource = value
-var dRec
+var dRec: DialogueResource
 var check := false
 var responses_visible := false
 var response_tween = null
