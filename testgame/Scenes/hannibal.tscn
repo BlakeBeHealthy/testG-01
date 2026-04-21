@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://17uby20yhwgo" path="res://assets/2d-soulslike-character/Pray.png" id="6_76tc5"]
 [ext_resource type="Texture2D" uid="uid://dsy3n6m6hmrab" path="res://assets/2d-soulslike-character/Slide.png" id="7_a2gdt"]
 [ext_resource type="Script" uid="uid://cps3stdwpd8at" path="res://Scenes/state_machine.gd" id="10_76tc5"]
+[ext_resource type="Texture2D" uid="uid://cptl4vidwn8ur" path="res://assets/2d-soulslike-character/Hanging.png" id="10_sbgsd"]
 [ext_resource type="Script" uid="uid://c8xd4ymaw1xce" path="res://Scripts/enemyScripts/Hannibal/idle_state.gd" id="11_a2gdt"]
 [ext_resource type="Script" uid="uid://cfu33r1gsu0fn" path="res://Scenes/jump.gd" id="12_7ay4u"]
 
@@ -297,6 +298,38 @@ region = Rect2(512, 64, 128, 64)
 atlas = ExtResource("5_31vjx")
 region = Rect2(640, 64, 128, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3gos"]
+atlas = ExtResource("10_sbgsd")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvsur"]
+atlas = ExtResource("10_sbgsd")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jggig"]
+atlas = ExtResource("10_sbgsd")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8nae"]
+atlas = ExtResource("10_sbgsd")
+region = Rect2(128, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys36m"]
+atlas = ExtResource("10_sbgsd")
+region = Rect2(0, 128, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uus6d"]
+atlas = ExtResource("10_sbgsd")
+region = Rect2(128, 128, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jl6g"]
+atlas = ExtResource("10_sbgsd")
+region = Rect2(0, 192, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_342fx"]
+atlas = ExtResource("10_sbgsd")
+region = Rect2(128, 192, 128, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7qyh4"]
 animations = [{
 "frames": [{
@@ -571,6 +604,35 @@ animations = [{
 "loop": false,
 "name": &"thrust attack",
 "speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3gos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvsur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jggig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8nae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys36m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uus6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jl6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_342fx")
+}],
+"loop": true,
+"name": &"wallhang",
+"speed": 24.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw6ls"]
@@ -582,16 +644,29 @@ collision_layer = 4
 script = ExtResource("1_31vjx")
 idle_state = NodePath("stateMachine/idle")
 jump_state = NodePath("stateMachine/Jump")
-jumpStrength = 500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 sprite_frames = SubResource("SpriteFrames_7qyh4")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
+speed_scale = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1109189119]
-position = Vector2(0.7692308, 8.461539)
+position = Vector2(1.5, 8.4)
 shape = SubResource("RectangleShape2D_gw6ls")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=345588539]
+target_position = Vector2(14.615386, 0)
+collide_with_areas = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="." unique_id=734904822]
+target_position = Vector2(-1.5384617, 327.69235)
+collide_with_areas = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="." unique_id=922287770]
+target_position = Vector2(-1.5384617, 327.69235)
+collision_mask = 8
+collide_with_areas = true
 
 [node name="idleTime" type="Timer" parent="." unique_id=558329180]
 wait_time = 0.3
@@ -611,5 +686,6 @@ script = ExtResource("11_a2gdt")
 [node name="Jump" type="Node" parent="stateMachine" unique_id=1374765716]
 script = ExtResource("12_7ay4u")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="stateMachine/Jump" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="idleTime" to="stateMachine/idle" method="_on_idle_time_timeout"]
 [connection signal="timeout" from="JumpTimer" to="stateMachine/Jump" method="_on_jump_timer_timeout"]
