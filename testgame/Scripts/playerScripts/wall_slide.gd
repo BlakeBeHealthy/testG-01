@@ -12,7 +12,6 @@ var jumpC := false
 var fall := false
 
 func enter() -> void:
-	print("WALLSLIDE")
 	as2d.play("wallSlide")
 	parent.wallSlide = false
 	if !as2d.flip_h:
@@ -51,7 +50,6 @@ func process_frame(delta: float) -> State:
 			
 	elif !parent.wallslide_chest.is_colliding() or !parent.wallslide_legs.is_colliding(): 
 		if !parent.is_on_floor():
-			print("FALL")
 			parent.wallJump = true
 			return parent.fall_state
 		

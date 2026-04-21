@@ -14,7 +14,6 @@ class_name Fall
 var hit:= false
 
 func enter() -> void:
-	print("fall")
 	if !parent.jumpCheck or parent.wallJump:
 		cTime.start()
 	as2d.play("fall")

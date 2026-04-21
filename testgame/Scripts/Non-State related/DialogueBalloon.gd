@@ -15,8 +15,7 @@ var tween = null
 var dialogueResource: DialogueResource:
 	set(value):
 		if value == null:
-			print("SET TO NULL: ", get_stack())
-		dialogueResource = value
+			dialogueResource = value
 var dRec
 var check := false
 var responses_visible := false
@@ -46,7 +45,6 @@ var current_line: DialogueLine:
 			self.visible = false
 			check = false
 			currentSpeaker = ""
-			print(dialogueResource, "balls")
 			
 var speed = 0.05:
 	set(value):

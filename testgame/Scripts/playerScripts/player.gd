@@ -190,5 +190,4 @@ func _on_parry_inv_timeout() -> void:
 	a2d2.set_collision_layer_value(4, true)
 	
 func playAnim(anim: String):
-	print(anim)
 	as2d.play(anim)

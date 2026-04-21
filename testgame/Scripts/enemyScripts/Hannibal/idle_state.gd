@@ -20,7 +20,6 @@ func process_input(event: InputEvent) -> States:
 func process_frame(delta: float) -> States:
 	if idleOver:
 		idleOver = false
-		print("jump")
 		return parent.jump_state
 	
 	return null

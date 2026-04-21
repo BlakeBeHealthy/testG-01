@@ -647,7 +647,7 @@ jump_state = NodePath("stateMachine/Jump")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 sprite_frames = SubResource("SpriteFrames_7qyh4")
-animation = &"fall_attack"
+animation = &"fall_attack_land"
 autoplay = "idle"
 speed_scale = 0.8
 
@@ -666,6 +666,10 @@ collide_with_areas = true
 
 [node name="idleTime" type="Timer" parent="." unique_id=558329180]
 wait_time = 0.3
+one_shot = true
+
+[node name="fallAttackTimer" type="Timer" parent="." unique_id=389093554]
+wait_time = 0.97
 one_shot = true
 
 [node name="JumpTimer" type="Timer" parent="." unique_id=512089473]
