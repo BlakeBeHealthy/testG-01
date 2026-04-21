@@ -2232,4 +2232,4 @@ boss_room = true
 position = Vector2(500, 151)
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("5_4uik3")]
-position = Vector2(573, 65)
+position = Vector2(583, 135)

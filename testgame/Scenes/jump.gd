@@ -5,8 +5,10 @@ extends HannibalState
 
 var moveCheck: bool = false
 var landOver: bool = false
+var fallAttack: bool = false
 var GravityReduction: float = 0.2
-var forwardMomentum: float = 300
+var forwardMomentum: float = 21000
+var walljumpMomentum: float = 480
 
 func enter() -> void:
 	as2d.play("jump")
@@ -23,6 +25,9 @@ func process_input(event: InputEvent) -> States:
 func process_frame(delta: float) -> States:
 	if parent.wallDetection.is_colliding() and !parent.is_on_floor():
 		walljump()
+	
+	if parent.wallJump and parent.wallDetection.is_colliding():
+		parent.velocity.x = 0
 		
 	if landOver:
 		return parent.idle_state
@@ -30,15 +35,24 @@ func process_frame(delta: float) -> States:
 	
 func process_physics(delta: float) -> States:
 	if moveCheck:
-		parent.velocity.y = -parent.jumpStrength
-		parent.velocity.y = -parent.jumpStrength
+		if parent.wallJump:
+			parent.velocity.y = -walljumpMomentum
+		else:
+			parent.velocity.y = -parent.jumpStrength
 		moveCheck = false
 	elif !parent.wallDetection.is_colliding():
 		parent.velocity.y += gravity * delta
+	elif fallAttack:
+		parent.velocity.y += (gravity * 1.2) * delta
 	else:
 		parent.velocity.y += (gravity * 0.3) * delta
 	
-	parent.velocity.x = forwardMomentum * parent.direction
+	if fallAttack:
+		parent.velocity.x = 0
+	else:
+		parent.velocity.x = forwardMomentum * parent.direction * delta
+	
+	
 	parent.move_and_slide()
 	return null
 	
@@ -63,3 +77,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if as2d.animation != "fall_attack_land":
 		return
 	landOver = true
+	
+func fallAttacking() -> void:
+	fallAttack = true
+	as2d.play("fall_attack")
+	pass

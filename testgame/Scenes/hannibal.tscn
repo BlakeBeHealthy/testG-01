@@ -647,7 +647,7 @@ jump_state = NodePath("stateMachine/Jump")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 sprite_frames = SubResource("SpriteFrames_7qyh4")
-animation = &"idle"
+animation = &"fall_attack"
 autoplay = "idle"
 speed_scale = 0.8
 
@@ -659,12 +659,8 @@ shape = SubResource("RectangleShape2D_gw6ls")
 target_position = Vector2(14.615386, 0)
 collide_with_areas = true
 
-[node name="RayCast2D2" type="RayCast2D" parent="." unique_id=734904822]
-target_position = Vector2(-1.5384617, 327.69235)
-collide_with_areas = true
-
 [node name="RayCast2D3" type="RayCast2D" parent="." unique_id=922287770]
-target_position = Vector2(-1.5384617, 327.69235)
+target_position = Vector2(0, 327.69235)
 collision_mask = 8
 collide_with_areas = true
 
