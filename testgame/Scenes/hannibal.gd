@@ -4,6 +4,7 @@ class_name Hannibal extends CharacterBody2D
 @onready var state_machine: Node = $stateMachine
 @onready var wallDetection: RayCast2D = $RayCast2D
 @onready var c2d: CollisionShape2D = $CollisionShape2D
+@onready var player_detect: RayCast2D = $PlayerDetect
 
 @export var idle_state: HannibalState
 @export var jump_state: HannibalState

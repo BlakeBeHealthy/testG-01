@@ -6,7 +6,8 @@ extends HannibalState
 var moveCheck: bool = false
 var landOver: bool = false
 var fallAttack: bool = false
-var GravityReduction: float = 0.2
+var GravityReduction: float = 5
+var decayRate: float = 4000
 var forwardMomentum: float = 21000
 var walljumpMomentum: float = 480
 
@@ -26,8 +27,8 @@ func process_frame(delta: float) -> States:
 	if parent.wallDetection.is_colliding() and !parent.is_on_floor():
 		walljump()
 	
-	if parent.wallJump and parent.wallDetection.is_colliding():
-		parent.velocity.x = 0
+	if parent.wallJump and parent.player_detect.is_colliding():
+		fallAttacking()
 		
 	if landOver:
 		return parent.idle_state
@@ -40,10 +41,11 @@ func process_physics(delta: float) -> States:
 		else:
 			parent.velocity.y = -parent.jumpStrength
 		moveCheck = false
-	elif !parent.wallDetection.is_colliding():
+	elif !parent.wallDetection.is_colliding() and !fallAttack:
 		parent.velocity.y += gravity * delta
 	elif fallAttack:
-		parent.velocity.y += (gravity * 1.2) * delta
+		parent.velocity.y = move_toward(parent.velocity.y, abs(GravityReduction * gravity), decayRate * delta)
+		print(parent.velocity.y)
 	else:
 		parent.velocity.y += (gravity * 0.3) * delta
 	
@@ -62,7 +64,7 @@ func _on_jump_timer_timeout() -> void:
 func walljump():
 	if parent.wallJump:
 		return
-		
+	
 	parent.wallJump = true
 	as2d.play("wallhang")
 	await get_tree().create_timer(0.1).timeout
