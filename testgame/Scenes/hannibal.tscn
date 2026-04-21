@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cptl4vidwn8ur" path="res://assets/2d-soulslike-character/Hanging.png" id="10_sbgsd"]
 [ext_resource type="Script" uid="uid://c8xd4ymaw1xce" path="res://Scripts/enemyScripts/Hannibal/idle_state.gd" id="11_a2gdt"]
 [ext_resource type="Script" uid="uid://cfu33r1gsu0fn" path="res://Scenes/Hannibaljump.gd" id="12_7ay4u"]
+[ext_resource type="Script" uid="uid://dbc3f2c8iq722" path="res://Scenes/Hannibalchase.gd" id="14_ay62l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw6ls"]
 atlas = ExtResource("1_ajehy")
@@ -685,6 +686,9 @@ script = ExtResource("11_a2gdt")
 
 [node name="Jump" type="Node" parent="stateMachine" unique_id=1374765716]
 script = ExtResource("12_7ay4u")
+
+[node name="Chase" type="Node" parent="stateMachine" unique_id=51461180]
+script = ExtResource("14_ay62l")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="stateMachine/Jump" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="idleTime" to="stateMachine/idle" method="_on_idle_time_timeout"]

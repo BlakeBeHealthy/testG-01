@@ -9,6 +9,7 @@ class_name Hannibal extends CharacterBody2D
 @export var idle_state: HannibalState
 @export var jump_state: HannibalState
 @export var jumpStrength: float = 565
+@export var MovementSpeed: float = 250
 
 var direction: float = 1
 var wallJump: bool = false
