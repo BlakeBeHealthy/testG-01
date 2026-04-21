@@ -2221,7 +2221,7 @@ tile_set = SubResource("TileSet_4260o")
 
 [node name="Camera2D" parent="." unique_id=1391246105 instance=ExtResource("3_legnf")]
 position = Vector2(568, 56)
-zoom = Vector2(3.5, 3.5)
+zoom = Vector2(1.5, 1.5)
 limit_left = -667
 limit_top = -900
 limit_right = 1691
