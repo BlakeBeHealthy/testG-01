@@ -8,7 +8,6 @@ extends Area2D
 func _on_area_entered(area: Area2D) -> void:
 	if Global.cutsceneStarted:
 		return
-	
 	if !Global.get(Global_var_check):
 		Global.cutsceneStarted = true
 		if !Global.player.is_on_floor() and !airCutscene:
@@ -17,5 +16,7 @@ func _on_area_entered(area: Area2D) -> void:
 		if startingCutscene != "null":
 			Global.ap.play(startingCutscene)
 			await Global.ap.animation_finished
+		print("loading: ", dialogueFile)
+		print("loaded: ", load(dialogueFile))
 		Global.UI.balloon.start(load(dialogueFile), startingPoint)
 		 
