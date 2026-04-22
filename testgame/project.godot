@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://Scripts/Non-State related/Global.gd"
+Global="*res://Scripts/Global.gd"
 Gameplay="*uid://dlkk0jxasv1ej"
 FadeS="*uid://cp2sknxmo0rgv"
 SceneM="*uid://bwv8200wopb3b"
