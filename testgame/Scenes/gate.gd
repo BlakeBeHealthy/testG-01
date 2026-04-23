@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 
 @onready var as2d: AnimatedSprite2D = $as2d
 @onready var C2: CollisionShape2D = $CollisionShape2D
@@ -25,12 +25,10 @@ func _ready() -> void:
 		C2.position.x = 2
 		
 func playOpenClose() -> void:
-	print("DOOR")
 	open = !open
 	if !open:
 		as2d.play("Close")
 		C2.disabled = false
-		print(C2.disabled)
 	else:
 		as2d.play("Open")
 		C2.disabled = true

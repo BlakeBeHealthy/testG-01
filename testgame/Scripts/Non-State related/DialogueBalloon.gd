@@ -56,12 +56,9 @@ var currentSpeaker = ""
 # Called when the node enters the scene tree for the first time.
 	
 func start(resource: DialogueResource, title: String) -> void:
-	print(resource)
 	if resource != null:
 		dRec = resource
 	dialogueResource = resource
-	print(resource)
-	print(dialogueResource)
 	if dialogueResource == null:
 		dialogueResource = dRec
 	dialogue_ended = false
