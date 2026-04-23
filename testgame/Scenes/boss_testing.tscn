@@ -2238,7 +2238,6 @@ position = Vector2(583, 135)
 [node name="Gate" parent="." unique_id=1913223240 instance=ExtResource("6_legnf")]
 position = Vector2(787.00006, 151)
 scale = Vector2(2.6, 2.6)
-collision_mask = 1
 closed = true
 
 [node name="Gate2" parent="." unique_id=1346779683 instance=ExtResource("6_legnf")]

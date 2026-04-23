@@ -662,7 +662,8 @@ target_position = Vector2(14.615386, 0)
 collide_with_areas = true
 
 [node name="playerChaseDetect" type="RayCast2D" parent="." unique_id=1600923200]
-target_position = Vector2(16.153847, 0)
+position = Vector2(0, 7.6923084)
+target_position = Vector2(-12, 0)
 
 [node name="PlayerDetect" type="RayCast2D" parent="." unique_id=922287770]
 target_position = Vector2(0, 327.69235)
