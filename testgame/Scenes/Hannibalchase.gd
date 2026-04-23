@@ -19,6 +19,8 @@ func process_frame(delta: float) -> States:
 func process_physics(delta: float) -> States:
 	chaseDir = Global.player.position.x - parent.position.x
 	
+	if parent.player_chase_detect.is_colliding():
+		return parent.idle_state
 	if chaseDir > 5 and parent.direction == -1:
 		parent.flip_direction(1)
 	elif chaseDir < -5 and parent.direction == 1:
