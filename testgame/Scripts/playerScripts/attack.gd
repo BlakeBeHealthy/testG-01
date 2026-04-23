@@ -47,7 +47,8 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if parent.state_machine.current_state != parent.attack_state:
-		pass
+		return
+		
 	startKB = true
 	if !area.is_in_group("World") or !area.is_in_group("Spikes"):
 		apply_timeSlow(hit_timeStop, hit_duration)
