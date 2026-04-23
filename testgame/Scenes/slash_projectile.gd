@@ -1,8 +1,9 @@
 extends Area2D
 
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var c2d: CollisionShape2D = $CollisionShape2D
 @onready var a2d: Area2D = $"."
+@onready var c2d: CollisionShape2D = $CollisionShape2D
+
 
 @export var knockback_strength := 200
 @export var stun_time := 0.2
@@ -10,7 +11,7 @@ extends Area2D
 @export var duration := 0.2
 @export var camShakeStrength := 2
 @export var shakeDuration := 0.2
-@export var dmg := 0
+@export var dmg := 1
 
 var speed: float
 var direction: float
@@ -28,21 +29,18 @@ func _process(delta: float) -> void:
 	position.x += speed * direction * delta
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if as2d == null:
+	if as2d == null or as2d.animation != "hit":
 		return
-	
-	if as2d.animation != "blast":
-		pass
 		
-	if as2d.frame == 4:
+	if as2d.frame == 3:
 		as2d.visible = false
 		queue_free()
 
-func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player:
 		var player = area.get_parent()
 		if !player.invincible:
-			as2d.play("blast")
+			as2d.play("hit")
 			a2d.monitorable = false
 			a2d.monitoring = false
 			c2d.disabled = true

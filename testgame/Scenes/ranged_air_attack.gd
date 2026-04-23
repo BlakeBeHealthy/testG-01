@@ -1,5 +1,8 @@
 extends HannibalState
 
+
+@onready var slash_projectile = preload("uid://lbvmh8hgo4xg")
+
 func enter() -> void:
 	pass
 	

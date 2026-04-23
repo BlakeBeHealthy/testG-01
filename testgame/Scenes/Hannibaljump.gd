@@ -3,6 +3,7 @@ extends HannibalState
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var jump_timer: Timer = $"../../JumpTimer"
 @onready var fall_attack_timer: Timer = $"../../fallAttackTimer"
+@onready var slash_projectile = preload("uid://lbvmh8hgo4xg")
 
 var moveCheck: bool = false
 var landOver: bool = false
@@ -42,7 +43,9 @@ func process_frame(delta: float) -> States:
 		
 	if landOver:
 		landOver = false
-		return parent.chase_state
+		parent.idle_time = 1.0
+		parent.chase = true
+		return parent.idle_state
 	return null
 	
 func process_physics(delta: float) -> States:
@@ -97,6 +100,21 @@ func fallAttacking() -> void:
 	while !parent.is_on_floor():
 		await get_tree().process_frame
 	as2d.play("fall_attack_land")
+	var projectile : bool = true
+	if projectile:
+		var slash1 = slash_projectile.instantiate()
+		var slash2 = slash_projectile.instantiate()
+		print(slash1)
+		print(slash2)
+		slash1.direction = 1
+		slash2.direction = -1
+		slash1.global_position = parent.global_position + Vector2(5 * slash1.direction, 3)
+		slash2.global_position = parent.global_position + Vector2(5 * slash2.direction, 3)
+		slash1.speed = 300
+		slash2.speed = 300
+		add_child(slash1)
+		add_child(slash2)
+		projectile = false
 	await as2d.animation_finished
 	fallAttack = false
 	

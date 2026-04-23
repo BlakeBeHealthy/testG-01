@@ -19,6 +19,8 @@ var direction: float = 1
 var wallJump: bool = false
 var phase2: bool = false
 var leap: bool = false
+var chase: bool = false
+var idle_time: float = 0
 
 func _ready() -> void:
 	state_machine.init(self)
@@ -42,9 +44,9 @@ func flip_direction(dir: int = 0):
 		direction *= -1
 	wallDetection.target_position.x *= -1
 	if direction == 1:
-		player_chase_detect.target_position.x = 20
+		player_chase_detect.target_position.x = 40
 	elif direction == -1:
-		player_chase_detect.target_position.x = -19
+		player_chase_detect.target_position.x = -39
 	c2d.position.x *= -1
 	if as2d.flip_h:
 		as2d.flip_h = false

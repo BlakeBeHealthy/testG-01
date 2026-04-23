@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://lbvmh8hgo4xg"]
+
+[ext_resource type="Script" uid="uid://ckx0qyiddumvl" path="res://Scenes/slash_projectile.gd" id="1_6wep4"]
+[ext_resource type="Texture2D" uid="uid://bl5uywv0mpsy4" path="res://assets/DebtsInTheDepthsAssets/Effects/sprAttackSwing.png" id="1_08j8o"]
+[ext_resource type="Texture2D" uid="uid://d2b37pl6pq6hk" path="res://assets/DebtsInTheDepthsAssets/Effects/sprMagicExplosion.png" id="3_wu0ei"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wep4"]
+atlas = ExtResource("1_08j8o")
+region = Rect2(0, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu0ei"]
+atlas = ExtResource("1_08j8o")
+region = Rect2(10, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lumbl"]
+atlas = ExtResource("1_08j8o")
+region = Rect2(20, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk8yk"]
+atlas = ExtResource("3_wu0ei")
+region = Rect2(0, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnl5b"]
+atlas = ExtResource("3_wu0ei")
+region = Rect2(13, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdlee"]
+atlas = ExtResource("3_wu0ei")
+region = Rect2(26, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmusj"]
+atlas = ExtResource("3_wu0ei")
+region = Rect2(39, 0, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dnl5b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wep4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu0ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lumbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lumbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lumbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu0ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wep4")
+}],
+"loop": true,
+"name": &"Flying",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk8yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnl5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdlee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmusj")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fdlee"]
+radius = 5.0
+height = 20.0
+
+[node name="SlashProjectile" type="Area2D" unique_id=1969847125]
+scale = Vector2(2, 2)
+monitoring = false
+monitorable = false
+script = ExtResource("1_6wep4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=767097640]
+sprite_frames = SubResource("SpriteFrames_dnl5b")
+animation = &"hit"
+autoplay = "Flying"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1113614713]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_fdlee")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

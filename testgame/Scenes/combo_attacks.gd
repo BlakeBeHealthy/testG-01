@@ -9,6 +9,7 @@ var currentAttack = ""
 var dir : int = 0  
 var done: bool = false
 var attacking: bool = false
+var check: bool = false
 var attackDir: float = 0
 
 func enter() -> void:
@@ -37,12 +38,17 @@ func process_physics(delta: float) -> States:
 	attackDir = Global.player.position.x - parent.position.x
 		
 	if attacking:
-		print(knockbackStrength)
-		parent.velocity.x = dir * knockbackStrength
+		dir = parent.direction
+		parent.velocity.x += dir * knockbackStrength
 		attacking = false
+		check = true
+	elif check:
+		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
+		print(parent.velocity.x)
+		if parent.velocity.x == 0:
+			check = false
 	else:
-		var check = decayRate * delta
-		move_toward(parent.velocity.x, 0, decayRate * delta)
+		parent.velocity.x = 0
 		
 	if dir > 0 and parent.direction == -1:
 		parent.flip_direction(1)
@@ -61,14 +67,13 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation == "a1":
 		if as2d.frame == 3:
 			attacking = true
-			pass
 		if as2d.frame == 6:
 			dir = attackDir
 			as2d.play("a2")
 		
 	if as2d.animation == "a2":
 		if as2d.frame == 3:
-			pass
+			attacking = true
 		if as2d.frame == 5:
 			if parent.phase2:
 				dir = attackDir
