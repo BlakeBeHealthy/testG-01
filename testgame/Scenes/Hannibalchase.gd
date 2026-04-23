@@ -19,10 +19,12 @@ func process_frame(delta: float) -> States:
 func process_physics(delta: float) -> States:
 	chaseDir = Global.player.position.x - parent.position.x
 	
-	if chaseDir > 0 and parent.direction == -1:
+	if chaseDir > 5 and parent.direction == -1:
 		parent.flip_direction(1)
-	elif chaseDir < 0 and parent.direction == 1:
+	elif chaseDir < -5 and parent.direction == 1:
 		parent.flip_direction(-1)
+	elif chaseDir < 5 and chaseDir > -5:
+		return parent.jump_state
 	
 	parent.velocity.y += gravity * delta
 	parent.velocity.x = parent.direction * parent.MovementSpeed

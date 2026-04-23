@@ -40,7 +40,7 @@ func flip_direction(dir: int = 0):
 	if direction == 1:
 		player_chase_detect.target_position.x = 16
 	elif direction == -1:
-		player_chase_detect.target_position.x = -12
+		player_chase_detect.target_position.x = -15
 	c2d.position.x *= -1
 	if as2d.flip_h:
 		as2d.flip_h = false

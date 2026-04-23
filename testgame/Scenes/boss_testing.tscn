@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://djei3agw1frcl" path="res://Scenes/camera_2d.tscn" id="3_legnf"]
 [ext_resource type="PackedScene" uid="uid://gtrp252v63m4" path="res://Scenes/hannibal.tscn" id="4_fvkbi"]
 [ext_resource type="PackedScene" uid="uid://baje80lg3quet" path="res://Scenes/player.tscn" id="5_4uik3"]
-[ext_resource type="PackedScene" uid="uid://2csjtunoknkd" path="res://Scenes/gate.tscn" id="6_legnf"]
+[ext_resource type="PackedScene" path="res://Scenes/gate.tscn" id="6_legnf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4uik3"]
 texture = ExtResource("1_ogg1u")
