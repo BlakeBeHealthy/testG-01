@@ -8,6 +8,7 @@ class_name Hannibal extends CharacterBody2D
 
 @export var idle_state: HannibalState
 @export var jump_state: HannibalState
+@export var chase_state: HannibalState
 @export var jumpStrength: float = 565
 @export var MovementSpeed: float = 250
 
@@ -29,8 +30,11 @@ func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
 
-func flip_direction():
-	direction *= -1
+func flip_direction(dir: int = 0):
+	if dir != 0:
+		direction = dir
+	else:
+		direction *= -1
 	wallDetection.target_position.x *= -1
 	c2d.position.x *= -1
 	if as2d.flip_h:

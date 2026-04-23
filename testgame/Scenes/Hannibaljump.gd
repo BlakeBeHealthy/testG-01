@@ -42,7 +42,7 @@ func process_frame(delta: float) -> States:
 		
 	if landOver:
 		landOver = false
-		return parent.idle_state
+		return parent.chase_state
 	return null
 	
 func process_physics(delta: float) -> States:
