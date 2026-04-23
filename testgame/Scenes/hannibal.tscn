@@ -14,6 +14,28 @@
 [ext_resource type="Script" uid="uid://c8xd4ymaw1xce" path="res://Scripts/enemyScripts/Hannibal/idle_state.gd" id="11_a2gdt"]
 [ext_resource type="Script" uid="uid://cfu33r1gsu0fn" path="res://Scenes/Hannibaljump.gd" id="12_7ay4u"]
 [ext_resource type="Script" uid="uid://dbc3f2c8iq722" path="res://Scenes/Hannibalchase.gd" id="14_ay62l"]
+[ext_resource type="Script" uid="uid://bxyalfvwp13wb" path="res://Scenes/combo_attacks.gd" id="15_bv3fh"]
+[ext_resource type="Script" uid="uid://b1wdwqnkg8qky" path="res://Scenes/ranged_air_attack.gd" id="16_oh3dj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcl22"]
+atlas = ExtResource("5_31vjx")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtk5o"]
+atlas = ExtResource("5_31vjx")
+region = Rect2(384, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df5nq"]
+atlas = ExtResource("5_31vjx")
+region = Rect2(512, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwjjh"]
+atlas = ExtResource("5_31vjx")
+region = Rect2(640, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljkoi"]
+atlas = ExtResource("5_31vjx")
+region = Rect2(768, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw6ls"]
 atlas = ExtResource("1_ajehy")
@@ -118,38 +140,6 @@ region = Rect2(128, 0, 128, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ihcj"]
 atlas = ExtResource("3_hsc4d")
 region = Rect2(0, 64, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rcl22"]
-atlas = ExtResource("5_31vjx")
-region = Rect2(256, 0, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mtk5o"]
-atlas = ExtResource("5_31vjx")
-region = Rect2(384, 0, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_df5nq"]
-atlas = ExtResource("5_31vjx")
-region = Rect2(512, 0, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mwjjh"]
-atlas = ExtResource("5_31vjx")
-region = Rect2(640, 0, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ljkoi"]
-atlas = ExtResource("5_31vjx")
-region = Rect2(768, 0, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kxvmn"]
-atlas = ExtResource("5_31vjx")
-region = Rect2(896, 0, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c2xkm"]
-atlas = ExtResource("5_31vjx")
-region = Rect2(0, 64, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xqac4"]
-atlas = ExtResource("5_31vjx")
-region = Rect2(128, 64, 128, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8fug"]
 atlas = ExtResource("6_76tc5")
@@ -335,6 +325,51 @@ region = Rect2(128, 192, 128, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rcl22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtk5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df5nq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwjjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljkoi")
+}],
+"loop": false,
+"name": &"a1",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcl22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtk5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df5nq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwjjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljkoi")
+}],
+"loop": false,
+"name": &"a2",
+"speed": 16.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"a3",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_gw6ls")
 }, {
 "duration": 1.0,
@@ -435,35 +470,6 @@ animations = [{
 "loop": false,
 "name": &"jump",
 "speed": 24.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rcl22")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mtk5o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_df5nq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mwjjh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ljkoi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kxvmn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c2xkm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xqac4")
-}],
-"loop": false,
-"name": &"mini_combo",
-"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -649,7 +655,7 @@ chase_state = NodePath("stateMachine/Chase")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 sprite_frames = SubResource("SpriteFrames_7qyh4")
-animation = &"fall_attack_land"
+animation = &"a3"
 autoplay = "idle"
 speed_scale = 0.8
 
@@ -695,6 +701,12 @@ script = ExtResource("12_7ay4u")
 
 [node name="Chase" type="Node" parent="stateMachine" unique_id=51461180]
 script = ExtResource("14_ay62l")
+
+[node name="ComboAttacks" type="Node" parent="stateMachine" unique_id=2074203954]
+script = ExtResource("15_bv3fh")
+
+[node name="RangedAirattack" type="Node" parent="stateMachine" unique_id=629743747]
+script = ExtResource("16_oh3dj")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="stateMachine/Jump" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="idleTime" to="stateMachine/idle" method="_on_idle_time_timeout"]
