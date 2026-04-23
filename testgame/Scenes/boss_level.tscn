@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dsy3n6m6hmrab" path="res://assets/2d-soulslike-character/Slide.png" id="16_y76g8"]
 [ext_resource type="Texture2D" uid="uid://cqbh54l1dyhft" path="res://assets/2d-soulslike-character/Run.png" id="17_tim76"]
 [ext_resource type="PackedScene" uid="uid://c4sg8e1no24ay" path="res://Scenes/door.tscn" id="18_piehn"]
+[ext_resource type="PackedScene" uid="uid://2csjtunoknkd" path="res://Scenes/gate.tscn" id="20_jawqf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qshgi"]
 texture = ExtResource("1_d5ou2")
@@ -2624,6 +2625,20 @@ tracks/7/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 0, 1, 2]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Gate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.4333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"gateSignal"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_y55xa"]
 resource_name = "enterence"
@@ -3931,6 +3946,15 @@ limit_right = 1691
 limit_bottom = 462
 boss_room = true
 
+[node name="Gate" parent="." unique_id=1913223240 instance=ExtResource("20_jawqf")]
+position = Vector2(787.00006, 151)
+scale = Vector2(2.6, 2.6)
+
+[node name="Gate2" parent="." unique_id=1726901060 instance=ExtResource("20_jawqf")]
+position = Vector2(373.00003, 151)
+scale = Vector2(2.6, 2.6)
+fliph = true
+
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("3_1fajk")]
 visible = false
 position = Vector2(710, 166)
@@ -3974,7 +3998,7 @@ flip_h = true
 position = Vector2(0, 151)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_wktm6")
-animation = &"run"
+animation = &"heal"
 autoplay = "idle"
 
 [node name="BR1" parent="." unique_id=1940327310 instance=ExtResource("18_piehn")]

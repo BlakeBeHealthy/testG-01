@@ -721,7 +721,6 @@ speed_scale = 0.8
 flip_h = true
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
-visible = false
 visibility_layer = 2
 position = Vector2(1.0000002, 0.99999994)
 scale = Vector2(1.59, 1.274)
