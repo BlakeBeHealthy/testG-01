@@ -44,7 +44,8 @@ func process_frame(delta: float) -> States:
 			add_child(slash4)
 			add_child(slash5)
 			parent.playerAbove = false
-	elif as2d.animation_finished and !readyProjectiles:
+			readyProjectiles = false
+	if as2d.frame == 3:
 		parent.idle_time = 1.0
 		return parent.idle_state
 	return null
@@ -57,5 +58,5 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "fall_attack_land" and parent.state_machine.current_state != parent.airAttack_State:
 		return
 		
-	if as2d.frame == 1:
+	if as2d.frame == 1 and !readyProjectiles:
 		readyProjectiles = true

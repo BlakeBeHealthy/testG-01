@@ -20,6 +20,7 @@ var wallJump: bool = false
 var phase2: bool = false
 var leap: bool = false
 var chase: bool = false
+var jump2: int = 0
 var playerAbove: bool = false
 var idle_time: float = 0
 
