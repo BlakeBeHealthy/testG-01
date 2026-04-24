@@ -1,7 +1,7 @@
 extends HannibalState
 
-@onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var idle_time: Timer = $"../../idleTime"
+@onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
 var idleOver
 
@@ -26,6 +26,8 @@ func process_frame(delta: float) -> States:
 		if parent.chase:
 			parent.chase = false
 			return parent.chase_state
+		elif parent.playerAbove:
+			return parent.airAttack_State
 		else:
 			return parent.jump_state
 	
