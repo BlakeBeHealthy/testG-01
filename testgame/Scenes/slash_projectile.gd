@@ -13,8 +13,10 @@ extends Area2D
 @export var shakeDuration := 0.2
 @export var dmg := 1
 
-var speed: float
-var direction: float
+var speed: float = 300
+var direction: float = 0
+var y_direction: float = 0
+var rotate: float = 0
 
 func _ready() -> void:
 	pass
@@ -26,8 +28,9 @@ func _process(delta: float) -> void:
 	if direction <= 0:
 		as2d.flip_h = true
 		as2d.position.x = 1
+	rotation = rotate
 	position.x += speed * direction * delta
-	
+	position.y += speed * y_direction * delta
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d == null or as2d.animation != "hit":
 		return
