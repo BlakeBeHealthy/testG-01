@@ -1,6 +1,7 @@
 extends HannibalState
 
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+
 @export var knockbackStrength: float = 0
 @export var decayRate: float = 0
 
@@ -12,7 +13,6 @@ var check: bool = false
 var attackDir: float = 0
 
 func enter() -> void:
-	print(as2d)
 	dir = parent.direction
 	if parent.phase2 and parent.leap:
 		currentAttack = "a3"
@@ -20,7 +20,7 @@ func enter() -> void:
 		currentAttack = "a1"
 	
 	as2d.play(currentAttack)
-	print(as2d)
+	
 func exit() -> void:
 	pass
 
@@ -30,7 +30,6 @@ func process_input(event: InputEvent) -> States:
 func process_frame(delta: float) -> States:
 	if done:
 		done = false
-		parent.idle_time = 1.0
 		return parent.idle_state
 		
 	return null
@@ -62,7 +61,7 @@ func process_physics(delta: float) -> States:
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "a1" and as2d.animation != "a2" \
-		and as2d.animation != "a3":
+	and as2d.animation != "a3":
 		return
 		
 	if as2d.animation == "a1":

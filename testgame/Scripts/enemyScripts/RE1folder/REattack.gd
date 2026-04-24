@@ -65,7 +65,7 @@ func process_physics(delta: float) -> REnemyState:
 		elif !as2d.flip_h:
 			bullet_temp.direction = 1
 		bullet_temp.global_position = parent.global_position + Vector2(3 * bullet_temp.direction, 0)
-		bullet_temp.speed = 120
+		bullet_temp.speed = 100
 		add_child(bullet_temp)
 		bulletCheck = false
 	return null

@@ -43,7 +43,7 @@ func process_frame(delta: float) -> States:
 		
 	if landOver:
 		landOver = false
-		parent.idle_time = 1.4
+		parent.idle_time = 1.0
 		parent.chase = true
 		return parent.idle_state
 	return null
@@ -108,9 +108,10 @@ func fallAttacking() -> void:
 		print(slash2)
 		slash1.direction = 1
 		slash2.direction = -1
-		slash2.rotation = 60
 		slash1.global_position = parent.global_position + Vector2(5 * slash1.direction, 3)
 		slash2.global_position = parent.global_position + Vector2(5 * slash2.direction, 3)
+		slash1.speed = 300
+		slash2.speed = 300
 		add_child(slash1)
 		add_child(slash2)
 		projectile = false
