@@ -20,7 +20,6 @@ var wallJump: bool = false
 var phase2: bool = false
 var leap: bool = false
 var chase: bool = false
-var playerAbove: bool = false
 var idle_time: float = 0
 
 func _ready() -> void:
