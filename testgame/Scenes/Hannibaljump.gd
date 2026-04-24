@@ -104,11 +104,8 @@ func fallAttacking() -> void:
 	if projectile:
 		var slash1 = slash_projectile.instantiate()
 		var slash2 = slash_projectile.instantiate()
-		print(slash1)
-		print(slash2)
 		slash1.direction = 1
 		slash2.direction = -1
-		slash2.rotation = 60
 		slash1.global_position = parent.global_position + Vector2(5 * slash1.direction, 3)
 		slash2.global_position = parent.global_position + Vector2(5 * slash2.direction, 3)
 		add_child(slash1)
