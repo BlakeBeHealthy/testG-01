@@ -6,6 +6,8 @@ class_name Hannibal extends CharacterBody2D
 @onready var c2d: CollisionShape2D = $CollisionShape2D
 @onready var player_detect: RayCast2D = $PlayerDetect
 @onready var player_chase_detect: RayCast2D = $playerChaseDetect
+@onready var hannibal_ahh: Area2D = $hannibalAHH
+@onready var hurtbox: Area2D = $Hurtbox
 
 @export var idle_state: HannibalState
 @export var jump_state: HannibalState
@@ -18,8 +20,9 @@ class_name Hannibal extends CharacterBody2D
 var direction: float = 1
 var wallJump: bool = false
 var phase2: bool = false
-var leap: bool = false
+var lunge: bool = false
 var chase: bool = false
+var middleAttack: bool = false
 var jump2: int = 0
 var playerAbove: bool = false
 var idle_time: float = 0
@@ -46,8 +49,12 @@ func flip_direction(dir: int = 0):
 		direction *= -1
 	wallDetection.target_position.x *= -1
 	if direction == 1:
+		hurtbox.position.x = 2.3
+		hannibal_ahh.position.x = 1.5
 		player_chase_detect.target_position.x = 40
 	elif direction == -1:
+		hurtbox.position.x = -0.76
+		hannibal_ahh.position.x = -2.3
 		player_chase_detect.target_position.x = -39
 	c2d.position.x *= -1
 	if as2d.flip_h:

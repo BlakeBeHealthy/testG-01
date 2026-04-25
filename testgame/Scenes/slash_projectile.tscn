@@ -79,7 +79,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fdlee"]
-radius = 5.0
+radius = 4.0
 height = 20.0
 
 [node name="SlashProjectile" type="Area2D" unique_id=1969847125]

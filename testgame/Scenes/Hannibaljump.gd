@@ -43,7 +43,6 @@ func process_frame(delta: float) -> States:
 		
 	if landOver:
 		landOver = false
-		print(parent.jump2)
 		if parent.jump2 != 1:
 			parent.idle_time = 1.4
 			parent.jump2 += 1
@@ -101,10 +100,14 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	landOver = true
 	
 func fallAttacking() -> void:
+	parent.hannibal_ahh.position.y -= 13
+	parent.hurtbox.position.y -= 13
 	fallAttack = true
 	as2d.play("fall_attack")
 	while !parent.is_on_floor():
 		await get_tree().process_frame
+	parent.hannibal_ahh.position.y += 13
+	parent.hurtbox.position.y += 13
 	as2d.play("fall_attack_land")
 	var projectile : bool = true
 	if projectile:

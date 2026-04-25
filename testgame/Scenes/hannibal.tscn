@@ -412,9 +412,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tr7xx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_reo35")
 }],
 "loop": false,
 "name": &"a3",
@@ -582,6 +579,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_76tc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76tc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76tc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2gdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ay4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbgsd")
+}],
+"loop": false,
+"name": &"projectileAttack",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fhvdx")
 }, {
 "duration": 1.0,
@@ -674,6 +694,13 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bv3fh"]
+radius = 13.827588
+height = 41.50746
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oh3dj"]
+height = 43.076927
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw6ls"]
 size = Vector2(22, 47.307693)
 
@@ -689,9 +716,27 @@ airAttack_State = NodePath("stateMachine/RangedAirattack")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 sprite_frames = SubResource("SpriteFrames_7qyh4")
-animation = &"fall_attack_land"
+animation = &"pray_start"
 autoplay = "idle"
 speed_scale = 0.8
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=893686466]
+position = Vector2(2.307692, 9.230769)
+scale = Vector2(0.9457125, 1.1490058)
+collision_layer = 16
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1783221654]
+position = Vector2(-0.81, 2.008)
+shape = SubResource("CapsuleShape2D_bv3fh")
+
+[node name="hannibalAHH" type="Area2D" parent="." unique_id=535934480]
+position = Vector2(1.5, 10.769)
+collision_layer = 32
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hannibalAHH" unique_id=1931761795]
+shape = SubResource("CapsuleShape2D_oh3dj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1109189119]
 visible = false
@@ -704,9 +749,10 @@ target_position = Vector2(14.615386, 0)
 collide_with_areas = true
 
 [node name="playerChaseDetect" type="RayCast2D" parent="." unique_id=1600923200]
-position = Vector2(0, 7.6923084)
+visible = false
+position = Vector2(3.8461542, 7.6923075)
 target_position = Vector2(40.000004, -9.536743e-07)
-collision_mask = 3
+collision_mask = 2
 
 [node name="PlayerDetect" type="RayCast2D" parent="." unique_id=922287770]
 visible = false
@@ -743,6 +789,7 @@ script = ExtResource("14_ay62l")
 script = ExtResource("15_bv3fh")
 knockbackStrength = 500.0
 decayRate = 2000.0
+lungeSpeed = 500.0
 
 [node name="RangedAirattack" type="Node" parent="stateMachine" unique_id=629743747]
 script = ExtResource("16_oh3dj")

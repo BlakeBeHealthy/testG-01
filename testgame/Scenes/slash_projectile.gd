@@ -18,6 +18,7 @@ var direction: float = 0
 var y_direction: float = -1
 var rotate: float = 0
 var yChange: bool = false
+var x: bool = true
 
 func _ready() -> void:
 	pass
@@ -32,6 +33,9 @@ func _process(delta: float) -> void:
 	as2d.rotation_degrees = rotate
 	c2d.rotation_degrees = rotate
 	position.x += speed * direction * delta
+	if direction == 0 and x:
+		x = false
+		c2d.position.x += 2
 	if yChange:
 		position.y += speed * y_direction * delta
 func _on_animated_sprite_2d_frame_changed() -> void:

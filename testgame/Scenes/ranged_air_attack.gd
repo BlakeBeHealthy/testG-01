@@ -6,7 +6,7 @@ extends HannibalState
 var readyProjectiles: bool = false
 
 func enter() -> void:
-	as2d.play("fall_attack_land")
+	as2d.play("projectileAttack")
 	
 func exit() -> void:
 	pass
@@ -38,6 +38,39 @@ func process_frame(delta: float) -> States:
 			slash1.yChange = true
 			slash2.yChange = true
 			slash3.yChange = true
+			if parent.middleAttack:
+				parent.middleAttack = false
+				var slash6 = slash_projectile.instantiate()
+				var slash7 = slash_projectile.instantiate()
+				var slash8 = slash_projectile.instantiate()
+				var slash9 = slash_projectile.instantiate()
+				var slash10 = slash_projectile.instantiate()
+				slash6.rotate = 90
+				slash7.rotate = -45
+				slash8.rotate = 45
+				slash6.direction = 0
+				slash7.direction = 1
+				slash8.direction = -1
+				slash9.direction = 1
+				slash10.direction = -1
+				slash6.global_position = parent.global_position + Vector2(3 * slash6.direction, -3)
+				slash7.global_position = parent.global_position + Vector2(3 * slash7.direction, -3)
+				slash8.global_position = parent.global_position + Vector2(3 * slash8.direction, -3)
+				slash9.global_position = parent.global_position + Vector2(3 * slash9.direction, 3)
+				slash10.global_position = parent.global_position + Vector2(3 * slash10.direction, 3)
+				slash6.yChange = true
+				slash7.yChange = true
+				slash8.yChange = true
+				slash6.speed = 400
+				slash7.speed = 400
+				slash8.speed = 400
+				slash9.speed = 400
+				slash10.speed = 400
+				add_child(slash6)
+				add_child(slash7)
+				add_child(slash8)
+				add_child(slash9)
+				add_child(slash10)
 			add_child(slash1)
 			add_child(slash2)
 			add_child(slash3)
@@ -45,7 +78,7 @@ func process_frame(delta: float) -> States:
 			add_child(slash5)
 			parent.playerAbove = false
 			readyProjectiles = false
-	if as2d.frame == 3:
+	if as2d.frame == 5:
 		parent.idle_time = 1.0
 		return parent.idle_state
 	return null
@@ -55,8 +88,8 @@ func process_physics(delta: float) -> States:
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if as2d.animation != "fall_attack_land" and parent.state_machine.current_state != parent.airAttack_State:
+	if as2d.animation != "projectileAttack" and parent.state_machine.current_state != parent.airAttack_State:
 		return
 		
-	if as2d.frame == 1 and !readyProjectiles:
+	if as2d.frame == 3 and !readyProjectiles:
 		readyProjectiles = true

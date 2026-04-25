@@ -3,18 +3,22 @@ extends HannibalState
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @export var knockbackStrength: float = 0
 @export var decayRate: float = 0
+@export var lungeSpeed: float = 0
 
 var currentAttack = ""
 var dir : int = 0  
 var done: bool = false
 var attacking: bool = false
 var check: bool = false
+var lungeCheck: bool = false
 var attackDir: float = 0
 
 func enter() -> void:
 	dir = parent.direction
-	if parent.phase2 and parent.leap:
+	if parent.lunge:
 		currentAttack = "a3"
+		lungeCheck = true
+		parent.flip_direction()
 	else:
 		currentAttack = "a1"
 	
@@ -27,6 +31,13 @@ func process_input(event: InputEvent) -> States:
 
 func process_frame(delta: float) -> States:
 	if done:
+		if !lungeCheck:
+			parent.lunge = true
+			parent.chase = true
+		else:
+			parent.lunge = false
+			lungeCheck= false
+			parent.chase = false
 		done = false
 		parent.idle_time = 1.0
 		return parent.idle_state
@@ -45,13 +56,21 @@ func process_physics(delta: float) -> States:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
 		if parent.velocity.x == 0:
 			check = false
-	else:
+	elif !lungeCheck:
 		parent.velocity.x = 0
 		
-	if dir > 0 and parent.direction == -1:
-		parent.flip_direction(1)
-	elif dir < 0 and parent.direction == 1:
-		parent.flip_direction(-1)
+	if !lungeCheck:
+		if dir > 0 and parent.direction == -1:
+			parent.flip_direction(1)
+		elif dir < 0 and parent.direction == 1:
+			parent.flip_direction(-1)
+		
+	if parent.lunge and as2d.frame == 4 and as2d.animation == "a3":
+		parent.lunge = false
+		parent.velocity.x = parent.direction * lungeSpeed
+	elif parent.wallDetection.is_colliding() and as2d.animation == "a3" and as2d.frame > 2:
+		parent.idle_time = 1.2
+		done = true
 		
 	parent.move_and_slide()
 	return null
@@ -80,9 +99,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 				done = true
 			
 	if as2d.animation == "a3":
-		if parent.leap and as2d.frame == 4:
-			pass
 		if as2d.frame == 4:
 			pass
 		elif as2d.frame == 8:
-			done = true
+			pass
