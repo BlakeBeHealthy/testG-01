@@ -12,7 +12,6 @@ var check: bool = false
 var attackDir: float = 0
 
 func enter() -> void:
-	print(as2d)
 	dir = parent.direction
 	if parent.phase2 and parent.leap:
 		currentAttack = "a3"
@@ -20,7 +19,6 @@ func enter() -> void:
 		currentAttack = "a1"
 	
 	as2d.play(currentAttack)
-	print(as2d)
 func exit() -> void:
 	pass
 
@@ -45,7 +43,6 @@ func process_physics(delta: float) -> States:
 		check = true
 	elif check:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
-		print(parent.velocity.x)
 		if parent.velocity.x == 0:
 			check = false
 	else:

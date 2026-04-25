@@ -43,13 +43,14 @@ func process_frame(delta: float) -> States:
 		
 	if landOver:
 		landOver = false
+		print(parent.jump2)
 		if parent.jump2 != 1:
 			parent.idle_time = 1.4
 			parent.jump2 += 1
 			parent.chase = true
 		elif parent.jump2 == 1:
 			parent.idle_time = 1.0
-			parent.jump2 = 0
+			parent.jump2 = -1
 		return parent.idle_state
 	return null
 	
