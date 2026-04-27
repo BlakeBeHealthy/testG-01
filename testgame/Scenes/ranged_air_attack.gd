@@ -71,6 +71,9 @@ func process_frame(delta: float) -> States:
 				add_child(slash8)
 				add_child(slash9)
 				add_child(slash10)
+			else:
+				parent.lunge = true
+				parent.chase = true
 			add_child(slash1)
 			add_child(slash2)
 			add_child(slash3)

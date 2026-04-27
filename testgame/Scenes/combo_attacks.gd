@@ -31,12 +31,8 @@ func process_input(event: InputEvent) -> States:
 
 func process_frame(delta: float) -> States:
 	if done:
-		if !lungeCheck:
-			parent.lunge = true
-			parent.chase = true
-		else:
+		if lungeCheck:
 			parent.lunge = false
-			lungeCheck= false
 			parent.chase = false
 		done = false
 		parent.idle_time = 1.0
