@@ -8,6 +8,7 @@ class_name Hannibal extends CharacterBody2D
 @onready var player_chase_detect: RayCast2D = $playerChaseDetect
 @onready var hannibal_ahh: Area2D = $hannibalAHH
 @onready var hurtbox: Area2D = $Hurtbox
+@onready var hitbox: Area2D = $hitbox
 
 @export var idle_state: HannibalState
 @export var jump_state: HannibalState

@@ -34,6 +34,7 @@ func process_frame(delta: float) -> States:
 		if lungeCheck:
 			parent.lunge = false
 			parent.chase = false
+			lungeCheck = false
 		done = false
 		parent.idle_time = 1.0
 		return parent.idle_state
@@ -79,15 +80,29 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		
 	if as2d.animation == "a1":
 		if as2d.frame == 3:
+			parent.hitbox.position = Vector2(18.4, 6.9) * Vector2(parent.direction, 1)
+			parent.hitbox.scale = Vector2(1.5, 1.1)
+			parent.hitbox.monitorable = true
+			parent.hitbox.monitoring = true
 			attacking = true
 		if as2d.frame == 6:
+			parent.hitbox.monitorable = false
+			parent.hitbox.monitoring = false
 			dir = attackDir
 			as2d.play("a2")
 		
 	if as2d.animation == "a2":
 		if as2d.frame == 3:
+			if parent.direction == 1:
+				parent.hitbox.position.x = 18.4
+			elif parent.direction == -1:
+				parent.hitbox.position.x = -18.4
 			attacking = true
+			parent.hitbox.monitorable = true
+			parent.hitbox.monitoring = true
 		if as2d.frame == 5:
+			parent.hitbox.monitorable = false
+			parent.hitbox.monitoring = false
 			if parent.phase2:
 				dir = attackDir
 				as2d.play("a3")
@@ -96,6 +111,10 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 			
 	if as2d.animation == "a3":
 		if as2d.frame == 4:
-			pass
+			parent.hitbox.position = Vector2(24, 6) * Vector2(parent.direction, 1)
+			parent.hitbox.scale = Vector2(2, 0.2)
+			parent.hitbox.monitorable = true
+			parent.hitbox.monitoring = true
 		elif as2d.frame == 8:
-			pass
+			parent.hitbox.monitorable = false
+			parent.hitbox.monitoring = false

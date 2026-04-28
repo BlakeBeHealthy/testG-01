@@ -694,6 +694,8 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0ijq"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bv3fh"]
 radius = 13.827588
 height = 41.50746
@@ -716,9 +718,18 @@ airAttack_State = NodePath("stateMachine/RangedAirattack")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 sprite_frames = SubResource("SpriteFrames_7qyh4")
-animation = &"pray_start"
+animation = &"a2"
 autoplay = "idle"
 speed_scale = 0.8
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1084309487]
+position = Vector2(18.4, 6.9)
+scale = Vector2(1.5, 1.1)
+collision_layer = 32
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1913717701]
+shape = SubResource("CapsuleShape2D_s0ijq")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=893686466]
 position = Vector2(2.307692, 9.230769)
