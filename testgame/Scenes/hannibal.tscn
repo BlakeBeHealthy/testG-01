@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7b1f2xhl4wma" path="res://assets/2d-soulslike-character/attack_from_air.png" id="1_ajehy"]
 [ext_resource type="Texture2D" uid="uid://d2p0csi721ine" path="res://assets/2d-soulslike-character/Idle.png" id="2_2mff0"]
 [ext_resource type="Texture2D" uid="uid://bay80npkcp836" path="res://assets/2d-soulslike-character/Health.png" id="2_gw6ls"]
+[ext_resource type="Shader" uid="uid://bso3jsws5lrsh" path="res://Scenes/hit_flash.gdshader" id="2_oh3dj"]
 [ext_resource type="Texture2D" uid="uid://bou5vea82gl7j" path="res://assets/2d-soulslike-character/Jump.png" id="3_hsc4d"]
 [ext_resource type="Texture2D" uid="uid://cqbh54l1dyhft" path="res://assets/2d-soulslike-character/Run.png" id="4_mkmx3"]
 [ext_resource type="Texture2D" uid="uid://rkxbpyj1igf7" path="res://assets/2d-soulslike-character/Attacks.png" id="5_31vjx"]
@@ -16,6 +17,10 @@
 [ext_resource type="Script" uid="uid://dbc3f2c8iq722" path="res://Scenes/Hannibalchase.gd" id="14_ay62l"]
 [ext_resource type="Script" uid="uid://bxyalfvwp13wb" path="res://Scenes/combo_attacks.gd" id="15_bv3fh"]
 [ext_resource type="Script" uid="uid://b1wdwqnkg8qky" path="res://Scenes/ranged_air_attack.gd" id="16_oh3dj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0ijq"]
+shader = ExtResource("2_oh3dj")
+shader_parameter/flash_strength = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcl22"]
 atlas = ExtResource("5_31vjx")
@@ -715,8 +720,11 @@ jump_state = NodePath("stateMachine/Jump")
 chase_state = NodePath("stateMachine/Chase")
 attack_state = NodePath("stateMachine/ComboAttacks")
 airAttack_State = NodePath("stateMachine/RangedAirattack")
+timeStop = 0.001
+shakeDuration = 0.9
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
+material = SubResource("ShaderMaterial_s0ijq")
 sprite_frames = SubResource("SpriteFrames_7qyh4")
 animation = &"a3"
 autoplay = "idle"
@@ -794,6 +802,8 @@ script = ExtResource("11_a2gdt")
 
 [node name="Jump" type="Node" parent="stateMachine" unique_id=1374765716]
 script = ExtResource("12_7ay4u")
+camShake = 7.0
+shakeDur = 0.25
 
 [node name="Chase" type="Node" parent="stateMachine" unique_id=51461180]
 script = ExtResource("14_ay62l")
@@ -810,5 +820,8 @@ script = ExtResource("16_oh3dj")
 [connection signal="animation_finished" from="AnimatedSprite2D" to="stateMachine/Jump" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="stateMachine/ComboAttacks" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="stateMachine/RangedAirattack" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="area_shape_entered" from="hitbox" to="." method="_on_hitbox_area_shape_entered"]
+[connection signal="area_shape_entered" from="Hurtbox" to="." method="_on_hurtbox_area_shape_entered"]
+[connection signal="area_shape_entered" from="hannibalAHH" to="." method="_on_hannibal_ahh_area_shape_entered"]
 [connection signal="timeout" from="idleTime" to="stateMachine/idle" method="_on_idle_time_timeout"]
 [connection signal="timeout" from="JumpTimer" to="stateMachine/Jump" method="_on_jump_timer_timeout"]

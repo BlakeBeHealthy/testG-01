@@ -17,6 +17,13 @@ class_name Hannibal extends CharacterBody2D
 @export var airAttack_State: HannibalState
 @export var jumpStrength: float = 565
 @export var MovementSpeed: float = 250
+@export var knockback_strength := 200
+@export var stun_time := 0.2
+@export var timeStop := 0.0
+@export var duration := 0.2
+@export var camShakeStrength := 2
+@export var shakeDuration := 0.2
+@export var dmg := 0
 
 var direction: float = 1
 var wallJump: bool = false
@@ -25,7 +32,9 @@ var lunge: bool = false
 var chase: bool = false
 var middleAttack: bool = false
 var jump2: int = 0
+var healthCount: int = 50
 var playerAbove: bool = false
+var flashing: bool = false
 var idle_time: float = 0
 
 func _ready() -> void:
@@ -41,10 +50,6 @@ func _physics_process(delta: float) -> void:
 		
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-	if hitbox.monitorable:
-		print("ON")
-	else:
-		print("OFF")
 
 
 func flip_direction(dir: int = 0):
@@ -66,3 +71,37 @@ func flip_direction(dir: int = 0):
 		as2d.flip_h = false
 	else:
 		as2d.flip_h = true
+
+func hit():
+	Global.player.hit(
+				dmg,
+				sign(Global.player.global_position.x - global_position.x),
+				knockback_strength,
+				stun_time,
+				timeStop,
+				duration,
+				camShakeStrength,
+				shakeDuration
+			)
+func flash_white():
+	print("flashing")
+	if flashing:
+		return
+	if healthCount <= 0:
+		return
+		
+	flashing = true
+	var mat := as2d.material as ShaderMaterial
+	mat.set_shader_parameter("flash_strength", 1.0)
+	await get_tree().create_timer(0.04).timeout
+	mat.set_shader_parameter("flash_strength", 0.0)
+	flashing = false
+
+func _on_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	hit()
+func _on_hannibal_ahh_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	hit()
+	
+func _on_hurtbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	print("hittt")
+	flash_white()

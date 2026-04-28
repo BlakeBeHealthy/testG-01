@@ -5,6 +5,9 @@ extends HannibalState
 @onready var fall_attack_timer: Timer = $"../../fallAttackTimer"
 @onready var slash_projectile = preload("uid://lbvmh8hgo4xg")
 
+@export var camShake: float = 0
+@export var shakeDur: float = 0
+
 var moveCheck: bool = false
 var landOver: bool = false
 var fallAttack: bool = false
@@ -115,6 +118,7 @@ func fallAttacking() -> void:
 	parent.hannibal_ahh.position.y += 13
 	parent.hurtbox.position.y += 13
 	as2d.play("fall_attack_land")
+	Global.get_camera().start_shake(camShake, shakeDur)
 	var projectile : bool = true
 	if projectile:
 		var slash1 = slash_projectile.instantiate()
