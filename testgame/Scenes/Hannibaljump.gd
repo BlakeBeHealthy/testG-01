@@ -102,10 +102,16 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func fallAttacking() -> void:
 	parent.hannibal_ahh.position.y -= 13
 	parent.hurtbox.position.y -= 13
+	parent.hitbox.position = Vector2(3.0, 13.8)
+	parent.hitbox.scale = Vector2(0.4, 0.6)
+	parent.hitbox.monitorable = true
+	parent.hitbox.monitoring = true
 	fallAttack = true
 	as2d.play("fall_attack")
 	while !parent.is_on_floor():
 		await get_tree().process_frame
+	parent.hitbox.monitorable = false
+	parent.hitbox.monitoring = false
 	parent.hannibal_ahh.position.y += 13
 	parent.hurtbox.position.y += 13
 	as2d.play("fall_attack_land")

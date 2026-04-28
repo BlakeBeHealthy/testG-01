@@ -66,6 +66,8 @@ func process_physics(delta: float) -> States:
 		parent.lunge = false
 		parent.velocity.x = parent.direction * lungeSpeed
 	elif parent.wallDetection.is_colliding() and as2d.animation == "a3" and as2d.frame > 2:
+		parent.hitbox.monitorable = false
+		parent.hitbox.monitoring = false
 		parent.idle_time = 1.2
 		done = true
 		
@@ -115,6 +117,6 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 			parent.hitbox.scale = Vector2(2, 0.2)
 			parent.hitbox.monitorable = true
 			parent.hitbox.monitoring = true
-		elif as2d.frame == 8:
+		elif as2d.frame == 8 and !lungeCheck:
 			parent.hitbox.monitorable = false
 			parent.hitbox.monitoring = false

@@ -41,6 +41,10 @@ func _physics_process(delta: float) -> void:
 		
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
+	if hitbox.monitorable:
+		print("ON")
+	else:
+		print("OFF")
 
 
 func flip_direction(dir: int = 0):
