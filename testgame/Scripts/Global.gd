@@ -6,6 +6,7 @@ var debug_cutscene: String = ""
 var debug_mode: bool = false
 var knight_dead: bool = false
 var cutsceneStarted: bool = false
+var cutsceneMode: bool = false
 var player: CharacterBody2D
 var camera: Camera2D
 var UI: CanvasLayer

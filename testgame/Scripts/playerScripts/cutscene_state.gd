@@ -58,7 +58,7 @@ func process_frame(delta: float) -> State:
 			parent.camLook = false
 			done = true
 		
-	if done:
+	if done and !Global.cutsceneStarted:
 		started = false
 		done = false
 		return parent.idle_state
