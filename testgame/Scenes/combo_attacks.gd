@@ -1,0 +1,122 @@
+extends HannibalState
+
+@onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@export var knockbackStrength: float = 0
+@export var decayRate: float = 0
+@export var lungeSpeed: float = 0
+
+var currentAttack = ""
+var dir : int = 0  
+var done: bool = false
+var attacking: bool = false
+var check: bool = false
+var lungeCheck: bool = false
+var attackDir: float = 0
+
+func enter() -> void:
+	dir = parent.direction
+	if parent.lunge:
+		currentAttack = "a3"
+		lungeCheck = true
+		parent.flip_direction()
+	else:
+		currentAttack = "a1"
+	
+	as2d.play(currentAttack)
+func exit() -> void:
+	pass
+
+func process_input(event: InputEvent) -> States:
+	return null
+
+func process_frame(delta: float) -> States:
+	if done:
+		if lungeCheck:
+			parent.lunge = false
+			parent.chase = false
+			lungeCheck = false
+		done = false
+		parent.idle_time = 1.0
+		return parent.idle_state
+		
+	return null
+
+func process_physics(delta: float) -> States:
+	attackDir = Global.player.position.x - parent.position.x
+		
+	if attacking:
+		dir = parent.direction
+		parent.velocity.x += dir * knockbackStrength
+		attacking = false
+		check = true
+	elif check:
+		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
+		if parent.velocity.x == 0:
+			check = false
+	elif !lungeCheck:
+		parent.velocity.x = 0
+		
+	if !lungeCheck:
+		if dir > 0 and parent.direction == -1:
+			parent.flip_direction(1)
+		elif dir < 0 and parent.direction == 1:
+			parent.flip_direction(-1)
+		
+	if parent.lunge and as2d.frame == 4 and as2d.animation == "a3":
+		parent.lunge = false
+		parent.velocity.x = parent.direction * lungeSpeed
+	elif parent.wallDetection.is_colliding() and as2d.animation == "a3" and as2d.frame > 2:
+		parent.hitbox.monitorable = false
+		parent.hitbox.monitoring = false
+		parent.idle_time = 1.2
+		done = true
+		
+	parent.move_and_slide()
+	return null
+
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if as2d.animation != "a1" and as2d.animation != "a2" \
+		and as2d.animation != "a3":
+		return
+		
+	if as2d.animation == "a1":
+		if as2d.frame == 3:
+			parent.hitbox.position = Vector2(18.4, 6.9) * Vector2(parent.direction, 1)
+			parent.hitbox.scale = Vector2(1.5, 1.1)
+			parent.hitbox.monitorable = true
+			parent.hitbox.monitoring = true
+			attacking = true
+		if as2d.frame == 6:
+			parent.hitbox.monitorable = false
+			parent.hitbox.monitoring = false
+			dir = attackDir
+			as2d.play("a2")
+		
+	if as2d.animation == "a2":
+		if as2d.frame == 3:
+			if parent.direction == 1:
+				parent.hitbox.position.x = 18.4
+			elif parent.direction == -1:
+				parent.hitbox.position.x = -18.4
+			attacking = true
+			parent.hitbox.monitorable = true
+			parent.hitbox.monitoring = true
+		if as2d.frame == 5:
+			parent.hitbox.monitorable = false
+			parent.hitbox.monitoring = false
+			if parent.phase2:
+				dir = attackDir
+				as2d.play("a3")
+			else:
+				done = true
+			
+	if as2d.animation == "a3":
+		if as2d.frame == 4:
+			parent.hitbox.position = Vector2(24, 6) * Vector2(parent.direction, 1)
+			parent.hitbox.scale = Vector2(2, 0.2)
+			parent.hitbox.monitorable = true
+			parent.hitbox.monitoring = true
+		elif as2d.frame == 8 and !lungeCheck:
+			parent.hitbox.monitorable = false
+			parent.hitbox.monitoring = false

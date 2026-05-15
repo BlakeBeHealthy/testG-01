@@ -9,8 +9,8 @@ class_name REnemy
 @export var patrol_state: REnemyState
 @export var chase_state: REnemyState
 var spawn_position: Vector2
-@export var Lbound := -300
-@export var Rbound := 10
+@export var Lbound := -99999999
+@export var Rbound := 99999999
 
 func _ready() -> void:
 	spawn_position = global_position

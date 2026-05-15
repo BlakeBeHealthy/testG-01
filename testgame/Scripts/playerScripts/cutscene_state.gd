@@ -17,7 +17,7 @@ func enter() -> void:
 		
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
-	elif parent.current_interactable is BetaNPC:
+	elif parent.current_interactable is BetaNPC or Global.cutsceneStarted:
 		speaking = true
 	else:
 		parent.camLook = true
@@ -58,7 +58,7 @@ func process_frame(delta: float) -> State:
 			parent.camLook = false
 			done = true
 		
-	if done:
+	if done and !Global.cutsceneStarted:
 		started = false
 		done = false
 		return parent.idle_state

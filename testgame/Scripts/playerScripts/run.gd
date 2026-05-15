@@ -15,6 +15,7 @@ var hit := false
 
 func enter() -> void:
 	as2d.play("run")
+	a2d2.position.y = 9
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
@@ -47,17 +48,28 @@ func process_physics(delta: float) -> State:
 	
 	if direction > 0:
 		parent.flip_direction(1)
+		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
+		parent.wallslide_chest.position.x = -2
+		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
+		parent.wallslide_legs.position.x = -2
+		a2d2.position.x = 5 * direction
 		a2d.position.x = 18
 		facingR = true
 	elif direction < 0:
 		parent.flip_direction(-1)
+		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
+		parent.wallslide_chest.position.x = -0
+		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
+		parent.wallslide_legs.position.x = -0
+		a2d2.position.x = 5 * direction
 		a2d.position.x = -18
 		facingR = false
 		
 	parent.velocity.x = parent.direction * move_speed
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
-	
+	if parent.dash:
+		return parent.dash_state
 	if !parent.is_on_floor() and parent.velocity.y > 0:
 		return parent.fall_state
 	if direction == 0:

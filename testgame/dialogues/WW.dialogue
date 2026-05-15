@@ -1,0 +1,75 @@
+~ start
+if Gameplay.Rain == true
+	=> st2
+
+Rain: That chest over there is weird...
+- Does it give good loot?
+	P: Does it give good loot? I'm starving for some collectables
+	Rain: It doesn't give any loot it just... 
+- It's not a mimic right?
+	P: It's not a mimic right? There are way too many of those
+	Rain: No it's weird its like...
+Rain: People interact with it and then if they die they just appear right here...
+Rain: ...
+Rain: Its a checkpoint and it fills your health.
+set Gameplay.Rain = true
+=> END
+
+~ st2
+Rain: Interact with it, is it that hard?
+P: You need an attitude pill
+=> END
+
+~ s2
+if Gameplay.Knight == true:
+	=> s22
+
+Cpt Wright: My sword is missing!
+- ...Maybe check your hilt?
+	P: ...Maybe check your hilt? Just a thought?
+	Cpt Wright: No I stole this blade.
+	Cpt Wright: I stole it from an old woman's house. She almost didn't see it coming. But I got caught
+	Cpt Wright: Turns out she has dementia, so I convinced her I was her grandson.
+	Cpt Wright: Left with a sword, gold in my pocket and mead in the belly. God is good.
+	set Gameplay.Knightgrandma = true
+- Dude. I saw a witch named Rain who had it.
+	P: Dude. A witch north of here is using it right now.
+	Cpt Wright: You are a blessing.
+	Cpt Wright: When I finish flexing in the sun, I will take it from her.
+	P: We are in a cave, there is no sun.
+	Cpt Wright: When your future is as bright as mine you don't need a sun
+	Cpt Wright: You just need hard work and steroids.
+set GameplayKnight = true
+=> END
+
+~ s22
+Cpt Wright: You still need something? I don't do autographs, or lighthouses...but that is a different story
+P: I'll just leave
+=> END
+
+~ s3
+if Gameplay.DJ == true:
+	=> s33
+Jimmy: Welcome friend
+- Hello...
+	P: Hello...Who are you?
+	Jimmy: I go by many names, but you may call me Jimmy.
+- What are you doing out here?
+	P: What are you doing out here? Meditating?
+	Jimmy: Waiting for you my friend.
+Jimmy: I'm delighted you are finally here.
+P: Why?
+Jimmy: It's time I teach you to fly.
+P: ...
+P: I didn't see any shrooms on the way here...was that your doing?
+Jimmy: Very funny, no my friend. You will be able to pivot while in the air. 
+P: Yeahhh so look I'm just trying to explo-
+Jimmy: *mutters a spell to himself*
+Jimmy: There you go, give it a shot. Press space while in the air.
+set Gameplay.DJ = true
+=> END
+
+~ s33
+Jimmy: Hello again friend, you just need to press space while in the air, your fly resets after you touch ground
+P: I'm honestly suprised what you did worked.
+=> END

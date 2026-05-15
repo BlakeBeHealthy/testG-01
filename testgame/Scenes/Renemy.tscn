@@ -348,6 +348,10 @@ shape = SubResource("CapsuleShape2D_6nvau")
 target_position = Vector2(160, 0)
 collision_mask = 2
 
+[node name="wallRay" type="RayCast2D" parent="." unique_id=1406300737]
+target_position = Vector2(32, 0)
+collision_mask = 3
+
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=193367515]
 target_position = Vector2(19, 25)
 

@@ -6,6 +6,7 @@ extends State
 @onready var a2d: Area2D = $"../../Area2D"
 @onready var ComboTime: Timer = $"../../Timer"
 @onready var attack_delay: Timer = $"../../attackDelay"
+@onready var attack_2_buff: Timer = $"../../attack2buff"
 
 @export var hit_timeStop: float
 @export var hit_duration: float
@@ -25,8 +26,9 @@ var jumpBuff := false
 var attackDir := 0
 
 func enter() -> void:
+	attack_2_buff.stop()
 	as2d.play("parryAtt")
-	attack_delay.start()
+	parent.attack_delay.start()
 	if parent.parried:
 		parent.parried = false
 	attackDir = Input.get_axis("runL", "runR")
@@ -57,13 +59,17 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 	apply_timeSlow(hit_timeStop, hit_duration)
 
 func exit() -> void:
-	checkHit = true
+	if checkHit:
+		checkHit = false
 	a2d.monitorable = false
 	a2d.monitoring = false
 	attackDir = 0
 	KB = false
 	
 func process_input(event: InputEvent) -> State:
+	if checkAttack:
+		if Input.is_action_just_pressed("leftC"):
+			checkHit = true
 	return null
 # Decide state when attack animation ends
 func process_frame(delta: float) -> State:
@@ -74,6 +80,10 @@ func process_frame(delta: float) -> State:
 	if !as2d.is_playing() and !KB and !timeSlow:
 		if parent.parryCheck:
 			return parent.parry_state
+		elif parent.attackCheck or checkHit:
+			return parent.att2_state
+		if parent.dash:
+			return parent.dash_state
 		if parent.is_on_floor():
 			if Input.is_action_pressed("jump"):
 				jumpBuff = 0
@@ -103,6 +113,10 @@ func process_physics(delta: float) -> State:
 	else:
 		if direction != 0:
 			parent.velocity.x = direction * move_speed
+			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
+			parent.wallslide_chest.position.x = 3.7 * direction
+			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
+			parent.wallslide_legs.position.x = 3.7 * direction
 		elif direction == 0:
 			parent.velocity.x *= 0
 			
@@ -126,3 +140,7 @@ func apply_timeSlow(timeScale: float, duration: float) -> void:
 	await get_tree().create_timer(duration, false, false, true).timeout
 	Engine.time_scale = 1.0
 	timeSlow = false
+
+
+func _on_attack_2_buff_timeout() -> void:
+	checkAttack = true

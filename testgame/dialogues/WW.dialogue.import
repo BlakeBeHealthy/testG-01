@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ccar0l18jx2oj"
+path="res://.godot/imported/WW.dialogue-358b8059789f3ebc61c56ba952adaf1f.tres"
+
+[deps]
+
+source_file="res://dialogues/WW.dialogue"
+dest_files=["res://.godot/imported/WW.dialogue-358b8059789f3ebc61c56ba952adaf1f.tres"]
+
+[params]
+
+defaults=true

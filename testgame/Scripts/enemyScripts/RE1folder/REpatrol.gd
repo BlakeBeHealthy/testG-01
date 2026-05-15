@@ -8,6 +8,7 @@ extends REnemyState
 @onready var abox: Area2D = $"../../Attackbox"
 @onready var flash_mat := as2d.material as ShaderMaterial
 @onready var hitCheck: Timer = $"../../hitCheck"
+@onready var wall_ray: RayCast2D = $"../../wallRay"
 
 @export var pauseTime := 0.4
 
@@ -15,6 +16,7 @@ var direction: int = -1
 var pausing := false  
 var dead := false
 var justOpen:= true
+var wallCheck := true
 var flashing := false
 var hitboxOffX: float
 
@@ -50,6 +52,13 @@ func process_frame(delta: float) -> REnemyState:
 		var player_x = collider.global_position.x
 		if player_x >= parent.Lbound and player_x <= parent.Rbound:
 			return parent.chase_state
+			
+	var wall = wall_ray.get_collider()
+	if wall and !(wall is Player):
+		wallCheck = true
+	else:
+		wallCheck = false
+		
 	return null
 		
 func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
@@ -57,7 +66,9 @@ func _on_killzone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 		dead = true
 
 func process_physics(delta: float) -> REnemyState:
-	if parent.velocity.x != 0 and !r2d.is_colliding():
+	if parent.velocity.x != 0 and (!r2d.is_colliding() or wallCheck):
+		if wallCheck:
+			wallCheck = false
 		pausing = true
 		parent.velocity.x = 0
 		if as2d.animation != "idle":
@@ -85,3 +96,4 @@ func update_ray() -> void:
 	r2d.target_position.x = abs(r2d.target_position.x) * direction
 	r2d2.target_position.x = abs(r2d2.target_position.x) * direction
 	r2h.target_position.x = abs(r2h.target_position.x) * direction
+	wall_ray.target_position.x = abs(wall_ray.target_position.x) * direction

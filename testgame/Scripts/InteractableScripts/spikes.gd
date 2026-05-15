@@ -1,13 +1,13 @@
 extends Area2D
 
 @export var spawn: bool 
-@export var dmg: int
-@export var stre: float
-@export var StunTime: float
-@export var TimeScale: float
-@export var dur: float
-@export var CAMShake: float
-@export var shakeDur: float
+@export var dmg: int = 1
+@export var stre: float = 200
+@export var StunTime: float = 0.6
+@export var TimeScale: float = 0.001
+@export var dur: float = 0.01
+@export var CAMShake: float = 0.02
+@export var shakeDur: float = 0.02
 @export var SpikeNumber: String
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -19,6 +19,9 @@ func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
+	if !is_instance_valid(Global.player):
+		return
+	
 	direction = (Global.player.global_position.x - self.global_position.x)
 	
 	if direction >= 1:
@@ -28,7 +31,6 @@ func _process(delta: float) -> void:
 	
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	hitPlayer()
-	
 	
 func hitPlayer():
 	if hit:

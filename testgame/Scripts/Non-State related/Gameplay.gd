@@ -6,9 +6,16 @@ var pending_entry_door := ""
 var pending_entry_direction := Vector2.ZERO
 @onready var level_holder: Node2D = get_node("/root/Main/Gameplay/LevelHolder")
 var checkJump
-var started = false
-var is_respawn = false
-var direction = 1
+var started := false
+var is_respawn := false
+var Knightgrandma := false
+var Knight := false
+var Rain := false
+
+var wallJump := true
+var DJ := true
+
+var direction := 1
 
 func enter_door(scene_path: String, door_name: String, dir_string: int) -> void:
 	#This is what I was talking about earlier with the west, east, south and north and door name and such.

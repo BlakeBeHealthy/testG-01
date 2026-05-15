@@ -12,7 +12,12 @@ extends Control
 
 var game_states
 var tween = null
-var dialogueResource
+var dialogueResource: DialogueResource:
+	set(value):
+		if value == null:
+			print("DIALOGUE SET TO NULL: ", get_stack())
+		dialogueResource = value
+var dRec: DialogueResource
 var check := false
 var responses_visible := false
 var response_tween = null
@@ -25,6 +30,12 @@ var current_line: DialogueLine:
 		if value:
 			current_line = value
 		else:
+			dialogue_label.text = ""
+			if is_instance_valid(dialogue_label):
+				if dialogue_label.is_typing:
+					dialogue_label.skip_typing()
+				dialogue_label.modulate.a = 0
+				dialogue_label.text = ""
 			dialogue_ended = true
 			await wipeOut()
 			if overlay_tween:
@@ -45,11 +56,15 @@ var currentSpeaker = ""
 # Called when the node enters the scene tree for the first time.
 	
 func start(resource: DialogueResource, title: String) -> void:
+	if resource != null:
+		dRec = resource
+	dialogueResource = resource
+	if dialogueResource == null:
+		dialogueResource = dRec
 	dialogue_ended = false
 	dialogue_responses_menu.next_action = "interact"
 	dialogue_label.modulate.a = 0
 	charName.modulate.a = 0
-	dialogueResource = resource
 	portraitM.set_shader_parameter("progress", -0.2)
 	panelM.set_shader_parameter("progress", -0.2)
 	game_states = [self]
@@ -59,9 +74,13 @@ func start(resource: DialogueResource, title: String) -> void:
 	overlay_tween = create_tween()
 	overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.3)
 	self.visible = true
+	if dialogueResource == null:
+		dialogueResource = dRec
 	current_line = await dialogueResource.get_next_dialogue_line(title, game_states)
 	if current_line:
 		apply_dialogue_line()
+	if dialogue_responses_menu.response_selected.is_connected(_on_response_selected):
+		dialogue_responses_menu.response_selected.disconnect(_on_response_selected)
 	dialogue_responses_menu.response_selected.connect(_on_response_selected)
 
 func apply_dialogue_line():
@@ -138,6 +157,7 @@ func wipeIn():
 
 func wipeOut():
 	isMoving = true
+	
 	if tween:
 		tween.kill()
 	tween = create_tween()
@@ -173,3 +193,33 @@ func show_responses():
 	else:
 		responsePanel.hide()
 		responses_visible = false
+		
+func playResume(animation: String) -> void:
+	dialogue_label.text = ""
+	if is_instance_valid(dialogue_label):
+		if dialogue_label.is_typing:
+			dialogue_label.skip_typing()
+		dialogue_label.modulate.a = 0
+		dialogue_label.text = ""
+	await wipeOut()
+	if overlay_tween:
+		overlay_tween.kill()
+	overlay_tween = create_tween()
+	await overlay_tween.tween_property(color_rect, "modulate:a", 0.0, 0.3)
+	Global.ap.play(animation)
+	await Global.ap.animation_finished
+	if overlay_tween:
+		overlay_tween.kill()
+	overlay_tween = create_tween()
+	await overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.2)
+	check = false
+	currentSpeaker = ""
+	apply_dialogue_line()
+
+
+func playEnd(animation: String) -> void:
+	await wipeOut()
+	Global.ap.play(animation)
+	await Global.ap.animation_finished
+	
+	

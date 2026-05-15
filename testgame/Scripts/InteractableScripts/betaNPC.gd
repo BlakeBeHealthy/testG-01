@@ -7,7 +7,8 @@ class_name BetaNPC extends Node2D
 @export var button_prompt: String
 @export var animationName: String
 @export var dialogueScene: String
-@export var startingPoint: String
+@export var startingPoint: String = "start"
+@export var promptYOffset: float = -20
 var scaleNumber: Vector2 = Vector2(1, 1)
 
 var areaCheck := false
@@ -19,6 +20,7 @@ func _ready() -> void:
 	prompt.hidePrompt()
 	as2d.play(animationName)
 	as2d.scale = scaleNumber
+	prompt.position.y = promptYOffset
 
 func _on_area_entered(area: Area2D) -> void:
 	if !areaCheck:

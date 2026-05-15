@@ -12,8 +12,8 @@ extends Area2D
 @export var shakeDuration := 0.2
 @export var dmg := 0
 
-var speed
-var direction
+var speed: float
+var direction: float
 
 func _ready() -> void:
 	pass

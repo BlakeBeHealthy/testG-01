@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://2csjtunoknkd"]
+
+[ext_resource type="Texture2D" uid="uid://k4crm75r3f25" path="res://assets/dungeon-platformer-tile-set-pixel-art/Dungeon Tile Set/Dungeon Tile Set.png" id="1_1lkl7"]
+[ext_resource type="Script" uid="uid://cy73osww7ggfd" path="res://Scenes/gate.gd" id="1_hn85u"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hn85u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn85u"]
+atlas = ExtResource("1_1lkl7")
+region = Rect2(180, 160, 20, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfxhe"]
+atlas = ExtResource("1_1lkl7")
+region = Rect2(200, 160, 25, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4dmbs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn85u")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfxhe")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hn85u"]
+size = Vector2(6.5, 31)
+
+[node name="Gate" type="StaticBody2D" unique_id=638527128]
+physics_material_override = SubResource("PhysicsMaterial_hn85u")
+script = ExtResource("1_hn85u")
+
+[node name="as2d" type="AnimatedSprite2D" parent="." unique_id=407246002]
+position = Vector2(-4, 0)
+sprite_frames = SubResource("SpriteFrames_4dmbs")
+animation = &"Open"
+autoplay = "Open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=933938415]
+position = Vector2(2, 1)
+scale = Vector2(1, 1.025)
+shape = SubResource("RectangleShape2D_hn85u")

@@ -18,6 +18,7 @@ var hit := false
 var timeSlow := false
 var checkAttack := false
 var KB = false
+var worldHit = false
 var jumpBuff := false
 var attackDir := 0
 
@@ -46,10 +47,13 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if parent.state_machine.current_state != parent.attack_state:
-		pass
+		return
 		
 	startKB = true
-	apply_timeSlow(hit_timeStop, hit_duration)
+	if !area.is_in_group("World") or !area.is_in_group("Spikes"):
+		apply_timeSlow(hit_timeStop, hit_duration)
+	else:
+		worldHit = true
 
 func exit() -> void:
 	checkHit = true
@@ -67,8 +71,12 @@ func process_frame(delta: float) -> State:
 		return parent.hit_state
 	
 	if !as2d.is_playing() and !KB and !timeSlow:
+		if parent.wallSlide:
+			return parent.wallSlide_state
 		if parent.parryCheck:
-				return parent.parry_state
+			return parent.parry_state
+		if parent.dash:
+			return parent.dash_state
 		if parent.is_on_floor():
 			if Input.is_action_pressed("jump"):
 				jumpBuff = 0
@@ -85,10 +93,14 @@ func process_frame(delta: float) -> State:
 	return null
 	
 func process_physics(delta: float) -> State:
-	var direction = Input.get_axis("runL","runR" )
+	var direction = Input.get_axis("runL","runR")
 		
 	if startKB:
-		parent.velocity.x += -attackDir * playerKnockback
+		if worldHit:
+			worldHit = false
+			parent.velocity.x += -attackDir * 250
+		else:
+			parent.velocity.x += -attackDir * playerKnockback
 		startKB = false
 		KB = true
 	elif KB:
@@ -98,7 +110,16 @@ func process_physics(delta: float) -> State:
 	else:
 		if direction != 0:
 			parent.velocity.x = direction * move_speed
+			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
+			parent.wallslide_chest.position.x = 3.7 * direction
+			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
+			parent.wallslide_legs.position.x = 3.7 * direction
+			a2d.position = Vector2(18 * direction, 4)
 		elif direction == 0:
+			if as2d.flip_h:
+				a2d.position = Vector2(18 * -1, 4)
+			else:
+				a2d.position = Vector2(18 * 1, 4)
 			parent.velocity.x *= 0
 			
 	if Input.is_action_pressed("jump") and !parent.jumpCheck:

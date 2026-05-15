@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cjrbnykr2ekk8"
+path="res://.godot/imported/Hannibal.dialogue-2419cffd841baa2c95e2602da6d7b61b.tres"
+
+[deps]
+
+source_file="res://dialogues/Hannibal.dialogue"
+dest_files=["res://.godot/imported/Hannibal.dialogue-2419cffd841baa2c95e2602da6d7b61b.tres"]
+
+[params]
+
+defaults=true
