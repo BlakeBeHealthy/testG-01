@@ -45,7 +45,7 @@ func process_physics(delta: float) -> States:
 			parent.flip_direction(-1)
 		elif chaseDir < 5 and chaseDir > -5:
 			parent.playerAbove = true
-			parent.idle_time = 0.2
+			parent.idle_time = 0.05
 			return parent.idle_state
 	
 	parent.velocity.y += gravity * delta

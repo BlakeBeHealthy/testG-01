@@ -15,5 +15,6 @@ Hannibal: End this fight, why do you keep coming back?
 do! playResume("e2")
 
 Hannibal: You will die
+set Global.cutsceneStarted = false
 => END
 

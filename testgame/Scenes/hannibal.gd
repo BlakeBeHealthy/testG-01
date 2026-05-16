@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	if Global.cutsceneStarted:
-		cut = true
+		state_machine.change_state(idle_state)
 		
 func flip_direction(dir: int = 0):
 	if dir != 0:

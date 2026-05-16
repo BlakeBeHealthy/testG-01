@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://rkxbpyj1igf7" path="res://assets/2d-soulslike-character/Attacks.png" id="5_31vjx"]
 [ext_resource type="Texture2D" uid="uid://17uby20yhwgo" path="res://assets/2d-soulslike-character/Pray.png" id="6_76tc5"]
 [ext_resource type="Texture2D" uid="uid://dsy3n6m6hmrab" path="res://assets/2d-soulslike-character/Slide.png" id="7_a2gdt"]
-[ext_resource type="Script" uid="uid://cps3stdwpd8at" path="res://Scenes/state_machine.gd" id="10_76tc5"]
+[ext_resource type="Script" path="res://Scenes/state_machine.gd" id="10_76tc5"]
 [ext_resource type="Texture2D" uid="uid://cptl4vidwn8ur" path="res://assets/2d-soulslike-character/Hanging.png" id="10_sbgsd"]
 [ext_resource type="Script" uid="uid://c8xd4ymaw1xce" path="res://Scripts/enemyScripts/Hannibal/idle_state.gd" id="11_a2gdt"]
 [ext_resource type="Script" uid="uid://cfu33r1gsu0fn" path="res://Scenes/Hannibaljump.gd" id="12_7ay4u"]

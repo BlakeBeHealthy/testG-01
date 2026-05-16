@@ -3,7 +3,7 @@ extends HannibalState
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var jump_timer: Timer = $"../../JumpTimer"
 @onready var fall_attack_timer: Timer = $"../../fallAttackTimer"
-@onready var slash_projectile = preload("uid://lbvmh8hgo4xg")
+@onready var slash_projectile = preload("res://Scenes/slash_projectile.tscn")
 
 @export var camShake: float = 0
 @export var shakeDur: float = 0

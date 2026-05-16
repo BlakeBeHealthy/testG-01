@@ -1,7 +1,7 @@
 extends HannibalState
 
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
-@onready var slash_projectile = preload("uid://lbvmh8hgo4xg")
+@onready var slash_projectile = preload("res://Scenes/slash_projectile.tscn")
 
 var readyProjectiles: bool = false
 
