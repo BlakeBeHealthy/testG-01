@@ -24,6 +24,7 @@ func _ready():
 	shake_timer.ignore_time_scale = true
 	add_child(shake_timer)
 	shake_timer.timeout.connect(_on_shake_timeout)
+	Global.shakeDone.connect(_on_shake_timeout)
 
 func _process(delta):
 	var weight = 1 - exp(-FOLLOW_SPEED * delta)
@@ -56,7 +57,8 @@ func _process(delta):
 func start_shake(strength: float, duration: float):
 	shake_strength = strength
 	shaking = true
-	shake_timer.start(duration)
+	if duration != 0:
+		shake_timer.start(duration)
 
 func _on_shake_timeout():
 	shaking = false

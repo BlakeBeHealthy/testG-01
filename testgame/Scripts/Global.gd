@@ -14,6 +14,7 @@ var ap: AnimationPlayer
 signal playerDone
 signal healthUp
 signal DoorChange
+signal shakeDone
 
 var saveData = {
 	"checkpoint_pos": Vector2(-1505, -597),

@@ -21,7 +21,6 @@ func enter() -> void:
 	
 	
 func exit() -> void:
-	print("exit idle")
 	pass
 
 func process_input(event: InputEvent) -> States:
