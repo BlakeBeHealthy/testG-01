@@ -15,6 +15,7 @@ signal playerDone
 signal healthUp
 signal DoorChange
 signal shakeDone
+signal clash_over(won: bool)
 
 var saveData = {
 	"checkpoint_pos": Vector2(-1505, -597),

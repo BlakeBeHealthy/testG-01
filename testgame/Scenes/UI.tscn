@@ -3,6 +3,27 @@
 [ext_resource type="Script" uid="uid://bvya24lhj31ru" path="res://Scripts/Non-State related/UI.gd" id="1_nxvpl"]
 [ext_resource type="Script" uid="uid://ch0vtpw4w4gw3" path="res://Scripts/Non-State related/hearts_box.gd" id="1_w371h"]
 [ext_resource type="PackedScene" uid="uid://b3l3bcn2iw6dk" path="res://Scenes/balloon.tscn" id="3_dewlx"]
+[ext_resource type="Script" uid="uid://b4xi27kf3nksq" path="res://Scenes/clash_ui.gd" id="4_hfhsn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dewlx"]
+bg_color = Color(0, 0, 0, 0.67058825)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfhsn"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9025794, 0.450997, 0.31325376, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
 
 [node name="UI" type="CanvasLayer" unique_id=1184425221]
 script = ExtResource("1_nxvpl")
@@ -21,3 +42,33 @@ script = ExtResource("1_w371h")
 
 [node name="Balloon" parent="." unique_id=932871309 instance=ExtResource("3_dewlx")]
 visible = false
+
+[node name="ClashUI" type="Control" parent="." unique_id=1546065235]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_hfhsn")
+
+[node name="PB" type="ProgressBar" parent="ClashUI" unique_id=736278649]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 25.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dewlx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hfhsn")
+value = 90.0
+show_percentage = false
+
+[node name="CT" type="Timer" parent="ClashUI" unique_id=189963211]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="ClashUI/CT" to="ClashUI" method="_on_ct_timeout"]
