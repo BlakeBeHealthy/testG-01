@@ -38,8 +38,7 @@ func process_frame(delta: float) -> States:
 			slash1.yChange = true
 			slash2.yChange = true
 			slash3.yChange = true
-			if parent.middleAttack:
-				parent.middleAttack = false
+			if parent.phase2:
 				var slash6 = slash_projectile.instantiate()
 				var slash7 = slash_projectile.instantiate()
 				var slash8 = slash_projectile.instantiate()
@@ -71,9 +70,8 @@ func process_frame(delta: float) -> States:
 				add_child(slash8)
 				add_child(slash9)
 				add_child(slash10)
-			else:
-				parent.lunge = true
-				parent.chase = true
+			parent.lunge = true
+			parent.chase = true
 			add_child(slash1)
 			add_child(slash2)
 			add_child(slash3)

@@ -23,7 +23,8 @@ func enter() -> void:
 		parent.flip_direction()
 		flip = true
 	as2d.play("jump")
-	jump_timer.start()
+	if parent.phase2:
+		forwardMomentum = 35000
 	moveCheck = true
 	
 	
@@ -77,24 +78,21 @@ func process_physics(delta: float) -> States:
 	
 	parent.move_and_slide()
 	return null
-	
-func _on_jump_timer_timeout() -> void:
-	pass
+
 	
 func walljump():
 	if parent.wallJump:
 		return
-	
-	fall_attack_timer.start()
+	if parent.phase2:
+		fall_attack_timer.start(0.9)
+	else:
+		fall_attack_timer.start()
 	parent.wallJump = true
 	as2d.play("wallhang")
 	await get_tree().create_timer(0.1).timeout
 	fallAttackCheck = true
 	parent.flip_direction()
 	as2d.play("jump")
-	if !jump_timer.is_stopped():
-		jump_timer.stop()
-	jump_timer.start()
 	moveCheck = true
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
@@ -123,6 +121,28 @@ func fallAttacking() -> void:
 	if projectile:
 		var slash1 = slash_projectile.instantiate()
 		var slash2 = slash_projectile.instantiate()
+		if parent.phase2:
+			var slash3 = slash_projectile.instantiate()
+			var slash4 = slash_projectile.instantiate()
+			slash3.direction = 1
+			slash4.direction = -1
+			slash3.speed = 400
+			slash4.speed = 400
+			slash3.global_position = parent.global_position + Vector2(5 * slash3.direction, 5)
+			slash4.global_position = parent.global_position + Vector2(5 * slash4.direction, 5)
+			add_child(slash3)
+			add_child(slash4)
+			if parent.healthCount <= 15:
+				var slash5 = slash_projectile.instantiate()
+				var slash6 = slash_projectile.instantiate()
+				slash5.direction = 1
+				slash6.direction = -1
+				slash5.speed = 200
+				slash6.speed = 200
+				slash5.global_position = parent.global_position + Vector2(5 * slash3.direction, 5)
+				slash6.global_position = parent.global_position + Vector2(5 * slash4.direction, 5)
+				add_child(slash5)
+				add_child(slash6)
 		slash1.direction = 1
 		slash2.direction = -1
 		slash1.global_position = parent.global_position + Vector2(5 * slash1.direction, 3)

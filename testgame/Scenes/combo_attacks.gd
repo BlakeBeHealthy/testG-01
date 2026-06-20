@@ -4,6 +4,7 @@ extends HannibalState
 @export var knockbackStrength: float = 0
 @export var decayRate: float = 0
 @export var lungeSpeed: float = 0
+@onready var slash_projectile = preload("res://Scenes/slash_projectile.tscn")
 
 var currentAttack = ""
 var dir : int = 0  
@@ -14,6 +15,9 @@ var lungeCheck: bool = false
 var attackDir: float = 0
 
 func enter() -> void:
+	if parent.phase2:
+		knockbackStrength = 700
+		lungeSpeed = 800
 	dir = parent.direction
 	if parent.lunge:
 		currentAttack = "a3"
@@ -66,6 +70,23 @@ func process_physics(delta: float) -> States:
 		parent.lunge = false
 		parent.velocity.x = parent.direction * lungeSpeed
 	elif parent.wallDetection.is_colliding() and as2d.animation == "a3" and as2d.frame > 2:
+		if parent.phase2:
+			var slash1 = slash_projectile.instantiate()
+			var slash3 = slash_projectile.instantiate()
+			var slash5 = slash_projectile.instantiate()
+			slash1.rotate = 90
+			slash3.rotate = 45
+			slash1.direction = 0
+			slash3.direction = -1
+			slash5.direction = -1
+			slash1.global_position = parent.global_position + Vector2(3 * slash1.direction, -3)
+			slash5.global_position = parent.global_position + Vector2(3 * slash5.direction, 3)
+			slash3.global_position = parent.global_position + Vector2(3 * slash3.direction, 3)
+			slash1.yChange = true
+			slash3.yChange = true
+			add_child(slash1)
+			add_child(slash3)
+			add_child(slash5)
 		parent.hitbox.monitorable = false
 		parent.hitbox.monitoring = false
 		parent.idle_time = 1.2
@@ -105,11 +126,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		if as2d.frame == 5:
 			parent.hitbox.monitorable = false
 			parent.hitbox.monitoring = false
-			if parent.phase2:
-				dir = attackDir
-				as2d.play("a3")
-			else:
-				done = true
+			done = true
 			
 	if as2d.animation == "a3":
 		if as2d.frame == 4:

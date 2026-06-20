@@ -27,12 +27,12 @@ class_name Hannibal extends CharacterBody2D
 
 var direction: float = 1
 var wallJump: bool = false
-var phase2: bool = false
+var phase2: bool = true
 var lunge: bool = false
 var chase: bool = false
 var middleAttack: bool = false
 var jump2: int = 0
-var healthCount: int = 50
+var healthCount: int = 10
 var playerAbove: bool = false
 var flashing: bool = false
 var cut: bool = false

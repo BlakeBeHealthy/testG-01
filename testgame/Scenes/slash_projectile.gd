@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 		c2d.position.x += 2
 	if yChange:
 		position.y += speed * y_direction * delta
+		
 func _on_animated_sprite_2d_frame_changed() -> void:
 	
 	if as2d == null or as2d.animation != "hit":
