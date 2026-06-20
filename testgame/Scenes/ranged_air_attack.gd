@@ -4,7 +4,7 @@ extends HannibalState
 @onready var slash_projectile = preload("res://Scenes/slash_projectile.tscn")
 
 var readyProjectiles: bool = false
-
+var projectileWindow: float = 0.3
 func enter() -> void:
 	as2d.play("projectileAttack")
 	
@@ -16,7 +16,7 @@ func process_input(event: InputEvent) -> States:
 
 func process_frame(delta: float) -> States:
 	if readyProjectiles:
-		if parent.playerAbove:
+		if parent.playerAbove and !parent.lunge:
 			var slash1 = slash_projectile.instantiate()
 			var slash2 = slash_projectile.instantiate()
 			var slash3 = slash_projectile.instantiate()
@@ -79,15 +79,31 @@ func process_frame(delta: float) -> States:
 			add_child(slash5)
 			parent.playerAbove = false
 			readyProjectiles = false
-	if as2d.frame == 5:
-		parent.idle_time = 1.0
-		return parent.idle_state
+		if as2d.frame == 5:
+			parent.idle_time = 1.0
+			return parent.idle_state
+	else:
+		parent.flip_direction()
+		parent.lunge = false
+		shoot(4)
+		
 	return null
 
 func process_physics(delta: float) -> States:
 	return null
 
-
+func shoot(loopcount: int = 1, duration: float = 0, speed: float = 300) -> void:
+	if duration == 0:
+			duration = projectileWindow
+	while loopcount > 0:
+		var slash1 = slash_projectile.instantiate()
+		slash1.speed = speed
+		slash1.direction = parent.direction
+		slash1.global_position = parent.global_position + Vector2(3 * slash1.direction, -3)
+		await get_tree().create_timer(0.2).timeout
+		loopcount -= 1
+	await get_tree().create_timer(duration).timeout
+	
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "projectileAttack" and parent.state_machine.current_state != parent.airAttack_State:
 		return

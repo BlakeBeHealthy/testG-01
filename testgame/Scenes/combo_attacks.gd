@@ -36,7 +36,9 @@ func process_input(event: InputEvent) -> States:
 func process_frame(delta: float) -> States:
 	if done:
 		if lungeCheck:
-			parent.lunge = false
+			if !parent.phase2:
+				parent.lunge = false
+				parent.playerAbove = true
 			parent.chase = false
 			lungeCheck = false
 		done = false
@@ -75,10 +77,13 @@ func process_physics(delta: float) -> States:
 			var slash3 = slash_projectile.instantiate()
 			var slash5 = slash_projectile.instantiate()
 			slash1.rotate = 90
-			slash3.rotate = 45
+			if parent.direction == -1:
+				slash3.rotate = -45
+			else:
+				slash3.rotate = 45
 			slash1.direction = 0
-			slash3.direction = -1
-			slash5.direction = -1
+			slash3.direction = parent.direction * -1
+			slash5.direction = parent.direction * -1
 			slash1.global_position = parent.global_position + Vector2(3 * slash1.direction, -3)
 			slash5.global_position = parent.global_position + Vector2(3 * slash5.direction, 3)
 			slash3.global_position = parent.global_position + Vector2(3 * slash3.direction, 3)
