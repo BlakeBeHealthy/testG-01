@@ -3,7 +3,7 @@ extends Camera2D
 @export var FOLLOW_SPEED := 10.0
 @export var boss_room := false
 var boss_room_placement: Vector2
-var defualt_position: Vector2
+var default_position: Vector2
 var default_zoom: Vector2
 var horizontalOffset: float = 20
 var verticalOffset: float = 30
@@ -20,7 +20,7 @@ var target: Vector2 = Vector2()
 
 func _ready():
 	default_zoom = zoom
-	defualt_position = global_position
+	default_position = global_position
 	Global.set_camera(self)
 	boss_room_placement = self.global_position
 	#Could've made a new scene but just used code, so the screenshake wont 
@@ -59,23 +59,29 @@ func _process(delta):
 			randf_range(-shake_strength, shake_strength)
 		)
 
-func start_shake(strength: float, duration: float):
+func start_shake(strength: float, duration: float = 0):
 	shake_strength = strength
 	shaking = true
 	if duration != 0:
 		shake_timer.start(duration)
 
 func _on_shake_timeout():
+	shake_end()
+	
+func shake_end():
 	shaking = false
 	offset = Vector2.ZERO
 	
-func move(new_position: Vector2 = defualt_position, \
-	new_zoom: Vector2 = default_zoom, duration: float = 1.0):
+func move(new_position: Vector2 = default_position, \
+	new_zoom: Vector2 = default_zoom, duration: float = 1.0, time_scale: float = 0.0):
 	if move_tween:
 		move_tween.kill()
 	move_tween = create_tween()
 	move_tween.set_parallel(true)
 	move_tween.tween_property(self, "global_position", new_position, duration)
+	move_tween.tween_property(self, "zoom", new_zoom, duration)
+	if time_scale != 0.0:
+		move_tween.tween_property(Engine, "time_scale", time_scale, duration)
 
-func reset():
-	pass
+func reset(duration):
+	move(default_position, default_zoom, duration, 1.0)
