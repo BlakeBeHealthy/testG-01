@@ -25,7 +25,6 @@ func enter() -> void:
 		parent.flip_direction()
 	else:
 		currentAttack = "a1"
-	
 	as2d.play(currentAttack)
 func exit() -> void:
 	pass
@@ -38,9 +37,13 @@ func process_frame(delta: float) -> States:
 		if lungeCheck:
 			if !parent.phase2:
 				parent.lunge = false
+			else:
 				parent.playerAbove = true
 			parent.chase = false
 			lungeCheck = false
+		else:
+			parent.chase = true
+			parent.lunge = true
 		done = false
 		parent.idle_time = 1.0
 		return parent.idle_state
@@ -69,7 +72,6 @@ func process_physics(delta: float) -> States:
 			parent.flip_direction(-1)
 		
 	if parent.lunge and as2d.frame == 4 and as2d.animation == "a3":
-		parent.lunge = false
 		parent.velocity.x = parent.direction * lungeSpeed
 	elif parent.wallDetection.is_colliding() and as2d.animation == "a3" and as2d.frame > 2:
 		if parent.phase2:
