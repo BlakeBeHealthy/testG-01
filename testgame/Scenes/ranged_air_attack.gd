@@ -6,10 +6,14 @@ extends HannibalState
 var readyProjectiles: bool = false
 var projectileWindow: float = 0.3
 func enter() -> void:
-	as2d.play("projectileAttack")
+	if !parent.lunge:
+		as2d.play("projectileAttack")
+	else:
+		as2d.play("pray_start")
 	
 func exit() -> void:
-	pass
+	if !parent.lunge:
+		parent.lunge = true
 
 func process_input(event: InputEvent) -> States:
 	return null
@@ -60,17 +64,16 @@ func process_frame(delta: float) -> States:
 				slash6.yChange = true
 				slash7.yChange = true
 				slash8.yChange = true
-				slash6.speed = 400
-				slash7.speed = 400
-				slash8.speed = 400
-				slash9.speed = 400
-				slash10.speed = 400
+				slash6.speed = 350
+				slash7.speed = 350
+				slash8.speed = 350
+				slash9.speed = 350
+				slash10.speed = 350
 				add_child(slash6)
 				add_child(slash7)
 				add_child(slash8)
 				add_child(slash9)
 				add_child(slash10)
-			parent.lunge = true
 			parent.chase = true
 			add_child(slash1)
 			add_child(slash2)
@@ -83,10 +86,15 @@ func process_frame(delta: float) -> States:
 			parent.idle_time = 1.0
 			return parent.idle_state
 	else:
+		print("hello")
+		parent.playerAbove = false
 		parent.flip_direction()
 		parent.lunge = false
-		shoot(4)
-		
+		shoot(4, 0.4)
+		shoot(4, 0.4)
+		if as2d.animation == "pray_end":
+			parent.idle_time = 1.3
+			return parent.idle_state
 	return null
 
 func process_physics(delta: float) -> States:
@@ -105,7 +113,8 @@ func shoot(loopcount: int = 1, duration: float = 0, speed: float = 300) -> void:
 	await get_tree().create_timer(duration).timeout
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if as2d.animation != "projectileAttack" and parent.state_machine.current_state != parent.airAttack_State:
+	if (as2d.animation != "pray_start" or as2d.animation != "projectileAttack") and \
+	parent.state_machine.current_state != parent.airAttack_State:
 		return
 		
 	if as2d.frame == 3 and !readyProjectiles:
