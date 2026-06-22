@@ -2666,12 +2666,17 @@ tracks/0/keys = {
 "values": [&"save1"]
 }
 
+[sub_resource type="Animation" id="Animation_jawqf"]
+resource_name = "phase2"
+step = 0.033
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xwxio"]
 _data = {
 &"RESET": SubResource("Animation_xwxio"),
 &"e2": SubResource("Animation_piehn"),
 &"enter": SubResource("Animation_r1u5a"),
-&"enterence": SubResource("Animation_y55xa")
+&"enterence": SubResource("Animation_y55xa"),
+&"phase2": SubResource("Animation_jawqf")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y55xa"]
