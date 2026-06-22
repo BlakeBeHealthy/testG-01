@@ -35,8 +35,6 @@ func process_input(event: InputEvent) -> States:
 	return null
 
 func process_frame(delta: float) -> States:
-	if parent.phase2S:
-		return null
 	
 	if Global.cutsceneStarted:
 		cutCheck = true
@@ -45,6 +43,8 @@ func process_frame(delta: float) -> States:
 		cutCheck = false
 		idle_time.start(1.3)
 		
+	if parent.phase2S:
+		return null
 		
 	if idleOver and !Global.cutsceneStarted:
 		idleOver = false
