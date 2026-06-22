@@ -209,17 +209,19 @@ func playResume(animation: String = "",  waitForFlag: bool = false) -> void:
 	Global.ap.play(animation)
 	
 	if waitForFlag:
-		Global.cutWait = true
-		while !Global.cutWait:
-			await get_tree().process_frame
-			
-	if overlay_tween:
-		overlay_tween.kill()
-	overlay_tween = create_tween()
-	await overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.2)
-	check = false
-	currentSpeaker = ""
-	apply_dialogue_line()
+		return
+	else:
+		await Global.ap.animation_finished
+		Resume()
+		
+func Resume():
+		if overlay_tween:
+			overlay_tween.kill()
+		overlay_tween = create_tween()
+		await overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.2)
+		check = false
+		currentSpeaker = ""
+		apply_dialogue_line()
 
 
 func playEnd(animation: String) -> void:

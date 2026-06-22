@@ -27,13 +27,13 @@ class_name Hannibal extends CharacterBody2D
 
 var direction: float = 1
 var wallJump: bool = false
-var phase2: bool = true
+var phase2: bool = false
 var phase2S: bool = false
 var lunge: bool = false
 var chase: bool = false
 var middleAttack: bool = false
 var jump2: int = 0
-var healthCount: int = 10
+var healthCount: int = 21
 var playerAbove: bool = false
 var flashing: bool = false
 var cut: bool = false
@@ -52,11 +52,13 @@ func _physics_process(delta: float) -> void:
 		
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-	if Global.cutsceneStarted:
-		state_machine.change_state(idle_state)
-		
+	
 	if healthCount <= 20 and !phase2:
+		print("1")
 		phase2Start()
+		
+	if Global.cutsceneStarted and !phase2S:
+		phase2S = true
 		
 func flip_direction(dir: int = 0):
 	if dir != 0:
@@ -107,7 +109,9 @@ func _on_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index
 func _on_hannibal_ahh_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	hit()
 func _on_hurtbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	healthCount -= 1
 	flash_white()
 	
 func phase2Start():
 	phase2S = true
+	print("2", phase2S)

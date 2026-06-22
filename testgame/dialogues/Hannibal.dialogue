@@ -17,19 +17,30 @@ do! playResume("e2")
 Hannibal: You will die
 set Global.cutsceneStarted = false
 => END
+
 ~ P2
-Hannibal: Seems you've improved...
-Hannibal: I suppose you would eventually. 
-Hannibal: ...
 Hannibal: Gods. Devils. Indulge me and feed me your strength.
-Hannibal: Ensure they cannot cross any further and end our realms
-do! playResume("phase2E")
-Hannibal: I will die before my world falls to the likes of you.
+Hannibal: Ensure they cannot cross any further and end our realm
+Hannibal: They must rot and be trapped here forever
+Hannibal:...
+Hannibal: Tell me...
+Hannibal: If you complete your mission, but I leave a mark on your memory...
+Hannibal: Do I really cease to exist?...
+Hannibal: Doesn't matter really...as you won't get that far.
+do! playResume("clash", true)
+do Global.ap.play("clashing")
+do Global.UI.Clash.Start()
+do! Global.clashing()
 if Global.clash_won:
-	do! playResume("clashWin")
+	do! Global.ap.play("clashW")
+	do! Global.apFinish()
+	do! Resume()
+	Hannibal: *cough* *cough* All... All for a test, right?
+	Hannibal: Guess I should at least give you a show.
 else:
-	do! playResume("clashLose")
-Hannibal: All for a test, right?
-Hannibal: Guess I should at least give you a show.
+	do! Global.ap.play("clashL")
+	do! Global.apFinish()
+	do! Resume()
+	Hannibal: its over.
 => END
 

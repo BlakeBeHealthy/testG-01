@@ -1,7 +1,7 @@
 extends Control
 
 @onready var bar: ProgressBar = $PB
-var drain_speed: float = 5.0
+var drain_speed: float = 2.0
 var mash_count: int = 0
 var active: bool = false
 var waitFade: bool = false
@@ -15,7 +15,7 @@ func _ready() -> void:
 	bar.max_value = 100
 	bar.value = 40
 
-func startClash(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:
+func Start(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:
 	mash_count = 0
 	bar.value = 40
 	visible = true
@@ -41,12 +41,12 @@ func endClash(win: bool) -> void:
 		await barFade()
 	else:
 		barFade()
-	
+	Global.clash_over.emit()
 		
 func _input(event) -> void:
 	if !active:
 		return
-	if event.is_action_just_pressed("interact"):
+	if event.is_action_just_pressed("jump"):
 		var power = max(10.0 - mash_count * 0.5, 1.0)
 		bar.value += power
 		mash_count += 1

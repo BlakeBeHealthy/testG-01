@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://rkxbpyj1igf7" path="res://assets/2d-soulslike-character/Attacks.png" id="5_31vjx"]
 [ext_resource type="Texture2D" uid="uid://17uby20yhwgo" path="res://assets/2d-soulslike-character/Pray.png" id="6_76tc5"]
 [ext_resource type="Texture2D" uid="uid://dsy3n6m6hmrab" path="res://assets/2d-soulslike-character/Slide.png" id="7_a2gdt"]
+[ext_resource type="Texture2D" uid="uid://blvkvdc1ul6bj" path="res://assets/2d-soulslike-character/Hurt.png" id="7_s0ijq"]
 [ext_resource type="Script" uid="uid://cps3stdwpd8at" path="res://Scenes/state_machine.gd" id="10_76tc5"]
 [ext_resource type="Texture2D" uid="uid://cptl4vidwn8ur" path="res://assets/2d-soulslike-character/Hanging.png" id="10_sbgsd"]
 [ext_resource type="Script" uid="uid://c8xd4ymaw1xce" path="res://Scripts/enemyScripts/Hannibal/idle_state.gd" id="11_a2gdt"]
@@ -137,6 +138,18 @@ region = Rect2(128, 192, 128, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4bx7"]
 atlas = ExtResource("2_2mff0")
 region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yutp"]
+atlas = ExtResource("7_s0ijq")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1lgc"]
+atlas = ExtResource("7_s0ijq")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t5fv"]
+atlas = ExtResource("7_s0ijq")
+region = Rect2(0, 64, 128, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ay62l"]
 atlas = ExtResource("2_2mff0")
@@ -484,6 +497,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8yutp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1lgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t5fv")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ay62l")
 }, {
 "duration": 1.0,
@@ -729,7 +756,7 @@ shakeDuration = 0.9
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 material = SubResource("ShaderMaterial_s0ijq")
 sprite_frames = SubResource("SpriteFrames_7qyh4")
-animation = &"pray_start"
+animation = &"hit"
 autoplay = "idle"
 speed_scale = 0.8
 

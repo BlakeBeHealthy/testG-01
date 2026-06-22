@@ -50,6 +50,9 @@ func process_frame(delta: float) -> State:
 	if speaking:
 		speaking = false
 		as2d.play("idle")
+		if Global.cutsceneStarted:
+			as2d.frame = 1
+			as2d.stop()
 		dialogueActive = true
 		parent.speaking.emit(1)
 		

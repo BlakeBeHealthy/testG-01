@@ -15,6 +15,11 @@ func process_input(event: InputEvent) -> States:
 	return null
 
 func process_frame(delta: float) -> States:
+	if parent.phase2S:
+		if Dircheck:
+			Dircheck = false
+		return parent.idle_state
+	
 	if parent.wallDetection.is_colliding() and parent.lunge:
 		return parent.attack_state
 	

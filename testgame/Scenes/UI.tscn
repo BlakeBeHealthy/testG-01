@@ -43,7 +43,8 @@ script = ExtResource("1_w371h")
 [node name="Balloon" parent="." unique_id=932871309 instance=ExtResource("3_dewlx")]
 visible = false
 
-[node name="ClashUI" type="Control" parent="." unique_id=1546065235]
+[node name="Clash" type="Control" parent="." unique_id=1546065235]
+visible = false
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 3
 anchors_preset = 7
@@ -58,7 +59,7 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("4_hfhsn")
 
-[node name="PB" type="ProgressBar" parent="ClashUI" unique_id=736278649]
+[node name="PB" type="ProgressBar" parent="Clash" unique_id=736278649]
 layout_mode = 0
 offset_right = 300.0
 offset_bottom = 25.0
@@ -67,8 +68,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_hfhsn")
 value = 90.0
 show_percentage = false
 
-[node name="CT" type="Timer" parent="ClashUI" unique_id=189963211]
+[node name="CT" type="Timer" parent="Clash" unique_id=189963211]
 wait_time = 0.4
 one_shot = true
 
-[connection signal="timeout" from="ClashUI/CT" to="ClashUI" method="_on_ct_timeout"]
+[connection signal="timeout" from="Clash/CT" to="Clash" method="_on_ct_timeout"]

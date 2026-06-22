@@ -27,6 +27,10 @@ func process_input(event: InputEvent) -> States:
 	return null
 
 func process_frame(delta: float) -> States:
+	if parent.phase2S:
+		return parent.idle_state
+	
+	
 	if readyProjectiles:
 		if !parent.lunge:
 			var slash1 = slash_projectile.instantiate()

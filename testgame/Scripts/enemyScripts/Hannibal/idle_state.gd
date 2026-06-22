@@ -8,45 +8,49 @@ var cutCheck: bool
 var KB: bool = false
 var t: Tween
 var dir: float
+var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
-	idleOver = false
-	if parent.phase2S:
+	print("3", parent.phase2S)
+	if parent.phase2S and !parent.phase2:
+		parent.phase2 = false
+		cutCheck = true
 		phase2start()
-		return
 	else:
 		as2d.play("idle")
-		
-	if Global.cutsceneStarted:
-		cutCheck = true
-		as2d.frame = 0
-		as2d.stop()
-		
-	elif parent.idle_time == 0:
-		idle_time.start()
-	else:
-		idle_time.start(parent.idle_time)
+		idleOver = false
+		if Global.cutsceneStarted:
+			cutCheck = true
+			as2d.frame = 0
+			as2d.stop()
+			
+		elif parent.idle_time == 0:
+			idle_time.start()
+		else:
+			idle_time.start(parent.idle_time)
 	
 	
 func exit() -> void:
-	pass
+	if parent.phase2S:
+		parent.phase2S = false
 
 func process_input(event: InputEvent) -> States:
 	return null
 
 func process_frame(delta: float) -> States:
-	
-	if Global.cutsceneStarted:
+	if parent.phase2S and !parent.phase2 and parent.healthCount <= 20:
+		parent.phase2 = false
+		cutCheck = true
+		phase2start()
+		
+	if Global.cutsceneStarted and !cutCheck:
 		cutCheck = true
 		
 	if !Global.cutsceneStarted and cutCheck:
 		cutCheck = false
 		idle_time.start(1.3)
 		
-	if parent.phase2S:
-		return null
-		
-	if idleOver and !Global.cutsceneStarted:
+	if idleOver and !Global.cutsceneStarted and !cutCheck:
 		idleOver = false
 		if parent.chase:
 			parent.chase = false
@@ -60,8 +64,8 @@ func process_frame(delta: float) -> States:
 
 func process_physics(delta: float) -> States:
 	if KB:
-		parent.velocity.x = 10 * dir
-		parent.velocity.y = -50
+		parent.velocity.x = 100 * dir
+		parent.velocity.y = -200
 		KB = false
 	return null
 
@@ -69,25 +73,23 @@ func _on_idle_time_timeout() -> void:
 	idleOver = true
 
 func phase2start():
+	print("hello")
 	as2d.play("hit")
-	
+	if Global.camera.shaking:
+		Global.camera.shaking = false
 	dir = parent.global_position.x - Global.player.global_position.x
 	if dir >= 0:
 		dir = 1
 	else:
 		dir = -1
-	await freezeFrame()
-	Engine.time_scale = 1.0
 	KB = true
-	if t:
-		t.kill()
-	t = create_tween()
-	t.tween_property(Engine, "time_scale", 0.2, 0.4)
-	await get_tree().create_timer(0.35, true).timeout
-	FadeS.fade_out()
-	Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "phase2S")
+	await FadeS.fade_out()
+	parent.phase2S = false
+	parent.phase2 = true
+	Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2")
+	await dialogue_manager.dialogue_ended
 	
-func freezeFrame(duration: float = 0.08) -> void:
+func freezeFrame(duration: float = 3.0) -> void:
 	get_tree().paused = true
 	await get_tree().create_timer(duration, true).timeout
 	get_tree().paused = false

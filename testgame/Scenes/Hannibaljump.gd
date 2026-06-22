@@ -35,6 +35,14 @@ func process_input(event: InputEvent) -> States:
 	return null
 
 func process_frame(delta: float) -> States:
+	if parent.phase2S:
+		moveCheck = false
+		landOver = false
+		fallAttack = false
+		flip = false
+		fallAttackCheck = false
+		return parent.idle_state
+	
 	if parent.wallDetection.is_colliding() and !parent.is_on_floor() and !fallAttack:
 		walljump()
 	

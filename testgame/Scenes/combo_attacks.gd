@@ -33,6 +33,12 @@ func process_input(event: InputEvent) -> States:
 	return null
 
 func process_frame(delta: float) -> States:
+	if parent.phase2S:
+		lungeCheck = true
+		done = false
+		return parent.idle_state
+	
+	
 	if done:
 		if lungeCheck:
 			if !parent.phase2:

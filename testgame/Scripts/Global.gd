@@ -16,7 +16,7 @@ signal playerDone
 signal healthUp
 signal DoorChange
 signal shakeDone
-signal clash_over(won: bool)
+signal clash_over
 
 var saveData = {
 	"checkpoint_pos": Vector2(-1505, -597),
@@ -57,8 +57,15 @@ func startCutscene(dialogueFile: String, startingPoint: String, introAnim: Strin
 	if introAnim != "":
 		ap.play(introAnim)
 		await ap.animation_finished
-	cutsceneStarted = true
+	if !cutsceneStarted:
+		cutsceneStarted = true
 	UI.balloon.start(load(dialogueFile), startingPoint)
+	
+func clashing() -> void:
+	await clash_over
+
+func apFinish() -> void:
+	await ap.animation_finished
 	
 func _input(event: InputEvent) -> void:
 	if !debug_mode:
