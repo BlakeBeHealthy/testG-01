@@ -5,7 +5,7 @@ extends HannibalState
 
 var readyProjectiles: bool = false
 var shooting: bool = false
-var pattern: int = 0
+var pattern: int = 2
 var projectileWindow: float = 1.0
 
 func enter() -> void:
@@ -121,13 +121,13 @@ func shoot(loopcount: int = 1, duration: float = 0, wait: float = 1.0, speed: fl
 	await get_tree().create_timer(wait).timeout
 	
 func shootingout():
-	if pattern == 1:
+	if pattern == 0:
 		await shoot(5, 1.0, 2.5, 300)
 		await shoot(5, 0.7, 1.0)
 		await shoot(50, 0.001, 1.0, 300)
 		await shoot(50, 0.001, 1.0)
 		await shoot(50, 0.001, 1.0)
-		pattern = 3
+		pattern = 1
 	elif pattern == 1:
 		await shoot(70, 0.001, 0.4)
 		await shoot(30, 0.001, 0.5)
@@ -140,7 +140,7 @@ func shootingout():
 		await shoot(100, 0.001, 1.0)
 		await shoot(150, 0.001, 1.0)
 		await shoot(15, 0.6, 1.0, 300)
-		pattern = 1
+		pattern = 3
 	elif pattern == 3:
 		await shoot(30, 0.001, 0.5, 100)
 		await shoot(5, 0.7, 2.0, 300)
@@ -151,8 +151,9 @@ func shootingout():
 		await shoot(2, 0.8, 0.05, 300)
 		await shoot(140, 0.001, 0.2, 100)
 		await shoot(5, 0.5, 0.1, 300)
-		pattern = 3
+		pattern = 1
 	as2d.play("pray_end")
+	
 func diagonalShoot():
 	while shooting:
 		var slash1 = slash_projectile.instantiate()
@@ -171,7 +172,36 @@ func diagonalShoot():
 		add_child(slash1)
 		add_child(slash3)
 		await get_tree().create_timer(0.15).timeout
-	
+		var slash2 = slash_projectile.instantiate()
+		if parent.direction == 1:
+			slash2.rotate = -67.5
+		else:
+			slash2.rotate = 67.5
+		slash2.direction = parent.direction * 0.5
+		slash2.global_position = parent.global_position + Vector2(3 * slash2.direction, 3)
+		slash2.yChange = true
+		add_child(slash2)
+		await get_tree().create_timer(0.15).timeout
+		var slash5 = slash_projectile.instantiate()
+		if parent.direction == 1:
+			slash5.rotate = -56
+		else:
+			slash5.rotate = 56
+		slash5.direction = parent.direction * 0.75
+		slash5.global_position = parent.global_position + Vector2(3 * slash2.direction, 3)
+		slash5.yChange = true
+		add_child(slash5)
+		var slash6 = slash_projectile.instantiate()
+		if parent.direction == 1:
+			slash6.rotate = -79
+		else:
+			slash6.rotate = 79
+		slash6.direction = parent.direction * 0.25
+		slash6.global_position = parent.global_position + Vector2(3 * slash2.direction, 3)
+		slash6.yChange = true
+		add_child(slash6)
+		await get_tree().create_timer(0.15).timeout
+		
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if (as2d.animation != "pray_start" and as2d.animation != "projectileAttack") and \
 	parent.state_machine.current_state != parent.airAttack_State and !readyProjectiles:

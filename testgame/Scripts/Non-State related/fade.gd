@@ -3,7 +3,7 @@ class_name Fade extends CanvasLayer
 #This is just to add the fade in/out
 
 @onready var c_r: ColorRect = $cR
-@onready var aP: AnimationPlayer = $AnimationPlayer #I probably should use animation player more but I like AnimatedSprite2d
+@onready var aP: AnimationPlayer = $AnimationPlayer #I probably should use animation player for player and other stuff but I like AnimatedSprite2d bc its easy
 
 func _ready():
 	if c_r == null:
@@ -12,11 +12,11 @@ func _ready():
 	c_r.visible = false
 #Fade functions are called by other scripts, this script is global, this is just the
 	#actual logic of it
-func fade_out():
+func fade_out(speed: float = 1.0):
 	c_r.visible = true
-	aP.play("fadeOut")
+	aP.play("fadeOut", -1, speed)
 	
-func fade_in():
+func fade_in(speed: float = 1.0):
 	c_r.visible = true
 	aP.play("fadeIn")
 	aP.animation_finished.connect(_on_fade_in_finished)

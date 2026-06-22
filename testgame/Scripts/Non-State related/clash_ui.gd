@@ -35,6 +35,7 @@ func endClash(win: bool) -> void:
 	if win == null:
 		print("No outcome!")
 		return
+		
 	Global.clash_won = win
 	if waitFade:
 		await barFade()

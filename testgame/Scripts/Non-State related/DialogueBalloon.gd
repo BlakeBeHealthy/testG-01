@@ -194,7 +194,7 @@ func show_responses():
 		responsePanel.hide()
 		responses_visible = false
 		
-func playResume(animation: String) -> void:
+func playResume(animation: String = "",  waitForFlag: bool = false) -> void:
 	dialogue_label.text = ""
 	if is_instance_valid(dialogue_label):
 		if dialogue_label.is_typing:
@@ -207,7 +207,12 @@ func playResume(animation: String) -> void:
 	overlay_tween = create_tween()
 	await overlay_tween.tween_property(color_rect, "modulate:a", 0.0, 0.3)
 	Global.ap.play(animation)
-	await Global.ap.animation_finished
+	
+	if waitForFlag:
+		Global.cutWait = true
+		while !Global.cutWait:
+			await get_tree().process_frame
+			
 	if overlay_tween:
 		overlay_tween.kill()
 	overlay_tween = create_tween()

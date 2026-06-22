@@ -17,4 +17,19 @@ do! playResume("e2")
 Hannibal: You will die
 set Global.cutsceneStarted = false
 => END
+~ P2
+Hannibal: Seems you've improved...
+Hannibal: I suppose you would eventually. 
+Hannibal: ...
+Hannibal: Gods. Devils. Indulge me and feed me your strength.
+Hannibal: Ensure they cannot cross any further and end our realms
+do! playResume("phase2E")
+Hannibal: I will die before my world falls to the likes of you.
+if Global.clash_won:
+	do! playResume("clashWin")
+else:
+	do! playResume("clashLose")
+Hannibal: All for a test, right?
+Hannibal: Guess I should at least give you a show.
+=> END
 

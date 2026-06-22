@@ -7,6 +7,7 @@ var debug_mode: bool = false
 var knight_dead: bool = false
 var cutsceneStarted: bool = false
 var cutsceneMode: bool = false
+var cutWait: bool = false
 var player: CharacterBody2D
 var camera: Camera2D
 var UI: CanvasLayer
@@ -49,7 +50,16 @@ func set_UI(node):
 
 func get_UI():
 	return UI
-
+	
+# in Global.gd
+func startCutscene(dialogueFile: String, startingPoint: String, introAnim: String = "") -> void:
+	player.control_locked = true
+	if introAnim != "":
+		ap.play(introAnim)
+		await ap.animation_finished
+	cutsceneStarted = true
+	UI.balloon.start(load(dialogueFile), startingPoint)
+	
 func _input(event: InputEvent) -> void:
 	if !debug_mode:
 		return
