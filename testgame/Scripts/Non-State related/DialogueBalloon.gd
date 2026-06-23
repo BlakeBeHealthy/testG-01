@@ -1,4 +1,4 @@
-extends Control
+class_name balloon extends Control
 
 @onready var as2d: AnimatedSprite2D = $HBoxContainer/Control/AnimatedSprite2D
 @onready var dialogue_label: DialogueLabel = $HBoxContainer/MarginContainer/Panel/MarginContainer/DialogueLabel
@@ -209,23 +209,24 @@ func playResume(animation: String = "",  waitForFlag: bool = false) -> void:
 	overlay_tween = create_tween()
 	await overlay_tween.tween_property(color_rect, "modulate:a", 0.0, 0.3)
 	Global.ap.play(animation)
-	
+	await Global.ap.animation_finished
+	Global.inputBlocked = false
 	if waitForFlag:
-		Global.cutWait = true
-		while Global.cutWait:
-			await get_tree().process_frame
+		pass
 	else:
-		await Global.ap.animation_finished
 		await Resume()
 		
-func Resume():
+func Resume(jump: String = ""):
 		if overlay_tween:
 			overlay_tween.kill()
 		overlay_tween = create_tween()
 		await overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.2)
 		check = false
 		currentSpeaker = ""
-		await apply_dialogue_line()
+		if jump != "":
+			next(jump)
+		else:
+			await apply_dialogue_line()
 		Global.inputBlocked = false
 
 

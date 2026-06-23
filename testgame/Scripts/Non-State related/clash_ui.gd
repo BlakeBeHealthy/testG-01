@@ -10,13 +10,19 @@ var clash_tween = null
 var fade_tween = null
 
 func _ready() -> void:
+	Global.clash_over.connect(clash_end)
 	Global.Clash = self
 	visible = false
 	bar.min_value = 0
 	bar.max_value = 100
 	bar.value = 40
-
-func Start(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:
+	
+func Start(a: String = ""):
+	await Global.UI.balloon.playResume(a, true)
+	Global.ap.play("clashing")
+	barStart()
+	
+func barStart(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:
 	mash_count = 0
 	bar.value = 40
 	visible = true
@@ -26,8 +32,8 @@ func Start(fade_before: bool = true, timeout: bool = false, countdown: float = 0
 	clash_tween = create_tween()
 	clash_tween.tween_property(self, "scale", Vector2(1,1), 0.3)
 	await clash_tween.finished
-	waitFade = fade_before
 	active = true
+	waitFade = fade_before
 	if timeout:
 		ct.start(countdown)
 	
@@ -43,11 +49,12 @@ func endClash(win: bool) -> void:
 	else:
 		barFade()
 	Global.clash_over.emit()
+	clash_end()
 		
 func _input(event) -> void:
 	if !active:
 		return
-	if Input.is_action_just_pressed("parry"):
+	if Input.is_action_just_pressed("clash"):
 		var power = max(10.0 - mash_count * 0.5, 1.0)
 		bar.value += power
 		mash_count += 1
@@ -71,3 +78,11 @@ func barFade() -> void:
 	fade_tween = create_tween()
 	fade_tween.tween_property(bar, "modulate:a", 0.0, 0.3)
 	await fade_tween.finished
+	
+func clash_end():
+	if Global.clash_won:
+		Global.ap.play("clashW")
+	else:
+		Global.ap.play("ClashL")
+	await Global.ap.animation_finished
+	await Global.UI.balloon.Resume("clash_result")

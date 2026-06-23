@@ -50,6 +50,7 @@ func process_frame(delta: float) -> States:
 		
 	if !Global.cutsceneStarted and cutCheck:
 		cutCheck = false
+		idleOver = false
 		idle_time.start(1.3)
 		
 	if idleOver and !Global.cutsceneStarted and !cutCheck and !P2:
