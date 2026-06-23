@@ -8,7 +8,9 @@ var knight_dead: bool = false
 var cutsceneStarted: bool = false
 var cutsceneMode: bool = false
 var inputBlocked: bool = false
+var cutWait: bool = false
 var player: CharacterBody2D
+var Clash: Control
 var camera: Camera2D
 var UI: CanvasLayer
 var ap: AnimationPlayer

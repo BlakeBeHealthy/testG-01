@@ -756,7 +756,7 @@ shakeDuration = 0.9
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 material = SubResource("ShaderMaterial_s0ijq")
 sprite_frames = SubResource("SpriteFrames_7qyh4")
-animation = &"hit"
+animation = &"projectileAttack"
 autoplay = "idle"
 speed_scale = 0.8
 

@@ -10,6 +10,7 @@ var clash_tween = null
 var fade_tween = null
 
 func _ready() -> void:
+	Global.Clash = self
 	visible = false
 	bar.min_value = 0
 	bar.max_value = 100
@@ -46,7 +47,7 @@ func endClash(win: bool) -> void:
 func _input(event) -> void:
 	if !active:
 		return
-	if event.is_action_just_pressed("parry"):
+	if Input.is_action_just_pressed("parry"):
 		var power = max(10.0 - mash_count * 0.5, 1.0)
 		bar.value += power
 		mash_count += 1

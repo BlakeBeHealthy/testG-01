@@ -20,8 +20,8 @@ Hannibal: If you complete your mission, but I leave a mark on your memory...
 Hannibal: Do I really cease to exist?...
 Hannibal: Doesn't matter really...as you won't get that far.
 do! playResume("clash", true)
-do Global.ap.play("clashing")
-do Global.UI.Clash.Start()
+do! Global.ap.play("clashing")
+do Global.Clash.Start()
 do! Global.clashing()
 if Global.clash_won:
 	do! Global.ap.play("clashW")

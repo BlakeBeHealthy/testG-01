@@ -211,7 +211,9 @@ func playResume(animation: String = "",  waitForFlag: bool = false) -> void:
 	Global.ap.play(animation)
 	
 	if waitForFlag:
-		return
+		Global.cutWait = true
+		while Global.cutWait:
+			await get_tree().process_frame
 	else:
 		await Global.ap.animation_finished
 		await Resume()

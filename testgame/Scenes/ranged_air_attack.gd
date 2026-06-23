@@ -4,13 +4,15 @@ extends HannibalState
 @onready var slash_projectile = preload("res://Scenes/slash_projectile.tscn")
 
 var readyProjectiles: bool = false
+var Projectiles: bool = false
 var shooting: bool = false
-var pattern: int = 2
+var pattern: int = 0
 var projectileWindow: float = 1.0
 
 func enter() -> void:
 	if !parent.lunge:
 		as2d.play("projectileAttack")
+		Projectiles = true
 	else:
 		parent.flip_direction()
 		as2d.play("pray_start")
@@ -33,64 +35,67 @@ func process_frame(delta: float) -> States:
 	
 	if readyProjectiles:
 		if !parent.lunge:
-			var slash1 = slash_projectile.instantiate()
-			var slash2 = slash_projectile.instantiate()
-			var slash3 = slash_projectile.instantiate()
-			var slash4 = slash_projectile.instantiate()
-			var slash5 = slash_projectile.instantiate()
-			slash1.rotate = 90
-			slash2.rotate = -45
-			slash3.rotate = 45
-			slash1.direction = 0
-			slash2.direction = 1
-			slash3.direction = -1
-			slash4.direction = 1
-			slash5.direction = -1
-			slash1.global_position = parent.global_position + Vector2(3 * slash1.direction, -3)
-			slash2.global_position = parent.global_position + Vector2(3 * slash2.direction, -3)
-			slash3.global_position = parent.global_position + Vector2(3 * slash3.direction, -3)
-			slash4.global_position = parent.global_position + Vector2(3 * slash4.direction, 3)
-			slash5.global_position = parent.global_position + Vector2(3 * slash5.direction, 3)
-			slash1.yChange = true
-			slash2.yChange = true
-			slash3.yChange = true
-			if parent.phase2:
-				var slash6 = slash_projectile.instantiate()
-				var slash7 = slash_projectile.instantiate()
-				var slash8 = slash_projectile.instantiate()
-				var slash9 = slash_projectile.instantiate()
-				var slash10 = slash_projectile.instantiate()
-				slash6.rotate = 90
-				slash7.rotate = -45
-				slash8.rotate = 45
-				slash6.direction = 0
-				slash7.direction = 1
-				slash8.direction = -1
-				slash9.direction = 1
-				slash10.direction = -1
-				slash6.global_position = parent.global_position + Vector2(3 * slash6.direction, -3)
-				slash7.global_position = parent.global_position + Vector2(3 * slash7.direction, -3)
-				slash8.global_position = parent.global_position + Vector2(3 * slash8.direction, -3)
-				slash9.global_position = parent.global_position + Vector2(3 * slash9.direction, 3)
-				slash10.global_position = parent.global_position + Vector2(3 * slash10.direction, 3)
-				slash6.yChange = true
-				slash7.yChange = true
-				slash8.yChange = true
-				slash6.speed = 350
-				slash7.speed = 350
-				slash8.speed = 350
-				slash9.speed = 350
-				slash10.speed = 350
-				add_child(slash6)
-				add_child(slash7)
-				add_child(slash8)
-				add_child(slash9)
-				add_child(slash10)
-			add_child(slash1)
-			add_child(slash2)
-			add_child(slash3)
-			add_child(slash4)
-			add_child(slash5)
+			if Projectiles:
+				var slash1 = slash_projectile.instantiate()
+				var slash2 = slash_projectile.instantiate()
+				var slash3 = slash_projectile.instantiate()
+				var slash4 = slash_projectile.instantiate()
+				var slash5 = slash_projectile.instantiate()
+				slash1.rotate = 90
+				slash2.rotate = -45
+				slash3.rotate = 45
+				slash1.direction = 0
+				slash2.direction = 1
+				slash3.direction = -1
+				slash4.direction = 1
+				slash5.direction = -1
+				slash1.global_position = parent.global_position + Vector2(3 * slash1.direction, -3)
+				slash2.global_position = parent.global_position + Vector2(3 * slash2.direction, -3)
+				slash3.global_position = parent.global_position + Vector2(3 * slash3.direction, -3)
+				slash4.global_position = parent.global_position + Vector2(3 * slash4.direction, 3)
+				slash5.global_position = parent.global_position + Vector2(3 * slash5.direction, 3)
+				slash1.yChange = true
+				slash2.yChange = true
+				slash3.yChange = true
+				if parent.phase2:
+					var slash6 = slash_projectile.instantiate()
+					var slash7 = slash_projectile.instantiate()
+					var slash8 = slash_projectile.instantiate()
+					var slash9 = slash_projectile.instantiate()
+					var slash10 = slash_projectile.instantiate()
+					slash6.rotate = 90
+					slash7.rotate = -45
+					slash8.rotate = 45
+					slash6.direction = 0
+					slash7.direction = 1
+					slash8.direction = -1
+					slash9.direction = 1
+					slash10.direction = -1
+					slash6.global_position = parent.global_position + Vector2(3 * slash6.direction, -3)
+					slash7.global_position = parent.global_position + Vector2(3 * slash7.direction, -3)
+					slash8.global_position = parent.global_position + Vector2(3 * slash8.direction, -3)
+					slash9.global_position = parent.global_position + Vector2(3 * slash9.direction, 3)
+					slash10.global_position = parent.global_position + Vector2(3 * slash10.direction, 3)
+					slash6.yChange = true
+					slash7.yChange = true
+					slash8.yChange = true
+					slash6.speed = 350
+					slash7.speed = 350
+					slash8.speed = 350
+					slash9.speed = 350
+					slash10.speed = 350
+					add_child(slash6)
+					add_child(slash7)
+					add_child(slash8)
+					add_child(slash9)
+					add_child(slash10)
+				add_child(slash1)
+				add_child(slash2)
+				add_child(slash3)
+				add_child(slash4)
+				add_child(slash5)
+				if !parent.phase2:
+					Projectiles = false
 			if as2d.frame == 5:
 				parent.idle_time = 1.0
 				parent.chase = true

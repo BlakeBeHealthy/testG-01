@@ -12,12 +12,16 @@ Rain: That chest over there is weird...
 Rain: People interact with it and then if they die they just appear right here...
 Rain: ...
 Rain: Its a checkpoint and it fills your health.
+P: ...Does it take insurance?
+Rain: It's free...I think
+Rain: *looks at the chest for a while*
+Rain: ...I wouldn't question it
 set Gameplay.Rain = true
 => END
 
 ~ st2
-Rain: Interact with it, is it that hard?
-P: You need an attitude pill
+Rain: Interact with it, is it that hard? Disappointment.
+P: You need an attitude pill 
 => END
 
 ~ s2
