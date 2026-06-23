@@ -4,6 +4,7 @@ extends State
 
 var done := false
 var checkpoint := false
+var smallKB := false
 var speaking := false
 var dialogueActive := false
 var started := false
@@ -12,6 +13,8 @@ var title := ""
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
+	parent.a2d2.monitorable = false
+	parent.a2d2.monitorable = false
 	if !dialogue_manager.dialogue_ended.is_connected(_on_dialogue_ended):
 		dialogue_manager.dialogue_ended.connect(_on_dialogue_ended)
 		
@@ -19,7 +22,7 @@ func enter() -> void:
 		checkpoint = true
 	elif parent.current_interactable is BetaNPC or Global.cutsceneStarted:
 		speaking = true
-	else:
+	elif !parent.animate:
 		parent.camLook = true
 		
 func exit() -> void:
@@ -28,6 +31,8 @@ func exit() -> void:
 	done = false
 	checkpoint = false
 	started = false
+	parent.a2d2.monitorable = true
+	parent.a2d2.monitorable = true
 	
 func process_input(event: InputEvent) -> State:
 	return null
@@ -42,6 +47,9 @@ func _on_dialogue_ended(_resource: DialogueResource):
 	parent.speaking.emit(0)
 	
 func process_frame(delta: float) -> State:
+	if parent.animate:
+		return null
+		
 	if checkpoint and !started:
 		started = true
 		parent.saving.emit(0)
@@ -78,5 +86,17 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		as2d.play("save2")
 		
 func process_physics(delta: float) -> State:
+	if parent.animate:
+		if !parent.is_on_floor():
+			as2d.play("fall")
+			parent.velocity.y = (gravity * 1.5) * delta 
+			if !smallKB:
+				parent.velocity.x += -parent.direction * 12
+				smallKB = true
+			parent.move_and_slide()
+		else:
+			smallKB = false
+			as2d.play("idle")
+		
 	return null
 	

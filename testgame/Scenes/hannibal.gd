@@ -53,8 +53,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	
-	if healthCount <= 20 and !phase2:
-		print("1")
+	if healthCount <= 20 and !phase2 and !phase2S:
 		phase2Start()
 		
 	if Global.cutsceneStarted and !phase2S:
@@ -114,4 +113,3 @@ func _on_hurtbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 	
 func phase2Start():
 	phase2S = true
-	print("2", phase2S)

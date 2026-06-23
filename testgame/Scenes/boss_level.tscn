@@ -2233,7 +2233,7 @@ sources/1 = SubResource("TileSetAtlasSource_jawqf")
 
 [sub_resource type="Animation" id="Animation_jawqf"]
 resource_name = "P2"
-length = 2.4333334
+length = 3.3333333
 step = 0.033
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2254,7 +2254,7 @@ tracks/1/path = NodePath("hannibal:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.39999998),
+"times": PackedFloat32Array(1.4333333),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(500, 151)]
@@ -2266,10 +2266,10 @@ tracks/2/path = NodePath("hannibal:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.39999998),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.3999999),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"pray_start"]
+"values": [&"idle", &"pray_start"]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -2278,10 +2278,10 @@ tracks/3/path = NodePath("hannibal:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.39999998, 0.9, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.36666664, 0.6333333, 1.5333333, 2.0333333, 2.5333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [0, 1, 2, 0, 1, 2]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -2334,24 +2334,10 @@ tracks/7/keys = {
 tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("UI")
+tracks/8/path = NodePath("p")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [1.0],
-"method": &"fade_in"
-}]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("p")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -2359,17 +2345,31 @@ tracks/9/keys = {
 "method": &"play"
 }]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("p:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("p:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Camera2D")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1.0, true],
+"method": &"fade_in"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_xwxio"]
@@ -4924,7 +4924,7 @@ flip_h = true
 position = Vector2(0, 151)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_wktm6")
-animation = &"pray_start"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Projectile" type="AnimatedSprite2D" parent="." unique_id=995690573]

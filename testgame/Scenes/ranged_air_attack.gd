@@ -114,7 +114,6 @@ func shoot(loopcount: int = 1, duration: float = 0, wait: float = 1.0, speed: fl
 		wait = projectileWindow
 	
 	while loopcount > 0:
-		print(loopcount)
 		var slash1 = slash_projectile.instantiate()
 		slash1.speed = speed
 		slash1.direction = parent.direction

@@ -67,6 +67,7 @@ var interactCheck := false
 var moveCheck := false
 var dashAllow := true
 var camLook := false
+var animate := false
 var dash := false
 var wallSlide := false
 var wallJump := false
@@ -198,3 +199,12 @@ func _on_parry_inv_timeout() -> void:
 	
 func playAnim(anim: String):
 	as2d.play(anim)
+
+func anim():
+	a2d2.monitorable = false
+	a2d2.monitorable = false
+	control_locked = true
+	if !animate:
+		animate = true
+	else:
+		animate = false

@@ -12,14 +12,20 @@ func _ready():
 	c_r.visible = false
 #Fade functions are called by other scripts, this script is global, this is just the
 	#actual logic of it
-func fade_out(speed: float = 1.0):
+func fade_out(speed: float = 1.0, wait: bool = false):
 	c_r.visible = true
 	aP.play("fadeOut", -1, speed)
+	if wait:
+		await aP.animation_finished
 	
-func fade_in(speed: float = 1.0):
+	
+func fade_in(speed: float = 1.0, wait: bool = false):
 	c_r.visible = true
-	aP.play("fadeIn")
+	aP.play("fadeIn", -1, speed)
 	aP.animation_finished.connect(_on_fade_in_finished)
+	if wait:
+		await aP.animation_finished
+	
 #Ending the fade
 func _on_fade_in_finished(anim_name: String) -> void:
 	if anim_name == "fadeIn":

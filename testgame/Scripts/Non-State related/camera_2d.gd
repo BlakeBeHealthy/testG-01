@@ -92,3 +92,10 @@ func reset(duration):
 
 func APmove():
 	offsetting = true
+	
+	
+func fade_in(speed: float = 1.0, wait = false):
+	FadeS.fade_in(speed, wait)
+	
+func fade_out(speed: float = 1.0, wait = false):
+	FadeS.fade_out(speed, wait)
