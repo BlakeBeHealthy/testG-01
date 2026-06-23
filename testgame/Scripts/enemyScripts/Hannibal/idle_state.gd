@@ -83,6 +83,7 @@ func phase2start():
 	else:
 		dir = -1
 	KB = true
+	await as2d.animation_finished
 	await FadeS.fade_out()
 	parent.phase2S = false
 	parent.phase2 = true
