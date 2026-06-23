@@ -7,7 +7,7 @@ var debug_mode: bool = false
 var knight_dead: bool = false
 var cutsceneStarted: bool = false
 var cutsceneMode: bool = false
-var cutWait: bool = false
+var inputBlocked: bool = false
 var player: CharacterBody2D
 var camera: Camera2D
 var UI: CanvasLayer

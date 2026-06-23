@@ -126,7 +126,8 @@ func _on_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 	
 func _input(event: InputEvent) -> void:
-	if current_line == null or isMoving or dialogue_ended or waiting_for_line:
+	if current_line == null or isMoving or dialogue_ended or waiting_for_line \
+	or Global.inputBlocked:
 		return
 		
 	if responses_visible and !dialogue_label.is_typing:
@@ -195,6 +196,7 @@ func show_responses():
 		responses_visible = false
 		
 func playResume(animation: String = "",  waitForFlag: bool = false) -> void:
+	Global.inputBlocked = true
 	dialogue_label.text = ""
 	if is_instance_valid(dialogue_label):
 		if dialogue_label.is_typing:
@@ -212,7 +214,7 @@ func playResume(animation: String = "",  waitForFlag: bool = false) -> void:
 		return
 	else:
 		await Global.ap.animation_finished
-		Resume()
+		await Resume()
 		
 func Resume():
 		if overlay_tween:
@@ -221,7 +223,8 @@ func Resume():
 		await overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.2)
 		check = false
 		currentSpeaker = ""
-		apply_dialogue_line()
+		await apply_dialogue_line()
+		Global.inputBlocked = false
 
 
 func playEnd(animation: String) -> void:

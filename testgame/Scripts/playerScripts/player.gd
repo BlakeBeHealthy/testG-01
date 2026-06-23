@@ -157,8 +157,15 @@ func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale:
 		comboCount = 0
 		takeHit = true
 		attack_delay.stop()
-	
+		
+func _unhandled_key_input(event: InputEvent) -> void:
+	if Global.inputBlocked:
+		return
+		
 func _input(event): #allowing the player to attack
+	if Global.inputBlocked:
+		return
+		
 	if (!stickState) and event.is_action_pressed("Parry") and parry_cooldown.is_stopped():
 			parryCheck = true
 	elif (!stickState) and event.is_action_pressed("leftC"):

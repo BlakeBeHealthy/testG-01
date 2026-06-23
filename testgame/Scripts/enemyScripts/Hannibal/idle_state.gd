@@ -11,8 +11,8 @@ var dir: float
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
-	print("3", parent.phase2S)
-	if parent.phase2S and !parent.phase2:
+	if parent.phase2S and !parent.phase2 and parent.healthCount <= 20:
+		print("3 for 3")
 		parent.phase2 = false
 		cutCheck = true
 		phase2start()
