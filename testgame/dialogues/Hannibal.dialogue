@@ -3,9 +3,7 @@ Hannibal: I've been looking for you.
 P: Have we met?
 Hannibal: I've killed you countless times before. But this moment in time keeps repeating.
 Hannibal: End this fight, why do you keep coming back?
-
 do! playResume("e2")
-
 Hannibal: You will die
 set Global.cutsceneStarted = false
 => END
@@ -27,5 +25,5 @@ if Global.clash_won:
 	Hannibal: Guess I should at least give you a show.
 else:
 	Hannibal: its over.
+set Global.cutsceneStarted = false
 => END
-

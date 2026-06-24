@@ -19,7 +19,9 @@ func _ready() -> void:
 	
 func Start(a: String = ""):
 	await Global.UI.balloon.playResume(a, true)
+	Global.camera.start_shake(2.0)
 	Global.ap.play("clashing")
+	Global.inputBlocked = true
 	barStart()
 	
 func barStart(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:
@@ -39,22 +41,23 @@ func barStart(fade_before: bool = true, timeout: bool = false, countdown: float 
 	
 	
 func endClash(win: bool) -> void:
+	active = false
+	Global.camera.shake_end()
 	if win == null:
 		print("No outcome!")
 		return
-		
+	
 	Global.clash_won = win
 	if waitFade:
 		await barFade()
 	else:
 		barFade()
 	Global.clash_over.emit()
-	clash_end()
 		
 func _input(event) -> void:
 	if !active:
 		return
-	if Input.is_action_just_pressed("clash"):
+	if Input.is_action_just_pressed("jump"):
 		var power = max(10.0 - mash_count * 0.5, 1.0)
 		bar.value += power
 		mash_count += 1
@@ -62,13 +65,17 @@ func _input(event) -> void:
 func _process(delta: float) -> void:
 	if !active:
 		return
-	bar.value -= drain_speed * delta
+		
+	print(bar.value)
+	if bar.value >= 98:
+		bar.value = 100
+	else:
+		bar.value -= drain_speed * delta
 	if bar.value <= 0:
 		endClash(false)
-	elif bar.value >= 100:
+	elif bar.value >= 98:
 		endClash(true)
-
-
+	
 func _on_ct_timeout() -> void:
 	endClash(false)
 
