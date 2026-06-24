@@ -1,9 +1,8 @@
 class_name Fade extends CanvasLayer
 
 #This is just to add the fade in/out
-
 @onready var c_r: ColorRect = $cR
-@onready var aP: AnimationPlayer = $AnimationPlayer #I probably should use animation player for player and other stuff but I like AnimatedSprite2d bc its easy
+@onready var aP: AnimationPlayer = $AnimationPlayer
 
 func _ready():
 	if c_r == null:

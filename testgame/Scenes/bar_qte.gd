@@ -1,8 +1,8 @@
 extends Control
 
-@onready var bar: ProgressBar = $PB
+@onready var bar: ProgressBar = $QTE
 signal timeout
-var action: String = "parry"
+var action: String = "jump"
 
 func _ready() -> void:
 	Global.QTEBar = self

@@ -2,7 +2,6 @@ extends State
 
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var timer: Timer = $"../../Timer"
-@onready var tim_2: Timer = $"../../tim2"
 @onready var a2d: Area2D = $"../../Area2D"
 @onready var hitstuntimer: Timer = $"../../hitstuntimer"
 @onready var it3: Timer = $"../../InvincibleTime"

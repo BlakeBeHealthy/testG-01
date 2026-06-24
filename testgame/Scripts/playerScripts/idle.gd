@@ -2,7 +2,6 @@ extends State
 
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D" #as2d is ALWAYS the animation player
 @onready var a2d: Area2D = $"../../Area2D" #a2d is the attack hitbox
-@onready var t: Timer = $Timer
 @onready var a2d2: Area2D = $"../../Area2D2" #a2d2 is the attack hurtbox
 
 #Small explination, each state must be a child of State class, or they are not allowed
