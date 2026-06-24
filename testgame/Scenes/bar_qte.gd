@@ -2,7 +2,7 @@ extends Control
 
 @onready var bar: ProgressBar = $PB
 signal timeout
-var action: String = ""
+var action: String = "parry"
 
 func _ready() -> void:
 	Global.QTEBar = self

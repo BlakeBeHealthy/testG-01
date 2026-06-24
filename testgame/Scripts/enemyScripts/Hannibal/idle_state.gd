@@ -106,14 +106,18 @@ func phase2start():
 	t.tween_property(Engine, "time_scale", 0.5, 0.7)
 	await FadeS.fade_out(0.5, true)
 	Engine.time_scale = 1.0
-	if as2d.flip_h == true:
+	if parent.direction == 1:
 		as2d.flip_h = false
+	else:
+		as2d.flip_h = true
 	await get_tree().create_timer(2.0, true, false, true).timeout
 	Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2")
 	Global.inputBlocked = false
 	as2d.play("idle")
 	as2d.frame = 1
 	as2d.stop()
+	if parent.direction == -1 and as2d.flip_h:
+		parent.flip_direction()
 	await dialogue_manager.dialogue_ended
 	parent.phase2 = true
 	P2 = false

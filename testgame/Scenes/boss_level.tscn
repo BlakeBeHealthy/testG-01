@@ -3568,6 +3568,17 @@ tracks/24/keys = {
 "method": &"flip_direction"
 }]
 }
+tracks/25/type = "method"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Hannibal")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_y76g8"]
 resource_name = "clashing"
@@ -5668,7 +5679,7 @@ flip_h = true
 position = Vector2(0, 151)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_wktm6")
-animation = &"hit"
+animation = &"pray_start"
 autoplay = "idle"
 frame = 2
 

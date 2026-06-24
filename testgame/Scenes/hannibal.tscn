@@ -803,7 +803,6 @@ target_position = Vector2(14.615386, 0)
 collide_with_areas = true
 
 [node name="playerChaseDetect" type="RayCast2D" parent="." unique_id=1600923200]
-visible = false
 position = Vector2(3.8461542, 7.6923075)
 target_position = Vector2(40.000004, -9.536743e-07)
 collision_mask = 2

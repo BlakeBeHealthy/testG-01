@@ -59,7 +59,8 @@ func _process(delta: float) -> void:
 	if Global.cutsceneStarted and !phase2S:
 		phase2S = true
 		
-func flip_direction(dir: int = 0):
+func flip_direction(dir: int = 0, cutCheck: bool = false):
+	print("FLIP")
 	if dir != 0:
 		direction = dir
 	else:
@@ -74,10 +75,11 @@ func flip_direction(dir: int = 0):
 		hannibal_ahh.position.x = -2.3
 		player_chase_detect.target_position.x = -39
 	c2d.position.x *= -1
-	if as2d.flip_h:
-		as2d.flip_h = false
-	else:
-		as2d.flip_h = true
+	if !cutCheck:
+		if as2d.flip_h:
+			as2d.flip_h = false
+		else:
+			as2d.flip_h = true
 
 func hit():
 	Global.player.hit(
