@@ -160,11 +160,11 @@ func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale:
 		attack_delay.stop()
 		
 func _unhandled_key_input(event: InputEvent) -> void:
-	if Global.inputBlocked:
+	if Global.inputBlocked or Global.cutsceneStarted:
 		return
 		
 func _input(event): #allowing the player to attack
-	if Global.inputBlocked:
+	if Global.inputBlocked or Global.cutsceneStarted:
 		return
 		
 	if (!stickState) and event.is_action_pressed("Parry") and parry_cooldown.is_stopped():
@@ -201,10 +201,13 @@ func playAnim(anim: String):
 	as2d.play(anim)
 
 func anim():
-	a2d2.monitorable = false
-	a2d2.monitorable = false
-	control_locked = true
 	if !animate:
+		control_locked = true
 		animate = true
+		a2d2.monitorable = false
+		a2d2.monitorable = false
 	else:
+		control_locked = false
 		animate = false
+		a2d2.monitorable = true
+		a2d2.monitorable = true

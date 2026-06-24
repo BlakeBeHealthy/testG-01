@@ -13,8 +13,9 @@ var title := ""
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
-	parent.a2d2.monitorable = false
-	parent.a2d2.monitorable = false
+	if parent.a2d2.monitorable:
+		parent.a2d2.monitorable = false
+		parent.a2d2.monitorable = false
 	if !dialogue_manager.dialogue_ended.is_connected(_on_dialogue_ended):
 		dialogue_manager.dialogue_ended.connect(_on_dialogue_ended)
 		
@@ -31,8 +32,9 @@ func exit() -> void:
 	done = false
 	checkpoint = false
 	started = false
-	parent.a2d2.monitorable = true
-	parent.a2d2.monitorable = true
+	if !parent.a2d2.monitorable:
+		parent.a2d2.monitorable = true
+		parent.a2d2.monitorable = true
 	
 func process_input(event: InputEvent) -> State:
 	return null
@@ -47,8 +49,10 @@ func _on_dialogue_ended(_resource: DialogueResource):
 	parent.speaking.emit(0)
 	
 func process_frame(delta: float) -> State:
-	if parent.animate:
+	if parent.animate and !Global.cutsceneStarted:
 		return null
+	else:
+		speaking = true
 		
 	if checkpoint and !started:
 		started = true

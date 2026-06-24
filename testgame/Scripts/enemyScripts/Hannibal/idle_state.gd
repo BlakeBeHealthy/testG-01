@@ -51,6 +51,10 @@ func process_frame(delta: float) -> States:
 	if !Global.cutsceneStarted and cutCheck:
 		cutCheck = false
 		idleOver = false
+		if parent.chase:
+			parent.chase = false
+		if parent.playerAbove:
+			parent.playerAbove = false
 		idle_time.start(1.3)
 		
 	if idleOver and !Global.cutsceneStarted and !cutCheck and !P2:
@@ -107,7 +111,9 @@ func phase2start():
 	await get_tree().create_timer(2.0, true, false, true).timeout
 	Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2")
 	Global.inputBlocked = false
-	
+	as2d.play("idle")
+	as2d.frame = 1
+	as2d.stop()
 	await dialogue_manager.dialogue_ended
 	parent.phase2 = true
 	P2 = false

@@ -51,3 +51,17 @@ func hidePrompt():
 func hidePromptJump():
 	PlayerInAir = true
 	hidePrompt()
+	
+func QTE(act: String, dur: float, position: Vector2) -> bool:
+	showPrompt(act, position)
+	Global.QTEBar.startBar(dur)
+	var win = false
+	
+	while Global.QTEBar.visible: 
+		if Input.is_action_just_pressed(act):
+			win = true
+			break
+		await get_tree().physics_frame
+		
+	hidePrompt()
+	return win
