@@ -2,8 +2,12 @@ extends Node2D
 
 @onready var prompt: Label = $PanelContainer/MarginContainer/Label
 var tween = null
+var action: String = ""
 var PlayerInAir = false
 var showP := true
+var win := false
+var activeQTE := false
+var resolved := false
 var events
 var Pscale: Vector2
 # Called when the node enters the scene tree for the first time.
@@ -31,13 +35,15 @@ func update_func(keybind: String):
 func updateText(text):
 	prompt.text = text
 
-func showPrompt(keybind: String = "interact", scaleP: Vector2 = Vector2(1, 1)):
+func showPrompt(keybind: String = "interact", scaleP: Vector2 = Vector2(1, 1), position: Vector2 = Vector2(1, 1)):
 	Pscale = scaleP
 	if tween:
 		tween.kill()
 	tween = create_tween()
 	update_func(keybind)
 	self.visible = true
+	if position != Vector2(1, 1):
+		self.global_position = position
 	tween.tween_property(self, "scale", Pscale, 0.05)
 	
 func hidePrompt():
@@ -53,15 +59,28 @@ func hidePromptJump():
 	hidePrompt()
 	
 func QTE(act: String, dur: float, position: Vector2) -> bool:
-	showPrompt(act, position)
-	Global.QTEBar.startBar(dur)
-	var win = false
-	
-	while Global.QTEBar.visible: 
-		if Input.is_action_just_pressed(act):
-			win = true
-			break
-		await get_tree().physics_frame
-		
+	action = act
+	showPrompt(act, Vector2(1, 1), position)
+	activeQTE = true
+	Global.QTEBar.startBar(dur, act)
+	win = false
+	while !resolved and activeQTE:
+		await get_tree().process_frame
 	hidePrompt()
+	if resolved:
+		resolved = false
 	return win
+	
+func _input(event: InputEvent) -> void:
+	if !activeQTE or !event.is_pressed() or event.is_echo():
+		return
+		
+	if event.is_action(action):
+		win = true
+		Global.QTEBar.flashRight()
+	else:
+		win  = false
+		Global.QTEBar.flashWrong()
+	resolved = true
+	activeQTE = false
+		
