@@ -2499,7 +2499,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_ktkrn"]
 resource_name = "HD2"
-length = 2.0333333
+length = 2.3
 step = 0.033
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2508,10 +2508,10 @@ tracks/0/path = NodePath("p:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.3666667, 1.8, 2, 2.0666666, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(690.53, 166)]
+"values": [Vector2(690.53, 166), Vector2(690.53, 166), Vector2(540.4, 166), Vector2(480.4, 166), Vector2(480.4, 166), Vector2(500.4, 166)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2592,11 +2592,14 @@ tracks/7/path = NodePath("p")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.3666667),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [&"idle", 1.0, false],
 "method": &"play"
+}, {
+"args": [],
+"method": &"stop"
 }]
 }
 tracks/8/type = "value"
@@ -2611,19 +2614,53 @@ tracks/8/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/9/type = "method"
+tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Camera2D")
+tracks/9/path = NodePath("Projectile:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [1.0, true],
-"method": &"fade_in"
-}]
+"times": PackedFloat32Array(1.0333333, 1.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Projectile:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.0333333, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(495, 156), Vector2(1000, 156)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("p:animation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.3666667, 1.6667666, 1.7666667, 2.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"dash", &"dash", &"parryAtt", &"idle"]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("p:frame")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.3666667, 1.4333333, 1.5, 1.5666667, 1.6333333, 1.7666667, 1.9, 2, 2.1000001, 2.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0, 0, 2, 3, 4, 0]
 }
 
 [sub_resource type="Animation" id="Animation_jawqf"]
@@ -5679,7 +5716,7 @@ flip_h = true
 position = Vector2(0, 151)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_wktm6")
-animation = &"pray_start"
+animation = &"hit"
 autoplay = "idle"
 frame = 2
 
