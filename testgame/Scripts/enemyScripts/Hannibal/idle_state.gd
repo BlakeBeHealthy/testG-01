@@ -39,6 +39,9 @@ func process_input(event: InputEvent) -> States:
 	return null
 
 func process_frame(delta: float) -> States:
+	if parent.death:
+		return
+	
 	if parent.phase2S and !parent.phase2 and parent.healthCount <= 20 and !P2:
 		parent.phase2S = false
 		P2 = true
@@ -89,6 +92,7 @@ func phase2start():
 	
 	if Global.camera.shaking:
 		Global.camera.shaking = false
+	
 	dir = parent.global_position.x - Global.player.global_position.x
 	
 	if dir >= 0:
@@ -110,17 +114,22 @@ func phase2start():
 		as2d.flip_h = false
 	else:
 		as2d.flip_h = true
-	await get_tree().create_timer(2.0, true, false, true).timeout
-	Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2")
-	Global.inputBlocked = false
-	as2d.play("idle")
-	as2d.frame = 1
-	as2d.stop()
-	if parent.direction == -1 and as2d.flip_h:
-		parent.flip_direction()
-	await dialogue_manager.dialogue_ended
-	parent.phase2 = true
-	P2 = false
+	await get_tree().create_timer(1.5, true, false, true).timeout
+	if !parent.death:
+		Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2")
+		Global.inputBlocked = false
+		as2d.play("idle")
+		as2d.frame = 1
+		as2d.stop()
+		if parent.direction == -1 and as2d.flip_h:
+			parent.flip_direction()
+		await dialogue_manager.dialogue_ended
+		parent.phase2 = true
+		P2 = false
+	else:
+		Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2")
+		Global.inputBlocked = false
+		as2d.play("death")
 	
 func freezeFrame(duration: float = 0.3) -> void:
 	get_tree().paused = true

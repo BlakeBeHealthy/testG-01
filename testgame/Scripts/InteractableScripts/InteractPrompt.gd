@@ -3,13 +3,20 @@ extends Node2D
 @onready var prompt: Label = $PanelContainer/MarginContainer/Label
 var tween = null
 var action: String = ""
+var winA: String = ""
+var loseA: String = ""
+var DM3Check: String = ""
+var lastPrompt: String = ""
 var PlayerInAir = false
 var showP := true
 var win := false
 var activeQTE := false
 var resolved := false
+var PD: Dictionary = {}
+var promptTraits: Array = []
 var events
 var Pscale: Vector2
+var keyCount: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.scale = Vector2(0, 0)
@@ -58,18 +65,17 @@ func hidePromptJump():
 	PlayerInAir = true
 	hidePrompt()
 	
-func QTE(act: String, dur: float, position: Vector2) -> bool:
+func QTE(act: String, position: Vector2 = Vector2(1,1), scale: Vector2 = Vector2(1, 1)) -> void:
 	action = act
-	showPrompt(act, Vector2(1, 1), position)
+	showPrompt(act, scale, position)
 	activeQTE = true
-	Global.QTEBar.startBar(dur, act)
 	win = false
 	while !resolved and activeQTE:
 		await get_tree().process_frame
-	hidePrompt()
+	await hidePrompt()
 	if resolved:
 		resolved = false
-	return win
+	
 	
 func _input(event: InputEvent) -> void:
 	if !activeQTE or !event.is_pressed() or event.is_echo():
@@ -83,4 +89,38 @@ func _input(event: InputEvent) -> void:
 		Global.QTEBar.flashWrong()
 	resolved = true
 	activeQTE = false
+	
+func holdPrompt(key: String = "", PT: Array = [Vector2(0,0), Vector2(0,0)]):
+	action = key
+	PD[key] = PT
+
+func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Checkpoint: String, preAnim: String = "",):
+	winA = winAnim
+	loseA = LoseAnim
+	DM3Check = DM3Checkpoint
+	Global.ap.play(anim)
+	Global.QTEBar.startBar(dur, action)
+	while keyCount != PD.size():
+		var key = PD.keys()[keyCount]
+		var position = PD[key][0]
+		var scale = PD[key][1]
+		await QTE(key, position, scale)
+		if win:
+			keyCount += 1
+		else:
+			break
+			
+	action = ""
+	PD.clear()
+	keyCount = 0
+	
+	
+func QTEOutcome():
+	if win:
+		Global.ap.play(winA)
+	else:
+		Global.ap.play(loseA)
 		
+	await Global.ap.animation_finished
+	await Global.UI.balloon.Resume(DM3Check)
+	

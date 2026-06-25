@@ -51,7 +51,7 @@ func _on_dialogue_ended(_resource: DialogueResource):
 func process_frame(delta: float) -> State:
 	if parent.animate and !Global.cutsceneStarted:
 		return null
-	else:
+	elif Global.cutsceneStarted:
 		speaking = true
 		
 	if checkpoint and !started:

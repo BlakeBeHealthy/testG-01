@@ -10,14 +10,14 @@ set Global.cutsceneStarted = false
 
 ~ P2
 Hannibal: Gods. Devils. Indulge me and feed me your strength.
-Hannibal: Ensure they cannot cross any further and end our realm
-Hannibal: They must rot and be trapped here forever
+Hannibal: Ensure they cannot cross any further and end our realm.
+Hannibal: They must rot and be trapped here forever.
 Hannibal: ...
 Hannibal: Tell me...
 Hannibal: If you complete your mission, but I leave a mark on your memory...
 Hannibal: Do I really cease to exist?...
 Hannibal: Doesn't matter really...as you won't get that far.
-do Global.Clash.Start("clash")
+do Global.Clash.Start("clash", "clashing", "clashW", "clashL", "clash_result")
 
 ~ clash_result
 if Global.clash_won:
@@ -25,6 +25,14 @@ if Global.clash_won:
 	Hannibal: Guess I should at least give you a show.
 else:
 	Hannibal: its over.
+set Global.cutsceneStarted = false
+do Global.player.anim()
+=> END
+
+~ death
+Hannibal: *cough* I hope it was worth it...
+Hannibal: You will see me again, it may be in different attire...but the motive will be the same.
+Hannibal: See you soon. Player.
 set Global.cutsceneStarted = false
 do Global.player.anim()
 => END

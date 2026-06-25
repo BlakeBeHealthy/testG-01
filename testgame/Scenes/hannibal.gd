@@ -29,6 +29,7 @@ var direction: float = 1
 var wallJump: bool = false
 var phase2: bool = false
 var phase2S: bool = false
+var death: bool = false
 var lunge: bool = false
 var chase: bool = false
 var middleAttack: bool = false
@@ -55,6 +56,11 @@ func _process(delta: float) -> void:
 	
 	if healthCount <= 20 and !phase2 and !phase2S:
 		phase2Start()
+		
+	if healthCount <= 0 and !death and !phase2S:
+		phase2Start()
+		death = true
+		
 		
 	if Global.cutsceneStarted and !phase2S:
 		phase2S = true
