@@ -13,7 +13,7 @@ var clash_won: bool = false
 var player: CharacterBody2D
 var Clash: Control
 var camera: Camera2D
-var QTEBar: Control
+var prompt: Node2D
 var UI: CanvasLayer
 var ap: AnimationPlayer
 signal playerDone

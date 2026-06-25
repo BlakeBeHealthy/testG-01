@@ -29,6 +29,10 @@ set Global.cutsceneStarted = false
 do Global.player.anim()
 => END
 
+~ d1
+Hannibal: I..I won't give in
+do Global.prompt.holdPrompt("Dash", [Vector2(600, 100), Vector2(1, 1)])
+do Global.prompt.holdPrompt("Parry", [Vector2(600, 100), Vector2(1, 1)])
 ~ death
 Hannibal: *cough* I hope it was worth it...
 Hannibal: You will see me again, it may be in different attire...but the motive will be the same.

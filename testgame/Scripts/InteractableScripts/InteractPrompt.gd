@@ -19,6 +19,7 @@ var Pscale: Vector2
 var keyCount: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.prompt = self
 	self.scale = Vector2(0, 0)
 	Global.playerDone.connect(_on_player_ready)
 	
@@ -113,7 +114,7 @@ func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Ch
 	action = ""
 	PD.clear()
 	keyCount = 0
-	
+	await QTEOutcome()
 	
 func QTEOutcome():
 	if win:

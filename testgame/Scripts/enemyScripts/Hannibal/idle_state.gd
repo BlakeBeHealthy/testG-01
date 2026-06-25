@@ -127,9 +127,12 @@ func phase2start():
 		parent.phase2 = true
 		P2 = false
 	else:
-		Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2")
+		Global.startCutscene("res://dialogues/Hannibal.dialogue", "death", "HD1")
 		Global.inputBlocked = false
-		as2d.play("death")
+		as2d.play("die")
+		as2d.frame = 3
+		as2d.stop()
+		
 	
 func freezeFrame(duration: float = 0.3) -> void:
 	get_tree().paused = true

@@ -4,8 +4,7 @@ extends Control
 signal timeout
 var action: String = "jump"
 
-func _ready() -> void:
-	Global.QTEBar = self
+
 
 func startBar(duration: float, act: String) -> void:
 	action = act
