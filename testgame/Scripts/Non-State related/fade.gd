@@ -4,6 +4,8 @@ class_name Fade extends CanvasLayer
 @onready var c_r: ColorRect = $cR
 @onready var aP: AnimationPlayer = $AnimationPlayer
 
+var fade: bool = false
+
 func _ready():
 	if c_r == null:
 		return
@@ -14,6 +16,7 @@ func _ready():
 func fade_out(speed: float = 1.0, wait: bool = false):
 	c_r.visible = true
 	aP.play("fadeOut", -1, speed)
+	fade = true
 	if wait:
 		await aP.animation_finished
 	
@@ -28,6 +31,7 @@ func fade_in(speed: float = 1.0, wait: bool = false):
 #Ending the fade
 func _on_fade_in_finished(anim_name: String) -> void:
 	if anim_name == "fadeIn":
+		fade = false
 		c_r.visible = false
 		aP.animation_finished.disconnect(_on_fade_in_finished)
 

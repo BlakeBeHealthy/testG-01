@@ -95,11 +95,18 @@ func holdPrompt(key: String = "", PT: Array = [Vector2(0,0), Vector2(0,0)]):
 	action = key
 	PD[key] = PT
 
-func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Checkpoint: String, preAnim: String = "",):
+func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Checkpoint: String, preAnim: String = ""):
+	if FadeS.fade:
+		Global.ap.play(preAnim)
+		await Global.ap.animation_finished
+		await FadeS.fade_in()
+		Global.ballon.Resume(preAnim)
+		return
+		
+	Global.ap.play(anim)
 	winA = winAnim
 	loseA = LoseAnim
 	DM3Check = DM3Checkpoint
-	Global.ap.play(anim)
 	Global.QTEBar.startBar(dur, action)
 	while keyCount != PD.size():
 		var key = PD.keys()[keyCount]
@@ -119,9 +126,11 @@ func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Ch
 func QTEOutcome():
 	if win:
 		Global.ap.play(winA)
+		await Global.ap.animation_finished
+		await Global.UI.balloon.Resume(DM3Check)
 	else:
 		Global.ap.play(loseA)
+		await Global.ap.animation_finished
+		if Global.saveData.maxHealth > 0:
+			FadeS.fade_out()
 		
-	await Global.ap.animation_finished
-	await Global.UI.balloon.Resume(DM3Check)
-	

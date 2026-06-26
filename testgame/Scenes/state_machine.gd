@@ -19,7 +19,6 @@ func change_state(new_state: States) -> void:
 		current_state.exit()
 	
 	current_state = new_state
-	print(current_state)
 	current_state.enter()
 	
 func force_change_state(new_state: States) -> void:

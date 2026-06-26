@@ -49,6 +49,9 @@ func _on_dialogue_ended(_resource: DialogueResource):
 	parent.speaking.emit(0)
 	
 func process_frame(delta: float) -> State:
+	if parent.cutDeath:
+		return parent.death_state
+	
 	if parent.animate and !Global.cutsceneStarted:
 		return null
 	elif Global.cutsceneStarted:

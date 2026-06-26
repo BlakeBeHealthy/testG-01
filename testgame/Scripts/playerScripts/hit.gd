@@ -16,19 +16,20 @@ var timeSlow := false
 var flashing := false
 
 func enter() -> void:
-	if parent.attackCheck:
-		parent.attackCheck = false
-	if !parent.invincible:
-		Global.saveData.maxHealth -= parent.damage
-	if Global.saveData.maxHealth <= 0:
-		dead = true
-	flash_white()
-	apply_knockback()
-	a2d2.monitoring = false
-	a2d2.monitorable = false
-	it3.start()
-	hit_over = false
-	parent.playerHit.emit(Global.saveData.maxHealth)
+	if Global.saveData.maxHealth > 0:
+		if parent.attackCheck:
+			parent.attackCheck = false
+		if !parent.invincible:
+			Global.saveData.maxHealth -= parent.damage
+		if Global.saveData.maxHealth <= 0:
+			dead = true
+		flash_white()
+		apply_knockback()
+		a2d2.monitoring = false
+		a2d2.monitorable = false
+		it3.start()
+		hit_over = false
+		parent.playerHit.emit(Global.saveData.maxHealth)
 func exit() -> void:
 	pass
 

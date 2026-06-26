@@ -17,7 +17,7 @@ Hannibal: Tell me...
 Hannibal: If you complete your mission, but I leave a mark on your memory...
 Hannibal: Do I really cease to exist?...
 Hannibal: Doesn't matter really...as you won't get that far.
-do Global.Clash.Start("clash", "clashing", "clashW", "clashL", "clash_result")
+do Global.Clash.Start("clash", "clashing", "clashW", "clashL", "clash_result", "P2")
 
 ~ clash_result
 if Global.clash_won:
@@ -30,13 +30,17 @@ do Global.player.anim()
 => END
 
 ~ d1
-Hannibal: I..I won't give in
+Hannibal: I...
 do Global.prompt.holdPrompt("Dash", [Vector2(600, 100), Vector2(1, 1)])
 do Global.prompt.holdPrompt("Parry", [Vector2(600, 100), Vector2(1, 1)])
+Hannibal: I won't give in
+do Global.prompt.startQTE(10.0, "HD1_2", "HD2", "HD2_3", "death")
 ~ death
+
 Hannibal: *cough* I hope it was worth it...
 Hannibal: You will see me again, it may be in different attire...but the motive will be the same.
 Hannibal: See you soon. Player.
+do! Global.apFinish("HD2_2")
 set Global.cutsceneStarted = false
 do Global.player.anim()
 => END

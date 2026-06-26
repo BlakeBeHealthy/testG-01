@@ -71,6 +71,7 @@ var animate := false
 var dash := false
 var wallSlide := false
 var wallJump := false
+var cutDeath := false
 var comboCount := 0
 var health := 3
 var current_interactable: Node = null
@@ -159,6 +160,14 @@ func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale:
 		takeHit = true
 		attack_delay.stop()
 		
+func cutHit():
+	Global.saveData.maxHealth -= 1
+	playerHit.emit(Global.saveData.maxHealth)
+	if Global.saveData.maxHealth <= 0:
+		if Global.ap.is_playing():
+			await Global.ap.animation_finished
+		cutDeath = true
+	
 func _unhandled_key_input(event: InputEvent) -> void:
 	if Global.inputBlocked or Global.cutsceneStarted:
 		return

@@ -2,6 +2,9 @@ extends HannibalState
 
 @onready var idle_time: Timer = $"../../idleTime"
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var h1: Area2D = $"../../hitbox"
+@onready var h2: Area2D = $"../../Hurtbox"
+@onready var h3: Area2D = $"../../hannibalAHH"
 
 var idleOver: bool
 var cutCheck: bool
@@ -12,6 +15,10 @@ var dir: float
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
+	if parent.death:
+		cutCheck = true
+		pass
+	
 	if parent.phase2S and !parent.phase2 and parent.healthCount <= 20 and !P2:
 		parent.phase2S = false
 		P2 = true
@@ -39,8 +46,8 @@ func process_input(event: InputEvent) -> States:
 	return null
 
 func process_frame(delta: float) -> States:
-	if parent.death:
-		return
+	if Global.hannible:
+		return null
 	
 	if parent.phase2S and !parent.phase2 and parent.healthCount <= 20 and !P2:
 		parent.phase2S = false
@@ -87,53 +94,66 @@ func _on_idle_time_timeout() -> void:
 	idleOver = true
 
 func phase2start():
-	Global.inputBlocked = true
-	Global.player.anim()
-	
-	if Global.camera.shaking:
-		Global.camera.shaking = false
-	
-	dir = parent.global_position.x - Global.player.global_position.x
-	
-	if dir >= 0:
-		dir = 1
-		as2d.flip_h = true
+	if !Global.hannible:
+		Global.cutsceneStarted = true
+		Global.inputBlocked = true
+		Global.player.anim()
+		
+		if Global.camera.shaking:
+			Global.camera.shaking = false
+		
+		dir = parent.global_position.x - Global.player.global_position.x
+		
+		if dir >= 0:
+			dir = 1
+			as2d.flip_h = true
+		else:
+			dir = -1
+		as2d.play("hit")
+		KB = true
+		await freezeFrame()
+		Engine.time_scale = 1.0
+		if t:
+			t.kill()
+		t = create_tween()
+		t.tween_property(Engine, "time_scale", 0.5, 0.7)
+		await FadeS.fade_out(0.5, true)
+		Engine.time_scale = 1.0
+		if parent.direction == 1:
+			as2d.flip_h = false
+		else:
+			as2d.flip_h = true
+		await get_tree().create_timer(1.5, true, false, true).timeout
+		if !parent.death:
+			Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2")
+			Global.inputBlocked = false
+			as2d.play("idle")
+			as2d.frame = 1
+			as2d.stop()
+			if parent.direction == -1 and as2d.flip_h:
+				parent.flip_direction()
+			while Global.cutsceneStarted:
+				await get_tree().process_frame
+			parent.phase2 = true
+			P2 = false
+			parent.healthCount = 1
+		else:
+			Global.startCutscene("res://dialogues/Hannibal.dialogue", "d1", "HD1")
+			Global.inputBlocked = false
+			Global.hannible = true
+			phase2start()
 	else:
-		dir = -1
-	as2d.play("hit")
-	KB = true
-	await freezeFrame()
-	Engine.time_scale = 1.0
-	if t:
-		t.kill()
-	t = create_tween()
-	t.tween_property(Engine, "time_scale", 0.5, 0.7)
-	await FadeS.fade_out(0.5, true)
-	Engine.time_scale = 1.0
-	if parent.direction == 1:
-		as2d.flip_h = false
-	else:
-		as2d.flip_h = true
-	await get_tree().create_timer(1.5, true, false, true).timeout
-	if !parent.death:
-		Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2")
-		Global.inputBlocked = false
-		as2d.play("idle")
-		as2d.frame = 1
-		as2d.stop()
-		if parent.direction == -1 and as2d.flip_h:
-			parent.flip_direction()
-		await dialogue_manager.dialogue_ended
-		parent.phase2 = true
-		P2 = false
-	else:
-		Global.startCutscene("res://dialogues/Hannibal.dialogue", "death", "HD1")
-		Global.inputBlocked = false
+		h1.monitorable = false
+		h1.monitoring = false
+		h2.monitorable = false
+		h2.monitoring = false
+		h3.monitorable = false
+		h3.monitoring = false
 		as2d.play("die")
 		as2d.frame = 3
 		as2d.stop()
+		parent.global_position = Vector2(451.005, 151)
 		
-	
 func freezeFrame(duration: float = 0.3) -> void:
 	get_tree().paused = true
 	await get_tree().create_timer(duration, true, false, true).timeout

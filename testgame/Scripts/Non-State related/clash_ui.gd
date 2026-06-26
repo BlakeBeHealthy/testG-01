@@ -20,7 +20,16 @@ func _ready() -> void:
 	bar.max_value = 100
 	bar.value = 40
 	
-func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3Checkpoint: String):
+func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3Checkpoint: String, resetAnim: String):
+	print("start")
+	if FadeS.fade:
+		Global.ap.play(resetAnim)
+		await Global.ap.animation_finished
+		await FadeS.fade_in()
+		Global.UI.balloon.Resume(resetAnim)
+		print("45")
+		return
+		
 	winAnim = winA
 	loseAnim = loseA
 	DM3Check = DM3Checkpoint
@@ -72,7 +81,6 @@ func _process(delta: float) -> void:
 	if !active:
 		return
 		
-	print(bar.value)
 	if bar.value >= 98:
 		bar.value = 100
 	else:
@@ -95,7 +103,9 @@ func barFade() -> void:
 func clash_end():
 	if Global.clash_won:
 		Global.ap.play(winAnim)
+		await Global.ap.animation_finished
+		await Global.UI.balloon.Resume(DM3Check)
 	else:
 		Global.ap.play(loseAnim)
-	await Global.ap.animation_finished
-	await Global.UI.balloon.Resume(DM3Check)
+		await Global.ap.animation_finished
+		FadeS.fade_out()  

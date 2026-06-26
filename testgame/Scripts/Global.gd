@@ -10,6 +10,7 @@ var cutsceneMode: bool = false
 var inputBlocked: bool = false
 var cutWait: bool = false
 var clash_won: bool = false
+var hannible: bool = false
 var player: CharacterBody2D
 var Clash: Control
 var camera: Camera2D
@@ -68,9 +69,10 @@ func startCutscene(dialogueFile: String, startingPoint: String, introAnim: Strin
 func clashing() -> void:
 	await clash_over
 
-func apFinish() -> void:
+func apFinish(anim: String = "") -> void:
+	ap.play(anim)
 	await ap.animation_finished
-	
+
 func _input(event: InputEvent) -> void:
 	if !debug_mode:
 		return

@@ -54,10 +54,14 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	
+	if Global.hannible:
+		death = true
+		phase2S = true
+		
+		
 	if healthCount <= 20 and !phase2 and !phase2S:
 		phase2Start()
-		
-	if healthCount <= 0 and !death and !phase2S:
+	elif healthCount <= 0 and !death and !phase2S:
 		phase2Start()
 		death = true
 		
@@ -66,7 +70,6 @@ func _process(delta: float) -> void:
 		phase2S = true
 		
 func flip_direction(dir: int = 0, cutCheck: bool = false):
-	print("FLIP")
 	if dir != 0:
 		direction = dir
 	else:
