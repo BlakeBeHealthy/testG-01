@@ -54,19 +54,17 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	
-	if Global.hannible:
-		death = true
-		phase2S = true
 		
 		
-	if healthCount <= 20 and !phase2 and !phase2S:
+	if healthCount == 20 and !phase2 and !phase2S:
 		phase2Start()
 	elif healthCount <= 0 and !death and !phase2S:
 		phase2Start()
+		print("death")
 		death = true
 		
 		
-	if Global.cutsceneStarted and !phase2S:
+	if Global.cutsceneStarted and !phase2S and !death:
 		phase2S = true
 		
 func flip_direction(dir: int = 0, cutCheck: bool = false):
@@ -119,9 +117,7 @@ func _on_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index
 func _on_hannibal_ahh_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	hit()
 func _on_hurtbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	print("HURT")
 	healthCount -= 1
-	print(healthCount)
 	flash_white()
 	
 func phase2Start():

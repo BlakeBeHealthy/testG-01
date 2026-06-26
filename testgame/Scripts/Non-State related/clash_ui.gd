@@ -4,6 +4,7 @@ extends Control
 var drain_speed: float = 2.0
 var mash_count: int = 0
 var active: bool = false
+var clashingNow : bool = false
 var waitFade: bool = false
 var clash_tween = null
 @onready var ct: Timer = $CT
@@ -21,7 +22,6 @@ func _ready() -> void:
 	bar.value = 40
 	
 func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3Checkpoint: String, resetAnim: String):
-	print("start")
 	if FadeS.fade:
 		Global.ap.play(resetAnim)
 		await Global.ap.animation_finished
@@ -30,15 +30,29 @@ func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3C
 		print("45")
 		return
 		
+	clashingNow = true
 	winAnim = winA
 	loseAnim = loseA
 	DM3Check = DM3Checkpoint
 	await Global.UI.balloon.playResume(preAnim, true)
-	Global.camera.start_shake(2.0)
+	Global.camera.start_shake(2.0) 
 	Global.ap.play(clashAnim)
 	Global.inputBlocked = true
 	barStart()
 	
+	while clashingNow:
+		await get_tree().process_frame
+		
+	if Global.clash_won:
+		Global.ap.play(winAnim)
+		await Global.ap.animation_finished
+		Global.inputBlocked = false
+		Global.UI.balloon.Resume(DM3Check)
+	else:
+		Global.ap.play(loseAnim)
+		await Global.ap.animation_finished
+		FadeS.fade_out()  
+		
 func barStart(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:
 	mash_count = 0
 	bar.value = 40
@@ -67,6 +81,7 @@ func endClash(win: bool) -> void:
 		await barFade()
 	else:
 		barFade()
+	clashingNow = false
 	Global.clash_over.emit()
 		
 func _input(event) -> void:

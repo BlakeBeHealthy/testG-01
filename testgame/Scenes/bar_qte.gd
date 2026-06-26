@@ -24,9 +24,11 @@ func _process(delta: float) -> void:
 func flashWrong() -> void:
 	var t = create_tween()
 	t.tween_property(bar, "modulate", Color("bf352cff"), 0.1)
+	await t.finished
 	t.tween_property(bar, "modulate", Color("dfa031"), 0.1)
 	
 func flashRight() -> void:
 	var t = create_tween()
 	t.tween_property(bar, "modulate", Color("3d9838ff"), 0.1)
+	await t.finished
 	t.tween_property(bar, "modulate", Color("dfa031"), 0.1)

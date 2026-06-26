@@ -20,6 +20,8 @@ var dialogueResource: DialogueResource:
 var dRec: DialogueResource
 var check := false
 var responses_visible := false
+var wiped : bool = false
+var animEnd : bool = false
 var response_tween = null
 var overlay_tween = null
 var isMoving := false
@@ -37,12 +39,13 @@ var current_line: DialogueLine:
 				dialogue_label.modulate.a = 0
 				dialogue_label.text = ""
 			dialogue_ended = true
-			await wipeOut()
-			if overlay_tween:
-				overlay_tween.kill()
-			overlay_tween = create_tween()
-			overlay_tween.tween_property(color_rect, "modulate:a", 0.0, 0.3)
-			await overlay_tween.finished
+			if !animEnd:
+				await wipeOut()
+				if overlay_tween:
+					overlay_tween.kill()
+				overlay_tween = create_tween()
+				overlay_tween.tween_property(color_rect, "modulate:a", 0.0, 0.3)
+				await overlay_tween.finished
 			self.visible = false
 			check = false
 			currentSpeaker = ""
@@ -84,6 +87,7 @@ func start(resource: DialogueResource, title: String) -> void:
 	dialogue_responses_menu.response_selected.connect(_on_response_selected)
 
 func apply_dialogue_line():
+	dialogue_label.visible_ratio = 0
 	if current_line.character != currentSpeaker:
 		if check:
 			await wipeOut()
@@ -96,6 +100,7 @@ func apply_dialogue_line():
 		dialogue_label.modulate.a = 0
 		dialogue_label.visible_ratio = 0
 		charName.text = current_line.character
+		dialogue_label.visible_characters = 0
 		await wipeIn()
 		if responses_visible:
 			if response_tween:
@@ -105,8 +110,8 @@ func apply_dialogue_line():
 			responses_visible = false
 			responsePanel.hide()
 			
-		
 	dialogue_label.dialogue_line = current_line
+	dialogue_label.visible_characters = 0
 	dialogue_label.type_out()
 	
 	await dialogue_label.finished_typing
@@ -142,6 +147,7 @@ func _input(event: InputEvent) -> void:
 			next(current_line.next_id)
 
 func wipeIn():
+	wiped = true
 	isMoving = true
 	if tween:
 		tween.kill()
@@ -156,7 +162,9 @@ func wipeIn():
 	await tween.finished
 	return
 
-func wipeOut():
+func wipeOut(fullWipe: bool = false):
+	print_stack()
+	wiped = false
 	isMoving = true
 	
 	if tween:
@@ -175,6 +183,8 @@ func wipeOut():
 	tween.tween_method(func(val): panelM.set_shader_parameter("progress", val), 1.2, -0.2, 0.15)
 	tween.tween_interval(0.2)
 	tween.tween_method(func(val): portraitM.set_shader_parameter("progress", val), 1.2, -0.2, 0.15)
+	if animEnd:
+		tween.tween_property(color_rect, "modulate:a", 0.0, 0.3)
 	await tween.finished
 	return
 
@@ -208,12 +218,13 @@ func playResume(animation: String = "",  waitForFlag: bool = false) -> void:
 		overlay_tween.kill()
 	overlay_tween = create_tween()
 	await overlay_tween.tween_property(color_rect, "modulate:a", 0.0, 0.3)
-	Global.ap.play(animation)
-	await Global.ap.animation_finished
-	Global.inputBlocked = false
+	if animation != "":
+		Global.ap.play(animation)
+		await Global.ap.animation_finished
 	if waitForFlag:
 		pass
 	else:
+		Global.inputBlocked = false
 		await Resume()
 		
 func Resume(jump: String = ""):
@@ -223,15 +234,15 @@ func Resume(jump: String = ""):
 		await overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.2)
 		check = false
 		currentSpeaker = ""
-		if jump != "":
-			next(jump)
-		else:
-			await apply_dialogue_line()
 		Global.inputBlocked = false
+		dialogue_label.text = ""
+		wipeIn()
 
 
 func playEnd(animation: String) -> void:
-	await wipeOut()
+	animEnd = true
+	if wiped:
+		await wipeOut()
 	Global.ap.play(animation)
 	await Global.ap.animation_finished
 	

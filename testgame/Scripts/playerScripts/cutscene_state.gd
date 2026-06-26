@@ -16,8 +16,6 @@ func enter() -> void:
 	if parent.a2d2.monitorable:
 		parent.a2d2.monitorable = false
 		parent.a2d2.monitorable = false
-	if !dialogue_manager.dialogue_ended.is_connected(_on_dialogue_ended):
-		dialogue_manager.dialogue_ended.connect(_on_dialogue_ended)
 		
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
@@ -39,11 +37,11 @@ func exit() -> void:
 func process_input(event: InputEvent) -> State:
 	return null
 	
-func _on_dialogue_ended(_resource: DialogueResource):
+func _on_dialogue_done():
 	if !dialogueActive:
 		return
 		
-	speaking = false
+	dialogueActive = false
 	await get_tree().create_timer(0.4).timeout
 	done = true
 	parent.speaking.emit(0)
@@ -54,8 +52,10 @@ func process_frame(delta: float) -> State:
 	
 	if parent.animate and !Global.cutsceneStarted:
 		return null
-	elif Global.cutsceneStarted:
+	elif Global.cutsceneStarted and !dialogueActive:
 		speaking = true
+	elif !Global.cutsceneStarted and dialogueActive:
+		_on_dialogue_done()
 		
 	if checkpoint and !started:
 		started = true

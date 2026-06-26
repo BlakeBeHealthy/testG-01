@@ -15,7 +15,7 @@ var dir: float
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
-	if (parent.phase2S and !parent.phase2 and parent.healthCount <= 20 and !P2) or parent.death:
+	if parent.phase2S and ((!parent.phase2 and parent.healthCount <= 20 and !P2) or parent.death):
 		parent.phase2S = false
 		P2 = true
 		cutCheck = true
@@ -42,10 +42,29 @@ func process_input(event: InputEvent) -> States:
 	return null
 
 func process_frame(delta: float) -> States:
-	if Global.hannible or Global.inputBlocked:
+	if Global.hannible:
+		h1.monitorable = false
+		h1.monitoring = false
+		h2.monitorable = false
+		h2.monitoring = false
+		h3.monitorable = false
+		h3.monitoring = false
+		as2d.play("die")
+		as2d.frame = 3
+		as2d.stop()
+		parent.global_position = Vector2(451.005, 151)
 		return null
-	
-	if parent.phase2S and !parent.phase2 and parent.healthCount <= 20 and !P2:
+			
+	if Global.inputBlocked:
+		return null
+		
+	if parent.phase2S and ((!parent.phase2 and parent.healthCount <= 20 and !P2) or parent.death):
+		parent.phase2S = false
+		P2 = true
+		cutCheck = true
+		phase2start()
+		
+	if parent.phase2S and !parent.phase2 and parent.healthCount == 20 and !P2:
 		parent.phase2S = false
 		P2 = true
 		cutCheck = true
@@ -132,25 +151,14 @@ func phase2start():
 				await get_tree().process_frame
 			parent.phase2 = true
 			P2 = false
-			parent.healthCount = 3
+			parent.healthCount = 1
 		else:
 			await Global.startCutscene("res://dialogues/Hannibal.dialogue", "d1", "HD1")
+			Global.inputBlocked = false
 			while Global.cutsceneStarted:
 				await get_tree().process_frame
-			Global.inputBlocked = false
 			Global.hannible = true
-			phase2start()
-	elif parent.death:
-		h1.monitorable = false
-		h1.monitoring = false
-		h2.monitorable = false
-		h2.monitoring = false
-		h3.monitorable = false
-		h3.monitoring = false
-		as2d.play("die")
-		as2d.frame = 3
-		as2d.stop()
-		parent.global_position = Vector2(451.005, 151)
+				
 		
 func freezeFrame(duration: float = 0.3) -> void:
 	get_tree().paused = true

@@ -10,6 +10,7 @@ var cutsceneMode: bool = false
 var inputBlocked: bool = false
 var cutWait: bool = false
 var clash_won: bool = false
+var qte: bool = true
 var hannible: bool = false
 var player: CharacterBody2D
 var Clash: Control
