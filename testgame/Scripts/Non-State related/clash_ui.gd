@@ -14,7 +14,6 @@ var loseAnim: String = ""
 var DM3Check: String = ""
 
 func _ready() -> void:
-	Global.clash_over.connect(clash_end)
 	Global.Clash = self
 	visible = false
 	bar.min_value = 0
@@ -23,19 +22,16 @@ func _ready() -> void:
 	
 func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3Checkpoint: String, resetAnim: String):
 	if FadeS.fade:
-		Global.ap.play(resetAnim)
-		await Global.ap.animation_finished
-		await FadeS.fade_in()
-		Global.UI.balloon.Resume(resetAnim)
-		print("45")
-		return
+		Global.camera.reset(0.1)
+		await FadeS.fade_in(1.0, true)
+		
 		
 	clashingNow = true
 	winAnim = winA
 	loseAnim = loseA
 	DM3Check = DM3Checkpoint
 	await Global.UI.balloon.playResume(preAnim, true)
-	Global.camera.start_shake(2.0) 
+	Global.camera.start_shake(2.0)
 	Global.ap.play(clashAnim)
 	Global.inputBlocked = true
 	barStart()
@@ -51,7 +47,8 @@ func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3C
 	else:
 		Global.ap.play(loseAnim)
 		await Global.ap.animation_finished
-		FadeS.fade_out()  
+		await FadeS.fade_out(1.0, true)
+		Start(preAnim, clashAnim, winA, loseA, DM3Checkpoint, resetAnim)
 		
 func barStart(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:
 	mash_count = 0
@@ -114,13 +111,3 @@ func barFade() -> void:
 	fade_tween = create_tween()
 	fade_tween.tween_property(bar, "modulate:a", 0.0, 0.3)
 	await fade_tween.finished
-	
-func clash_end():
-	if Global.clash_won:
-		Global.ap.play(winAnim)
-		await Global.ap.animation_finished
-		await Global.UI.balloon.Resume(DM3Check)
-	else:
-		Global.ap.play(loseAnim)
-		await Global.ap.animation_finished
-		FadeS.fade_out()  

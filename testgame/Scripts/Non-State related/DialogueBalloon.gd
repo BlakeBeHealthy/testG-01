@@ -163,7 +163,6 @@ func wipeIn():
 	return
 
 func wipeOut(fullWipe: bool = false):
-	print_stack()
 	wiped = false
 	isMoving = true
 	
@@ -213,7 +212,8 @@ func playResume(animation: String = "",  waitForFlag: bool = false) -> void:
 			dialogue_label.skip_typing()
 		dialogue_label.modulate.a = 0
 		dialogue_label.text = ""
-	await wipeOut()
+	if wiped:
+		await wipeOut()
 	if overlay_tween:
 		overlay_tween.kill()
 	overlay_tween = create_tween()

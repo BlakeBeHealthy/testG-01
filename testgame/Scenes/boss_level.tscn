@@ -3215,6 +3215,30 @@ tracks/10/keys = {
 "method": &"fade_in"
 }]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Camera2D:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3.2666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(581, 17)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Camera2D:zoom")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(3.2666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.77, 2.77)]
+}
 
 [sub_resource type="Animation" id="Animation_xwxio"]
 length = 10.0
@@ -3703,7 +3727,6 @@ tracks/17/keys = {
 [sub_resource type="Animation" id="Animation_8ol1g"]
 resource_name = "clashL"
 length = 0.4
-loop_mode = 1
 step = 0.033
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -3934,6 +3957,20 @@ tracks/18/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/19/type = "method"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Player")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"cutHit"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_tim76"]
@@ -6412,9 +6449,9 @@ script = ExtResource("12_wktm6")
 position = Vector2(0, 151)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_wktm6")
-animation = &"die"
+animation = &"pray_start"
 autoplay = "idle"
-frame = 3
+frame = 2
 
 [node name="Projectile" type="AnimatedSprite2D" parent="." unique_id=995690573]
 scale = Vector2(2.25, 2.25)

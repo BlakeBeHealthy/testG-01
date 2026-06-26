@@ -1,6 +1,7 @@
 ~ start
 Hannibal: I've been looking for you.
 P: Have we met?
+=> P2
 Hannibal: I've killed you countless times before. But this moment in time keeps repeating.
 Hannibal: End this fight, why ado you keep coming back? 
 $> playResume("e2")

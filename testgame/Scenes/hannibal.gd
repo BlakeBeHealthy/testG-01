@@ -60,7 +60,6 @@ func _process(delta: float) -> void:
 		phase2Start()
 	elif healthCount <= 0 and !death and !phase2S:
 		phase2Start()
-		print("death")
 		death = true
 		
 		
