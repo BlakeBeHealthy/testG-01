@@ -119,7 +119,9 @@ func _on_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index
 func _on_hannibal_ahh_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	hit()
 func _on_hurtbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	print("HURT")
 	healthCount -= 1
+	print(healthCount)
 	flash_white()
 	
 func phase2Start():

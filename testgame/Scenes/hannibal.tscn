@@ -790,7 +790,7 @@ shakeDuration = 0.9
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 material = SubResource("ShaderMaterial_s0ijq")
 sprite_frames = SubResource("SpriteFrames_7qyh4")
-animation = &"die"
+animation = &"idle"
 autoplay = "idle"
 speed_scale = 0.8
 
@@ -800,8 +800,6 @@ position = Vector2(3.077, 13.8)
 scale = Vector2(0.4, 0.6)
 collision_layer = 32
 collision_mask = 8
-monitoring = false
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1913717701]
 shape = SubResource("CapsuleShape2D_s0ijq")

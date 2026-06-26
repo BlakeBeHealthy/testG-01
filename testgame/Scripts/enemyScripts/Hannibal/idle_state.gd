@@ -15,11 +15,7 @@ var dir: float
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
-	if parent.death:
-		cutCheck = true
-		pass
-	
-	if parent.phase2S and !parent.phase2 and parent.healthCount <= 20 and !P2:
+	if (parent.phase2S and !parent.phase2 and parent.healthCount <= 20 and !P2) or parent.death:
 		parent.phase2S = false
 		P2 = true
 		cutCheck = true
@@ -46,7 +42,7 @@ func process_input(event: InputEvent) -> States:
 	return null
 
 func process_frame(delta: float) -> States:
-	if Global.hannible:
+	if Global.hannible or Global.inputBlocked:
 		return null
 	
 	if parent.phase2S and !parent.phase2 and parent.healthCount <= 20 and !P2:
@@ -95,8 +91,8 @@ func _on_idle_time_timeout() -> void:
 
 func phase2start():
 	if !Global.hannible:
-		Global.cutsceneStarted = true
 		Global.inputBlocked = true
+		Global.cutsceneStarted = true
 		Global.player.anim()
 		
 		if Global.camera.shaking:
@@ -136,13 +132,15 @@ func phase2start():
 				await get_tree().process_frame
 			parent.phase2 = true
 			P2 = false
-			parent.healthCount = 1
+			parent.healthCount = 3
 		else:
-			Global.startCutscene("res://dialogues/Hannibal.dialogue", "d1", "HD1")
+			await Global.startCutscene("res://dialogues/Hannibal.dialogue", "d1", "HD1")
+			while Global.cutsceneStarted:
+				await get_tree().process_frame
 			Global.inputBlocked = false
 			Global.hannible = true
 			phase2start()
-	else:
+	elif parent.death:
 		h1.monitorable = false
 		h1.monitoring = false
 		h2.monitorable = false
