@@ -47,7 +47,7 @@ func process_frame(delta: float) -> States:
 		walljump()
 	
 	if parent.wallJump and (parent.player_detect.is_colliding() \
-	or fall_attack_timer.is_stopped()):
+	or fall_attack_timer.is_stopped()) and moveCheck:
 		if !fall_attack_timer.is_stopped():
 			fall_attack_timer.stop()
 		parent.wallJump = false
