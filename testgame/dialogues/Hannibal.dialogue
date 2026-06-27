@@ -41,7 +41,7 @@ $>> Global.prompt.startQTE(10.0, "HD1_2", "HD2", "HD2_3", "death", "d1")
 ~ death
 Hannibal: *cough* I hope it was worth it...
 Hannibal: You will see me again, it may be in different attire...but the motive will be the same.
-Hannibal: See you soon. Player. 
+Hannibal: See you soon. Player.
 $> playEnd("HD2_2")
 set Global.cutsceneStarted = false
 do Global.player.anim()
