@@ -5,8 +5,8 @@ Hannibal: I've killed you countless times before. But this moment in time keeps 
 Hannibal: End this fight, why ado you keep coming back? 
 $> playResume("e2", false, true)
 Hannibal: You will die
-=> d1
 set Global.cutsceneStarted = false
+$>> Global.camera.reset(0.3)
 => END
 
 ~ P2
@@ -33,6 +33,7 @@ do Global.player.anim()
 ~ d1
 Hannibal: I...
 $>> Global.prompt.holdPrompt("Dash", [Vector2(800, 600), Vector2(5.0, 5.0)])
+$>> Global.prompt.holdPrompt("up", [Vector2(800, 600), Vector2(5.0, 5.0)])
 $>> Global.prompt.holdPrompt("jump", [Vector2(800, 600), Vector2(5.0, 5.0)])
 Hannibal: I won't give in 
 $>> Global.prompt.startQTE(10.0, "HD1_2", "HD2", "HD2_3", "death", "d1")

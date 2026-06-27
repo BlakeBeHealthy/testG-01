@@ -20,8 +20,10 @@ var target: Vector2 = Vector2()
 @onready var shake_timer: Timer = Timer.new()
 
 func _ready():
-	default_zoom = zoom
+	default_zoom = self.zoom
+	print(default_zoom)
 	default_position = global_position
+	print(default_position)
 	Global.set_camera(self)
 	boss_room_placement = self.global_position
 	#Could've made a new scene but just used code, so the screenshake wont 
@@ -78,8 +80,11 @@ func move(new_position: Vector2 = default_position, \
 	new_zoom: Vector2 = default_zoom, duration: float = 1.0, time_scale: float = 0.0):
 	if move_tween:
 		move_tween.kill()
+	print(new_position, "", new_zoom)
 	offsetting = true
 	move_tween = create_tween()
+	move_tween.set_trans(Tween.TRANS_SINE)
+	move_tween.set_ease(Tween.EASE_IN_OUT)
 	move_tween.set_parallel(true)
 	move_tween.tween_property(self, "global_position", new_position, duration)
 	move_tween.tween_property(self, "zoom", new_zoom, duration)
@@ -88,7 +93,6 @@ func move(new_position: Vector2 = default_position, \
 
 func reset(duration):
 	move(default_position, default_zoom, duration, 1.0)
-	offsetting = false
 
 func APmove():
 	offsetting = true

@@ -44,13 +44,13 @@ func flashRight() -> void:
 	if tw:
 		tw.kill()
 	tw = create_tween()
-	tw.tween_property(bar, "modulate", Color("3d9838ff"), 0.1)
+	tw.tween_property(bar, "modulate", Color("86c544ff"), 0.05)
 	await tw.finished
 	
 	if tw:
 		tw.kill()
 	tw = create_tween()
-	tw.tween_property(bar, "modulate", Color("ffffffff"), 0.1)
+	tw.tween_property(bar, "modulate", Color("ffffffff"), 0.15)
 	await tw.finished
 	
 func setQTEBind(act: String):
