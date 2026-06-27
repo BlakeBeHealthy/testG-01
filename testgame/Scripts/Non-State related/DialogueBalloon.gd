@@ -24,6 +24,7 @@ var check := false
 var responses_visible := false
 var wiped : bool = false
 var animEnd : bool = false
+var resume : bool = false
 var response_tween = null
 var overlay_tween = null
 var isMoving := false
@@ -60,29 +61,34 @@ var speed = 0.05:
 var currentSpeaker = ""
 # Called when the node enters the scene tree for the first time.
 	
-func start(resource: DialogueResource, title: String) -> void:
-	if resource != null:
-		dRec = resource
-	dialogueResource = resource
-	if dialogueResource == null:
-		dialogueResource = dRec
-	dialogue_ended = false
-	dialogue_responses_menu.next_action = "interact"
-	dialogue_label.modulate.a = 0
-	charName.modulate.a = 0
-	portraitM.set_shader_parameter("progress", -0.2)
-	panelM.set_shader_parameter("progress", -0.2)
-	game_states = [self]
-	color_rect.modulate.a = 0
+func start(resource: DialogueResource, title: String, skip: bool = false) -> void:
+	if !skip:
+		if resource != null:
+			dRec = resource
+		dialogueResource = resource
+		if dialogueResource == null:
+			dialogueResource = dRec
+		dialogue_ended = false
+		dialogue_responses_menu.next_action = "interact"
+		dialogue_label.modulate.a = 0
+		charName.modulate.a = 0
+		portraitM.set_shader_parameter("progress", -0.2)
+		panelM.set_shader_parameter("progress", -0.2)
+		game_states = [self]
+		color_rect.modulate.a = 0
+		if dialogueResource == null:
+			dialogueResource = dRec
+	else:
+		check = false
 	if overlay_tween:
 		overlay_tween.kill()
+		
 	overlay_tween = create_tween()
 	overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.3)
 	self.visible = true
-	if dialogueResource == null:
-		dialogueResource = dRec
 	current_line = await dialogueResource.get_next_dialogue_line(title, game_states)
 	if current_line:
+		currentSpeaker = ""
 		apply_dialogue_line()
 	if dialogue_responses_menu.response_selected.is_connected(_on_response_selected):
 		dialogue_responses_menu.response_selected.disconnect(_on_response_selected)
@@ -91,13 +97,15 @@ func start(resource: DialogueResource, title: String) -> void:
 func apply_dialogue_line():
 	if current_line == lastShownLine:
 		return
+		
 	lastShownLine = current_line
+	
 	if Global.inputBlocked:
 		return
 		
 	dialogue_label.visible_ratio = 0
-	print("CALL #", debugCount, ": ", current_line.text)
 	debugCount += 1
+	
 	if current_line.character != currentSpeaker:
 		if check:
 			await wipeOut()
@@ -214,7 +222,11 @@ func show_responses():
 		responsePanel.hide()
 		responses_visible = false
 		
-func playResume(animation: String = "",  waitForFlag: bool = false) -> void:
+func playResume(animation: String = "", skipResume: bool = false, wipe: bool = false, jump: String = "") -> void:
+	if resume:
+		return
+		
+	resume = true
 	Global.inputBlocked = true
 	dialogue_label.text = ""
 	if is_instance_valid(dialogue_label):
@@ -227,30 +239,37 @@ func playResume(animation: String = "",  waitForFlag: bool = false) -> void:
 	if overlay_tween:
 		overlay_tween.kill()
 	overlay_tween = create_tween()
-	await overlay_tween.tween_property(color_rect, "modulate:a", 0.0, 0.3)
+	overlay_tween.tween_property(color_rect, "modulate:a", 0.0, 0.3)
+	await overlay_tween.finished
 	if animation != "":
 		Global.ap.play(animation)
 		await Global.ap.animation_finished
-	if waitForFlag:
-		pass
-	else:
-		Global.inputBlocked = false
-		await Resume()
 		
-func Resume(jump: String = ""):
-		if overlay_tween:
-			overlay_tween.kill()
-		overlay_tween = create_tween()
-		await overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.2)
-		check = false
-		currentSpeaker = ""
+	if !skipResume:
 		Global.inputBlocked = false
-		dialogue_label.text = ""
-		current_line = await dialogueResource.get_next_dialogue_line(jump, game_states)
-		if current_line:
-			wipeIn()
-		else:
-			apply_dialogue_line()
+		await Resume(jump, wipe)
+	else:
+		resume = false
+		return
+		
+func Resume(jump: String = "", wipe: bool = false):
+	print_stack()
+	if overlay_tween:
+		overlay_tween.kill()
+	overlay_tween = create_tween()
+	await overlay_tween.tween_property(color_rect, "modulate:a", 0.6, 0.2)
+	check = false
+	currentSpeaker = ""
+	Global.inputBlocked = false
+	dialogue_label.text = ""
+	var target = jump if jump != "" else current_line.next_id
+	current_line = await dialogueResource.get_next_dialogue_line(target, game_states)
+	resume = false 
+	if current_line and !wipe:
+		apply_dialogue_line()
+	elif current_line and wipe:
+		wipeIn()
+		
 func playEnd(animation: String) -> void:
 	animEnd = true
 	if wiped:

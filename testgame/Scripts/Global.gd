@@ -58,14 +58,14 @@ func get_UI():
 	return UI
 	
 # in Global.gd
-func startCutscene(dialogueFile: String, startingPoint: String, introAnim: String = "") -> void:
+func startCutscene(dialogueFile: String, startingPoint: String, introAnim: String = "", skipStart: bool = false) -> void:
 	player.control_locked = true
 	if introAnim != "":
 		ap.play(introAnim)
 		await ap.animation_finished
 	if !cutsceneStarted:
 		cutsceneStarted = true
-	UI.balloon.start(load(dialogueFile), startingPoint)
+	UI.balloon.start(load(dialogueFile), startingPoint, skipStart)
 	
 func clashing() -> void:
 	await clash_over

@@ -40,14 +40,12 @@ func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3C
 		await get_tree().process_frame
 		
 	if Global.clash_won:
-		Global.ap.play(winAnim)
-		await Global.ap.animation_finished
 		Global.inputBlocked = false
-		Global.UI.balloon.Resume(DM3Check)
+		Global.UI.balloon.playResume(winAnim, false, false, DM3Check)
 	else:
 		Global.ap.play(loseAnim)
 		await Global.ap.animation_finished
-		await FadeS.fade_out(1.0, true)
+		await FadeS.fade_out(0.8, true)
 		Start(preAnim, clashAnim, winA, loseA, DM3Checkpoint, resetAnim)
 		
 func barStart(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:

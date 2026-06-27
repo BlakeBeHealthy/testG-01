@@ -100,14 +100,9 @@ func holdPrompt(key: String = "", PT: Array = [Vector2(0,0), Vector2(0,0)]):
 	PD[key] = PT
 
 func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Checkpoint: String, preAnim: String):
-	if FadeS.fade:
-		await FadeS.fade_in()
-		await Global.UI.balloon.Resume(preAnim)
-		return
-	
 	await Global.UI.balloon.playResume("", true)
-	Global.inputBlocked = true
 	Global.ap.play(anim)
+	Global.inputBlocked = true
 	winA = winAnim
 	loseA = LoseAnim
 	DM3Check = DM3Checkpoint
@@ -126,18 +121,21 @@ func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Ch
 	action = ""
 	PD.clear()
 	keyCount = 0
-	await QTEOutcome()
-	if !win:
-		startQTE(dur, anim, winAnim, LoseAnim, DM3Checkpoint, preAnim)
 	
+	if win:
+		QTEOutcome()
+	else:
+		Global.ap.play(loseA)
+		await Global.ap.animation_finished
+		await FadeS.fade_out()
+		print("fade")
+		if Global.saveData.maxHealth > 0:
+			FadeS.fade_in()
+			Global.inputBlocked = false
+			Global.startCutscene("res://dialogues/Hannibal.dialogue", "d1", "HD1", true)
+
 func QTEOutcome():
 	if win:
 		Global.ap.play(winA)
 		await Global.ap.animation_finished
-		Global.UI.balloon.Resume()
-	else:
-		Global.ap.play(loseA)
-		await Global.ap.animation_finished
-		if Global.saveData.maxHealth > 0:
-			FadeS.fade_out()
-		
+		Global.UI.balloon.Resume("death", false)

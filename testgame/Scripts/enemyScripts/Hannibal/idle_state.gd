@@ -153,7 +153,7 @@ func phase2start():
 			P2 = false
 			parent.healthCount = 1
 		else:
-			await Global.startCutscene("res://dialogues/Hannibal.dialogue", "d1", "HD1")
+			Global.startCutscene("res://dialogues/Hannibal.dialogue", "d1", "HD1")
 			Global.inputBlocked = false
 			while Global.cutsceneStarted:
 				await get_tree().process_frame
