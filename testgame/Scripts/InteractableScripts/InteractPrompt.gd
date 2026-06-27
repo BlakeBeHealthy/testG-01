@@ -73,6 +73,7 @@ func QTE(act: String, position: Vector2 = Vector2(1,1), scale: Vector2 = Vector2
 	action = act
 	showPrompt(act, scale, position)
 	activeQTE = true
+	
 	win = false
 	while !resolved and activeQTE:
 		await get_tree().process_frame
@@ -87,10 +88,10 @@ func _input(event: InputEvent) -> void:
 		
 	if event.is_action(action):
 		win = true
-		QTEbar.flashRight()
+		await QTEbar.flashRight()
 	else:
 		win  = false
-		QTEbar.flashWrong()
+		await QTEbar.flashWrong()
 	resolved = true
 	activeQTE = false
 	
@@ -98,12 +99,10 @@ func holdPrompt(key: String = "", PT: Array = [Vector2(0,0), Vector2(0,0)]):
 	action = key
 	PD[key] = PT
 
-func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Checkpoint: String, preAnim: String = ""):
+func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Checkpoint: String, preAnim: String):
 	if FadeS.fade:
-		Global.ap.play(preAnim)
-		await Global.ap.animation_finished
 		await FadeS.fade_in()
-		Global.UI.balloon.Resume(preAnim)
+		await Global.UI.balloon.Resume(preAnim)
 		return
 	
 	await Global.UI.balloon.playResume("", true)
@@ -115,9 +114,10 @@ func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Ch
 	QTEbar.startBar(dur, action)
 	while keyCount != PD.size():
 		var key = PD.keys()[keyCount]
-		var position = PD[key][0]
-		var scale = PD[key][1]
-		await QTE(key, position, scale)
+		QTEbar.setQTEBind(key)
+		var new_position = PD[key][0]
+		var new_scale = PD[key][1]
+		await QTE(key, new_position, new_scale)
 		if win:
 			keyCount += 1
 		else:
@@ -127,6 +127,8 @@ func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Ch
 	PD.clear()
 	keyCount = 0
 	await QTEOutcome()
+	if !win:
+		startQTE(dur, anim, winAnim, LoseAnim, DM3Checkpoint, preAnim)
 	
 func QTEOutcome():
 	if win:

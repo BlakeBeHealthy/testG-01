@@ -23,7 +23,7 @@ func _ready() -> void:
 func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3Checkpoint: String, resetAnim: String):
 	if FadeS.fade:
 		Global.camera.reset(0.1)
-		await FadeS.fade_in(1.0, true)
+		FadeS.fade_in(1.0, true)
 		
 		
 	clashingNow = true
@@ -53,6 +53,7 @@ func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3C
 func barStart(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:
 	mash_count = 0
 	bar.value = 40
+	bar.modulate.a = 1.0
 	visible = true
 	scale = Vector2(0, 0)
 	if clash_tween:

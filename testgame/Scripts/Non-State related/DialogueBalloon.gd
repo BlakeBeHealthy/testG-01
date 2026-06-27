@@ -9,7 +9,9 @@ class_name balloon extends Control
 
 @onready var portraitM: ShaderMaterial = $HBoxContainer/Control/AnimatedSprite2D.material
 @onready var panelM: ShaderMaterial = $HBoxContainer/MarginContainer/Panel.material
+var lastShownLine: DialogueLine = null
 
+var debugCount = 0
 var game_states
 var tween = null
 var dialogueResource: DialogueResource:
@@ -31,7 +33,7 @@ var current_line: DialogueLine:
 	set(value):
 		if value:
 			current_line = value
-		else:
+		elif !Global.cutsceneStarted:
 			dialogue_label.text = ""
 			if is_instance_valid(dialogue_label):
 				if dialogue_label.is_typing:
@@ -87,7 +89,15 @@ func start(resource: DialogueResource, title: String) -> void:
 	dialogue_responses_menu.response_selected.connect(_on_response_selected)
 
 func apply_dialogue_line():
+	if current_line == lastShownLine:
+		return
+	lastShownLine = current_line
+	if Global.inputBlocked:
+		return
+		
 	dialogue_label.visible_ratio = 0
+	print("CALL #", debugCount, ": ", current_line.text)
+	debugCount += 1
 	if current_line.character != currentSpeaker:
 		if check:
 			await wipeOut()
@@ -236,9 +246,11 @@ func Resume(jump: String = ""):
 		currentSpeaker = ""
 		Global.inputBlocked = false
 		dialogue_label.text = ""
-		wipeIn()
-
-
+		current_line = await dialogueResource.get_next_dialogue_line(jump, game_states)
+		if current_line:
+			wipeIn()
+		else:
+			apply_dialogue_line()
 func playEnd(animation: String) -> void:
 	animEnd = true
 	if wiped:
