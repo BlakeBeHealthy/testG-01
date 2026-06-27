@@ -2,11 +2,12 @@
 Hannibal: I've been looking for you.
 P: Have we met?
 Hannibal: I've killed you countless times before. But this moment in time keeps repeating.
-Hannibal: End this fight, why ado you keep coming back? 
+Hannibal: End this fight, why do you keep coming back? 
 $> playResume("e2", false, true)
 Hannibal: You will die
 set Global.cutsceneStarted = false
-$>> Global.camera.reset(0.3)
+$>> Global.camera.reset(0.5)
+$>> Global.camera.startBars()
 => END
 
 ~ P2
@@ -18,7 +19,8 @@ Hannibal: Tell me...
 Hannibal: If you complete your mission, but I leave a mark on your memory...
 Hannibal: Do I really cease to exist?...
 Hannibal: Doesn't matter really...as you won't get that far.
-$> Global.Clash.Start("clash", "clashing", "clashW", "clashL", "clash_result", "P2")
+$>> Global.Clash.Start("clash", "clashing", "clashW", "clashL", "clash_result", "P2")
+=> END
 
 ~ clash_result
 if Global.clash_won:
@@ -27,13 +29,15 @@ if Global.clash_won:
 else:
 	Hannibal: its over.
 set Global.cutsceneStarted = false
+$>> Global.camera.reset(0.3)
+$>> Global.camera.startBars()
 do Global.player.anim()
 => END
 
 ~ d1
 Hannibal: I...
 $>> Global.prompt.holdPrompt("Dash", [Vector2(800, 600), Vector2(5.0, 5.0)])
-$>> Global.prompt.holdPrompt("up", [Vector2(800, 600), Vector2(5.0, 5.0)])
+$>> Global.prompt.holdPrompt("interact", [Vector2(800, 600), Vector2(5.0, 5.0)])
 $>> Global.prompt.holdPrompt("jump", [Vector2(800, 600), Vector2(5.0, 5.0)])
 Hannibal: I won't give in 
 $>> Global.prompt.startQTE(10.0, "HD1_2", "HD2", "HD2_3", "death", "d1")
@@ -46,4 +50,6 @@ Hannibal: See you soon. Player.
 $> playEnd("HD2_2")
 set Global.cutsceneStarted = false
 do Global.player.anim()
+$>> Global.camera.reset(0.5)
+$>> Global.camera.startBars()
 => END

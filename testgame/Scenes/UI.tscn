@@ -3,16 +3,17 @@
 [ext_resource type="Script" uid="uid://bvya24lhj31ru" path="res://Scripts/Non-State related/UI.gd" id="1_nxvpl"]
 [ext_resource type="Script" uid="uid://ch0vtpw4w4gw3" path="res://Scripts/Non-State related/hearts_box.gd" id="1_w371h"]
 [ext_resource type="PackedScene" uid="uid://b3l3bcn2iw6dk" path="res://Scenes/balloon.tscn" id="3_dewlx"]
+[ext_resource type="Script" uid="uid://bf6y4ba3s4vxm" path="res://Scenes/bars.gd" id="3_xjg7p"]
 [ext_resource type="Script" uid="uid://b4xi27kf3nksq" path="res://Scripts/Non-State related/clash_ui.gd" id="4_hfhsn"]
 [ext_resource type="Script" uid="uid://d3d78xxafjf1s" path="res://Scenes/bar_qte.gd" id="5_qwshj"]
 [ext_resource type="PackedScene" uid="uid://5drk3fx5glg2" path="res://Scenes/ButtonPrompt.tscn" id="6_48q88"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dewlx"]
-bg_color = Color(0, 0, 0, 0.67058825)
-corner_radius_top_left = 100
-corner_radius_top_right = 100
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
+bg_color = Color(0.8346143, 0.8346143, 0.8346143, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfhsn"]
@@ -21,25 +22,11 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.8745098, 0.627451, 0.19215687, 1)
-corner_radius_top_left = 100
-corner_radius_top_right = 100
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 corner_detail = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwshj"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 100
-corner_radius_top_right = 100
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48q88"]
-bg_color = Color(0.8745098, 0.627451, 0.19215687, 1)
-corner_radius_top_left = 100
-corner_radius_top_right = 100
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
 
 [node name="UI" type="CanvasLayer" unique_id=1184425221]
 script = ExtResource("1_nxvpl")
@@ -60,6 +47,31 @@ offset_right = 14.0
 offset_bottom = 16.0
 script = ExtResource("1_w371h")
 
+[node name="bars" type="Control" parent="." unique_id=34284631]
+visible = false
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+script = ExtResource("3_xjg7p")
+
+[node name="topBar" type="ColorRect" parent="bars" unique_id=82458824]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -655.0
+offset_right = 1926.0
+offset_bottom = -545.0
+color = Color(0, 0, 0, 1)
+
+[node name="bottomBar" type="ColorRect" parent="bars" unique_id=1199729868]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 545.0
+offset_right = 1926.0
+offset_bottom = 655.0
+color = Color(0, 0, 0, 1)
+
 [node name="Balloon" parent="." unique_id=932871309 instance=ExtResource("3_dewlx")]
 visible = false
 
@@ -73,9 +85,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -500.0
-offset_top = -75.0
+offset_top = -86.17999
 offset_right = 500.0
-offset_bottom = -10.0
+offset_bottom = -21.17981
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("4_hfhsn")
@@ -86,7 +98,7 @@ offset_right = 1000.0
 offset_bottom = 65.0
 theme_override_styles/background = SubResource("StyleBoxFlat_dewlx")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hfhsn")
-value = 90.0
+value = 100.0
 show_percentage = false
 
 [node name="CT" type="Timer" parent="Clash" unique_id=189963211]
@@ -103,21 +115,21 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -500.0
-offset_top = -75.0
+offset_top = -75.15503
 offset_right = 500.0
-offset_bottom = -9.999512
+offset_bottom = -10.154541
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("5_qwshj")
 
-[node name="QTE" type="ProgressBar" parent="BarQTE" unique_id=62320442]
-custom_minimum_size = Vector2(1000, 65)
+[node name="QTE" type="ProgressBar" parent="BarQTE" unique_id=1539762634]
 layout_mode = 0
+offset_top = -10.855
 offset_right = 1000.0
-offset_bottom = 65.0
-theme_override_styles/background = SubResource("StyleBoxFlat_qwshj")
-theme_override_styles/fill = SubResource("StyleBoxFlat_48q88")
-value = 90.0
+offset_bottom = 54.145
+theme_override_styles/background = SubResource("StyleBoxFlat_dewlx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hfhsn")
+value = 100.0
 show_percentage = false
 
 [node name="ButtonPrompt" parent="." unique_id=687141090 instance=ExtResource("6_48q88")]

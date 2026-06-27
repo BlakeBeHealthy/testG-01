@@ -127,11 +127,10 @@ func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Ch
 	else:
 		Global.ap.play(loseA)
 		await Global.ap.animation_finished
-		await FadeS.fade_out()
-		print("fade")
+		await FadeS.fade_out(1.0)
 		if Global.saveData.maxHealth > 0:
-			FadeS.fade_in()
 			Global.inputBlocked = false
+			await get_tree().create_timer(0.4).timeout
 			Global.startCutscene("res://dialogues/Hannibal.dialogue", "d1", "HD1", true)
 
 func QTEOutcome():

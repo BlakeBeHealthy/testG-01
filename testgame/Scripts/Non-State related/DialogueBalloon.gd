@@ -253,7 +253,6 @@ func playResume(animation: String = "", skipResume: bool = false, wipe: bool = f
 		return
 		
 func Resume(jump: String = "", wipe: bool = false):
-	print_stack()
 	if overlay_tween:
 		overlay_tween.kill()
 	overlay_tween = create_tween()

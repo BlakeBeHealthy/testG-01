@@ -37,7 +37,6 @@ func flashWrong() -> void:
 	t = create_tween()
 	t.tween_property(bar, "modulate", Color("dfa031"), 0.1)
 	await t.finished
-	print("visible")
 	self.visible = false
 	
 func flashRight() -> void:

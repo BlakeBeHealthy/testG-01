@@ -21,11 +21,6 @@ func _ready() -> void:
 	bar.value = 40
 	
 func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3Checkpoint: String, resetAnim: String):
-	if FadeS.fade:
-		Global.camera.reset(0.1)
-		FadeS.fade_in(1.0, true)
-		
-		
 	clashingNow = true
 	winAnim = winA
 	loseAnim = loseA
@@ -38,15 +33,15 @@ func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3C
 	
 	while clashingNow:
 		await get_tree().process_frame
-		
+	
+	Global.inputBlocked = false
 	if Global.clash_won:
-		Global.inputBlocked = false
 		Global.UI.balloon.playResume(winAnim, false, false, DM3Check)
 	else:
 		Global.ap.play(loseAnim)
 		await Global.ap.animation_finished
 		await FadeS.fade_out(0.8, true)
-		Start(preAnim, clashAnim, winA, loseA, DM3Checkpoint, resetAnim)
+		Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2", true)
 		
 func barStart(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:
 	mash_count = 0

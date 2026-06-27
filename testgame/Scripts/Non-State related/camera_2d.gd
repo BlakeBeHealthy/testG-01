@@ -80,7 +80,6 @@ func move(new_position: Vector2 = default_position, \
 	new_zoom: Vector2 = default_zoom, duration: float = 1.0, time_scale: float = 0.0):
 	if move_tween:
 		move_tween.kill()
-	print(new_position, "", new_zoom)
 	offsetting = true
 	move_tween = create_tween()
 	move_tween.set_trans(Tween.TRANS_SINE)
@@ -97,6 +96,8 @@ func reset(duration):
 func APmove():
 	offsetting = true
 	
+func startBars(dur: float = 0.3, stayOpen: bool = false):
+	Global.UI.bars.moveBars(dur, stayOpen)
 	
 func fade_in(speed: float = 1.0, wait = false):
 	FadeS.fade_in(speed, wait)
