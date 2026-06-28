@@ -17,7 +17,7 @@ Hannibal: They must rot and be trapped here forever.
 Hannibal: ...
 Hannibal: Tell me...
 Hannibal: If you complete your mission, but I leave a mark on your memory...
-Hannibal: Do I really cease to exist?...
+Hannibal: Do I really cease to exist?
 Hannibal: Doesn't matter really...as you won't get that far.
 $>> Global.Clash.Start("clash", "clashing", "clashW", "clashL", "clash_result", "P2")
 => END
@@ -45,6 +45,7 @@ $>> Global.prompt.startQTE(10.0, "HD1_2", "HD2", "HD2_3", "death", "d1")
 
 ~ death
 Hannibal: *cough* I hope it was worth it...
+Hannibal: Take my walljump
 Hannibal: You will see me again, it may be in different attire...but the motive will be the same.
 Hannibal: See you soon. Player.
 $> playEnd("HD2_2")

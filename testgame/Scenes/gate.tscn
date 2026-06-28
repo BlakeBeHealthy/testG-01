@@ -36,6 +36,7 @@ animations = [{
 size = Vector2(6.5, 31)
 
 [node name="Gate" type="StaticBody2D" unique_id=638527128]
+scale = Vector2(2.6, 2.6)
 physics_material_override = SubResource("PhysicsMaterial_hn85u")
 script = ExtResource("1_hn85u")
 

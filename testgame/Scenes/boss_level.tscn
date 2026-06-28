@@ -2918,7 +2918,7 @@ tracks/14/keys = {
 
 [sub_resource type="Animation" id="Animation_4jh27"]
 resource_name = "HD2_3"
-length = 1.9333333
+length = 0.6666667
 step = 0.033
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -6363,11 +6363,9 @@ zoom = Vector2(5, 5)
 
 [node name="Gate" parent="." unique_id=1913223240 instance=ExtResource("20_jawqf")]
 position = Vector2(787.00006, 151)
-scale = Vector2(2.6, 2.6)
 
 [node name="Gate2" parent="." unique_id=1726901060 instance=ExtResource("20_jawqf")]
-position = Vector2(373.00003, 151)
-scale = Vector2(2.6, 2.6)
+position = Vector2(338.00003, 151.00002)
 fliph = true
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("3_1fajk")]
@@ -6439,12 +6437,12 @@ entry_door_name = "BH2"
 position = Vector2(37.715, 0)
 shape = SubResource("RectangleShape2D_qshgi")
 
-[node name="BR2" parent="." unique_id=2129380918 instance=ExtResource("18_piehn")]
-position = Vector2(929.735, 157.615)
+[node name="BR3" parent="." unique_id=1151520918 instance=ExtResource("18_piehn")]
+position = Vector2(272, 151)
 entry_direction = 3
 path_to_new_scene = "res://Scenes/level__05.tscn"
-entry_door_name = "BH2"
+entry_door_name = "DJPT4"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BR2" unique_id=433281245]
-position = Vector2(37.715, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BR3" unique_id=832208444]
+position = Vector2(-63.705, 0)
 shape = SubResource("RectangleShape2D_qshgi")

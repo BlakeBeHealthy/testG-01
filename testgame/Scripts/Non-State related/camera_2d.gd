@@ -18,7 +18,7 @@ var target: Vector2 = Vector2()
 
 
 @onready var shake_timer: Timer = Timer.new()
-
+	
 func _ready():
 	default_zoom = self.zoom
 	print(default_zoom)
@@ -35,6 +35,9 @@ func _ready():
 	Global.shakeDone.connect(_on_shake_timeout)
 
 func _process(delta):
+	if !is_instance_valid(Global.player):
+		return
+		
 	var weight = 1 - exp(-FOLLOW_SPEED * delta)
 	currentOffset = lerp(currentOffset, float(Global.player.direction), weight)
 	if !offsetting:

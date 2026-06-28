@@ -2241,7 +2241,7 @@ limit_bottom = 112
 script = ExtResource("2_t12bt")
 
 [node name="EastD22" type="Area2D" parent="." unique_id=1974425002]
-position = Vector2(503, 24)
+position = Vector2(418.61, 24)
 collision_mask = 2
 script = ExtResource("5_ckw4o")
 entry_direction = 3
@@ -2249,6 +2249,7 @@ path_to_new_scene = "res://Scenes/level_4.tscn"
 entry_door_name = "WestD2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EastD22" unique_id=1435066585]
+position = Vector2(92.88, 0)
 shape = SubResource("RectangleShape2D_4ve4b")
 
 [node name="SouthD" type="Area2D" parent="." unique_id=1849092180]

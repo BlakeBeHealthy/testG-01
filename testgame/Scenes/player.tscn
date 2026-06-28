@@ -884,6 +884,7 @@ script = ExtResource("10_tx1dd")
 
 [node name="CutsceneState" type="Node" parent="StateMachine" unique_id=1359471986]
 script = ExtResource("14_7dp3o")
+move_speed = null
 
 [node name="PogoAttack" type="Node" parent="StateMachine" unique_id=1129244710]
 script = ExtResource("15_h4iuc")

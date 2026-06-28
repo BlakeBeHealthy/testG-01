@@ -9,7 +9,8 @@ var checkJump
 var started := false
 var is_respawn := false
 var Knightgrandma := false
-var Knight := false
+var Knight := true
+var finalCheck := false
 var Rain := false
 
 var wallJump := true
@@ -39,7 +40,7 @@ func on_level_loaded(level: Node) -> void:
 	else:
 		var spawn: Node2D = level.get_node_or_null(pending_entry_door)
 		if spawn:
-			player.global_position = spawn.global_position - pending_entry_direction * 100
+			player.global_position = spawn.global_position - pending_entry_direction
 			if checkJump== 1:
 				player.enter_from_transition(pending_entry_direction)
 				await Global.player.landed
