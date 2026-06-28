@@ -126,7 +126,9 @@ func _process(delta: float) -> void:
 		stickState = true
 	else:
 		stickState = false
-		
+	
+	print(self.global_position)
+	print()
 
 func flip_direction(dire: int):
 	direction = dire

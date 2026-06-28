@@ -34,7 +34,7 @@ var lunge: bool = false
 var chase: bool = false
 var middleAttack: bool = false
 var jump2: int = 0
-var healthCount: int = 21
+var healthCount: int = 35
 var playerAbove: bool = false
 var flashing: bool = false
 var cut: bool = false
@@ -57,9 +57,10 @@ func _process(delta: float) -> void:
 		
 		
 	if healthCount == 20 and !phase2 and !phase2S:
-		phase2Start()
+		phase2S = true
+		
 	elif healthCount <= 0 and !death and !phase2S:
-		phase2Start()
+		phase2S = true
 		death = true
 		
 		
@@ -116,8 +117,5 @@ func _on_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index
 func _on_hannibal_ahh_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	hit()
 func _on_hurtbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	healthCount -= 1
 	flash_white()
-	
-func phase2Start():
-	phase2S = true
+	healthCount -= 1

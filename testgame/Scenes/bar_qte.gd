@@ -35,7 +35,7 @@ func flashWrong() -> void:
 	if t:
 		t.kill()
 	t = create_tween()
-	t.tween_property(bar, "modulate", Color("dfa031"), 0.1)
+	t.tween_property(bar, "modulate", Color("ffffffff"), 0.1)
 	await t.finished
 	self.visible = false
 	

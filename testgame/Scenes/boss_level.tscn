@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bl5uywv0mpsy4" path="res://assets/DebtsInTheDepthsAssets/Effects/sprAttackSwing.png" id="20_4dsk8"]
 [ext_resource type="PackedScene" uid="uid://2csjtunoknkd" path="res://Scenes/gate.tscn" id="20_jawqf"]
 [ext_resource type="Texture2D" uid="uid://d2b37pl6pq6hk" path="res://assets/DebtsInTheDepthsAssets/Effects/sprMagicExplosion.png" id="21_y76g8"]
+[ext_resource type="Script" uid="uid://bpgisb4o31flc" path="res://Scenes/han.gd" id="23_e2odm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qshgi"]
 texture = ExtResource("1_d5ou2")
@@ -2507,7 +2508,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_ktkrn"]
 resource_name = "HD2"
-length = 2.5666666
+length = 2.8
 step = 0.033
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2705,6 +2706,20 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 0, 2, 2, 0, 0, 2, 2, 0, 0]
+}
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("hannibal")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"flash_white"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_byv7d"]
@@ -3917,6 +3932,20 @@ tracks/17/keys = {
 "method": &"cutHit"
 }]
 }
+tracks/18/type = "method"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Camera2D")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [7.0, 0.2],
+"method": &"start_shake"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_tim76"]
 resource_name = "clashW"
@@ -4910,7 +4939,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y55xa"]
-size = Vector2(357, 72)
+size = Vector2(496, 72)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rg183"]
 resource_local_to_scene = true
@@ -5597,6 +5626,10 @@ animations = [{
 "name": &"wallSlide",
 "speed": 24.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2odm"]
+shader = ExtResource("8_iy86w")
+shader_parameter/flash_strength = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_byv7d"]
 atlas = ExtResource("12_tim76")
@@ -6357,7 +6390,7 @@ startingPoint = "start"
 startingCutscene = "enter"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CutsceneArea" unique_id=1939345108]
-position = Vector2(87.5, 2)
+position = Vector2(18, 2)
 shape = SubResource("RectangleShape2D_y55xa")
 
 [node name="PM" type="Marker2D" parent="." unique_id=832850931]
@@ -6381,12 +6414,14 @@ flip_h = true
 script = ExtResource("12_wktm6")
 
 [node name="hannibal" type="AnimatedSprite2D" parent="." unique_id=251764126]
+material = SubResource("ShaderMaterial_e2odm")
 position = Vector2(0, 151)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_wktm6")
-animation = &"hit"
+animation = &"die"
 autoplay = "idle"
-frame = 2
+frame = 1
+script = ExtResource("23_e2odm")
 
 [node name="Projectile" type="AnimatedSprite2D" parent="." unique_id=995690573]
 scale = Vector2(2.25, 2.25)
@@ -6395,11 +6430,21 @@ animation = &"Flying"
 autoplay = "Flying"
 
 [node name="BR1" parent="." unique_id=1940327310 instance=ExtResource("18_piehn")]
-position = Vector2(1240, 144)
+position = Vector2(929.735, 157.615)
 entry_direction = 2
 path_to_new_scene = "res://Scenes/level_08.tscn"
 entry_door_name = "BH2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BR1" unique_id=598049665]
-position = Vector2(1, 0)
+position = Vector2(37.715, 0)
+shape = SubResource("RectangleShape2D_qshgi")
+
+[node name="BR2" parent="." unique_id=2129380918 instance=ExtResource("18_piehn")]
+position = Vector2(929.735, 157.615)
+entry_direction = 3
+path_to_new_scene = "res://Scenes/level__05.tscn"
+entry_door_name = "BH2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BR2" unique_id=433281245]
+position = Vector2(37.715, 0)
 shape = SubResource("RectangleShape2D_qshgi")
