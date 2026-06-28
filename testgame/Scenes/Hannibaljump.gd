@@ -46,8 +46,8 @@ func process_frame(delta: float) -> States:
 	if parent.wallDetection.is_colliding() and !parent.is_on_floor() and !fallAttack:
 		walljump()
 	
-	if parent.wallJump and (parent.player_detect.is_colliding() \
-	or fall_attack_timer.is_stopped()) and moveCheck:
+	if (parent.player_detect.is_colliding() \
+	or fall_attack_timer.is_stopped()) and fallAttackCheck:
 		if !fall_attack_timer.is_stopped():
 			fall_attack_timer.stop()
 		parent.wallJump = false
@@ -98,17 +98,19 @@ func walljump():
 	parent.wallJump = true
 	as2d.play("wallhang")
 	await get_tree().create_timer(0.1).timeout
-	fallAttackCheck = true
 	parent.flip_direction()
 	as2d.play("jump")
+	fallAttackCheck = true
 	moveCheck = true
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if as2d.animation != "fall_attack_land":
 		return
+		
 	landOver = true
 	
 func fallAttacking() -> void:
+	fallAttackCheck = false
 	parent.hannibal_ahh.position.y -= 13
 	parent.hurtbox.position.y -= 13
 	parent.hitbox.position = Vector2(3.0, 13.8)
