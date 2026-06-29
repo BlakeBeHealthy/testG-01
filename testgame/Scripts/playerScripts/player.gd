@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var a2d: Area2D = $Area2D
 @onready var a2d2: Area2D = $Area2D2
 @onready var parry_cooldown: Timer = $parryCooldown
+@onready var c: CollisionShape2D = $c
 
 
 @export var jump_state: State
@@ -219,10 +220,26 @@ func anim():
 		a2d2.monitorable = true
 		a2d2.monitorable = true
 		
-func apply_horizontal_air_control(decay_or_set_speed: float) -> void:
+func apply_horizontal_air_control(speed: float) -> void:
 	var direction = Input.get_axis("runL", "runR")
 	if wall_state == WallState.JUMPING and !air_control_timer.is_stopped():
 		return  # still locked, do nothing to velocity.x
 	if wall_state == WallState.JUMPING:
 		wall_state = WallState.NONE
-	velocity.x = direction * decay_or_set_speed
+		velocity.x = move_toward(velocity.x, direction * speed, 800 * get_process_delta_time())
+	else:
+		velocity.x = direction * speed
+	
+func _update_collision_box() -> void:
+	match state_machine.current_state:
+		wallSlide_state:
+			c.position = Vector2(-1 if !as2d.flip_h else 1, 8)
+		jump_state, fall_state:
+			if direction == 0:
+				c.position = Vector2(-3 if as2d.flip_h else 3, 0)
+			elif direction == 1:
+				c.position = Vector2(3, 2)
+			elif direction == -1:
+				c.position = Vector2(-3, 2)
+		_: # idle/run default
+				c.position = Vector2(-0.5, 8)
