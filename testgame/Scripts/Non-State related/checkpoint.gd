@@ -56,14 +56,13 @@ func update_checkpoint() -> void:
 	if Global.saveData.checkpoint_pos == m2d.global_position and Global.saveData.checkpoint_scene == current_scene_path:
 		return
 		
-	print("active", current_scene_path)
 	Global.saveData.checkpoint_pos = m2d.global_position
 	Global.saveData.checkpoint_scene = current_scene_path
 	
 func get_level_scene_path() -> String:
 	var node = get_parent()
 	while node:
-		if node.scene_file_path != "" and node != get_tree().current_scene:
+		if node.name != "Checkpoints" and node.scene_file_path != "" and node != get_tree().current_scene:
 			return node.scene_file_path
 		node = node.get_parent()
 	return ""

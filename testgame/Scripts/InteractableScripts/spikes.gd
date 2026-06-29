@@ -12,7 +12,7 @@ extends Area2D
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var direction: int 
-var player
+var player: CharacterBody2D
 var hit: bool
 
 func _ready() -> void:
@@ -23,37 +23,42 @@ func _process(delta: float) -> void:
 		return
 	
 	direction = (Global.player.global_position.x - self.global_position.x)
-	
 	if direction >= 1:
 		direction = 1
 	elif direction <= -1:
 		direction = -1
 	
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	hitPlayer()
+	var hittingPlayer: bool = true
+	if area.is_in_group("PlayerInteract") and Global.player:
+		hittingPlayer = false
+	else:
+		hittingPlayer = true
+		
+	hitPlayer(hittingPlayer)
 	
-func hitPlayer():
-	if hit:
+func hitPlayer(hitting: bool = true):
+	if !hit and !hitting:
 		return
-		
-	hit = true
+	
 	player = Global.player
-	
-	
-	player.hit(
-			dmg,
-			direction,
-			stre,
-			StunTime,
-			TimeScale,
-			dur,
-			CAMShake,
-			shakeDur,
-	)
-	if player.health <= 1:
-		spawn = false
+	if hitting and !hit:
+		hit = true
+		player.hit(
+				dmg,
+				direction,
+				stre,
+				StunTime,
+				TimeScale,
+				dur,
+				CAMShake,
+				shakeDur,
+		)
 		
-	elif spawn:
+		if Global.maxHealth < 1:
+			spawn = false
+		
+	elif spawn and !hitting:
 		FadeS.fade_out()
 		await get_tree().create_timer(0.4).timeout
 		player.respawn()
