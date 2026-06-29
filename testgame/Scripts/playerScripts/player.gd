@@ -146,6 +146,8 @@ func _on_landed(): #This will be for cutscenes when the player cant move
 	upwardDoor = false
 
 func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration: float):
+	print_stack()
+	
 	if !invincible:
 		damage = dmg
 		dir = direction

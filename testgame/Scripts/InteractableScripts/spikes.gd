@@ -1,5 +1,6 @@
 extends Area2D
 
+@onready var spikes: Area2D = $"."
 @export var spawn: bool 
 @export var dmg: int = 1
 @export var stre: float = 200
@@ -11,17 +12,27 @@ extends Area2D
 @export var SpikeNumber: String
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
 
-var direction: int 
+var direction: int = 0
+var health: int = 0
 var player: CharacterBody2D
-var hit: bool
+var hit: bool = false
+var spawning: bool = false
 
 func _ready() -> void:
-	pass
+	Global.spawning = false
 	
 func _process(delta: float) -> void:
 	if !is_instance_valid(Global.player):
 		return
 	
+	player = Global.player
+	if player.invincible and !hit:
+		hit = true
+		spikes.set_collision_mask_value(7, true)
+	elif hit:
+		hit = false
+		spikes.set_collision_mask_value(7, false)
+		
 	direction = (Global.player.global_position.x - self.global_position.x)
 	if direction >= 1:
 		direction = 1
@@ -29,20 +40,11 @@ func _process(delta: float) -> void:
 		direction = -1
 	
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	var hittingPlayer: bool = true
-	if area.is_in_group("PlayerInteract") and Global.player:
-		hittingPlayer = false
-	else:
-		hittingPlayer = true
+	if !hit:
+		hitPlayer()
 		
-	hitPlayer(hittingPlayer)
-	
-func hitPlayer(hitting: bool = true):
-	if !hit and !hitting:
-		return
-	
-	player = Global.player
-	if hitting and !hit:
+func hitPlayer():
+	if !hit and !Global.spawning:
 		hit = true
 		player.hit(
 				dmg,
@@ -54,14 +56,17 @@ func hitPlayer(hitting: bool = true):
 				CAMShake,
 				shakeDur,
 		)
+		if spawn:
+			spawnPlayer()
 		
-		if Global.maxHealth < 1:
-			spawn = false
-		
-	elif spawn and !hitting:
+func spawnPlayer():
+	if !Global.spawning:
+		Global.spawning = true
 		FadeS.fade_out()
 		await get_tree().create_timer(0.4).timeout
+		if Global.saveData.maxHealth <= 0:
+			return
 		player.respawn()
 		await get_tree().create_timer(0.2).timeout
 		FadeS.fade_in()
-	hit = false
+		Global.spawning = false

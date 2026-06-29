@@ -12,6 +12,7 @@ var cutWait: bool = false
 var clash_won: bool = false
 var qte: bool = true
 var hannible: bool = false
+var spawning: bool = false
 var player: CharacterBody2D
 var Clash: Control
 var camera: Camera2D
