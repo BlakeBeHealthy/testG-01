@@ -2251,9 +2251,12 @@ shape = SubResource("RectangleShape2D_b3y43")
 
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("4_rm6qy")]
 position = Vector2(4, 182)
+current_scene_path = "res://Scenes/Level_08.tscn"
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("5_eyj16")]
 position = Vector2(-413, 142)
 
 [node name="Camera2D" parent="." unique_id=1391246105 instance=ExtResource("7_eyj16")]
 zoom = Vector2(3.5, 3.5)
+limit_left = -525
+limit_right = 802

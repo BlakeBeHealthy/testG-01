@@ -2262,7 +2262,7 @@ dialogueScene = "res://dialogues/WW.dialogue"
 
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("5_jmfiy")]
 position = Vector2(3, 150)
-current_scene_path = "\"res://Scenes/Level05.tscn\""
+current_scene_path = "res://Scenes/level__05.tscn"
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("6_3082n")]
 position = Vector2(96, 85)

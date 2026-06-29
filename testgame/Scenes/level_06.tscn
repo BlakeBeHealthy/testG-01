@@ -2244,21 +2244,23 @@ dialogueScene = "res://dialogues/WW.dialogue"
 startingPoint = "s3"
 
 [node name="PT3" parent="." unique_id=1940327310 instance=ExtResource("5_n2msi")]
-position = Vector2(1160, 42)
+position = Vector2(1108.04, 42)
 entry_direction = 3
 path_to_new_scene = "res://Scenes/level__05.tscn"
 entry_door_name = "PT1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PT3" unique_id=1391491460]
+position = Vector2(51, 0)
 shape = SubResource("RectangleShape2D_e6gsb")
 
 [node name="PT4" parent="." unique_id=182941759 instance=ExtResource("5_n2msi")]
-position = Vector2(1166, -329)
+position = Vector2(1112.8, -329)
 entry_direction = 3
 path_to_new_scene = "res://Scenes/level__5.tscn"
 entry_door_name = "PT2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PT4" unique_id=624844125]
+position = Vector2(53.385, 0)
 shape = SubResource("RectangleShape2D_ej34s")
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("7_e6gsb")]

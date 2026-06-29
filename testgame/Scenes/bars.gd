@@ -9,8 +9,6 @@ func _ready() -> void:
 	self.visible = true
 	
 func moveBars(dur: float = 0.3, stayOpen: bool = false):
-	print("bars ", barsActive)
-	print("stay ", stayOpen)
 	var t = create_tween()
 	t.set_trans(Tween.TRANS_SINE)
 	t.set_ease(Tween.EASE_IN_OUT)

@@ -13,7 +13,6 @@ var title := ""
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
-	print("s6")
 	if parent.a2d2.monitorable:
 		parent.a2d2.monitorable = false
 		parent.a2d2.monitorable = false
@@ -21,7 +20,6 @@ func enter() -> void:
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
 	elif parent.current_interactable is BetaNPC or Global.cutsceneStarted:
-		print("s1")
 		speaking = true
 	elif !parent.animate:
 		parent.camLook = true
@@ -53,7 +51,6 @@ func process_frame(delta: float) -> State:
 		return parent.death_state
 	
 	if parent.animate and !Global.cutsceneStarted:
-		print("s2")
 		return null
 	elif Global.cutsceneStarted and !dialogueActive:
 		speaking = true
@@ -61,7 +58,6 @@ func process_frame(delta: float) -> State:
 		_on_dialogue_done()
 		
 	if checkpoint and !started:
-		print("s3")
 		started = true
 		parent.saving.emit(0)
 		as2d.play("save1")

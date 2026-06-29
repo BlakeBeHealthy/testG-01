@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cgekcdkve474f" path="res://Scenes/spikes.tscn" id="9_ekoii"]
 [ext_resource type="PackedScene" uid="uid://dpe8m6p55sdxx" path="res://Scenes/enemy.tscn" id="10_hdu6x"]
 [ext_resource type="PackedScene" uid="uid://ce3f5rrrexvdt" path="res://Scenes/Renemy.tscn" id="11_776at"]
+[ext_resource type="PackedScene" uid="uid://ljjmtwqq5kil" path="res://Scenes/spike_checkpoint.tscn" id="12_776at"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdu6x"]
 texture = ExtResource("1_xpxho")
@@ -2225,6 +2226,19 @@ size = Vector2(20, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyq6k"]
 size = Vector2(20, 44)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ta0hk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_776at"]
+radius = 28.0
+height = 148.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ta0hk"]
+height = 116.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fslw5"]
+radius = 14.0
+height = 142.0
+
 [node name="Level_07" type="Node2D" unique_id=1080363372]
 
 [node name="UI" parent="." unique_id=1184425221 instance=ExtResource("1_ex3v2")]
@@ -2234,7 +2248,7 @@ tile_map_data = PackedByteArray("AAD1/wIAAAASAA8AAAD2/wIAAAASAA8AAAD5/wIAAAASAA8
 tile_set = SubResource("TileSet_n0yg3")
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("4_cyq6k")]
-position = Vector2(36, 423)
+position = Vector2(927, -551)
 
 [node name="Camera2D" parent="." unique_id=1391246105 instance=ExtResource("5_ekoii")]
 zoom = Vector2(3.5, 3.5)
@@ -2262,9 +2276,11 @@ shape = SubResource("RectangleShape2D_cyq6k")
 
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("7_hdu6x")]
 position = Vector2(976, -522)
+current_scene_path = "res://Scenes/level_07.tscn"
 
 [node name="Checkpoint2" parent="." unique_id=2058902645 instance=ExtResource("7_hdu6x")]
 position = Vector2(383, 293)
+current_scene_path = "\"res://Scenes/Level_07.tscn\""
 flipH = true
 
 [node name="BetaNPC" parent="." unique_id=1828915867 instance=ExtResource("8_cyq6k")]
@@ -4374,3 +4390,127 @@ position = Vector2(-22, -664)
 
 [node name="Enemy7" parent="." unique_id=1469308604 instance=ExtResource("10_hdu6x")]
 position = Vector2(-289, 41)
+
+[node name="SpikeCheckpoint" parent="." unique_id=16437152 instance=ExtResource("12_776at")]
+position = Vector2(799, -581)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=418144665]
+position = Vector2(73, 16)
+shape = SubResource("CircleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint2" parent="SpikeCheckpoint" unique_id=1075987753 instance=ExtResource("12_776at")]
+position = Vector2(-593, 87)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint2" unique_id=1313400519]
+shape = SubResource("CircleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint5" parent="SpikeCheckpoint" unique_id=993877774 instance=ExtResource("12_776at")]
+position = Vector2(-372, -122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint5" unique_id=1501898762]
+position = Vector2(1, -24)
+shape = SubResource("CapsuleShape2D_776at")
+
+[node name="SpikeCheckpoint6" parent="SpikeCheckpoint" unique_id=1857167784 instance=ExtResource("12_776at")]
+position = Vector2(-235, -161)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint6" unique_id=1977569889]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint7" parent="SpikeCheckpoint" unique_id=1011919231 instance=ExtResource("12_776at")]
+position = Vector2(-37, -158)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint7" unique_id=158464346]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint8" parent="SpikeCheckpoint" unique_id=1430722959 instance=ExtResource("12_776at")]
+position = Vector2(128, -161)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint8" unique_id=1685829840]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint9" parent="SpikeCheckpoint" unique_id=683401728 instance=ExtResource("12_776at")]
+position = Vector2(18, -290)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint9" unique_id=1085107460]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint10" parent="SpikeCheckpoint" unique_id=851861484 instance=ExtResource("12_776at")]
+position = Vector2(-307, -304)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint10" unique_id=1328348979]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint11" parent="SpikeCheckpoint" unique_id=697157283 instance=ExtResource("12_776at")]
+position = Vector2(-704, -432)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint11" unique_id=242292741]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint12" parent="SpikeCheckpoint" unique_id=1487443705 instance=ExtResource("12_776at")]
+position = Vector2(-1079, -433)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint12" unique_id=698913603]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint4" parent="SpikeCheckpoint" unique_id=245225833 instance=ExtResource("12_776at")]
+position = Vector2(-728, 89)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint4" unique_id=1974080553]
+shape = SubResource("CircleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint3" parent="SpikeCheckpoint" unique_id=1965495520 instance=ExtResource("12_776at")]
+position = Vector2(-360, 77)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint3" unique_id=160116938]
+position = Vector2(-2.3841858e-06, -27)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint13" parent="SpikeCheckpoint" unique_id=2059801740 instance=ExtResource("12_776at")]
+position = Vector2(-571, 1078)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint13" unique_id=354737710]
+position = Vector2(-2.3841858e-06, -27)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint14" parent="SpikeCheckpoint" unique_id=971542429 instance=ExtResource("12_776at")]
+position = Vector2(-395, 999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint14" unique_id=1771442891]
+position = Vector2(-2.3841858e-06, -27)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint15" parent="SpikeCheckpoint" unique_id=623421947 instance=ExtResource("12_776at")]
+position = Vector2(-102, 1016)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint15" unique_id=1821838339]
+position = Vector2(-2.3841858e-06, -27)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint16" parent="SpikeCheckpoint" unique_id=167695972 instance=ExtResource("12_776at")]
+position = Vector2(950, 938)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint16" unique_id=1360775519]
+position = Vector2(-2.3841858e-06, -27)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint17" parent="SpikeCheckpoint" unique_id=1936345632 instance=ExtResource("12_776at")]
+position = Vector2(272, 808)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint17" unique_id=178106136]
+position = Vector2(-2.3841858e-06, -27)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint18" parent="SpikeCheckpoint" unique_id=712804860 instance=ExtResource("12_776at")]
+position = Vector2(-374, 844)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint/SpikeCheckpoint18" unique_id=742496940]
+position = Vector2(-2.3841858e-06, -27)
+shape = SubResource("CapsuleShape2D_fslw5")

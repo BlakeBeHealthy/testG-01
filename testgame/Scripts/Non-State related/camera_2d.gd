@@ -21,9 +21,7 @@ var target: Vector2 = Vector2()
 	
 func _ready():
 	default_zoom = self.zoom
-	print(default_zoom)
 	default_position = global_position
-	print(default_position)
 	Global.set_camera(self)
 	boss_room_placement = self.global_position
 	#Could've made a new scene but just used code, so the screenshake wont 

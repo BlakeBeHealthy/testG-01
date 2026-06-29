@@ -2230,7 +2230,7 @@ tile_set = SubResource("TileSet_q1cyl")
 position = Vector2(-5.0429, 745.78064)
 zoom = Vector2(3.5, 3.5)
 limit_left = -1007
-limit_right = -196
+limit_right = -370
 
 [node name="East" type="Area2D" parent="." unique_id=2019871775]
 position = Vector2(-408, -525)
