@@ -77,7 +77,7 @@ animations = [{
 "texture": ExtResource("6_c6tv0")
 }],
 "loop": true,
-"name": &"Jimmy",
+"name": &"Jimmy_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -164,7 +164,7 @@ material = SubResource("ShaderMaterial_kbj1d")
 position = Vector2(343.96875, 407.0938)
 scale = Vector2(2.279875, 2.291625)
 sprite_frames = SubResource("SpriteFrames_5iodc")
-animation = &"Terry_idle"
+animation = &"Jimmy_idle"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=284104083]
 custom_minimum_size = Vector2(0, 520)
