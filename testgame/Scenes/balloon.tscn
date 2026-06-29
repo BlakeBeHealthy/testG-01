@@ -4,11 +4,14 @@
 [ext_resource type="Script" uid="uid://pr0ry60niown" path="res://Scripts/Non-State related/DialogueBalloon.gd" id="1_5iodc"]
 [ext_resource type="Shader" uid="uid://b7bs566f75bvj" path="res://Scenes/WipeTransition.gdshader" id="2_nrerx"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="2_os1p0"]
+[ext_resource type="Texture2D" uid="uid://3a7nrckuoohy" path="res://assets/NPCS/Portraits/458-removebg-preview.png" id="3_bsdp8"]
 [ext_resource type="Texture2D" uid="uid://bs3x3o1hcw3fa" path="res://assets/NPCS/Portraits/GusGodot.png" id="3_kbj1d"]
 [ext_resource type="Texture2D" uid="uid://c1t7a8up44bv3" path="res://assets/NPCS/Portraits/Hannibal.png" id="4_5g3f3"]
 [ext_resource type="Texture2D" uid="uid://lrbg1u7pvlg8" path="res://assets/NPCS/Portraits/mainChar.png" id="4_syg23"]
 [ext_resource type="Texture2D" uid="uid://ca0niamjlvsu5" path="res://assets/NPCS/Portraits/Terry.png" id="5_43nfd"]
 [ext_resource type="FontFile" uid="uid://csg7gawytepkx" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidSans-Bold.otf" id="5_xyim1"]
+[ext_resource type="Texture2D" uid="uid://5k3blmdfvpjf" path="res://assets/NPCS/Portraits/457-removebg-preview.png" id="6_c6tv0"]
+[ext_resource type="Texture2D" uid="uid://dg7xdl6i02yl1" path="res://assets/NPCS/Portraits/376-removebg-preview.png" id="6_h8nsx"]
 [ext_resource type="FontFile" uid="uid://d0r7oon537wd0" path="res://assets/pixeloid-font/OpenType (.otf)/PixeloidSans.otf" id="6_rl6ge"]
 [ext_resource type="PackedScene" uid="uid://3ga7ywpdjoi8" path="res://Scenes/responseButton.tscn" id="9_rl6ge"]
 
@@ -18,6 +21,10 @@ shader_parameter/progress = 1.20000004768372
 shader_parameter/edge_width = 0.8
 shader_parameter/horizontal_weight = 0.5
 shader_parameter/vertical_weight = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yojak"]
+atlas = ExtResource("3_bsdp8")
+region = Rect2(0, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xyim1"]
 atlas = ExtResource("3_kbj1d")
@@ -31,12 +38,24 @@ region = Rect2(0, 0, 613, 613)
 atlas = ExtResource("4_syg23")
 region = Rect2(0, 0, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fff7"]
+atlas = ExtResource("6_h8nsx")
+region = Rect2(0, 0, 500, 500)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5g3f3"]
 atlas = ExtResource("5_43nfd")
 region = Rect2(0, 0, 500, 500)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5iodc"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yojak")
+}],
+"loop": true,
+"name": &"Cpt Wright_idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xyim1")
@@ -55,10 +74,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_c6tv0")
+}],
+"loop": true,
+"name": &"Jimmy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rl6ge")
 }],
 "loop": false,
 "name": &"P_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fff7")
+}],
+"loop": true,
+"name": &"Rain_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -126,10 +161,10 @@ size_flags_vertical = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Control" unique_id=1216238625]
 material = SubResource("ShaderMaterial_kbj1d")
-position = Vector2(370, 428)
-scale = Vector2(1.78, 1.78)
+position = Vector2(343.96875, 407.0938)
+scale = Vector2(2.279875, 2.291625)
 sprite_frames = SubResource("SpriteFrames_5iodc")
-animation = &"Hannibal_idle"
+animation = &"Terry_idle"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=284104083]
 custom_minimum_size = Vector2(0, 520)
