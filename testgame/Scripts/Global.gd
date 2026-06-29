@@ -6,7 +6,6 @@ var debug_cutscene: String = ""
 var debug_mode: bool = false
 var knight_dead: bool = false
 var cutsceneStarted: bool = false
-var cutsceneMode: bool = false
 var inputBlocked: bool = false
 var cutWait: bool = false
 var clash_won: bool = false

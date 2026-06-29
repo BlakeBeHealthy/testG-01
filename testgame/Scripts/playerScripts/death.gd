@@ -24,7 +24,6 @@ func enter() -> void:
 		FadeS.fade_out()
 	await get_tree().create_timer(1).timeout
 	Gameplay.game_respawn()
-	print("scene")
 	SceneM.load_level(Global.saveData.checkpoint_scene) #Set up first level load and put a checkpoint in level 2
 	Global.saveData.maxHealth = 3
 	Global.cutsceneStarted = true

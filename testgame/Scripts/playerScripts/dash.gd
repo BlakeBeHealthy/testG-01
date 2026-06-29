@@ -50,7 +50,7 @@ func process_frame(delta: float) -> State:
 	if parent.takeHit:
 		return parent.hit_state
 		
-	if parent.wallSlide:
+	if parent.wall_state == parent.WallState.SLIDING:
 			return parent.wallSlide_state
 			
 	if dashDone:

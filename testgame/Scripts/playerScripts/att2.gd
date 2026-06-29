@@ -84,7 +84,7 @@ func process_frame(delta: float) -> State:
 		return parent.hit_state
 	
 	if !as2d.is_playing() and !KB:
-		if parent.wallSlide:
+		if parent.wall_state == parent.WallState.SLIDING:
 			return parent.wallSlide_state
 		if parent.parryCheck:
 				return parent.parry_state

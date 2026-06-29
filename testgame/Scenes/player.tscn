@@ -681,7 +681,7 @@ animations = [{
 size = Vector2(13.836479, 28.818476)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gymyn"]
-size = Vector2(25.25, 45)
+size = Vector2(48.704662, 40.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx1dd"]
 size = Vector2(25.171629, 26.979446)
@@ -721,19 +721,21 @@ speed_scale = 0.8
 flip_h = true
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
-visible = false
 visibility_layer = 2
-position = Vector2(1.0000002, 0.99999994)
+position = Vector2(0, 8)
 scale = Vector2(1.59, 1.274)
 shape = SubResource("RectangleShape2D_ukyrk")
+debug_color = Color(1, 0.4380554, 0.6406184, 0.41960785)
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=764626776]
+visible = false
 position = Vector2(0, 4)
 collision_layer = 64
 collision_mask = 8960
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=866466377]
-position = Vector2(0, -1)
+position = Vector2(-5.9604645e-08, 2)
+scale = Vector2(0.84, 1)
 shape = SubResource("RectangleShape2D_gymyn")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1898396502]
@@ -776,16 +778,21 @@ position = Vector2(-1.6806722, -5.1147547)
 shape = SubResource("CapsuleShape2D_ukyrk")
 
 [node name="wallslideChest" type="RayCast2D" parent="." unique_id=271180678]
-visible = false
-position = Vector2(3, 0)
-target_position = Vector2(11, 0)
+position = Vector2(3.5, 0)
+target_position = Vector2(8.2, 0)
+collide_with_areas = true
 
 [node name="wallslideLegs" type="RayCast2D" parent="." unique_id=335263960]
-visible = false
-position = Vector2(3, 17)
-target_position = Vector2(11, 0)
+position = Vector2(3.5, 17)
+target_position = Vector2(8.2, 0)
 
 [node name="WallJumpBuffer" type="Timer" parent="." unique_id=1415600477]
+
+[node name="air_control_timer" type="Timer" parent="." unique_id=60941807]
+one_shot = true
+
+[node name="wall_touch_timer" type="Timer" parent="." unique_id=449303984]
+one_shot = true
 
 [node name="wallJump" type="Timer" parent="." unique_id=1638574407]
 wait_time = 0.001
@@ -855,6 +862,7 @@ script = ExtResource("6_3smsa")
 script = ExtResource("8_8erm5")
 wall_jump_force = 600.0
 decayRate = 3500.0
+air_control_lockout = 0.1
 
 [node name="Fall" type="Node" parent="StateMachine" unique_id=337594985]
 script = ExtResource("8_f1ek2")
@@ -926,6 +934,7 @@ decay = 10.0
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/PogoAttack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/ParryAttack" method="_on_area_2d_area_shape_entered"]
+[connection signal="timeout" from="wall_touch_timer" to="StateMachine/WallSlide" method="_on_wall_touch_timer_timeout"]
 [connection signal="timeout" from="wallJump" to="StateMachine/WallSlide" method="_on_wall_jump_timeout"]
 [connection signal="timeout" from="attack2buff" to="StateMachine/ParryAttack" method="_on_attack_2_buff_timeout"]
 [connection signal="timeout" from="DashTime" to="StateMachine/Dash" method="_on_dash_time_timeout"]

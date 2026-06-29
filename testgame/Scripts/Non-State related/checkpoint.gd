@@ -14,7 +14,6 @@ var areaCheck := false
 func _ready() -> void:
 	if current_scene_path == "null":
 		current_scene_path = get_level_scene_path()
-		print("onready", current_scene_path)
 		
 	update_sprite()
 	if flipH:

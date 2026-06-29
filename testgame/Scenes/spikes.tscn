@@ -55,7 +55,6 @@ size = Vector2(3.3928573, 9.669941)
 collision_layer = 9248
 collision_mask = 2056
 script = ExtResource("1_gwqs2")
-SpikeNumber = "0"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=337821421]
 position = Vector2(1, 0)

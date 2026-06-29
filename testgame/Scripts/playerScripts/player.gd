@@ -33,6 +33,7 @@ extends CharacterBody2D
 @onready var wallslide_legs: RayCast2D = $wallslideLegs
 @onready var wallslide_chest: RayCast2D = $wallslideChest
 @onready var wall_slide_fall: Timer = $wallSlideFall
+@onready var air_control_timer: Timer = $air_control_timer
 
 
 @warning_ignore("unused_signal")
@@ -71,6 +72,8 @@ var animate := false
 var dash := false
 var wallSlide := false
 var wallJump := false
+enum WallState { NONE, TOUCH, SLIDING, JUMPING }
+var wall_state: WallState = WallState.NONE
 var cutDeath := false
 var comboCount := 0
 var health := 3
@@ -97,23 +100,16 @@ func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 	if is_on_floor() and jumpCheck and state_machine.current_state != pogo_state:
 		jumpCheck = false
-	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and !is_on_floor() and !wallJump and state_machine.current_state != wallSlide_state:
-		if as2d.flip_h == true:
-			if Input.is_action_pressed("runL"):
-				Jdirection = -1
-				wallSlide = true
-		elif as2d.flip_h == false:
-			if Input.is_action_pressed("runR"):
-				Jdirection = 1
-				wallSlide = true
+	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and  \
+	!is_on_floor() and wall_state == WallState.NONE and state_machine.current_state != wallSlide_state:
+		Jdirection = -1 if as2d.flip_h else 1
+		wall_state = WallState.SLIDING
 	elif is_on_floor():
-		wallSlide = false
-		wallJump = false
-		wallJumpBuff = false
+		wall_state = WallState.NONE
 		
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-	if state_machine.current_state == jump_state or state_machine.current_state == fall_state:
+	if state_machine.current_state == jump_state or state_machine.current_state == fall_state or state_machine.current_state == wallSlide_state:
 		interactC2D.disabled = true
 	else:
 		interactC2D.disabled = false
@@ -128,7 +124,7 @@ func _process(delta: float) -> void:
 		stickState = false
 
 
-func flip_direction(dire: int):
+func flip_direction(dire: int = -direction):
 	direction = dire
 	parry_zone.position.x *= direction
 	if direction >= 1:
@@ -222,3 +218,11 @@ func anim():
 		animate = false
 		a2d2.monitorable = true
 		a2d2.monitorable = true
+		
+func apply_horizontal_air_control(decay_or_set_speed: float) -> void:
+	var direction = Input.get_axis("runL", "runR")
+	if wall_state == WallState.JUMPING and !air_control_timer.is_stopped():
+		return  # still locked, do nothing to velocity.x
+	if wall_state == WallState.JUMPING:
+		wall_state = WallState.NONE
+	velocity.x = direction * decay_or_set_speed
