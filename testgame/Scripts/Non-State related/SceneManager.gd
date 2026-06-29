@@ -6,6 +6,7 @@ func load_level(scene_path: String) -> void:
 	var holder = Gameplay.level_holder
 	for child in holder.get_children():
 		child.queue_free()
+	print(scene_path)
 	var hold = load(scene_path)
 	var new_level: Node = hold.instantiate()
 	holder.add_child(new_level)
