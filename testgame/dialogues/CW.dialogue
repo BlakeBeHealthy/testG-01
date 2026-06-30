@@ -5,7 +5,7 @@ Terry: How are you this fine evening: (F TO SELECT CHOICES)
 - I'm starving
 	Terry: Sorry being a playtester doesnt come with snacks. Get your own ya greedy bastard
 - I'm ready to test
-	Terry: Great, just need you to sign this waiver stating if you lose your life CosmicStudio isnt responsible blahblah legal
+	Terry: Great, just need you to sign this waiver stating if you lose your life the developers are not responsible blahblah legal stuff
 - It's not in the evening for me.
 	Terry: ...
 	Terry: I cast WARM PILLOW for a weeks time. Prick.
@@ -36,13 +36,14 @@ Terry: He can't fire me I'm on contract.
 ~ s4
 Terry: you are now free to explore the rest of prototype
 Terry: One last tip if you are on the ground, if you hold ALT + w or s you can look up and down.  
-Terry: You may see outside of the tilesets, if you see gray just dont worry about it, the focus here isnt tile checks its just a prototype
+Terry: You may see outside of the tilesets, if you see gray just dont worry about it, the focus here isnt tile checks more system and mechanical bug testing
+Terry: All of this will be replaced with handdrawn art anyway
 Terry: Enjoy the rest of the prototype friend, don't forget to document bugs you find if you can, any pros and cons as well.
 Terry: There will be a channel for bug reports, just drop those there.
 Terry: There will also be a seperate channel for pros, cons, and request for what the game could do. 
 Terry: If you feel uncomfortable chatting that is okay, you can just enjoy or DM Blake directly.
 Terry: Also, if you forget controls, there is a channel with them all listed. There are future plans for a key-rebind menu for customization
-Terry: Now from here you will meet new people and explore some of a basic world. Enjoy!
+Terry: Now from here you will meet new people and explore some of a very basic world, see you friend!
 Terry: ...
 Terry: Also check for spell errors. 
 => END1
@@ -53,8 +54,9 @@ Terry: Don't forget to mention your critiques
 Terry: Death currently has a bug where the player stays in place when they die. That is on purpose for now
 Terry: The main bug concerns are mechanical related.
 Terry: Updates about the future game will be posted in the discord if you are interested
-Terry:Stuff like a future parry system is planned and you might get snippets of early concepts and ideas
-Terry: As a tester, you can get future access to the beta early to test it, which will be appriciated
+Terry: Stuff like a future parry system and much more movement is planned and you might get snippets of early concepts and ideas
+Terry: As a tester, you can get future access to the alpha/beta early to test it, which will be appriciated
+Terry: There is only one developer and one artist currently, so don't expect any super soon
 Terry: Goodbye Friend! Thanks for playing! You can just close this tab. 
 => END1
 
