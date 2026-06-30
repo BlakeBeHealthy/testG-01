@@ -39,7 +39,10 @@ func exit() -> void:
 		jump_buff.stop()
 	if !dash_time.is_stopped():
 		dash_time.stop()
-
+	if dashCheck:
+		dashCheck = false
+	if dashDone:
+		dashDone = false
 func process_input(event: InputEvent) -> State:
 	if parent.jumpBuff:
 		if Input.is_action_just_pressed("jump"):

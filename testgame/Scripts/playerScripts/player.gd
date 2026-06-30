@@ -118,7 +118,6 @@ func _process(delta: float) -> void:
 		interactC2D.disabled = false
 	if is_on_floor():
 		landed.emit()
-		print("hellod")
 		dashAllow = true
 		if Gameplay.DJ:
 			moveCheck = true
@@ -126,7 +125,6 @@ func _process(delta: float) -> void:
 		stickState = true
 	else:
 		stickState = false
-		
 func flip_direction(dire: int = -direction):
 	direction = dire
 	parry_zone.position.x *= direction
@@ -145,8 +143,6 @@ func _on_landed(): #This will be for cutscenes when the player cant move
 	upwardDoor = false
 
 func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration: float):
-	print_stack()
-	
 	if !invincible:
 		damage = dmg
 		dir = direction
@@ -175,6 +171,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		
 func _input(event): #allowing the player to attack
 	if Global.inputBlocked or Global.cutsceneStarted:
+		print("balls")
 		return
 		
 	elif (!stickState) and event.is_action_pressed("leftC"):
@@ -190,7 +187,8 @@ func _input(event): #allowing the player to attack
 	if ((Input.is_action_just_pressed("interact") and current_interactable != null) or (Input.is_action_pressed("PlayerLock")) and is_on_floor() \
 	and !Global.UI.get_node("Balloon").visible) and state_machine.current_state != cut_state:
 		control_locked = true
-	elif Input.is_action_just_pressed("Dash") and !stickState and dash_delay.is_stopped() and dashAllow:
+	elif Input.is_action_just_pressed("Dash") and !stickState and dash_delay.is_stopped() and dashAllow and \
+	(state_machine.current_state != death_state and state_machine.current_state != hit_state):
 		dash = true
 				
 func _on_timer_timeout() -> void:
