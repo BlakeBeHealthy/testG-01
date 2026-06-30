@@ -2,29 +2,23 @@
 Hannibal: I've been looking for you.
 P: Have we met?
 Hannibal: I've killed you countless times before. But this moment in time keeps repeating.
-Hannibal: End this fight, why do you keep coming back? 
 $> playResume("e2", false, true)
 Hannibal: You will die
-set Global.cutsceneStarted = false
 $>> Global.camera.reset(0.5)
-$>> Global.camera.startBars()
+$>> Global.camera.startBars(0.3)
+set Global.cutsceneStarted = false
 => END
 
 ~ P2
 Hannibal: Gods. Devils. Indulge me and feed me your strength.
 Hannibal: Ensure they cannot cross any further and end our realm.
 Hannibal: They must rot and be trapped here forever.
-Hannibal: ...
-Hannibal: Tell me...
-Hannibal: If you complete your mission, but I leave a mark on your memory...
-Hannibal: Do I really cease to exist?
-Hannibal: Doesn't matter really...as you won't get that far.
 $>> Global.Clash.Start("clash", "clashing", "clashW", "clashL", "clash_result", "P2")
 => END
 
 ~ clash_result
 if Global.clash_won:
-	Hannibal: *cough* *cough* All... All for a test, right?
+	Hannibal: *cough* *cough* All... All for some test, right?
 	Hannibal: Guess I should at least give you a show.
 else:
 	Hannibal: its over.
@@ -45,7 +39,7 @@ $>> Global.prompt.startQTE(10.0, "HD1_2", "HD2", "HD2_3", "death", "d1")
 
 ~ death
 Hannibal: *cough* I hope it was worth it...
-Hannibal: Take my walljump
+Hannibal: Take my walljump, it doesn't matter
 Hannibal: You will see me again, it may be in different attire...but the motive will be the same.
 Hannibal: See you soon. Player.
 $> playEnd("HD2_2")

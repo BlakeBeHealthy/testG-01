@@ -8,7 +8,9 @@ var barsActive: bool = false
 func _ready() -> void:
 	self.visible = true
 	
-func moveBars(dur: float = 0.3, stayOpen: bool = false):
+func moveBars(dur: float = 0.3, stayOpen: bool = false, wait: bool = false):
+	print(stayOpen)
+	print(wait)
 	var t = create_tween()
 	t.set_trans(Tween.TRANS_SINE)
 	t.set_ease(Tween.EASE_IN_OUT)
@@ -23,5 +25,6 @@ func moveBars(dur: float = 0.3, stayOpen: bool = false):
 		elif !barsActive:
 			t.tween_property(top_bar, "position:y", (top_bar.position.y + top_bar.size.y), dur)
 			t.tween_property(bottom_bar, "position:y", (bottom_bar.position.y - bottom_bar.size.y), dur)
-
+		if wait:
+			await t.finished
 		barsActive = !barsActive

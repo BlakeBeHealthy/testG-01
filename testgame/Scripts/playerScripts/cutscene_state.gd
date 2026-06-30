@@ -20,11 +20,13 @@ func enter() -> void:
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
 	elif parent.current_interactable is BetaNPC or Global.cutsceneStarted:
+		print("1")
 		speaking = true
 	elif !parent.animate:
 		parent.camLook = true
 		
 func exit() -> void:
+	print("5")
 	dialogueActive = false
 	speaking = false
 	done = false
@@ -40,7 +42,8 @@ func process_input(event: InputEvent) -> State:
 func _on_dialogue_done():
 	if !dialogueActive:
 		return
-		
+	
+	print("2")
 	dialogueActive = false
 	await get_tree().create_timer(0.4).timeout
 	done = true
@@ -63,6 +66,7 @@ func process_frame(delta: float) -> State:
 		as2d.play("save1")
 		
 	if speaking:
+		print("3")
 		speaking = false
 		as2d.play("idle")
 		if Global.cutsceneStarted:
@@ -77,6 +81,7 @@ func process_frame(delta: float) -> State:
 			done = true
 		
 	if done and !Global.cutsceneStarted:
+		print("4")
 		started = false
 		done = false
 		return parent.idle_state

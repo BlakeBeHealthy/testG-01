@@ -38,7 +38,7 @@ func process_frame(delta: float) -> State:
 	if parent.dash:
 		return parent.dash_state
 		
-	if parent.wall_state == parent.WallState.SLIDING:
+	if parent.wall_state == parent.WallState.SLIDING and cTime.is_stopped():
 		return parent.wallSlide_state
 		
 	if parent.attackCheck:

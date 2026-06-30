@@ -722,7 +722,6 @@ shape = SubResource("RectangleShape2D_ukyrk")
 debug_color = Color(1, 0.4380554, 0.6406184, 0.41960785)
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=764626776]
-visible = false
 position = Vector2(0, 4)
 collision_layer = 64
 collision_mask = 8960

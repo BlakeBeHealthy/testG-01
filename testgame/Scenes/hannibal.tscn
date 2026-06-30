@@ -786,6 +786,7 @@ attack_state = NodePath("stateMachine/ComboAttacks")
 airAttack_State = NodePath("stateMachine/RangedAirattack")
 timeStop = 0.001
 shakeDuration = 0.9
+dmg = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 material = SubResource("ShaderMaterial_s0ijq")

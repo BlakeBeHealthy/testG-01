@@ -91,7 +91,7 @@ render_target_update_mode = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/SubViewportContainer/SubViewport" unique_id=50131103]
 sprite_frames = SubResource("SpriteFrames_03jbe")
-animation = &"new_animation"
+animation = &"alive"
 autoplay = "alive"
 offset = Vector2(8, 8)
 

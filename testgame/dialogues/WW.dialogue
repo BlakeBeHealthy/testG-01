@@ -91,7 +91,7 @@ if Gameplay.Knightgrandma:
 	Cpt Wright: ...
 	Cpt Wright: The bar didn't move
 	Cpt Wright: She laughed and said I was a pussy...still havent recovered
-if Gameplay.Knight
+if !Gameplay.Knightgrandma:
 	Cpt Wright: I went to that witch you were talking about
 	Cpt Wright: She was lowkey fine so I said she could keep the sword if I could hit
 	Cpt Wright: Apperently she didn't like that too much

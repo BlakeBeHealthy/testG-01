@@ -2,7 +2,7 @@ extends Camera2D
 
 @export var FOLLOW_SPEED := 10.0
 @export var boss_room := false
-var boss_room_placement: Vector2
+@export var boss_room_placement: Vector2
 var default_position: Vector2
 var default_zoom: Vector2
 var horizontalOffset: float = 20
@@ -23,7 +23,8 @@ func _ready():
 	default_zoom = self.zoom
 	default_position = global_position
 	Global.set_camera(self)
-	boss_room_placement = self.global_position
+	if boss_room:
+		boss_room_placement = self.global_position
 	#Could've made a new scene but just used code, so the screenshake wont 
 		#be slower if we slow down time in the engine and it doesnt repeat
 	shake_timer.one_shot = true
@@ -97,8 +98,11 @@ func reset(duration):
 func APmove():
 	offsetting = true
 	
-func startBars(dur: float = 0.3, stayOpen: bool = false):
-	Global.UI.bars.moveBars(dur, stayOpen)
+func startBars(dur: float = 0.3, stayOpen: bool = false, cutEnd: bool = false):
+	await Global.UI.bars.moveBars(dur, stayOpen, cutEnd)
+	if cutEnd:
+		Global.cutsceneStarted = false
+		print("3 ", Global.cutsceneStarted)
 	
 func fade_in(speed: float = 1.0, wait = false):
 	FadeS.fade_in(speed, wait)

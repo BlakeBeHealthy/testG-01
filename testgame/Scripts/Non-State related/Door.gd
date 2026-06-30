@@ -11,5 +11,6 @@ signal player_entered_door(door: Door)
 func _on_body_entered(body: Node2D) -> void:
 	if body != Global.player:
 		return
-	# Signal Gameplay (or whoever is listening) that the player entered this door
+	# Signal Gameplay (or whoever is listening) that the player entered this door\
+	Global.player.visible = false
 	Gameplay.enter_door(path_to_new_scene, entry_door_name, entry_direction)

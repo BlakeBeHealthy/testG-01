@@ -30,11 +30,14 @@ func enter() -> void:
 	if !ComboTime.is_stopped():
 		ComboTime.stop()
 	attackDir = Input.get_axis("runL", "runR")
+	parent.update_ground_visuals(attackDir)
+	parent.c_check_1.enabled = true
+	parent.c_check_2.enabled = true
 	if attackDir > 0:
 		as2d.flip_h = false
 	elif attackDir < 0:
 		as2d.flip_h = true
-	a2d.position = Vector2(18 * attackDir, 4)
+	a2d.position = Vector2(20 * attackDir, 4)
 	checkAttack = false
 	
 	if checkHit:
@@ -77,6 +80,8 @@ func exit() -> void:
 	attackDir = 0
 	if parent.attackCheck:
 		parent.attackCheck = false
+	parent.c_check_1.enabled = false
+	parent.c_check_2.enabled = false
 	
 func process_input(event: InputEvent) -> State:
 	return null

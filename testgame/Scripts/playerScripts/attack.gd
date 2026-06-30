@@ -26,11 +26,14 @@ func enter() -> void:
 	as2d.play("attack")
 	attack_delay.start()
 	attackDir = Input.get_axis("runL", "runR")
+	parent.c_check_1.enabled = true
+	parent.c_check_2.enabled = true
+	parent.update_ground_visuals(attackDir)
 	if attackDir > 0:
 		as2d.flip_h = false
 	elif attackDir < 0:
 		as2d.flip_h = true
-	a2d.position = Vector2(18 * attackDir, 4)
+	a2d.position = Vector2(20 * attackDir, 4)
 	startKB = false
 	if checkHit:
 		checkHit = false
@@ -62,6 +65,8 @@ func exit() -> void:
 	a2d.monitoring = false
 	attackDir = 0
 	KB = false
+	parent.c_check_1.enabled = false
+	parent.c_check_2.enabled = false
 	
 func process_input(event: InputEvent) -> State:
 	return null
@@ -120,6 +125,13 @@ func process_physics(delta: float) -> State:
 		parent.velocity.y *= parent.jumpCut
 	else:
 		parent.velocity.y += gravity * delta
+		
+	var x_offset = 3 if direction >= 0 else -3
+	
+	if parent.c_check_1.is_colliding() or parent.c_check_2.is_colliding():
+		parent.c.position = Vector2(x_offset, 8)
+	else:
+		parent.c.position = Vector2(x_offset, 2)
 	parent.move_and_slide()
 
 	return null

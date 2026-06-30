@@ -14,6 +14,7 @@ var fall: bool = false
 var direction: = 0.0
 
 func enter() -> void:
+	print("WALL")
 	as2d.play("wallSlide")
 	parent.wall_state = parent.WallState.SLIDING
 	if !as2d.flip_h:

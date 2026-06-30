@@ -68,8 +68,10 @@ func process_frame(delta: float) -> State:
 	return null
 	
 func process_physics(delta: float) -> State:
-	parent.velocity.y += gravity * delta
-	
+	if parent.is_on_floor():
+		parent.velocity.y = 0.0
+	else:
+		parent.velocity.y = gravity * delta
 	if !parent.is_on_floor() and parent.velocity.y > 0:
 		return parent.fall_state
 	return null

@@ -2,29 +2,27 @@ extends HBoxContainer
 
 @onready var heartsUI = preload("res://Scenes/hearts_ui.tscn")
 var hearts = []
+const MAX_HEARTS = 3
+
 func _ready() -> void:
 	Global.playerDone.connect(_on_player_ready)
-	for i in range(Global.saveData.maxHealth):
+	for i in range(MAX_HEARTS):
 		var heart = heartsUI.instantiate()
 		add_child(heart)
 		hearts.append(heart)
 
 func _on_player_ready():
-	Global.player.playerHit.connect(on_health_changed)
+	Global.player.playerHit.connect(_on_health_changed)
 	Global.healthUp.connect(healthRestore)
-func on_health_changed(new_health):
-	if new_health == 0:
-		hearts[0].die()
-	else:
-		for i in range(hearts.size()):
-			if (new_health - 1) < i and !hearts[i].dead:
+
+func _on_health_changed(new_health: int) -> void:
+	for i in range(hearts.size()):
+		if i < new_health:
+			if hearts[i].dead:
+				hearts[i].revive()
+		else:
+			if !hearts[i].dead:
 				hearts[i].die()
-				
-func healthRestore():
-	for i in range(Global.saveData.maxHealth):
-		if hearts.size() > 3:
-			return
-		
-		var heart = heartsUI.instantiate()
-		add_child(heart)
-		hearts.append(heart)
+
+func healthRestore() -> void:
+	_on_health_changed(Global.saveData.maxHealth)

@@ -9,7 +9,7 @@ var checkJump
 var started := false
 var is_respawn := false
 var Knightgrandma := false
-var Knight := true
+var Knight := false
 var finalCheck := false
 var Rain := false
 var DJ := false
@@ -18,19 +18,22 @@ var direction := 1
 
 func enter_door(scene_path: String, door_name: String, dir_string: int) -> void:
 	#This is what I was talking about earlier with the west, east, south and north and door name and such.
+	FadeS.fade_out()
 	pending_entry_door = door_name 
 	pending_entry_direction = _dir_from_enum(dir_string)
 	checkJump = dir_string
 	direction = Global.player.direction
+	
 	#Calls the fade out function
-	FadeS.fade_out()
 	await get_tree().create_timer(1).timeout
 	#Loads the next scene with SceneManager.gd
+	Global.player.visible = true
 	SceneM.load_level(scene_path)
 	
 func on_level_loaded(level: Node) -> void:
 	#Declares player with global, this happens a lot
 	var player = Global.player
+	
 	
 	if is_respawn:
 		player.global_position = Global.saveData.checkpoint_pos
@@ -46,8 +49,8 @@ func on_level_loaded(level: Node) -> void:
 	Global.player.flip_direction(direction)
 	Global.camera.global_position = Global.player.global_position
 	await get_tree().create_timer(0.09).timeout
-	if Global.cutsceneStarted:
-		Global.cutsceneStarted = false
+	if Global.inputBlocked:
+		Global.inputBlocked = false
 	FadeS.fade_in()
 	
 func _dir_from_enum(dir: int) -> Vector2:

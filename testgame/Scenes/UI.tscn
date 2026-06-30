@@ -32,6 +32,7 @@ corner_detail = 20
 script = ExtResource("1_nxvpl")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=2100696443]
+visible = false
 position = Vector2(573.00006, 84)
 scale = Vector2(22.15, 22.15)
 
@@ -60,7 +61,7 @@ script = ExtResource("3_xjg7p")
 layout_mode = 0
 offset_left = -4.0
 offset_top = -655.0
-offset_right = 1926.0
+offset_right = 1940.0
 offset_bottom = -545.0
 color = Color(0, 0, 0, 1)
 

@@ -125,6 +125,7 @@ func _process(delta: float) -> void:
 		stickState = true
 	else:
 		stickState = false
+		
 func flip_direction(dire: int = -direction):
 	direction = dire
 	parry_zone.position.x *= direction
@@ -171,10 +172,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		
 func _input(event): #allowing the player to attack
 	if Global.inputBlocked or Global.cutsceneStarted:
-		print("balls")
 		return
 		
-	elif (!stickState) and event.is_action_pressed("leftC"):
+	elif !stickState and event.is_action_pressed("leftC"):
 			if !is_on_floor() and Input.is_action_pressed("down") and attack_delay.is_stopped():
 				pogoCheck = true
 			elif !ComboTime.is_stopped() or attack_delay.is_stopped():
@@ -195,7 +195,9 @@ func _on_timer_timeout() -> void:
 	comboCount = 0
 
 func respawn():
+	velocity = Vector2.ZERO
 	self.global_position = respawnCoord
+	state_machine.change_state(fall_state)
 
 func _on_parry_cooldown_timeout() -> void:
 	parried = false

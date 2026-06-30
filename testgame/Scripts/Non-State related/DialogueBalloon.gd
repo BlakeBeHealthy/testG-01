@@ -181,6 +181,7 @@ func wipeIn():
 	return
 
 func wipeOut(fullWipe: bool = false):
+	print_stack()
 	wiped = false
 	isMoving = true
 	

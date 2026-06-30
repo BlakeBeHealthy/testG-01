@@ -130,7 +130,7 @@ func shoot(loopcount: int = 1, duration: float = 0, wait: float = 1.0, speed: fl
 	
 func shootingout():
 	if pattern == 0:
-		await shoot(5, 1.0, 2.5, 300)
+		await shoot(5, 1.0, 1.0, 300)
 		await shoot(5, 0.7, 1.0)
 		await shoot(50, 0.001, 1.0, 300)
 		await shoot(50, 0.001, 1.0)

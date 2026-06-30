@@ -59,12 +59,14 @@ func get_UI():
 	
 # in Global.gd
 func startCutscene(dialogueFile: String, startingPoint: String, introAnim: String = "", skipStart: bool = false) -> void:
+	if !cutsceneStarted:
+		cutsceneStarted = true
+		
 	player.control_locked = true
 	if introAnim != "":
 		ap.play(introAnim)
 		await ap.animation_finished
-	if !cutsceneStarted:
-		cutsceneStarted = true
+	print("3 ", cutsceneStarted)
 	UI.balloon.start(load(dialogueFile), startingPoint, skipStart)
 	
 func clashing() -> void:
@@ -96,3 +98,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_just_pressed("debug_skip"):
 		ap.stop()
 		UI.dialogueBalloon.start(load(debug_dialogue), debug_start)
+
+func _process(delta: float) -> void:
+	if ap == null:
+		return
+	
+	if ap.is_playing():
+		print(ap.current_animation)

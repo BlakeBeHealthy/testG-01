@@ -2280,7 +2280,7 @@ script = ExtResource("3_qrl5v")
 position = Vector2(-59, -41)
 
 [node name="NorthD" type="Area2D" parent="." unique_id=153958864]
-position = Vector2(570, -153)
+position = Vector2(568, -172)
 collision_mask = 2
 script = ExtResource("6_4p08x")
 entry_direction = 1

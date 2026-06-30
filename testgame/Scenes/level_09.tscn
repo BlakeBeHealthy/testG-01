@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://baje80lg3quet" path="res://Scenes/player.tscn" id="6_0y138"]
 [ext_resource type="Script" uid="uid://c38r10a1855tj" path="res://Scripts/Non-State related/Door.gd" id="7_f4kbx"]
 [ext_resource type="PackedScene" uid="uid://cm01fv4mwgnuv" path="res://Scenes/beta_npc.tscn" id="8_hq5d5"]
+[ext_resource type="PackedScene" uid="uid://dcrb427bbd01p" path="res://Scenes/checkpoint.tscn" id="9_c8rbs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmstd"]
 texture = ExtResource("2_hq5d5")
@@ -2287,14 +2288,6 @@ position = Vector2(128, 0)
 [node name="Spikes17" parent="Spikes" unique_id=1280000422 instance=ExtResource("5_oo643")]
 position = Vector2(136, 0)
 
-[node name="Spikes18" parent="Spikes" unique_id=538991860 instance=ExtResource("5_oo643")]
-position = Vector2(660, -294.00003)
-rotation = 1.5934856
-
-[node name="Spikes19" parent="Spikes" unique_id=1535713496 instance=ExtResource("5_oo643")]
-position = Vector2(660.00006, -286)
-rotation = 1.5934856
-
 [node name="Spikes20" parent="Spikes" unique_id=1466313998 instance=ExtResource("5_oo643")]
 position = Vector2(726, -249)
 rotation = -1.5917403
@@ -2345,6 +2338,9 @@ animationName = "C5"
 dialogueScene = "res://dialogues/WW.dialogue"
 startingPoint = "s4"
 prompt_scale = Vector2(0.4, 1)
+
+[node name="Checkpoint" parent="EastD23" unique_id=464011995 instance=ExtResource("9_c8rbs")]
+position = Vector2(622.57996, 230)
 
 [connection signal="body_entered" from="wjd1" to="wjd1" method="_on_body_entered"]
 [connection signal="body_entered" from="EastD23" to="EastD23" method="_on_body_entered"]
