@@ -29,7 +29,6 @@ func enter() -> void:
 	else:
 		as2d.play("jump")
 		parent.wall_slide_fall.start()
-		print("Jdirection at launch: ", parent.Jdirection)
 		parent.velocity.x = -parent.Jdirection * wall_jump_force
 		parent.velocity.y = -wall_jump_force
 		parent.air_control_timer.start(air_control_lockout)
@@ -88,41 +87,6 @@ func process_physics(delta: float) -> State:
 	parent.apply_horizontal_air_control(move_speed)
 	parent.move_and_slide()
 	
-	if direction > 0:
-		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-		parent.wallslide_chest.position.x = 3.5
-		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-		parent.wallslide_legs.position.x = 3.5
-		parent.flip_direction(1)
-		a2d2.position.x = 3
-		a2d.position.x = 21
-	elif direction < 0:
-		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-		parent.wallslide_chest.position.x = -1.55
-		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-		parent.wallslide_legs.position.x = -1.55
-		parent.flip_direction(-1)
-		parent.a2d.position.x = -21
-		parent.a2d2.position.x = -3
-	elif direction == 0:
-		if as2d.flip_h:
-			c.position = Vector2(-3, 0)
-			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-			parent.wallslide_chest.position.x = -1.55
-			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-			parent.wallslide_legs.position.x = -1.55
-			parent.flip_direction(-1)
-			parent.a2d.position.x = -21
-			parent.a2d2.position.x = -3
-		else:
-			c.position = Vector2(3, 0)
-			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-			parent.wallslide_chest.position.x = 3.5
-			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-			parent.wallslide_legs.position.x = 3.5
-			parent.flip_direction(1)
-			a2d2.position.x = 3
-			a2d.position.x = 21
 	if parent.is_on_floor():
 		if direction != 0:
 			return parent.run_state
@@ -130,15 +94,6 @@ func process_physics(delta: float) -> State:
 			return parent.idle_state
 	if !parent.is_on_floor() and parent.velocity.y > 0:
 		return parent.fall_state
-		
-	if direction == -1:
-		c.position = Vector2(-3, 2)
-		a2d2.position.y = 0
-		a2d2.position.x = -4
-	elif direction == 1:
-		c.position = Vector2(3, 2)
-		a2d2.position.x = 4
-		a2d2.position.y = 0
 	return null
 
 

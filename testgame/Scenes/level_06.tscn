@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cgekcdkve474f" path="res://Scenes/spikes.tscn" id="8_kmstd"]
 [ext_resource type="PackedScene" uid="uid://ce3f5rrrexvdt" path="res://Scenes/Renemy.tscn" id="9_q1cyl"]
 [ext_resource type="PackedScene" uid="uid://dpe8m6p55sdxx" path="res://Scenes/enemy.tscn" id="10_fs46s"]
+[ext_resource type="PackedScene" uid="uid://dcrb427bbd01p" path="res://Scenes/checkpoint.tscn" id="11_fs46s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmstd"]
 texture = ExtResource("2_n2msi")
@@ -2238,10 +2239,12 @@ zoom = Vector2(3.5, 3.5)
 limit_right = 1134
 
 [node name="BetaNPC" parent="." unique_id=1828915867 instance=ExtResource("4_e6gsb")]
-position = Vector2(269, -367)
+position = Vector2(269, -373.825)
+scale = Vector2(1.5, 1.5)
 animationName = "C6"
 dialogueScene = "res://dialogues/WW.dialogue"
 startingPoint = "s3"
+prompt_scale = Vector2(0.4, 1)
 
 [node name="PT3" parent="." unique_id=1940327310 instance=ExtResource("5_n2msi")]
 position = Vector2(1108.04, 42)
@@ -2264,7 +2267,7 @@ position = Vector2(53.385, 0)
 shape = SubResource("RectangleShape2D_ej34s")
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("7_e6gsb")]
-position = Vector2(134, -423)
+position = Vector2(823, 27)
 
 [node name="Spikes73" parent="." unique_id=898931136 instance=ExtResource("8_kmstd")]
 position = Vector2(-96, 169)
@@ -2865,3 +2868,7 @@ position = Vector2(108, -231)
 
 [node name="Enemy3" parent="." unique_id=418897493 instance=ExtResource("10_fs46s")]
 position = Vector2(257, -231)
+
+[node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("11_fs46s")]
+position = Vector2(877, 70)
+flipH = true

@@ -2312,7 +2312,7 @@ position = Vector2(660.00006, -174)
 rotation = 1.5934856
 
 [node name="Player" parent="Spikes" unique_id=1436052975 instance=ExtResource("6_0y138")]
-position = Vector2(-73, -340)
+position = Vector2(155, -336)
 
 [node name="wjd1" type="Area2D" parent="." unique_id=464034279]
 position = Vector2(661, 34)
@@ -2339,10 +2339,12 @@ position = Vector2(-104.925, 0)
 shape = SubResource("RectangleShape2D_vpxc8")
 
 [node name="BetaNPC" parent="EastD23" unique_id=1828915867 instance=ExtResource("8_hq5d5")]
-position = Vector2(381.58, 16)
+position = Vector2(543.58, 5.9999857)
+scale = Vector2(1.775, 1.775)
 animationName = "C5"
 dialogueScene = "res://dialogues/WW.dialogue"
 startingPoint = "s4"
+prompt_scale = Vector2(0.4, 1)
 
 [connection signal="body_entered" from="wjd1" to="wjd1" method="_on_body_entered"]
 [connection signal="body_entered" from="EastD23" to="EastD23" method="_on_body_entered"]

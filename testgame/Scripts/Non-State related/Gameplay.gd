@@ -12,9 +12,7 @@ var Knightgrandma := false
 var Knight := true
 var finalCheck := false
 var Rain := false
-
-var wallJump := true
-var DJ := true
+var DJ := false
 
 var direction := 1
 

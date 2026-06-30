@@ -2246,6 +2246,9 @@ size = Vector2(138, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqnpp"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6tqv3"]
+height = 122.83465
+
 [node name="Level02" type="Node2D" unique_id=1295619152]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1860942133]
@@ -2261,6 +2264,7 @@ collision_layer = 256
 animationName = "CW"
 dialogueScene = "res://dialogues/CW.dialogue"
 startingPoint = "s2"
+prompt_scale = Vector2(0.6, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=266358876]
 position = Vector2(-75, -3)
@@ -2276,7 +2280,7 @@ script = ExtResource("3_qrl5v")
 position = Vector2(-59, -41)
 
 [node name="NorthD" type="Area2D" parent="." unique_id=153958864]
-position = Vector2(570, -244)
+position = Vector2(570, -153)
 collision_mask = 2
 script = ExtResource("6_4p08x")
 entry_direction = 1
@@ -2284,7 +2288,7 @@ path_to_new_scene = "res://Scenes/level_03.tscn"
 entry_door_name = "SouthD"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NorthD" unique_id=1038200124]
-position = Vector2(0, 58)
+position = Vector2(0, -67.00001)
 shape = SubResource("RectangleShape2D_6tqv3")
 
 [node name="WestD" type="Area2D" parent="." unique_id=141517665]
@@ -2392,8 +2396,16 @@ Rbound = 99999999
 [node name="SpikeCheckpoint" parent="." unique_id=16437152 instance=ExtResource("10_6tqv3")]
 position = Vector2(-570, -31)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=1171663464]
+position = Vector2(41, -1)
+shape = SubResource("CapsuleShape2D_6tqv3")
+
 [node name="SpikeCheckpoint2" parent="." unique_id=1291309938 instance=ExtResource("10_6tqv3")]
 position = Vector2(-260, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2" unique_id=495847992]
+position = Vector2(-42, 4)
+shape = SubResource("CapsuleShape2D_6tqv3")
 
 [connection signal="body_entered" from="NorthD" to="NorthD" method="_on_body_entered"]
 [connection signal="player_entered_door" from="NorthD" to="NorthD" method="_on_player_entered_door"]

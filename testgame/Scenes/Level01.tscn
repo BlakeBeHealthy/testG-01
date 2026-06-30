@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cgekcdkve474f" path="res://Scenes/spikes.tscn" id="8_dutcy"]
 [ext_resource type="PackedScene" uid="uid://v4r78g4kbnyy" path="res://Scenes/UI.tscn" id="9_dutcy"]
 [ext_resource type="PackedScene" uid="uid://ljjmtwqq5kil" path="res://Scenes/spike_checkpoint.tscn" id="9_wjjke"]
-[ext_resource type="PackedScene" uid="uid://dcrb427bbd01p" path="res://Scenes/checkpoint.tscn" id="10_wjjke"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_t0sul")
@@ -2250,6 +2249,9 @@ sources/1 = SubResource("TileSetAtlasSource_dutcy")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30kwv"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dutcy"]
+height = 98.0
+
 [node name="Level01" type="Node2D" unique_id=1637612152]
 
 [node name="UI" parent="." unique_id=1184425221 instance=ExtResource("9_dutcy")]
@@ -2289,7 +2291,7 @@ position = Vector2(-1143, 16)
 animationName = "CW"
 dialogueScene = "res://dialogues/CW.dialogue"
 startingPoint = "s1"
-promptYOffset = -8.0
+prompt_scale = Vector2(0.6, 1)
 
 [node name="Spikes" parent="." unique_id=898931136 instance=ExtResource("8_dutcy")]
 position = Vector2(-833, 105)
@@ -2352,13 +2354,18 @@ position = Vector2(-790, 105)
 spawn = true
 
 [node name="SpikeCheckpoint" parent="." unique_id=1243300055 instance=ExtResource("9_wjjke")]
-position = Vector2(-997, 21)
+position = Vector2(-995, -28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=468835838]
+position = Vector2(53, 2)
+shape = SubResource("CapsuleShape2D_dutcy")
 
 [node name="SpikeCheckpoint2" parent="." unique_id=47729811 instance=ExtResource("9_wjjke")]
-position = Vector2(-720, -43)
+position = Vector2(-700, -42)
 
-[node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("10_wjjke")]
-position = Vector2(-1279, 54)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2" unique_id=1862636265]
+position = Vector2(-64, 18)
+shape = SubResource("CapsuleShape2D_dutcy")
 
 [connection signal="area_shape_entered" from="EastD" to="EastD" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="EastD" to="EastD" method="_on_body_entered"]

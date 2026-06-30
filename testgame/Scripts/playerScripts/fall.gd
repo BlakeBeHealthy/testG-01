@@ -17,10 +17,13 @@ func enter() -> void:
 	if !parent.jumpCheck or parent.wall_state != parent.WallState.NONE:
 		cTime.start()
 	as2d.play("fall")
+	parent.c_check_1.enabled = true
+	parent.c_check_2.enabled = true
 	
 func exit() -> void:
-	c.position = Vector2(-1, 8)
-
+	parent.c_check_1.enabled = false
+	parent.c_check_2.enabled = false
+	
 func process_input(event: InputEvent) -> State:
 	return null #Every path must have a return statement, dont forget or the engine
 					#will yell at you
@@ -64,43 +67,6 @@ func process_physics(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
 	parent.apply_horizontal_air_control(move_speed)
 	parent.move_and_slide()
-	
-	if direction > 0:
-		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-		parent.wallslide_chest.position.x = 3.5
-		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-		parent.wallslide_legs.position.x = 3.5
-		parent.flip_direction(1)
-		a2d2.position.x = 3
-		a2d.position.x = 21
-	elif direction < 0:
-		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-		parent.wallslide_chest.position.x = -1.55
-		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-		parent.wallslide_legs.position.x = -1.55
-		parent.flip_direction(-1)
-		parent.a2d.position.x = -21
-		parent.a2d2.position.x = -3
-	elif direction == 0:
-		if as2d.flip_h:
-			c.position = Vector2(-3, 0)
-			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-			parent.wallslide_chest.position.x = -1.55
-			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-			parent.wallslide_legs.position.x = -1.55
-			parent.flip_direction(-1)
-			parent.a2d.position.x = -21
-			parent.a2d2.position.x = -3
-		else:
-			c.position = Vector2(3, 0)
-			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-			parent.wallslide_chest.position.x = 3.5
-			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-			parent.wallslide_legs.position.x = 3.5
-			parent.flip_direction(1)
-			a2d2.position.x = 3
-			a2d.position.x = 21
-	
 	if Input.is_action_just_pressed("jump"):
 		if !cTime.is_stopped():
 			cTime.stop()
@@ -114,15 +80,6 @@ func process_physics(delta: float) -> State:
 			return parent.run_state
 		elif direction == 0:
 			return parent.idle_state
-		
-	if direction == -1:
-		c.position = Vector2(-3, 8)
-		a2d2.position.y = 0
-		a2d2.position.x = -4
-	elif direction == 1:
-		c.position = Vector2(3, 8)
-		a2d2.position.x = 4
-		a2d2.position.y = 0
 	return null
 
 

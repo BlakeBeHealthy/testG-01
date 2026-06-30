@@ -14,13 +14,11 @@ extends State
 	
 var jump := false
 var run := false
-var c = 0 
 var hitboxCheck = true
 var hit := false 
 
 #Enter and exit functions are just as they sound, when entering vs exiting states
 func enter() -> void:
-	c += 1
 	as2d.play("idle")
 	a2d2.position.x = 0
 	a2d2.position.y = 9

@@ -29,10 +29,12 @@ func enter() -> void:
 	as2d.play("a2")
 	if !ComboTime.is_stopped():
 		ComboTime.stop()
-	#Ensuring the player can't just spam attacks over and over again, however
-		#I'm debating having the timer just start in the last combo move,
-		#because if they do click in quick succession it will do the combo move so have attack
-		#delay this is kinda useless, but you can test it if you feel like it.
+	attackDir = Input.get_axis("runL", "runR")
+	if attackDir > 0:
+		as2d.flip_h = false
+	elif attackDir < 0:
+		as2d.flip_h = true
+	a2d.position = Vector2(18 * attackDir, 4)
 	checkAttack = false
 	
 	if checkHit:
@@ -123,17 +125,7 @@ func process_physics(delta: float) -> State:
 	else:
 		if direction != 0:
 			parent.velocity.x = direction * move_speed
-			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-			parent.wallslide_chest.position.x = 3.7 * direction
-			a2d.position = Vector2(2 * direction, 0)
-			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-			parent.wallslide_legs.position.x = 3.7 * direction
-			a2d.position = Vector2(18 * direction, 4)
 		elif direction == 0:
-			if as2d.flip_h:
-				a2d.position = Vector2(18 * -1, 4)
-			else:
-				a2d.position = Vector2(18 * 1, 4)
 			parent.velocity.x *= 0
 			
 	if Input.is_action_pressed("jump") and !parent.jumpCheck:

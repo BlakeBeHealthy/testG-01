@@ -2264,7 +2264,7 @@ position = Vector2(-444, 16)
 animationName = "CW"
 dialogueScene = "res://dialogues/CW.dialogue"
 startingPoint = "s4"
-promptYOffset = -26.0
+prompt_scale = Vector2(0.6, 1)
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("7_wk15n")]
 position = Vector2(-805, -116)

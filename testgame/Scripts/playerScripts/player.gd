@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var a2d2: Area2D = $Area2D2
 @onready var parry_cooldown: Timer = $parryCooldown
 @onready var c: CollisionShape2D = $c
+@onready var c_check_1: RayCast2D = $cCheck1
+@onready var c_check_2: RayCast2D = $cCheck2
 
 
 @export var jump_state: State
@@ -101,7 +103,7 @@ func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 	if is_on_floor() and jumpCheck and state_machine.current_state != pogo_state:
 		jumpCheck = false
-	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and  \
+	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and Global.hannible and \
 	!is_on_floor() and wall_state == WallState.NONE and state_machine.current_state != wallSlide_state:
 		Jdirection = -1 if as2d.flip_h else 1
 		wall_state = WallState.SLIDING
@@ -116,6 +118,7 @@ func _process(delta: float) -> void:
 		interactC2D.disabled = false
 	if is_on_floor():
 		landed.emit()
+		print("hellod")
 		dashAllow = true
 		if Gameplay.DJ:
 			moveCheck = true
@@ -123,8 +126,7 @@ func _process(delta: float) -> void:
 		stickState = true
 	else:
 		stickState = false
-
-
+		
 func flip_direction(dire: int = -direction):
 	direction = dire
 	parry_zone.position.x *= direction
@@ -175,8 +177,6 @@ func _input(event): #allowing the player to attack
 	if Global.inputBlocked or Global.cutsceneStarted:
 		return
 		
-	if (!stickState) and event.is_action_pressed("Parry") and parry_cooldown.is_stopped():
-			parryCheck = true
 	elif (!stickState) and event.is_action_pressed("leftC"):
 			if !is_on_floor() and Input.is_action_pressed("down") and attack_delay.is_stopped():
 				pogoCheck = true
@@ -187,7 +187,8 @@ func _input(event): #allowing the player to attack
 					attackCheck = true
 					attack_delay.start()
 				
-	if ((Input.is_action_just_pressed("interact") and current_interactable != null) or (Input.is_action_pressed("PlayerLock")) and is_on_floor() and !Global.UI.get_node("Balloon").visible):
+	if ((Input.is_action_just_pressed("interact") and current_interactable != null) or (Input.is_action_pressed("PlayerLock")) and is_on_floor() \
+	and !Global.UI.get_node("Balloon").visible) and state_machine.current_state != cut_state:
 		control_locked = true
 	elif Input.is_action_just_pressed("Dash") and !stickState and dash_delay.is_stopped() and dashAllow:
 		dash = true
@@ -229,17 +230,76 @@ func apply_horizontal_air_control(speed: float) -> void:
 		velocity.x = move_toward(velocity.x, direction * speed, 800 * get_process_delta_time())
 	else:
 		velocity.x = direction * speed
+		
+	update_air_visuals(direction)
 	
-func _update_collision_box() -> void:
-	match state_machine.current_state:
-		wallSlide_state:
-			c.position = Vector2(-1 if !as2d.flip_h else 1, 8)
-		jump_state, fall_state:
-			if direction == 0:
-				c.position = Vector2(-3 if as2d.flip_h else 3, 0)
-			elif direction == 1:
-				c.position = Vector2(3, 2)
-			elif direction == -1:
+func update_ground_visuals(direction: float) -> void:
+	wallslide_chest.position.x = 0
+	wallslide_legs.position.x = 0
+	if direction > 0:
+		c.position = Vector2(3, 8)
+		flip_direction(1)
+		a2d2.position.x = 3
+		a2d.position.x = 21
+		a2d2.position.y = 0
+	elif direction < 0:
+		flip_direction(-1)
+		a2d.position.x = -21
+		a2d2.position.x = -3
+		c.position = Vector2(-3, 8)
+		a2d2.position.y = 0
+		
+		
+func update_air_visuals(direction: float) -> void:
+	if direction > 0:
+		c_check_1.position.x = 8.0
+		c_check_2.position.x = -2.0 
+		wallslide_chest.target_position.x = abs(wallslide_chest.target_position.x) * direction
+		wallslide_chest.position.x = 7.0
+		wallslide_legs.target_position.x = abs(wallslide_legs.target_position.x) * direction
+		wallslide_legs.position.x = wallslide_chest.position.x
+		flip_direction(1)
+		a2d2.position.x = 3
+		a2d.position.x = 21
+		if c_check_1.is_colliding() or c_check_2.is_colliding():
+			c.position = Vector2(3, 8)
+		else:
+			c.position = Vector2(3, 2)
+		a2d2.position.y = 0
+	elif direction < 0:
+		c_check_1.position.x = 2.0
+		c_check_2.position.x = -8.0 
+		wallslide_chest.target_position.x = abs(wallslide_chest.target_position.x) * direction
+		wallslide_chest.position.x = -7.0
+		wallslide_legs.target_position.x = abs(wallslide_legs.target_position.x) * direction
+		wallslide_legs.position.x = wallslide_chest.position.x
+		flip_direction(-1)
+		a2d.position.x = -21
+		a2d2.position.x = -3
+		if (c_check_1.is_colliding() or c_check_2.is_colliding()):
+			c.position = Vector2(-3, 8)
+		else:
+			c.position = Vector2(-3, 2)
+		a2d2.position.y = 0
+	else:
+		if as2d.flip_h:
+			wallslide_chest.position.x = -7.0
+			wallslide_legs.position.x = wallslide_chest.position.x
+			wallslide_chest.target_position.x = abs(wallslide_chest.target_position.x) * -1
+			wallslide_legs.target_position.x = abs(wallslide_legs.target_position.x) * -1
+			if c_check_1.is_colliding() or c_check_2.is_colliding():
+				c.position = Vector2(-3, 8) 
+			else:
 				c.position = Vector2(-3, 2)
-		_: # idle/run default
-				c.position = Vector2(-0.5, 8)
+			a2d2.position.x = -4
+		else:
+			wallslide_chest.position.x = 7.0
+			wallslide_legs.position.x = wallslide_chest.position.x
+			wallslide_chest.target_position.x = abs(wallslide_chest.target_position.x) * 1
+			wallslide_legs.target_position.x = abs(wallslide_legs.target_position.x) * 1
+			if c_check_1.is_colliding() or c_check_2.is_colliding():
+				c.position = Vector2(3, 8)
+			else:
+				c.position = Vector2(3, 2)
+			a2d2.position.x = 4
+		a2d2.position.y = 0

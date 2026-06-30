@@ -30,6 +30,7 @@ func enter() -> void:
 		as2d.flip_h = false
 	elif attackDir < 0:
 		as2d.flip_h = true
+	a2d.position = Vector2(18 * attackDir, 4)
 	startKB = false
 	if checkHit:
 		checkHit = false
@@ -110,18 +111,8 @@ func process_physics(delta: float) -> State:
 	else:
 		if direction != 0:
 			parent.velocity.x = direction * move_speed
-			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-			parent.wallslide_chest.position.x = 3.7 * direction
-			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-			parent.wallslide_legs.position.x = 3.7 * direction
-			a2d.position = Vector2(18 * direction, 4)
 		elif direction == 0:
-			if as2d.flip_h:
-				a2d.position = Vector2(18 * -1, 4)
-			else:
-				a2d.position = Vector2(18 * 1, 4)
 			parent.velocity.x *= 0
-			
 	if Input.is_action_pressed("jump") and !parent.jumpCheck:
 		parent.jumpCheck = true
 		parent.velocity.y = -parent.JUMP

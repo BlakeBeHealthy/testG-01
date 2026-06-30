@@ -2256,16 +2256,15 @@ limit_right = 1115
 limit_bottom = 995
 
 [node name="BetaNPC" parent="." unique_id=1828915867 instance=ExtResource("4_6q15i")]
-position = Vector2(-96, 145)
+position = Vector2(-96, 140.24)
+scale = Vector2(1.485, 1.485)
 animationName = "WW"
 dialogueScene = "res://dialogues/WW.dialogue"
-
-[node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("5_jmfiy")]
-position = Vector2(3, 150)
-current_scene_path = "res://Scenes/level__05.tscn"
+promptYOffset = -25.0
+prompt_scale = Vector2(0.6, 1)
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("6_3082n")]
-position = Vector2(96, 85)
+position = Vector2(-85, 68)
 
 [node name="Spikes" parent="." unique_id=898931136 instance=ExtResource("8_o36lg")]
 position = Vector2(-105, 695)
@@ -3438,15 +3437,12 @@ position = Vector2(-81, 32)
 spawn = true
 
 [node name="BetaNPC2" parent="." unique_id=1514227980 instance=ExtResource("4_6q15i")]
-position = Vector2(-24, 657)
-animationName = "C5"
-dialogueScene = "res://dialogues/WW.dialogue"
-
-[node name="BetaNPC3" parent="." unique_id=1445738807 instance=ExtResource("4_6q15i")]
-position = Vector2(-24, 657)
+position = Vector2(-31.54, 645.655)
+scale = Vector2(1.775, 1.775)
 animationName = "C5"
 dialogueScene = "res://dialogues/WW.dialogue"
 startingPoint = "s2"
+prompt_scale = Vector2(0.4, 1)
 
 [node name="NorthD2" parent="." unique_id=1940327310 instance=ExtResource("9_fvkua")]
 position = Vector2(0, -326)
@@ -3509,6 +3505,13 @@ position = Vector2(850, -64)
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_krxo4")
 
+[node name="SpikeCheckpoint5" parent="SpikeCheckpoint5" unique_id=1981188827 instance=ExtResource("10_ihaum")]
+position = Vector2(1127, -193)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint5/SpikeCheckpoint5" unique_id=2066186860]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_krxo4")
+
 [node name="SpikeCheckpoint3" parent="SpikeCheckpoint5" unique_id=386545049 instance=ExtResource("10_ihaum")]
 position = Vector2(615, 224)
 
@@ -3548,7 +3551,7 @@ position = Vector2(324.75, 3)
 shape = SubResource("RectangleShape2D_ulcfg")
 
 [node name="DJPT2" parent="." unique_id=227121852 instance=ExtResource("9_fvkua")]
-position = Vector2(912, -377.645)
+position = Vector2(912, -376)
 entry_direction = 1
 path_to_new_scene = "res://Scenes/level_07.tscn"
 entry_door_name = "DJPT4"
@@ -3559,3 +3562,6 @@ shape = SubResource("RectangleShape2D_0s6iw")
 
 [node name="Gate" parent="." unique_id=638527128 instance=ExtResource("11_p1vi5")]
 position = Vector2(-894, 70.00001)
+
+[node name="Checkpoint2" parent="." unique_id=464011995 instance=ExtResource("5_jmfiy")]
+position = Vector2(15, 150)

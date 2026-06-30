@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://djei3agw1frcl" path="res://Scenes/camera_2d.tscn" id="5_ekoii"]
 [ext_resource type="PackedScene" uid="uid://c4sg8e1no24ay" path="res://Scenes/door.tscn" id="6_s4iwq"]
 [ext_resource type="PackedScene" uid="uid://dcrb427bbd01p" path="res://Scenes/checkpoint.tscn" id="7_hdu6x"]
-[ext_resource type="PackedScene" uid="uid://cm01fv4mwgnuv" path="res://Scenes/beta_npc.tscn" id="8_cyq6k"]
 [ext_resource type="PackedScene" uid="uid://cgekcdkve474f" path="res://Scenes/spikes.tscn" id="9_ekoii"]
 [ext_resource type="PackedScene" uid="uid://dpe8m6p55sdxx" path="res://Scenes/enemy.tscn" id="10_hdu6x"]
 [ext_resource type="PackedScene" uid="uid://ce3f5rrrexvdt" path="res://Scenes/Renemy.tscn" id="11_776at"]
@@ -2283,2074 +2282,1577 @@ position = Vector2(551, -58)
 current_scene_path = "\"res://Scenes/Level_07.tscn\""
 flipH = true
 
-[node name="BetaNPC" parent="." unique_id=1828915867 instance=ExtResource("8_cyq6k")]
-position = Vector2(-178, -448)
-
-[node name="BetaNPC2" parent="." unique_id=1731955887 instance=ExtResource("8_cyq6k")]
-position = Vector2(161, 531)
-dialogueScene = "res://dialogues/WW.dialogue"
-
 [node name="Spikes111" parent="." unique_id=510646421 instance=ExtResource("9_ekoii")]
 position = Vector2(819, 569)
-SpikeNumber = ""
 
 [node name="Spikes92" parent="Spikes111" unique_id=898931136 instance=ExtResource("9_ekoii")]
 position = Vector2(157, 0)
-SpikeNumber = ""
 
 [node name="Spikes93" parent="Spikes111" unique_id=1492024385 instance=ExtResource("9_ekoii")]
 position = Vector2(166, 0)
-SpikeNumber = ""
 
 [node name="Spikes94" parent="Spikes111" unique_id=2031796534 instance=ExtResource("9_ekoii")]
 position = Vector2(130, 0)
-SpikeNumber = ""
 
 [node name="Spikes95" parent="Spikes111" unique_id=802229841 instance=ExtResource("9_ekoii")]
 position = Vector2(139, 0)
-SpikeNumber = ""
 
 [node name="Spikes96" parent="Spikes111" unique_id=641688747 instance=ExtResource("9_ekoii")]
 position = Vector2(148, 0)
-SpikeNumber = ""
 
 [node name="Spikes97" parent="Spikes111" unique_id=958628907 instance=ExtResource("9_ekoii")]
 position = Vector2(104, 0)
-SpikeNumber = ""
 
 [node name="Spikes98" parent="Spikes111" unique_id=228548364 instance=ExtResource("9_ekoii")]
 position = Vector2(112, 0)
-SpikeNumber = ""
 
 [node name="Spikes99" parent="Spikes111" unique_id=1105019754 instance=ExtResource("9_ekoii")]
 position = Vector2(121, 0)
-SpikeNumber = ""
 
 [node name="Spikes100" parent="Spikes111" unique_id=412252838 instance=ExtResource("9_ekoii")]
 position = Vector2(77, 0)
-SpikeNumber = ""
 
 [node name="Spikes101" parent="Spikes111" unique_id=1559340856 instance=ExtResource("9_ekoii")]
 position = Vector2(86, 0)
-SpikeNumber = ""
 
 [node name="Spikes102" parent="Spikes111" unique_id=411528101 instance=ExtResource("9_ekoii")]
 position = Vector2(95, 0)
-SpikeNumber = ""
 
 [node name="Spikes103" parent="Spikes111" unique_id=58473980 instance=ExtResource("9_ekoii")]
 position = Vector2(51, 0)
-SpikeNumber = ""
 
 [node name="Spikes104" parent="Spikes111" unique_id=1209872610 instance=ExtResource("9_ekoii")]
 position = Vector2(59, 0)
-SpikeNumber = ""
 
 [node name="Spikes105" parent="Spikes111" unique_id=1486551465 instance=ExtResource("9_ekoii")]
 position = Vector2(68, 0)
-SpikeNumber = ""
 
 [node name="Spikes106" parent="Spikes111" unique_id=603729379 instance=ExtResource("9_ekoii")]
 position = Vector2(36, 0)
-SpikeNumber = ""
 
 [node name="Spikes107" parent="Spikes111" unique_id=1339245079 instance=ExtResource("9_ekoii")]
 position = Vector2(27, 0)
-SpikeNumber = ""
 
 [node name="Spikes108" parent="Spikes111" unique_id=4157075 instance=ExtResource("9_ekoii")]
 position = Vector2(18, 0)
-SpikeNumber = ""
 
 [node name="Spikes110" parent="Spikes111" unique_id=1043376225 instance=ExtResource("9_ekoii")]
 position = Vector2(9, 0)
-SpikeNumber = ""
 
 [node name="Spikes109" parent="Spikes111" unique_id=1325298466 instance=ExtResource("9_ekoii")]
 position = Vector2(45, 0)
-SpikeNumber = ""
 
 [node name="Spikes112" parent="Spikes111" unique_id=1897409382 instance=ExtResource("9_ekoii")]
 position = Vector2(332, 0)
-SpikeNumber = ""
 
 [node name="Spikes113" parent="Spikes111" unique_id=1342458585 instance=ExtResource("9_ekoii")]
 position = Vector2(341, 0)
-SpikeNumber = ""
 
 [node name="Spikes114" parent="Spikes111" unique_id=1969552283 instance=ExtResource("9_ekoii")]
 position = Vector2(305, 0)
-SpikeNumber = ""
 
 [node name="Spikes115" parent="Spikes111" unique_id=401906963 instance=ExtResource("9_ekoii")]
 position = Vector2(314, 0)
-SpikeNumber = ""
 
 [node name="Spikes116" parent="Spikes111" unique_id=1018744331 instance=ExtResource("9_ekoii")]
 position = Vector2(323, 0)
-SpikeNumber = ""
 
 [node name="Spikes117" parent="Spikes111" unique_id=2011105928 instance=ExtResource("9_ekoii")]
 position = Vector2(279, 0)
-SpikeNumber = ""
 
 [node name="Spikes118" parent="Spikes111" unique_id=1531866874 instance=ExtResource("9_ekoii")]
 position = Vector2(287, 0)
-SpikeNumber = ""
 
 [node name="Spikes119" parent="Spikes111" unique_id=476504851 instance=ExtResource("9_ekoii")]
 position = Vector2(296, 0)
-SpikeNumber = ""
 
 [node name="Spikes120" parent="Spikes111" unique_id=768700041 instance=ExtResource("9_ekoii")]
 position = Vector2(252, 0)
-SpikeNumber = ""
 
 [node name="Spikes121" parent="Spikes111" unique_id=695981185 instance=ExtResource("9_ekoii")]
 position = Vector2(261, 0)
-SpikeNumber = ""
 
 [node name="Spikes122" parent="Spikes111" unique_id=90166009 instance=ExtResource("9_ekoii")]
 position = Vector2(270, 0)
-SpikeNumber = ""
 
 [node name="Spikes123" parent="Spikes111" unique_id=1035628261 instance=ExtResource("9_ekoii")]
 position = Vector2(226, 0)
-SpikeNumber = ""
 
 [node name="Spikes124" parent="Spikes111" unique_id=655515742 instance=ExtResource("9_ekoii")]
 position = Vector2(234, 0)
-SpikeNumber = ""
 
 [node name="Spikes125" parent="Spikes111" unique_id=1241105028 instance=ExtResource("9_ekoii")]
 position = Vector2(243, 0)
-SpikeNumber = ""
 
 [node name="Spikes126" parent="Spikes111" unique_id=1176253468 instance=ExtResource("9_ekoii")]
 position = Vector2(211, 0)
-SpikeNumber = ""
 
 [node name="Spikes127" parent="Spikes111" unique_id=864917862 instance=ExtResource("9_ekoii")]
 position = Vector2(202, 0)
-SpikeNumber = ""
 
 [node name="Spikes128" parent="Spikes111" unique_id=1755020578 instance=ExtResource("9_ekoii")]
 position = Vector2(193, 0)
-SpikeNumber = ""
 
 [node name="Spikes129" parent="Spikes111" unique_id=1682322836 instance=ExtResource("9_ekoii")]
 position = Vector2(184, 0)
-SpikeNumber = ""
 
 [node name="Spikes130" parent="Spikes111" unique_id=857192720 instance=ExtResource("9_ekoii")]
 position = Vector2(175, 0)
-SpikeNumber = ""
 
 [node name="Spikes131" parent="Spikes111" unique_id=1557386229 instance=ExtResource("9_ekoii")]
 position = Vector2(220, 0)
-SpikeNumber = ""
 
 [node name="Spikes132" parent="Spikes111" unique_id=1880391916 instance=ExtResource("9_ekoii")]
 position = Vector2(558, 0)
-SpikeNumber = ""
 
 [node name="Spikes133" parent="Spikes111" unique_id=280621514 instance=ExtResource("9_ekoii")]
 position = Vector2(567, 0)
-SpikeNumber = ""
 
 [node name="Spikes134" parent="Spikes111" unique_id=801867314 instance=ExtResource("9_ekoii")]
 position = Vector2(531, 0)
-SpikeNumber = ""
 
 [node name="Spikes135" parent="Spikes111" unique_id=880014897 instance=ExtResource("9_ekoii")]
 position = Vector2(540, 0)
-SpikeNumber = ""
 
 [node name="Spikes136" parent="Spikes111" unique_id=2068185305 instance=ExtResource("9_ekoii")]
 position = Vector2(549, 0)
-SpikeNumber = ""
 
 [node name="Spikes137" parent="Spikes111" unique_id=1691037951 instance=ExtResource("9_ekoii")]
 position = Vector2(505, 0)
-SpikeNumber = ""
 
 [node name="Spikes138" parent="Spikes111" unique_id=661010060 instance=ExtResource("9_ekoii")]
 position = Vector2(513, 0)
-SpikeNumber = ""
 
 [node name="Spikes139" parent="Spikes111" unique_id=1752780053 instance=ExtResource("9_ekoii")]
 position = Vector2(522, 0)
-SpikeNumber = ""
 
 [node name="Spikes140" parent="Spikes111" unique_id=2053710511 instance=ExtResource("9_ekoii")]
 position = Vector2(478, 0)
-SpikeNumber = ""
 
 [node name="Spikes141" parent="Spikes111" unique_id=185651015 instance=ExtResource("9_ekoii")]
 position = Vector2(487, 0)
-SpikeNumber = ""
 
 [node name="Spikes142" parent="Spikes111" unique_id=1073691659 instance=ExtResource("9_ekoii")]
 position = Vector2(496, 0)
-SpikeNumber = ""
 
 [node name="Spikes143" parent="Spikes111" unique_id=1269842580 instance=ExtResource("9_ekoii")]
 position = Vector2(452, 0)
-SpikeNumber = ""
 
 [node name="Spikes144" parent="Spikes111" unique_id=677555641 instance=ExtResource("9_ekoii")]
 position = Vector2(460, 0)
-SpikeNumber = ""
 
 [node name="Spikes145" parent="Spikes111" unique_id=1347738336 instance=ExtResource("9_ekoii")]
 position = Vector2(469, 0)
-SpikeNumber = ""
 
 [node name="Spikes146" parent="Spikes111" unique_id=178359195 instance=ExtResource("9_ekoii")]
 position = Vector2(437, 0)
-SpikeNumber = ""
 
 [node name="Spikes147" parent="Spikes111" unique_id=1414849345 instance=ExtResource("9_ekoii")]
 position = Vector2(428, 0)
-SpikeNumber = ""
 
 [node name="Spikes148" parent="Spikes111" unique_id=1936606748 instance=ExtResource("9_ekoii")]
 position = Vector2(419, 0)
-SpikeNumber = ""
 
 [node name="Spikes149" parent="Spikes111" unique_id=405894841 instance=ExtResource("9_ekoii")]
 position = Vector2(410, 0)
-SpikeNumber = ""
 
 [node name="Spikes150" parent="Spikes111" unique_id=418622406 instance=ExtResource("9_ekoii")]
 position = Vector2(401, 0)
-SpikeNumber = ""
 
 [node name="Spikes151" parent="Spikes111" unique_id=1187117341 instance=ExtResource("9_ekoii")]
 position = Vector2(446, 0)
-SpikeNumber = ""
 
 [node name="Spikes152" parent="Spikes111" unique_id=1256327691 instance=ExtResource("9_ekoii")]
 position = Vector2(-544, 0)
-SpikeNumber = ""
 
 [node name="Spikes153" parent="Spikes111" unique_id=1864359823 instance=ExtResource("9_ekoii")]
 position = Vector2(-535, 0)
-SpikeNumber = ""
 
 [node name="Spikes192" parent="Spikes111" unique_id=1130424045 instance=ExtResource("9_ekoii")]
 position = Vector2(-526, 0)
-SpikeNumber = ""
 
 [node name="Spikes193" parent="Spikes111" unique_id=1923432563 instance=ExtResource("9_ekoii")]
 position = Vector2(-517, 0)
-SpikeNumber = ""
 
 [node name="Spikes194" parent="Spikes111" unique_id=1556505022 instance=ExtResource("9_ekoii")]
 position = Vector2(-508, 0)
-SpikeNumber = ""
 
 [node name="Spikes195" parent="Spikes111" unique_id=1983872998 instance=ExtResource("9_ekoii")]
 position = Vector2(-499, 0)
-SpikeNumber = ""
 
 [node name="Spikes196" parent="Spikes111" unique_id=1041276512 instance=ExtResource("9_ekoii")]
 position = Vector2(-490, 0)
-SpikeNumber = ""
 
 [node name="Spikes197" parent="Spikes111" unique_id=404999253 instance=ExtResource("9_ekoii")]
 position = Vector2(-482, 0)
-SpikeNumber = ""
 
 [node name="Spikes198" parent="Spikes111" unique_id=1586017203 instance=ExtResource("9_ekoii")]
 position = Vector2(-474, 0)
-SpikeNumber = ""
 
 [node name="Spikes199" parent="Spikes111" unique_id=706082043 instance=ExtResource("9_ekoii")]
 position = Vector2(-466, 0)
-SpikeNumber = ""
 
 [node name="Spikes200" parent="Spikes111" unique_id=1151126584 instance=ExtResource("9_ekoii")]
 position = Vector2(-457, 0)
-SpikeNumber = ""
 
 [node name="Spikes201" parent="Spikes111" unique_id=380184648 instance=ExtResource("9_ekoii")]
 position = Vector2(-224, -80)
-SpikeNumber = ""
 
 [node name="Spikes202" parent="Spikes111" unique_id=943602821 instance=ExtResource("9_ekoii")]
 position = Vector2(-216, -80)
-SpikeNumber = ""
 
 [node name="Spikes203" parent="Spikes111" unique_id=547105771 instance=ExtResource("9_ekoii")]
 position = Vector2(-207, -80)
-SpikeNumber = ""
 
 [node name="Spikes204" parent="Spikes111" unique_id=172449026 instance=ExtResource("9_ekoii")]
 position = Vector2(-198, -80)
-SpikeNumber = ""
 
 [node name="Spikes205" parent="Spikes111" unique_id=28601911 instance=ExtResource("9_ekoii")]
 position = Vector2(-189, -80)
-SpikeNumber = ""
 
 [node name="Spikes206" parent="Spikes111" unique_id=1539653010 instance=ExtResource("9_ekoii")]
 position = Vector2(-180, -80)
-SpikeNumber = ""
 
 [node name="Spikes207" parent="Spikes111" unique_id=593143804 instance=ExtResource("9_ekoii")]
 position = Vector2(-171, -80)
-SpikeNumber = ""
 
 [node name="Spikes312" parent="Spikes111" unique_id=451059744 instance=ExtResource("9_ekoii")]
 position = Vector2(352, -256)
-SpikeNumber = ""
 
 [node name="Spikes314" parent="Spikes111" unique_id=835124162 instance=ExtResource("9_ekoii")]
 position = Vector2(360, -256)
-SpikeNumber = ""
 
 [node name="Spikes315" parent="Spikes111" unique_id=1330169916 instance=ExtResource("9_ekoii")]
 position = Vector2(369, -256)
-SpikeNumber = ""
 
 [node name="Spikes316" parent="Spikes111" unique_id=140544152 instance=ExtResource("9_ekoii")]
 position = Vector2(378, -256)
-SpikeNumber = ""
 
 [node name="Spikes317" parent="Spikes111" unique_id=76847825 instance=ExtResource("9_ekoii")]
 position = Vector2(387, -256)
-SpikeNumber = ""
 
 [node name="Spikes318" parent="Spikes111" unique_id=2093195156 instance=ExtResource("9_ekoii")]
 position = Vector2(396, -256)
-SpikeNumber = ""
 
 [node name="Spikes319" parent="Spikes111" unique_id=1039186411 instance=ExtResource("9_ekoii")]
 position = Vector2(405, -256)
-SpikeNumber = ""
 
 [node name="Spikes320" parent="Spikes111" unique_id=1188093260 instance=ExtResource("9_ekoii")]
 position = Vector2(414, -256)
-SpikeNumber = ""
 
 [node name="Spikes321" parent="Spikes111" unique_id=605615324 instance=ExtResource("9_ekoii")]
 position = Vector2(422, -256)
-SpikeNumber = ""
 
 [node name="Spikes322" parent="Spikes111" unique_id=2128129858 instance=ExtResource("9_ekoii")]
 position = Vector2(431, -256)
-SpikeNumber = ""
 
 [node name="Spikes323" parent="Spikes111" unique_id=1456008428 instance=ExtResource("9_ekoii")]
 position = Vector2(440, -256)
-SpikeNumber = ""
 
 [node name="Spikes324" parent="Spikes111" unique_id=380946971 instance=ExtResource("9_ekoii")]
 position = Vector2(449, -256)
-SpikeNumber = ""
 
 [node name="Spikes325" parent="Spikes111" unique_id=1747360615 instance=ExtResource("9_ekoii")]
 position = Vector2(458, -256)
-SpikeNumber = ""
 
 [node name="Spikes326" parent="Spikes111" unique_id=1463942136 instance=ExtResource("9_ekoii")]
 position = Vector2(467, -256)
-SpikeNumber = ""
 
 [node name="Spikes365" parent="Spikes111" unique_id=1353137234 instance=ExtResource("9_ekoii")]
 position = Vector2(384, -592)
-SpikeNumber = ""
 
 [node name="Spikes366" parent="Spikes111" unique_id=86378287 instance=ExtResource("9_ekoii")]
 position = Vector2(393, -592)
-SpikeNumber = ""
 
 [node name="Spikes367" parent="Spikes111" unique_id=92800811 instance=ExtResource("9_ekoii")]
 position = Vector2(402, -592)
-SpikeNumber = ""
 
 [node name="Spikes368" parent="Spikes111" unique_id=1131719876 instance=ExtResource("9_ekoii")]
 position = Vector2(411, -592)
-SpikeNumber = ""
 
 [node name="Spikes369" parent="Spikes111" unique_id=1844667432 instance=ExtResource("9_ekoii")]
 position = Vector2(420, -592)
-SpikeNumber = ""
 
 [node name="Spikes395" parent="Spikes111" unique_id=1611099452 instance=ExtResource("9_ekoii")]
 position = Vector2(340, -736)
-SpikeNumber = ""
 
 [node name="Spikes396" parent="Spikes111" unique_id=2041321291 instance=ExtResource("9_ekoii")]
 position = Vector2(349, -736)
-SpikeNumber = ""
 
 [node name="Spikes397" parent="Spikes111" unique_id=1963887638 instance=ExtResource("9_ekoii")]
 position = Vector2(358, -736)
-SpikeNumber = ""
 
 [node name="Spikes398" parent="Spikes111" unique_id=958158842 instance=ExtResource("9_ekoii")]
 position = Vector2(367, -736)
-SpikeNumber = ""
 
 [node name="Spikes399" parent="Spikes111" unique_id=467509058 instance=ExtResource("9_ekoii")]
 position = Vector2(376, -736)
-SpikeNumber = ""
 
 [node name="Spikes400" parent="Spikes111" unique_id=1708848771 instance=ExtResource("9_ekoii")]
 position = Vector2(-65, -736)
-SpikeNumber = ""
 
 [node name="Spikes401" parent="Spikes111" unique_id=306131519 instance=ExtResource("9_ekoii")]
 position = Vector2(-56, -736)
-SpikeNumber = ""
 
 [node name="Spikes402" parent="Spikes111" unique_id=1610557892 instance=ExtResource("9_ekoii")]
 position = Vector2(-47, -736)
-SpikeNumber = ""
 
 [node name="Spikes403" parent="Spikes111" unique_id=1510747140 instance=ExtResource("9_ekoii")]
 position = Vector2(-38, -736)
-SpikeNumber = ""
 
 [node name="Spikes404" parent="Spikes111" unique_id=390855420 instance=ExtResource("9_ekoii")]
 position = Vector2(-29, -736)
-SpikeNumber = ""
 
 [node name="Spikes405" parent="Spikes111" unique_id=709719855 instance=ExtResource("9_ekoii")]
 position = Vector2(212, -736)
-SpikeNumber = ""
 
 [node name="Spikes406" parent="Spikes111" unique_id=265915690 instance=ExtResource("9_ekoii")]
 position = Vector2(221, -736)
-SpikeNumber = ""
 
 [node name="Spikes407" parent="Spikes111" unique_id=310018281 instance=ExtResource("9_ekoii")]
 position = Vector2(230, -736)
-SpikeNumber = ""
 
 [node name="Spikes408" parent="Spikes111" unique_id=34509777 instance=ExtResource("9_ekoii")]
 position = Vector2(239, -736)
-SpikeNumber = ""
 
 [node name="Spikes409" parent="Spikes111" unique_id=574758307 instance=ExtResource("9_ekoii")]
 position = Vector2(248, -736)
-SpikeNumber = ""
 
 [node name="Spikes370" parent="Spikes111" unique_id=83049088 instance=ExtResource("9_ekoii")]
 position = Vector2(428, -592)
-SpikeNumber = ""
 
 [node name="Spikes371" parent="Spikes111" unique_id=1235387331 instance=ExtResource("9_ekoii")]
 position = Vector2(437, -592)
-SpikeNumber = ""
 
 [node name="Spikes372" parent="Spikes111" unique_id=1740944181 instance=ExtResource("9_ekoii")]
 position = Vector2(446, -592)
-SpikeNumber = ""
 
 [node name="Spikes373" parent="Spikes111" unique_id=1486582025 instance=ExtResource("9_ekoii")]
 position = Vector2(455, -592)
-SpikeNumber = ""
 
 [node name="Spikes374" parent="Spikes111" unique_id=1205616774 instance=ExtResource("9_ekoii")]
 position = Vector2(464, -592)
-SpikeNumber = ""
 
 [node name="Spikes375" parent="Spikes111" unique_id=1695734089 instance=ExtResource("9_ekoii")]
 position = Vector2(473, -592)
-SpikeNumber = ""
 
 [node name="Spikes376" parent="Spikes111" unique_id=179313324 instance=ExtResource("9_ekoii")]
 position = Vector2(482, -592)
-SpikeNumber = ""
 
 [node name="Spikes377" parent="Spikes111" unique_id=440281506 instance=ExtResource("9_ekoii")]
 position = Vector2(491, -592)
-SpikeNumber = ""
 
 [node name="Spikes378" parent="Spikes111" unique_id=2024257073 instance=ExtResource("9_ekoii")]
 position = Vector2(500, -592)
-SpikeNumber = ""
 
 [node name="Spikes379" parent="Spikes111" unique_id=308163032 instance=ExtResource("9_ekoii")]
 position = Vector2(-148, -736)
-SpikeNumber = ""
 
 [node name="Spikes380" parent="Spikes111" unique_id=1531211252 instance=ExtResource("9_ekoii")]
 position = Vector2(-139, -736)
-SpikeNumber = ""
 
 [node name="Spikes381" parent="Spikes111" unique_id=496945287 instance=ExtResource("9_ekoii")]
 position = Vector2(-130, -736)
-SpikeNumber = ""
 
 [node name="Spikes382" parent="Spikes111" unique_id=343130363 instance=ExtResource("9_ekoii")]
 position = Vector2(-121, -736)
-SpikeNumber = ""
 
 [node name="Spikes415" parent="Spikes111" unique_id=1765243032 instance=ExtResource("9_ekoii")]
 position = Vector2(-180, -1024)
-SpikeNumber = ""
 
 [node name="Spikes416" parent="Spikes111" unique_id=64248076 instance=ExtResource("9_ekoii")]
 position = Vector2(-171, -1024)
-SpikeNumber = ""
 
 [node name="Spikes419" parent="Spikes111" unique_id=1461496139 instance=ExtResource("9_ekoii")]
 position = Vector2(-216, -1024)
-SpikeNumber = ""
 
 [node name="Spikes420" parent="Spikes111" unique_id=708876607 instance=ExtResource("9_ekoii")]
 position = Vector2(-207, -1024)
-SpikeNumber = ""
 
 [node name="Spikes421" parent="Spikes111" unique_id=1172500509 instance=ExtResource("9_ekoii")]
 position = Vector2(-198, -1024)
-SpikeNumber = ""
 
 [node name="Spikes422" parent="Spikes111" unique_id=2084871196 instance=ExtResource("9_ekoii")]
 position = Vector2(-189, -1024)
-SpikeNumber = ""
 
 [node name="Spikes423" parent="Spikes111" unique_id=1414322376 instance=ExtResource("9_ekoii")]
 position = Vector2(-216, -1024)
-SpikeNumber = ""
 
 [node name="Spikes424" parent="Spikes111" unique_id=47541342 instance=ExtResource("9_ekoii")]
 position = Vector2(-207, -1024)
-SpikeNumber = ""
 
 [node name="Spikes425" parent="Spikes111" unique_id=1382058637 instance=ExtResource("9_ekoii")]
 position = Vector2(-198, -1024)
-SpikeNumber = ""
 
 [node name="Spikes426" parent="Spikes111" unique_id=1460332000 instance=ExtResource("9_ekoii")]
 position = Vector2(-189, -1024)
-SpikeNumber = ""
 
 [node name="Spikes452" parent="Spikes111" unique_id=880727136 instance=ExtResource("9_ekoii")]
 position = Vector2(-137, -1104)
-SpikeNumber = ""
 
 [node name="Spikes453" parent="Spikes111" unique_id=572409421 instance=ExtResource("9_ekoii")]
 position = Vector2(-128, -1120)
-SpikeNumber = ""
 
 [node name="Spikes454" parent="Spikes111" unique_id=994489751 instance=ExtResource("9_ekoii")]
 position = Vector2(-119, -1120)
-SpikeNumber = ""
 
 [node name="Spikes455" parent="Spikes111" unique_id=719392138 instance=ExtResource("9_ekoii")]
 position = Vector2(-110, -1120)
-SpikeNumber = ""
 
 [node name="Spikes456" parent="Spikes111" unique_id=32581413 instance=ExtResource("9_ekoii")]
 position = Vector2(-144, -1104)
-SpikeNumber = ""
 
 [node name="Spikes474" parent="Spikes111" unique_id=1021646721 instance=ExtResource("9_ekoii")]
 position = Vector2(-153, -1104)
-SpikeNumber = ""
 
 [node name="Spikes475" parent="Spikes111" unique_id=385188438 instance=ExtResource("9_ekoii")]
 position = Vector2(-160, -1104)
-SpikeNumber = ""
 
 [node name="Spikes502" parent="Spikes111" unique_id=1265297861 instance=ExtResource("9_ekoii")]
 position = Vector2(-9, -1200)
-SpikeNumber = ""
 
 [node name="Spikes503" parent="Spikes111" unique_id=477298011 instance=ExtResource("9_ekoii")]
 position = Vector2(-16, -1200)
-SpikeNumber = ""
 
 [node name="Spikes504" parent="Spikes111" unique_id=46545748 instance=ExtResource("9_ekoii")]
 position = Vector2(-25, -1200)
-SpikeNumber = ""
 
 [node name="Spikes505" parent="Spikes111" unique_id=1955286609 instance=ExtResource("9_ekoii")]
 position = Vector2(-32, -1200)
-SpikeNumber = ""
 
 [node name="Spikes506" parent="Spikes111" unique_id=1955747914 instance=ExtResource("9_ekoii")]
 position = Vector2(22, -1200)
-SpikeNumber = ""
 
 [node name="Spikes507" parent="Spikes111" unique_id=931533567 instance=ExtResource("9_ekoii")]
 position = Vector2(15, -1200)
-SpikeNumber = ""
 
 [node name="Spikes508" parent="Spikes111" unique_id=1147727395 instance=ExtResource("9_ekoii")]
 position = Vector2(6, -1200)
-SpikeNumber = ""
 
 [node name="Spikes509" parent="Spikes111" unique_id=176631943 instance=ExtResource("9_ekoii")]
 position = Vector2(-1, -1200)
-SpikeNumber = ""
 
 [node name="Spikes510" parent="Spikes111" unique_id=221033334 instance=ExtResource("9_ekoii")]
 position = Vector2(53, -1200)
-SpikeNumber = ""
 
 [node name="Spikes511" parent="Spikes111" unique_id=16440287 instance=ExtResource("9_ekoii")]
 position = Vector2(46, -1200)
-SpikeNumber = ""
 
 [node name="Spikes512" parent="Spikes111" unique_id=618379768 instance=ExtResource("9_ekoii")]
 position = Vector2(37, -1200)
-SpikeNumber = ""
 
 [node name="Spikes513" parent="Spikes111" unique_id=1927342427 instance=ExtResource("9_ekoii")]
 position = Vector2(30, -1200)
-SpikeNumber = ""
 
 [node name="Spikes514" parent="Spikes111" unique_id=543861724 instance=ExtResource("9_ekoii")]
 position = Vector2(86, -1200)
-SpikeNumber = ""
 
 [node name="Spikes515" parent="Spikes111" unique_id=1573621422 instance=ExtResource("9_ekoii")]
 position = Vector2(77, -1200)
-SpikeNumber = ""
 
 [node name="Spikes516" parent="Spikes111" unique_id=1619263529 instance=ExtResource("9_ekoii")]
 position = Vector2(68, -1200)
-SpikeNumber = ""
 
 [node name="Spikes517" parent="Spikes111" unique_id=1950737168 instance=ExtResource("9_ekoii")]
 position = Vector2(61, -1200)
-SpikeNumber = ""
 
 [node name="Spikes427" parent="Spikes111" unique_id=1229291102 instance=ExtResource("9_ekoii")]
 position = Vector2(-252, -1024)
-SpikeNumber = ""
 
 [node name="Spikes428" parent="Spikes111" unique_id=1480397038 instance=ExtResource("9_ekoii")]
 position = Vector2(-243, -1024)
-SpikeNumber = ""
 
 [node name="Spikes429" parent="Spikes111" unique_id=1978571218 instance=ExtResource("9_ekoii")]
 position = Vector2(-234, -1024)
-SpikeNumber = ""
 
 [node name="Spikes430" parent="Spikes111" unique_id=290221331 instance=ExtResource("9_ekoii")]
 position = Vector2(-225, -1024)
-SpikeNumber = ""
 
 [node name="Spikes431" parent="Spikes111" unique_id=1524297387 instance=ExtResource("9_ekoii")]
 position = Vector2(-288, -1024)
-SpikeNumber = ""
 
 [node name="Spikes432" parent="Spikes111" unique_id=1281216364 instance=ExtResource("9_ekoii")]
 position = Vector2(-279, -1024)
-SpikeNumber = ""
 
 [node name="Spikes433" parent="Spikes111" unique_id=1427245668 instance=ExtResource("9_ekoii")]
 position = Vector2(-270, -1024)
-SpikeNumber = ""
 
 [node name="Spikes434" parent="Spikes111" unique_id=1425233683 instance=ExtResource("9_ekoii")]
 position = Vector2(-261, -1024)
-SpikeNumber = ""
 
 [node name="Spikes435" parent="Spikes111" unique_id=1540833027 instance=ExtResource("9_ekoii")]
 position = Vector2(-329, -1040)
-SpikeNumber = ""
 
 [node name="Spikes436" parent="Spikes111" unique_id=616570103 instance=ExtResource("9_ekoii")]
 position = Vector2(-313, -1024)
-SpikeNumber = ""
 
 [node name="Spikes439" parent="Spikes111" unique_id=690386178 instance=ExtResource("9_ekoii")]
 position = Vector2(-320, -1024)
-SpikeNumber = ""
 
 [node name="Spikes440" parent="Spikes111" unique_id=1080818956 instance=ExtResource("9_ekoii")]
 position = Vector2(-338, -1040)
-SpikeNumber = ""
 
 [node name="Spikes437" parent="Spikes111" unique_id=783930194 instance=ExtResource("9_ekoii")]
 position = Vector2(-305, -1024)
-SpikeNumber = ""
 
 [node name="Spikes438" parent="Spikes111" unique_id=1026967174 instance=ExtResource("9_ekoii")]
 position = Vector2(-296, -1024)
-SpikeNumber = ""
 
 [node name="Spikes566" parent="Spikes111" unique_id=2346641 instance=ExtResource("9_ekoii")]
 position = Vector2(-320, -1200)
-SpikeNumber = ""
 
 [node name="Spikes567" parent="Spikes111" unique_id=1446319480 instance=ExtResource("9_ekoii")]
 position = Vector2(-345, -1200)
-SpikeNumber = ""
 
 [node name="Spikes568" parent="Spikes111" unique_id=91032646 instance=ExtResource("9_ekoii")]
 position = Vector2(-352, -1200)
-SpikeNumber = ""
 
 [node name="Spikes572" parent="Spikes111" unique_id=598131627 instance=ExtResource("9_ekoii")]
 position = Vector2(-337, -1200)
-SpikeNumber = ""
 
 [node name="Spikes573" parent="Spikes111" unique_id=1680184886 instance=ExtResource("9_ekoii")]
 position = Vector2(-328, -1200)
-SpikeNumber = ""
 
 [node name="Spikes574" parent="Spikes111" unique_id=554586671 instance=ExtResource("9_ekoii")]
 position = Vector2(-696, -992)
-SpikeNumber = ""
 
 [node name="Spikes579" parent="Spikes111" unique_id=575505186 instance=ExtResource("9_ekoii")]
 position = Vector2(-688, -992)
-SpikeNumber = ""
 
 [node name="Spikes575" parent="Spikes111" unique_id=79489399 instance=ExtResource("9_ekoii")]
 position = Vector2(-305, -1200)
-SpikeNumber = ""
 
 [node name="Spikes576" parent="Spikes111" unique_id=1653914931 instance=ExtResource("9_ekoii")]
 position = Vector2(-312, -1200)
-SpikeNumber = ""
 
 [node name="Spikes577" parent="Spikes111" unique_id=1017166957 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -1200)
-SpikeNumber = ""
 
 [node name="Spikes578" parent="Spikes111" unique_id=307035541 instance=ExtResource("9_ekoii")]
 position = Vector2(-704, -992)
-SpikeNumber = ""
 
 [node name="Spikes580" parent="Spikes111" unique_id=2080622039 instance=ExtResource("9_ekoii")]
 position = Vector2(-672, -992)
-SpikeNumber = ""
 
 [node name="Spikes581" parent="Spikes111" unique_id=932517248 instance=ExtResource("9_ekoii")]
 position = Vector2(-664, -992)
-SpikeNumber = ""
 
 [node name="Spikes582" parent="Spikes111" unique_id=304790667 instance=ExtResource("9_ekoii")]
 position = Vector2(-680, -992)
-SpikeNumber = ""
 
 [node name="Spikes583" parent="Spikes111" unique_id=973945586 instance=ExtResource("9_ekoii")]
 position = Vector2(-656, -1008)
-SpikeNumber = ""
 
 [node name="Spikes584" parent="Spikes111" unique_id=1309992242 instance=ExtResource("9_ekoii")]
 position = Vector2(-648, -1008)
-SpikeNumber = ""
 
 [node name="Spikes585" parent="Spikes111" unique_id=1010091359 instance=ExtResource("9_ekoii")]
 position = Vector2(-720, -1008)
-SpikeNumber = ""
 
 [node name="Spikes586" parent="Spikes111" unique_id=108322619 instance=ExtResource("9_ekoii")]
 position = Vector2(-712, -1008)
-SpikeNumber = ""
 
 [node name="Spikes383" parent="Spikes111" unique_id=1172760635 instance=ExtResource("9_ekoii")]
 position = Vector2(-337, -736)
-SpikeNumber = ""
 
 [node name="Spikes384" parent="Spikes111" unique_id=972704649 instance=ExtResource("9_ekoii")]
 position = Vector2(-328, -736)
-SpikeNumber = ""
 
 [node name="Spikes385" parent="Spikes111" unique_id=427825014 instance=ExtResource("9_ekoii")]
 position = Vector2(-319, -736)
-SpikeNumber = ""
 
 [node name="Spikes386" parent="Spikes111" unique_id=593682179 instance=ExtResource("9_ekoii")]
 position = Vector2(-310, -736)
-SpikeNumber = ""
 
 [node name="Spikes387" parent="Spikes111" unique_id=1848456081 instance=ExtResource("9_ekoii")]
 position = Vector2(-237, -736)
-SpikeNumber = ""
 
 [node name="Spikes388" parent="Spikes111" unique_id=207218747 instance=ExtResource("9_ekoii")]
 position = Vector2(-228, -736)
-SpikeNumber = ""
 
 [node name="Spikes389" parent="Spikes111" unique_id=747696742 instance=ExtResource("9_ekoii")]
 position = Vector2(-219, -736)
-SpikeNumber = ""
 
 [node name="Spikes390" parent="Spikes111" unique_id=2118939616 instance=ExtResource("9_ekoii")]
 position = Vector2(-210, -736)
-SpikeNumber = ""
 
 [node name="Spikes391" parent="Spikes111" unique_id=692157474 instance=ExtResource("9_ekoii")]
 position = Vector2(-463, -736)
-SpikeNumber = ""
 
 [node name="Spikes392" parent="Spikes111" unique_id=1648137990 instance=ExtResource("9_ekoii")]
 position = Vector2(-454, -736)
-SpikeNumber = ""
 
 [node name="Spikes393" parent="Spikes111" unique_id=102466409 instance=ExtResource("9_ekoii")]
 position = Vector2(-445, -736)
-SpikeNumber = ""
 
 [node name="Spikes394" parent="Spikes111" unique_id=715770613 instance=ExtResource("9_ekoii")]
 position = Vector2(-436, -736)
-SpikeNumber = ""
 
 [node name="Spikes362" parent="Spikes111" unique_id=200456680 instance=ExtResource("9_ekoii")]
 position = Vector2(484, -352)
-SpikeNumber = ""
 
 [node name="Spikes327" parent="Spikes111" unique_id=868400101 instance=ExtResource("9_ekoii")]
 position = Vector2(496, -288)
-SpikeNumber = ""
 
 [node name="Spikes328" parent="Spikes111" unique_id=269714826 instance=ExtResource("9_ekoii")]
 position = Vector2(504, -288)
-SpikeNumber = ""
 
 [node name="Spikes329" parent="Spikes111" unique_id=813865926 instance=ExtResource("9_ekoii")]
 position = Vector2(513, -288)
-SpikeNumber = ""
 
 [node name="Spikes330" parent="Spikes111" unique_id=510659419 instance=ExtResource("9_ekoii")]
 position = Vector2(522, -288)
-SpikeNumber = ""
 
 [node name="Spikes331" parent="Spikes111" unique_id=1467424274 instance=ExtResource("9_ekoii")]
 position = Vector2(531, -288)
-SpikeNumber = ""
 
 [node name="Spikes332" parent="Spikes111" unique_id=354402414 instance=ExtResource("9_ekoii")]
 position = Vector2(540, -288)
-SpikeNumber = ""
 
 [node name="Spikes333" parent="Spikes111" unique_id=1159073286 instance=ExtResource("9_ekoii")]
 position = Vector2(549, -288)
-SpikeNumber = ""
 
 [node name="Spikes334" parent="Spikes111" unique_id=2112108033 instance=ExtResource("9_ekoii")]
 position = Vector2(558, -288)
-SpikeNumber = ""
 
 [node name="Spikes335" parent="Spikes111" unique_id=976070560 instance=ExtResource("9_ekoii")]
 position = Vector2(566, -288)
-SpikeNumber = ""
 
 [node name="Spikes336" parent="Spikes111" unique_id=1771785288 instance=ExtResource("9_ekoii")]
 position = Vector2(575, -288)
-SpikeNumber = ""
 
 [node name="Spikes337" parent="Spikes111" unique_id=1259694482 instance=ExtResource("9_ekoii")]
 position = Vector2(584, -288)
-SpikeNumber = ""
 
 [node name="Spikes338" parent="Spikes111" unique_id=1397260934 instance=ExtResource("9_ekoii")]
 position = Vector2(593, -288)
-SpikeNumber = ""
 
 [node name="Spikes339" parent="Spikes111" unique_id=1775599261 instance=ExtResource("9_ekoii")]
 position = Vector2(602, -288)
-SpikeNumber = ""
 
 [node name="Spikes340" parent="Spikes111" unique_id=775451722 instance=ExtResource("9_ekoii")]
 position = Vector2(611, -288)
-SpikeNumber = ""
 
 [node name="Spikes341" parent="Spikes111" unique_id=87516529 instance=ExtResource("9_ekoii")]
 position = Vector2(620, -288)
-SpikeNumber = ""
 
 [node name="Spikes342" parent="Spikes111" unique_id=1211999314 instance=ExtResource("9_ekoii")]
 position = Vector2(628, -288)
-SpikeNumber = ""
 
 [node name="Spikes343" parent="Spikes111" unique_id=885164398 instance=ExtResource("9_ekoii")]
 position = Vector2(637, -288)
-SpikeNumber = ""
 
 [node name="Spikes344" parent="Spikes111" unique_id=977049849 instance=ExtResource("9_ekoii")]
 position = Vector2(646, -288)
-SpikeNumber = ""
 
 [node name="Spikes345" parent="Spikes111" unique_id=1598563318 instance=ExtResource("9_ekoii")]
 position = Vector2(655, -288)
-SpikeNumber = ""
 
 [node name="Spikes346" parent="Spikes111" unique_id=1704934074 instance=ExtResource("9_ekoii")]
 position = Vector2(664, -288)
-SpikeNumber = ""
 
 [node name="Spikes347" parent="Spikes111" unique_id=1634800138 instance=ExtResource("9_ekoii")]
 position = Vector2(673, -288)
-SpikeNumber = ""
 
 [node name="Spikes348" parent="Spikes111" unique_id=315806368 instance=ExtResource("9_ekoii")]
 position = Vector2(682, -288)
-SpikeNumber = ""
 
 [node name="Spikes349" parent="Spikes111" unique_id=228492758 instance=ExtResource("9_ekoii")]
 position = Vector2(690, -288)
-SpikeNumber = ""
 
 [node name="Spikes350" parent="Spikes111" unique_id=1057005751 instance=ExtResource("9_ekoii")]
 position = Vector2(699, -288)
-SpikeNumber = ""
 
 [node name="Spikes351" parent="Spikes111" unique_id=252353699 instance=ExtResource("9_ekoii")]
 position = Vector2(708, -288)
-SpikeNumber = ""
 
 [node name="Spikes352" parent="Spikes111" unique_id=1404094554 instance=ExtResource("9_ekoii")]
 position = Vector2(717, -288)
-SpikeNumber = ""
 
 [node name="Spikes353" parent="Spikes111" unique_id=1177410199 instance=ExtResource("9_ekoii")]
 position = Vector2(726, -288)
-SpikeNumber = ""
 
 [node name="Spikes354" parent="Spikes111" unique_id=973347638 instance=ExtResource("9_ekoii")]
 position = Vector2(735, -288)
-SpikeNumber = ""
 
 [node name="Spikes355" parent="Spikes111" unique_id=785332449 instance=ExtResource("9_ekoii")]
 position = Vector2(743, -288)
-SpikeNumber = ""
 
 [node name="Spikes356" parent="Spikes111" unique_id=609089276 instance=ExtResource("9_ekoii")]
 position = Vector2(751, -288)
-SpikeNumber = ""
 
 [node name="Spikes357" parent="Spikes111" unique_id=1692732131 instance=ExtResource("9_ekoii")]
 position = Vector2(760, -288)
-SpikeNumber = ""
 
 [node name="Spikes358" parent="Spikes111" unique_id=19073153 instance=ExtResource("9_ekoii")]
 position = Vector2(769, -288)
-SpikeNumber = ""
 
 [node name="Spikes359" parent="Spikes111" unique_id=123312930 instance=ExtResource("9_ekoii")]
 position = Vector2(778, -288)
-SpikeNumber = ""
 
 [node name="Spikes360" parent="Spikes111" unique_id=1174972391 instance=ExtResource("9_ekoii")]
 position = Vector2(787, -288)
-SpikeNumber = ""
 
 [node name="Spikes361" parent="Spikes111" unique_id=1993085838 instance=ExtResource("9_ekoii")]
 position = Vector2(796, -288)
-SpikeNumber = ""
 
 [node name="Spikes208" parent="Spikes111" unique_id=763939931 instance=ExtResource("9_ekoii")]
 position = Vector2(-256, -256)
-SpikeNumber = ""
 
 [node name="Spikes209" parent="Spikes111" unique_id=1398422572 instance=ExtResource("9_ekoii")]
 position = Vector2(-220, -256)
-SpikeNumber = ""
 
 [node name="Spikes210" parent="Spikes111" unique_id=719182641 instance=ExtResource("9_ekoii")]
 position = Vector2(-229, -256)
-SpikeNumber = ""
 
 [node name="Spikes211" parent="Spikes111" unique_id=86376920 instance=ExtResource("9_ekoii")]
 position = Vector2(-238, -256)
-SpikeNumber = ""
 
 [node name="Spikes212" parent="Spikes111" unique_id=787047876 instance=ExtResource("9_ekoii")]
 position = Vector2(-247, -256)
-SpikeNumber = ""
 
 [node name="Spikes213" parent="Spikes111" unique_id=2062588756 instance=ExtResource("9_ekoii")]
 position = Vector2(-211, -256)
-SpikeNumber = ""
 
 [node name="Spikes214" parent="Spikes111" unique_id=2072163537 instance=ExtResource("9_ekoii")]
 position = Vector2(-175, -256)
-SpikeNumber = ""
 
 [node name="Spikes215" parent="Spikes111" unique_id=85285224 instance=ExtResource("9_ekoii")]
 position = Vector2(-184, -256)
-SpikeNumber = ""
 
 [node name="Spikes216" parent="Spikes111" unique_id=1387459493 instance=ExtResource("9_ekoii")]
 position = Vector2(-193, -256)
-SpikeNumber = ""
 
 [node name="Spikes217" parent="Spikes111" unique_id=1094464323 instance=ExtResource("9_ekoii")]
 position = Vector2(-202, -256)
-SpikeNumber = ""
 
 [node name="Spikes218" parent="Spikes111" unique_id=1301230564 instance=ExtResource("9_ekoii")]
 position = Vector2(-166, -256)
-SpikeNumber = ""
 
 [node name="Spikes219" parent="Spikes111" unique_id=755703851 instance=ExtResource("9_ekoii")]
 position = Vector2(-130, -256)
-SpikeNumber = ""
 
 [node name="Spikes220" parent="Spikes111" unique_id=780581200 instance=ExtResource("9_ekoii")]
 position = Vector2(-139, -256)
-SpikeNumber = ""
 
 [node name="Spikes221" parent="Spikes111" unique_id=2088664592 instance=ExtResource("9_ekoii")]
 position = Vector2(-148, -256)
-SpikeNumber = ""
 
 [node name="Spikes222" parent="Spikes111" unique_id=1460200769 instance=ExtResource("9_ekoii")]
 position = Vector2(-157, -256)
-SpikeNumber = ""
 
 [node name="Spikes223" parent="Spikes111" unique_id=37491913 instance=ExtResource("9_ekoii")]
 position = Vector2(-121, -256)
-SpikeNumber = ""
 
 [node name="Spikes224" parent="Spikes111" unique_id=1965251066 instance=ExtResource("9_ekoii")]
 position = Vector2(-85, -256)
-SpikeNumber = ""
 
 [node name="Spikes225" parent="Spikes111" unique_id=700741587 instance=ExtResource("9_ekoii")]
 position = Vector2(-94, -256)
-SpikeNumber = ""
 
 [node name="Spikes226" parent="Spikes111" unique_id=494617958 instance=ExtResource("9_ekoii")]
 position = Vector2(-103, -256)
-SpikeNumber = ""
 
 [node name="Spikes227" parent="Spikes111" unique_id=1424334333 instance=ExtResource("9_ekoii")]
 position = Vector2(-112, -256)
-SpikeNumber = ""
 
 [node name="Spikes228" parent="Spikes111" unique_id=1417751148 instance=ExtResource("9_ekoii")]
 position = Vector2(-76, -256)
-SpikeNumber = ""
 
 [node name="Spikes229" parent="Spikes111" unique_id=891712040 instance=ExtResource("9_ekoii")]
 position = Vector2(-40, -256)
-SpikeNumber = ""
 
 [node name="Spikes230" parent="Spikes111" unique_id=407762335 instance=ExtResource("9_ekoii")]
 position = Vector2(-49, -256)
-SpikeNumber = ""
 
 [node name="Spikes231" parent="Spikes111" unique_id=404583262 instance=ExtResource("9_ekoii")]
 position = Vector2(-58, -256)
-SpikeNumber = ""
 
 [node name="Spikes232" parent="Spikes111" unique_id=7972269 instance=ExtResource("9_ekoii")]
 position = Vector2(-67, -256)
-SpikeNumber = ""
 
 [node name="Spikes233" parent="Spikes111" unique_id=1412177920 instance=ExtResource("9_ekoii")]
 position = Vector2(-31, -256)
-SpikeNumber = ""
 
 [node name="Spikes234" parent="Spikes111" unique_id=1435915979 instance=ExtResource("9_ekoii")]
 position = Vector2(5, -256)
-SpikeNumber = ""
 
 [node name="Spikes235" parent="Spikes111" unique_id=438222710 instance=ExtResource("9_ekoii")]
 position = Vector2(-4, -256)
-SpikeNumber = ""
 
 [node name="Spikes236" parent="Spikes111" unique_id=2018348402 instance=ExtResource("9_ekoii")]
 position = Vector2(-13, -256)
-SpikeNumber = ""
 
 [node name="Spikes237" parent="Spikes111" unique_id=1302790603 instance=ExtResource("9_ekoii")]
 position = Vector2(-22, -256)
-SpikeNumber = ""
 
 [node name="Spikes238" parent="Spikes111" unique_id=428493268 instance=ExtResource("9_ekoii")]
 position = Vector2(14, -256)
-SpikeNumber = ""
 
 [node name="Spikes239" parent="Spikes111" unique_id=178331550 instance=ExtResource("9_ekoii")]
 position = Vector2(50, -256)
-SpikeNumber = ""
 
 [node name="Spikes240" parent="Spikes111" unique_id=1542478381 instance=ExtResource("9_ekoii")]
 position = Vector2(41, -256)
-SpikeNumber = ""
 
 [node name="Spikes241" parent="Spikes111" unique_id=1674778534 instance=ExtResource("9_ekoii")]
 position = Vector2(32, -256)
-SpikeNumber = ""
 
 [node name="Spikes242" parent="Spikes111" unique_id=1427234882 instance=ExtResource("9_ekoii")]
 position = Vector2(23, -256)
-SpikeNumber = ""
 
 [node name="Spikes243" parent="Spikes111" unique_id=1120511470 instance=ExtResource("9_ekoii")]
 position = Vector2(59, -256)
-SpikeNumber = ""
 
 [node name="Spikes244" parent="Spikes111" unique_id=861511861 instance=ExtResource("9_ekoii")]
 position = Vector2(95, -256)
-SpikeNumber = ""
 
 [node name="Spikes245" parent="Spikes111" unique_id=1299374689 instance=ExtResource("9_ekoii")]
 position = Vector2(86, -256)
-SpikeNumber = ""
 
 [node name="Spikes246" parent="Spikes111" unique_id=358784421 instance=ExtResource("9_ekoii")]
 position = Vector2(77, -256)
-SpikeNumber = ""
 
 [node name="Spikes247" parent="Spikes111" unique_id=1619359120 instance=ExtResource("9_ekoii")]
 position = Vector2(68, -256)
-SpikeNumber = ""
 
 [node name="Spikes248" parent="Spikes111" unique_id=474263826 instance=ExtResource("9_ekoii")]
 position = Vector2(131, -256)
-SpikeNumber = ""
 
 [node name="Spikes249" parent="Spikes111" unique_id=1032035167 instance=ExtResource("9_ekoii")]
 position = Vector2(122, -256)
-SpikeNumber = ""
 
 [node name="Spikes250" parent="Spikes111" unique_id=1929539512 instance=ExtResource("9_ekoii")]
 position = Vector2(113, -256)
-SpikeNumber = ""
 
 [node name="Spikes251" parent="Spikes111" unique_id=258979037 instance=ExtResource("9_ekoii")]
 position = Vector2(104, -256)
-SpikeNumber = ""
 
 [node name="Spikes252" parent="Spikes111" unique_id=499010315 instance=ExtResource("9_ekoii")]
 position = Vector2(167, -256)
-SpikeNumber = ""
 
 [node name="Spikes253" parent="Spikes111" unique_id=1484717841 instance=ExtResource("9_ekoii")]
 position = Vector2(158, -256)
-SpikeNumber = ""
 
 [node name="Spikes254" parent="Spikes111" unique_id=1102411189 instance=ExtResource("9_ekoii")]
 position = Vector2(149, -256)
-SpikeNumber = ""
 
 [node name="Spikes255" parent="Spikes111" unique_id=1103687018 instance=ExtResource("9_ekoii")]
 position = Vector2(140, -256)
-SpikeNumber = ""
 
 [node name="Spikes256" parent="Spikes111" unique_id=1626275453 instance=ExtResource("9_ekoii")]
 position = Vector2(-325, -240)
-SpikeNumber = ""
 
 [node name="Spikes257" parent="Spikes111" unique_id=835917999 instance=ExtResource("9_ekoii")]
 position = Vector2(-334, -240)
-SpikeNumber = ""
 
 [node name="Spikes258" parent="Spikes111" unique_id=830006673 instance=ExtResource("9_ekoii")]
 position = Vector2(-343, -240)
-SpikeNumber = ""
 
 [node name="Spikes259" parent="Spikes111" unique_id=1181379301 instance=ExtResource("9_ekoii")]
 position = Vector2(-352, -240)
-SpikeNumber = ""
 
 [node name="Spikes266" parent="Spikes111" unique_id=2093677756 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -251)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes267" parent="Spikes111" unique_id=170332275 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -260)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes268" parent="Spikes111" unique_id=716974911 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -269)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes269" parent="Spikes111" unique_id=956222396 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -278)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes270" parent="Spikes111" unique_id=2004278091 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -287)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes271" parent="Spikes111" unique_id=576840157 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -296)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes272" parent="Spikes111" unique_id=2100835014 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -305)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes273" parent="Spikes111" unique_id=1282134098 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -314)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes274" parent="Spikes111" unique_id=152321429 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -323)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes275" parent="Spikes111" unique_id=1177065429 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -332)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes276" parent="Spikes111" unique_id=1437842810 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -341)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes277" parent="Spikes111" unique_id=973056219 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -350)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes278" parent="Spikes111" unique_id=1771047779 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -359)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes279" parent="Spikes111" unique_id=1518843013 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -368)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes280" parent="Spikes111" unique_id=713342273 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -377)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes281" parent="Spikes111" unique_id=1910783011 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -386)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes282" parent="Spikes111" unique_id=808209305 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -395)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes283" parent="Spikes111" unique_id=100500712 instance=ExtResource("9_ekoii")]
 position = Vector2(-297, -404)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes457" parent="Spikes111" unique_id=1578485761 instance=ExtResource("9_ekoii")]
 position = Vector2(-278, -1408)
-SpikeNumber = ""
 
 [node name="Spikes476" parent="Spikes111" unique_id=1971822729 instance=ExtResource("9_ekoii")]
 position = Vector2(-269, -1408)
-SpikeNumber = ""
 
 [node name="Spikes477" parent="Spikes111" unique_id=2030179498 instance=ExtResource("9_ekoii")]
 position = Vector2(-260, -1408)
-SpikeNumber = ""
 
 [node name="Spikes478" parent="Spikes111" unique_id=627793243 instance=ExtResource("9_ekoii")]
 position = Vector2(-251, -1408)
-SpikeNumber = ""
 
 [node name="Spikes479" parent="Spikes111" unique_id=1845404582 instance=ExtResource("9_ekoii")]
 position = Vector2(-242, -1408)
-SpikeNumber = ""
 
 [node name="Spikes492" parent="Spikes111" unique_id=1861573500 instance=ExtResource("9_ekoii")]
 position = Vector2(-208, -1392)
-SpikeNumber = ""
 
 [node name="Spikes493" parent="Spikes111" unique_id=1974048095 instance=ExtResource("9_ekoii")]
 position = Vector2(-199, -1392)
-SpikeNumber = ""
 
 [node name="Spikes494" parent="Spikes111" unique_id=646203156 instance=ExtResource("9_ekoii")]
 position = Vector2(-190, -1392)
-SpikeNumber = ""
 
 [node name="Spikes495" parent="Spikes111" unique_id=476895648 instance=ExtResource("9_ekoii")]
 position = Vector2(-181, -1392)
-SpikeNumber = ""
 
 [node name="Spikes496" parent="Spikes111" unique_id=1275972153 instance=ExtResource("9_ekoii")]
 position = Vector2(-172, -1392)
-SpikeNumber = ""
 
 [node name="Spikes497" parent="Spikes111" unique_id=2083630039 instance=ExtResource("9_ekoii")]
 position = Vector2(-164, -1392)
-SpikeNumber = ""
 
 [node name="Spikes498" parent="Spikes111" unique_id=100429080 instance=ExtResource("9_ekoii")]
 position = Vector2(-155, -1392)
-SpikeNumber = ""
 
 [node name="Spikes499" parent="Spikes111" unique_id=456620726 instance=ExtResource("9_ekoii")]
 position = Vector2(-146, -1392)
-SpikeNumber = ""
 
 [node name="Spikes500" parent="Spikes111" unique_id=328514462 instance=ExtResource("9_ekoii")]
 position = Vector2(-137, -1392)
-SpikeNumber = ""
 
 [node name="Spikes501" parent="Spikes111" unique_id=1169788844 instance=ExtResource("9_ekoii")]
 position = Vector2(-128, -1392)
-SpikeNumber = ""
 
 [node name="Spikes480" parent="Spikes111" unique_id=1954184925 instance=ExtResource("9_ekoii")]
 position = Vector2(-234, -1408)
-SpikeNumber = ""
 
 [node name="Spikes481" parent="Spikes111" unique_id=2143471455 instance=ExtResource("9_ekoii")]
 position = Vector2(-226, -1408)
-SpikeNumber = ""
 
 [node name="Spikes482" parent="Spikes111" unique_id=419422536 instance=ExtResource("9_ekoii")]
 position = Vector2(-217, -1408)
-SpikeNumber = ""
 
 [node name="Spikes483" parent="Spikes111" unique_id=1318961834 instance=ExtResource("9_ekoii")]
 position = Vector2(-286, -1474)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes484" parent="Spikes111" unique_id=1198922834 instance=ExtResource("9_ekoii")]
 position = Vector2(-277, -1474)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes485" parent="Spikes111" unique_id=1187287008 instance=ExtResource("9_ekoii")]
 position = Vector2(-268, -1474)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes486" parent="Spikes111" unique_id=334214702 instance=ExtResource("9_ekoii")]
 position = Vector2(-259, -1474)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes487" parent="Spikes111" unique_id=373692102 instance=ExtResource("9_ekoii")]
 position = Vector2(-250, -1474)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes488" parent="Spikes111" unique_id=1000677973 instance=ExtResource("9_ekoii")]
 position = Vector2(-241, -1474)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes560" parent="Spikes111" unique_id=1591528865 instance=ExtResource("9_ekoii")]
 position = Vector2(-963, -1650)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes561" parent="Spikes111" unique_id=1335447216 instance=ExtResource("9_ekoii")]
 position = Vector2(-954, -1650)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes562" parent="Spikes111" unique_id=794075184 instance=ExtResource("9_ekoii")]
 position = Vector2(-945, -1650)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes563" parent="Spikes111" unique_id=659839428 instance=ExtResource("9_ekoii")]
 position = Vector2(-936, -1650)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes564" parent="Spikes111" unique_id=1209966203 instance=ExtResource("9_ekoii")]
 position = Vector2(-927, -1650)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes565" parent="Spikes111" unique_id=1592968548 instance=ExtResource("9_ekoii")]
 position = Vector2(-918, -1650)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes569" parent="Spikes111" unique_id=214835992 instance=ExtResource("9_ekoii")]
 position = Vector2(-989, -1650)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes570" parent="Spikes111" unique_id=963471253 instance=ExtResource("9_ekoii")]
 position = Vector2(-980, -1650)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes571" parent="Spikes111" unique_id=1483645308 instance=ExtResource("9_ekoii")]
 position = Vector2(-971, -1650)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes489" parent="Spikes111" unique_id=628871231 instance=ExtResource("9_ekoii")]
 position = Vector2(-232, -1474)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes490" parent="Spikes111" unique_id=677567265 instance=ExtResource("9_ekoii")]
 position = Vector2(-223, -1474)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes520" parent="Spikes111" unique_id=1927937854 instance=ExtResource("9_ekoii")]
 position = Vector2(20, -1283)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes521" parent="Spikes111" unique_id=1383325341 instance=ExtResource("9_ekoii")]
 position = Vector2(29, -1283)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes491" parent="Spikes111" unique_id=509527111 instance=ExtResource("9_ekoii")]
 position = Vector2(-214, -1474)
 rotation = 3.1415927
-SpikeNumber = ""
 
 [node name="Spikes458" parent="Spikes111" unique_id=709915124 instance=ExtResource("9_ekoii")]
 position = Vector2(-170, -1033)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes459" parent="Spikes111" unique_id=705398566 instance=ExtResource("9_ekoii")]
 position = Vector2(-170, -1042)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes460" parent="Spikes111" unique_id=1188438947 instance=ExtResource("9_ekoii")]
 position = Vector2(-170, -1051)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes461" parent="Spikes111" unique_id=362759772 instance=ExtResource("9_ekoii")]
 position = Vector2(-170, -1060)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes462" parent="Spikes111" unique_id=1328659111 instance=ExtResource("9_ekoii")]
 position = Vector2(-170, -1069)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes463" parent="Spikes111" unique_id=253481864 instance=ExtResource("9_ekoii")]
 position = Vector2(-170, -1078)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes464" parent="Spikes111" unique_id=356098749 instance=ExtResource("9_ekoii")]
 position = Vector2(-170, -1087)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes518" parent="Spikes111" unique_id=168843135 instance=ExtResource("9_ekoii")]
 position = Vector2(86, -1212)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes519" parent="Spikes111" unique_id=7313187 instance=ExtResource("9_ekoii")]
 position = Vector2(86, -1221)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes522" parent="Spikes111" unique_id=373496143 instance=ExtResource("9_ekoii")]
 position = Vector2(86, -1230)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes523" parent="Spikes111" unique_id=1293444468 instance=ExtResource("9_ekoii")]
 position = Vector2(86, -1239)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes524" parent="Spikes111" unique_id=120429803 instance=ExtResource("9_ekoii")]
 position = Vector2(86, -1248)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes284" parent="Spikes111" unique_id=894441951 instance=ExtResource("9_ekoii")]
 position = Vector2(-282, -413)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes285" parent="Spikes111" unique_id=2122460546 instance=ExtResource("9_ekoii")]
 position = Vector2(-282, -422)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes286" parent="Spikes111" unique_id=1198684727 instance=ExtResource("9_ekoii")]
 position = Vector2(-282, -431)
 rotation = -1.5707964
-SpikeNumber = ""
 
 [node name="Spikes306" parent="Spikes111" unique_id=1630880621 instance=ExtResource("9_ekoii")]
 position = Vector2(-272, -448)
-SpikeNumber = ""
 
 [node name="Spikes287" parent="Spikes111" unique_id=186146000 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -516)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes288" parent="Spikes111" unique_id=22787898 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -525)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes289" parent="Spikes111" unique_id=703594970 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -534)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes290" parent="Spikes111" unique_id=307165541 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -489)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes291" parent="Spikes111" unique_id=371507874 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -498)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes292" parent="Spikes111" unique_id=269547475 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -507)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes441" parent="Spikes111" unique_id=70466634 instance=ExtResource("9_ekoii")]
 position = Vector2(-286, -1408)
-SpikeNumber = ""
 
 [node name="Spikes525" parent="Spikes111" unique_id=919958583 instance=ExtResource("9_ekoii")]
 position = Vector2(-968, -1536)
-SpikeNumber = ""
 
 [node name="Spikes526" parent="Spikes111" unique_id=1596585885 instance=ExtResource("9_ekoii")]
 position = Vector2(-959, -1536)
-SpikeNumber = ""
 
 [node name="Spikes527" parent="Spikes111" unique_id=754284371 instance=ExtResource("9_ekoii")]
 position = Vector2(-950, -1536)
-SpikeNumber = ""
 
 [node name="Spikes528" parent="Spikes111" unique_id=2084636150 instance=ExtResource("9_ekoii")]
 position = Vector2(-941, -1536)
-SpikeNumber = ""
 
 [node name="Spikes529" parent="Spikes111" unique_id=364745376 instance=ExtResource("9_ekoii")]
 position = Vector2(-932, -1536)
-SpikeNumber = ""
 
 [node name="Spikes530" parent="Spikes111" unique_id=1441597197 instance=ExtResource("9_ekoii")]
 position = Vector2(-924, -1536)
-SpikeNumber = ""
 
 [node name="Spikes531" parent="Spikes111" unique_id=2085317093 instance=ExtResource("9_ekoii")]
 position = Vector2(-916, -1536)
-SpikeNumber = ""
 
 [node name="Spikes532" parent="Spikes111" unique_id=1595701574 instance=ExtResource("9_ekoii")]
 position = Vector2(-907, -1536)
-SpikeNumber = ""
 
 [node name="Spikes533" parent="Spikes111" unique_id=984862508 instance=ExtResource("9_ekoii")]
 position = Vector2(-976, -1536)
-SpikeNumber = ""
 
 [node name="Spikes534" parent="Spikes111" unique_id=308117917 instance=ExtResource("9_ekoii")]
 position = Vector2(-890, -1536)
-SpikeNumber = ""
 
 [node name="Spikes535" parent="Spikes111" unique_id=2053786173 instance=ExtResource("9_ekoii")]
 position = Vector2(-881, -1536)
-SpikeNumber = ""
 
 [node name="Spikes536" parent="Spikes111" unique_id=197222950 instance=ExtResource("9_ekoii")]
 position = Vector2(-872, -1536)
-SpikeNumber = ""
 
 [node name="Spikes537" parent="Spikes111" unique_id=687764049 instance=ExtResource("9_ekoii")]
 position = Vector2(-863, -1536)
-SpikeNumber = ""
 
 [node name="Spikes538" parent="Spikes111" unique_id=1249125769 instance=ExtResource("9_ekoii")]
 position = Vector2(-854, -1536)
-SpikeNumber = ""
 
 [node name="Spikes539" parent="Spikes111" unique_id=1693939225 instance=ExtResource("9_ekoii")]
 position = Vector2(-846, -1536)
-SpikeNumber = ""
 
 [node name="Spikes540" parent="Spikes111" unique_id=55902264 instance=ExtResource("9_ekoii")]
 position = Vector2(-838, -1536)
-SpikeNumber = ""
 
 [node name="Spikes541" parent="Spikes111" unique_id=1431000456 instance=ExtResource("9_ekoii")]
 position = Vector2(-829, -1536)
-SpikeNumber = ""
 
 [node name="Spikes542" parent="Spikes111" unique_id=1351324290 instance=ExtResource("9_ekoii")]
 position = Vector2(-898, -1536)
-SpikeNumber = ""
 
 [node name="Spikes543" parent="Spikes111" unique_id=1909735089 instance=ExtResource("9_ekoii")]
 position = Vector2(-813, -1536)
-SpikeNumber = ""
 
 [node name="Spikes544" parent="Spikes111" unique_id=738281640 instance=ExtResource("9_ekoii")]
 position = Vector2(-804, -1536)
-SpikeNumber = ""
 
 [node name="Spikes545" parent="Spikes111" unique_id=130470561 instance=ExtResource("9_ekoii")]
 position = Vector2(-795, -1536)
-SpikeNumber = ""
 
 [node name="Spikes546" parent="Spikes111" unique_id=503653186 instance=ExtResource("9_ekoii")]
 position = Vector2(-786, -1536)
-SpikeNumber = ""
 
 [node name="Spikes547" parent="Spikes111" unique_id=512451923 instance=ExtResource("9_ekoii")]
 position = Vector2(-777, -1536)
-SpikeNumber = ""
 
 [node name="Spikes548" parent="Spikes111" unique_id=943068198 instance=ExtResource("9_ekoii")]
 position = Vector2(-1001, -1568)
-SpikeNumber = ""
 
 [node name="Spikes549" parent="Spikes111" unique_id=2072908169 instance=ExtResource("9_ekoii")]
 position = Vector2(-993, -1568)
-SpikeNumber = ""
 
 [node name="Spikes550" parent="Spikes111" unique_id=527197009 instance=ExtResource("9_ekoii")]
 position = Vector2(-984, -1568)
-SpikeNumber = ""
 
 [node name="Spikes552" parent="Spikes111" unique_id=7664106 instance=ExtResource("9_ekoii")]
 position = Vector2(-1032, -1536)
-SpikeNumber = ""
 
 [node name="Spikes553" parent="Spikes111" unique_id=820344545 instance=ExtResource("9_ekoii")]
 position = Vector2(-1019, -1568)
-SpikeNumber = ""
 
 [node name="Spikes554" parent="Spikes111" unique_id=1148164035 instance=ExtResource("9_ekoii")]
 position = Vector2(-1010, -1568)
-SpikeNumber = ""
 
 [node name="Spikes555" parent="Spikes111" unique_id=489996183 instance=ExtResource("9_ekoii")]
 position = Vector2(-1057, -1536)
-SpikeNumber = ""
 
 [node name="Spikes556" parent="Spikes111" unique_id=495186439 instance=ExtResource("9_ekoii")]
 position = Vector2(-1049, -1536)
-SpikeNumber = ""
 
 [node name="Spikes557" parent="Spikes111" unique_id=567160441 instance=ExtResource("9_ekoii")]
 position = Vector2(-1040, -1536)
-SpikeNumber = ""
 
 [node name="Spikes558" parent="Spikes111" unique_id=99205047 instance=ExtResource("9_ekoii")]
 position = Vector2(-1075, -1536)
-SpikeNumber = ""
 
 [node name="Spikes559" parent="Spikes111" unique_id=1198977104 instance=ExtResource("9_ekoii")]
 position = Vector2(-1066, -1536)
-SpikeNumber = ""
 
 [node name="Spikes551" parent="Spikes111" unique_id=1782458852 instance=ExtResource("9_ekoii")]
 position = Vector2(-821, -1536)
-SpikeNumber = ""
 
 [node name="Spikes442" parent="Spikes111" unique_id=180660582 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1135)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes443" parent="Spikes111" unique_id=1901116351 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1144)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes444" parent="Spikes111" unique_id=41594951 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1153)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes445" parent="Spikes111" unique_id=2077274278 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1117)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes465" parent="Spikes111" unique_id=1395935848 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1108)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes466" parent="Spikes111" unique_id=1633587502 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1099)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes467" parent="Spikes111" unique_id=777353677 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1090)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes446" parent="Spikes111" unique_id=1105020278 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1126)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes447" parent="Spikes111" unique_id=1430566205 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1180)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes448" parent="Spikes111" unique_id=206640613 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1189)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes449" parent="Spikes111" unique_id=1257626334 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1198)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes473" parent="Spikes111" unique_id=798406999 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1208)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes450" parent="Spikes111" unique_id=1903052800 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1162)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes451" parent="Spikes111" unique_id=1175992259 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1171)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes468" parent="Spikes111" unique_id=1200673188 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1236)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes469" parent="Spikes111" unique_id=1993961156 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1245)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes470" parent="Spikes111" unique_id=1267662886 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1254)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes471" parent="Spikes111" unique_id=1473239820 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1218)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes472" parent="Spikes111" unique_id=1458555049 instance=ExtResource("9_ekoii")]
 position = Vector2(-204, -1227)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes293" parent="Spikes111" unique_id=947289767 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -435)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes294" parent="Spikes111" unique_id=1728576333 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -471)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes295" parent="Spikes111" unique_id=2011119614 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -480)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes296" parent="Spikes111" unique_id=1667974608 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -462)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes297" parent="Spikes111" unique_id=1427091963 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -444)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes298" parent="Spikes111" unique_id=1272946696 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -453)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes299" parent="Spikes111" unique_id=2082674550 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -408)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes300" parent="Spikes111" unique_id=697459892 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -417)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes301" parent="Spikes111" unique_id=2044015849 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -426)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes302" parent="Spikes111" unique_id=1257719522 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -400)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes303" parent="Spikes111" unique_id=1122462669 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -373)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes304" parent="Spikes111" unique_id=138834125 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -382)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes307" parent="Spikes111" unique_id=635147055 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -355)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes309" parent="Spikes111" unique_id=1605513376 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -252)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes310" parent="Spikes111" unique_id=136836870 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -261)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes363" parent="Spikes111" unique_id=46443808 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -269)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes364" parent="Spikes111" unique_id=1021441394 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -278)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes308" parent="Spikes111" unique_id=1220435977 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -364)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes311" parent="Spikes111" unique_id=2093369556 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -345)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes313" parent="Spikes111" unique_id=1928360600 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -335)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes305" parent="Spikes111" unique_id=225233161 instance=ExtResource("9_ekoii")]
 position = Vector2(-348, -391)
 rotation = 1.5707964
-SpikeNumber = ""
 
 [node name="Spikes261" parent="Spikes111" unique_id=1029857422 instance=ExtResource("9_ekoii")]
 position = Vector2(-298, -240)
-SpikeNumber = ""
 
 [node name="Spikes262" parent="Spikes111" unique_id=2067475895 instance=ExtResource("9_ekoii")]
 position = Vector2(-307, -240)
-SpikeNumber = ""
 
 [node name="Spikes263" parent="Spikes111" unique_id=98037416 instance=ExtResource("9_ekoii")]
 position = Vector2(-316, -240)
-SpikeNumber = ""
 
 [node name="Spikes154" parent="Spikes111" unique_id=1233112654 instance=ExtResource("9_ekoii")]
 position = Vector2(706, 0)
-SpikeNumber = ""
 
 [node name="Spikes155" parent="Spikes111" unique_id=2063710732 instance=ExtResource("9_ekoii")]
 position = Vector2(715, 0)
-SpikeNumber = ""
 
 [node name="Spikes156" parent="Spikes111" unique_id=60421797 instance=ExtResource("9_ekoii")]
 position = Vector2(724, 0)
-SpikeNumber = ""
 
 [node name="Spikes157" parent="Spikes111" unique_id=533983625 instance=ExtResource("9_ekoii")]
 position = Vector2(680, 0)
-SpikeNumber = ""
 
 [node name="Spikes158" parent="Spikes111" unique_id=1365604387 instance=ExtResource("9_ekoii")]
 position = Vector2(688, 0)
-SpikeNumber = ""
 
 [node name="Spikes159" parent="Spikes111" unique_id=383233379 instance=ExtResource("9_ekoii")]
 position = Vector2(697, 0)
-SpikeNumber = ""
 
 [node name="Spikes160" parent="Spikes111" unique_id=1208078807 instance=ExtResource("9_ekoii")]
 position = Vector2(653, 0)
-SpikeNumber = ""
 
 [node name="Spikes161" parent="Spikes111" unique_id=1321731958 instance=ExtResource("9_ekoii")]
 position = Vector2(662, 0)
-SpikeNumber = ""
 
 [node name="Spikes162" parent="Spikes111" unique_id=1791001414 instance=ExtResource("9_ekoii")]
 position = Vector2(671, 0)
-SpikeNumber = ""
 
 [node name="Spikes163" parent="Spikes111" unique_id=386969805 instance=ExtResource("9_ekoii")]
 position = Vector2(627, 0)
-SpikeNumber = ""
 
 [node name="Spikes164" parent="Spikes111" unique_id=157614355 instance=ExtResource("9_ekoii")]
 position = Vector2(635, 0)
-SpikeNumber = ""
 
 [node name="Spikes165" parent="Spikes111" unique_id=1941889856 instance=ExtResource("9_ekoii")]
 position = Vector2(644, 0)
-SpikeNumber = ""
 
 [node name="Spikes166" parent="Spikes111" unique_id=466748574 instance=ExtResource("9_ekoii")]
 position = Vector2(612, 0)
-SpikeNumber = ""
 
 [node name="Spikes167" parent="Spikes111" unique_id=789100226 instance=ExtResource("9_ekoii")]
 position = Vector2(603, 0)
-SpikeNumber = ""
 
 [node name="Spikes168" parent="Spikes111" unique_id=1851539728 instance=ExtResource("9_ekoii")]
 position = Vector2(594, 0)
-SpikeNumber = ""
 
 [node name="Spikes169" parent="Spikes111" unique_id=445179930 instance=ExtResource("9_ekoii")]
 position = Vector2(585, 0)
-SpikeNumber = ""
 
 [node name="Spikes170" parent="Spikes111" unique_id=843155165 instance=ExtResource("9_ekoii")]
 position = Vector2(576, 0)
-SpikeNumber = ""
 
 [node name="Spikes171" parent="Spikes111" unique_id=239502038 instance=ExtResource("9_ekoii")]
 position = Vector2(621, 0)
-SpikeNumber = ""
 
 [node name="Spikes172" parent="Spikes111" unique_id=183489987 instance=ExtResource("9_ekoii")]
 position = Vector2(926, -16)
-SpikeNumber = ""
 
 [node name="Spikes173" parent="Spikes111" unique_id=704834632 instance=ExtResource("9_ekoii")]
 position = Vector2(935, -16)
-SpikeNumber = ""
 
 [node name="Spikes174" parent="Spikes111" unique_id=1300241861 instance=ExtResource("9_ekoii")]
 position = Vector2(899, -16)
-SpikeNumber = ""
 
 [node name="Spikes175" parent="Spikes111" unique_id=54047757 instance=ExtResource("9_ekoii")]
 position = Vector2(908, -16)
-SpikeNumber = ""
 
 [node name="Spikes176" parent="Spikes111" unique_id=1498208795 instance=ExtResource("9_ekoii")]
 position = Vector2(917, -16)
-SpikeNumber = ""
 
 [node name="Spikes177" parent="Spikes111" unique_id=1038408743 instance=ExtResource("9_ekoii")]
 position = Vector2(873, -16)
-SpikeNumber = ""
 
 [node name="Spikes178" parent="Spikes111" unique_id=1497024757 instance=ExtResource("9_ekoii")]
 position = Vector2(881, -16)
-SpikeNumber = ""
 
 [node name="Spikes179" parent="Spikes111" unique_id=715054083 instance=ExtResource("9_ekoii")]
 position = Vector2(890, -16)
-SpikeNumber = ""
 
 [node name="Spikes180" parent="Spikes111" unique_id=820690188 instance=ExtResource("9_ekoii")]
 position = Vector2(846, -16)
-SpikeNumber = ""
 
 [node name="Spikes181" parent="Spikes111" unique_id=903006726 instance=ExtResource("9_ekoii")]
 position = Vector2(855, -16)
-SpikeNumber = ""
 
 [node name="Spikes182" parent="Spikes111" unique_id=1199515559 instance=ExtResource("9_ekoii")]
 position = Vector2(864, -16)
-SpikeNumber = ""
 
 [node name="Spikes183" parent="Spikes111" unique_id=2068853469 instance=ExtResource("9_ekoii")]
 position = Vector2(820, -16)
-SpikeNumber = ""
 
 [node name="Spikes184" parent="Spikes111" unique_id=423168575 instance=ExtResource("9_ekoii")]
 position = Vector2(828, -16)
-SpikeNumber = ""
 
 [node name="Spikes185" parent="Spikes111" unique_id=1219501279 instance=ExtResource("9_ekoii")]
 position = Vector2(837, -16)
-SpikeNumber = ""
 
 [node name="Spikes186" parent="Spikes111" unique_id=824303200 instance=ExtResource("9_ekoii")]
 position = Vector2(805, -16)
-SpikeNumber = ""
 
 [node name="Spikes187" parent="Spikes111" unique_id=300287570 instance=ExtResource("9_ekoii")]
 position = Vector2(796, -16)
-SpikeNumber = ""
 
 [node name="Spikes188" parent="Spikes111" unique_id=304989169 instance=ExtResource("9_ekoii")]
 position = Vector2(787, -16)
-SpikeNumber = ""
 
 [node name="Spikes189" parent="Spikes111" unique_id=1681799872 instance=ExtResource("9_ekoii")]
 position = Vector2(778, -16)
-SpikeNumber = ""
 
 [node name="Spikes190" parent="Spikes111" unique_id=1279109777 instance=ExtResource("9_ekoii")]
 position = Vector2(769, -16)
-SpikeNumber = ""
 
 [node name="Spikes191" parent="Spikes111" unique_id=949398612 instance=ExtResource("9_ekoii")]
 position = Vector2(814, -16)
-SpikeNumber = ""
 
 [node name="Enemy" parent="Spikes111" unique_id=322745412 instance=ExtResource("10_hdu6x")]
 position = Vector2(75, -752)
 
 [node name="Spikes410" parent="Spikes111" unique_id=1759962945 instance=ExtResource("9_ekoii")]
 position = Vector2(-65, -736)
-SpikeNumber = ""
 
 [node name="Spikes411" parent="Spikes111" unique_id=1652799467 instance=ExtResource("9_ekoii")]
 position = Vector2(-56, -736)
-SpikeNumber = ""
 
 [node name="Spikes412" parent="Spikes111" unique_id=275566357 instance=ExtResource("9_ekoii")]
 position = Vector2(-47, -736)
-SpikeNumber = ""
 
 [node name="Spikes413" parent="Spikes111" unique_id=1736365325 instance=ExtResource("9_ekoii")]
 position = Vector2(-38, -736)
-SpikeNumber = ""
 
 [node name="Spikes414" parent="Spikes111" unique_id=1839061007 instance=ExtResource("9_ekoii")]
 position = Vector2(-29, -736)
-SpikeNumber = ""
 
 [node name="Enemy2" parent="Spikes111" unique_id=241305859 instance=ExtResource("10_hdu6x")]
 position = Vector2(75, -752)
