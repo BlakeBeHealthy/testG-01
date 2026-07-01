@@ -4,10 +4,8 @@ class_name bars extends Control
 @onready var top_bar: ColorRect = $topBar
 @onready var bottom_bar: ColorRect = $bottomBar
 var barsActive: bool = false
-	
-func _ready() -> void:
-	self.visible = true
-	
+
+
 func moveBars(dur: float = 0.3, stayOpen: bool = false, wait: bool = false):
 	print(stayOpen)
 	print(wait)
@@ -20,11 +18,15 @@ func moveBars(dur: float = 0.3, stayOpen: bool = false, wait: bool = false):
 		return 
 	else:
 		if barsActive:
+			top_bar.visible = true
+			bottom_bar.visible = true
 			t.tween_property(top_bar, "position:y", (top_bar.position.y - top_bar.size.y), dur)
 			t.tween_property(bottom_bar, "position:y", (bottom_bar.position.y + bottom_bar.size.y), dur)
 		elif !barsActive:
 			t.tween_property(top_bar, "position:y", (top_bar.position.y + top_bar.size.y), dur)
 			t.tween_property(bottom_bar, "position:y", (bottom_bar.position.y - bottom_bar.size.y), dur)
-		if wait:
 			await t.finished
-		barsActive = !barsActive
+			top_bar.visible = false
+			bottom_bar.visible = false
+			
+	barsActive = !barsActive
