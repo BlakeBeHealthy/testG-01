@@ -14,10 +14,12 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="TestGame"
+config/name="PrototypePan"
 run/main_scene="uid://bd4m67lt78aor"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://bo5rn6w031c4o"
+config/icon="uid://bwvhc63f84uyc"
 
 [autoload]
 
@@ -34,7 +36,7 @@ Balloon="*uid://b3l3bcn2iw6dk"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/initial_position_type=3
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
