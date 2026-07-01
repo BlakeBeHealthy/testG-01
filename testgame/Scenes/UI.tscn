@@ -77,6 +77,7 @@ offset_bottom = 16.0
 script = ExtResource("1_w371h")
 
 [node name="topBar" type="ColorRect" parent="." unique_id=82458824]
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 1.0
@@ -87,6 +88,7 @@ size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
 [node name="bottomBar" type="ColorRect" parent="." unique_id=1199729868]
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0

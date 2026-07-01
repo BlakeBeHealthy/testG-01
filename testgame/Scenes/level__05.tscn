@@ -2229,7 +2229,7 @@ size = Vector2(54.5, 42)
 size = Vector2(52, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krxo4"]
-size = Vector2(79, 90.75)
+size = Vector2(37.75, 90.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1vi5"]
 size = Vector2(155.5, 251.5)
@@ -2258,6 +2258,9 @@ limit_left = -1084
 limit_top = -399
 limit_right = 1115
 limit_bottom = 995
+
+[node name="Gate" parent="." unique_id=638527128 instance=ExtResource("11_p1vi5")]
+position = Vector2(-894, 70.00001)
 
 [node name="BetaNPC" parent="." unique_id=1828915867 instance=ExtResource("4_6q15i")]
 position = Vector2(-96, 140.24)
@@ -3490,24 +3493,24 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_krxo4")
 
 [node name="SpikeCheckpoint5" parent="SpikeCheckpoint5" unique_id=1981188827 instance=ExtResource("10_ihaum")]
-position = Vector2(1127, -193)
+position = Vector2(1230, -147)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint5/SpikeCheckpoint5" unique_id=2066186860]
-position = Vector2(0.5, 0)
+position = Vector2(-96, -19)
 shape = SubResource("RectangleShape2D_krxo4")
 
 [node name="SpikeCheckpoint3" parent="SpikeCheckpoint5" unique_id=386545049 instance=ExtResource("10_ihaum")]
 position = Vector2(615, 224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint5/SpikeCheckpoint3" unique_id=1980254046]
-position = Vector2(-10.5, -5.25)
+position = Vector2(-5.875, -5.25)
 shape = SubResource("RectangleShape2D_krxo4")
 
 [node name="SpikeCheckpoint4" parent="SpikeCheckpoint5" unique_id=1280573865 instance=ExtResource("10_ihaum")]
 position = Vector2(257, 187)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint5/SpikeCheckpoint4" unique_id=2024617390]
-position = Vector2(40, -2)
+position = Vector2(61, -47)
 shape = SubResource("RectangleShape2D_krxo4")
 
 [node name="SpikeCheckpoint6" parent="SpikeCheckpoint5" unique_id=1053793752 instance=ExtResource("10_ihaum")]
@@ -3543,9 +3546,6 @@ entry_door_name = "DJPT4"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DJPT2" unique_id=318558791]
 position = Vector2(504, -266)
 shape = SubResource("RectangleShape2D_0s6iw")
-
-[node name="Gate" parent="." unique_id=638527128 instance=ExtResource("11_p1vi5")]
-position = Vector2(-894, 70.00001)
 
 [node name="Checkpoint2" parent="." unique_id=464011995 instance=ExtResource("5_jmfiy")]
 position = Vector2(15, 150)
