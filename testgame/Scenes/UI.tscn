@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bvya24lhj31ru" path="res://Scripts/Non-State related/UI.gd" id="1_nxvpl"]
 [ext_resource type="Script" uid="uid://ch0vtpw4w4gw3" path="res://Scripts/Non-State related/hearts_box.gd" id="1_w371h"]
 [ext_resource type="PackedScene" uid="uid://b3l3bcn2iw6dk" path="res://Scenes/balloon.tscn" id="3_dewlx"]
-[ext_resource type="Script" uid="uid://bf6y4ba3s4vxm" path="res://Scenes/bars.gd" id="3_xjg7p"]
 [ext_resource type="Script" uid="uid://b4xi27kf3nksq" path="res://Scripts/Non-State related/clash_ui.gd" id="4_hfhsn"]
 [ext_resource type="Script" uid="uid://d3d78xxafjf1s" path="res://Scenes/bar_qte.gd" id="5_qwshj"]
 [ext_resource type="PackedScene" uid="uid://5drk3fx5glg2" path="res://Scenes/ButtonPrompt.tscn" id="6_48q88"]
@@ -77,28 +76,25 @@ offset_right = 14.0
 offset_bottom = 16.0
 script = ExtResource("1_w371h")
 
-[node name="bars" type="Control" parent="." unique_id=34284631]
-layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-grow_vertical = 2
-script = ExtResource("3_xjg7p")
-
-[node name="topBar" type="ColorRect" parent="bars" unique_id=82458824]
-layout_mode = 0
-offset_left = -4.0
-offset_top = -655.0
-offset_right = 1940.0
-offset_bottom = -545.0
+[node name="topBar" type="ColorRect" parent="." unique_id=82458824]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = -110.0
+offset_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
-[node name="bottomBar" type="ColorRect" parent="bars" unique_id=1199729868]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 545.0
-offset_right = 1926.0
-offset_bottom = 655.0
+[node name="bottomBar" type="ColorRect" parent="." unique_id=1199729868]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
 [node name="Balloon" parent="." unique_id=932871309 instance=ExtResource("3_dewlx")]

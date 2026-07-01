@@ -99,7 +99,7 @@ func APmove():
 	offsetting = true
 	
 func startBars(dur: float = 0.3, stayOpen: bool = false, cutEnd: bool = false):
-	await Global.UI.bars.moveBars(dur, stayOpen, cutEnd)
+	await Global.UI.moveBars(dur, stayOpen, cutEnd)
 	if cutEnd:
 		Global.cutsceneStarted = false
 		print("3 ", Global.cutsceneStarted)
