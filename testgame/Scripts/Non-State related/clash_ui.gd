@@ -79,9 +79,9 @@ func _input(event) -> void:
 	if !active:
 		return
 	if Input.is_action_just_pressed("jump"):
-		var power = max(10.0 - mash_count * 0.5, 1.0)
+		var fill_ratio = bar.value / bar.max_value
+		var power = max(10.0 - fill_ratio * 7.0, 3.0)
 		bar.value += power
-		mash_count += 1
 	
 func _process(delta: float) -> void:
 	if !active:

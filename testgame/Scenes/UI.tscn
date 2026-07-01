@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b4xi27kf3nksq" path="res://Scripts/Non-State related/clash_ui.gd" id="4_hfhsn"]
 [ext_resource type="Script" uid="uid://d3d78xxafjf1s" path="res://Scenes/bar_qte.gd" id="5_qwshj"]
 [ext_resource type="PackedScene" uid="uid://5drk3fx5glg2" path="res://Scenes/ButtonPrompt.tscn" id="6_48q88"]
+[ext_resource type="Texture2D" uid="uid://glw1rxicacbg" path="res://assets/keyboard-keys-for-ui 2/Keyboard Extras.png" id="8_mg6lk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dewlx"]
 bg_color = Color(0.8346143, 0.8346143, 0.8346143, 1)
@@ -27,6 +28,34 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wunin"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(64, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j04uc"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(64, 96, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vqx31"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wunin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wunin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j04uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j04uc")
+}],
+"loop": true,
+"name": &"space",
+"speed": 5.0
+}]
 
 [node name="UI" type="CanvasLayer" unique_id=1184425221]
 script = ExtResource("1_nxvpl")
@@ -134,5 +163,12 @@ value = 79.24
 show_percentage = false
 
 [node name="ButtonPrompt" parent="." unique_id=687141090 instance=ExtResource("6_48q88")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=243956419]
+visible = false
+position = Vector2(960, 207)
+scale = Vector2(13, 13)
+sprite_frames = SubResource("SpriteFrames_vqx31")
+animation = &"space"
 
 [connection signal="timeout" from="Clash/CT" to="Clash" method="_on_ct_timeout"]
