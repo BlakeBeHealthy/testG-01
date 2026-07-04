@@ -2292,7 +2292,7 @@ position = Vector2(0, -67.00001)
 shape = SubResource("RectangleShape2D_6tqv3")
 
 [node name="WestD" type="Area2D" parent="." unique_id=141517665]
-position = Vector2(-722.19, -19)
+position = Vector2(-724, -62)
 scale = Vector2(0.87377816, 3.5372038)
 collision_mask = 2
 script = ExtResource("6_4p08x")
@@ -2301,7 +2301,7 @@ path_to_new_scene = "res://Scenes/Level01.tscn"
 entry_door_name = "EastD"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WestD" unique_id=848045198]
-position = Vector2(-76.775, 0)
+position = Vector2(-72.10065, 11.308368)
 shape = SubResource("RectangleShape2D_aqnpp")
 
 [node name="Spikes" parent="." unique_id=898931136 instance=ExtResource("8_6tqv3")]
@@ -2394,17 +2394,17 @@ Lbound = -9999999
 Rbound = 99999999
 
 [node name="SpikeCheckpoint" parent="." unique_id=16437152 instance=ExtResource("10_6tqv3")]
-position = Vector2(-570, -31)
+position = Vector2(-592, -47)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=1171663464]
-position = Vector2(41, -1)
+position = Vector2(53, 2)
 shape = SubResource("CapsuleShape2D_6tqv3")
 
 [node name="SpikeCheckpoint2" parent="." unique_id=1291309938 instance=ExtResource("10_6tqv3")]
-position = Vector2(-260, -37)
+position = Vector2(-237, -43)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2" unique_id=495847992]
-position = Vector2(-42, 4)
+position = Vector2(-48, -1)
 shape = SubResource("CapsuleShape2D_6tqv3")
 
 [connection signal="body_entered" from="NorthD" to="NorthD" method="_on_body_entered"]

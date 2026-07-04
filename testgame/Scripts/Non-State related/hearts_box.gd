@@ -6,7 +6,7 @@ const MAX_HEARTS = 3
 
 func _ready() -> void:
 	Global.playerDone.connect(_on_player_ready)
-	for i in range(MAX_HEARTS):
+	for i in range(Global.saveData.maxHealth):
 		var heart = heartsUI.instantiate()
 		add_child(heart)
 		hearts.append(heart)

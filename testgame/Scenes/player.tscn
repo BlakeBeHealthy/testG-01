@@ -711,10 +711,12 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"fall"
+animation = &"pogo"
+frame = 2
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
+visible = false
 visibility_layer = 2
 position = Vector2(3, 8)
 scale = Vector2(1.59, 1.274)
@@ -722,6 +724,7 @@ shape = SubResource("RectangleShape2D_ukyrk")
 debug_color = Color(1, 0.4380554, 0.6406184, 0.41960785)
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=764626776]
+visible = false
 position = Vector2(0, 4)
 collision_layer = 64
 collision_mask = 8960
@@ -732,13 +735,24 @@ scale = Vector2(0.54, 1)
 shape = SubResource("RectangleShape2D_gymyn")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1898396502]
-visible = false
 position = Vector2(0, 7)
 scale = Vector2(0.507894, 0.9085177)
 collision_layer = 2056
 collision_mask = 32
 
 [node name="hurtbox" type="CollisionShape2D" parent="Area2D2" unique_id=1299933768]
+position = Vector2(-1.2291494e-07, 1.1006944)
+scale = Vector2(0.99999976, 1)
+shape = SubResource("RectangleShape2D_tx1dd")
+debug_color = Color(0.90078, 0.3079449, 0.121679135, 0.41960785)
+
+[node name="Area2D3" type="Area2D" parent="." unique_id=1551720643]
+position = Vector2(0, 7)
+scale = Vector2(0.507894, 0.9085177)
+collision_layer = 2048
+collision_mask = 32
+
+[node name="hurtbox" type="CollisionShape2D" parent="Area2D3" unique_id=1580656734]
 position = Vector2(-1.2291494e-07, 1.1006944)
 scale = Vector2(0.99999976, 1)
 shape = SubResource("RectangleShape2D_tx1dd")
@@ -937,6 +951,11 @@ decay = 10.0
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Jump" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Fall" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Attack" method="_on_area_2d_2_area_entered"]
+[connection signal="area_entered" from="Area2D3" to="StateMachine/Idle" method="_on_area_2d_2_area_entered"]
+[connection signal="area_entered" from="Area2D3" to="StateMachine/Run" method="_on_area_2d_2_area_entered"]
+[connection signal="area_entered" from="Area2D3" to="StateMachine/Jump" method="_on_area_2d_2_area_entered"]
+[connection signal="area_entered" from="Area2D3" to="StateMachine/Fall" method="_on_area_2d_2_area_entered"]
+[connection signal="area_entered" from="Area2D3" to="StateMachine/Attack" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="ParryZone" to="StateMachine/Parry" method="_on_parry_zone_area_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]

@@ -2278,7 +2278,7 @@ position = Vector2(-100, 6)
 shape = SubResource("RectangleShape2D_cyq6k")
 
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("7_hdu6x")]
-position = Vector2(976, -522)
+position = Vector2(938, -522)
 current_scene_path = "res://Scenes/level_07.tscn"
 
 [node name="Checkpoint2" parent="." unique_id=2058902645 instance=ExtResource("7_hdu6x")]
@@ -4363,65 +4363,66 @@ position = Vector2(-67, 33)
 shape = SubResource("CircleShape2D_ta0hk")
 
 [node name="SpikeCheckpoint19" parent="SpikeCheckpoint2" unique_id=361301219 instance=ExtResource("12_776at")]
-position = Vector2(866, 443)
+position = Vector2(866, 421)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint19" unique_id=545602634]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_ta0hk")
 
 [node name="SpikeCheckpoint20" parent="SpikeCheckpoint2" unique_id=983462775 instance=ExtResource("12_776at")]
-position = Vector2(1266, 298)
+position = Vector2(1266, 264)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint20" unique_id=1653824158]
-position = Vector2(1, -14)
+position = Vector2(43, 12)
 shape = SubResource("CapsuleShape2D_hdu6x")
 
 [node name="SpikeCheckpoint5" parent="SpikeCheckpoint2" unique_id=993877774 instance=ExtResource("12_776at")]
-position = Vector2(156, -172)
+position = Vector2(80, -189)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint5" unique_id=1501898762]
-position = Vector2(1, -24)
+position = Vector2(85, 12)
 shape = SubResource("CapsuleShape2D_776at")
 
 [node name="SpikeCheckpoint6" parent="SpikeCheckpoint2" unique_id=1857167784 instance=ExtResource("12_776at")]
-position = Vector2(293, -211)
+position = Vector2(298, -237)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint6" unique_id=1977569889]
-position = Vector2(0, -5)
+position = Vector2(-33, 25)
 shape = SubResource("CapsuleShape2D_ta0hk")
 
 [node name="SpikeCheckpoint7" parent="SpikeCheckpoint2" unique_id=1011919231 instance=ExtResource("12_776at")]
-position = Vector2(491, -208)
+position = Vector2(423, -235)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint7" unique_id=158464346]
-position = Vector2(0, -5)
+position = Vector2(77, 22)
 shape = SubResource("CapsuleShape2D_ta0hk")
 
 [node name="SpikeCheckpoint8" parent="SpikeCheckpoint2" unique_id=1430722959 instance=ExtResource("12_776at")]
-position = Vector2(656, -211)
+position = Vector2(696, -231)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint8" unique_id=1685829840]
-position = Vector2(0, -5)
+position = Vector2(-48, 13)
 shape = SubResource("CapsuleShape2D_ta0hk")
 
 [node name="SpikeCheckpoint9" parent="SpikeCheckpoint2" unique_id=683401728 instance=ExtResource("12_776at")]
-position = Vector2(546, -340)
+position = Vector2(497, -363)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint9" unique_id=1085107460]
-position = Vector2(0, -5)
+position = Vector2(64, 17)
 shape = SubResource("CapsuleShape2D_ta0hk")
 
 [node name="SpikeCheckpoint10" parent="SpikeCheckpoint2" unique_id=851861484 instance=ExtResource("12_776at")]
-position = Vector2(221, -354)
+position = Vector2(200, -386)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint10" unique_id=1328348979]
-position = Vector2(0, -5)
+position = Vector2(42, 31)
 shape = SubResource("CapsuleShape2D_ta0hk")
 
 [node name="SpikeCheckpoint11" parent="SpikeCheckpoint2" unique_id=697157283 instance=ExtResource("12_776at")]
-position = Vector2(-176, -482)
+position = Vector2(-95, -522)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint11" unique_id=242292741]
-position = Vector2(0, -5)
+position = Vector2(-87, 36)
 shape = SubResource("CapsuleShape2D_ta0hk")
 
 [node name="SpikeCheckpoint12" parent="SpikeCheckpoint2" unique_id=1487443705 instance=ExtResource("12_776at")]
@@ -4432,70 +4433,70 @@ position = Vector2(150, -1)
 shape = SubResource("CapsuleShape2D_ta0hk")
 
 [node name="SpikeCheckpoint4" parent="SpikeCheckpoint2" unique_id=245225833 instance=ExtResource("12_776at")]
-position = Vector2(-331, 35)
+position = Vector2(-374, 33)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint4" unique_id=1974080553]
-position = Vector2(130, 0)
+position = Vector2(171, -1)
 shape = SubResource("CircleShape2D_ta0hk")
 
 [node name="SpikeCheckpoint3" parent="SpikeCheckpoint2" unique_id=1965495520 instance=ExtResource("12_776at")]
-position = Vector2(168, 27)
+position = Vector2(113, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint3" unique_id=160116938]
-position = Vector2(-2.3841858e-06, -27)
+position = Vector2(71, 19)
 shape = SubResource("CapsuleShape2D_fslw5")
 
 [node name="SpikeCheckpoint13" parent="SpikeCheckpoint2" unique_id=2059801740 instance=ExtResource("12_776at")]
-position = Vector2(-43, 1028)
+position = Vector2(-101, 985)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint13" unique_id=354737710]
-position = Vector2(-2.3841858e-06, -27)
+position = Vector2(78, 18)
 shape = SubResource("CapsuleShape2D_fslw5")
 
 [node name="SpikeCheckpoint14" parent="SpikeCheckpoint2" unique_id=971542429 instance=ExtResource("12_776at")]
-position = Vector2(133, 949)
+position = Vector2(247, 927)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint14" unique_id=1771442891]
-position = Vector2(-2.3841858e-06, -27)
+position = Vector2(-121, 1)
 shape = SubResource("CapsuleShape2D_fslw5")
 
 [node name="SpikeCheckpoint15" parent="SpikeCheckpoint2" unique_id=623421947 instance=ExtResource("12_776at")]
-position = Vector2(426, 966)
+position = Vector2(439, 922)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint15" unique_id=1821838339]
-position = Vector2(-2.3841858e-06, -27)
+position = Vector2(73, 19)
 shape = SubResource("CapsuleShape2D_fslw5")
 
 [node name="SpikeCheckpoint16" parent="SpikeCheckpoint2" unique_id=167695972 instance=ExtResource("12_776at")]
-position = Vector2(1478, 888)
+position = Vector2(1520, 852)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint16" unique_id=1360775519]
-position = Vector2(-2.3841858e-06, -27)
+position = Vector2(-48.000004, 22)
 shape = SubResource("CapsuleShape2D_fslw5")
 
 [node name="SpikeCheckpoint17" parent="SpikeCheckpoint2" unique_id=1936345632 instance=ExtResource("12_776at")]
-position = Vector2(800, 758)
+position = Vector2(845, 733)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint17" unique_id=178106136]
-position = Vector2(-2.3841858e-06, -27)
+position = Vector2(-37.000004, 14)
 shape = SubResource("CapsuleShape2D_fslw5")
 
 [node name="SpikeCheckpoint18" parent="SpikeCheckpoint2" unique_id=712804860 instance=ExtResource("12_776at")]
-position = Vector2(154, 794)
+position = Vector2(133, 751)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint18" unique_id=742496940]
-position = Vector2(-2.3841858e-06, -27)
+position = Vector2(34.999996, 16)
 shape = SubResource("CapsuleShape2D_fslw5")
 
 [node name="SpikeCheckpoint" parent="." unique_id=16437152 instance=ExtResource("12_776at")]
-position = Vector2(978, -569)
+position = Vector2(998, -582)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=418144665]
-position = Vector2(-212, -9)
+position = Vector2(-245, 5)
 shape = SubResource("CircleShape2D_ta0hk")
 
 [node name="Checkpoint3" parent="." unique_id=225534034 instance=ExtResource("7_hdu6x")]
 position = Vector2(229, -602)
 
 [node name="Checkpoint4" parent="." unique_id=1436378800 instance=ExtResource("7_hdu6x")]
-position = Vector2(1070, 278)
+position = Vector2(1118, 278)
