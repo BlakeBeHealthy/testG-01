@@ -145,7 +145,7 @@ func _on_landed(): #This will be for cutscenes when the player cant move
 
 func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration: float):
 	if !invincible:
-		damage = dmg
+		damage = 0
 		dir = direction
 		stre = strength
 		stunT = stun_time
@@ -195,9 +195,11 @@ func _on_timer_timeout() -> void:
 	comboCount = 0
 
 func respawn():
-	velocity = Vector2.ZERO
+	control_locked = true
+	velocity = Vector2(0, 500)
+	print(respawnCoord)
+	print(global_position)
 	self.global_position = respawnCoord
-	state_machine.change_state(fall_state)
 
 func _on_parry_cooldown_timeout() -> void:
 	parried = false

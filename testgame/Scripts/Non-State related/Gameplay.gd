@@ -34,7 +34,6 @@ func on_level_loaded(level: Node) -> void:
 	#Declares player with global, this happens a lot
 	var player = Global.player
 	
-	
 	if is_respawn:
 		player.global_position = Global.saveData.checkpoint_pos
 		is_respawn = false
@@ -51,7 +50,13 @@ func on_level_loaded(level: Node) -> void:
 	await get_tree().create_timer(0.09).timeout
 	if Global.inputBlocked:
 		Global.inputBlocked = false
-	FadeS.fade_in()
+		
+	player.velocity = Vector2(0, 400)
+	await Global.player.landed
+	await FadeS.fade_in(1.0, true)
+	
+	if player.control_locked:
+		player.control_locked = false
 	
 func _dir_from_enum(dir: int) -> Vector2:
 	match dir:

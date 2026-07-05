@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dbnqbhv2y8oh1" path="res://assets/animated-pixel-hero 2/adventurer-v1.5-Sheet.png" id="2_gymyn"]
 [ext_resource type="Shader" uid="uid://bso3jsws5lrsh" path="res://Scenes/hit_flash.gdshader" id="2_pu2lt"]
 [ext_resource type="Script" uid="uid://drca7qt0tbpv8" path="res://Scripts/playerScripts/idle.gd" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://cphuja0sxpymj" path="res://assets/plantenemy.png" id="4_fs7ks"]
 [ext_resource type="Script" uid="uid://6pmv6x4tnxyy" path="res://Scripts/playerScripts/StateM.gd" id="4_x3wgy"]
 [ext_resource type="Script" uid="uid://ft25rqcrc27w" path="res://Scripts/playerScripts/dash.gd" id="5_qqcod"]
 [ext_resource type="Script" uid="uid://wqmo4cxjnj3s" path="res://Scripts/playerScripts/run.gd" id="6_3smsa"]
@@ -215,6 +216,38 @@ region = Rect2(100, 74, 50, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6n3p"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(150, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ketbw"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(0, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4grkl"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(2048, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yrdb"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(4096, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ue0p1"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(6144, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isbcs"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(8192, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_142e3"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(10240, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts2c8"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(12288, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcgbs"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(14336, 0, 2048, 2048)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsob3"]
 atlas = ExtResource("2_gymyn")
@@ -533,6 +566,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ketbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4grkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yrdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ue0p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isbcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_142e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts2c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcgbs")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jsob3")
 }, {
 "duration": 1.0,
@@ -711,12 +773,10 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"pogo"
-frame = 2
+animation = &"fall"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
-visible = false
 visibility_layer = 2
 position = Vector2(3, 8)
 scale = Vector2(1.59, 1.274)
@@ -741,12 +801,14 @@ collision_layer = 2056
 collision_mask = 32
 
 [node name="hurtbox" type="CollisionShape2D" parent="Area2D2" unique_id=1299933768]
+visible = false
 position = Vector2(-1.2291494e-07, 1.1006944)
 scale = Vector2(0.99999976, 1)
 shape = SubResource("RectangleShape2D_tx1dd")
 debug_color = Color(0.90078, 0.3079449, 0.121679135, 0.41960785)
 
 [node name="Area2D3" type="Area2D" parent="." unique_id=1551720643]
+visible = false
 position = Vector2(0, 7)
 scale = Vector2(0.507894, 0.9085177)
 collision_layer = 2048
@@ -872,7 +934,7 @@ one_shot = true
 [node name="StateMachine" type="Node" parent="." unique_id=1235796374 node_paths=PackedStringArray("attack_state", "starting_state")]
 script = ExtResource("4_x3wgy")
 attack_state = NodePath("Attack")
-starting_state = NodePath("Idle")
+starting_state = NodePath("CutsceneState")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=389573731]
 script = ExtResource("3_i3pqv")

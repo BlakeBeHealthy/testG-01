@@ -791,12 +791,11 @@ dmg = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 material = SubResource("ShaderMaterial_s0ijq")
 sprite_frames = SubResource("SpriteFrames_7qyh4")
-animation = &"idle"
+animation = &"wallhang"
 autoplay = "idle"
 speed_scale = 0.8
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1084309487]
-visible = false
 position = Vector2(3.077, 13.8)
 scale = Vector2(0.4, 0.6)
 collision_layer = 32
@@ -806,7 +805,6 @@ collision_mask = 8
 shape = SubResource("CapsuleShape2D_s0ijq")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=893686466]
-visible = false
 position = Vector2(2.307692, 9.230769)
 scale = Vector2(0.9457125, 1.1490058)
 collision_layer = 16

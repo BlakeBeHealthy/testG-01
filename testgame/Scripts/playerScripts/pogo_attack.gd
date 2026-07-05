@@ -21,7 +21,8 @@ func enter() -> void:
 	
 	as2d.play("pogo")
 	a2d.position.x = 0
-	a2d.position.y = 14
+	a2d.position.y = 18
+	
 	a2d.scale.x = 1.3
 	a2d.scale.y = 1.0
 	pass

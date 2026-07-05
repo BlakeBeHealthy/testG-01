@@ -2256,7 +2256,7 @@ position = Vector2(83.99999, 36)
 shape = SubResource("RectangleShape2D_4ve4b")
 
 [node name="SouthD" type="Area2D" parent="." unique_id=1849092180]
-position = Vector2(-169, -83)
+position = Vector2(-165, -58)
 collision_mask = 2
 script = ExtResource("5_ckw4o")
 entry_direction = 0
@@ -2268,7 +2268,7 @@ position = Vector2(83, 234)
 shape = SubResource("RectangleShape2D_4ve4b")
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("6_hslk2")]
-position = Vector2(-236, -115)
+position = Vector2(-170, -36)
 
 [node name="Spikes" parent="." unique_id=898931136 instance=ExtResource("7_ckw4o")]
 position = Vector2(-409, 25)

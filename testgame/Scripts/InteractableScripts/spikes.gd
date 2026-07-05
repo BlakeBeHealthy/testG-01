@@ -67,6 +67,8 @@ func spawnPlayer():
 		if Global.saveData.maxHealth <= 0:
 			return
 		player.respawn()
+		await player.landed
 		await get_tree().create_timer(0.3).timeout
 		Global.spawning = false
+		player.control_locked = false
 		FadeS.fade_in(0.8)
