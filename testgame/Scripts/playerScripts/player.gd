@@ -225,9 +225,8 @@ func apply_horizontal_air_control(speed: float) -> void:
 	var direction = Input.get_axis("runL", "runR")
 	if wall_state == WallState.JUMPING and !air_control_timer.is_stopped():
 		return  # still locked, do nothing to velocity.x
-	if wall_state == WallState.JUMPING:
-		wall_state = WallState.NONE
-		velocity.x = move_toward(velocity.x, direction * speed, 800 * get_process_delta_time())
+	elif wall_state == WallState.JUMPING:
+		velocity.x = move_toward(velocity.x, direction * speed, get_process_delta_time())
 	else:
 		velocity.x = direction * speed
 		
@@ -253,7 +252,6 @@ func update_ground_visuals(direction: float) -> void:
 		
 		
 func update_air_visuals(direction: float) -> void:
-	c.position = Vector2(0, 8)
 	if direction > 0:
 		c_check_1.position.x = 8.0
 		c_check_2.position.x = -2.0

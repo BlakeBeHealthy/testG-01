@@ -38,7 +38,8 @@ func enter() -> void:
 		as2d.flip_h = false
 	elif attackDir < 0:
 		as2d.flip_h = true
-	a2d.position = Vector2(20 * attackDir, 4)
+	if attackDir != 0:
+		a2d.position = Vector2(20 * attackDir, 4)
 	checkAttack = false
 	
 	if checkHit:

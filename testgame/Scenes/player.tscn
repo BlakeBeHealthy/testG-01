@@ -773,10 +773,11 @@ jumpCut = 0.3
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"wallSlide"
+animation = &"pogo"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
+visible = false
 visibility_layer = 2
 position = Vector2(0, 8)
 scale = Vector2(1.59, 1.274)
@@ -834,7 +835,6 @@ shape = SubResource("CapsuleShape2D_pg0gw")
 debug_color = Color(0.9978096, 0, 0.1678963, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=450046427]
-visible = false
 position = Vector2(18, 4)
 scale = Vector2(1.785, 1.525)
 collision_layer = 128
@@ -944,7 +944,7 @@ script = ExtResource("6_3smsa")
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175]
 script = ExtResource("8_8erm5")
-wall_jump_force = 600.0
+wall_jump_force = 500.0
 decayRate = 3500.0
 air_control_lockout = 0.1
 

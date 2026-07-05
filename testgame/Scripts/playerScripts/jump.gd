@@ -36,7 +36,7 @@ func enter() -> void:
 		
 		
 func exit() -> void:
-	c.position = Vector2(-0.5, 8)
+	pass
 
 func process_input(event: InputEvent) -> State:
 	if !wallJumpOver and Input.is_action_just_pressed("jump"):
@@ -45,7 +45,6 @@ func process_input(event: InputEvent) -> State:
 
 		
 func process_frame(delta: float) -> State:
-		
 	if parent.takeHit:
 		return parent.hit_state
 		
