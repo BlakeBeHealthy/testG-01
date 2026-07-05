@@ -130,7 +130,7 @@ func shoot(loopcount: int = 1, duration: float = 0, wait: float = 1.0, speed: fl
 	
 func shootingout():
 	if pattern == 0:
-		await shoot(5, 1.0, 1.0, 300)
+		await shoot(5, 1.0, 0.5, 300)
 		await shoot(5, 0.7, 1.0)
 		await shoot(50, 0.001, 1.0, 300)
 		await shoot(50, 0.001, 1.0)
@@ -142,14 +142,12 @@ func shootingout():
 		await shoot(100, 0.001, 1.5)
 		await shoot(5, 0.5, 1.0, 300)
 		await shoot(130, 0.001, 1.5)
-		pattern = 2
-	elif pattern == 2:
 		await shoot(100, 0.001, 0.5)
 		await shoot(100, 0.001, 1.0)
 		await shoot(150, 0.001, 1.0)
 		await shoot(15, 0.6, 1.0, 300)
-		pattern = 3
-	elif pattern == 3:
+		pattern = 2
+	elif pattern == 2:
 		await shoot(30, 0.001, 0.5, 100)
 		await shoot(5, 0.7, 2.0, 300)
 		await shoot(90, 0.001, 0.5, 100)
@@ -157,7 +155,7 @@ func shootingout():
 		await shoot(120, 0.001, 0.2, 100)
 		await shoot(3, 0.8, 0.5, 300)
 		await shoot(2, 0.8, 0.05, 300)
-		await shoot(140, 0.001, 0.2, 100)
+		await shoot(150, 0.001, 0.2, 100)
 		await shoot(5, 0.5, 0.1, 300)
 		pattern = 1
 	as2d.play("pray_end")

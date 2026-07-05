@@ -862,6 +862,9 @@ target_position = Vector2(-7.3, 0)
 [node name="air_control_timer" type="Timer" parent="." unique_id=60941807]
 one_shot = true
 
+[node name="air_fade_timer" type="Timer" parent="." unique_id=401066385]
+one_shot = true
+
 [node name="wall_touch_timer" type="Timer" parent="." unique_id=449303984]
 one_shot = true
 
@@ -931,7 +934,8 @@ script = ExtResource("6_3smsa")
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175]
 script = ExtResource("8_8erm5")
-wall_jump_force = 500.0
+wall_jump_force = 450.0
+wall_jump_forceY = 550.0
 decayRate = 3500.0
 air_control_lockout = 0.1
 

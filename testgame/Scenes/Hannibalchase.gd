@@ -6,6 +6,8 @@ var chaseDir: float
 var Dircheck: bool = false
 
 func enter() -> void:
+	as2d.play("startRun")
+	await as2d.animation_finished
 	as2d.play("run")
 	
 func exit() -> void:
@@ -26,6 +28,9 @@ func process_frame(delta: float) -> States:
 	return null
 
 func process_physics(delta: float) -> States:
+	if as2d.animation == "startRun":
+		return
+		
 	if parent.middleAttack or parent.lunge:
 		chaseDir = 568 - parent.position.x
 		if abs(chaseDir) < 3.0 and parent.middleAttack:
@@ -54,6 +59,9 @@ func process_physics(delta: float) -> States:
 			return parent.idle_state
 	
 	parent.velocity.y += gravity * delta
-	parent.velocity.x = parent.direction * parent.MovementSpeed
+	if parent.phase2:
+		parent.velocity.x = parent.direction * parent.MovementSpeed * 1.2
+	else:
+		parent.velocity.x = parent.direction * parent.MovementSpeed
 	parent.move_and_slide()
 	return null

@@ -8,6 +8,7 @@ class_name Jump
 @onready var a2d: Area2D = $"../../Area2D"
 @onready var c: CollisionShape2D = $"../../c"
 @export var wall_jump_force: float
+@export var wall_jump_forceY: float
 @export var decayRate: float
 @onready var wall_jump_buffer: Timer = $"../../WallJumpBuffer"
 @export var air_control_lockout: float = 0.05
@@ -24,13 +25,14 @@ func enter() -> void:
 	if parent.wall_state == parent.WallState.NONE:
 		if !parent.jumpCheck:
 			as2d.play("jump")
+			parent.air_control_timer.start(0.1)
 			parent.velocity.y = -parent.JUMP
 			parent.jumpCheck = true
 	else:
 		as2d.play("jump")
 		parent.wall_slide_fall.start()
 		parent.velocity.x = -parent.Jdirection * wall_jump_force
-		parent.velocity.y = -wall_jump_force
+		parent.velocity.y = -wall_jump_forceY
 		parent.air_control_timer.start(air_control_lockout)
 		parent.wall_state = parent.WallState.JUMPING
 		

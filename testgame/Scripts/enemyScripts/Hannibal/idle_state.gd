@@ -16,6 +16,7 @@ var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
 	if parent.phase2S and ((!parent.phase2 and parent.healthCount <= 20 and !P2) or parent.death):
+		print("yo")
 		parent.phase2S = false
 		P2 = true
 		cutCheck = true
@@ -58,13 +59,13 @@ func process_frame(delta: float) -> States:
 	if Global.inputBlocked:
 		return null
 		
-	if parent.phase2S and ((!parent.phase2 and parent.healthCount <= 20 and !P2) or parent.death):
+	if parent.phase2S and ((!parent.phase2 and parent.healthCount <= 25 and !P2) or parent.death):
 		parent.phase2S = false
 		P2 = true
 		cutCheck = true
 		phase2start()
 		
-	if parent.phase2S and !parent.phase2 and parent.healthCount == 20 and !P2:
+	if parent.phase2S and !parent.phase2 and parent.healthCount == 25 and !P2:
 		parent.phase2S = false
 		P2 = true
 		cutCheck = true

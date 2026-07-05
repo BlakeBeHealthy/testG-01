@@ -27,6 +27,7 @@ func enter() -> void:
 		parent.camLook = true
 		
 func exit() -> void:
+	parent.takeHit = false
 	collision_shape_2d.disabled = false
 	dialogueActive = false
 	speaking = false
@@ -73,6 +74,7 @@ func process_frame(delta: float) -> State:
 		
 	if parent.camLook:
 		if !Input.is_action_pressed("PlayerLock"):
+			parent.control_locked = false
 			parent.camLook = false
 			done = true
 		
@@ -87,6 +89,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if as2d.animation == "save2":
 		checkpoint = false
 		done = true
+		parent.control_locked = false
 		parent.saving.emit(2)
 	elif as2d.animation == "save1":
 		parent.saving.emit(1)
@@ -97,7 +100,7 @@ func process_physics(delta: float) -> State:
 		parent.velocity.y = (gravity * 1.5) * delta
 		as2d.play("fall")
 		parent.move_and_slide()
-	else:
+	elif !checkpoint:
 		as2d.play("idle")
 		if !parent.visible:
 			as2d.frame = 1

@@ -27,8 +27,6 @@ func enter() -> void:
 	attack_delay.start()
 	parent.as2d.position = Vector2(0, 0)
 	attackDir = Input.get_axis("runL", "runR")
-	parent.c_check_1.enabled = true
-	parent.c_check_2.enabled = true
 	parent.update_ground_visuals(attackDir)
 	if attackDir > 0:
 		as2d.flip_h = false
@@ -67,8 +65,6 @@ func exit() -> void:
 	a2d.monitoring = false
 	attackDir = 0
 	KB = false
-	parent.c_check_1.enabled = false
-	parent.c_check_2.enabled = false
 	
 func process_input(event: InputEvent) -> State:
 	return null

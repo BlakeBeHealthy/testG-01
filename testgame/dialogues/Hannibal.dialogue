@@ -1,9 +1,18 @@
 ~ start
+if Global.hannible1:
+	=> skip
 Hannibal: I've been looking for you.
 P: Have we met?
 Hannibal: I've killed you countless times before. But this moment in time keeps repeating.
+set Global.hannible1 = true
+=> enter
+
+~ skip
+Hannibal: You know how this goes
+
+~ enter
 $> playResume("e2", false, true)
-Hannibal: You will die
+Hannibal: You will die, again
 $>> Global.camera.reset(0.5)
 $>> Global.camera.startBars(0.3)
 set Global.cutsceneStarted = false
@@ -23,7 +32,7 @@ if Global.clash_won:
 set Global.cutsceneStarted = false
 $>> Global.camera.reset(0.3)
 $>> Global.camera.startBars()
-do Global.player.anim()
+set Global.player.control_locked = false
 => END
 
 ~ d1
@@ -42,7 +51,7 @@ Hannibal: You will see me again, it may be in different attire...but the motive 
 Hannibal: See you soon. Player.
 $> playEnd("HD2_2")
 set Global.cutsceneStarted = false
-do Global.player.anim()
+set Global.player.control_locked = false
 $>> Global.camera.reset(0.5)
 $>> Global.camera.startBars()
 => END

@@ -41,10 +41,12 @@ func process_frame(delta: float) -> States:
 	
 	if done:
 		if lungeCheck:
-			if !parent.phase2:
-				parent.lunge = false
-			else:
+			if parent.pray == parent.PrayMove.ACTIVE:
 				parent.playerAbove = true
+				print("active")
+			else:
+				print("2")
+				parent.lunge = false
 			parent.chase = false
 			lungeCheck = false
 		else:

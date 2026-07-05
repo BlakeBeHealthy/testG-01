@@ -10,7 +10,8 @@ var inputBlocked: bool = false
 var cutWait: bool = false
 var clash_won: bool = false
 var qte: bool = true
-var hannible: bool = true
+var hannible: bool = false
+var hannible1: bool = false
 var spawning: bool = false
 var player: CharacterBody2D
 var Clash: Control

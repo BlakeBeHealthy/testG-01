@@ -38,7 +38,7 @@ extends CharacterBody2D
 @onready var wallslide_chest: RayCast2D = $wallslideChest
 @onready var wall_slide_fall: Timer = $wallSlideFall
 @onready var air_control_timer: Timer = $air_control_timer
-
+@onready var air_fade_timer: Timer = $air_fade_timer
 
 @warning_ignore("unused_signal")
 signal playerHit
@@ -146,7 +146,7 @@ func _on_landed(): #This will be for cutscenes when the player cant move
 
 func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration: float):
 	if !invincible:
-		damage = 0
+		damage = dmg
 		dir = direction
 		stre = strength
 		stunT = stun_time
@@ -223,12 +223,24 @@ func anim():
 		
 func apply_horizontal_air_control(speed: float) -> void:
 	var direction = Input.get_axis("runL", "runR")
-	if wall_state == WallState.JUMPING and !air_control_timer.is_stopped():
-		return  # still locked, do nothing to velocity.x
-	elif wall_state == WallState.JUMPING:
-		velocity.x = move_toward(velocity.x, direction * speed, get_process_delta_time())
-	else:
+	if wall_state != WallState.JUMPING:
+		# normal air movement, nothing special
 		velocity.x = direction * speed
+		update_air_visuals(direction)
+		return
+		
+	if !air_control_timer.is_stopped():
+		update_air_visuals(direction)
+		return
+		
+		
+	var heading_back = (direction == Jdirection)
+	
+	if heading_back:
+		wall_state = WallState.NONE
+		velocity.x = direction * speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, 2000 * get_process_delta_time())
 		
 	update_air_visuals(direction)
 	
@@ -288,3 +300,6 @@ func update_air_visuals(direction: float) -> void:
 			as2d.position = Vector2(-3, 5)
 			a2d2.position.x = 4
 		a2d2.position.y = 0
+		
+func _on_air_control_lockout_timeout() -> void:
+	air_fade_timer.start(0.002)

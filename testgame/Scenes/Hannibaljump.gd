@@ -41,6 +41,7 @@ func process_frame(delta: float) -> States:
 		fallAttack = false
 		flip = false
 		fallAttackCheck = false
+		parent.chase = false
 		return parent.idle_state
 	
 	if parent.wallDetection.is_colliding() and !parent.is_on_floor() and !fallAttack:
@@ -56,11 +57,17 @@ func process_frame(delta: float) -> States:
 	if landOver:
 		landOver = false
 		if parent.jump2 != 1:
-			parent.idle_time = 1.4
+			if parent.phase2:
+				parent.idle_time = 1.0
+			else:
+				parent.idle_time = 1.5
 			parent.jump2 += 1
 			parent.chase = true
 		elif parent.jump2 == 1:
-			parent.idle_time = 1.0
+			if parent.phase2:
+				parent.idle_time = 0.5
+			else:
+				parent.idle_time = 1.0
 			parent.jump2 = -1
 		return parent.idle_state
 	return null
@@ -126,7 +133,10 @@ func fallAttacking() -> void:
 	parent.hannibal_ahh.position.y += 13
 	parent.hurtbox.position.y += 13
 	as2d.play("fall_attack_land")
-	Global.get_camera().start_shake(camShake, shakeDur)
+	if parent.phase2:
+		Global.get_camera().start_shake(camShake * 2, shakeDur * 1.3)
+	else:
+		Global.get_camera().start_shake(camShake, shakeDur)
 	var projectile : bool = true
 	if projectile:
 		var slash1 = slash_projectile.instantiate()
@@ -136,8 +146,8 @@ func fallAttacking() -> void:
 			var slash4 = slash_projectile.instantiate()
 			slash3.direction = 1
 			slash4.direction = -1
-			slash3.speed = 400
-			slash4.speed = 400
+			slash3.speed = 150
+			slash4.speed = 150
 			slash3.global_position = parent.global_position + Vector2(5 * slash3.direction, 5)
 			slash4.global_position = parent.global_position + Vector2(5 * slash4.direction, 5)
 			add_child(slash3)

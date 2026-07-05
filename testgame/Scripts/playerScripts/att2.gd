@@ -32,8 +32,6 @@ func enter() -> void:
 	parent.as2d.position = Vector2(0, 0)
 	attackDir = Input.get_axis("runL", "runR")
 	parent.update_ground_visuals(attackDir)
-	parent.c_check_1.enabled = true
-	parent.c_check_2.enabled = true
 	if attackDir > 0:
 		as2d.flip_h = false
 	elif attackDir < 0:
@@ -82,8 +80,6 @@ func exit() -> void:
 	attackDir = 0
 	if parent.attackCheck:
 		parent.attackCheck = false
-	parent.c_check_1.enabled = false
-	parent.c_check_2.enabled = false
 	
 func process_input(event: InputEvent) -> State:
 	return null
