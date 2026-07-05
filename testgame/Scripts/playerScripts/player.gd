@@ -237,6 +237,7 @@ func update_ground_visuals(direction: float) -> void:
 	wallslide_chest.position.x = 0
 	wallslide_legs.position.x = 0
 	c.position = Vector2(0, 8)
+	as2d.position.y = 0
 	if direction > 0:
 		flip_direction(1)
 		as2d.position.x = -4

@@ -41,9 +41,7 @@ func on_level_loaded(level: Node) -> void:
 		var spawn: Node2D = level.get_node_or_null(pending_entry_door)
 		if spawn:
 			player.global_position = spawn.global_position - pending_entry_direction
-			if checkJump== 1:
-				player.enter_from_transition(pending_entry_direction)
-				await Global.player.landed
+
 				
 	Global.player.flip_direction(direction)
 	Global.camera.global_position = Global.player.global_position
