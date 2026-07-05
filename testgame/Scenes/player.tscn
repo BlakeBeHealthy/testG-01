@@ -794,8 +794,10 @@ collision_mask = 8960
 position = Vector2(-5.9604645e-08, 2)
 scale = Vector2(0.54, 1)
 shape = SubResource("RectangleShape2D_gymyn")
+disabled = true
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1898396502]
+visible = false
 position = Vector2(0, 7)
 scale = Vector2(0.507894, 0.9085177)
 collision_layer = 2056
@@ -854,21 +856,6 @@ collide_with_areas = true
 [node name="wallslideLegs" type="RayCast2D" parent="." unique_id=335263960]
 position = Vector2(-7, 17)
 target_position = Vector2(-7.3, 0)
-
-[node name="cCheck1" type="RayCast2D" parent="." unique_id=663766301]
-position = Vector2(8, 19)
-scale = Vector2(0.805, 0.805)
-enabled = false
-target_position = Vector2(7.813, 12.422)
-collide_with_areas = true
-
-[node name="cCheck2" type="RayCast2D" parent="." unique_id=1227726614]
-position = Vector2(-2, 19)
-scale = Vector2(0.805, 0.805)
-enabled = false
-target_position = Vector2(-7.773, 12.422)
-hit_from_inside = true
-collide_with_areas = true
 
 [node name="WallJumpBuffer" type="Timer" parent="." unique_id=1415600477]
 

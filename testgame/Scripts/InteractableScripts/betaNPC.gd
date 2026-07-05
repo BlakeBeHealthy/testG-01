@@ -59,5 +59,6 @@ func speaking(endCheck: int):
 		Global.cutsceneStarted = true
 		Global.UI.get_node("Balloon").start(load(dialogueScene), startingPoint)
 	else:
+		Global.player.control_locked = false
 		speak = false
 		prompt.showPrompt(button_prompt, promptScale)

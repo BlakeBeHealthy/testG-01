@@ -46,7 +46,6 @@ func process_input(event: InputEvent) -> State:
 func process_frame(delta: float) -> State:
 	parent.as2d.position = Vector2(0, 0)
 	if parent.control_locked:
-		parent.control_locked = false
 		return parent.cut_state 
 	
 	if parent.takeHit:

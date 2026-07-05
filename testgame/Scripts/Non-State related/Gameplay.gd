@@ -49,10 +49,10 @@ func on_level_loaded(level: Node) -> void:
 	if Global.inputBlocked:
 		Global.inputBlocked = false
 		
-	player.velocity = Vector2(0, 400)
 	await Global.player.landed
+	
 	if FadeS.fade:
-		await FadeS.fade_in(1.0, true)
+		await FadeS.fade_in(1.5, true)
 	
 	if player.control_locked:
 		player.control_locked = false

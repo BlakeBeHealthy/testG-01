@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var c: CollisionShape2D = $c
 @onready var c_check_1: RayCast2D = $cCheck1
 @onready var c_check_2: RayCast2D = $cCheck2
+@onready var interact_area: Area2D = $InteractArea
 
 
 @export var jump_state: State
@@ -196,7 +197,6 @@ func _on_timer_timeout() -> void:
 
 func respawn():
 	control_locked = true
-	velocity = Vector2(0, 500)
 	self.global_position = respawnCoord
 
 func _on_parry_cooldown_timeout() -> void:
@@ -253,8 +253,6 @@ func update_ground_visuals(direction: float) -> void:
 		
 func update_air_visuals(direction: float) -> void:
 	if direction > 0:
-		c_check_1.position.x = 8.0
-		c_check_2.position.x = -2.0
 		wallslide_chest.target_position.x = abs(wallslide_chest.target_position.x)
 		wallslide_chest.position.x = 7.0
 		wallslide_legs.target_position.x = abs(wallslide_legs.target_position.x)
@@ -265,8 +263,6 @@ func update_air_visuals(direction: float) -> void:
 		a2d.position.x = 21
 		a2d2.position.y = 0
 	elif direction < 0:
-		c_check_1.position.x = 2.0
-		c_check_2.position.x = -8.0
 		wallslide_chest.target_position.x = -abs(wallslide_chest.target_position.x)
 		wallslide_chest.position.x = -7.0
 		wallslide_legs.target_position.x = -abs(wallslide_legs.target_position.x)

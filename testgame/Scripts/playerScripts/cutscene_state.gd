@@ -1,6 +1,7 @@
 extends State
 @onready var interact_area: Area2D = $"../../InteractArea"
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var collision_shape_2d: CollisionShape2D = $"../../InteractArea/CollisionShape2D"
 
 var done := false
 var checkpoint := false
@@ -26,11 +27,13 @@ func enter() -> void:
 		parent.camLook = true
 		
 func exit() -> void:
+	collision_shape_2d.disabled = false
 	dialogueActive = false
 	speaking = false
 	done = false
 	checkpoint = false
 	started = false
+	
 	if !parent.a2d2.monitorable:
 		parent.a2d2.monitorable = true
 		parent.a2d2.monitorable = true
@@ -96,7 +99,7 @@ func process_physics(delta: float) -> State:
 		parent.move_and_slide()
 	else:
 		as2d.play("idle")
-		if Global.cutsceneStarted:
+		if !parent.visible:
 			as2d.frame = 1
 			as2d.stop()
 		

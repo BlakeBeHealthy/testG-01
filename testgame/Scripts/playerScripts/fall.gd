@@ -17,12 +17,9 @@ func enter() -> void:
 	if !parent.jumpCheck or parent.wall_state != parent.WallState.NONE:
 		cTime.start()
 	as2d.play("fall")
-	parent.c_check_1.enabled = true
-	parent.c_check_2.enabled = true
 	
 func exit() -> void:
-	parent.c_check_1.enabled = false
-	parent.c_check_2.enabled = false
+	pass
 	
 func process_input(event: InputEvent) -> State:
 	return null #Every path must have a return statement, dont forget or the engine

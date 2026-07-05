@@ -27,6 +27,7 @@ func fade_in(speed: float = 1.0, wait: bool = false):
 	aP.animation_finished.connect(_on_fade_in_finished)
 	if wait:
 		await aP.animation_finished
+		print("finished")
 	
 #Ending the fade
 func _on_fade_in_finished(anim_name: String) -> void:

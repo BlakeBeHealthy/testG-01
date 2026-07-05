@@ -2250,7 +2250,7 @@ sources/1 = SubResource("TileSetAtlasSource_dutcy")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30kwv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dutcy"]
-height = 98.0
+height = 146.0
 
 [node name="Level01" type="Node2D" unique_id=1637612152]
 
@@ -2355,13 +2355,14 @@ spawn = true
 
 [node name="SpikeCheckpoint" parent="." unique_id=1243300055 instance=ExtResource("9_wjjke")]
 position = Vector2(-1030, -31)
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=468835838]
-position = Vector2(87, 14)
+position = Vector2(90, -15)
 shape = SubResource("CapsuleShape2D_dutcy")
 
 [node name="SpikeCheckpoint2" parent="." unique_id=47729811 instance=ExtResource("9_wjjke")]
-position = Vector2(-701, -116)
+position = Vector2(-723, -106)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2" unique_id=1862636265]
 position = Vector2(-50, 69)
