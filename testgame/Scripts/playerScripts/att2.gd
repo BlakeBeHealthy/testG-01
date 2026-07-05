@@ -29,6 +29,7 @@ func enter() -> void:
 	as2d.play("a2")
 	if !ComboTime.is_stopped():
 		ComboTime.stop()
+	parent.as2d.position = Vector2(0, 0)
 	attackDir = Input.get_axis("runL", "runR")
 	parent.update_ground_visuals(attackDir)
 	parent.c_check_1.enabled = true

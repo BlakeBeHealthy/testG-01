@@ -17,11 +17,7 @@ func enter() -> void:
 	print("WALL")
 	as2d.play("wallSlide")
 	parent.wall_state = parent.WallState.SLIDING
-	if !as2d.flip_h:
-		c.position = Vector2(-1, 8)
-	else:
-		c.position = Vector2(1, 8)
-		
+	parent.as2d.position = Vector2(0, 3)
 	if parent.velocity.y < freeze_threshold:
 		parent.wall_state = parent.WallState.TOUCH
 		parent.velocity = Vector2.ZERO

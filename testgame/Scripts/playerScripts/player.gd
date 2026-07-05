@@ -238,70 +238,60 @@ func apply_horizontal_air_control(speed: float) -> void:
 func update_ground_visuals(direction: float) -> void:
 	wallslide_chest.position.x = 0
 	wallslide_legs.position.x = 0
+	c.position = Vector2(0, 8)
 	if direction > 0:
-		c.position = Vector2(3, 8)
 		flip_direction(1)
+		as2d.position.x = -4
 		a2d2.position.x = 3
 		a2d.position.x = 21
 		a2d2.position.y = 0
 	elif direction < 0:
 		flip_direction(-1)
+		as2d.position.x = 4
 		a2d.position.x = -21
 		a2d2.position.x = -3
-		c.position = Vector2(-3, 8)
 		a2d2.position.y = 0
 		
 		
 func update_air_visuals(direction: float) -> void:
+	c.position = Vector2(0, 8)
 	if direction > 0:
 		c_check_1.position.x = 8.0
-		c_check_2.position.x = -2.0 
-		wallslide_chest.target_position.x = abs(wallslide_chest.target_position.x) * direction
+		c_check_2.position.x = -2.0
+		wallslide_chest.target_position.x = abs(wallslide_chest.target_position.x)
 		wallslide_chest.position.x = 7.0
-		wallslide_legs.target_position.x = abs(wallslide_legs.target_position.x) * direction
+		wallslide_legs.target_position.x = abs(wallslide_legs.target_position.x)
 		wallslide_legs.position.x = wallslide_chest.position.x
 		flip_direction(1)
+		as2d.position = Vector2(-3, 5)
 		a2d2.position.x = 3
 		a2d.position.x = 21
-		if c_check_1.is_colliding() or c_check_2.is_colliding():
-			c.position = Vector2(3, 8)
-		else:
-			c.position = Vector2(3, 2)
 		a2d2.position.y = 0
 	elif direction < 0:
 		c_check_1.position.x = 2.0
-		c_check_2.position.x = -8.0 
-		wallslide_chest.target_position.x = abs(wallslide_chest.target_position.x) * direction
+		c_check_2.position.x = -8.0
+		wallslide_chest.target_position.x = -abs(wallslide_chest.target_position.x)
 		wallslide_chest.position.x = -7.0
-		wallslide_legs.target_position.x = abs(wallslide_legs.target_position.x) * direction
+		wallslide_legs.target_position.x = -abs(wallslide_legs.target_position.x)
 		wallslide_legs.position.x = wallslide_chest.position.x
 		flip_direction(-1)
+		as2d.position = Vector2(3, 5)
 		a2d.position.x = -21
 		a2d2.position.x = -3
-		if (c_check_1.is_colliding() or c_check_2.is_colliding()):
-			c.position = Vector2(-3, 8)
-		else:
-			c.position = Vector2(-3, 2)
 		a2d2.position.y = 0
 	else:
 		if as2d.flip_h:
 			wallslide_chest.position.x = -7.0
 			wallslide_legs.position.x = wallslide_chest.position.x
-			wallslide_chest.target_position.x = abs(wallslide_chest.target_position.x) * -1
-			wallslide_legs.target_position.x = abs(wallslide_legs.target_position.x) * -1
-			if c_check_1.is_colliding() or c_check_2.is_colliding():
-				c.position = Vector2(-3, 8) 
-			else:
-				c.position = Vector2(-3, 2)
+			wallslide_chest.target_position.x = -abs(wallslide_chest.target_position.x)
+			wallslide_legs.target_position.x = -abs(wallslide_legs.target_position.x)
+			as2d.position = Vector2(3, 5)
 			a2d2.position.x = -4
 		else:
 			wallslide_chest.position.x = 7.0
 			wallslide_legs.position.x = wallslide_chest.position.x
-			wallslide_chest.target_position.x = abs(wallslide_chest.target_position.x) * 1
-			wallslide_legs.target_position.x = abs(wallslide_legs.target_position.x) * 1
-			if c_check_1.is_colliding() or c_check_2.is_colliding():
-				c.position = Vector2(3, 8)
-			else:
-				c.position = Vector2(3, 2)
+			wallslide_chest.target_position.x = abs(wallslide_chest.target_position.x)
+			wallslide_legs.target_position.x = abs(wallslide_legs.target_position.x)
+			as2d.position = Vector2(-3, 5)
 			a2d2.position.x = 4
 		a2d2.position.y = 0

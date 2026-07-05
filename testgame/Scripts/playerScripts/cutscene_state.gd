@@ -13,6 +13,7 @@ var title := ""
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
+	parent.as2d.position = Vector2(0, 0)
 	if parent.a2d2.monitorable:
 		parent.a2d2.monitorable = false
 		parent.a2d2.monitorable = false

@@ -43,7 +43,8 @@ func exit() -> void:
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "pogo":
 		return
-	
+		
+	parent.as2d.position = Vector2(0, -2)
 	if as2d.frame == 1:
 		nextAttack = true
 		a2d.monitorable = true

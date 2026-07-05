@@ -23,6 +23,7 @@ func enter() -> void:
 			Global.saveData.maxHealth -= parent.damage
 		if Global.saveData.maxHealth <= 0:
 			dead = true
+		parent.as2d.position = Vector2(-3 * parent.dir, 5)
 		flash_white()
 		apply_knockback()
 		a2d2.monitoring = false

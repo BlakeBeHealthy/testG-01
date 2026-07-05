@@ -23,6 +23,7 @@ func enter() -> void:
 	a2d2.position.x = 0
 	a2d2.position.y = 9
 
+
 func exit() -> void:
 	hit = false
 
@@ -43,6 +44,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 	
 func process_frame(delta: float) -> State:
+	parent.as2d.position = Vector2(0, 0)
 	if parent.control_locked:
 		parent.control_locked = false
 		return parent.cut_state 
