@@ -8,12 +8,11 @@ extends Area2D
 func _on_area_entered(area: Area2D) -> void:
 	if Global.cutsceneStarted:
 		return
+		
 	if !Global.get(Global_var_check):
-		print("133 ", Global.get(Global_var_check))
 		Global.cutsceneStarted = true
 		if !Global.player.is_on_floor() and !airCutscene:
 			await Global.player.landed
 		Global.startCutscene(dialogueFile, startingPoint, startingCutscene)
 	else:
-		print("134 ", Global.get(Global_var_check))
 		return

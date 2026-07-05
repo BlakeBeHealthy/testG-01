@@ -21,13 +21,11 @@ func enter() -> void:
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
 	elif parent.current_interactable is BetaNPC or Global.cutsceneStarted:
-		print("1")
 		speaking = true
 	elif !parent.animate:
 		parent.camLook = true
 		
 func exit() -> void:
-	print("5")
 	dialogueActive = false
 	speaking = false
 	done = false
@@ -44,7 +42,6 @@ func _on_dialogue_done():
 	if !dialogueActive:
 		return
 	
-	print("2")
 	dialogueActive = false
 	await get_tree().create_timer(0.4).timeout
 	done = true
@@ -67,12 +64,7 @@ func process_frame(delta: float) -> State:
 		as2d.play("save1")
 		
 	if speaking:
-		print("3")
 		speaking = false
-		as2d.play("idle")
-		if Global.cutsceneStarted:
-			as2d.frame = 1
-			as2d.stop()
 		dialogueActive = true
 		parent.speaking.emit(1)
 		
@@ -98,17 +90,15 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		as2d.play("save2")
 		
 func process_physics(delta: float) -> State:
-	if parent.animate:
-		if !parent.is_on_floor():
-			as2d.play("fall")
-			parent.velocity.y = (gravity * 1.5) * delta 
-			if !smallKB:
-				parent.velocity.x += -parent.direction * 12
-				smallKB = true
-			parent.move_and_slide()
-		else:
-			smallKB = false
-			as2d.play("idle")
+	if !parent.is_on_floor():
+		parent.velocity.y = (gravity * 1.5) * delta
+		as2d.play("fall")
+		parent.move_and_slide()
+	else:
+		as2d.play("idle")
+		if Global.cutsceneStarted:
+			as2d.frame = 1
+			as2d.stop()
 		
 	return null
 	

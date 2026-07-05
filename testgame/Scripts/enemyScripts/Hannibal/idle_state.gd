@@ -112,7 +112,7 @@ func phase2start():
 	if !Global.hannible:
 		Global.inputBlocked = true
 		Global.cutsceneStarted = true
-		Global.player.anim()
+		Global.player.control_locked = true
 		
 		if Global.camera.shaking:
 			Global.camera.shaking = false

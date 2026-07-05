@@ -53,7 +53,8 @@ func on_level_loaded(level: Node) -> void:
 		
 	player.velocity = Vector2(0, 400)
 	await Global.player.landed
-	await FadeS.fade_in(1.0, true)
+	if FadeS.fade:
+		await FadeS.fade_in(1.0, true)
 	
 	if player.control_locked:
 		player.control_locked = false

@@ -7,8 +7,6 @@ var barsActive: bool = false
 
 
 func moveBars(dur: float = 0.3, stayOpen: bool = false, wait: bool = false):
-	print(stayOpen)
-	print(wait)
 	var t = create_tween()
 	t.set_trans(Tween.TRANS_SINE)
 	t.set_ease(Tween.EASE_IN_OUT)

@@ -22,6 +22,7 @@ func fade_out(speed: float = 1.0, wait: bool = false):
 	
 	
 func fade_in(speed: float = 1.0, wait: bool = false):
+	print_stack()
 	c_r.visible = true
 	aP.play("fadeIn", -1, speed)
 	aP.animation_finished.connect(_on_fade_in_finished)

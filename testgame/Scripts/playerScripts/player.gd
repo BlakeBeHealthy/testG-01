@@ -197,8 +197,6 @@ func _on_timer_timeout() -> void:
 func respawn():
 	control_locked = true
 	velocity = Vector2(0, 500)
-	print(respawnCoord)
-	print(global_position)
 	self.global_position = respawnCoord
 
 func _on_parry_cooldown_timeout() -> void:

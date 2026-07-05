@@ -6,5 +6,6 @@ extends Node2D
 
 func _ready():
 	InputMap.load_from_project_settings()
+	FadeS.fade_in()
 	SceneM.load_level("res://Scenes/Level01.tscn")
 	

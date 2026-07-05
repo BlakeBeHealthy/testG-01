@@ -15,7 +15,6 @@ func _ready() -> void:
 	
 func keyPlay():
 	if !playAs2d:
-		print("hello")
 		as2d.visible = true
 		as2d.play("space")
 	else:
