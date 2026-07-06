@@ -3,5 +3,5 @@ extends Node2D
 
 
 func _ready() -> void:
-	if Global.hannible:
+	if Global.hannible and Global.hannible1:
 		gate.playOpenClose()

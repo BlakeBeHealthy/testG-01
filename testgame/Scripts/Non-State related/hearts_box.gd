@@ -18,9 +18,6 @@ func _on_player_ready():
 
 func _on_health_changed(new_health: int) -> void:
 	for i in range(hearts.size()):
-		print("o ", new_health)
-		print("w ", hearts.size())
-		print(i)
 		if i < new_health:
 			if hearts[i].dead:
 				hearts[i].revive()

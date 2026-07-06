@@ -990,6 +990,7 @@ decayRate = 3000.0
 [node name="WallSlide" type="Node" parent="StateMachine" unique_id=1955315188]
 script = ExtResource("18_igrcy")
 wall_slide_terminal = 0.2
+freeze_duration = 0.1
 decay = 10.0
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=2004975686]

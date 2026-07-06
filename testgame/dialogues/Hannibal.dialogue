@@ -1,10 +1,10 @@
 ~ start
-if Global.hannible1:
+if Global.han:
 	=> skip
 Hannibal: I've been looking for you.
 P: Have we met?
 Hannibal: I've killed you countless times before. But this moment in time keeps repeating.
-set Global.hannible1 = true
+set Global.han = true
 => enter
 
 ~ skip
@@ -52,6 +52,7 @@ Hannibal: See you soon. Player.
 $> playEnd("HD2_2")
 set Global.cutsceneStarted = false
 set Global.player.control_locked = false
+set Global.hannibal1 = true
 $>> Global.camera.reset(0.5)
 $>> Global.camera.startBars()
 => END

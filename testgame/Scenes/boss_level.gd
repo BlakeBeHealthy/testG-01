@@ -12,6 +12,6 @@ func _ready() -> void:
 	Global.debug_cutscene = debug_cutscene
 
 func _process(delta: float) -> void:
-	if Global.hannible and !Global.cutsceneStarted:
+	if Global.hannible and !Global.cutsceneStarted and Global.hannible1:
 		has2d.position = Vector2(451.005, 151.0)
 		has2d.play("dead")

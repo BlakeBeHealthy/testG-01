@@ -15,7 +15,6 @@ extends CharacterBody2D
 @onready var interact_area: Area2D = $InteractArea
 @onready var a2d3: Area2D = $Area2D3
 
-
 @export var jump_state: State
 @export var hit_state: State
 @export var attack_state: State
@@ -59,6 +58,7 @@ var control_locked = false
 var stickState := false
 var direction := 0
 var Jdirection := 0
+var Jdir := 0
 var upwardDoor = false
 var knockback_velocity := 0.0
 var knockback_decay := 50.0
@@ -102,6 +102,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
 
 func _physics_process(delta: float) -> void:
+	print(Jdirection)
 	state_machine.process_physics(delta)
 	if is_on_floor() and jumpCheck and state_machine.current_state != pogo_state:
 		jumpCheck = false
@@ -109,6 +110,13 @@ func _physics_process(delta: float) -> void:
 	!is_on_floor() and wall_state == WallState.NONE and state_machine.current_state != wallSlide_state:
 		Jdirection = -1 if as2d.flip_h else 1
 		wall_state = WallState.SLIDING
+	elif wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and !is_on_floor() and wall_state == WallState.JUMPING:
+		var normal = wallslide_chest.get_collision_normal()
+		var new_wall_dir = 1 if normal.x < 0 else -1  # normal points AWAY from wall, so flip it
+		if new_wall_dir != Jdir:
+			velocity = Vector2.ZERO
+			air_control_timer.stop()
+			wall_state = WallState.SLIDING
 	elif is_on_floor():
 		wall_state = WallState.NONE
 		
@@ -148,7 +156,10 @@ func _on_landed(): #This will be for cutscenes when the player cant move
 
 func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration: float):
 	if !invincible:
-		damage = dmg
+		if !Global.inv:
+			damage = dmg
+		else:
+			damage = 0
 		dir = direction
 		stre = strength
 		stunT = stun_time
@@ -225,7 +236,6 @@ func anim():
 func apply_horizontal_air_control(speed: float) -> void:
 	var direction = Input.get_axis("runL", "runR")
 	if wall_state != WallState.JUMPING:
-		# normal air movement, nothing special
 		velocity.x = direction * speed
 		update_air_visuals(direction)
 		return
@@ -235,7 +245,7 @@ func apply_horizontal_air_control(speed: float) -> void:
 		return
 		
 		
-	var heading_back = (direction == Jdirection)
+	var heading_back = (direction == Jdir)
 	
 	if heading_back:
 		wall_state = WallState.NONE

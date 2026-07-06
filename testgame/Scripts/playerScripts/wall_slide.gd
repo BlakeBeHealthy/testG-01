@@ -14,6 +14,7 @@ var fall: bool = false
 var direction: = 0.0
 
 func enter() -> void:
+	parent.Jdir = parent.Jdirection
 	as2d.play("wallSlide")
 	parent.wall_state = parent.WallState.SLIDING
 	parent.as2d.position = Vector2(0, 3)

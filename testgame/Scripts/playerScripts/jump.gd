@@ -35,6 +35,7 @@ func enter() -> void:
 		parent.velocity.y = -wall_jump_forceY
 		parent.air_control_timer.start(air_control_lockout)
 		parent.wall_state = parent.WallState.JUMPING
+		parent.Jdirection = -parent.Jdirection
 		
 		
 func exit() -> void:

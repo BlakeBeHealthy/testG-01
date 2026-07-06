@@ -12,7 +12,9 @@ var clash_won: bool = false
 var qte: bool = true
 var hannible: bool = false
 var hannible1: bool = false
+var han: bool = false
 var spawning: bool = false
+var inv: bool = false
 var player: CharacterBody2D
 var Clash: Control
 var camera: Camera2D
@@ -82,7 +84,21 @@ func _input(event: InputEvent) -> void:
 		Gameplay.Knightgrandma = true
 		Gameplay.Knight = true
 		SceneM.load_level("res://Scenes/level_08.tscn")
-	
+		
+	if Input.is_action_pressed("ctrl") and Input.is_action_pressed("9"):
+		inv = !inv
+		
+	if Input.is_action_pressed("ctrl") and Input.is_action_pressed("8"):
+		Gameplay.DJ = true
+		Global.hannible = true
+
+	if Input.is_action_pressed("ctrl") and Input.is_action_pressed("1"):
+		Gameplay.Knightgrandma = false
+		Gameplay.Knight = false
+		SceneM.load_level("res://Scenes/Level01.tscn")
+		
+	if Input.is_action_pressed("ctrl") and Input.is_action_pressed("5"):
+		SceneM.load_level("res://Scenes/level__05.tscn")
 	
 	if !debug_mode:
 		return
