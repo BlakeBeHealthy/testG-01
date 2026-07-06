@@ -19,7 +19,7 @@ var hit: bool = false
 var spawning: bool = false
 
 func _ready() -> void:
-	Global.spawning = false
+	pass
 	
 func _process(delta: float) -> void:
 	if !is_instance_valid(Global.player):
@@ -64,12 +64,15 @@ func spawnPlayer():
 		Global.spawning = true
 		FadeS.fade_out()
 		await get_tree().create_timer(0.4).timeout
+		Global.player.control_locked = true
 		if Global.saveData.maxHealth <= 0:
+			Global.spawning = false
 			return
 			
 		player.respawn()
+		Global.player.velocity.x = 0
 		await get_tree().create_timer(0.3).timeout
 		await player.landed
 		Global.spawning = false
-		await FadeS.fade_in(2.0, true)
-		player.control_locked = false
+		await FadeS.fade_in(1.5, true)
+		Global.player.control_locked = false

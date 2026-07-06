@@ -21,10 +21,12 @@ func enter() -> void:
 		
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
-	elif parent.current_interactable is BetaNPC or Global.cutsceneStarted:
+	elif (parent.current_interactable is BetaNPC and !Global.spawning) or Global.cutsceneStarted:
 		speaking = true
-	elif !parent.animate:
+	elif !parent.animate and !Global.spawning:
 		parent.camLook = true
+	else:
+		done = true
 		
 func exit() -> void:
 	parent.takeHit = false
@@ -36,6 +38,7 @@ func exit() -> void:
 	started = false
 	
 	if !parent.a2d2.monitorable:
+		print("true")
 		parent.a2d2.monitorable = true
 		parent.a2d2.monitorable = true
 	
@@ -96,8 +99,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		as2d.play("save2")
 		
 func process_physics(delta: float) -> State:
-	if !parent.is_on_floor():
-		parent.velocity.y = (gravity * 1.5) * delta
+	if !parent.is_on_floor() or Global.spawning:
+		parent.velocity.y = (gravity * 50) * delta
 		as2d.play("fall")
 		parent.move_and_slide()
 	elif !checkpoint:

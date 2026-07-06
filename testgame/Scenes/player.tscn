@@ -774,6 +774,7 @@ material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"pogo"
+frame = 1
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
@@ -797,16 +798,14 @@ shape = SubResource("RectangleShape2D_gymyn")
 disabled = true
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1898396502]
-visible = false
 position = Vector2(0, 7)
 scale = Vector2(0.507894, 0.9085177)
 collision_layer = 2056
 collision_mask = 32
 
 [node name="hurtbox" type="CollisionShape2D" parent="Area2D2" unique_id=1299933768]
-visible = false
-position = Vector2(-1.2291494e-07, 1.1006944)
-scale = Vector2(0.99999976, 1)
+position = Vector2(0, 3.3020823)
+scale = Vector2(1.345, 1.08)
 shape = SubResource("RectangleShape2D_tx1dd")
 debug_color = Color(0.90078, 0.3079449, 0.121679135, 0.41960785)
 
@@ -837,6 +836,7 @@ shape = SubResource("CapsuleShape2D_pg0gw")
 debug_color = Color(0.9978096, 0, 0.1678963, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=450046427]
+visible = false
 position = Vector2(18, 4)
 scale = Vector2(1.785, 1.525)
 collision_layer = 128
@@ -991,6 +991,9 @@ decayRate = 3000.0
 script = ExtResource("18_igrcy")
 wall_slide_terminal = 0.2
 decay = 10.0
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2004975686]
+target_position = Vector2(0, -17)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/CutsceneState" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]

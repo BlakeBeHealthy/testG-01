@@ -2249,6 +2249,9 @@ sources/1 = SubResource("TileSetAtlasSource_dutcy")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30kwv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dutcy"]
+size = Vector2(79, 28.5)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dutcy"]
 height = 146.0
 
@@ -2292,6 +2295,10 @@ animationName = "CW"
 dialogueScene = "res://dialogues/CW.dialogue"
 startingPoint = "s1"
 prompt_scale = Vector2(0.6, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BetaNPC" unique_id=563628841]
+position = Vector2(0.5, 2.25)
+shape = SubResource("RectangleShape2D_dutcy")
 
 [node name="Spikes" parent="." unique_id=898931136 instance=ExtResource("8_dutcy")]
 position = Vector2(-833, 105)
@@ -2354,7 +2361,7 @@ position = Vector2(-790, 105)
 spawn = true
 
 [node name="SpikeCheckpoint" parent="." unique_id=1243300055 instance=ExtResource("9_wjjke")]
-position = Vector2(-1030, -31)
+position = Vector2(-1030, -19)
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=468835838]

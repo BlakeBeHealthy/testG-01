@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var c_check_1: RayCast2D = $cCheck1
 @onready var c_check_2: RayCast2D = $cCheck2
 @onready var interact_area: Area2D = $InteractArea
+@onready var a2d3: Area2D = $Area2D3
 
 
 @export var jump_state: State
@@ -112,6 +113,7 @@ func _physics_process(delta: float) -> void:
 		wall_state = WallState.NONE
 		
 func _process(delta: float) -> void:
+	a2d3.position = a2d2.position
 	state_machine.process_frame(delta)
 	if state_machine.current_state == jump_state or state_machine.current_state == fall_state or state_machine.current_state == wallSlide_state:
 		interactC2D.disabled = true
@@ -146,7 +148,7 @@ func _on_landed(): #This will be for cutscenes when the player cant move
 
 func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale: float, duration: float, camShakeStrength: float, shakeDuration: float):
 	if !invincible:
-		damage = 0
+		damage = dmg
 		dir = direction
 		stre = strength
 		stunT = stun_time
@@ -196,7 +198,6 @@ func _on_timer_timeout() -> void:
 	comboCount = 0
 
 func respawn():
-	control_locked = true
 	self.global_position = respawnCoord
 
 func _on_parry_cooldown_timeout() -> void:

@@ -2552,7 +2552,7 @@ position = Vector2(-9, -1.0728836e-06)
 spawn = true
 
 [node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=937624585 instance=ExtResource("8_o36lg")]
-position = Vector2(-9, -1.0728836e-06)
+position = Vector2(-3.9999695, -7.550166e-07)
 spawn = true
 
 [node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2" unique_id=500228101 instance=ExtResource("8_o36lg")]
@@ -2612,7 +2612,7 @@ position = Vector2(9.0000305, -4.172325e-06)
 spawn = true
 
 [node name="Spikes" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=1458759871 instance=ExtResource("8_o36lg")]
-position = Vector2(9.0000305, -4.172325e-06)
+position = Vector2(-0.0004272461, 2.5773066e-05)
 spawn = true
 
 [node name="Spikes2" parent="Spikes/Spikes2/Spikes4/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes2/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes/Spikes" unique_id=960440926 instance=ExtResource("8_o36lg")]

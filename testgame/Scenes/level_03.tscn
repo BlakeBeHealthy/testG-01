@@ -2224,6 +2224,9 @@ size = Vector2(62, 39.375)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mn87n"]
 height = 122.83465
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mn87n"]
+size = Vector2(77.65625, 7.75)
+
 [node name="Level03" type="Node2D" unique_id=951278028]
 
 [node name="UI" parent="." unique_id=1184425221 instance=ExtResource("1_dq1ln")]
@@ -2387,11 +2390,11 @@ position = Vector2(45, 0)
 spawn = true
 
 [node name="SpikeCheckpoint" parent="." unique_id=16437152 instance=ExtResource("8_gyxvk")]
-position = Vector2(-259, -76)
+position = Vector2(-257.00003, -77.00001)
 scale = Vector2(0.635, 0.635)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=1123837867]
-position = Vector2(-25.196854, 31.496063)
+position = Vector2(-56.69287, 33.070877)
 shape = SubResource("CapsuleShape2D_mn87n")
 
 [node name="SpikeCheckpoint2" parent="." unique_id=71993244 instance=ExtResource("8_gyxvk")]
@@ -2408,6 +2411,10 @@ animationName = "CW"
 dialogueScene = "res://dialogues/CW.dialogue"
 startingPoint = "s3"
 prompt_scale = Vector2(0.6, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BetaNPC" unique_id=68258273]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_mn87n")
 
 [node name="REnemy" parent="." unique_id=810458463 instance=ExtResource("10_mn87n")]
 position = Vector2(305, 57)

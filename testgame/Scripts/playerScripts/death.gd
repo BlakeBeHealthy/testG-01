@@ -25,9 +25,9 @@ func enter() -> void:
 	await get_tree().create_timer(1).timeout
 	Gameplay.game_respawn()
 	Global.saveData.maxHealth = 3
+	Global.inputBlocked = true
 	SceneM.load_level(Global.saveData.checkpoint_scene) #Set up first level load and put a checkpoint in level 2
 	Global.healthUp.emit()
-	Global.inputBlocked = true
 	
 func exit() -> void:
 	pass

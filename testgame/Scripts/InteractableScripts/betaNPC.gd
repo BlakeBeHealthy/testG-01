@@ -2,7 +2,6 @@ class_name BetaNPC extends Node2D
 
 @onready var prompt: Node2D = $ButtonPrompt
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var c2d: CollisionShape2D = $CollisionShape2D
 
 @export var button_prompt: String
 @export var animationName: String
