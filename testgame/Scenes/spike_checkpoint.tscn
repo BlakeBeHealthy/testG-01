@@ -4,7 +4,7 @@
 
 [node name="SpikeCheckpoint" type="Area2D" unique_id=16437152]
 collision_layer = 32
-collision_mask = 64
+collision_mask = 8
 script = ExtResource("1_4sb81")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=462710499]

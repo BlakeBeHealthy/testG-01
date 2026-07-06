@@ -2837,7 +2837,7 @@ position = Vector2(108, -231)
 position = Vector2(257, -231)
 
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("11_fs46s")]
-position = Vector2(877, 70)
+position = Vector2(951, 70)
 flipH = true
 
 [node name="SpikeCheckpoint" parent="." unique_id=16437152 instance=ExtResource("12_qujtj")]

@@ -64,7 +64,7 @@ func process_physics(delta: float) -> State:
 func apply_knockback():
 	if !parent.invincible:
 		parent.invincible = true
-		apply_timeSlow(parent.TScale, parent.dur)
+		Global.apply_timeSlow(parent.TScale, parent.dur)
 		Global.get_camera().start_shake(parent.CAMshake, parent.shakeDur)
 		if !dead:
 			parent.velocity.x = parent.dir * parent.stre
@@ -75,16 +75,6 @@ func apply_knockback():
 		if dead:
 			dead2 = true
 			
-func apply_timeSlow(timeScale: float, duration: float) -> void:
-	if timeSlow:
-		return
-		
-	timeSlow = true
-	Engine.time_scale = timeScale
-	await get_tree().create_timer(duration, false, false, true).timeout
-	Engine.time_scale = 1.0
-	timeSlow = false
-
 func flash_white(): #I am slightly iffy about my understanding of shaders, but it works
 	if flashing:
 		return

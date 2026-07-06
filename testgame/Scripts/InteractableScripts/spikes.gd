@@ -46,6 +46,8 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 func hitPlayer():
 	if !hit and !Global.spawning:
 		hit = true
+		if spawn:
+			stre = 60
 		player.hit(
 				dmg,
 				direction,
@@ -64,10 +66,9 @@ func spawnPlayer():
 		Global.spawning = true
 		FadeS.fade_out()
 		await get_tree().create_timer(0.4).timeout
-		Global.player.control_locked = true
 		if Global.saveData.maxHealth <= 0:
-			Global.spawning = false
 			return
+		Global.player.control_locked = true
 			
 		player.respawn()
 		Global.player.velocity.x = 0

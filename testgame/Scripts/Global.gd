@@ -15,6 +15,7 @@ var hannible1: bool = false
 var han: bool = false
 var spawning: bool = false
 var inv: bool = false
+var timeSlow: bool = false
 var player: CharacterBody2D
 var Clash: Control
 var camera: Camera2D
@@ -73,6 +74,16 @@ func startCutscene(dialogueFile: String, startingPoint: String, introAnim: Strin
 	
 func clashing() -> void:
 	await clash_over
+	
+func apply_timeSlow(timeScale: float, duration: float) -> void:
+	if timeSlow:
+		return
+		
+	timeSlow = true
+	Engine.time_scale = timeScale
+	await get_tree().create_timer(duration, false, false, true).timeout
+	Engine.time_scale = 1.0
+	timeSlow = false
 
 func apFinish(anim: String = "") -> void:
 	ap.play(anim)

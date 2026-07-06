@@ -2277,7 +2277,7 @@ position = Vector2(9.536743e-07, 12.632988)
 shape = SubResource("RectangleShape2D_87nib")
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("6_3082n")]
-position = Vector2(408, 208)
+position = Vector2(7, -71)
 
 [node name="Spikes" parent="." unique_id=898931136 instance=ExtResource("8_o36lg")]
 position = Vector2(-105, 695)
@@ -2390,27 +2390,19 @@ rotation = 3.1415925
 spawn = true
 
 [node name="Spikes2" parent="Spikes/Spikes2" unique_id=1883255795 instance=ExtResource("8_o36lg")]
-position = Vector2(-4, 0)
+position = Vector2(-5, -6.3573026e-08)
 spawn = true
 
-[node name="Spikes2" parent="Spikes/Spikes2/Spikes2" unique_id=1268943562 instance=ExtResource("8_o36lg")]
-position = Vector2(-3, 0)
+[node name="Spikes3" parent="Spikes/Spikes2/Spikes2" unique_id=733990460 instance=ExtResource("8_o36lg")]
+position = Vector2(-114, 0)
 spawn = true
 
-[node name="Spikes2" parent="Spikes/Spikes2/Spikes2/Spikes2" unique_id=733990460 instance=ExtResource("8_o36lg")]
-position = Vector2(-111, 0)
+[node name="Spikes4" parent="Spikes/Spikes2/Spikes2" unique_id=850273769 instance=ExtResource("8_o36lg")]
+position = Vector2(-108, 0)
 spawn = true
 
-[node name="Spikes3" parent="Spikes/Spikes2/Spikes2/Spikes2" unique_id=850273769 instance=ExtResource("8_o36lg")]
-position = Vector2(-104, 0)
-spawn = true
-
-[node name="Spikes2" parent="Spikes/Spikes2/Spikes2/Spikes2/Spikes3" unique_id=159870082 instance=ExtResource("8_o36lg")]
-position = Vector2(190, 0)
-spawn = true
-
-[node name="Spikes2" parent="Spikes/Spikes2/Spikes2/Spikes2/Spikes3/Spikes2" unique_id=194695126 instance=ExtResource("8_o36lg")]
-position = Vector2(-6, 0)
+[node name="Spikes2" parent="Spikes/Spikes2/Spikes2/Spikes4" unique_id=159870082 instance=ExtResource("8_o36lg")]
+position = Vector2(191, 6.3573026e-08)
 spawn = true
 
 [node name="Spikes4" parent="Spikes/Spikes2" unique_id=1946489947 instance=ExtResource("8_o36lg")]

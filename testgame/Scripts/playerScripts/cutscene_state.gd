@@ -26,6 +26,7 @@ func enter() -> void:
 		done = true
 		
 func exit() -> void:
+	parent.attackCheck = false
 	parent.invincible = false
 	parent.takeHit = false
 	collision_shape_2d.disabled = false
@@ -93,7 +94,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		as2d.play("save2")
 		
 func process_physics(delta: float) -> State:
-	if (!parent.is_on_floor() or Global.spawning) and !checkpoint:
+	if !parent.is_on_floor():
 		parent.velocity.y = (gravity * 50) * delta
 		as2d.play("fall")
 		parent.move_and_slide()

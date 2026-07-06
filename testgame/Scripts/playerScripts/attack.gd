@@ -31,8 +31,11 @@ func enter() -> void:
 		as2d.flip_h = false
 	elif attackDir < 0:
 		as2d.flip_h = true
-	if attackDir != 0:
-		a2d.position = Vector2(20 * attackDir, 4)
+	else:
+		if as2d.flip_h:
+			attackDir = -1
+		else:
+			attackDir = 1
 	startKB = false
 	if checkHit:
 		checkHit = false
@@ -49,21 +52,25 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		a2d.monitoring = false
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if parent.state_machine.current_state != parent.attack_state:
+	if parent.state_machine.current_state != parent.attack_state or KB:
+		return
+
+	if !area.is_in_group("World") and !area.get_collision_layer_value(11):
+		Global.apply_timeSlow(hit_timeStop, hit_duration)
+	elif !worldHit:
+		worldHit = true
+	else:
 		return
 		
 	startKB = true
-	if !area.is_in_group("World") or !area.is_in_group("Spikes"):
-		apply_timeSlow(hit_timeStop, hit_duration)
-	else:
-		worldHit = true
-
 func exit() -> void:
 	checkHit = true
 	a2d.monitorable = false
 	a2d.monitoring = false
 	attackDir = 0
 	KB = false
+	if worldHit:
+		worldHit = false
 	
 func process_input(event: InputEvent) -> State:
 	return null
@@ -99,8 +106,7 @@ func process_physics(delta: float) -> State:
 		
 	if startKB:
 		if worldHit:
-			worldHit = false
-			parent.velocity.x += -attackDir * 250
+			parent.velocity.x += -attackDir * 550
 		else:
 			parent.velocity.x += -attackDir * playerKnockback
 		startKB = false
@@ -122,15 +128,4 @@ func process_physics(delta: float) -> State:
 	else:
 		parent.velocity.y += gravity * delta
 	parent.move_and_slide()
-
 	return null
-
-func apply_timeSlow(timeScale: float, duration: float) -> void:
-	if timeSlow:
-		return
-		
-	timeSlow = true
-	Engine.time_scale = timeScale
-	await get_tree().create_timer(duration, false, false, true).timeout
-	Engine.time_scale = 1.0
-	timeSlow = false

@@ -751,6 +751,7 @@ height = 30.163935
 
 [node name="Player" type="CharacterBody2D" unique_id=1436052975 node_paths=PackedStringArray("jump_state", "hit_state", "attack_state", "att2_state", "parry_state", "parryAttack_state", "fall_state", "run_state", "idle_state", "dash_state", "death_state", "cut_state", "pogo_state", "wallSlide_state")]
 collision_layer = 2
+collision_mask = 16385
 script = ExtResource("1_vgqql")
 jump_state = NodePath("StateMachine/Jump")
 hit_state = NodePath("StateMachine/Hit")
@@ -767,14 +768,13 @@ cut_state = NodePath("StateMachine/CutsceneState")
 pogo_state = NodePath("StateMachine/PogoAttack")
 wallSlide_state = NodePath("StateMachine/WallSlide")
 JUMP = 450
-jumpCut = 0.3
+jumpCut = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=720930456]
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"pogo"
-frame = 1
+animation = &"dash"
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
@@ -823,7 +823,6 @@ shape = SubResource("CapsuleShape2D_pg0gw")
 debug_color = Color(0.9978096, 0, 0.1678963, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=450046427]
-visible = false
 position = Vector2(18, 4)
 scale = Vector2(1.785, 1.525)
 collision_layer = 128
@@ -877,7 +876,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="attackDelay" type="Timer" parent="." unique_id=1251612868]
-wait_time = 0.46
+wait_time = 0.3
 one_shot = true
 
 [node name="hitstuntimer" type="Timer" parent="." unique_id=668290657]
@@ -889,7 +888,7 @@ wait_time = 0.53
 one_shot = true
 
 [node name="buffDelay" type="Timer" parent="." unique_id=1119039513]
-wait_time = 0.009999999999999998
+wait_time = 0.05
 one_shot = true
 
 [node name="parryCooldown" type="Timer" parent="." unique_id=2138544369]

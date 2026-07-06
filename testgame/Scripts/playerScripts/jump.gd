@@ -12,7 +12,7 @@ class_name Jump
 @export var decayRate: float
 @onready var wall_jump_buffer: Timer = $"../../WallJumpBuffer"
 @export var air_control_lockout: float = 0.05
-
+@onready var buff_delay: Timer = $"../../buffDelay"
 
 var wallJumpOver := true
 var dir := 0
@@ -21,6 +21,7 @@ var direction: = 0.0
 
 func enter() -> void:
 	wall_jump_buffer.start()
+	buff_delay.start()
 	dir = Input.get_axis("runL", "runR")
 	if parent.wall_state == parent.WallState.NONE:
 		if !parent.jumpCheck:
@@ -39,11 +40,15 @@ func enter() -> void:
 		
 		
 func exit() -> void:
-	pass
+	if !buff_delay.is_stopped():
+		buff_delay.stop()
 
 func process_input(event: InputEvent) -> State:
-	if !wallJumpOver and Input.is_action_just_pressed("jump"):
-		parent.wallJumpBuff = true
+	if parent.state_machine.current_state != parent.jump_state:
+		return
+	
+	if Input.is_action_just_pressed("jump") and buff_delay.is_stopped():
+		parent.wantJump = true
 	return null
 
 		

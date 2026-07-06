@@ -2362,7 +2362,6 @@ spawn = true
 
 [node name="SpikeCheckpoint" parent="." unique_id=1243300055 instance=ExtResource("9_wjjke")]
 position = Vector2(-1030, -19)
-collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=468835838]
 position = Vector2(90, -15)

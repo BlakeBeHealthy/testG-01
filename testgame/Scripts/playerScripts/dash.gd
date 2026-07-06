@@ -51,6 +51,7 @@ func process_input(event: InputEvent) -> State:
 		return
 	if (!parent.jumpCheck or (parent.is_on_floor() or parent.moveCheck)) and buff_delay.is_stopped():
 		if Input.is_action_just_pressed("jump"):
+			print("CHECK")
 			jump = true
 	return null
 
@@ -72,6 +73,7 @@ func process_frame(delta: float) -> State:
 		elif !parent.is_on_floor() and parent.velocity.y > 0:
 			return parent.fall_state
 		elif jump:
+			parent.jumpCheck = false
 			jump = false
 			return parent.jump_state
 		elif Input.is_action_pressed('runL') or Input.is_action_pressed('runR'):

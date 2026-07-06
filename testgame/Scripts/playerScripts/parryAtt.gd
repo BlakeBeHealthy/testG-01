@@ -51,11 +51,11 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		a2d.monitoring = false
 		
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if parent.state_machine.current_state != parent.attack_state:
-		pass
+	if parent.state_machine.current_state != parent.parryAttack_state:
+		return
 		
 	startKB = true
-	apply_timeSlow(hit_timeStop, hit_duration)
+	Global.apply_timeSlow(hit_timeStop, hit_duration)
 
 func exit() -> void:
 	if checkHit:
@@ -128,17 +128,5 @@ func process_physics(delta: float) -> State:
 	parent.move_and_slide()
 
 	return null
-
-func apply_timeSlow(timeScale: float, duration: float) -> void:
-	if timeSlow:
-		return
-		
-	timeSlow = true
-	Engine.time_scale = timeScale
-	await get_tree().create_timer(duration, false, false, true).timeout
-	Engine.time_scale = 1.0
-	timeSlow = false
-
-
 func _on_attack_2_buff_timeout() -> void:
 	checkAttack = true

@@ -2278,7 +2278,7 @@ position = Vector2(-100, 6)
 shape = SubResource("RectangleShape2D_cyq6k")
 
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("7_hdu6x")]
-position = Vector2(938, -522)
+position = Vector2(1243, -394)
 current_scene_path = "res://Scenes/level_07.tscn"
 
 [node name="Checkpoint2" parent="." unique_id=2058902645 instance=ExtResource("7_hdu6x")]
@@ -4475,7 +4475,7 @@ position = Vector2(-48.000004, 22)
 shape = SubResource("CapsuleShape2D_fslw5")
 
 [node name="SpikeCheckpoint17" parent="SpikeCheckpoint2" unique_id=1936345632 instance=ExtResource("12_776at")]
-position = Vector2(845, 733)
+position = Vector2(781, 736)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint17" unique_id=178106136]
 position = Vector2(-37.000004, 14)
@@ -4489,7 +4489,7 @@ position = Vector2(34.999996, 16)
 shape = SubResource("CapsuleShape2D_fslw5")
 
 [node name="SpikeCheckpoint" parent="." unique_id=16437152 instance=ExtResource("12_776at")]
-position = Vector2(998, -582)
+position = Vector2(994, -587)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=418144665]
 position = Vector2(-245, 5)
@@ -4499,4 +4499,4 @@ shape = SubResource("CircleShape2D_ta0hk")
 position = Vector2(229, -602)
 
 [node name="Checkpoint4" parent="." unique_id=1436378800 instance=ExtResource("7_hdu6x")]
-position = Vector2(1118, 278)
+position = Vector2(1133, 277)

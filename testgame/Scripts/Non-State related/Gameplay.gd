@@ -34,7 +34,6 @@ func enter_door(scene_path: String, door_name: String, dir_string: int) -> void:
 func on_level_loaded(level: Node) -> void:
 	#Declares player with global, this happens a lot
 	var player = Global.player
-	
 	if is_respawn:
 		player.global_position = Global.saveData.checkpoint_pos
 		is_respawn = false
@@ -42,12 +41,13 @@ func on_level_loaded(level: Node) -> void:
 		var spawn: Node2D = level.get_node_or_null(pending_entry_door)
 		if spawn:
 			player.global_position = spawn.global_position - pending_entry_direction
-
+			
+	if Global.spawning:
+		Global.spawning = false
 				
 	Global.player.flip_direction(direction)
 	Global.camera.global_position = Global.player.global_position
 	await get_tree().create_timer(0.09).timeout
-		
 	await Global.player.landed
 	
 	if FadeS.fade:
