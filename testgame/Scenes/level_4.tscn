@@ -2222,6 +2222,9 @@ size = Vector2(20, 60.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvrgg"]
 size = Vector2(99, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a8oa"]
+size = Vector2(119, 18)
+
 [node name="Level 4" type="Node2D" unique_id=924013218]
 
 [node name="UI" parent="." unique_id=1184425221 instance=ExtResource("1_5a8oa")]
@@ -2265,6 +2268,10 @@ animationName = "CW"
 dialogueScene = "res://dialogues/CW.dialogue"
 startingPoint = "s4"
 prompt_scale = Vector2(0.6, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BetaNPC" unique_id=2050870328]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_5a8oa")
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("7_wk15n")]
 position = Vector2(-805, -116)

@@ -2218,6 +2218,9 @@ sources/1 = SubResource("TileSetAtlasSource_ks7iw")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpxc8"]
 size = Vector2(62, 39.375)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y32o"]
+size = Vector2(72, 20)
+
 [node name="Level_010" type="Node2D" unique_id=878597349]
 
 [node name="UI" parent="." unique_id=1184425221 instance=ExtResource("1_u1fiy")]
@@ -2262,6 +2265,10 @@ animationName = "CW"
 dialogueScene = "res://dialogues/CW.dialogue"
 startingPoint = "s5"
 prompt_scale = Vector2(0.6, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BetaNPC" unique_id=289431606]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_8y32o")
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("7_8y32o")]
 position = Vector2(-893, -833)
