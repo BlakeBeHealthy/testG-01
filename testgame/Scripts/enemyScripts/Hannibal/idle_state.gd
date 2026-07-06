@@ -15,8 +15,8 @@ var dir: float
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
+	parent.wallDetection.enabled = false
 	if parent.phase2S and ((!parent.phase2 and parent.healthCount <= 20 and !P2) or parent.death):
-		print("yo")
 		parent.phase2S = false
 		P2 = true
 		cutCheck = true

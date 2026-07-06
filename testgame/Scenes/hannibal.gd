@@ -128,7 +128,6 @@ func _on_hurtbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 	hittin = true
 	await flash_white()
 	healthCount -= 1
-	print(healthCount)
 	if pray == PrayMove.DONE:
 		pray = PrayMove.NONE
 	hittin = false

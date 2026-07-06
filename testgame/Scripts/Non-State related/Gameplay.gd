@@ -19,6 +19,7 @@ var direction := 1
 func enter_door(scene_path: String, door_name: String, dir_string: int) -> void:
 	#This is what I was talking about earlier with the west, east, south and north and door name and such.
 	FadeS.fade_out()
+	Global.inputBlocked = true
 	pending_entry_door = door_name 
 	pending_entry_direction = _dir_from_enum(dir_string)
 	checkJump = dir_string
@@ -46,14 +47,13 @@ func on_level_loaded(level: Node) -> void:
 	Global.player.flip_direction(direction)
 	Global.camera.global_position = Global.player.global_position
 	await get_tree().create_timer(0.09).timeout
-	if Global.inputBlocked:
-		Global.inputBlocked = false
 		
 	await Global.player.landed
 	
 	if FadeS.fade:
 		await FadeS.fade_in(1.5, true)
-	
+	if Global.inputBlocked:
+		Global.inputBlocked = false
 	if player.control_locked:
 		player.control_locked = false
 	

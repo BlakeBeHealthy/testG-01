@@ -6411,10 +6411,10 @@ limit_bottom = 495
 boss_room = true
 
 [node name="Gate" parent="." unique_id=1913223240 instance=ExtResource("20_jawqf")]
-position = Vector2(787.00006, 151)
+position = Vector2(788.00006, 150)
 
 [node name="Gate2" parent="." unique_id=1726901060 instance=ExtResource("20_jawqf")]
-position = Vector2(372.00003, 151)
+position = Vector2(369.00003, 151)
 fliph = true
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("3_1fajk")]
@@ -6464,9 +6464,9 @@ material = SubResource("ShaderMaterial_e2odm")
 position = Vector2(0, 151)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_wktm6")
-animation = &"die"
+animation = &"hit"
 autoplay = "idle"
-frame = 3
+frame = 1
 script = ExtResource("23_e2odm")
 
 [node name="Projectile" type="AnimatedSprite2D" parent="." unique_id=995690573]

@@ -19,9 +19,12 @@ var forwardMomentum: float = 25000
 var walljumpMomentum: float = 480
 
 func enter() -> void:
+	parent.wallDetection.enabled = true
 	if !flip:
 		parent.flip_direction()
 		flip = true
+	as2d.play("startJump")
+	await as2d.animation_finished
 	as2d.play("jump")
 	if parent.phase2:
 		forwardMomentum = 35000
@@ -29,7 +32,7 @@ func enter() -> void:
 	
 	
 func exit() -> void:
-	pass
+	parent.wallDetection.enabled = false
 
 func process_input(event: InputEvent) -> States:
 	return null
@@ -65,7 +68,7 @@ func process_frame(delta: float) -> States:
 			parent.chase = true
 		elif parent.jump2 == 1:
 			if parent.phase2:
-				parent.idle_time = 0.5
+				parent.idle_time = 0.1
 			else:
 				parent.idle_time = 1.0
 			parent.jump2 = -1
@@ -73,6 +76,9 @@ func process_frame(delta: float) -> States:
 	return null
 	
 func process_physics(delta: float) -> States:
+	if as2d.animation == "startJump":
+		return
+	
 	if moveCheck:
 		if parent.wallJump:
 			parent.velocity.y = -walljumpMomentum

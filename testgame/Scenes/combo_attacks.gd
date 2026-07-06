@@ -20,14 +20,27 @@ func enter() -> void:
 		lungeSpeed = 800
 	dir = parent.direction
 	if parent.lunge:
+		if parent.chase:
+			parent.chase = false
 		currentAttack = "a3"
 		lungeCheck = true
 		parent.flip_direction()
 	else:
 		currentAttack = "a1"
 	as2d.play(currentAttack)
+	
 func exit() -> void:
-	pass
+	done = false
+	if lungeCheck:
+		if parent.pray == parent.PrayMove.ACTIVE:
+			parent.playerAbove = true
+		else:        
+			parent.lunge = false
+			parent.chase = false
+			lungeCheck = false
+	else:
+		parent.chase = true
+		parent.lunge = true
 
 func process_input(event: InputEvent) -> States:
 	return null
@@ -35,31 +48,19 @@ func process_input(event: InputEvent) -> States:
 func process_frame(delta: float) -> States:
 	if parent.phase2S:
 		lungeCheck = true
-		done = false
 		return parent.idle_state
 	
 	
 	if done:
-		if lungeCheck:
-			if parent.pray == parent.PrayMove.ACTIVE:
-				parent.playerAbove = true
-				print("active")
-			else:
-				print("2")
-				parent.lunge = false
-			parent.chase = false
-			lungeCheck = false
-		else:
-			parent.chase = true
-			parent.lunge = true
-		done = false
 		parent.idle_time = 1.0
 		return parent.idle_state
-		
 	return null
 
 func process_physics(delta: float) -> States:
 	attackDir = Global.player.position.x - parent.position.x
+	
+	if done:
+		return
 		
 	if attacking:
 		dir = parent.direction
@@ -81,6 +82,7 @@ func process_physics(delta: float) -> States:
 		
 	if parent.lunge and as2d.frame == 4 and as2d.animation == "a3":
 		parent.velocity.x = parent.direction * lungeSpeed
+		parent.wallDetection.enabled = true
 	elif parent.wallDetection.is_colliding() and as2d.animation == "a3" and as2d.frame > 2:
 		if parent.phase2:
 			var slash1 = slash_projectile.instantiate()

@@ -72,5 +72,4 @@ func spawnPlayer():
 		await player.landed
 		Global.spawning = false
 		await FadeS.fade_in(2.0, true)
-		print("landed")
 		player.control_locked = false

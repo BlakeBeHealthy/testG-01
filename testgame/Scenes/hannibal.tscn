@@ -340,6 +340,10 @@ region = Rect2(0, 192, 128, 64)
 atlas = ExtResource("4_mkmx3")
 region = Rect2(128, 192, 128, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_loddu"]
+atlas = ExtResource("7_a2gdt")
+region = Rect2(128, 128, 128, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7y8ds"]
 atlas = ExtResource("2_gw6ls")
 region = Rect2(0, 0, 128, 64)
@@ -767,6 +771,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_loddu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loddu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loddu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loddu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loddu")
+}],
+"loop": false,
+"name": &"startJump",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7y8ds")
 }, {
 "duration": 1.0,
@@ -852,7 +876,7 @@ dmg = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1502772439]
 material = SubResource("ShaderMaterial_s0ijq")
 sprite_frames = SubResource("SpriteFrames_7qyh4")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
 speed_scale = 0.8
 
@@ -890,11 +914,12 @@ position = Vector2(1.5, 8.4)
 shape = SubResource("RectangleShape2D_gw6ls")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=345588539]
-visible = false
+enabled = false
 target_position = Vector2(14.615386, 0)
 collide_with_areas = true
 
 [node name="playerChaseDetect" type="RayCast2D" parent="." unique_id=1600923200]
+visible = false
 position = Vector2(3.8461542, 7.6923075)
 target_position = Vector2(40.000004, -9.536743e-07)
 collision_mask = 2

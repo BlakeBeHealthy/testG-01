@@ -77,6 +77,13 @@ func apFinish(anim: String = "") -> void:
 	await ap.animation_finished
 
 func _input(event: InputEvent) -> void:
+	if Input.is_action_pressed("ctrl") and Input.is_action_pressed("0"):
+		Gameplay.DJ = true
+		Gameplay.Knightgrandma = true
+		Gameplay.Knight = true
+		SceneM.load_level("res://Scenes/level_08.tscn")
+	
+	
 	if !debug_mode:
 		return
 		

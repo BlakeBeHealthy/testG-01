@@ -8,10 +8,12 @@ var Dircheck: bool = false
 func enter() -> void:
 	as2d.play("startRun")
 	await as2d.animation_finished
+	if parent.lunge:
+		parent.wallDetection.enabled = true
 	as2d.play("run")
 	
 func exit() -> void:
-	pass
+	parent.wallDetection.enabled = false
 
 func process_input(event: InputEvent) -> States:
 	return null
