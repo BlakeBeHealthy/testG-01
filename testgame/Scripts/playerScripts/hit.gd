@@ -26,8 +26,6 @@ func enter() -> void:
 		parent.as2d.position = Vector2(-3 * parent.dir, 5)
 		flash_white()
 		apply_knockback()
-		a2d2.monitoring = false
-		a2d2.monitorable = false
 		it3.start()
 		hit_over = false
 		parent.playerHit.emit(Global.saveData.maxHealth)
@@ -65,12 +63,12 @@ func process_physics(delta: float) -> State:
 
 func apply_knockback():
 	if !parent.invincible:
+		parent.invincible = true
 		apply_timeSlow(parent.TScale, parent.dur)
 		Global.get_camera().start_shake(parent.CAMshake, parent.shakeDur)
 		if !dead:
 			parent.velocity.x = parent.dir * parent.stre
 			parent.velocity.y = -parent.stre * 0.5
-			parent.invincible = true
 			hitstuntimer.start(parent.stunT)
 		as2d.play("hit")
 		
@@ -111,5 +109,3 @@ func flash_white(): #I am slightly iffy about my understanding of shaders, but i
 	#Player invincibility
 func _on_invincible_time_timeout() -> void:
 	parent.invincible = false
-	a2d2.monitoring = true
-	a2d2.monitorable = true

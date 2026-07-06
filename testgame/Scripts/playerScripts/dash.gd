@@ -13,8 +13,9 @@ var dashDir := 0.0
 var jump := false
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
+	parent.invincible = true
+	parent.invisible = true
 	jump_buff.start()
-	hurtbox.set_collision_layer_value(4, false)
 	dash_time.start()
 	dashCheck = true
 	if parent.dash:
@@ -30,6 +31,8 @@ func enter() -> void:
 		
 		
 func exit() -> void:
+	parent.invincible = false
+	parent.invisible = false
 	if parent.dashAllow:
 		parent.dashAllow = false
 	hurtbox.set_collision_layer_value(4, true)

@@ -60,7 +60,7 @@ func hitPlayer():
 			spawnPlayer()
 		
 func spawnPlayer():
-	if !Global.spawning:
+	if !Global.spawning and !Global.player.invisible:
 		Global.spawning = true
 		FadeS.fade_out()
 		await get_tree().create_timer(0.4).timeout

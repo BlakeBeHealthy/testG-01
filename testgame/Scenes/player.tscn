@@ -809,19 +809,6 @@ scale = Vector2(1.345, 1.08)
 shape = SubResource("RectangleShape2D_tx1dd")
 debug_color = Color(0.90078, 0.3079449, 0.121679135, 0.41960785)
 
-[node name="Area2D3" type="Area2D" parent="." unique_id=1551720643]
-visible = false
-position = Vector2(0, 7)
-scale = Vector2(0.507894, 0.9085177)
-collision_layer = 2048
-collision_mask = 32
-
-[node name="hurtbox" type="CollisionShape2D" parent="Area2D3" unique_id=1580656734]
-position = Vector2(-1.2291494e-07, 1.1006944)
-scale = Vector2(0.99999976, 1)
-shape = SubResource("RectangleShape2D_tx1dd")
-debug_color = Color(0.90078, 0.3079449, 0.121679135, 0.41960785)
-
 [node name="ParryZone" type="Area2D" parent="." unique_id=976924657]
 visible = false
 position = Vector2(-1, 9)
@@ -881,6 +868,8 @@ wait_time = 0.215
 one_shot = true
 
 [node name="DashDelay" type="Timer" parent="." unique_id=1995038186]
+process_callback = 0
+wait_time = 0.4
 one_shot = true
 
 [node name="InvincibleTime" type="Timer" parent="." unique_id=1177413683]
@@ -1008,11 +997,6 @@ target_position = Vector2(0, -17)
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Jump" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Fall" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="StateMachine/Attack" method="_on_area_2d_2_area_entered"]
-[connection signal="area_entered" from="Area2D3" to="StateMachine/Idle" method="_on_area_2d_2_area_entered"]
-[connection signal="area_entered" from="Area2D3" to="StateMachine/Run" method="_on_area_2d_2_area_entered"]
-[connection signal="area_entered" from="Area2D3" to="StateMachine/Jump" method="_on_area_2d_2_area_entered"]
-[connection signal="area_entered" from="Area2D3" to="StateMachine/Fall" method="_on_area_2d_2_area_entered"]
-[connection signal="area_entered" from="Area2D3" to="StateMachine/Attack" method="_on_area_2d_2_area_entered"]
 [connection signal="area_entered" from="ParryZone" to="StateMachine/Parry" method="_on_parry_zone_area_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]

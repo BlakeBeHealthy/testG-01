@@ -13,7 +13,6 @@ extends CharacterBody2D
 @onready var c_check_1: RayCast2D = $cCheck1
 @onready var c_check_2: RayCast2D = $cCheck2
 @onready var interact_area: Area2D = $InteractArea
-@onready var a2d3: Area2D = $Area2D3
 
 @export var jump_state: State
 @export var hit_state: State
@@ -74,6 +73,7 @@ var moveCheck := false
 var dashAllow := true
 var camLook := false
 var animate := false
+var invisible := false
 var dash := false
 var wallSlide := false
 var wallJump := false
@@ -102,7 +102,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
 
 func _physics_process(delta: float) -> void:
-	print(Jdirection)
 	state_machine.process_physics(delta)
 	if is_on_floor() and jumpCheck and state_machine.current_state != pogo_state:
 		jumpCheck = false
@@ -121,7 +120,6 @@ func _physics_process(delta: float) -> void:
 		wall_state = WallState.NONE
 		
 func _process(delta: float) -> void:
-	a2d3.position = a2d2.position
 	state_machine.process_frame(delta)
 	if state_machine.current_state == jump_state or state_machine.current_state == fall_state or state_machine.current_state == wallSlide_state:
 		interactC2D.disabled = true
@@ -171,6 +169,8 @@ func hit(dmg: int, direction: int, strength: float, stun_time: float, timeScale:
 		comboCount = 0
 		takeHit = true
 		attack_delay.stop()
+	else:
+		return
 		
 func cutHit():
 	Global.saveData.maxHealth -= 1
