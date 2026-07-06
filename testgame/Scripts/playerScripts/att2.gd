@@ -21,7 +21,6 @@ var startKB := false
 var ComboCheck = false
 var worldHit := false
 var direction := 0
-var jumpBuff := 0
 var attackDir := 0
 
 func enter() -> void:

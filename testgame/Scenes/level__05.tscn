@@ -2219,6 +2219,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ihaum")
 sources/1 = SubResource("TileSetAtlasSource_p1vi5")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87nib"]
+size = Vector2(38.282833, 7.3063965)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yodgx"]
 size = Vector2(44.3662, 5.8619995)
 
@@ -2268,6 +2271,10 @@ animationName = "WW"
 dialogueScene = "res://dialogues/WW.dialogue"
 promptYOffset = -25.0
 prompt_scale = Vector2(0.6, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BetaNPC" unique_id=1148903587]
+position = Vector2(9.536743e-07, 12.632988)
+shape = SubResource("RectangleShape2D_87nib")
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("6_3082n")]
 position = Vector2(408, 208)

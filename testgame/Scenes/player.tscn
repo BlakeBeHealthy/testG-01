@@ -888,8 +888,8 @@ one_shot = true
 wait_time = 0.53
 one_shot = true
 
-[node name="jumpBuff" type="Timer" parent="." unique_id=1119039513]
-wait_time = 0.001
+[node name="buffDelay" type="Timer" parent="." unique_id=1119039513]
+wait_time = 0.009999999999999998
 one_shot = true
 
 [node name="parryCooldown" type="Timer" parent="." unique_id=2138544369]
@@ -1009,8 +1009,8 @@ target_position = Vector2(0, -17)
 [connection signal="timeout" from="InvincibleTime" to="StateMachine/Hit" method="_on_invincible_time_timeout"]
 [connection signal="timeout" from="hitstuntimer" to="StateMachine/Hit" method="_on_hitstuntimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="jumpBuff" to="StateMachine/PogoAttack" method="_on_jump_buff_timeout"]
-[connection signal="timeout" from="jumpBuff" to="StateMachine/Dash" method="_on_jump_buff_timeout"]
+[connection signal="timeout" from="buffDelay" to="StateMachine/PogoAttack" method="_on_jump_buff_timeout"]
+[connection signal="timeout" from="buffDelay" to="StateMachine/Dash" method="_on_jump_buff_timeout"]
 [connection signal="timeout" from="parryCooldown" to="." method="_on_parry_cooldown_timeout"]
 [connection signal="timeout" from="parryTime" to="StateMachine/Parry" method="_on_parry_time_timeout"]
 [connection signal="timeout" from="wallSlideFall" to="StateMachine/Jump" method="_on_wall_slide_fall_timeout"]

@@ -5,7 +5,8 @@ extends State
 @onready var dash_delay: Timer = $"../../DashDelay"
 @onready var dash_time: Timer = $"../../DashTime"
 @onready var hurtbox: Area2D = $"../../Area2D2"
-@onready var jump_buff: Timer = $"../../jumpBuff"
+@onready var buff_delay: Timer = $"../../buffDelay"
+
 
 var dashDone
 var dashCheck := false
@@ -15,7 +16,7 @@ var jump := false
 func enter() -> void:
 	parent.invincible = true
 	parent.invisible = true
-	jump_buff.start()
+	buff_delay.start()
 	dash_time.start()
 	dashCheck = true
 	if parent.dash:
@@ -35,19 +36,20 @@ func exit() -> void:
 	parent.invisible = false
 	if parent.dashAllow:
 		parent.dashAllow = false
-	hurtbox.set_collision_layer_value(4, true)
-	if parent.jumpBuff:
-		parent.jumpBuff = false
-	if !jump_buff.is_stopped():
-		jump_buff.stop()
+	if !buff_delay.is_stopped():
+		buff_delay.stop()
 	if !dash_time.is_stopped():
 		dash_time.stop()
 	if dashCheck:
 		dashCheck = false
 	if dashDone:
 		dashDone = false
+	jump = false
+		
 func process_input(event: InputEvent) -> State:
-	if parent.jumpBuff:
+	if parent.state_machine.current_state != parent.dash_state:
+		return
+	if (!parent.jumpCheck or (parent.is_on_floor() or parent.moveCheck)) and buff_delay.is_stopped():
 		if Input.is_action_just_pressed("jump"):
 			jump = true
 	return null
@@ -69,9 +71,8 @@ func process_frame(delta: float) -> State:
 			return parent.pogo_state
 		elif !parent.is_on_floor() and parent.velocity.y > 0:
 			return parent.fall_state
-		elif (Input.is_action_just_pressed('jump') or jump) and (parent.is_on_floor() or parent.moveCheck):
-			if jump:
-				jump = false
+		elif jump:
+			jump = false
 			return parent.jump_state
 		elif Input.is_action_pressed('runL') or Input.is_action_pressed('runR'):
 			return parent.run_state
@@ -96,7 +97,3 @@ func process_physics(delta: float) -> State:
 func _on_dash_time_timeout() -> void:
 	dashCheck = false
 	dashDone = true
-
-
-func _on_jump_buff_timeout() -> void:
-	parent.jumpBuff = true 

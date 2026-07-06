@@ -22,7 +22,6 @@ var hit := false
 var timeSlow := false
 var checkAttack := false
 var KB = false
-var jumpBuff := false
 var attackDir := 0
 
 func enter() -> void:
@@ -86,7 +85,6 @@ func process_frame(delta: float) -> State:
 			return parent.dash_state
 		if parent.is_on_floor():
 			if Input.is_action_pressed("jump"):
-				jumpBuff = 0
 				return parent.jump_state
 			
 			if direction != 0:

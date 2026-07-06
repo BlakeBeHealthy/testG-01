@@ -14,11 +14,8 @@ var title := ""
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
+	parent.invincible = true
 	parent.as2d.position = Vector2(0, 0)
-	if parent.a2d2.monitorable:
-		parent.a2d2.monitorable = false
-		parent.a2d2.monitorable = false
-		
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
 	elif (parent.current_interactable is BetaNPC and !Global.spawning) or Global.cutsceneStarted:
@@ -29,6 +26,7 @@ func enter() -> void:
 		done = true
 		
 func exit() -> void:
+	parent.invincible = false
 	parent.takeHit = false
 	collision_shape_2d.disabled = false
 	dialogueActive = false
@@ -37,10 +35,6 @@ func exit() -> void:
 	checkpoint = false
 	started = false
 	
-	if !parent.a2d2.monitorable:
-		print("true")
-		parent.a2d2.monitorable = true
-		parent.a2d2.monitorable = true
 	
 func process_input(event: InputEvent) -> State:
 	return null
@@ -99,7 +93,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		as2d.play("save2")
 		
 func process_physics(delta: float) -> State:
-	if !parent.is_on_floor() or Global.spawning:
+	if (!parent.is_on_floor() or Global.spawning) and !checkpoint:
 		parent.velocity.y = (gravity * 50) * delta
 		as2d.play("fall")
 		parent.move_and_slide()

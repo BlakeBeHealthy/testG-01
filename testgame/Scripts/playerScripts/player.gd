@@ -62,7 +62,6 @@ var upwardDoor = false
 var knockback_velocity := 0.0
 var knockback_decay := 50.0
 var jumpCheck := false
-var jumpBuff := false
 var wallJumpBuff := false
 var attackCheck := false
 var pogoCheck := false
