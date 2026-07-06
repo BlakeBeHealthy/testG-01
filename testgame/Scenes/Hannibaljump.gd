@@ -68,7 +68,7 @@ func process_frame(delta: float) -> States:
 			parent.chase = true
 		elif parent.jump2 == 1:
 			if parent.phase2:
-				parent.idle_time = 0.1
+				parent.idle_time = 0.01
 			else:
 				parent.idle_time = 1.0
 			parent.jump2 = -1
