@@ -41,7 +41,8 @@ func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3C
 		Global.ap.play(loseAnim)
 		await Global.ap.animation_finished
 		await FadeS.fade_out(0.8, true)
-		Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2", true)
+		if Global.saveData.maxHealth > 0:
+			Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2", true)
 		
 func barStart(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:
 	mash_count = 0
