@@ -2289,7 +2289,8 @@ position = Vector2(-59, -41)
 
 [node name="NorthD" type="Area2D" parent="." unique_id=153958864]
 position = Vector2(568, -172)
-collision_mask = 2
+collision_layer = 16384
+collision_mask = 8
 script = ExtResource("6_4p08x")
 entry_direction = 1
 path_to_new_scene = "res://Scenes/level_03.tscn"
@@ -2302,7 +2303,8 @@ shape = SubResource("RectangleShape2D_6tqv3")
 [node name="WestD" type="Area2D" parent="." unique_id=141517665]
 position = Vector2(-782, -48)
 scale = Vector2(0.87377816, 3.5372038)
-collision_mask = 2
+collision_layer = 16384
+collision_mask = 8
 script = ExtResource("6_4p08x")
 entry_direction = 2
 path_to_new_scene = "res://Scenes/Level01.tscn"
@@ -2415,7 +2417,5 @@ position = Vector2(-237, -43)
 position = Vector2(-48, -1)
 shape = SubResource("CapsuleShape2D_6tqv3")
 
-[connection signal="body_entered" from="NorthD" to="NorthD" method="_on_body_entered"]
-[connection signal="player_entered_door" from="NorthD" to="NorthD" method="_on_player_entered_door"]
-[connection signal="body_entered" from="WestD" to="WestD" method="_on_body_entered"]
-[connection signal="player_entered_door" from="WestD" to="WestD" method="_on_body_entered"]
+[connection signal="area_shape_entered" from="NorthD" to="NorthD" method="_on_area_shape_entered"]
+[connection signal="area_shape_entered" from="WestD" to="WestD" method="_on_area_shape_entered"]

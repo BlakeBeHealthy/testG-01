@@ -8,10 +8,10 @@ Rain: That chest over there is weird...
 	Rain: It doesn't give any loot it just... 
 - It's not a mimic right?
 	P: It's not a mimic right? There are way too many of those
-	Rain: No it's weird its like...
+	Rain: No, though that would be funny
 Rain: People interact with it and then if they die they just appear right here...
 Rain: ...
-Rain: Its a checkpoint and it fills your health.
+Rain: Its a checkpoint and it fills your health. It also saves your game, press ctrl and 1 to COMPLETELY restart your game
 P: ...Does it take insurance?
 Rain: It's free...I think
 Rain: *looks at the chest for a while*
@@ -40,7 +40,7 @@ Cpt Wright: My sword is missing!
 	P: Dude. A witch north of here is using it right now.
 	Cpt Wright: You are a blessing.
 	Cpt Wright: When I finish flexing in the sun, I will take it from her.
-	P: We are in a cave, there is no light.
+	P: We are in a cave, there is no sunlight.
 	Cpt Wright: When your future is as bright as mine you make your own
 	Cpt Wright: You just need hard work and a whole lotta steriods.
 set Gameplay.Knight = true

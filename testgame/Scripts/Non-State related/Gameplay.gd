@@ -42,8 +42,6 @@ func on_level_loaded(level: Node) -> void:
 		if spawn:
 			player.global_position = spawn.global_position - pending_entry_direction
 			
-	if Global.spawning:
-		Global.spawning = false
 				
 	Global.player.flip_direction(direction)
 	Global.camera.global_position = Global.player.global_position
@@ -52,6 +50,8 @@ func on_level_loaded(level: Node) -> void:
 	
 	if FadeS.fade:
 		await FadeS.fade_in(1.5, true)
+	if Global.spawning:
+		Global.spawning = false
 	if Global.inputBlocked:
 		Global.inputBlocked = false
 	if player.control_locked:

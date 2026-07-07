@@ -4,7 +4,6 @@ var debug_dialogue: String = ""
 var debug_start: String = ""
 var debug_cutscene: String = ""
 var debug_mode: bool = false
-var knight_dead: bool = false
 var cutsceneStarted: bool = false
 var inputBlocked: bool = false
 var cutWait: bool = false
@@ -22,6 +21,7 @@ var camera: Camera2D
 var prompt: Node2D
 var UI: CanvasLayer
 var ap: AnimationPlayer
+const SAVE_PATH = "user://save.json"
 signal playerDone
 signal healthUp
 signal DoorChange
@@ -45,7 +45,51 @@ var saveData = {
 func set_player(node):
 	player = node
 	playerDone.emit()
-
+	
+func save_game() -> void:
+	var data = {
+		"checkpoint_pos_x": saveData.checkpoint_pos.x,
+		"checkpoint_pos_y": saveData.checkpoint_pos.y,
+		"checkpoint_scene": saveData.checkpoint_scene,
+		"Rain": Gameplay.Rain,
+		"DJ": Gameplay.DJ,
+		"Knightgrandma": Gameplay.Knightgrandma,
+		"Knight": Gameplay.Knight,
+		"hannible": hannible,
+		"hannible1": hannible1,
+		"han": han
+		}
+		
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	file.store_string(JSON.stringify(data, "\t"))
+	file.close()
+	print("saved!")
+	
+func load_game() -> void:
+	if !FileAccess.file_exists(SAVE_PATH):
+		print("no save file found, starting fresh")
+		return
+		
+	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var data = JSON.parse_string(file.get_as_text())
+	file.close()
+		
+	if data == null:
+		print("save file corrupted, starting fresh")
+		return
+		
+	saveData.checkpoint_pos.x = data["checkpoint_pos_x"]
+	saveData.checkpoint_pos.y = data["checkpoint_pos_y"]
+	saveData.checkpoint_scene = data["checkpoint_scene"]
+	Gameplay.Rain = data["Rain"]
+	Gameplay.DJ = data["DJ"]
+	Gameplay.Knightgrandma = data["Knightgrandma"]
+	Gameplay.Knight = data["Knight"]
+	hannible = data["hannible"]
+	hannible1 = data["hannible1"]
+	han = data["han"]
+	print("loaded!")
+	
 func get_player():
 	return player
 	
@@ -104,9 +148,32 @@ func _input(event: InputEvent) -> void:
 		Global.hannible = true
 
 	if Input.is_action_pressed("ctrl") and Input.is_action_pressed("1"):
-		Gameplay.Knightgrandma = false
-		Gameplay.Knight = false
+		var restartData = {
+			"checkpoint_pos.x": -1505,
+			"checkpoint_pos.y": -597,
+			"checkpoint_scene": "res://Scenes/Level01.tscn",
+			"Rain": false,
+			"DJ": false,
+			"Knightgrandma": false,
+			"Knight": false,
+			"hannible": false,
+			"hannible1": false,
+			"han": false
+			}
+		saveData.checkpoint_pos.x = restartData["checkpoint_pos.x"]
+		saveData.checkpoint_pos.y = restartData["checkpoint_pos.y"]
+		saveData.checkpoint_scene = restartData["checkpoint_scene"]
+		Gameplay.Rain = restartData["Rain"]
+		Gameplay.DJ = restartData["DJ"]
+		Gameplay.Knightgrandma = restartData["Knightgrandma"]
+		Gameplay.Knight = restartData["Knight"]
+		hannible = restartData["hannible"]
+		hannible1 = restartData["hannible1"]
+		han = restartData["han"]
+		save_game()
+		await FadeS.fade_out(1.5, true)
 		SceneM.load_level("res://Scenes/Level01.tscn")
+		await FadeS.fade_in(1.5, true)
 		
 	if Input.is_action_pressed("ctrl") and Input.is_action_pressed("5"):
 		SceneM.load_level("res://Scenes/level__05.tscn")

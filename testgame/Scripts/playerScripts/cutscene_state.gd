@@ -18,10 +18,11 @@ func enter() -> void:
 	parent.as2d.position = Vector2(0, 0)
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
-	elif (parent.current_interactable is BetaNPC and !Global.spawning) or Global.cutsceneStarted:
-		speaking = true
-	elif !parent.animate and !Global.spawning:
+	elif !parent.animate and !Global.spawning and Input.is_action_just_pressed("PlayerLock"):
 		parent.camLook = true
+	elif (parent.current_interactable is BetaNPC and !Global.spawning) or \
+	Global.cutsceneStarted:
+		speaking = true
 	else:
 		done = true
 		

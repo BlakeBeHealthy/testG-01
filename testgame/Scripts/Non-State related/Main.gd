@@ -5,7 +5,9 @@ extends Node2D
 
 
 func _ready():
+	Global.load_game()
 	InputMap.load_from_project_settings()
+	Gameplay.game_respawn()
 	FadeS.fade_in()
-	SceneM.load_level("res://Scenes/Level01.tscn")
+	SceneM.load_level(Global.saveData.checkpoint_scene)
 	

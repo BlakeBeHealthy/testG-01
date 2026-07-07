@@ -6,6 +6,7 @@ extends State
 @onready var dash_time: Timer = $"../../DashTime"
 @onready var hurtbox: Area2D = $"../../Area2D2"
 @onready var buff_delay: Timer = $"../../buffDelay"
+@onready var dash_buff: Timer = $"../../DashBuff"
 
 
 var dashDone
@@ -16,6 +17,7 @@ var jump := false
 func enter() -> void:
 	parent.invincible = true
 	parent.invisible = true
+	dash_buff.start()
 	buff_delay.start()
 	dash_time.start()
 	dashCheck = true
@@ -23,13 +25,6 @@ func enter() -> void:
 		parent.dash = false
 	dash_delay.start()
 	as2d.play("dash")
-	dashDir = Input.get_axis("runL","runR" )
-	if Input.is_action_just_pressed("runL"):
-		as2d.flip_h = true
-	elif Input.is_action_just_pressed("runR"):
-		as2d.flip_h = false
-	
-		
 		
 func exit() -> void:
 	parent.invincible = false
@@ -84,11 +79,14 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	if dashCheck:
-		if as2d.flip_h == false:
-			dashDir = 1
-		elif as2d.flip_h == true:
+		if Input.is_action_pressed("runL"):
 			dashDir = -1
-		parent.velocity.x = dashDir * dashSpeed
+		elif Input.is_action_pressed("runL"):
+			dashDir = 1
+		else:
+			dashDir = -1 if as2d.flip_h else 1
+		if dash_buff.is_stopped():
+			parent.velocity.x = dashDir * dashSpeed
 	else:
 		parent.velocity.x = move_toward(parent.velocity.x, move_speed, decayRate * delta)
 	parent.velocity.y = 0

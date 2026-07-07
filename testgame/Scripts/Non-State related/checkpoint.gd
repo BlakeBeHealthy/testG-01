@@ -32,6 +32,7 @@ func _on_area_exited(area: Area2D) -> void:
 	prompt.hidePrompt()
 
 func saving(check: int):
+	Global.save_game()
 	if check == 0:
 		prompt.hidePrompt()
 	elif check == 1:

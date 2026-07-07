@@ -2220,7 +2220,7 @@ sources/1 = SubResource("TileSetAtlasSource_5a8oa")
 size = Vector2(20, 60.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvrgg"]
-size = Vector2(99, 20)
+size = Vector2(99, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5a8oa"]
 size = Vector2(119, 18)
@@ -2241,7 +2241,8 @@ script = ExtResource("4_wi344")
 
 [node name="WestD2" type="Area2D" parent="." unique_id=1397582055]
 position = Vector2(-852, -124)
-collision_mask = 2
+collision_layer = 16384
+collision_mask = 8
 script = ExtResource("3_f6i20")
 entry_direction = 2
 path_to_new_scene = "res://Scenes/level_03.tscn"
@@ -2259,7 +2260,7 @@ path_to_new_scene = "res://Scenes/level__05.tscn"
 entry_door_name = "NorthD2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SouthD2" unique_id=122711954]
-position = Vector2(108, 176)
+position = Vector2(108, 148)
 shape = SubResource("RectangleShape2D_dvrgg")
 
 [node name="BetaNPC" parent="." unique_id=1828915867 instance=ExtResource("6_dvrgg")]
@@ -2276,4 +2277,4 @@ shape = SubResource("RectangleShape2D_5a8oa")
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("7_wk15n")]
 position = Vector2(-805, -116)
 
-[connection signal="body_entered" from="WestD2" to="WestD2" method="_on_body_entered"]
+[connection signal="area_shape_entered" from="WestD2" to="WestD2" method="_on_area_shape_entered"]

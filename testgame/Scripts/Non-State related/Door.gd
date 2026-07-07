@@ -7,10 +7,6 @@ signal player_entered_door(door: Door)
 @export var path_to_new_scene: String          # Scene to load when entering
 @export var entry_door_name: String            # Name of the door in the next level
 
-#Body enter event
-func _on_body_entered(body: Node2D) -> void:
-	if body != Global.player:
-		return
-	# Signal Gameplay (or whoever is listening) that the player entered this door\
+func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	Global.player.visible = false
 	Gameplay.enter_door(path_to_new_scene, entry_door_name, entry_direction)
