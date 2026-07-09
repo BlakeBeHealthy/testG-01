@@ -43,6 +43,9 @@ func Start(preAnim: String, clashAnim: String, winA: String, loseA: String, DM3C
 		await FadeS.fade_out(0.8, true)
 		if Global.saveData.maxHealth > 0:
 			Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2", true)
+		else:
+			if Global.cutsceneStarted:
+				Global.cutsceneStarted = false
 		
 func barStart(fade_before: bool = true, timeout: bool = false, countdown: float = 0.0) -> void:
 	mash_count = 0
