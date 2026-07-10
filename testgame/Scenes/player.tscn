@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dbnqbhv2y8oh1" path="res://assets/animated-pixel-hero 2/adventurer-v1.5-Sheet.png" id="2_gymyn"]
 [ext_resource type="Shader" uid="uid://bso3jsws5lrsh" path="res://Scenes/hit_flash.gdshader" id="2_pu2lt"]
 [ext_resource type="Script" uid="uid://drca7qt0tbpv8" path="res://Scripts/playerScripts/idle.gd" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://cphuja0sxpymj" path="res://assets/plantenemy.png" id="4_fs7ks"]
 [ext_resource type="Script" uid="uid://6pmv6x4tnxyy" path="res://Scripts/playerScripts/StateM.gd" id="4_x3wgy"]
 [ext_resource type="Script" uid="uid://ft25rqcrc27w" path="res://Scripts/playerScripts/dash.gd" id="5_qqcod"]
 [ext_resource type="Script" uid="uid://wqmo4cxjnj3s" path="res://Scripts/playerScripts/run.gd" id="6_3smsa"]
@@ -216,6 +217,38 @@ region = Rect2(100, 74, 50, 37)
 atlas = ExtResource("2_gymyn")
 region = Rect2(150, 74, 50, 37)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ketbw"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(0, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4grkl"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(2048, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yrdb"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(4096, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ue0p1"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(6144, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isbcs"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(8192, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_142e3"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(10240, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts2c8"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(12288, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcgbs"]
+atlas = ExtResource("4_fs7ks")
+region = Rect2(14336, 0, 2048, 2048)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsob3"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(300, 370, 50, 37)
@@ -363,7 +396,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"a2",
-"speed": 24.0
+"speed": 23.0
 }, {
 "frames": [{
 "duration": 0.5,
@@ -531,10 +564,34 @@ animations = [{
 "name": &"jump",
 "speed": 16.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ketbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4grkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yrdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ue0p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isbcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_142e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts2c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcgbs")
+}],
 "loop": true,
 "name": &"new_animation",
-"speed": 24.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -681,7 +738,7 @@ animations = [{
 size = Vector2(13.836479, 28.818476)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gymyn"]
-size = Vector2(25.25, 45)
+size = Vector2(48.704662, 40.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx1dd"]
 size = Vector2(25.171629, 26.979446)
@@ -710,21 +767,22 @@ cut_state = NodePath("StateMachine/CutsceneState")
 pogo_state = NodePath("StateMachine/PogoAttack")
 wallSlide_state = NodePath("StateMachine/WallSlide")
 JUMP = 450
-jumpCut = 0.3
+jumpCut = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=720930456]
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"idle"
+animation = &"dash"
 speed_scale = 0.8
-flip_h = true
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
+visible = false
 visibility_layer = 2
-position = Vector2(1.0000002, 0.99999994)
+position = Vector2(0, 8)
 scale = Vector2(1.59, 1.274)
 shape = SubResource("RectangleShape2D_ukyrk")
+debug_color = Color(1, 0.4380554, 0.6406184, 0.41960785)
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=764626776]
 visible = false
@@ -733,19 +791,20 @@ collision_layer = 64
 collision_mask = 8960
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=866466377]
-position = Vector2(0, -1)
+position = Vector2(-5.9604645e-08, 2)
+scale = Vector2(0.54, 1)
 shape = SubResource("RectangleShape2D_gymyn")
+disabled = true
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1898396502]
-visible = false
-position = Vector2(-0.99999994, 7)
+position = Vector2(0, 7)
 scale = Vector2(0.507894, 0.9085177)
 collision_layer = 2056
-collision_mask = 32
+collision_mask = 16416
 
 [node name="hurtbox" type="CollisionShape2D" parent="Area2D2" unique_id=1299933768]
-position = Vector2(-1.2291494e-07, 1.1006944)
-scale = Vector2(0.99999976, 1)
+position = Vector2(0, 3.3020823)
+scale = Vector2(1.345, 1.08)
 shape = SubResource("RectangleShape2D_tx1dd")
 debug_color = Color(0.90078, 0.3079449, 0.121679135, 0.41960785)
 
@@ -763,8 +822,7 @@ shape = SubResource("CapsuleShape2D_pg0gw")
 debug_color = Color(0.9978096, 0, 0.1678963, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=450046427]
-visible = false
-position = Vector2(18, 3.8)
+position = Vector2(18, 4)
 scale = Vector2(1.785, 1.525)
 collision_layer = 128
 collision_mask = 1041
@@ -776,16 +834,32 @@ position = Vector2(-1.6806722, -5.1147547)
 shape = SubResource("CapsuleShape2D_ukyrk")
 
 [node name="wallslideChest" type="RayCast2D" parent="." unique_id=271180678]
-visible = false
-position = Vector2(3, 0)
-target_position = Vector2(11, 0)
+position = Vector2(7, 0)
+target_position = Vector2(7.3, 0)
+collide_with_areas = true
+
+[node name="walljumpCheck" type="RayCast2D" parent="." unique_id=2004975686]
+position = Vector2(-4, 0)
+target_position = Vector2(0, 99)
+
+[node name="walljumpCheck2" type="RayCast2D" parent="." unique_id=1126874053]
+position = Vector2(4, 0)
+target_position = Vector2(0, 99)
 
 [node name="wallslideLegs" type="RayCast2D" parent="." unique_id=335263960]
-visible = false
-position = Vector2(3, 17)
-target_position = Vector2(11, 0)
+position = Vector2(-7, 17)
+target_position = Vector2(-7.3, 0)
 
 [node name="WallJumpBuffer" type="Timer" parent="." unique_id=1415600477]
+
+[node name="air_control_timer" type="Timer" parent="." unique_id=60941807]
+one_shot = true
+
+[node name="air_fade_timer" type="Timer" parent="." unique_id=401066385]
+one_shot = true
+
+[node name="wall_touch_timer" type="Timer" parent="." unique_id=449303984]
+one_shot = true
 
 [node name="wallJump" type="Timer" parent="." unique_id=1638574407]
 wait_time = 0.001
@@ -800,6 +874,13 @@ wait_time = 0.215
 one_shot = true
 
 [node name="DashDelay" type="Timer" parent="." unique_id=1995038186]
+process_callback = 0
+wait_time = 0.4
+one_shot = true
+
+[node name="DashBuff" type="Timer" parent="." unique_id=795501328]
+process_callback = 0
+wait_time = 0.03
 one_shot = true
 
 [node name="InvincibleTime" type="Timer" parent="." unique_id=1177413683]
@@ -807,7 +888,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="attackDelay" type="Timer" parent="." unique_id=1251612868]
-wait_time = 0.46
+wait_time = 0.3
 one_shot = true
 
 [node name="hitstuntimer" type="Timer" parent="." unique_id=668290657]
@@ -818,8 +899,8 @@ one_shot = true
 wait_time = 0.53
 one_shot = true
 
-[node name="jumpBuff" type="Timer" parent="." unique_id=1119039513]
-wait_time = 0.001
+[node name="buffDelay" type="Timer" parent="." unique_id=1119039513]
+wait_time = 0.05
 one_shot = true
 
 [node name="parryCooldown" type="Timer" parent="." unique_id=2138544369]
@@ -843,7 +924,7 @@ one_shot = true
 [node name="StateMachine" type="Node" parent="." unique_id=1235796374 node_paths=PackedStringArray("attack_state", "starting_state")]
 script = ExtResource("4_x3wgy")
 attack_state = NodePath("Attack")
-starting_state = NodePath("Idle")
+starting_state = NodePath("CutsceneState")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=389573731]
 script = ExtResource("3_i3pqv")
@@ -853,8 +934,10 @@ script = ExtResource("6_3smsa")
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175]
 script = ExtResource("8_8erm5")
-wall_jump_force = 600.0
+wall_jump_force = 350.0
+wall_jump_forceY = 550.0
 decayRate = 3500.0
+air_control_lockout = 0.1
 
 [node name="Fall" type="Node" parent="StateMachine" unique_id=337594985]
 script = ExtResource("8_f1ek2")
@@ -907,6 +990,7 @@ decayRate = 3000.0
 [node name="WallSlide" type="Node" parent="StateMachine" unique_id=1955315188]
 script = ExtResource("18_igrcy")
 wall_slide_terminal = 0.2
+freeze_duration = 0.1
 decay = 10.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/CutsceneState" method="_on_animated_sprite_2d_animation_finished"]
@@ -926,14 +1010,15 @@ decay = 10.0
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/Attack2" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/PogoAttack" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="StateMachine/ParryAttack" method="_on_area_2d_area_shape_entered"]
+[connection signal="timeout" from="wall_touch_timer" to="StateMachine/WallSlide" method="_on_wall_touch_timer_timeout"]
 [connection signal="timeout" from="wallJump" to="StateMachine/WallSlide" method="_on_wall_jump_timeout"]
 [connection signal="timeout" from="attack2buff" to="StateMachine/ParryAttack" method="_on_attack_2_buff_timeout"]
 [connection signal="timeout" from="DashTime" to="StateMachine/Dash" method="_on_dash_time_timeout"]
 [connection signal="timeout" from="InvincibleTime" to="StateMachine/Hit" method="_on_invincible_time_timeout"]
 [connection signal="timeout" from="hitstuntimer" to="StateMachine/Hit" method="_on_hitstuntimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="jumpBuff" to="StateMachine/PogoAttack" method="_on_jump_buff_timeout"]
-[connection signal="timeout" from="jumpBuff" to="StateMachine/Dash" method="_on_jump_buff_timeout"]
+[connection signal="timeout" from="buffDelay" to="StateMachine/PogoAttack" method="_on_jump_buff_timeout"]
+[connection signal="timeout" from="buffDelay" to="StateMachine/Dash" method="_on_jump_buff_timeout"]
 [connection signal="timeout" from="parryCooldown" to="." method="_on_parry_cooldown_timeout"]
 [connection signal="timeout" from="parryTime" to="StateMachine/Parry" method="_on_parry_time_timeout"]
 [connection signal="timeout" from="wallSlideFall" to="StateMachine/Jump" method="_on_wall_slide_fall_timeout"]

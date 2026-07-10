@@ -24,7 +24,6 @@ func process_input(event: InputEvent) -> State:
 
 func process_frame(delta: float) -> State:
 	if parent.control_locked:
-		parent.control_locked = false
 		return parent.cut_state
 	if parent.takeHit:
 		return parent.hit_state
@@ -45,26 +44,7 @@ func process_frame(delta: float) -> State:
 	
 func process_physics(delta: float) -> State:
 	var direction = Input.get_axis("runL", "runR")
-	
-	if direction > 0:
-		parent.flip_direction(1)
-		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-		parent.wallslide_chest.position.x = -2
-		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-		parent.wallslide_legs.position.x = -2
-		a2d2.position.x = 5 * direction
-		a2d.position.x = 18
-		facingR = true
-	elif direction < 0:
-		parent.flip_direction(-1)
-		parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-		parent.wallslide_chest.position.x = -0
-		parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-		parent.wallslide_legs.position.x = -0
-		a2d2.position.x = 5 * direction
-		a2d.position.x = -18
-		facingR = false
-		
+	parent.update_ground_visuals(direction)
 	parent.velocity.x = parent.direction * move_speed
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()

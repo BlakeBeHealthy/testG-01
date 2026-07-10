@@ -21,7 +21,6 @@ var startKB := false
 var ComboCheck = false
 var worldHit := false
 var direction := 0
-var jumpBuff := 0
 var attackDir := 0
 
 func enter() -> void:
@@ -29,10 +28,18 @@ func enter() -> void:
 	as2d.play("a2")
 	if !ComboTime.is_stopped():
 		ComboTime.stop()
-	#Ensuring the player can't just spam attacks over and over again, however
-		#I'm debating having the timer just start in the last combo move,
-		#because if they do click in quick succession it will do the combo move so have attack
-		#delay this is kinda useless, but you can test it if you feel like it.
+	parent.as2d.position = Vector2(0, 0)
+	attackDir = Input.get_axis("runL", "runR")
+	parent.update_ground_visuals(attackDir)
+	if attackDir > 0:
+		as2d.flip_h = false
+	elif attackDir < 0:
+		as2d.flip_h = true
+	else:
+		if as2d.flip_h:
+			attackDir = -1
+		else:
+			attackDir = 1
 	checkAttack = false
 	
 	if checkHit:
@@ -55,18 +62,15 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 	if parent.state_machine.current_state != parent.att2_state or KB:
 		return
 		
-	startKB = true
-	if !area.is_in_group("World") or !area.is_in_group("Spikes"):
-		apply_timeSlow(hit_timeStop, hit_duration)
-	else:
-		worldHit = true
-		
-	if as2d.flip_h:
-		attackDir = -1
-	else:
-		attackDir = 1
-	
 
+	if !area.is_in_group("World") and !area.get_collision_layer_value(11):
+		Global.apply_timeSlow(hit_timeStop, hit_duration)
+	elif !worldHit:
+		worldHit = true
+	else:
+		return
+		
+	startKB = true
 func exit() -> void:
 	KB = false
 	checkHit = true
@@ -75,6 +79,8 @@ func exit() -> void:
 	attackDir = 0
 	if parent.attackCheck:
 		parent.attackCheck = false
+	if worldHit:
+		worldHit = false
 	
 func process_input(event: InputEvent) -> State:
 	return null
@@ -84,7 +90,7 @@ func process_frame(delta: float) -> State:
 		return parent.hit_state
 	
 	if !as2d.is_playing() and !KB:
-		if parent.wallSlide:
+		if parent.wall_state == parent.WallState.SLIDING:
 			return parent.wallSlide_state
 		if parent.parryCheck:
 				return parent.parry_state
@@ -110,12 +116,12 @@ func process_physics(delta: float) -> State:
 			
 	if startKB:
 		if worldHit:
-			worldHit = false
-			parent.velocity.x += -attackDir * 250
+			parent.velocity.x += -attackDir * 550
+			print(parent.velocity.x)
 		else:
 			parent.velocity.x += -attackDir * playerKnockback
-		KB = true
 		startKB = false
+		KB = true
 	elif KB:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, decayRate * delta)
 		if parent.velocity.x == 0:
@@ -123,17 +129,7 @@ func process_physics(delta: float) -> State:
 	else:
 		if direction != 0:
 			parent.velocity.x = direction * move_speed
-			parent.wallslide_chest.target_position.x = abs(parent.wallslide_chest.target_position.x) * direction
-			parent.wallslide_chest.position.x = 3.7 * direction
-			a2d.position = Vector2(2 * direction, 0)
-			parent.wallslide_legs.target_position.x = abs(parent.wallslide_legs.target_position.x) * direction
-			parent.wallslide_legs.position.x = 3.7 * direction
-			a2d.position = Vector2(18 * direction, 4)
 		elif direction == 0:
-			if as2d.flip_h:
-				a2d.position = Vector2(18 * -1, 4)
-			else:
-				a2d.position = Vector2(18 * 1, 4)
 			parent.velocity.x *= 0
 			
 	if Input.is_action_pressed("jump") and !parent.jumpCheck:
@@ -145,14 +141,3 @@ func process_physics(delta: float) -> State:
 		parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 	return null
-
-#Should have mentioned this, this is for hitstop
-func apply_timeSlow(timeScale: float, duration: float) -> void:
-	if timeSlow:
-		return
-		
-	timeSlow = true
-	Engine.time_scale = max(timeScale, 0.05)
-	await get_tree().create_timer(duration, false, false, true).timeout 
-	Engine.time_scale = 1.0
-	timeSlow = false

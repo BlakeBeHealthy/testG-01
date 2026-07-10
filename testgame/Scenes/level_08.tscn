@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://baje80lg3quet" path="res://Scenes/player.tscn" id="5_eyj16"]
 [ext_resource type="PackedScene" uid="uid://djei3agw1frcl" path="res://Scenes/camera_2d.tscn" id="7_eyj16"]
 [ext_resource type="PackedScene" uid="uid://v4r78g4kbnyy" path="res://Scenes/UI.tscn" id="7_uagn3"]
+[ext_resource type="Script" uid="uid://d07ux1hypjets" path="res://Scenes/gateOpen.gd" id="8_uagn3"]
+[ext_resource type="PackedScene" uid="uid://2csjtunoknkd" path="res://Scenes/gate.tscn" id="9_slik3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rm6qy"]
 texture = ExtResource("1_80dva")
@@ -2252,8 +2254,17 @@ shape = SubResource("RectangleShape2D_b3y43")
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("4_rm6qy")]
 position = Vector2(4, 182)
 
+[node name="Node2D" type="Node2D" parent="." unique_id=1500857780]
+script = ExtResource("8_uagn3")
+
+[node name="Gate" parent="Node2D" unique_id=638527128 instance=ExtResource("9_slik3")]
+position = Vector2(-462, 149)
+fliph = true
+
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("5_eyj16")]
 position = Vector2(-413, 142)
 
 [node name="Camera2D" parent="." unique_id=1391246105 instance=ExtResource("7_eyj16")]
 zoom = Vector2(3.5, 3.5)
+limit_left = -525
+limit_right = 802

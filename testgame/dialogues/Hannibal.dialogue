@@ -1,19 +1,58 @@
 ~ start
+if Global.han:
+	=> skip
 Hannibal: I've been looking for you.
 P: Have we met?
 Hannibal: I've killed you countless times before. But this moment in time keeps repeating.
-Hannibal: End this fight, why do you keep coming back?
-- I've never been here before
-	P: I've never been here before, I would remember something like this
-	Hannibal: So you lose your memory each time?
-	Hannibal: I suppose some creater put me here for a purpose...
-	Hannibal: to kill you.
-- How would I be dead if I'm standing right here
-	P: If I died I wouldn't be standing here
-	Hannibal: You still walk, but it wall always end the same just as before
-	Hannibal: You will die, again and again. Today will be no different.
-do! playResume("e2")
+set Global.han = true
+=> enter
 
-Hannibal: You will die
+~ skip
+Hannibal: You know how this goes
+
+~ enter
+$> playResume("e2", false, true)
+Hannibal: You will die, again
+$>> Global.camera.reset(0.5)
+$>> Global.camera.startBars(0.3)
+set Global.cutsceneStarted = false
 => END
 
+~ P2
+Hannibal: Gods. Devils. Indulge me and feed me your strength.
+Hannibal: Ensure they cannot cross any further and end our realm.
+Hannibal: They must rot and be trapped here forever.
+$>> Global.Clash.Start("clash", "clashing", "clashW", "clashL", "clash_result", "P2")
+=> END
+
+~ clash_result
+if Global.clash_won:
+	Hannibal: *cough* *cough* All... All for some test, right?
+	Hannibal: Guess I should at least give you a show.
+set Global.cutsceneStarted = false
+$>> Global.camera.reset(0.3)
+$>> Global.camera.startBars()
+set Global.player.control_locked = false
+=> END
+
+~ d1
+Hannibal: I...
+$>> Global.prompt.holdPrompt("Dash", [Vector2(800, 600), Vector2(5.0, 5.0)])
+$>> Global.prompt.holdPrompt("interact", [Vector2(800, 600), Vector2(5.0, 5.0)])
+$>> Global.prompt.holdPrompt("jump", [Vector2(800, 600), Vector2(5.0, 5.0)])
+Hannibal: I won't give in 
+$>> Global.prompt.startQTE(10.0, "HD1_2", "HD2", "HD2_3", "death", "d1")
+=> END
+
+~ death
+Hannibal: *cough* I hope it was worth it...
+Hannibal: Take my walljump, it doesn't matter
+Hannibal: You will see me again, it may be in different attire...but the motive will be the same.
+Hannibal: See you soon. Player.
+$> playEnd("HD2_2")
+set Global.cutsceneStarted = false
+set Global.player.control_locked = false
+set Global.hannibal1 = true
+$>> Global.camera.reset(0.5)
+$>> Global.camera.startBars()
+=> END

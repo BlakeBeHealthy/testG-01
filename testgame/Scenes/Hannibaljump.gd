@@ -3,7 +3,7 @@ extends HannibalState
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var jump_timer: Timer = $"../../JumpTimer"
 @onready var fall_attack_timer: Timer = $"../../fallAttackTimer"
-@onready var slash_projectile = preload("uid://lbvmh8hgo4xg")
+@onready var slash_projectile = preload("res://Scenes/slash_projectile.tscn")
 
 @export var camShake: float = 0
 @export var shakeDur: float = 0
@@ -19,26 +19,40 @@ var forwardMomentum: float = 25000
 var walljumpMomentum: float = 480
 
 func enter() -> void:
+	parent.wallDetection.enabled = true
 	if !flip:
 		parent.flip_direction()
 		flip = true
+	as2d.play("startJump")
+	await as2d.animation_finished
 	as2d.play("jump")
-	jump_timer.start()
+	if parent.phase2:
+		forwardMomentum = 35000
 	moveCheck = true
 	
 	
 func exit() -> void:
-	pass
+	parent.wallDetection.enabled = false
 
 func process_input(event: InputEvent) -> States:
 	return null
 
 func process_frame(delta: float) -> States:
+	if parent.phase2S:
+		moveCheck = false
+		landOver = false
+		fallAttack = false
+		flip = false
+		fallAttackCheck = false
+		parent.chase = false
+		parent.wallJump = false
+		return parent.idle_state
+	
 	if parent.wallDetection.is_colliding() and !parent.is_on_floor() and !fallAttack:
 		walljump()
 	
-	if parent.wallJump and (parent.player_detect.is_colliding() \
-	or fall_attack_timer.is_stopped()):
+	if (parent.player_detect.is_colliding() \
+	or fall_attack_timer.is_stopped()) and fallAttackCheck:
 		if !fall_attack_timer.is_stopped():
 			fall_attack_timer.stop()
 		parent.wallJump = false
@@ -47,16 +61,25 @@ func process_frame(delta: float) -> States:
 	if landOver:
 		landOver = false
 		if parent.jump2 != 1:
-			parent.idle_time = 1.4
+			if parent.phase2:
+				parent.idle_time = 1.0
+			else:
+				parent.idle_time = 1.5
 			parent.jump2 += 1
 			parent.chase = true
 		elif parent.jump2 == 1:
-			parent.idle_time = 1.0
+			if parent.phase2:
+				parent.idle_time = 0.01
+			else:
+				parent.idle_time = 1.0
 			parent.jump2 = -1
 		return parent.idle_state
 	return null
 	
 func process_physics(delta: float) -> States:
+	if as2d.animation == "startJump":
+		return
+	
 	if moveCheck:
 		if parent.wallJump:
 			parent.velocity.y = -walljumpMomentum
@@ -77,32 +100,31 @@ func process_physics(delta: float) -> States:
 	
 	parent.move_and_slide()
 	return null
-	
-func _on_jump_timer_timeout() -> void:
-	pass
+
 	
 func walljump():
 	if parent.wallJump:
 		return
-	
-	fall_attack_timer.start()
+	if parent.phase2:
+		fall_attack_timer.start(0.9)
+	else:
+		fall_attack_timer.start()
 	parent.wallJump = true
 	as2d.play("wallhang")
 	await get_tree().create_timer(0.1).timeout
-	fallAttackCheck = true
 	parent.flip_direction()
 	as2d.play("jump")
-	if !jump_timer.is_stopped():
-		jump_timer.stop()
-	jump_timer.start()
+	fallAttackCheck = true
 	moveCheck = true
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if as2d.animation != "fall_attack_land":
+	if as2d.animation != "fall_attack_land" or parent.state_machine.current_state != parent.jump_state:
 		return
+		
 	landOver = true
 	
 func fallAttacking() -> void:
+	fallAttackCheck = false
 	parent.hannibal_ahh.position.y -= 13
 	parent.hurtbox.position.y -= 13
 	parent.hitbox.position = Vector2(3.0, 13.8)
@@ -118,11 +140,36 @@ func fallAttacking() -> void:
 	parent.hannibal_ahh.position.y += 13
 	parent.hurtbox.position.y += 13
 	as2d.play("fall_attack_land")
-	Global.get_camera().start_shake(camShake, shakeDur)
+	if parent.phase2:
+		Global.get_camera().start_shake(camShake * 2, shakeDur * 1.3)
+	else:
+		Global.get_camera().start_shake(camShake, shakeDur)
 	var projectile : bool = true
 	if projectile:
 		var slash1 = slash_projectile.instantiate()
 		var slash2 = slash_projectile.instantiate()
+		if parent.phase2:
+			var slash3 = slash_projectile.instantiate()
+			var slash4 = slash_projectile.instantiate()
+			slash3.direction = 1
+			slash4.direction = -1
+			slash3.speed = 150
+			slash4.speed = 150
+			slash3.global_position = parent.global_position + Vector2(5 * slash3.direction, 5)
+			slash4.global_position = parent.global_position + Vector2(5 * slash4.direction, 5)
+			add_child(slash3)
+			add_child(slash4)
+			if parent.healthCount <= 15:
+				var slash5 = slash_projectile.instantiate()
+				var slash6 = slash_projectile.instantiate()
+				slash5.direction = 1
+				slash6.direction = -1
+				slash5.speed = 200
+				slash6.speed = 200
+				slash5.global_position = parent.global_position + Vector2(5 * slash3.direction, 5)
+				slash6.global_position = parent.global_position + Vector2(5 * slash4.direction, 5)
+				add_child(slash5)
+				add_child(slash6)
 		slash1.direction = 1
 		slash2.direction = -1
 		slash1.global_position = parent.global_position + Vector2(5 * slash1.direction, 3)

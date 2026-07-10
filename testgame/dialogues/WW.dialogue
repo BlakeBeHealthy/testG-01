@@ -8,17 +8,21 @@ Rain: That chest over there is weird...
 	Rain: It doesn't give any loot it just... 
 - It's not a mimic right?
 	P: It's not a mimic right? There are way too many of those
-	Rain: No it's weird its like...
+	Rain: No, though that would be funny
 Rain: People interact with it and then if they die they just appear right here...
 Rain: ...
-Rain: Its a checkpoint and it fills your health.
+Rain: Its a checkpoint and it fills your health. It also saves your game, press ctrl and 1 to COMPLETELY restart your game
+P: ...Does it take insurance?
+Rain: It's free...I think
+Rain: *looks at the chest for a while*
+Rain: ...I wouldn't question it
 set Gameplay.Rain = true
-=> END
+=> END1
 
 ~ st2
-Rain: Interact with it, is it that hard?
-P: You need an attitude pill
-=> END
+Rain: Interact with it, is it that hard? Disappointment.
+P: You need an attitude pill 
+=> END1
 
 ~ s2
 if Gameplay.Knight == true:
@@ -29,23 +33,25 @@ Cpt Wright: My sword is missing!
 	P: ...Maybe check your hilt? Just a thought?
 	Cpt Wright: No I stole this blade.
 	Cpt Wright: I stole it from an old woman's house. She almost didn't see it coming. But I got caught
-	Cpt Wright: Turns out she has dementia, so I convinced her I was her grandson.
-	Cpt Wright: Left with a sword, gold in my pocket and mead in the belly. God is good.
+	Cpt Wright: Turns out she has bad memory, so I convinced her I was her grandson.
+	Cpt Wright: Left with a sword, gold in my pocket and mead in the belly. God bless.
 	set Gameplay.Knightgrandma = true
 - Dude. I saw a witch named Rain who had it.
 	P: Dude. A witch north of here is using it right now.
 	Cpt Wright: You are a blessing.
 	Cpt Wright: When I finish flexing in the sun, I will take it from her.
-	P: We are in a cave, there is no sun.
-	Cpt Wright: When your future is as bright as mine you don't need a sun
-	Cpt Wright: You just need hard work and steroids.
-set GameplayKnight = true
-=> END
+	P: We are in a cave, there is no sunlight.
+	Cpt Wright: When your future is as bright as mine you make your own
+	Cpt Wright: You just need hard work and a whole lotta steriods.
+set Gameplay.Knight = true
+=> END1
 
 ~ s22
+if Global.finalCheck:
+	=> s5
 Cpt Wright: You still need something? I don't do autographs, or lighthouses...but that is a different story
 P: I'll just leave
-=> END
+=> END1
 
 ~ s3
 if Gameplay.DJ == true:
@@ -67,9 +73,37 @@ P: Yeahhh so look I'm just trying to explo-
 Jimmy: *mutters a spell to himself*
 Jimmy: There you go, give it a shot. Press space while in the air.
 set Gameplay.DJ = true
-=> END
+=> END1
 
 ~ s33
 Jimmy: Hello again friend, you just need to press space while in the air, your fly resets after you touch ground
 P: I'm honestly suprised what you did worked.
+=> END1
+
+~ s4
+if Gameplay.finalCheck == true:
+	=> s5
+	
+if Gameplay.Knightgrandma:
+	Cpt Wright: I went back to that Grandmas house to see if I left my sword there, didnt find it
+	Cpt Wright: She was home when I get there, benching 405. 
+	Cpt Wright: You know I had to show up so I hopped under the bar and started pushing
+	Cpt Wright: ...
+	Cpt Wright: The bar didn't move
+	Cpt Wright: She laughed and said I was a pussy...still havent recovered
+if !Gameplay.Knightgrandma:
+	Cpt Wright: I went to that witch you were talking about
+	Cpt Wright: She was lowkey fine so I said she could keep the sword if I could hit
+	Cpt Wright: Apperently she didn't like that too much
+	Cpt Wright: She turned me into a woman, and she didn't even have my sword
+	Cpt Wright: ....
+	Cpt Wright: No you can't hit.
+set Gameplay.finalCheck = true
+=> END1
+
+~ s5
+Cpt Wright: it hurts bro
+
+~ END1
+set Global.cutsceneStarted = false
 => END

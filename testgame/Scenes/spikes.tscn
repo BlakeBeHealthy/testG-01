@@ -42,20 +42,20 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_gwqs2"]
-b = Vector2(2.6785712, 8.813559)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gwqs2"]
+radius = 12.5
+height = 57.28787
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qgod"]
-size = Vector2(7.25, 2)
+size = Vector2(8.988764, 1.7375674)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwqs2"]
 size = Vector2(3.3928573, 9.669941)
 
 [node name="Spikes" type="Area2D" unique_id=898931136]
-collision_layer = 32
+collision_layer = 1024
 collision_mask = 2056
 script = ExtResource("1_gwqs2")
-SpikeNumber = "0"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=337821421]
 position = Vector2(1, 0)
@@ -64,13 +64,34 @@ animation = &"1"
 autoplay = "1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=234239568]
-position = Vector2(-2, -5)
-scale = Vector2(2.24, 1.475)
-shape = SubResource("SegmentShape2D_gwqs2")
+position = Vector2(1, 1)
+scale = Vector2(0.16, 0.22)
+skew = -0.31066862
+shape = SubResource("CapsuleShape2D_gwqs2")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=295431316]
-position = Vector2(1.45, 6)
-scale = Vector2(1.1, 1)
+position = Vector2(0.9999999, 6)
+scale = Vector2(0.835, 1)
+shape = SubResource("RectangleShape2D_0qgod")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=2076346886]
+position = Vector2(2, 6)
+scale = Vector2(0.82, 1)
+shape = SubResource("RectangleShape2D_0qgod")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=79856509]
+position = Vector2(1.375, 4)
+scale = Vector2(0.625, 1)
+shape = SubResource("RectangleShape2D_0qgod")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=1569917060]
+position = Vector2(2, 4)
+scale = Vector2(0.635, 1)
+shape = SubResource("RectangleShape2D_0qgod")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="." unique_id=1141811665]
+position = Vector2(2, 3)
+scale = Vector2(0.625, 1)
 shape = SubResource("RectangleShape2D_0qgod")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1958051783]

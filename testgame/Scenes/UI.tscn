@@ -3,9 +3,66 @@
 [ext_resource type="Script" uid="uid://bvya24lhj31ru" path="res://Scripts/Non-State related/UI.gd" id="1_nxvpl"]
 [ext_resource type="Script" uid="uid://ch0vtpw4w4gw3" path="res://Scripts/Non-State related/hearts_box.gd" id="1_w371h"]
 [ext_resource type="PackedScene" uid="uid://b3l3bcn2iw6dk" path="res://Scenes/balloon.tscn" id="3_dewlx"]
+[ext_resource type="Script" uid="uid://b4xi27kf3nksq" path="res://Scripts/Non-State related/clash_ui.gd" id="4_hfhsn"]
+[ext_resource type="Script" uid="uid://d3d78xxafjf1s" path="res://Scenes/bar_qte.gd" id="5_qwshj"]
+[ext_resource type="PackedScene" uid="uid://5drk3fx5glg2" path="res://Scenes/ButtonPrompt.tscn" id="6_48q88"]
+[ext_resource type="Texture2D" uid="uid://glw1rxicacbg" path="res://assets/keyboard-keys-for-ui 2/Keyboard Extras.png" id="8_mg6lk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dewlx"]
+bg_color = Color(0.8346143, 0.8346143, 0.8346143, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfhsn"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.8745098, 0.627451, 0.19215687, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wunin"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(64, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j04uc"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(64, 96, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vqx31"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wunin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wunin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j04uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j04uc")
+}],
+"loop": true,
+"name": &"space",
+"speed": 5.0
+}]
 
 [node name="UI" type="CanvasLayer" unique_id=1184425221]
 script = ExtResource("1_nxvpl")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=2100696443]
+visible = false
+position = Vector2(573.00006, 84)
+scale = Vector2(22.15, 22.15)
 
 [node name="HeartsUI" type="Control" parent="." unique_id=71773550]
 layout_mode = 3
@@ -19,5 +76,96 @@ offset_right = 14.0
 offset_bottom = 16.0
 script = ExtResource("1_w371h")
 
+[node name="topBar" type="ColorRect" parent="." unique_id=82458824]
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = -110.0
+offset_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="bottomBar" type="ColorRect" parent="." unique_id=1199729868]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
 [node name="Balloon" parent="." unique_id=932871309 instance=ExtResource("3_dewlx")]
 visible = false
+
+[node name="Clash" type="Control" parent="." unique_id=1546065235]
+visible = false
+custom_minimum_size = Vector2(200, 65)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -86.17999
+offset_right = 500.0
+offset_bottom = -21.17981
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_hfhsn")
+
+[node name="PB" type="ProgressBar" parent="Clash" unique_id=736278649]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 65.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dewlx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hfhsn")
+value = 73.1
+show_percentage = false
+
+[node name="CT" type="Timer" parent="Clash" unique_id=189963211]
+wait_time = 0.4
+one_shot = true
+
+[node name="BarQTE" type="Control" parent="." unique_id=533179725]
+visible = false
+custom_minimum_size = Vector2(1000, 65)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -75.15503
+offset_right = 500.0
+offset_bottom = -10.154541
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("5_qwshj")
+
+[node name="QTE" type="ProgressBar" parent="BarQTE" unique_id=1539762634]
+layout_mode = 0
+offset_top = -10.855
+offset_right = 1000.0
+offset_bottom = 54.145
+theme_override_styles/background = SubResource("StyleBoxFlat_dewlx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hfhsn")
+value = 79.24
+show_percentage = false
+
+[node name="ButtonPrompt" parent="." unique_id=687141090 instance=ExtResource("6_48q88")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=243956419]
+visible = false
+position = Vector2(960, 207)
+scale = Vector2(13, 13)
+sprite_frames = SubResource("SpriteFrames_vqx31")
+animation = &"space"
+
+[connection signal="timeout" from="Clash/CT" to="Clash" method="_on_ct_timeout"]

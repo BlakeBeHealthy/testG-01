@@ -13,9 +13,6 @@ func _on_area_entered(area: Area2D) -> void:
 		Global.cutsceneStarted = true
 		if !Global.player.is_on_floor() and !airCutscene:
 			await Global.player.landed
-		Global.player.control_locked = true
-		if startingCutscene != "null":
-			Global.ap.play(startingCutscene)
-			await Global.ap.animation_finished
-		Global.UI.balloon.start(load(dialogueFile), startingPoint)
-		 
+		Global.startCutscene(dialogueFile, startingPoint, startingCutscene)
+	else:
+		return

@@ -2,7 +2,6 @@ extends State
 
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D" #as2d is ALWAYS the animation player
 @onready var a2d: Area2D = $"../../Area2D" #a2d is the attack hitbox
-@onready var t: Timer = $Timer
 @onready var a2d2: Area2D = $"../../Area2D2" #a2d2 is the attack hurtbox
 
 #Small explination, each state must be a child of State class, or they are not allowed
@@ -15,16 +14,15 @@ extends State
 	
 var jump := false
 var run := false
-var c = 0 
 var hitboxCheck = true
 var hit := false 
 
 #Enter and exit functions are just as they sound, when entering vs exiting states
 func enter() -> void:
-	c += 1
 	as2d.play("idle")
 	a2d2.position.x = 0
 	a2d2.position.y = 9
+
 
 func exit() -> void:
 	hit = false
@@ -46,8 +44,8 @@ func process_input(event: InputEvent) -> State:
 	return null
 	
 func process_frame(delta: float) -> State:
+	parent.as2d.position = Vector2(0, 0)
 	if parent.control_locked:
-		parent.control_locked = false
 		return parent.cut_state 
 	
 	if parent.takeHit:
@@ -71,8 +69,10 @@ func process_frame(delta: float) -> State:
 	return null
 	
 func process_physics(delta: float) -> State:
-	parent.velocity.y += gravity * delta
-	
+	if parent.is_on_floor():
+		parent.velocity.y = 0.0
+	else:
+		parent.velocity.y = gravity * delta
 	if !parent.is_on_floor() and parent.velocity.y > 0:
 		return parent.fall_state
 	return null

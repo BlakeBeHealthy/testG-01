@@ -54,7 +54,7 @@ func process_frame(delta: float) -> State:
 func _on_parry_zone_area_entered(area: Area2D) -> void:
 	parent.parried = true
 	parent.goodParry.emit()
-	apply_timeSlow(hit_timeStop, hit_duration)
+	Global.apply_timeSlow(hit_timeStop, hit_duration)
 	parry_inv.start()
 	hurtbox.set_collision_layer_value(4, false)
 
@@ -71,13 +71,3 @@ func process_physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 	return null
-	
-func apply_timeSlow(timeScale: float, duration: float) -> void:
-	if timeSlow:
-		return
-		
-	timeSlow = true
-	Engine.time_scale = timeScale
-	await get_tree().create_timer(duration, false, false, true).timeout
-	Engine.time_scale = 1.0
-	timeSlow = false

@@ -36,13 +36,14 @@ animations = [{
 size = Vector2(6.5, 31)
 
 [node name="Gate" type="StaticBody2D" unique_id=638527128]
+scale = Vector2(2.6, 2.6)
 physics_material_override = SubResource("PhysicsMaterial_hn85u")
 script = ExtResource("1_hn85u")
 
 [node name="as2d" type="AnimatedSprite2D" parent="." unique_id=407246002]
 position = Vector2(-4, 0)
 sprite_frames = SubResource("SpriteFrames_4dmbs")
-animation = &"Open"
+animation = &"Close"
 autoplay = "Open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=933938415]

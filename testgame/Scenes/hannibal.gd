@@ -28,17 +28,23 @@ class_name Hannibal extends CharacterBody2D
 var direction: float = 1
 var wallJump: bool = false
 var phase2: bool = false
+var phase2S: bool = false
+var death: bool = false
+var hittin: bool = false
 var lunge: bool = false
 var chase: bool = false
 var middleAttack: bool = false
 var jump2: int = 0
-var healthCount: int = 50
+var healthCount: int = 35
 var playerAbove: bool = false
+var pray: PrayMove
+enum PrayMove { NONE, ACTIVE, DONE}
 var flashing: bool = false
 var cut: bool = false
 var idle_time: float = 0
 
 func _ready() -> void:
+	pray = PrayMove.NONE
 	state_machine.init(self)
 		
 func _unhandled_input(event: InputEvent) -> void:
@@ -51,10 +57,23 @@ func _physics_process(delta: float) -> void:
 		
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-	if Global.cutsceneStarted:
-		cut = true
+	
+	if healthCount <= 21  and healthCount % 7 == 0 and pray == PrayMove.NONE:
+		pray = PrayMove.ACTIVE
 		
-func flip_direction(dir: int = 0):
+	if healthCount == 25 and !phase2 and !phase2S:
+		phase2S = true
+		jump2 = 1
+		
+	elif healthCount <= 0 and !death and !phase2S:
+		phase2S = true
+		death = true
+		
+		
+	if Global.cutsceneStarted and !phase2S and !death:
+		phase2S = true
+		
+func flip_direction(dir: int = 0, cutCheck: bool = false):
 	if dir != 0:
 		direction = dir
 	else:
@@ -69,10 +88,11 @@ func flip_direction(dir: int = 0):
 		hannibal_ahh.position.x = -2.3
 		player_chase_detect.target_position.x = -39
 	c2d.position.x *= -1
-	if as2d.flip_h:
-		as2d.flip_h = false
-	else:
-		as2d.flip_h = true
+	if !cutCheck:
+		if as2d.flip_h:
+			as2d.flip_h = false
+		else:
+			as2d.flip_h = true
 
 func hit():
 	Global.player.hit(
@@ -100,8 +120,14 @@ func flash_white():
 
 func _on_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	hit()
+	
 func _on_hannibal_ahh_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	hit()
 	
 func _on_hurtbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	flash_white()
+	hittin = true
+	await flash_white()
+	healthCount -= 1
+	if pray == PrayMove.DONE:
+		pray = PrayMove.NONE
+	hittin = false

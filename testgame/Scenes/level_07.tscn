@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://djei3agw1frcl" path="res://Scenes/camera_2d.tscn" id="5_ekoii"]
 [ext_resource type="PackedScene" uid="uid://c4sg8e1no24ay" path="res://Scenes/door.tscn" id="6_s4iwq"]
 [ext_resource type="PackedScene" uid="uid://dcrb427bbd01p" path="res://Scenes/checkpoint.tscn" id="7_hdu6x"]
-[ext_resource type="PackedScene" uid="uid://cm01fv4mwgnuv" path="res://Scenes/beta_npc.tscn" id="8_cyq6k"]
 [ext_resource type="PackedScene" uid="uid://cgekcdkve474f" path="res://Scenes/spikes.tscn" id="9_ekoii"]
 [ext_resource type="PackedScene" uid="uid://dpe8m6p55sdxx" path="res://Scenes/enemy.tscn" id="10_hdu6x"]
 [ext_resource type="PackedScene" uid="uid://ce3f5rrrexvdt" path="res://Scenes/Renemy.tscn" id="11_776at"]
+[ext_resource type="PackedScene" uid="uid://ljjmtwqq5kil" path="res://Scenes/spike_checkpoint.tscn" id="12_776at"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdu6x"]
 texture = ExtResource("1_xpxho")
@@ -2225,6 +2225,23 @@ size = Vector2(20, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyq6k"]
 size = Vector2(20, 44)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ta0hk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hdu6x"]
+radius = 17.0
+height = 122.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_776at"]
+radius = 28.0
+height = 148.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ta0hk"]
+height = 116.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fslw5"]
+radius = 14.0
+height = 142.0
+
 [node name="Level_07" type="Node2D" unique_id=1080363372]
 
 [node name="UI" parent="." unique_id=1184425221 instance=ExtResource("1_ex3v2")]
@@ -2234,18 +2251,20 @@ tile_map_data = PackedByteArray("AAD1/wIAAAASAA8AAAD2/wIAAAASAA8AAAD5/wIAAAASAA8
 tile_set = SubResource("TileSet_n0yg3")
 
 [node name="Player" parent="." unique_id=1436052975 instance=ExtResource("4_cyq6k")]
-position = Vector2(-701, -1012)
+position = Vector2(29, 354)
 
 [node name="Camera2D" parent="." unique_id=1391246105 instance=ExtResource("5_ekoii")]
 zoom = Vector2(3.5, 3.5)
+limit_left = -866
 
 [node name="DJPT3" parent="." unique_id=1940327310 instance=ExtResource("6_s4iwq")]
-position = Vector2(-940, 7)
+position = Vector2(-849.75, 7)
 entry_direction = 3
 path_to_new_scene = "res://Scenes/level__05.tscn"
 entry_door_name = "DJPT1"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DJPT3" unique_id=1395052248]
+position = Vector2(-52.81, 0)
 shape = SubResource("RectangleShape2D_ex3v2")
 
 [node name="DJPT4" parent="." unique_id=115414817 instance=ExtResource("6_s4iwq")]
@@ -2259,18 +2278,12 @@ position = Vector2(-100, 6)
 shape = SubResource("RectangleShape2D_cyq6k")
 
 [node name="Checkpoint" parent="." unique_id=464011995 instance=ExtResource("7_hdu6x")]
-position = Vector2(976, -522)
+position = Vector2(1243, -394)
+current_scene_path = "res://Scenes/level_07.tscn"
 
 [node name="Checkpoint2" parent="." unique_id=2058902645 instance=ExtResource("7_hdu6x")]
-position = Vector2(383, 293)
+position = Vector2(551, -58)
 flipH = true
-
-[node name="BetaNPC" parent="." unique_id=1828915867 instance=ExtResource("8_cyq6k")]
-position = Vector2(-178, -448)
-
-[node name="BetaNPC2" parent="." unique_id=1731955887 instance=ExtResource("8_cyq6k")]
-position = Vector2(161, 531)
-dialogueScene = "res://dialogues/WW.dialogue"
 
 [node name="Spikes111" parent="." unique_id=510646421 instance=ExtResource("9_ekoii")]
 position = Vector2(819, 569)
@@ -2662,23 +2675,18 @@ spawn = true
 
 [node name="Spikes395" parent="Spikes111" unique_id=1611099452 instance=ExtResource("9_ekoii")]
 position = Vector2(340, -736)
-spawn = true
 
 [node name="Spikes396" parent="Spikes111" unique_id=2041321291 instance=ExtResource("9_ekoii")]
 position = Vector2(349, -736)
-spawn = true
 
 [node name="Spikes397" parent="Spikes111" unique_id=1963887638 instance=ExtResource("9_ekoii")]
 position = Vector2(358, -736)
-spawn = true
 
 [node name="Spikes398" parent="Spikes111" unique_id=958158842 instance=ExtResource("9_ekoii")]
 position = Vector2(367, -736)
-spawn = true
 
 [node name="Spikes399" parent="Spikes111" unique_id=467509058 instance=ExtResource("9_ekoii")]
 position = Vector2(376, -736)
-spawn = true
 
 [node name="Spikes400" parent="Spikes111" unique_id=1708848771 instance=ExtResource("9_ekoii")]
 position = Vector2(-65, -736)
@@ -2702,23 +2710,18 @@ spawn = true
 
 [node name="Spikes405" parent="Spikes111" unique_id=709719855 instance=ExtResource("9_ekoii")]
 position = Vector2(212, -736)
-spawn = true
 
 [node name="Spikes406" parent="Spikes111" unique_id=265915690 instance=ExtResource("9_ekoii")]
 position = Vector2(221, -736)
-spawn = true
 
 [node name="Spikes407" parent="Spikes111" unique_id=310018281 instance=ExtResource("9_ekoii")]
 position = Vector2(230, -736)
-spawn = true
 
 [node name="Spikes408" parent="Spikes111" unique_id=34509777 instance=ExtResource("9_ekoii")]
 position = Vector2(239, -736)
-spawn = true
 
 [node name="Spikes409" parent="Spikes111" unique_id=574758307 instance=ExtResource("9_ekoii")]
 position = Vector2(248, -736)
-spawn = true
 
 [node name="Spikes370" parent="Spikes111" unique_id=83049088 instance=ExtResource("9_ekoii")]
 position = Vector2(428, -592)
@@ -2758,19 +2761,15 @@ spawn = true
 
 [node name="Spikes379" parent="Spikes111" unique_id=308163032 instance=ExtResource("9_ekoii")]
 position = Vector2(-148, -736)
-spawn = true
 
 [node name="Spikes380" parent="Spikes111" unique_id=1531211252 instance=ExtResource("9_ekoii")]
 position = Vector2(-139, -736)
-spawn = true
 
 [node name="Spikes381" parent="Spikes111" unique_id=496945287 instance=ExtResource("9_ekoii")]
 position = Vector2(-130, -736)
-spawn = true
 
 [node name="Spikes382" parent="Spikes111" unique_id=343130363 instance=ExtResource("9_ekoii")]
 position = Vector2(-121, -736)
-spawn = true
 
 [node name="Spikes415" parent="Spikes111" unique_id=1765243032 instance=ExtResource("9_ekoii")]
 position = Vector2(-180, -1024)
@@ -3034,51 +3033,39 @@ spawn = true
 
 [node name="Spikes383" parent="Spikes111" unique_id=1172760635 instance=ExtResource("9_ekoii")]
 position = Vector2(-337, -736)
-spawn = true
 
 [node name="Spikes384" parent="Spikes111" unique_id=972704649 instance=ExtResource("9_ekoii")]
 position = Vector2(-328, -736)
-spawn = true
 
 [node name="Spikes385" parent="Spikes111" unique_id=427825014 instance=ExtResource("9_ekoii")]
 position = Vector2(-319, -736)
-spawn = true
 
 [node name="Spikes386" parent="Spikes111" unique_id=593682179 instance=ExtResource("9_ekoii")]
 position = Vector2(-310, -736)
-spawn = true
 
 [node name="Spikes387" parent="Spikes111" unique_id=1848456081 instance=ExtResource("9_ekoii")]
 position = Vector2(-237, -736)
-spawn = true
 
 [node name="Spikes388" parent="Spikes111" unique_id=207218747 instance=ExtResource("9_ekoii")]
 position = Vector2(-228, -736)
-spawn = true
 
 [node name="Spikes389" parent="Spikes111" unique_id=747696742 instance=ExtResource("9_ekoii")]
 position = Vector2(-219, -736)
-spawn = true
 
 [node name="Spikes390" parent="Spikes111" unique_id=2118939616 instance=ExtResource("9_ekoii")]
 position = Vector2(-210, -736)
-spawn = true
 
 [node name="Spikes391" parent="Spikes111" unique_id=692157474 instance=ExtResource("9_ekoii")]
 position = Vector2(-463, -736)
-spawn = true
 
 [node name="Spikes392" parent="Spikes111" unique_id=1648137990 instance=ExtResource("9_ekoii")]
 position = Vector2(-454, -736)
-spawn = true
 
 [node name="Spikes393" parent="Spikes111" unique_id=102466409 instance=ExtResource("9_ekoii")]
 position = Vector2(-445, -736)
-spawn = true
 
 [node name="Spikes394" parent="Spikes111" unique_id=715770613 instance=ExtResource("9_ekoii")]
 position = Vector2(-436, -736)
-spawn = true
 
 [node name="Spikes362" parent="Spikes111" unique_id=200456680 instance=ExtResource("9_ekoii")]
 position = Vector2(484, -352)
@@ -3625,47 +3612,42 @@ rotation = 3.1415927
 spawn = true
 
 [node name="Spikes560" parent="Spikes111" unique_id=1591528865 instance=ExtResource("9_ekoii")]
-position = Vector2(-963, -1650)
+position = Vector2(-965, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes561" parent="Spikes111" unique_id=1335447216 instance=ExtResource("9_ekoii")]
-position = Vector2(-954, -1650)
+position = Vector2(-956, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes562" parent="Spikes111" unique_id=794075184 instance=ExtResource("9_ekoii")]
-position = Vector2(-945, -1650)
+position = Vector2(-947, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes563" parent="Spikes111" unique_id=659839428 instance=ExtResource("9_ekoii")]
-position = Vector2(-936, -1650)
+position = Vector2(-938, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes564" parent="Spikes111" unique_id=1209966203 instance=ExtResource("9_ekoii")]
-position = Vector2(-927, -1650)
+position = Vector2(-929, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes565" parent="Spikes111" unique_id=1592968548 instance=ExtResource("9_ekoii")]
-position = Vector2(-918, -1650)
-rotation = 3.1415927
-spawn = true
-
-[node name="Spikes569" parent="Spikes111" unique_id=214835992 instance=ExtResource("9_ekoii")]
-position = Vector2(-989, -1650)
+position = Vector2(-920, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes570" parent="Spikes111" unique_id=963471253 instance=ExtResource("9_ekoii")]
-position = Vector2(-980, -1650)
+position = Vector2(-982, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes571" parent="Spikes111" unique_id=1483645308 instance=ExtResource("9_ekoii")]
-position = Vector2(-971, -1650)
+position = Vector2(-973, -1650)
 rotation = 3.1415927
 spawn = true
 
@@ -4311,28 +4293,23 @@ spawn = true
 position = Vector2(814, -16)
 spawn = true
 
-[node name="Enemy" parent="Spikes111" unique_id=322745412 instance=ExtResource("10_hdu6x")]
-position = Vector2(75, -752)
-
 [node name="Spikes410" parent="Spikes111" unique_id=1759962945 instance=ExtResource("9_ekoii")]
 position = Vector2(-65, -736)
-spawn = true
 
 [node name="Spikes411" parent="Spikes111" unique_id=1652799467 instance=ExtResource("9_ekoii")]
 position = Vector2(-56, -736)
-spawn = true
 
 [node name="Spikes412" parent="Spikes111" unique_id=275566357 instance=ExtResource("9_ekoii")]
 position = Vector2(-47, -736)
-spawn = true
 
 [node name="Spikes413" parent="Spikes111" unique_id=1736365325 instance=ExtResource("9_ekoii")]
 position = Vector2(-38, -736)
-spawn = true
 
 [node name="Spikes414" parent="Spikes111" unique_id=1839061007 instance=ExtResource("9_ekoii")]
 position = Vector2(-29, -736)
-spawn = true
+
+[node name="Enemy" parent="Spikes111" unique_id=322745412 instance=ExtResource("10_hdu6x")]
+position = Vector2(75, -752)
 
 [node name="Enemy2" parent="Spikes111" unique_id=241305859 instance=ExtResource("10_hdu6x")]
 position = Vector2(75, -752)
@@ -4359,7 +4336,7 @@ position = Vector2(516, -295)
 position = Vector2(655, -296)
 
 [node name="REnemy4" parent="." unique_id=847658221 instance=ExtResource("11_776at")]
-position = Vector2(422, -184)
+position = Vector2(259, -183)
 
 [node name="Enemy5" parent="." unique_id=1283929195 instance=ExtResource("10_hdu6x")]
 position = Vector2(12, -823)
@@ -4372,3 +4349,149 @@ position = Vector2(-22, -664)
 
 [node name="Enemy7" parent="." unique_id=1469308604 instance=ExtResource("10_hdu6x")]
 position = Vector2(-289, 41)
+
+[node name="SpikeCheckpoint2" parent="." unique_id=1075987753 instance=ExtResource("12_776at")]
+position = Vector2(271, -531)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2" unique_id=1313400519]
+position = Vector2(-67, 33)
+shape = SubResource("CircleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint19" parent="SpikeCheckpoint2" unique_id=361301219 instance=ExtResource("12_776at")]
+position = Vector2(866, 421)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint19" unique_id=545602634]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint20" parent="SpikeCheckpoint2" unique_id=983462775 instance=ExtResource("12_776at")]
+position = Vector2(1266, 264)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint20" unique_id=1653824158]
+position = Vector2(43, 12)
+shape = SubResource("CapsuleShape2D_hdu6x")
+
+[node name="SpikeCheckpoint5" parent="SpikeCheckpoint2" unique_id=993877774 instance=ExtResource("12_776at")]
+position = Vector2(80, -189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint5" unique_id=1501898762]
+position = Vector2(85, 12)
+shape = SubResource("CapsuleShape2D_776at")
+
+[node name="SpikeCheckpoint6" parent="SpikeCheckpoint2" unique_id=1857167784 instance=ExtResource("12_776at")]
+position = Vector2(298, -237)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint6" unique_id=1977569889]
+position = Vector2(-33, 25)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint7" parent="SpikeCheckpoint2" unique_id=1011919231 instance=ExtResource("12_776at")]
+position = Vector2(423, -235)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint7" unique_id=158464346]
+position = Vector2(77, 22)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint8" parent="SpikeCheckpoint2" unique_id=1430722959 instance=ExtResource("12_776at")]
+position = Vector2(696, -231)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint8" unique_id=1685829840]
+position = Vector2(-48, 13)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint9" parent="SpikeCheckpoint2" unique_id=683401728 instance=ExtResource("12_776at")]
+position = Vector2(497, -363)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint9" unique_id=1085107460]
+position = Vector2(64, 17)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint10" parent="SpikeCheckpoint2" unique_id=851861484 instance=ExtResource("12_776at")]
+position = Vector2(200, -386)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint10" unique_id=1328348979]
+position = Vector2(42, 31)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint11" parent="SpikeCheckpoint2" unique_id=697157283 instance=ExtResource("12_776at")]
+position = Vector2(-95, -522)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint11" unique_id=242292741]
+position = Vector2(-87, 36)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint12" parent="SpikeCheckpoint2" unique_id=1487443705 instance=ExtResource("12_776at")]
+position = Vector2(-705, -483)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint12" unique_id=698913603]
+position = Vector2(150, -1)
+shape = SubResource("CapsuleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint4" parent="SpikeCheckpoint2" unique_id=245225833 instance=ExtResource("12_776at")]
+position = Vector2(-374, 33)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint4" unique_id=1974080553]
+position = Vector2(171, -1)
+shape = SubResource("CircleShape2D_ta0hk")
+
+[node name="SpikeCheckpoint3" parent="SpikeCheckpoint2" unique_id=1965495520 instance=ExtResource("12_776at")]
+position = Vector2(113, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint3" unique_id=160116938]
+position = Vector2(71, 19)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint13" parent="SpikeCheckpoint2" unique_id=2059801740 instance=ExtResource("12_776at")]
+position = Vector2(-101, 985)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint13" unique_id=354737710]
+position = Vector2(78, 18)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint14" parent="SpikeCheckpoint2" unique_id=971542429 instance=ExtResource("12_776at")]
+position = Vector2(247, 927)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint14" unique_id=1771442891]
+position = Vector2(-121, 1)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint15" parent="SpikeCheckpoint2" unique_id=623421947 instance=ExtResource("12_776at")]
+position = Vector2(439, 922)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint15" unique_id=1821838339]
+position = Vector2(73, 19)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint16" parent="SpikeCheckpoint2" unique_id=167695972 instance=ExtResource("12_776at")]
+position = Vector2(1520, 852)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint16" unique_id=1360775519]
+position = Vector2(-48.000004, 22)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint17" parent="SpikeCheckpoint2" unique_id=1936345632 instance=ExtResource("12_776at")]
+position = Vector2(781, 736)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint17" unique_id=178106136]
+position = Vector2(-37.000004, 14)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint18" parent="SpikeCheckpoint2" unique_id=712804860 instance=ExtResource("12_776at")]
+position = Vector2(133, 751)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2/SpikeCheckpoint18" unique_id=742496940]
+position = Vector2(34.999996, 16)
+shape = SubResource("CapsuleShape2D_fslw5")
+
+[node name="SpikeCheckpoint" parent="." unique_id=16437152 instance=ExtResource("12_776at")]
+position = Vector2(994, -587)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint" unique_id=418144665]
+position = Vector2(-245, 5)
+shape = SubResource("CircleShape2D_ta0hk")
+
+[node name="Checkpoint3" parent="." unique_id=225534034 instance=ExtResource("7_hdu6x")]
+position = Vector2(229, -602)
+
+[node name="Checkpoint4" parent="." unique_id=1436378800 instance=ExtResource("7_hdu6x")]
+position = Vector2(1133, 277)

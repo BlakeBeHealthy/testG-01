@@ -155,9 +155,6 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssjri"]
-size = Vector2(7.594471, 10.372329)
-
 [node name="BetaNPC" type="Area2D" unique_id=1828915867]
 collision_layer = 768
 collision_mask = 64
@@ -165,16 +162,11 @@ script = ExtResource("1_7p06t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1983414338]
 sprite_frames = SubResource("SpriteFrames_puqd2")
-animation = &"WW"
+animation = &"CW"
 
 [node name="ButtonPrompt" parent="." unique_id=687141090 instance=ExtResource("2_uvfxd")]
 position = Vector2(0, -20)
 scale = Vector2(1, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1350918013]
-position = Vector2(-2.4074124e-35, 1.8656554)
-scale = Vector2(6.583738, 9.088479)
-shape = SubResource("RectangleShape2D_ssjri")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

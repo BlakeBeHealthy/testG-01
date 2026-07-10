@@ -71,7 +71,6 @@ size = Vector2(43, 71.25)
 collision_layer = 256
 collision_mask = 64
 script = ExtResource("1_2cwi7")
-current_scene_path = "\"res://Scenes/Level02.tscn\""
 button_prompt = "interact"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1576975903]

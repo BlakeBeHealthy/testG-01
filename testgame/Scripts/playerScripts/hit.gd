@@ -2,7 +2,6 @@ extends State
 
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var timer: Timer = $"../../Timer"
-@onready var tim_2: Timer = $"../../tim2"
 @onready var a2d: Area2D = $"../../Area2D"
 @onready var hitstuntimer: Timer = $"../../hitstuntimer"
 @onready var it3: Timer = $"../../InvincibleTime"
@@ -17,19 +16,19 @@ var timeSlow := false
 var flashing := false
 
 func enter() -> void:
-	if parent.attackCheck:
-		parent.attackCheck = false
-	if !parent.invincible:
-		Global.saveData.maxHealth -= parent.damage
-	if Global.saveData.maxHealth <= 0:
-		dead = true
-	flash_white()
-	apply_knockback()
-	a2d2.monitoring = false
-	a2d2.monitorable = false
-	it3.start()
-	hit_over = false
-	parent.playerHit.emit(Global.saveData.maxHealth)
+	if Global.saveData.maxHealth > 0:
+		if parent.attackCheck:
+			parent.attackCheck = false
+		if !parent.invincible:
+			Global.saveData.maxHealth -= parent.damage
+		if Global.saveData.maxHealth <= 0:
+			dead = true
+		parent.as2d.position = Vector2(-3 * parent.dir, 5)
+		flash_white()
+		apply_knockback()
+		it3.start()
+		hit_over = false
+		parent.playerHit.emit(Global.saveData.maxHealth)
 func exit() -> void:
 	pass
 
@@ -64,28 +63,18 @@ func process_physics(delta: float) -> State:
 
 func apply_knockback():
 	if !parent.invincible:
-		apply_timeSlow(parent.TScale, parent.dur)
+		parent.invincible = true
+		Global.apply_timeSlow(parent.TScale, parent.dur)
 		Global.get_camera().start_shake(parent.CAMshake, parent.shakeDur)
 		if !dead:
 			parent.velocity.x = parent.dir * parent.stre
 			parent.velocity.y = -parent.stre * 0.5
-			parent.invincible = true
 			hitstuntimer.start(parent.stunT)
 		as2d.play("hit")
 		
 		if dead:
 			dead2 = true
 			
-func apply_timeSlow(timeScale: float, duration: float) -> void:
-	if timeSlow:
-		return
-		
-	timeSlow = true
-	Engine.time_scale = timeScale
-	await get_tree().create_timer(duration, false, false, true).timeout
-	Engine.time_scale = 1.0
-	timeSlow = false
-
 func flash_white(): #I am slightly iffy about my understanding of shaders, but it works
 	if flashing:
 		return
@@ -110,5 +99,3 @@ func flash_white(): #I am slightly iffy about my understanding of shaders, but i
 	#Player invincibility
 func _on_invincible_time_timeout() -> void:
 	parent.invincible = false
-	a2d2.monitoring = true
-	a2d2.monitorable = true

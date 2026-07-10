@@ -1,9 +1,11 @@
 extends State
 @onready var interact_area: Area2D = $"../../InteractArea"
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var collision_shape_2d: CollisionShape2D = $"../../InteractArea/CollisionShape2D"
 
 var done := false
 var checkpoint := false
+var smallKB := false
 var speaking := false
 var dialogueActive := false
 var started := false
@@ -12,36 +14,53 @@ var title := ""
 var dialogue_manager = Engine.get_singleton("DialogueManager")
 
 func enter() -> void:
-	if !dialogue_manager.dialogue_ended.is_connected(_on_dialogue_ended):
-		dialogue_manager.dialogue_ended.connect(_on_dialogue_ended)
-		
+	parent.invincible = true
+	parent.as2d.position = Vector2(0, 0)
 	if parent.current_interactable is Checkpoint:
 		checkpoint = true
-	elif parent.current_interactable is BetaNPC or Global.cutsceneStarted:
+	elif !parent.animate and !Global.spawning and Input.is_action_just_pressed("PlayerLock"):
+		parent.camLook = true
+	elif (parent.current_interactable is BetaNPC and !Global.spawning) or \
+	Global.cutsceneStarted:
 		speaking = true
 	else:
-		parent.camLook = true
+		done = true
 		
 func exit() -> void:
+	parent.attackCheck = false
+	parent.invincible = false
+	parent.takeHit = false
+	collision_shape_2d.disabled = false
 	dialogueActive = false
 	speaking = false
 	done = false
 	checkpoint = false
 	started = false
 	
+	
 func process_input(event: InputEvent) -> State:
 	return null
 	
-func _on_dialogue_ended(_resource: DialogueResource):
+func _on_dialogue_done():
 	if !dialogueActive:
 		return
-		
-	speaking = false
+	
+	dialogueActive = false
 	await get_tree().create_timer(0.4).timeout
 	done = true
 	parent.speaking.emit(0)
 	
 func process_frame(delta: float) -> State:
+	if parent.cutDeath:
+		return parent.death_state
+	
+	if parent.animate and !Global.cutsceneStarted:
+		return null
+	elif Global.cutsceneStarted and !dialogueActive:
+		speaking = true
+	elif !Global.cutsceneStarted and dialogueActive:
+		_on_dialogue_done()
+		
 	if checkpoint and !started:
 		started = true
 		parent.saving.emit(0)
@@ -49,16 +68,16 @@ func process_frame(delta: float) -> State:
 		
 	if speaking:
 		speaking = false
-		as2d.play("idle")
 		dialogueActive = true
 		parent.speaking.emit(1)
 		
 	if parent.camLook:
 		if !Input.is_action_pressed("PlayerLock"):
+			parent.control_locked = false
 			parent.camLook = false
 			done = true
 		
-	if done and !Global.cutsceneStarted:
+	if done and !Global.cutsceneStarted and !parent.control_locked:
 		started = false
 		done = false
 		return parent.idle_state
@@ -69,11 +88,22 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if as2d.animation == "save2":
 		checkpoint = false
 		done = true
+		parent.control_locked = false
 		parent.saving.emit(2)
 	elif as2d.animation == "save1":
 		parent.saving.emit(1)
 		as2d.play("save2")
 		
 func process_physics(delta: float) -> State:
+	if !parent.is_on_floor():
+		parent.velocity.y = (gravity * 50) * delta
+		as2d.play("fall")
+		parent.move_and_slide()
+	elif !checkpoint:
+		as2d.play("idle")
+		if !parent.visible:
+			as2d.frame = 1
+			as2d.stop()
+		
 	return null
 	

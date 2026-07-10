@@ -1,5 +1,6 @@
 extends Area2D
 
+@onready var spikes: Area2D = $"."
 @export var spawn: bool 
 @export var dmg: int = 1
 @export var stre: float = 200
@@ -11,9 +12,11 @@ extends Area2D
 @export var SpikeNumber: String
 @onready var as2d: AnimatedSprite2D = $AnimatedSprite2D
 
-var direction: int 
-var player
-var hit: bool
+var direction: int = 0
+var health: int = 0
+var player: CharacterBody2D
+var hit: bool = false
+var spawning: bool = false
 
 func _ready() -> void:
 	pass
@@ -22,41 +25,55 @@ func _process(delta: float) -> void:
 	if !is_instance_valid(Global.player):
 		return
 	
+	player = Global.player
+	if player.invincible and !hit:
+		hit = true
+		spikes.set_collision_mask_value(7, true)
+	elif hit:
+		hit = false
+		spikes.set_collision_mask_value(7, false)
+		
 	direction = (Global.player.global_position.x - self.global_position.x)
-	
 	if direction >= 1:
 		direction = 1
 	elif direction <= -1:
 		direction = -1
 	
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	hitPlayer()
-	
+	if !hit:
+		hitPlayer()
+		
 func hitPlayer():
-	if hit:
-		return
+	if !hit and !Global.spawning:
+		hit = true
+		if spawn:
+			stre = 60
+		player.hit(
+				dmg,
+				direction,
+				stre,
+				StunTime,
+				TimeScale,
+				dur,
+				CAMShake,
+				shakeDur,
+		)
+		if spawn:
+			spawnPlayer()
 		
-	hit = true
-	player = Global.player
-	
-	
-	player.hit(
-			dmg,
-			direction,
-			stre,
-			StunTime,
-			TimeScale,
-			dur,
-			CAMShake,
-			shakeDur,
-	)
-	if player.health <= 1:
-		spawn = false
-		
-	elif spawn:
+func spawnPlayer():
+	if !Global.spawning and !Global.player.invisible:
+		Global.spawning = true
 		FadeS.fade_out()
 		await get_tree().create_timer(0.4).timeout
+		if Global.saveData.maxHealth <= 0:
+			return
+		Global.player.control_locked = true
+			
 		player.respawn()
-		await get_tree().create_timer(0.2).timeout
-		FadeS.fade_in()
-	hit = false
+		Global.player.velocity.x = 0
+		await get_tree().create_timer(0.3).timeout
+		await player.landed
+		Global.spawning = false
+		await FadeS.fade_in(1.5, true)
+		Global.player.control_locked = false

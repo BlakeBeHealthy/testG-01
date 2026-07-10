@@ -1,7 +1,7 @@
 extends State
 @onready var as2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var a2d: Area2D = $"../../Area2D"
-@onready var jump_buff: Timer = $"../../jumpBuff"
+@onready var buff_delay: Timer = $"../../buffDelay"
 @onready var hurtbox: Area2D = $"../../Area2D2"
 
 var pogo := false
@@ -11,7 +11,7 @@ var Attack := false
 var jump := false
 
 func enter() -> void:
-	jump_buff.start()
+	buff_delay.start()
 	parent.attack_delay.start()
 	if transitionCheck:
 		transitionCheck = false
@@ -21,9 +21,10 @@ func enter() -> void:
 	
 	as2d.play("pogo")
 	a2d.position.x = 0
-	a2d.position.y = 14
+	a2d.position.y = 25
+	
 	a2d.scale.x = 1.3
-	a2d.scale.y = 1.0
+	a2d.scale.y = 1.2
 	pass
 
 func exit() -> void:
@@ -35,14 +36,14 @@ func exit() -> void:
 	transitionCheck = false
 	a2d.monitorable = false
 	a2d.monitoring = false
-	parent.jumpBuff = false
-	if !jump_buff.is_stopped():
-		jump_buff.stop()
+	if !buff_delay.is_stopped():
+		buff_delay.stop()
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if as2d.animation != "pogo":
 		return
-	
+		
+	parent.as2d.position = Vector2(0, -2)
 	if as2d.frame == 1:
 		nextAttack = true
 		a2d.monitorable = true
@@ -52,9 +53,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		a2d.monitoring = false
 		
 func process_input(event: InputEvent) -> State:
-	if parent.jumpBuff:
-		if Input.is_action_just_pressed("jump"):
-			jump = true
+	#ADD JUMP BUFFER
 	return null
 
 func process_frame(delta: float) -> State:
@@ -108,7 +107,3 @@ func process_physics(delta: float) -> State:
 	
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	pogo = true
-
-
-func _on_jump_buff_timeout() -> void:
-	parent.jumpBuff = true

@@ -5,6 +5,7 @@ extends StaticBody2D
 
 @export var fliph: bool = false
 @export var closed: bool = false
+@export var pos: bool = false
 
 var open: bool = true
 
@@ -35,3 +36,7 @@ func playOpenClose() -> void:
 
 func gateSignal():
 	Global.DoorChange.emit()
+
+func _process(delta: float) -> void:
+	if pos:
+		print(global_position)
