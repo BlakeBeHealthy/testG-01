@@ -13,6 +13,8 @@ extends CharacterBody2D
 @onready var c_check_1: RayCast2D = $cCheck1
 @onready var c_check_2: RayCast2D = $cCheck2
 @onready var interact_area: Area2D = $InteractArea
+@onready var walljump_check_2: RayCast2D = $walljumpCheck2
+@onready var walljump_check: RayCast2D = $walljumpCheck
 
 @export var jump_state: State
 @export var hit_state: State
@@ -105,7 +107,8 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() and jumpCheck and state_machine.current_state != pogo_state:
 		jumpCheck = false
 	if wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and Global.hannible and \
-	!is_on_floor() and wall_state == WallState.NONE and state_machine.current_state != wallSlide_state:
+	!is_on_floor() and wall_state == WallState.NONE and state_machine.current_state != wallSlide_state and \
+	(!walljump_check_2.is_colliding() and !walljump_check.is_colliding()):
 		Jdirection = -1 if as2d.flip_h else 1
 		wall_state = WallState.SLIDING
 	elif wallslide_chest.is_colliding() and wallslide_legs.is_colliding() and !is_on_floor() and wall_state == WallState.JUMPING:
@@ -246,7 +249,7 @@ func apply_horizontal_air_control(speed: float) -> void:
 		
 	var heading_back = (direction == Jdir)
 	
-	if heading_back:
+	if heading_back or (moveCheck and Input.is_action_just_pressed("jump")):
 		wall_state = WallState.NONE
 		velocity.x = direction * speed
 	else:

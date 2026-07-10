@@ -46,6 +46,13 @@ func exit() -> void:
 func process_input(event: InputEvent) -> State:
 	if parent.state_machine.current_state != parent.jump_state:
 		return
+	if parent.wall_state == parent.WallState.JUMPING:
+		if Input.is_action_just_pressed("jump") and parent.moveCheck:
+			parent.air_control_timer.stop()
+			parent.wall_state = parent.WallState.NONE
+			parent.moveCheck = false
+			parent.velocity.y = -parent.JUMP
+			return null  # stay in jump state, just reset the arc
 	
 	if Input.is_action_just_pressed("jump") and buff_delay.is_stopped():
 		parent.wantJump = true

@@ -20,6 +20,10 @@ func enter() -> void:
 		parent.phase2S = false
 		P2 = true
 		cutCheck = true
+		if parent.chase:
+			parent.chase = false
+		if parent.playerAbove:
+			parent.playerAbove = false
 		phase2start()
 	elif !P2:
 		as2d.play("idle")
@@ -141,11 +145,11 @@ func phase2start():
 			as2d.flip_h = true
 		await get_tree().create_timer(1.5, true, false, true).timeout
 		if !parent.death:
-			Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2")
 			Global.inputBlocked = false
 			as2d.play("idle")
 			as2d.frame = 1
 			as2d.stop()
+			await Global.startCutscene("res://dialogues/Hannibal.dialogue", "P2", "P2")
 			if parent.direction == -1 and as2d.flip_h:
 				parent.flip_direction()
 			while Global.cutsceneStarted:

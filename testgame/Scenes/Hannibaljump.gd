@@ -45,6 +45,7 @@ func process_frame(delta: float) -> States:
 		flip = false
 		fallAttackCheck = false
 		parent.chase = false
+		parent.wallJump = false
 		return parent.idle_state
 	
 	if parent.wallDetection.is_colliding() and !parent.is_on_floor() and !fallAttack:
@@ -117,7 +118,7 @@ func walljump():
 	moveCheck = true
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if as2d.animation != "fall_attack_land":
+	if as2d.animation != "fall_attack_land" or parent.state_machine.current_state != parent.jump_state:
 		return
 		
 	landOver = true

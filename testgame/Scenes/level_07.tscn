@@ -3612,47 +3612,42 @@ rotation = 3.1415927
 spawn = true
 
 [node name="Spikes560" parent="Spikes111" unique_id=1591528865 instance=ExtResource("9_ekoii")]
-position = Vector2(-963, -1650)
+position = Vector2(-965, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes561" parent="Spikes111" unique_id=1335447216 instance=ExtResource("9_ekoii")]
-position = Vector2(-954, -1650)
+position = Vector2(-956, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes562" parent="Spikes111" unique_id=794075184 instance=ExtResource("9_ekoii")]
-position = Vector2(-945, -1650)
+position = Vector2(-947, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes563" parent="Spikes111" unique_id=659839428 instance=ExtResource("9_ekoii")]
-position = Vector2(-936, -1650)
+position = Vector2(-938, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes564" parent="Spikes111" unique_id=1209966203 instance=ExtResource("9_ekoii")]
-position = Vector2(-927, -1650)
+position = Vector2(-929, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes565" parent="Spikes111" unique_id=1592968548 instance=ExtResource("9_ekoii")]
-position = Vector2(-918, -1650)
-rotation = 3.1415927
-spawn = true
-
-[node name="Spikes569" parent="Spikes111" unique_id=214835992 instance=ExtResource("9_ekoii")]
-position = Vector2(-989, -1650)
+position = Vector2(-920, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes570" parent="Spikes111" unique_id=963471253 instance=ExtResource("9_ekoii")]
-position = Vector2(-980, -1650)
+position = Vector2(-982, -1650)
 rotation = 3.1415927
 spawn = true
 
 [node name="Spikes571" parent="Spikes111" unique_id=1483645308 instance=ExtResource("9_ekoii")]
-position = Vector2(-971, -1650)
+position = Vector2(-973, -1650)
 rotation = 3.1415927
 spawn = true
 

@@ -62,6 +62,7 @@ func process_frame(delta: float) -> State:
 		if parent.parryCheck:
 			return parent.parry_state 
 		elif parent.attackCheck:
+			parent.attackCheck = false
 			return parent.attack_state
 		elif parent.pogoCheck:
 			return parent.pogo_state

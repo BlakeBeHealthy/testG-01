@@ -30,6 +30,7 @@ func process_input(event: InputEvent) -> States:
 
 func process_frame(delta: float) -> States:
 	if parent.phase2S:
+		shooting = false
 		return parent.idle_state
 	
 	
@@ -115,6 +116,9 @@ func process_physics(delta: float) -> States:
 	return null
 
 func shoot(loopcount: int = 1, duration: float = 0, wait: float = 1.0, speed: float = 400) -> void:
+	if parent.death:
+		return
+	
 	if wait == 0:
 		wait = projectileWindow
 	

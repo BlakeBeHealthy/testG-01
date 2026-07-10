@@ -132,6 +132,8 @@ func startQTE(dur: float, anim: String, winAnim: String, LoseAnim: String, DM3Ch
 			Global.inputBlocked = false
 			await get_tree().create_timer(0.4).timeout
 			Global.startCutscene("res://dialogues/Hannibal.dialogue", "d1", "HD1", true)
+		else:
+			Global.cutsceneStarted = false
 
 func QTEOutcome():
 	if win:

@@ -28,9 +28,9 @@ func process_frame(delta: float) -> States:
 		return parent.attack_state
 	
 	return null
-
+ 
 func process_physics(delta: float) -> States:
-	if as2d.animation == "startRun":
+	if as2d.animation == "startRun" or parent.state_machine.current_state != parent.chase_state:
 		return
 		
 	if parent.middleAttack or parent.lunge:

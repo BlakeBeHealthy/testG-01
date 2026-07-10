@@ -28,12 +28,13 @@ func _on_wall_touch_timer_timeout() -> void:
 		parent.wall_state = parent.WallState.SLIDING
 		
 func exit() -> void:
-	parent.flip_direction()
-
+	pass
+	
 func process_input(event: InputEvent) -> State:
 	if (parent.wall_state == parent.WallState.TOUCH or parent.wall_state == parent.WallState.SLIDING) \
 	and Input.is_action_just_pressed("jump"):
 		wall_touch_timer.stop()
+		parent.flip_direction()
 		return parent.jump_state
 	return null
 
@@ -41,10 +42,12 @@ func process_frame(delta: float) -> State:
 	direction = Input.get_axis("runL", "runR")
 			
 	if (as2d.flip_h and Input.is_action_pressed("runR")) or (!as2d.flip_h and Input.is_action_pressed("runL")):
+		parent.flip_direction()
 		return parent.fall_state
 		
 	elif !parent.wallslide_chest.is_colliding() or !parent.wallslide_legs.is_colliding(): 
 		if !parent.is_on_floor():
+			parent.flip_direction()
 			return parent.fall_state
 		
 	if parent.is_on_floor():
