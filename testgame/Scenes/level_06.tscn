@@ -2677,9 +2677,6 @@ spawn = true
 position = Vector2(-18, -496)
 spawn = true
 
-[node name="Spikes194" parent="Spikes73" unique_id=2111058377 instance=ExtResource("8_kmstd")]
-position = Vector2(119, -176)
-
 [node name="Spikes195" parent="Spikes73" unique_id=1907668043 instance=ExtResource("8_kmstd")]
 position = Vector2(-27, -496)
 spawn = true
@@ -2848,24 +2845,17 @@ position = Vector2(-77, 21)
 shape = SubResource("CapsuleShape2D_8b0x6")
 
 [node name="SpikeCheckpoint2" parent="." unique_id=1971441683 instance=ExtResource("12_qujtj")]
-position = Vector2(64, 90)
+position = Vector2(122, 99)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint2" unique_id=13527821]
-position = Vector2(177, 0)
+position = Vector2(116, 4)
 shape = SubResource("CapsuleShape2D_8b0x6")
 
 [node name="SpikeCheckpoint3" parent="." unique_id=1926162668 instance=ExtResource("12_qujtj")]
-position = Vector2(64, 89)
+position = Vector2(64, 99)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint3" unique_id=83621765]
-position = Vector2(-65, -29)
-shape = SubResource("CapsuleShape2D_8b0x6")
-
-[node name="SpikeCheckpoint4" parent="." unique_id=1224766628 instance=ExtResource("12_qujtj")]
-position = Vector2(76, -84)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCheckpoint4" unique_id=2005127664]
-position = Vector2(-73, 23)
+position = Vector2(-89, -42)
 shape = SubResource("CapsuleShape2D_8b0x6")
 
 [node name="SpikeCheckpoint5" parent="." unique_id=1339639042 instance=ExtResource("12_qujtj")]

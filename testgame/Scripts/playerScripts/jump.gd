@@ -46,6 +46,7 @@ func exit() -> void:
 func process_input(event: InputEvent) -> State:
 	if parent.state_machine.current_state != parent.jump_state:
 		return
+		
 	if parent.wall_state == parent.WallState.JUMPING:
 		if Input.is_action_just_pressed("jump") and parent.moveCheck:
 			parent.air_control_timer.stop()
