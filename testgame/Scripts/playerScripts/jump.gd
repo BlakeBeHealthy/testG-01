@@ -25,7 +25,10 @@ func enter() -> void:
 	dir = Input.get_axis("runL", "runR")
 	if parent.wall_state == parent.WallState.NONE:
 		if !parent.jumpCheck:
-			as2d.play("jump")
+			if !parent.moveCheck:
+				as2d.play("DJ")
+			else:
+				as2d.play("jump")
 			parent.air_control_timer.start(0.1)
 			parent.velocity.y = -parent.JUMP
 			parent.jumpCheck = true
@@ -46,11 +49,13 @@ func exit() -> void:
 func process_input(event: InputEvent) -> State:
 	if parent.state_machine.current_state != parent.jump_state:
 		return
+		
 	if parent.wall_state == parent.WallState.JUMPING:
 		if Input.is_action_just_pressed("jump") and parent.moveCheck:
 			parent.air_control_timer.stop()
 			parent.wall_state = parent.WallState.NONE
 			parent.moveCheck = false
+			as2d.play("DJ")
 			parent.velocity.y = -parent.JUMP
 			return null  # stay in jump state, just reset the arc
 	
