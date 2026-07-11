@@ -144,7 +144,7 @@ func flip_direction(dire: int = -direction):
 		as2d.flip_h = false
 	elif direction <= -1:
 		as2d.flip_h = true
-		pass
+		
 	
 func enter_from_transition(direct: Vector2) -> void:
 	upwardDoor = true
@@ -253,7 +253,7 @@ func apply_horizontal_air_control(speed: float) -> void:
 		wall_state = WallState.NONE
 		velocity.x = direction * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, 2000 * get_process_delta_time())
+		velocity.x = move_toward(velocity.x, -Jdir * speed, 7000 * get_process_delta_time())
 		
 	update_air_visuals(direction)
 	

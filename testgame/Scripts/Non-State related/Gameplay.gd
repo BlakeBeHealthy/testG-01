@@ -54,7 +54,7 @@ func on_level_loaded(level: Node) -> void:
 		Global.spawning = false
 	if Global.inputBlocked:
 		Global.inputBlocked = false
-	if player.control_locked:
+	if Global.player.control_locked:
 		player.control_locked = false
 	
 func _dir_from_enum(dir: int) -> Vector2:

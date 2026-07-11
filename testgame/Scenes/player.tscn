@@ -25,6 +25,26 @@ resource_local_to_scene = true
 shader = ExtResource("2_pu2lt")
 shader_parameter/flash_strength = 0.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpfyg"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(200, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un823"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(250, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aclic"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(300, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y64g"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(0, 111, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ramv3"]
+atlas = ExtResource("2_gymyn")
+region = Rect2(150, 74, 50, 37)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_igrcy"]
 atlas = ExtResource("2_gymyn")
 region = Rect2(250, 222, 50, 37)
@@ -375,6 +395,26 @@ region = Rect2(150, 407, 50, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_onrkg"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpfyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un823")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aclic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y64g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ramv3")
+}],
+"loop": false,
+"name": &"DJ",
+"speed": 19.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_igrcy")
@@ -773,7 +813,9 @@ jumpCut = 0.1
 material = SubResource("ShaderMaterial_ukyrk")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"dash"
+animation = &"DJ"
+frame = 4
+frame_progress = 1.0
 speed_scale = 0.8
 
 [node name="c" type="CollisionShape2D" parent="." unique_id=60263537]
@@ -918,7 +960,7 @@ one_shot = true
 one_shot = true
 
 [node name="CoyoteTime" type="Timer" parent="." unique_id=300296774]
-wait_time = 0.1
+wait_time = 0.06
 one_shot = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=1235796374 node_paths=PackedStringArray("attack_state", "starting_state")]
@@ -935,7 +977,7 @@ script = ExtResource("6_3smsa")
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1504189175]
 script = ExtResource("8_8erm5")
 wall_jump_force = 350.0
-wall_jump_forceY = 550.0
+wall_jump_forceY = 470.0
 decayRate = 3500.0
 air_control_lockout = 0.1
 
