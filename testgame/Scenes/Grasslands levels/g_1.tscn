@@ -1432,7 +1432,7 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_jeubd")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.6583866
+frame_progress = 0.4399599
 speed_scale = 0.8
 
 [node name="TileMap" type="TileMap" parent="." unique_id=211096872]
